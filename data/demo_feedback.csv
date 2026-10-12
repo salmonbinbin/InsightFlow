@@ -1,0 +1,13 @@
+﻿feedback_id,content,source,user_id,user_type,created_at
+F001,为什么每次只能上传一张图片？,in_app,U001,free,2026-10-01
+F002,我传旅游照片要选几十次，能不能支持多选？,support,U001,pro,2026-10-02
+F003,上传图片其实挺快的，就是每次只能选一张。,app_store,U002,team,2026-10-03
+F004,PDF上传到一半总是失败。,community,U002,free,2026-10-04
+F005,超过20MB的PDF就传不上去了。,interview,U003,pro,2026-10-05
+F006,回答要等好久，希望能快一点。,in_app,U003,team,2026-10-06
+F007,搜索给我的结果和问题完全不相关。,support,U004,free,2026-10-07
+F008,换个对话就不记得我之前说的偏好了。,app_store,U004,pro,2026-10-08
+F009,对话聊长了，就忘了这次讨论一开始的要求。,community,U005,team,2026-10-09
+F010,能不能把聊天导出为Markdown？,interview,U005,free,2026-10-01
+F011,这次总结很清楚，帮我理顺了思路。,in_app,U006,pro,2026-10-02
+F012,嗯，先这样吧。,support,U006,team,2026-10-03

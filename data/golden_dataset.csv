@@ -1,0 +1,13 @@
+feedback_id,gt_feedback_type,gt_module,gt_intent,gt_cluster,gt_severity
+F001,feature_request,image_upload,batch_image_upload,batch_image_upload,3
+F002,feature_request,image_upload,batch_image_upload,batch_image_upload,4
+F003,ux_issue,image_upload,batch_image_upload,batch_image_upload,3
+F004,bug,file_upload,upload_pdf_reliably,upload_pdf_reliably,5
+F005,bug,file_upload,upload_pdf_reliably,upload_pdf_reliably,4
+F006,performance_issue,response_speed,faster_response,faster_response,3
+F007,content_issue,search_accuracy,relevant_search_results,relevant_search_results,4
+F008,feature_request,memory,remember_preferences,remember_preferences,3
+F009,content_issue,context_loss,retain_conversation_context,retain_conversation_context,4
+F010,feature_request,export_sharing,export_markdown,export_markdown,2
+F011,positive_feedback,response_quality,clear_summary,clear_summary,1
+F012,other,other,unknown,unknown,1
