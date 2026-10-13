@@ -1,4 +1,4 @@
-> **当前状态（2026-10-13）：Phase 3 工程验收 PASS，阶段交付 PARTIAL，等待三文鱼人工复核。** SQLite225通过/5跳过，PG230通过，0008迁移往返、Ruff/格式/编译及真实Phase3 HTTP通过。10条draft+1条needs_validation、32条证据有效；语义过度概括仍需复核，Phase2真实语义Embedding缺口保留。未push、禁止推进Phase4。以[Phase3报告](docs/19-Phase3监督验收与交付报告.md)和[复核样本](docs/20-Phase3洞察人工复核样本.md)为当前结论，下方阶段状态和数字为历史记录。
+> **当前状态（2026-10-14）：Phase 4 工程验收 PASS，业务质量仍待三文鱼复核。** 已实现不可变 Opportunity Score、Business Value 原子重算、AI Priority、PM accept/override/defer/reject、幂等与乐观并发、决策事件历史及 6 个 API。SQLite 310通过/5跳过，PostgreSQL 315通过，0009迁移往返、Ruff/格式/编译、真实 TCP HTTP + 真实模型 Phase 4 链路及 6 条评分样本审计通过；正式业务评分质量为 NOT MEASURED。Phase 2真实语义Embedding和Phase 3人工语义复核限制仍保留。未push，禁止推进Phase5。以[Phase4报告](docs/22-Phase4监督验收与交付报告.md)为当前结论，下方状态和数字保留为历史记录。
 
 # InsightFlow 开发 Agent 入口
 

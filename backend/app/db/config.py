@@ -1,6 +1,7 @@
+from decimal import Decimal
 from typing import Optional
 
-from pydantic import Field
+from pydantic import Field, model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -37,7 +38,47 @@ class Settings(BaseSettings):
     cluster_review_enabled: bool = Field(default=True)
     cluster_review_max_retries: int = Field(default=2, ge=0, le=5)
 
+    # Phase 4 — Opportunity Score + Human Decision.
+    # Centralised default weights and Priority thresholds. Validation
+    # runs at process start so an invalid default fails fast instead of
+    # silently corrupting scores.
+    opportunity_weight_user_coverage: Decimal = Field(default=Decimal("0.25"))
+    opportunity_weight_severity: Decimal = Field(default=Decimal("0.25"))
+    opportunity_weight_growth: Decimal = Field(default=Decimal("0.15"))
+    opportunity_weight_user_value: Decimal = Field(default=Decimal("0.20"))
+    opportunity_weight_business_value: Decimal = Field(default=Decimal("0.15"))
+    opportunity_priority_p1_below: Decimal = Field(default=Decimal("5.00"))
+    opportunity_priority_p0_below: Decimal = Field(default=Decimal("7.50"))
+    opportunity_prompt_version: str = Field(default="opportunity-recommendation-v1")
+    opportunity_max_retries: int = Field(default=2, ge=0, le=5)
+
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
+
+    @model_validator(mode="after")
+    def _validate_phase4_defaults(self) -> "Settings":
+        weights = [
+            self.opportunity_weight_user_coverage,
+            self.opportunity_weight_severity,
+            self.opportunity_weight_growth,
+            self.opportunity_weight_user_value,
+            self.opportunity_weight_business_value,
+        ]
+        for weight in weights:
+            if weight < Decimal("0") or weight > Decimal("1"):
+                raise ValueError(f"opportunity default weights must be within [0, 1]; got {weight}")
+        total = sum(weights)
+        if abs(total - Decimal("1")) > Decimal("1e-9"):
+            raise ValueError(f"opportunity default weights must sum to 1; got {total}")
+        if not (
+            Decimal("0")
+            < self.opportunity_priority_p1_below
+            < self.opportunity_priority_p0_below
+            <= Decimal("10")
+        ):
+            raise ValueError(
+                "opportunity priority thresholds must satisfy 0 < p1_below < p0_below <= 10"
+            )
+        return self
 
 
 settings = Settings()

@@ -18,6 +18,24 @@ from app.models.insight import (
     InsightRunItem,
     InsightStatus,
 )
+from app.models.opportunity import (
+    DECISION_ACCEPTED,
+    DECISION_DEFERRED,
+    DECISION_EVENTS,
+    DECISION_OVERRIDDEN,
+    DECISION_PENDING_REVIEW,
+    DECISION_REJECTED,
+    DECISION_STATUS_VALUES,
+    OVERRIDE_REASON_VALUES,
+    PRIORITY_VALUES,
+    DecisionEventType,
+    DecisionStatus,
+    InsightDecision,
+    InsightDecisionEvent,
+    OpportunityScore,
+    OverrideReason,
+    Priority,
+)
 from app.models.project import Project
 
 __all__ = [
@@ -41,4 +59,20 @@ __all__ = [
     "InsightStatus",
     "InsightItemStatus",
     "EvidenceType",
+    "DECISION_ACCEPTED",
+    "DECISION_DEFERRED",
+    "DECISION_EVENTS",
+    "DECISION_OVERRIDDEN",
+    "DECISION_PENDING_REVIEW",
+    "DECISION_REJECTED",
+    "DECISION_STATUS_VALUES",
+    "DecisionEventType",
+    "DecisionStatus",
+    "InsightDecision",
+    "InsightDecisionEvent",
+    "OVERRIDE_REASON_VALUES",
+    "OpportunityScore",
+    "OverrideReason",
+    "PRIORITY_VALUES",
+    "Priority",
 ]
