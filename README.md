@@ -1,3 +1,5 @@
+> **当前状态（2026-10-14）：Phase 5 工程验收通过，阶段交付 PARTIAL。** Requirement、PRD Draft/版本与人工编辑/接受 API 已实现；SQLite417通过/5跳过、隔离PostgreSQL422通过，0010迁移及真实TCP HTTP无模型链路通过。真实AI生成、CSV完整AI端到端及人工语义抽查因本地模型配置缺失尚未完成。详见[Phase5报告](docs/23-Phase5监督验收与交付报告.md)。STOP，不进入Phase6。下方状态为历史记录。
+
 > **当前状态（2026-10-13）：Phase 3 工程验收 PASS，阶段交付 PARTIAL，等待三文鱼人工复核。** SQLite225通过/5跳过，PG230通过，0008迁移往返、Ruff/格式/编译及真实Phase3 HTTP通过。10条draft+1条needs_validation、32条证据有效；语义过度概括仍需复核，Phase2真实语义Embedding缺口保留。未push、禁止推进Phase4。以[Phase3报告](docs/19-Phase3监督验收与交付报告.md)和[复核样本](docs/20-Phase3洞察人工复核样本.md)为当前结论，下方阶段状态和数字为历史记录。
 
 # InsightFlow · 后端 V0.1

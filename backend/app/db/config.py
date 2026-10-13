@@ -52,6 +52,14 @@ class Settings(BaseSettings):
     opportunity_prompt_version: str = Field(default="opportunity-recommendation-v1")
     opportunity_max_retries: int = Field(default=2, ge=0, le=5)
 
+    # Phase 5 — Requirement + PRD.
+    # Prompt versions are pinned so historical rows remain reproducible;
+    # retries only apply to the AI tool call itself (transport errors).
+    requirement_prompt_version: str = Field(default="requirement-generation-v1")
+    requirement_max_retries: int = Field(default=2, ge=0, le=5)
+    prd_prompt_version: str = Field(default="prd-generation-v1")
+    prd_max_retries: int = Field(default=2, ge=0, le=5)
+
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 
     @model_validator(mode="after")
