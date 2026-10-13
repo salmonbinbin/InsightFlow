@@ -1,3 +1,5 @@
+> **当前状态（2026-10-13）：Phase 3 工程验收 PASS，阶段交付 PARTIAL，等待三文鱼人工复核。** SQLite225通过/5跳过，PG230通过，0008迁移往返、Ruff/格式/编译及真实Phase3 HTTP通过。10条draft+1条needs_validation、32条证据有效；语义过度概括仍需复核，Phase2真实语义Embedding缺口保留。未push、禁止推进Phase4。以[Phase3报告](docs/19-Phase3监督验收与交付报告.md)和[复核样本](docs/20-Phase3洞察人工复核样本.md)为当前结论，下方阶段状态和数字为历史记录。
+
 # InsightFlow 开发 Agent 入口
 
 > **最新独立验收（2026-10-12）：FAIL。** 已完成pgvector/核心修复，SQLite161通过/5跳过、PostgreSQL166通过、Ruff通过；真实分类/复核有完成样本但仍有结构失败，真实语义Embedding尚未配置。Git目录未建立。以[Phase 2独立验收报告](docs/17-Phase2独立验收与修复报告.md)为当前结论，下面开发交付数字保留为历史；STOP，禁止Phase3。

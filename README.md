@@ -1,3 +1,5 @@
+> **当前状态（2026-10-13）：Phase 3 工程验收 PASS，阶段交付 PARTIAL，等待三文鱼人工复核。** SQLite225通过/5跳过，PG230通过，0008迁移往返、Ruff/格式/编译及真实Phase3 HTTP通过。10条draft+1条needs_validation、32条证据有效；语义过度概括仍需复核，Phase2真实语义Embedding缺口保留。未push、禁止推进Phase4。以[Phase3报告](docs/19-Phase3监督验收与交付报告.md)和[复核样本](docs/20-Phase3洞察人工复核样本.md)为当前结论，下方阶段状态和数字为历史记录。
+
 # InsightFlow · 后端 V0.1
 
 > **最新独立验收（2026-10-12）：FAIL。** 已完成pgvector/核心修复，SQLite161通过/5跳过、PostgreSQL166通过、Ruff通过；真实分类/复核有完成样本但仍有结构失败，真实语义Embedding尚未配置。Git目录未建立。以[Phase 2独立验收报告](docs/17-Phase2独立验收与修复报告.md)为当前结论，下面开发交付数字保留为历史；STOP，禁止Phase3。
@@ -142,3 +144,9 @@ uv run --with pgserver==0.1.4 python scripts/verify_phase2_migration.py
 脚本创建并清理自己的临时数据库，不降级已有库。8000已占用时HTTP脚本改用18085。真实Embedding要求报告embedding_mode=remote；默认local-hash-v1仅作测试。
 
 成功计数是反馈数；最终簇数需排除空审计父簇。completed Retry为无副作用读取；重新评估创建新Run。旧无配置快照Run不可Retry。完整复测和限制见docs/17。
+
+## Phase 3：洞察与证据（2026-10-13）
+
+新增0008迁移与7个洞察端点。启动依然使用原有后端命令，先安全配置LLM_API_KEY/LLM_BASE_URL/LLM_MODEL；旧库前向升级前自行备份。显式选择本项目completed聚类run后，POST `/projects/{project_id}/insights/generate`，body含`clustering_run_id`；用`GET /insight-runs/{run_id}`查状态、`GET /projects/{project_id}/insights?run_id=...`查结果，`GET /insights/{insight_id}/evidence`查原文。同步200。失败用POST `/insight-runs/{run_id}/retry`，成功及needs_validation结果不重处理。
+
+独立隔离复验：在backend执行`uv run --with pgserver==0.1.4 python scripts/verify_phase3_supervisor.py`只验证带数据迁移；加`--real`验证真实TCP+真实Phase3模型（会消耗模型额度，上游仍为合成夹具）。详见docs/19与docs/20；所有结果需要人工审阅。

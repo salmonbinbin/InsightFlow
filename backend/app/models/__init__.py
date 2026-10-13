@@ -9,6 +9,15 @@ from app.models.cluster import (
     Embedding,
 )
 from app.models.feedback import Feedback
+from app.models.insight import (
+    EvidenceType,
+    Insight,
+    InsightEvidence,
+    InsightItemStatus,
+    InsightRun,
+    InsightRunItem,
+    InsightStatus,
+)
 from app.models.project import Project
 
 __all__ = [
@@ -25,4 +34,11 @@ __all__ = [
     "ClusterReviewAction",
     "ClusterSource",
     "Embedding",
+    "Insight",
+    "InsightEvidence",
+    "InsightRun",
+    "InsightRunItem",
+    "InsightStatus",
+    "InsightItemStatus",
+    "EvidenceType",
 ]
