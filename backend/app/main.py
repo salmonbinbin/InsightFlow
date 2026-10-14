@@ -6,6 +6,7 @@ from sqlalchemy.orm import Session
 from app.api import (
     analysis,
     clusters,
+    evaluations,
     feedback,
     insights,
     opportunities,
@@ -26,6 +27,7 @@ app.include_router(clusters.router)
 app.include_router(insights.router)
 app.include_router(opportunities.router)
 app.include_router(requirement_prd.router)
+app.include_router(evaluations.router)
 
 
 @app.get("/health", tags=["health"])
@@ -46,6 +48,9 @@ def ready(db: Session = Depends(get_db)):
         db.execute(text("SELECT 1 FROM insight_decision_events LIMIT 1"))
         db.execute(text("SELECT 1 FROM requirements LIMIT 1"))
         db.execute(text("SELECT 1 FROM prds LIMIT 1"))
+        db.execute(text("SELECT 1 FROM evaluation_runs LIMIT 1"))
+        db.execute(text("SELECT 1 FROM evaluation_metrics LIMIT 1"))
+        db.execute(text("SELECT 1 FROM evaluation_cases LIMIT 1"))
     except SQLAlchemyError as exc:
         raise HTTPException(503, "数据库不可用或尚未迁移") from exc
     return {"status": "ready"}

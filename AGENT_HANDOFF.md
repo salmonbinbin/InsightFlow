@@ -1,3 +1,5 @@
+> **当前状态（2026-10-14）：Phase 6 Evaluation System 工程回归通过，阶段交付 PARTIAL，STOP。** 分类/聚类/Insight Evidence 评测、逐例追踪和真实 Baseline 已完成；SQLite 582通过/5跳过，隔离PostgreSQL 587通过。人工标签与语义复核、Phase 4/5 Artifact Evaluation、完整 Feedback→PRD 质量仍未测得；Phase2/3/4/5历史限制保留。详见 [Phase6报告](docs/24-Phase6监督验收与交付报告.md) 与 [Baseline](docs/evaluations/phase6-baseline-evaluation.md)。等待三文鱼人工验收，不进入Phase7。下方为历史状态。
+
 > **当前状态（2026-10-14）：Phase 5 工程验收通过，阶段交付 PARTIAL，STOP。** 已实现 Requirement + versioned PRD Draft + Human Review；SQLite 417通过/5跳过、隔离PostgreSQL 422通过，0010迁移及无模型真实TCP HTTP闭环通过。真实AI生成、CSV起点完整AI链路、3～5份人工语义抽查因本地模型配置缺失仍为 NOT MEASURED；Phase2/3/4业务质量限制保留。以[Phase5报告](docs/23-Phase5监督验收与交付报告.md)为当前结论，不推进Phase6。下方状态与数字为历史记录。
 
 > **当前状态（2026-10-14）：Phase 4 工程验收 PASS，业务质量仍待三文鱼复核。** 已实现不可变 Opportunity Score、Business Value 原子重算、AI Priority、PM accept/override/defer/reject、幂等与乐观并发、决策事件历史及 6 个 API。SQLite 310通过/5跳过，PostgreSQL 315通过，0009迁移往返、Ruff/格式/编译、真实 TCP HTTP + 真实模型 Phase 4 链路及 6 条评分样本审计通过；正式业务评分质量为 NOT MEASURED。Phase 2真实语义Embedding和Phase 3人工语义复核限制仍保留。未push，禁止推进Phase5。以[Phase4报告](docs/22-Phase4监督验收与交付报告.md)为当前结论，下方状态和数字保留为历史记录。
