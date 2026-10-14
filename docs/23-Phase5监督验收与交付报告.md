@@ -4,7 +4,7 @@
 
 ## Status
 
-**PARTIAL。** Phase 5 后端工程实现与隔离环境验收通过；真实 AI Requirement/PRD 生成、从 CSV 到 PRD 的真实模型全链路，以及 3～5 份真实生成文档的人工语义抽查尚未完成。本机后端读取到的 `LLM_API_KEY`、`LLM_MODEL` 均为空，因此这些项目记为 **NOT MEASURED**，不得把 PM 手填或 Stub 样本当作真实 AI 结果。Phase 2 真实语义 Embedding 和 Phase 3 人工语义复核限制继续保留。
+**PARTIAL。** Phase 5 后端工程实现与隔离环境验收通过。三文鱼提供的 `key/.env` 已用于真实 MiniMax-M3 调用：Requirement 客户端取得结构化响应；PRD 客户端两次取得响应，但分别被业务校验和严格字段校验拒绝，未完成真实 AI 草稿入库。CSV 到 PRD 的真实模型全链路及 3～5 份真实生成文档的人工语义抽查仍为 **NOT MEASURED**。这份文件是 Claude 配置 JSON，不能直接作为后端 dotenv 读取；本次只在隔离验收进程中读取，未修改原文件或写入密钥。Phase 2 真实语义 Embedding 和 Phase 3 人工语义复核限制继续保留。
 
 ## What Changed
 
@@ -58,7 +58,8 @@ Phase 5 新增 107 个专项测试，覆盖门禁、Priority 继承、严格输�
 | Alembic head/check 与 fresh 往返 | `0010`；PASS |
 | 带数据 `0010→0009→0010` | PASS；Raw 原文不变 |
 | 真实 TCP HTTP、隔离 PostgreSQL、PM 输入 | PASS：Requirement 编辑、PRD v1 编辑、v2、历史 active 指针、重复 Accept、Raw 与决策保护 |
-| 真实 AI Requirement/PRD | NOT MEASURED：本地未配置模型与密钥 |
+| 真实 AI Requirement 客户端 | MiniMax-M3 成功返回 8 个必需顶层字段及受控 Evidence ID；1658/1085 tokens，约 16.7 秒。未走数据库持久化与完整业务校验 |
+| 真实 AI PRD 客户端 | 两次均收到模型响应，但一次在 `mvp_scope.out_of_scope` 触发无依据商业承诺校验（3044/2996 tokens，约 39.8 秒），一次因额外顶层字段 `item` 被拒；真实 AI PRD 入库未通过 |
 | CSV 起点完整真实 AI E2E | NOT MEASURED |
 | 3～5 份真实文档人工语义抽查 | NOT MEASURED |
 
@@ -68,18 +69,18 @@ Phase 5 新增 107 个专项测试，覆盖门禁、Priority 继承、严格输�
 
 ## Sample Requirement and PRD Summary
 
-无真实 AI 样本可报告。隔离 HTTP 用的 PM 输入样本为“图片选择效率”，问题是逐张选择带来重复操作，Priority `P1` 来自受控 PM Decision；PRD 仅用于验证 13 节 Schema 和版本/编辑链路。这些样本不代表真实用户反馈或生成质量。
+真实模型 Requirement 客户端用一条受控合成的“多图选择”反馈取得结构化响应，引用了给定 `sample-1`。该响应没有进入服务层或数据库，不能据此认定 Requirement 业务验收通过。隔离 HTTP 用的 PM 输入样本为“图片选择效率”，Priority `P1` 来自受控 PM Decision；PRD 仅用于验证 13 节 Schema 和版本/编辑链路。这些样本不代表真实用户反馈或生成质量。
 
 ## Known Issues and Technical Debt
 
-- 真实 AI 配置缺失，模型稳定性、tokens/latency 实际值、生成质量和完整端到端未测。
+- 已有可用的 MiniMax-M3 Anthropic 兼容配置，真实模型往返已测；PRD 两次输出均未通过后端校验，模型输出稳定性、真实草稿入库和完整端到端尚未通过。
 - Evidence ID 校验与常见商业承诺拦截是确定性保护，不能证明 Problem、User Story、验收标准整体语义正确；需要真实输出及三文鱼人工复核。
 - Phase 2 真实语义 Embedding、Phase 3 正式 Groundedness/Hallucination 与人工复核、Phase 4 正式业务评分质量仍未关闭。
 - 本阶段沿用同步 HTTP/模型调用和单用户本地后端；未增加认证、前端、自动发布或 Phase 6 功能。
 
 ## Git Commit
 
-本报告记录的是**提交前**的验收结果。若创建本地提交，以 `git log -1` 为实际 hash/message；不 push。
+Phase 5 工程实现已本地提交为 `600ba0b feat: add requirement and versioned prd workflow`，未 push。本次真实模型补验与报告修订单独记录。
 
 ## User Retest Steps
 
@@ -91,4 +92,4 @@ Phase 5 新增 107 个专项测试，覆盖门禁、Priority 继承、严格输�
 
 ## Next Recommended Phase / STOP
 
-先补本地模型配置，完成真实 AI Requirement+PRD、CSV 全链路与 3～5 份人工抽查，再由三文鱼复测 Phase 5。**STOP：不进入 Phase 6、前端、MCP、Jira、Notion 或 Multi-Agent。**
+先定位并修复真实模型 PRD 输出的字段/商业断言问题，再完成真实 AI Requirement+PRD 入库、CSV 全链路与 3～5 份人工抽查，由三文鱼复测 Phase 5。**STOP：不进入 Phase 6、前端、MCP、Jira、Notion 或 Multi-Agent。**
