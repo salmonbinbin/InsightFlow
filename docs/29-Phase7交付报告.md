@@ -26,7 +26,7 @@
 
 | Gate | 独立结果 |
 | --- | --- |
-| Frontend Tests | **PASS**：lint 无警告/错误；14 文件 **106 passed**；Next.js 生产构建 11 路由通过 |
+| Frontend Tests | **PASS**：lint 无警告/错误；15 文件 **107 passed**；Next.js 生产构建 11 路由通过 |
 | Backend Regression | **PASS**：SQLite **623 passed, 5 skipped**；Ruff 通过；隔离 PostgreSQL **628 passed**；迁移 upgrade/check → downgrade base → upgrade/check 与 `POSTGRES_VERIFICATION_PASSED` |
 | Real E2E | **PASS**：上述真实 Frontend → FastAPI → PostgreSQL → AI 与异常流程；真实浏览器五种宽度复测 |
 | Docs Updated | **PASS**：工作记录、验证与交付记录、API 设计、决策记录、前端 README、本报告和人工复测流程已更新 |
@@ -44,11 +44,23 @@
 - Phase 2 真实语义 Embedding 未验收，Phase 3 人工语义复核未关闭，Phase 4 评分/理由业务质量、Phase 6 部分指标仍按历史报告维持 `NOT MEASURED` 或 `PARTIAL`。本阶段通过不修改历史结论。
 - 分析与生成仍同步执行，长耗时依赖 Next.js 代理超时；Evaluation 看板无创建按钮；概览部分聚合指标仍为 N/A。后续是否优化由三文鱼在本阶段人工验收后决定。
 
+## 2026-10-15 补充联调与修复验收
+
+三文鱼要求打开正式页面继续测试。Codex 在同一 Claude 会话 `03c20a03-1a17-4b6e-af35-03d69b8cafa0` 下发三包前端修复：项目弹窗可见可点击（`2667f3afc3254c9a84e97820a73be457`）、概览读取真实分类 Run 和洞察分页 `total`（`f7cf9a406bf449748b9dbe0442df8ac0`）、项目切换时按项目 ID 阻断旧快照（`be1048507bf24ef79124f11ea392ceb9`）。首次生产构建发现数组首项可能为 `undefined` 的严格类型错误，Codex 提供构建行号并续接原会话修复（`ea258b61b92544a49d425d378101c275`）。Codex 独立增加概览回归测试并修正测试客户端的项目洞察过滤。
+
+最终前端 lint **PASS**、Vitest **107 passed / 15 files**、按 `NEXT_PUBLIC_API_BASE_URL=http://127.0.0.1:18000` 构建 **11 路由 PASS**。后端本轮已独立复验 SQLite **623 passed, 5 skipped**、Ruff **PASS**、隔离 PostgreSQL **628 passed** 与迁移往返 **PASS**；本补充修复没有改后端。
+
+生产浏览器重新实测 `http://127.0.0.1:13000`：项目 A 概览反馈 **12**、最新分类 **成功 12 / 输入 12**、洞察 **1**；切换空项目 B 后反馈和洞察均 **0**、分类为“尚未运行”，A 的原文和洞察不显示；切回 A 数据恢复。390px 弹窗可打开和选择项目，文档及 body 宽度均为 390px。控制台仅见 `favicon.ico` 404，未影响功能。测试服务使用隔离 `work/phase7-user-postgres`、后端 `127.0.0.1:18000`、前端 `127.0.0.1:13000`；与其他项目占用的 8000 端口隔离。
+
+本次模型链路的真实边界：开启聚类模型复核时，Run `e744d448-ce9f-4e25-9661-18ac32f32657` 两次因 `split_partition` 校验失败成为 `partial_failed`，随后洞察生成被 409 正确拦截。将**本隔离演示服务**设为 `CLUSTER_REVIEW_ENABLED=false` 后，算法聚类 Run `ea7e9061-7f4d-4763-8e01-fa91ec5df4fc` 完成，后续洞察、Requirement、PRD 仍走真实模型、FastAPI 和 PostgreSQL。Requirement 与 PRD 首次各遇 503、再次成功；失败请求没有创建记录。故本次证明可配置主链路端到端可用，**聚类模型复核未通过本轮验收**，不能以关闭复核后的成功替代它。真实语义质量与三文鱼的人工产品验收仍待复核。
+
 ## Files Changed / Git Commit
 
 前端 `frontend/src/`、配置和锁文件；后端 API/schema、PRD Prompt v2/v3、客户端、服务与 Phase 7 测试；项目文档。两份原型 ZIP、`key/.env`、`.next`、`node_modules`、`tsconfig.tsbuildinfo`、临时数据库不属于提交。最终本地提交由 Codex 在四门槛均 PASS 后执行，**不 push**；提交哈希以 Git 实际结果为准。
 
 ## Local Run Steps
+
+本次隔离联调服务已启动时，直接打开 `http://127.0.0.1:13000`；FastAPI 健康检查为 `http://127.0.0.1:18000/health/ready`。演示项目 A 与空项目 B 已保留在隔离库中。该服务的聚类模型复核设置为关闭，仅用于复测本轮主链路与页面；需要检验复核本身时另起隔离运行并开启该配置。
 
 在 `backend` 先准备本机模型环境变量 `LLM_API_KEY`、`LLM_BASE_URL`、`LLM_MODEL`（勿粘贴密钥到命令或报告），安装依赖后执行 `uv run --with pgserver==0.1.4 python scripts/dev.py`；它使用 `work/local-postgres` 的独立 PostgreSQL 并迁移至 head，后端监听 `127.0.0.1:8000`。另一终端在 `frontend` 执行 `npm ci`，再执行 `NEXT_PUBLIC_API_BASE_URL=http://127.0.0.1:8000 npm run dev`，打开 `http://127.0.0.1:3000`。不要把真实模型凭证或生产数据库带入人工演示。
 

@@ -1779,6 +1779,23 @@ table.data-table {
   max-width: 100%;
 }
 
+/* Phase 7 P1 fix: ProjectSwitcher renders <div class="modal-overlay">
+   wrapping <div class="modal modal--sm"> without the legacy `.open`
+   class. The base .modal rule (line ~745) defaults to opacity:0 /
+   pointer-events:none / position:fixed transform-driven centering,
+   gated entirely on .modal.open — which the ProjectSwitcher never
+   adds. The overlay's existence is the open signal, so a direct-child
+   .modal must be visible and clickable. The overlay's grid centering
+   (place-items: center) does the layout work, so we drop the modal's
+   own fixed positioning + transform without affecting the legacy
+   .modal.open pattern (direct-child .modal is still hidden elsewhere). */
+.modal-overlay > .modal {
+  position: static;
+  transform: none;
+  opacity: 1;
+  pointer-events: auto;
+}
+
 /* --- Responsive: <=1100px — sidebar becomes a top bar, nav scrolls
    horizontally, main fills the rest of the column. The pre-existing
    1100px block already turns .sidebar into width:100% / position:relative

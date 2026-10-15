@@ -604,7 +604,7 @@ export class MockInsightFlowClient {
     query: { limit: number; offset: number } = { limit: 25, offset: 0 },
   ): Promise<ApiResult<{ items: Insight[]; total: number; limit: number; offset: number }>> {
     this.log('GET', `/api/projects/${projectId}/insights`, query);
-    const all = [...this.insights];
+    const all = this.insights.filter((insight) => insight.project_id === projectId);
     return {
       data: {
         items: all.slice(query.offset, query.offset + query.limit),

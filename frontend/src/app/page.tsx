@@ -5,32 +5,66 @@ import { useEffect, useState } from 'react';
 import { useProjectContext } from '../contexts/ProjectContext';
 import { getApiClient } from '../lib/api/client';
 import { useProjectScopedFetch } from '../lib/useProjectScopedFetch';
-import { EmptyState, ErrorState, LoadingState, NotMeasured } from '../components/StateViews';
+import { EmptyState, ErrorState, LoadingState, NotMeasured, StatusPill } from '../components/StateViews';
 import { formatNumber, formatRelative } from '../lib/format';
 import type {
   FeedbackListResponse,
   Feedback,
   Insight,
+  AnalysisRun,
+  ProjectId,
 } from '../lib/api/types';
 
 interface OverviewState {
+  /**
+   * Project this snapshot belongs to. The render layer MUST gate
+   * on ``state.projectId === activeProjectId`` before showing
+   * ``state``; otherwise a slow re-fetch after a project switch
+   * flashes the previous project's data under the new project's
+   * title. The check is the contract that backs the
+   * ``setState(null)`` reset below.
+   */
+  projectId: ProjectId;
   feedbackTotal: number | null;
   feedbackRecent: Feedback[];
+  /**
+   * ``insightCount`` mirrors the paginated response ``total`` field, not
+   * ``items.length`` — a project with >25 insights must report the real
+   * backend count, not "25 because that is our page size".
+   * ``null`` means the request has not finished or failed; rendering
+   * falls back to NotMeasured so a transport error never masquerades
+   * as "0 已识别洞察".
+   */
   insightCount: number | null;
+  insightsError: string | null;
   latestInsights: Insight[];
+  /**
+   * ``latestClassificationRun`` is the newest
+   * ``GET /projects/{id}/analysis-runs?run_type=classification`` row,
+   * or ``null`` when the project has never run a classification. A
+   * load failure also collapses to ``null`` and is reflected in
+   * ``analysisRunsError`` so the UI can distinguish "no run yet" from
+   * "could not load run history".
+   */
+  latestClassificationRun: AnalysisRun | null;
+  analysisRunsError: string | null;
 }
 
 /**
  * Phase 7 work package A — overview.
  *
- * Only calls endpoints that exist in the backend today:
- *   - GET /projects/{id}/feedback    (paginated)
- *   - GET /projects/{id}/insights    (paginated)
+ * Calls project-scoped endpoints that exist in the backend today:
+ *   - GET /projects/{id}/feedback                       (paginated; total)
+ *   - GET /projects/{id}/insights                       (paginated; total)
+ *   - GET /projects/{id}/analysis-runs?run_type=classification
+ *                                                  (paginated; latest one)
  *
- * Things that would 404 if requested are explicitly NOT requested: there is
- * no "list analysis runs for project" and no "list opportunity scores for
- * project" endpoint in work package A scope. Anything that needs them is
- * shown as N/A with a forward-looking hint to the matching future page.
+ * The "opportunity score" tile has no project-level aggregation
+ * endpoint in the current backend — each insight owns its own score
+ * via ``GET /insights/{id}/opportunity-score``. The card is rendered
+ * as a factual "no project-level summary available" hint that links
+ * to the per-insight detail surface, not as a missing-data stub and
+ * not as a "待 B 包" promise.
  */
 export default function OverviewPage() {
   const { activeProject, activeProjectId } = useProjectContext();
@@ -42,17 +76,33 @@ export default function OverviewPage() {
   useEffect(() => {
     if (!activeProjectId) {
       setState(null);
+      setError(null);
+      setLoading(false);
       return;
     }
     if (!signal) return;
     const mySignal = signal;
+    // Capture the project id at effect-entry. Even if ``activeProjectId``
+    // changes mid-flight, the IIFE's early-return guards (``cancelled``
+    // and ``mySignal.aborted``) prevent the stale closure from writing
+    // anything; the new effect for the new project will setState under
+    // its own captured id.
+    const myProjectId = activeProjectId;
     const client = getApiClient();
     let cancelled = false;
     setLoading(true);
     setError(null);
+    // Drop any previous project's snapshot BEFORE the new fetch is
+    // even issued. Without this reset, render #N+1 (project just
+    // switched, fetches in flight) would still see the old ``state``
+    // object in memory and flash it under the new project's title.
+    // The render-layer ``state.projectId === activeProjectId`` gate
+    // is a defense-in-depth, but resetting here is what actually
+    // keeps the user's screen honest.
+    setState(null);
     void (async () => {
       const fbRes = await client.listFeedback(
-        activeProjectId,
+        myProjectId,
         { limit: 5, offset: 0 },
         mySignal,
       );
@@ -63,18 +113,42 @@ export default function OverviewPage() {
         return;
       }
       const fb = fbRes.data as FeedbackListResponse | null;
+
+      // Each non-fatal dependency is captured independently so a
+      // transport failure on /insights or /analysis-runs never
+      // silently downgrades to "0" or "no run yet". Only the
+      // blocking feedback fetch raises a page-level error.
       const insightsRes = await client.listProjectInsights(
-        activeProjectId,
+        myProjectId,
         { limit: 25, offset: 0 },
         mySignal,
       );
       if (cancelled || mySignal.aborted) return;
-      const insights = insightsRes.data?.items ?? [];
+      const insightsError = insightsRes.error ? insightsRes.error.message : null;
+      const insightsTotal = insightsRes.data ? insightsRes.data.total : null;
+      const insightsItems = insightsRes.data?.items ?? [];
+
+      const runsRes = await client.listProjectAnalysisRuns(
+        myProjectId,
+        { run_type: 'classification', limit: 1, offset: 0 },
+        mySignal,
+      );
+      if (cancelled || mySignal.aborted) return;
+      const analysisRunsError = runsRes.error ? runsRes.error.message : null;
+      const latestClassificationRun =
+        !runsRes.error && runsRes.data && runsRes.data.items.length > 0
+          ? (runsRes.data.items[0] ?? null)
+          : null;
+
       setState({
+        projectId: myProjectId,
         feedbackTotal: fb?.total ?? 0,
         feedbackRecent: fb?.items ?? [],
-        insightCount: insights.length,
-        latestInsights: insights.slice(0, 5),
+        insightCount: insightsTotal,
+        insightsError,
+        latestInsights: insightsItems.slice(0, 5),
+        latestClassificationRun,
+        analysisRunsError,
       });
       setLoading(false);
     })();
@@ -97,8 +171,22 @@ export default function OverviewPage() {
     );
   }
 
-  if (loading && !state) return <LoadingState />;
+  // Visible state is strictly the snapshot whose projectId matches
+  // the current active project. Without this gate, the
+  // ``loading && !state`` check below would let a previous project's
+  // snapshot slip through during the brief window before the new
+  // project's setState(null) flushes a re-render, flashing old data
+  // under the new project's title. This gate is the single source
+  // of truth for "is the snapshot still mine to show?".
+  const visible = state && state.projectId === activeProjectId ? state : null;
+
+  if (loading && !visible) return <LoadingState />;
   if (error) return <ErrorState message={error} />;
+  // Safety net: if no usable snapshot is available for the current
+  // project (effect reset is in flight, or projectId mismatch),
+  // refuse to render any snapshot rather than risk showing another
+  // project's data.
+  if (!visible) return <LoadingState />;
 
   return (
     <div className="page page-overview">
@@ -114,23 +202,45 @@ export default function OverviewPage() {
       <section className="metric-grid">
         <MetricCard
           label="反馈总量"
-          value={state?.feedbackTotal ?? null}
-          hint={state?.feedbackTotal ? '条目数' : undefined}
+          value={visible.feedbackTotal}
+          hint={visible.feedbackTotal ? '条目数' : undefined}
         />
         <MetricCard
           label="最近一次分类运行"
-          custom={<NotMeasured label="未接入（待 B 包）" />}
-          hint="需 list-analysis-runs"
+          custom={
+            visible.latestClassificationRun ? (
+              <LatestClassificationRunView run={visible.latestClassificationRun} />
+            ) : visible.analysisRunsError ? (
+              <NotMeasured label="加载失败" />
+            ) : (
+              <NotMeasured label="尚未运行" />
+            )
+          }
+          hint={
+            visible.analysisRunsError
+              ? visible.analysisRunsError
+              : visible.latestClassificationRun
+              ? '基于 /api/projects/{id}/analysis-runs?run_type=classification'
+              : '在「分析」页运行分类后会显示'
+          }
         />
         <MetricCard
           label="已识别洞察"
-          value={state?.insightCount ?? null}
-          hint="条"
+          value={visible.insightCount}
+          hint={
+            visible.insightsError
+              ? `加载失败：${visible.insightsError}`
+              : '基于分页响应 total'
+          }
         />
         <MetricCard
           label="机会评分"
-          custom={<NotMeasured label="未接入（待 B 包）" />}
-          hint="需 list-scores-for-project"
+          custom={
+            <Link className="metric-card-link" href="/insights">
+              暂无项目级汇总 · 查看洞察
+            </Link>
+          }
+          hint="后端无项目级评分 API；每条洞察在洞察详情页有独立评分"
         />
       </section>
 
@@ -141,7 +251,7 @@ export default function OverviewPage() {
             查看全部
           </Link>
         </header>
-        {state && state.feedbackRecent.length === 0 ? (
+        {visible.feedbackRecent.length === 0 ? (
           <EmptyState
             title="尚无反馈"
             description="还没有导入任何反馈。"
@@ -153,7 +263,7 @@ export default function OverviewPage() {
           />
         ) : (
           <ul className="recent-list">
-            {(state?.feedbackRecent ?? []).map((f) => (
+            {visible.feedbackRecent.map((f) => (
               <li key={f.id} className="recent-list-item">
                 <div className="recent-list-id">{f.external_id}</div>
                 <div className="recent-list-content">{f.content}</div>
@@ -174,7 +284,7 @@ export default function OverviewPage() {
             管理分析
           </Link>
         </header>
-        {state && state.latestInsights.length === 0 ? (
+        {visible.latestInsights.length === 0 ? (
           <EmptyState
             title="尚无洞察"
             description="请到分析页签运行「分类 → 聚类 → 洞察」流程。"
@@ -186,7 +296,7 @@ export default function OverviewPage() {
           />
         ) : (
           <ul className="opportunity-list">
-            {(state?.latestInsights ?? []).map((i) => (
+            {visible.latestInsights.map((i) => (
               <li key={i.id} className="opportunity-item">
                 <div className="opportunity-item-head">
                   <span className="opportunity-item-title">{i.title}</span>
@@ -200,6 +310,24 @@ export default function OverviewPage() {
           </ul>
         )}
       </section>
+    </div>
+  );
+}
+
+function LatestClassificationRunView({ run }: { run: AnalysisRun }) {
+  // Prefer completed_at, fall back through started_at / created_at
+  // so the displayed timestamp matches whatever the backend has
+  // persisted for the chosen run.
+  const ts = run.completed_at ?? run.started_at ?? run.created_at ?? null;
+  return (
+    <div className="metric-card-run">
+      <div className="metric-card-run-row">
+        <StatusPill status={run.status} />
+        <span className="metric-card-run-time">{formatRelative(ts)}</span>
+      </div>
+      <div className="metric-card-run-row metric-card-run-counts">
+        成功 {formatNumber(run.success_count)} / 输入 {formatNumber(run.input_count)}
+      </div>
     </div>
   );
 }
