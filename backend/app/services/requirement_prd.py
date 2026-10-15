@@ -34,8 +34,15 @@ AI errors are categorised the same way as Phase 3/4:
 * :class:`RequirementLLMTransportError` / :class:`PRDLLMTransportError`
   (5xx / 429 / network) → bounded retry, then 503.
 * :class:`RequirementLLMProtocolError` / :class:`PRDLLMProtocolError`
-  (malformed JSON / wrong tool / schema violation) → fail closed
-  immediately, 503.
+  (malformed JSON / wrong tool / schema violation) →
+  Phase 7 P0 fix: bounded retry on the same payload / model /
+  prompt / timeout, total attempts capped at
+  ``max(1, prd_max_retries + 1)``. Each attempt re-runs the
+  strict 13-section grounding + schema parse — no relaxation;
+  no unvalidated payload can be persisted by the caller. On
+  exhaustion the most-recent error is re-raised verbatim, so the
+  API layer still maps both classes to 503 and the HTTP
+  contract is unchanged.
 * Grounding / unsupported-claim errors → :class:`RequirementValidationError`
   mapped to 422 by the API layer.
 """
@@ -1288,7 +1295,46 @@ def _call_prd(
     payload: Mapping[str, Any],
     allowed_evidence_ids: set[str],
 ) -> tuple[dict[str, Any], list[GroundingWarning], int, int, int, int, int, int]:
-    """Invoke the PRD LLM client with bounded transport retry."""
+    """Invoke the PRD LLM client with bounded retry on transient LLM failures.
+
+    Total attempts are bounded at
+    ``max(1, prd_max_retries + 1)`` — unchanged from the
+    transport-only contract. The retry catches two classes of
+    failure raised by the LLM client itself:
+
+    * :class:`PRDLLMTransportError` — 5xx / 429 / network.
+    * :class:`PRDLLMProtocolError` — tool-block shape: missing
+      ``tool_use`` block, wrong tool name, multiple tool blocks,
+      malformed JSON, auth 4xx. These surface from
+      ``PRDClient.generate_prd`` and are wrapped in
+      ``PRDLLMProtocolError`` by the client.
+
+    Phase 7 P0 fix: the upstream Messages API occasionally
+    returns a non-``tool_use`` content array even with
+    ``tool_choice={"type": "tool"}``. The previous fail-closed
+    policy surfaced this as a hard 503 on a single transient
+    failure; the new bounded retry recovers on the next attempt
+    on the **same** payload / model / prompt / timeout.
+
+    What is NOT retried
+    -------------------
+    The strict 13-section parse / grounding call
+    (``_parse_prd_payload``) sits **outside** the retry ``try``
+    block. A payload that passes the LLM client's tool-block
+    check but fails the 13-section schema or grounding gate
+    propagates as ``PRDLLMProtocolError`` on the first attempt —
+    it is **never retried**, and no relaxation of the parser is
+    permitted. The function therefore returns only fully-validated
+    content (or raises); no unvalidated payload can be persisted
+    by the caller because the parse step rejects malformed
+    payloads on every retry exactly the same way it does on the
+    first attempt.
+
+    On exhaustion the most-recent error is re-raised verbatim,
+    so the API layer continues to map both classes to 503 and
+    the HTTP contract is unchanged — the only observable
+    difference is total time-to-failure on truly-broken upstreams.
+    """
     if not (settings.llm_api_key and settings.llm_base_url and settings.llm_model):
         raise RequirementConfigError(
             "LLM_API_KEY / LLM_BASE_URL / LLM_MODEL 未配置；无法生成 PRD。"
@@ -1296,7 +1342,7 @@ def _call_prd(
     max_attempts = max(1, int(settings.prd_max_retries) + 1)
     attempt_count = 0
     started = time.monotonic()
-    last_transport_error: Exception | None = None
+    last_error: Exception | None = None
     while attempt_count < max_attempts:
         attempt_count += 1
         try:
@@ -1308,7 +1354,17 @@ def _call_prd(
             ) as client:
                 result: PRDLLMResult = client.generate_prd(dict(payload))
         except PRDLLMTransportError as exc:
-            last_transport_error = exc
+            last_error = exc
+            continue
+        except PRDLLMProtocolError as exc:
+            # Phase 7 P0 fix: retry on protocol failure as well.
+            # The per-attempt parse / grounding gate inside
+            # ``_parse_prd_payload`` is identical to the
+            # transport-only retry path — no relaxation, no
+            # skip-validation shortcut. Re-raising the LAST error
+            # verbatim preserves the existing API classification
+            # (``PRDLLMProtocolError`` → 503).
+            last_error = exc
             continue
         latency_ms = int((time.monotonic() - started) * 1000)
         retry_count = max(0, attempt_count - 1)
@@ -1328,9 +1384,19 @@ def _call_prd(
             attempt_count,
             retry_count,
         )
-    if last_transport_error is not None:
-        raise last_transport_error
-    raise PRDLLMTransportError("PRD LLM transport retry exhausted")
+    # Exhaustion branch: re-raise whichever error landed on the
+    # last attempt. Both ``PRDLLMProtocolError`` and
+    # ``PRDLLMTransportError`` are mapped to 503 by the API
+    # layer (``backend/app/api/requirement_prd.py``), so the
+    # caller-visible response is identical to the pre-fix
+    # behaviour — only the time-to-failure differs. The defensive
+    # ``PRDLLMTransportError`` fall-through exists for the
+    # ``prd_max_retries < 0`` configuration corner; ``max(1, ...)``
+    # already floors it at 1 so the loop must have entered at
+    # least once and ``last_error`` is the truthful signal.
+    if last_error is not None:
+        raise last_error
+    raise PRDLLMTransportError("PRD LLM retry exhausted")
 
 
 # ---- PM-authored content validators -----------------------------------------

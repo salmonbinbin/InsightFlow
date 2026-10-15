@@ -7,6 +7,8 @@ Endpoints:
 * ``GET /insight-runs/{run_id}`` — run status with snapshot provenance.
 * ``POST /insight-runs/{run_id}/retry`` — retry only the clusters whose
   status is ``failed`` or ``needs_validation``; completed runs are no-ops.
+* ``GET /projects/{project_id}/insight-runs`` — paginated project-scoped
+  history of insight runs (Phase 7 Analysis history tab).
 * ``GET /projects/{project_id}/insights`` — paginated list of insights
   (optionally filter by ``run_id``).
 * ``GET /insights/{insight_id}`` — single insight with snapshot metadata.
@@ -32,6 +34,7 @@ from sqlalchemy.orm import Session
 from app.db.session import get_db
 from app.models import (
     Feedback,
+    FeedbackAnalysis,
     Insight,
     InsightEvidence,
     InsightRun,
@@ -39,12 +42,14 @@ from app.models import (
     Project,
 )
 from app.schemas.insight import (
+    FeedbackAnalysisRead,
     InsightEvidencePage,
     InsightEvidenceRead,
     InsightGenerateRequest,
     InsightPage,
     InsightRead,
     InsightRunItemRead,
+    InsightRunPage,
     InsightRunRead,
 )
 from app.services.insight_runner import (
@@ -173,6 +178,40 @@ def retry_insights(run_id: UUID, db: Session = Depends(get_db)) -> InsightRun:
 
 
 @router.get(
+    "/projects/{project_id}/insight-runs",
+    response_model=InsightRunPage,
+)
+def list_project_insight_runs(
+    project_id: UUID,
+    limit: int = Query(50, ge=1, le=200),
+    offset: int = Query(0, ge=0),
+    db: Session = Depends(get_db),
+) -> dict:
+    """Project-scoped paginated history of InsightRun rows.
+
+    Read-only sibling of ``GET /insight-runs/{run_id}`` for the
+    Phase 7 Analysis history tab. The 404 only fires for an
+    unknown project; an existing project with no insight runs
+    yet returns ``{total: 0, items: [], limit, offset}`` so the
+    frontend can render the empty state without a follow-up
+    round-trip. Sort is ``created_at DESC, id DESC`` (the
+    ``id`` tiebreaker matches the ``created_at`` index scan so
+    pagination stays stable when two runs share a timestamp).
+    """
+    _require_project(db, project_id)
+    where = InsightRun.project_id == project_id
+    total = db.scalar(select(func.count()).select_from(InsightRun).where(where))
+    items = db.scalars(
+        select(InsightRun)
+        .where(where)
+        .order_by(InsightRun.created_at.desc(), InsightRun.id.desc())
+        .limit(limit)
+        .offset(offset)
+    ).all()
+    return {"total": total or 0, "items": items, "limit": limit, "offset": offset}
+
+
+@router.get(
     "/projects/{project_id}/insights",
     response_model=InsightPage,
 )
@@ -233,9 +272,17 @@ def list_insight_evidence(
 
     The endpoint hydrates each evidence row with the original feedback
     content (``feedbacks.content``) and metadata so the caller's audit
-    trail never depends on a model echo.
+    trail never depends on a model echo. Phase 7 work package B1 also
+    attaches the deterministic AI classification for each piece of
+    evidence, sourced exclusively from
+    ``FeedbackAnalysis(feedback_id, run_id=insight.run.classification_run_id)``
+    — we never cross-reference a different run because that would
+    silently lie about provenance.
     """
-    _require_insight(db, insight_id)
+    insight = _require_insight(db, insight_id)
+    run = db.get(InsightRun, insight.run_id)
+    classification_run_id = run.classification_run_id if run is not None else None
+
     where = InsightEvidence.insight_id == insight_id
     total = db.scalar(select(func.count()).select_from(InsightEvidence).where(where))
     evidence_rows = db.scalars(
@@ -251,6 +298,17 @@ def list_insight_evidence(
         if feedback_ids
         else {}
     )
+    analyses_by_feedback_id: dict[UUID, FeedbackAnalysis] = {}
+    if feedback_ids and classification_run_id is not None:
+        analyses_by_feedback_id = {
+            a.feedback_id: a
+            for a in db.scalars(
+                select(FeedbackAnalysis).where(
+                    FeedbackAnalysis.feedback_id.in_(feedback_ids),
+                    FeedbackAnalysis.run_id == classification_run_id,
+                )
+            ).all()
+        }
     items = [
         InsightEvidenceRead(
             id=row.id,
@@ -271,6 +329,14 @@ def list_insight_evidence(
             feedback_user_id=feedbacks_by_id.get(row.feedback_id).user_id
             if feedbacks_by_id.get(row.feedback_id)
             else None,
+            feedback_source=feedbacks_by_id.get(row.feedback_id).source
+            if feedbacks_by_id.get(row.feedback_id)
+            else None,
+            feedback_analysis=(
+                FeedbackAnalysisRead.model_validate(analyses_by_feedback_id[row.feedback_id])
+                if row.feedback_id in analyses_by_feedback_id
+                else None
+            ),
         )
         for row in evidence_rows
     ]

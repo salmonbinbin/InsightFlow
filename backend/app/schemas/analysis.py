@@ -1,10 +1,19 @@
 """Pydantic schemas for analysis endpoints."""
 
+from typing import Literal
 from uuid import UUID
 
 from pydantic import BaseModel, ConfigDict
 
 from app.schemas.common import UTCDateTime
+
+# Phase 7 Analysis history (D package) — only the two ``run_type``
+# values the runner actually emits are accepted on the read-side
+# filter. Adding a new value here is the deliberate choke-point
+# the brief authorises; the open-string ``run_type`` field on
+# ``AnalysisRunRead`` is preserved for forward-compat with rows
+# the runner may grow into.
+AnalysisRunTypeLiteral = Literal["classification", "clustering"]
 
 
 class AnalysisRunRead(BaseModel):
@@ -30,6 +39,13 @@ class AnalysisRunRead(BaseModel):
     created_at: UTCDateTime
     error_message: str | None
     input_feedback_external_ids: list[str] | None
+
+
+class AnalysisRunPage(BaseModel):
+    total: int
+    items: list[AnalysisRunRead]
+    limit: int
+    offset: int
 
 
 class FeedbackAnalysisRead(BaseModel):

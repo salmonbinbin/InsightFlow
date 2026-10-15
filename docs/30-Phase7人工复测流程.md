@@ -1,0 +1,35 @@
+# Phase 7 User Acceptance Test
+
+> 给三文鱼的人工复测清单。使用本机开发库与演示 CSV；不要指向已有生产数据。模型有波动，出现 503 时保留响应与 Run ID，不把失败改写成成功。
+
+## 启动
+
+1. 在 `backend` 配置本机 `LLM_API_KEY`、`LLM_BASE_URL`、`LLM_MODEL`，运行 `uv run --with pgserver==0.1.4 python scripts/dev.py`。**预期：**终端显示后端地址 `http://127.0.0.1:8000/docs`，`/health/ready` 可访问；隔离 PostgreSQL 迁移完成。
+2. 在 `frontend` 运行 `npm ci` 和 `NEXT_PUBLIC_API_BASE_URL=http://127.0.0.1:8000 npm run dev`，浏览器打开 `http://127.0.0.1:3000`。**预期：**出现 InsightFlow 侧栏、项目选择器和各页面导航；无浏览器控制台致命错误。
+
+## 主流程
+
+3. 打开项目选择器，创建名为“Phase 7 人工复测”的项目并选中。**预期：**顶栏显示该项目，刷新后仍选中；其他项目数据不会混入。
+4. 打开“上传 CSV”，选择项目 [demo_feedback.csv](../data/demo_feedback.csv) 并确认导入。**预期：**显示总数 12、导入 12、跳过 0；再次导入时导入 0、跳过 12，原始反馈不重复。
+5. 在“分析”启动分类。**预期：**返回真实 Run ID、状态和处理计数；本演示数据正常情况下成功 12/12。刷新后历史仍在，可打开该 Run 查看结果；模型失败时保留真实失败计数并可按界面重试。
+6. 启动聚类，随后使用该聚类 Run 启动洞察生成。**预期：**显示各阶段真实 Run ID、完成/待复核/失败计数；洞察列表来自刚才项目。模型生成条数可变化，不要求固定为本轮自动验收的 10 条。
+7. 打开“反馈列表”，点开一条已分类反馈。**预期：**Raw Feedback 原文保持导入内容，AI Analysis 显示分类字段和对应 Run；无分析时显示明确空状态，不伪造字段。
+8. 从“洞察 / 机会评分”进入一条带 Evidence 的洞察，打开 Evidence。**预期：**能看到 F001 等外部 ID、原始反馈原文、来源及分类分析；引用 ID 与该项目反馈可相互追溯。`needs_validation` 应明确提示人工复核。
+9. 创建 Opportunity Score，填写 Business Value（例如 7.5），查看总分、AI Priority 和 PM Priority。**预期：**Business Value 未填时总分/AI Priority 可为空；填写后后端重算并保留 AI Priority；PM 操作不改写 AI 原值。
+10. 对一条洞察先试 Accept 或 Override（Override 需理由和 PM Priority），再创建 Requirement。**预期：**Decision 状态与版本更新，Requirement 返回新 ID，PM Priority 只读继承，Evidence 仍可追溯。另选一条洞察做 Defer，再试创建 Requirement；**预期：**后端拒绝，不能绕过 Gate。
+11. 打开 Requirement 详情，修改名称或其他可编辑内容并保存。**预期：**刷新后仍为新内容，继承的 PM Priority 不可直接编辑。
+12. 在 Requirement 中“生成 PRD”。**预期：**真实模型生成版本 1，页面展示完整 13 节和 Evidence 引用，状态 draft；后端返回 201。若出现 503，记录具体原因重试，不把未落库输出视作 PRD。
+13. 编辑版本 1 的背景或范围并保存。**预期：**刷新后修改保留，历史版本号不变；不合规证据或商业承诺会被拒绝。
+14. 点击“再生成”，等待新版本。**预期：**产生版本 2，版本列表同时保留 2 和 1；打开版本 1 仍能看到旧内容。Accept 版本 2；**预期：**状态 accepted，刷新后保持，接受版不可被原位改写。
+15. 打开“评测”。如果当前项目还没有 Run，可在后端交互文档 `POST /evaluations` 使用本项目 ID、步骤 5 的分类 Run ID 和 `evaluation_type=classification_metrics` 创建。**预期：**项目级历史出现该 Run；点开后看到 Dataset、Actual/Target、指标与失败案例；合成标签显示“未经人工复核”，缺失项显示 `NOT MEASURED`，真实 0 显示 0。翻页应显示总数及当前页范围。
+
+## 隔离、异常与界面
+
+16. 再建空项目 B 并切换。**预期：**反馈、Run、洞察、Requirement、PRD、Evaluation 历史均为空；切回项目 A 后数据仍在。跨项目详情链接不应展示 A 的内容。
+17. 断开后端或临时使用不可达后端地址，访问数据页并点击重试。**预期：**有加载、明确错误与重试状态，不显示旧项目数据；恢复后可重新加载。
+18. 在 1440、1280、1024、820、390px 检查反馈、分析、洞察、PRD、Evaluation；用 Tab 聚焦导航和按钮。**预期：**桌面侧栏在左、内容在右且可点击；窄屏侧栏在上，导航可横向滚动；整页无横向溢出，反馈表仅局部横向滚动，焦点清晰可见。
+
+## 人工质量复核与结束
+
+19. 抽查至少 3 条 Evidence 对原文的支持、PRD 的用户问题和每条验收标准是否真正可验证；判断机会评分与 PM Priority 是否合理。**预期：**能明确给出通过/不通过及问题记录。自动化仅证明结构和引用，不替代语义判断；Phase 2/3/4/6 历史限制仍需单独关闭。
+20. 保存人工复测结论。**预期：**Phase 7 如需返工，明确缺陷、页面、Run/PRD ID 与复现步骤；未明确批准前保持 STOP，不进入 Phase 8。

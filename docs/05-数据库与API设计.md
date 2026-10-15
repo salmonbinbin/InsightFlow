@@ -229,3 +229,60 @@ relevance_score
 
 POST /projects/{project_id}/analysis；POST /projects/{project_id}/clustering；GET /projects/{project_id}/clusters；GET /clusters/{cluster_id}。
 新增建议 GET /analysis-runs/{run_id} 用于进度查询；分析请求返回202+run_id，不阻塞到整批完成。Requirement/PRD/人工优先级 API 在 Sprint 2–3 再确定。
+
+## Phase 7 补充：项目级 Read API（D1）
+
+前端 `/prds` 与 `/evaluation` 两个页面在页面刷新后必须从真实后端发现数据，不得使用 `sessionStorage` 或 mock 兜底。新增两个只读的项目级列表端点，承担 Phase 1—6 业务数据的“项目级索引”职责：
+
+| 方法 | 路径 | 用途 |
+|---|---|---|
+| GET | /projects/{project_id}/prds | 项目内全部 PRD 版本，按 `version DESC, id DESC` 稳定排序，分页 |
+| GET | /projects/{project_id}/evaluations | 项目内全部 EvaluationRun，按 `created_at DESC, id DESC` 稳定排序，分页 |
+
+### 共同契约
+
+- 路径参数 `project_id` 为 UUID；非法格式 → `422`，未知 id → `404`（与项目存在但当前租户无访问权不可区分，避免跨项目探测）。
+- 查询参数 `limit`、`offset` 由 FastAPI `Query` 校验：`limit ∈ [1, 200]`，`offset ≥ 0`；越界 → `422`。默认 `limit=50`、`offset=0`。
+- 跨项目隔离完全靠 `WHERE project_id = :project_id` 过滤；Phase 7 单用户，无独立鉴权层。
+- 响应统一为 `{ "total": int, "items": [...], "limit": int, "offset": int }`；`items=[]` 与 `total=0` 是合法的空项目状态。
+- 排序键必须包含 `id` 作为次级键：单事务批量写入或 `DateTime(timezone=True)` 时钟偏移会造成 `created_at`/`version` 同值，仅靠主排序键会导致 `limit/offset` 分页跨页重复或漏行。
+
+### GET /projects/{project_id}/prds
+
+- 实现位于 `backend/app/api/requirement_prd.py:list_project_prds_route`。
+- 响应 `items` 元素为完整 `PRDRead`（13-section PRD 内容、版本号、状态、`grounding_warnings`、`is_ai_generated_draft`、token / latency 等度量字段随行）。
+- 返回**每一个版本**而不是每个 Requirement 的最新版本。前端按 `requirement_id` 分组渲染版本时间线；如果只保留最新一行会静默丢弃更早的 draft 与 accepted 版本，破坏审计链。
+- `status` 等运行期字段保持原始字面量；如需做状态机判断由前端按 `draft / reviewing / accepted / archived` 自行解析。
+- 实际 PRD 创建仍走既有 `POST /requirements/{requirement_id}/prds`、`GET /requirements/{requirement_id}/prds` 等端点；本接口只是项目级索引。
+
+### GET /projects/{project_id}/evaluations
+
+- 实现位于 `backend/app/api/evaluations.py:list_project_evaluations`。
+- 响应 `items` 元素为完整 `EvaluationRunRead`（含 `dataset_label_status == "synthetic_reference_labels_unreviewed_no_human_review"` 标记，提醒前端该评估对象为未审核的演示合成数据）。
+- 每次 EvaluationRun 的实际度量与逐 case 记录仍由既有 `GET /evaluations/{id}/metrics` 与 `GET /evaluations/{id}/cases` 提供；项目级列表只承担"运行索引"职责。
+- `created_at` 默认是 ORM 服务端 UTC 时间；批量提交时同一事务内多行可能同时间戳，故稳定排序依赖 `id DESC` 次级键。
+
+### 测试矩阵（`backend/tests/test_phase7_project_lists.py`）
+
+每个端点覆盖五条不变式：
+
+1. 空项目 → `{"total": 0, "items": [], "limit": 50, "offset": 0}`，绝不返回 `items=null` 或 5xx。
+3. 跨项目请求：A 项目的 PRD / EvaluationRun 永不通过 B 项目的请求泄漏。
+4. `limit` / `offset` 翻页：`limit=2, offset=0/2/4` 跨页并集 = 全部种子 id，任意两页交集为空。
+5. 响应字段集：每个 `items` 元素至少包含 `PRDRead` / `EvaluationRunRead` 全部键；前端 TypeScript 类型可静态信任该 schema。
+6. 边界：`limit=0 / 201 / 负值` 与 `offset=-1` → `422`。
+
+实现依赖的 ORM 链：`Project → AnalysisRun → Cluster → InsightRun → Insight → InsightDecision → Requirement → PRD`，以及 `Project → EvaluationRun`。PRD 测试用例在 fixture 内直接插入 ORM 行，绕过 Phase 5 AI 客户端与 Phase 6 评估运行器——失败信号指向项目列表端点本身，而非上游生成路径。
+
+## Phase 7 补充：Analysis / Feedback / Evidence 只读接口
+
+| 方法 | 路径 | 当前契约 |
+| --- | --- | --- |
+| GET | `/projects/{project_id}/analysis-runs?run_type=classification\|clustering&limit=&offset=` | 项目内分类/聚类 Run 历史；`run_type` 可省略；按 `created_at DESC, id DESC` 排序 |
+| GET | `/projects/{project_id}/insight-runs?limit=&offset=` | 项目内洞察 Run 历史；同样稳定排序 |
+| GET | `/projects/{project_id}/feedback/{feedback_id}/analysis?run_id=` | 指定 Run 或最新已完成分类 Run 对应的单条反馈 AI 分析；原始反馈与分析分离 |
+| GET | `/insights/{insight_id}/evidence` | 从数据库回填 Evidence 对应 Raw Feedback 原文、来源及分类分析字段 |
+
+列表响应均为 `{total, items, limit, offset}`，默认 `limit=50, offset=0`，`limit` 范围 1—200。不存在的项目、跨项目反馈或不属于项目的 Run 返回 404；空项目返回空列表。`feedback/{id}/analysis` 不写入 Raw Feedback。详情的项目隔离由后端查询和前端项目切换时请求取消共同保障，单用户 Phase 7 尚无独立身份鉴权层。
+
+Evaluation 详情 `GET /evaluations/{id}`、`/metrics`、`/cases` 支持 `project_id` 约束；metrics/cases 前端按响应 `total/limit/offset` 翻页，不能把第一页误称全量。PRD 生成继续使用既有 `POST /requirements/{id}/prds`；Phase 7 修正工具协议有界重试，内容进入持久化前仍须通过 13 节、Evidence、六类 Edge Case、Business Commitment 与 `acceptance_criteria.verifiable=true` 校验。当前 PRD Prompt 版本 `prd-generation-v3`，历史 v1/v2 文件保留。

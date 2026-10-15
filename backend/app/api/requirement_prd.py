@@ -18,6 +18,12 @@ PRD routes:
   ``reviewing`` / ``archived``).
 * ``POST /prds/{prd_id}/accept`` — accept the PRD (idempotent).
 * ``GET  /requirements/{requirement_id}/prds`` — paginated history.
+* ``GET  /projects/{project_id}/prds`` — Phase 7 work package D1:
+  paginated list of EVERY PRD version across the project (the
+  project-level index that survives a page refresh on ``/prds``).
+  All versions from every requirement in the project are returned
+  so the frontend can group by ``requirement_id``; never just the
+  latest version per requirement.
 
 Routes delegate business logic to
 :mod:`app.services.requirement_prd` and translate exceptions into
@@ -36,10 +42,11 @@ from typing import Any
 from uuid import UUID
 
 from fastapi import APIRouter, Body, Depends, HTTPException, Query
+from sqlalchemy import func, select
 from sqlalchemy.orm import Session
 
 from app.db.session import get_db
-from app.models import Insight
+from app.models import Insight, Project
 from app.models.requirement_prd import (
     PRD,
     PRD_STATUS_VALUES,
@@ -55,6 +62,7 @@ from app.schemas.requirement_prd import (
     PRDPage,
     PRDPatchRequest,
     PRDRead,
+    ProjectPRDPage,
     RequirementCreateRequest,
     RequirementPage,
     RequirementPatchRequest,
@@ -243,6 +251,20 @@ def _require_insight(db: Session, insight_id: UUID) -> Insight:
     if insight is None:
         raise HTTPException(404, "洞察不存在")
     return insight
+
+
+def _require_project(db: Session, project_id: UUID) -> Project:
+    """Project existence check used by project-scoped Read endpoints.
+
+    Returning ``404`` (not ``403``) is intentional — a project id that
+    does not exist must not be distinguishable from one that does in
+    another tenant, so a malicious caller cannot probe foreign
+    projects by listing PRDs / Evaluations with a guessed project id.
+    """
+    project = db.get(Project, project_id)
+    if project is None:
+        raise HTTPException(404, "项目不存在")
+    return project
 
 
 # ---- Routes -----------------------------------------------------------------
@@ -475,6 +497,59 @@ def list_prds_route(
         offset=offset,
         active_prd_id=active_prd_id,
         active_version=active_version,
+    )
+
+
+@router.get(
+    "/projects/{project_id}/prds",
+    response_model=ProjectPRDPage,
+)
+def list_project_prds_route(
+    project_id: UUID,
+    limit: int = Query(50, ge=1, le=200),
+    offset: int = Query(0, ge=0),
+    db: Session = Depends(get_db),
+) -> ProjectPRDPage:
+    """Phase 7 D1 — project-scoped PRD index.
+
+    Returns EVERY PRD version across the project — including all
+    versions of every requirement — not a latest-per-requirement
+    summary. The page that consumes this endpoint groups by
+    ``requirement_id`` to render the version timeline; a
+    "latest-per-requirement" projection would silently drop earlier
+    drafts and accepted versions, breaking the audit trail.
+
+    Sort is stable: ``version DESC, id DESC``. The ``id`` tiebreaker
+    matters when two PRD rows share the same ``version`` (only
+    possible under a UNIQUE(requirement_id, version) constraint
+    violation, but the index on ``requirement_id`` doesn't help
+    here — the project-level list spans multiple requirements so the
+    sort field has to be a property of the row itself).
+
+    The 404 contract matches the rest of the API surface: an unknown
+    project id and a project that belongs to another tenant are
+    indistinguishable. Cross-project isolation is enforced by the
+    ``PRD.project_id == project_id`` filter rather than a separate
+    authorization layer, because Phase 7 is single-user.
+    """
+    _require_project(db, project_id)
+    where_clauses = [PRD.project_id == project_id]
+    total = (
+        db.scalar(select(func.count()).select_from(PRD).where(*where_clauses)) or 0
+    )
+    rows = db.scalars(
+        select(PRD)
+        .where(*where_clauses)
+        .order_by(PRD.version.desc(), PRD.id.desc())
+        .limit(limit)
+        .offset(offset)
+    ).all()
+    items = [_prd_to_read(r) for r in rows]
+    return ProjectPRDPage(
+        total=total,
+        items=items,
+        limit=limit,
+        offset=offset,
     )
 
 

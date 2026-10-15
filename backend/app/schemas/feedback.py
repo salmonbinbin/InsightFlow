@@ -1,7 +1,9 @@
+from typing import Literal
 from uuid import UUID
 
 from pydantic import BaseModel, ConfigDict
 
+from app.schemas.analysis import FeedbackAnalysisRead
 from app.schemas.common import UTCDateTime
 
 
@@ -29,3 +31,24 @@ class ImportResult(BaseModel):
     total: int
     imported: int
     skipped: int
+
+
+# Phase 7 Feedback Detail (E package) — read-only per-feedback
+# analysis selection. ``selection.mode == "explicit"`` when the
+# caller passed ``?run_id=`` and we returned (or didn't find) an
+# analysis row for that exact run; ``"latest"`` when we picked
+# the most recent classification run owned by the project that
+# had a ``FeedbackAnalysis`` for this feedback. The rule string
+# documents the deterministic ordering so a caller never has to
+# guess whether we silently fell back across projects or to a
+# clustering run.
+class FeedbackAnalysisSelectionRead(BaseModel):
+    mode: Literal["explicit", "latest"]
+    selected_run_id: UUID | None
+    selection_rule: str
+
+
+class FeedbackAnalysisEnvelopeRead(BaseModel):
+    feedback_id: UUID
+    analysis: FeedbackAnalysisRead | None
+    selection: FeedbackAnalysisSelectionRead

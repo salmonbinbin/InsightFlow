@@ -217,6 +217,35 @@ class EvaluationCasePage(BaseModel):
     offset: int
 
 
+class ProjectEvaluationRunPage(BaseModel):
+    """Paginated EvaluationRun list scoped to one project.
+
+    Phase 7 work package D1 — the project-level EvaluationRun index
+    that survives a page refresh on ``/evaluation``. The actual
+    metric / case measurements are still served by
+    ``/evaluations/{id}/metrics`` and ``/evaluations/{id}/cases``;
+    this list is the lightweight project index used to render the
+    run history sidebar.
+
+    Sort is stable: ``created_at DESC, id DESC``. The ``id``
+    tiebreaker matters when two runs share the same ``created_at``
+    (possible when one transaction commits several runs together);
+    without it, ``limit`` / ``offset`` slicing could miss or
+    duplicate rows between pages.
+
+    ``limit`` is validated ``1..200`` and ``offset`` ``>=0`` by the
+    route handler — Pydantic does NOT re-validate these because
+    the schema is shared between the route layer and any future
+    internal callers that may legitimately pass a different
+    pagination window.
+    """
+
+    total: int
+    items: list[EvaluationRunRead]
+    limit: int
+    offset: int
+
+
 __all__ = [
     "NOT_MEASURED_DISPLAY",
     "EvaluationCasePage",
@@ -227,4 +256,5 @@ __all__ = [
     "EvaluationRunCreateRead",
     "EvaluationRunRead",
     "EvaluationTypeLiteral",
+    "ProjectEvaluationRunPage",
 ]

@@ -1,6 +1,6 @@
 """Phase 6 — Evaluation endpoints.
 
-Four HTTP routes:
+Five HTTP routes:
 
 * ``POST /evaluations`` — synchronously score an existing Phase 1
   ``classification`` or Phase 2 ``clustering`` run against the demo
@@ -17,6 +17,12 @@ Four HTTP routes:
 * ``GET /evaluations/{id}/cases`` — paginated case rows. Raw
   feedback text is deliberately NOT returned; only SHA-256
   fingerprints. ``error_type`` describes how each case failed.
+* ``GET /projects/{project_id}/evaluations`` — Phase 7 work package
+  D1: paginated list of every EvaluationRun in the project, sorted
+  ``created_at DESC, id DESC``. The actual metric / case
+  measurements are still served by the per-run endpoints above;
+  this list is the project-level index that survives a page
+  refresh on ``/evaluation``.
 
 Error mapping:
 
@@ -75,6 +81,7 @@ from app.schemas.evaluation import (
     EvaluationMetricRead,
     EvaluationRunCreateRead,
     EvaluationRunRead,
+    ProjectEvaluationRunPage,
 )
 
 router = APIRouter(tags=["evaluations"])
@@ -399,6 +406,63 @@ def list_evaluation_cases(
     items = [_case_to_read(r) for r in page]
     return EvaluationCasePage(
         total=total or 0,
+        items=items,
+        limit=limit,
+        offset=offset,
+    )
+
+
+@router.get(
+    "/projects/{project_id}/evaluations",
+    response_model=ProjectEvaluationRunPage,
+)
+def list_project_evaluations(
+    project_id: UUID,
+    limit: int = Query(50, ge=1, le=200),
+    offset: int = Query(0, ge=0),
+    db: Session = Depends(get_db),
+) -> ProjectEvaluationRunPage:
+    """Phase 7 D1 — project-scoped EvaluationRun index.
+
+    Returns every EvaluationRun owned by ``project_id``. The actual
+    metric and per-case measurements are still served by the
+    per-run endpoints (``/evaluations/{id}/metrics`` and
+    ``/evaluations/{id}/cases``); this list is the project-level
+    index the frontend needs so the ``/evaluation`` page survives a
+    page refresh without falling back to ``sessionStorage`` / mock
+    data.
+
+    Sort is stable: ``created_at DESC, id DESC``. The ``id``
+    tiebreaker matters when two runs share the same
+    ``created_at`` (possible when a single transaction commits
+    several runs together, or under clock skew on
+    ``DateTime(timezone=True)``); without it, ``limit`` / ``offset``
+    slicing could miss or duplicate rows between pages.
+
+    The 404 contract mirrors the rest of the API surface: an
+    unknown project id and a project in another tenant must be
+    indistinguishable. Cross-project isolation is enforced by the
+    ``EvaluationRun.project_id == project_id`` filter rather than a
+    separate authorization layer, because Phase 7 is single-user.
+    """
+    _require_project(db, project_id)
+    where_clauses = [EvaluationRun.project_id == project_id]
+    total = (
+        db.scalar(
+            select(func.count()).select_from(EvaluationRun).where(*where_clauses)
+        )
+        or 0
+    )
+    rows = db.scalars(
+        select(EvaluationRun)
+        .where(*where_clauses)
+        .order_by(EvaluationRun.created_at.desc(), EvaluationRun.id.desc())
+        .limit(limit)
+        .offset(offset)
+    ).all()
+    items = [_run_to_read(r) for r in rows]
+    return ProjectEvaluationRunPage(
+        total=total,
         items=items,
         limit=limit,
         offset=offset,

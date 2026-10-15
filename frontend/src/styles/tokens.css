@@ -1,0 +1,138 @@
+/* =============================================================
+   InsightFlow — Design Tokens (production)
+   Source of truth: work/phase7-prototype-revision/assets/tokens.css
+   Production copy: all OpenDesign chrome (data-od-id, query string
+   cache-busters, preview labels) removed. Values and OKLCh tones
+   preserved verbatim so the visual contract is identical.
+   ============================================================= */
+
+:root {
+  /* --- Surfaces --- */
+  --bg:            oklch(99% 0.002 240);
+  --surface:       oklch(100% 0 0);
+  --surface-1:     oklch(99% 0.003 240);
+  --surface-2:     oklch(97% 0.004 240);
+  --surface-3:     oklch(95% 0.005 240);
+  --surface-sunken:oklch(97% 0.003 240);
+
+  /* --- Text --- */
+  --fg:            oklch(20% 0.012 250);
+  --fg-2:          oklch(35% 0.014 250);
+  --muted:         oklch(54% 0.012 250);
+  --muted-2:       oklch(70% 0.010 250);
+  --on-accent:     oklch(100% 0 0);
+
+  /* --- Borders / dividers --- */
+  --border:        oklch(92% 0.005 250);
+  --border-2:      oklch(86% 0.008 250);
+  --divider:       oklch(95% 0.004 240);
+
+  /* --- Brand accent (electric indigo-blue) --- */
+  --accent:        oklch(58% 0.18 255);
+  --accent-strong: oklch(46% 0.20 255);
+  --accent-hover:  oklch(50% 0.20 255);
+  --accent-soft:   oklch(96% 0.04 255);
+  --accent-tint:   oklch(98% 0.02 255);
+  --accent-ring:   oklch(78% 0.10 255 / 0.35);
+
+  /* --- Semantic --- */
+  --success:       oklch(58% 0.14 150);
+  --success-soft:  oklch(95% 0.04 150);
+  --success-tint:  oklch(98% 0.02 150);
+
+  --warn:          oklch(68% 0.15 70);
+  --warn-soft:     oklch(96% 0.05 70);
+  --warn-tint:     oklch(98% 0.03 70);
+
+  --danger:        oklch(58% 0.20 25);
+  --danger-soft:   oklch(95% 0.04 25);
+  --danger-tint:   oklch(98% 0.02 25);
+
+  /* --- Priority (PM-coded) --- */
+  --p0:            oklch(58% 0.20 25);
+  --p0-soft:       oklch(95% 0.04 25);
+  --p0-tint:       oklch(98% 0.02 25);
+  --p1:            oklch(68% 0.15 70);
+  --p1-soft:       oklch(96% 0.05 70);
+  --p1-tint:       oklch(98% 0.03 70);
+  --p2:            oklch(56% 0.12 160);
+  --p2-soft:       oklch(95% 0.04 160);
+  --p2-tint:       oklch(98% 0.02 160);
+
+  /* --- Sentiment --- */
+  --positive:      oklch(58% 0.14 150);
+  --positive-soft: oklch(95% 0.04 150);
+  --neutral:       oklch(54% 0.012 250);
+  --neutral-soft:  oklch(95% 0.005 250);
+  --negative:      oklch(58% 0.20 25);
+  --negative-soft: oklch(95% 0.04 25);
+
+  /* --- AI tint (very restrained — used only on AI generated blocks) --- */
+  --ai-bg:         oklch(97% 0.025 280);
+  --ai-fg:         oklch(45% 0.16 280);
+  --ai-border:     oklch(88% 0.04 280);
+
+  /* --- Chart palette (5 categorical, light) --- */
+  --chart-1: oklch(58% 0.18 255);
+  --chart-2: oklch(60% 0.15 180);
+  --chart-3: oklch(65% 0.15 70);
+  --chart-4: oklch(60% 0.16 320);
+  --chart-5: oklch(60% 0.12 130);
+
+  /* --- Radii --- */
+  --r-xs: 4px;
+  --r-sm: 6px;
+  --r-md: 8px;
+  --r-lg: 12px;
+  --r-xl: 16px;
+  --r-2xl: 20px;
+  --r-pill: 999px;
+
+  /* --- Shadows (used sparingly) --- */
+  --shadow-xs: 0 1px 2px rgba(15, 23, 42, 0.04);
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04), 0 1px 3px rgba(15, 23, 42, 0.05);
+  --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.06), 0 1px 3px rgba(15, 23, 42, 0.04);
+  --shadow-lg: 0 12px 32px rgba(15, 23, 42, 0.10), 0 4px 8px rgba(15, 23, 42, 0.04);
+  --shadow-xl: 0 24px 56px rgba(15, 23, 42, 0.14), 0 8px 16px rgba(15, 23, 42, 0.06);
+
+  /* --- Type --- */
+  --font-display: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter Display', system-ui, sans-serif;
+  --font-body:    -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Inter', system-ui, sans-serif;
+  --font-mono:    'JetBrains Mono', 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* --- Type scale --- */
+  --t-display: 32px;
+  --t-h1: 24px;
+  --t-h2: 20px;
+  --t-h3: 16px;
+  --t-body: 14px;
+  --t-small: 13px;
+  --t-caption: 12px;
+  --t-micro: 11px;
+
+  /* --- Layout --- */
+  --sidebar-w: 232px;
+  --topbar-h: 56px;
+  --drawer-w: 520px;
+  --content-max: 1440px;
+  --gutter: 32px;
+
+  /* --- Spacing --- */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 12px;
+  --s-4: 16px;
+  --s-5: 20px;
+  --s-6: 24px;
+  --s-8: 32px;
+  --s-10: 40px;
+  --s-12: 48px;
+  --s-16: 64px;
+
+  /* --- Motion --- */
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+  --t-fast: 120ms;
+  --t-base: 180ms;
+  --t-slow: 280ms;
+}

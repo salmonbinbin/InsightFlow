@@ -8,3 +8,12 @@ __pycache__/
 *.db
 .DS_Store
 work/
+
+# Frontend (Phase 7 work package A) — only the generated build outputs and
+# the local env override; do not commit these.
+frontend/node_modules/
+frontend/.next/
+frontend/.env.local
+frontend/coverage/
+frontend/dist/
+frontend/*.tsbuildinfo

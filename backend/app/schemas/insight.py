@@ -103,6 +103,28 @@ class InsightRead(BaseModel):
     created_at: UTCDateTime
 
 
+class FeedbackAnalysisRead(BaseModel):
+    """Read shape for the Phase 1 FeedbackAnalysis row paired with one
+    evidence entry. Surfaced through the evidence endpoint so the
+    frontend can show the deterministic AI classification without a
+    second round-trip and without a cross-run guess.
+    """
+
+    model_config = ConfigDict(from_attributes=True)
+
+    id: UUID
+    feedback_id: UUID
+    run_id: UUID
+    feedback_type: str
+    module: str
+    intent: str
+    pain_point: str
+    sentiment: str
+    severity: int
+    confidence: float
+    created_at: UTCDateTime
+
+
 class InsightEvidenceRead(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
@@ -116,11 +138,32 @@ class InsightEvidenceRead(BaseModel):
     created_at: UTCDateTime
     feedback_created_at: UTCDateTime | None
     feedback_user_id: str | None
+    # Phase 7 work package B1: surface the raw ``feedbacks.source`` value so
+    # the frontend can show the same provenance as the Feedback list without
+    # a second round-trip. Optional because not every imported feedback
+    # carries a source (older imports left the column null).
+    feedback_source: str | None = None
+    # Phase 7 work package B1: deterministic AI classification for this
+    # evidence row, sourced from FeedbackAnalysis(feedback_id,
+    # run_id=insight.run.classification_run_id). ``None`` when either
+    # the InsightRun is missing or the FeedbackAnalysis was not produced
+    # for that exact (feedback_id, classification_run_id) pair. We
+    # deliberately do NOT fall back to analyses from other runs — the
+    # cross-run pairing is unsupported by the data model and would
+    # silently lie about provenance.
+    feedback_analysis: FeedbackAnalysisRead | None = None
 
 
 class InsightPage(BaseModel):
     total: int
     items: list[InsightRead]
+    limit: int
+    offset: int
+
+
+class InsightRunPage(BaseModel):
+    total: int
+    items: list[InsightRunRead]
     limit: int
     offset: int
 
@@ -153,6 +196,7 @@ class InsightPayload(BaseModel):
 
 __all__ = [
     "EvidenceEntry",
+    "FeedbackAnalysisRead",
     "InsightEvidencePage",
     "InsightEvidenceRead",
     "InsightGenerateRequest",
@@ -160,5 +204,6 @@ __all__ = [
     "InsightPayload",
     "InsightRead",
     "InsightRunItemRead",
+    "InsightRunPage",
     "InsightRunRead",
 ]

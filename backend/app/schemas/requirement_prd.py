@@ -447,6 +447,31 @@ class PRDPage(BaseModel):
     active_version: int | None = None
 
 
+class ProjectPRDPage(BaseModel):
+    """Paginated PRD list scoped to one project.
+
+    Phase 7 work package D1 — the project-level PRD index that
+    survives a page refresh on ``/prds``. Every PRD version from
+    every requirement inside ``project_id`` is returned (no
+    latest-per-requirement projection), ordered ``version DESC,
+    id DESC``. The frontend groups by ``requirement_id`` to render
+    the version timeline; collapsing to one row per requirement
+    would silently drop earlier drafts and accepted versions,
+    breaking the audit trail.
+
+    ``limit`` is validated ``1..200`` and ``offset`` ``>=0`` by the
+    route handler — Pydantic does NOT re-validate these because
+    the schema is shared between the route layer and any future
+    internal callers that may legitimately pass a different
+    pagination window.
+    """
+
+    total: int
+    items: list[PRDRead]
+    limit: int
+    offset: int
+
+
 __all__ = [
     "AcceptanceCriterion",
     "EdgeCase",
@@ -466,6 +491,7 @@ __all__ = [
     "PRDAcceptRequest",
     "PRDPage",
     "PRDRead",
+    "ProjectPRDPage",
     "PRDStatusLiteral",
     "PRDRisk",
     "PriorityLiteral",

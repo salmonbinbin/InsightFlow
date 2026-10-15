@@ -26,10 +26,10 @@ from typing import Any
 
 import httpx
 
-from app.agents.prompts.prd_generation_v1 import SYSTEM_PROMPT as PRD_SYSTEM_PROMPT
-from app.agents.prompts.prd_generation_v1 import TOOL_DESCRIPTION as PRD_TOOL_DESCRIPTION
-from app.agents.prompts.prd_generation_v1 import TOOL_NAME as PRD_TOOL_NAME
-from app.agents.prompts.prd_generation_v1 import TOOL_SCHEMA as PRD_TOOL_SCHEMA
+from app.agents.prompts.prd_generation_v3 import SYSTEM_PROMPT as PRD_SYSTEM_PROMPT
+from app.agents.prompts.prd_generation_v3 import TOOL_DESCRIPTION as PRD_TOOL_DESCRIPTION
+from app.agents.prompts.prd_generation_v3 import TOOL_NAME as PRD_TOOL_NAME
+from app.agents.prompts.prd_generation_v3 import TOOL_SCHEMA as PRD_TOOL_SCHEMA
 from app.agents.prompts.requirement_generation_v1 import SYSTEM_PROMPT as REQ_SYSTEM_PROMPT
 from app.agents.prompts.requirement_generation_v1 import TOOL_DESCRIPTION as REQ_TOOL_DESCRIPTION
 from app.agents.prompts.requirement_generation_v1 import TOOL_NAME as REQ_TOOL_NAME
