@@ -274,12 +274,20 @@ body { display: flex; min-height: 100vh; }
 .btn[disabled] { opacity: 0.45; cursor: not-allowed; }
 .btn .btn-icon { width: 14px; height: 14px; }
 
-/* --- Main / page header --- */
+/* --- Main / page header ---
+   Phase 7 P3 fix: the production JSX puts eyebrow / h1 / subtitle as
+   DIRECT children of .page-header (no .titles wrapper). The legacy
+   row layout (flex-end / align-baseline) collapsed those three
+   siblings into a single 16px-gap row, which Codex flagged. Vertical
+   stack restores the prototype's hierarchy on every page; a legacy
+   .titles wrapper still resolves as a single flex child so neither
+   set breaks the other. */
 main { flex: 1; min-width: 0; padding: 32px; max-width: var(--content-max); }
 .page-header {
   display: flex;
-  align-items: flex-end;
-  gap: 16px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
   margin-bottom: 24px;
 }
 .page-header .titles { flex: 1; min-width: 0; }
@@ -568,11 +576,20 @@ main { flex: 1; min-width: 0; padding: 32px; max-width: var(--content-max); }
    Width is bounded to the parent column so the inner <table> scrolls
    locally on narrow viewports instead of pushing
    ``document.scrollWidth`` past the body. Desktop is unaffected —
-   the table fits within 820px+ and the scroll bar stays hidden. */
+   the table fits within 820px+ and the scroll bar stays hidden.
+
+   Phase 7 P3 fix: wrap the wrapper in the prototype's data-card look
+   (1px border + 12px radius + surface bg) so the feedback table no
+   longer reads as a floating naked <table>. The local
+   ``overflow-x: auto`` stays so a wide table on a 390px viewport
+   still scrolls inside the card rather than pushing the page. */
 .data-table-wrapper {
   width: 100%;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
 }
 table.data-table {
   width: 100%;
@@ -747,7 +764,17 @@ table.data-table {
   top: 50%; left: 50%;
   transform: translate(-50%, -48%) scale(0.98);
   width: 540px;
-  max-width: 92vw;
+  /* Phase 7 P3-fix6 (Codex 390px measurement): the previous
+     ``max-width: 92vw`` did not clamp the modal reliably when the
+     .modal lives inside a grid (.modal-overlay uses
+     place-items:center). On 390px viewports the .modal--sm
+     ProjectSwitcher rendered at width=420 with right=436,
+     overflowing the viewport by 46px. Switching to a viewport-
+     relative calc matches the modal-overlay's own 16px gutter so
+     ``width: min(540px, 100vw - 32px)`` always fits inside the
+     body on any width. Desktop >= 540+32 keeps the 540px design
+     width (1024 viewport -> 992 > 540). */
+  max-width: calc(100vw - 32px);
   background: var(--surface);
   border-radius: var(--r-xl);
   box-shadow: var(--shadow-xl);
@@ -869,7 +896,18 @@ table.data-table {
 .alert-info { background: var(--accent-tint); border: 1px solid var(--accent-soft); color: var(--accent-strong); }
 .alert-warn { background: var(--warn-tint); border: 1px solid var(--warn-soft); color: var(--warn); }
 .alert-danger { background: var(--danger-tint); border: 1px solid var(--danger-soft); color: var(--danger); }
-.alert-info b, .alert-warn b, .alert-danger b { font-weight: 600; }
+/* Phase 7 P3-fix2 (Codex static-class audit): .alert-success was
+   declared in JSX (e.g. PRD generate-prd-success banner, insight
+   requirement-created confirmations) but had no rule, so the base
+   .alert defaulted to a yellow warn tint. Mirror the
+   .alert-warn / .alert-danger token layout for the green variant. */
+.alert-success {
+  background: var(--success-tint);
+  border: 1px solid var(--success-soft);
+  color: var(--success);
+}
+.alert-success .alert-title { color: var(--success); }
+.alert-info b, .alert-warn b, .alert-danger b, .alert-success b { font-weight: 600; }
 
 /* --- Small utilities --- */
 .row { display: flex; align-items: center; gap: 8px; }
@@ -1523,6 +1561,587 @@ table.data-table {
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+/* Phase 7 P3-fix3 (Codex static-class audit): .prd-row-actions is
+   the right-hand action slot inside .prd-row (currently houses a
+   single "详情" link, but JSX allows more buttons next to it). The
+   row is a flex row with .prd-row-main on the left (flex:1); the
+   actions cluster should hug its content width and never compress
+   to zero (flex-shrink: 0) so PM buttons never vanish at narrow
+   widths. */
+.prd-row-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+/* =============================================================
+   Phase 7 P2 — Visual rework: production JSX class mapping
+
+   The production React JSX uses a refined class vocabulary that
+   diverges from the original OpenDesign prototype (which the legacy
+   rules above were copied from). Each block below adds CSS for the
+   class names actually emitted by the components and pages under
+   src/{components,app}/. Legacy rules (e.g. .metric-card .label,
+   .drawer-backdrop, .modal-head) are left in place because they
+   are part of the contract — the new selectors are added alongside
+   so neither set breaks the other.
+
+   Coverage:
+     A. State views (StateViews.tsx)
+     B. Metric card kebab descendants + link / run sub-blocks
+     C. StatusPill BEM variants (status-pill--<status>)
+     D. Forms: .form-label / .form-input / .form-textarea /
+        .form-select / .form-field--inline / .form-stack
+     E. Modal: .modal-header / .modal-title / .modal-actions
+     F. Drawer: .drawer-overlay / .drawer-header / .drawer-title /
+        .drawer-section-title / .drawer-meta / .drawer-content /
+        .drawer-empty / .drawer-meta-inline / .drawer-note
+     G. Panel + toolbar (used by all five scoped pages)
+     H. ProjectSwitcher modal list
+     I. RunCard new BEM (RunCard.tsx)
+     J. Analysis stepper (3-step pill row)
+     K. Run launch + by-id + run-history list
+     L. Pagination
+     M. Feedback table column widths / selected / empty row
+     N. Upload: drop-zone inner layout + bullet list + actions
+     O. Overview recent-list + opportunity-list
+     P. Mobile overrides for everything above
+   ============================================================= */
+
+/* ---------- A. State views ---------- */
+.state-loading { padding: 32px 0; }
+.state-loading-stack { display: flex; flex-direction: column; gap: 10px; }
+.state-loading-bar {
+  height: 14px;
+  border-radius: var(--r-sm);
+  background: linear-gradient(90deg, var(--surface-1) 0%, var(--surface-2) 50%, var(--surface-1) 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s linear infinite;
+}
+.state-loading-bar--lg { width: 60%; height: 18px; }
+.state-loading-bar--sm { width: 40%; }
+.state-empty {
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  padding: 40px 24px; text-align: center;
+}
+.empty-icon {
+  font-size: 24px; color: var(--muted-2);
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: var(--surface-2);
+  display: grid; place-items: center;
+  font-family: var(--font-mono); font-weight: 600;
+}
+.empty-title {
+  font-family: var(--font-display);
+  font-size: var(--t-h3); font-weight: 600;
+  color: var(--fg); margin-top: 4px;
+}
+.empty-description { color: var(--muted); font-size: var(--t-small); max-width: 48ch; }
+.empty-action { margin-top: 8px; display: flex; gap: 8px; }
+.state-error { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
+.state-error-title { font-weight: 600; color: var(--fg); font-size: var(--t-body); }
+.state-error-message { color: var(--danger); font-size: var(--t-small); }
+.state-error-details {
+  color: var(--muted); font-size: var(--t-caption);
+  font-family: var(--font-mono); white-space: pre-wrap;
+  max-width: 100%; overflow-wrap: anywhere;
+}
+
+/* ---------- B. Metric card kebab descendants + link / run sub-blocks ---------- */
+.metric-card-label {
+  font-size: var(--t-caption); color: var(--muted);
+  letter-spacing: 0.02em; font-weight: 500;
+}
+.metric-card-value {
+  font-family: var(--font-display);
+  font-size: 32px; font-weight: 600; letter-spacing: -0.025em;
+  color: var(--fg); line-height: 1; font-variant-numeric: tabular-nums;
+  display: flex; align-items: center; gap: 6px; min-height: 32px;
+}
+.metric-card-hint { font-size: var(--t-caption); color: var(--muted); font-weight: 500; }
+.metric-card-link {
+  color: var(--accent-strong); font-weight: 550; font-size: var(--t-small);
+  text-decoration: none;
+}
+.metric-card-link:hover { text-decoration: underline; }
+.metric-card-run { display: flex; flex-direction: column; gap: 6px; width: 100%; }
+.metric-card-run-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.metric-card-run-time { font-size: var(--t-small); color: var(--muted); font-variant-numeric: tabular-nums; }
+.metric-card-run-counts { font-size: var(--t-caption); color: var(--fg-2); font-family: var(--font-mono); }
+
+/* ---------- C. StatusPill BEM variants (status-pill--<status>) ---------- */
+.status-pill--pending { background: var(--surface-2); color: var(--muted); }
+.status-pill--running { background: var(--accent-soft); color: var(--accent-strong); }
+.status-pill--completed { background: var(--success-soft); color: var(--success); }
+.status-pill--partial_failed { background: var(--warn-soft); color: var(--warn); }
+.status-pill--failed { background: var(--danger-soft); color: var(--danger); }
+.status-pill--draft { background: var(--surface-2); color: var(--muted); }
+.status-pill--pending_review { background: var(--accent-tint); color: var(--accent-strong); }
+.status-pill--accepted { background: var(--success-soft); color: var(--success); }
+.status-pill--overridden { background: var(--warn-soft); color: var(--warn); }
+.status-pill--deferred { background: var(--surface-2); color: var(--muted); }
+.status-pill--rejected { background: var(--danger-soft); color: var(--danger); }
+
+/* ---------- D. Forms ---------- */
+.form-field { display: block; }
+.form-field > .form-label,
+.form-field > label.form-label {
+  display: block; font-size: var(--t-small); font-weight: 600;
+  color: var(--fg); margin-bottom: 8px;
+}
+.form-input, .form-textarea, .form-select {
+  display: block; width: 100%;
+  height: 36px; padding: 0 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--surface);
+  color: var(--fg);
+  font-family: inherit; font-size: var(--t-small);
+  transition: border-color var(--t-fast), box-shadow var(--t-fast);
+}
+.form-textarea { height: auto; min-height: 80px; padding: 10px 12px; resize: vertical; line-height: 1.5; }
+.form-input:focus, .form-textarea:focus, .form-select:focus {
+  outline: none; border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-ring);
+}
+.form-input::placeholder, .form-textarea::placeholder { color: var(--muted-2); }
+.form-input:disabled, .form-textarea:disabled, .form-select:disabled {
+  background: var(--surface-2); color: var(--muted); cursor: not-allowed;
+}
+.form-field--inline { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 0; }
+.form-field--inline > .form-label { margin-bottom: 0; white-space: nowrap; font-weight: 500; }
+.form-stack { display: flex; flex-direction: column; gap: 14px; }
+
+/* ---------- E. Modal (production JSX uses .modal-header / .modal-actions) ---------- */
+.modal-header {
+  display: flex; align-items: center; gap: 12px;
+  padding: 20px 24px 0;
+}
+.modal-title {
+  font-family: var(--font-display);
+  font-size: var(--t-h2); font-weight: 600;
+  letter-spacing: -0.015em; color: var(--fg);
+  flex: 1; min-width: 0;
+}
+.modal-actions {
+  display: flex; gap: 8px; justify-content: flex-end;
+  padding: 16px 24px;
+  border-top: 1px solid var(--divider);
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+/* ---------- F. Drawer (production uses .drawer-overlay / .drawer-header) ---------- */
+.drawer-overlay { position: fixed; inset: 0; background: rgba(15, 23, 42, 0.18); z-index: 200; }
+.drawer-overlay > .drawer { box-shadow: var(--shadow-xl); }
+/* Phase 7 P3-fix5 (Codex 390px measurement):
+   The legacy .drawer rule (line 671) keeps the drawer hidden via
+   transform: translateX(100%) and only reveals it under
+   .drawer.open — a pattern the InsightDetail history / override
+   drawer still uses with .drawer-backdrop.open + .drawer.open.
+   The feedback list, however, mounts the drawer ONLY while it
+   is open and unmounts it on close (no .open toggle), so the
+   production FeedbackDrawer structure <div class="drawer-overlay">
+   <aside class="drawer"> sat at translateX(100%) forever, with
+   rect.left=390 / right=760.5 — entirely off-screen. Force the
+   drawer to translateX(0) when it lives inside the production
+   .drawer-overlay backdrop; the legacy .drawer-backdrop.open +
+   .drawer.open path is untouched because .drawer-overlay and
+   .drawer-backdrop never appear in the same render tree
+   (Grep verified). */
+.drawer-overlay > .drawer { transform: translateX(0); }
+.drawer-header {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--divider);
+}
+.drawer-header > div:first-child { flex: 1; min-width: 0; }
+.drawer-title {
+  font-family: var(--font-display);
+  font-size: var(--t-h2); font-weight: 600;
+  color: var(--fg); letter-spacing: -0.015em;
+  margin-top: 4px;
+}
+.drawer-section-title {
+  font-family: var(--font-display);
+  font-size: var(--t-h3); font-weight: 600;
+  color: var(--fg); margin-bottom: 12px;
+  letter-spacing: -0.01em;
+}
+.drawer-meta {
+  display: grid; grid-template-columns: 100px 1fr;
+  gap: 8px 14px; margin: 0 0 14px;
+  font-size: var(--t-small);
+}
+.drawer-meta dt { color: var(--muted); font-weight: 500; }
+.drawer-meta dd { color: var(--fg); font-weight: 450; margin: 0; min-width: 0; word-break: break-word; }
+.drawer-content {
+  font-family: var(--font-display);
+  font-size: 15px; line-height: 1.6;
+  color: var(--fg);
+  padding: 14px 16px;
+  background: var(--surface-1);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--r-md);
+  white-space: pre-wrap; overflow-wrap: anywhere;
+}
+.drawer-empty {
+  display: flex; flex-direction: column; gap: 8px; align-items: flex-start;
+  padding: 12px 14px;
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  color: var(--muted); font-size: var(--t-small);
+}
+.drawer-meta-inline {
+  display: flex; align-items: center; gap: 8px;
+  font-size: var(--t-small); color: var(--muted);
+  margin-top: 8px;
+}
+.drawer-meta-inline > span:first-child { color: var(--muted-2); }
+.drawer-meta-inline > code.mono { font-size: var(--t-caption); color: var(--fg-2); }
+.drawer-note { margin-top: 10px; font-size: var(--t-caption); color: var(--muted); line-height: 1.5; }
+.drawer-note--mono { font-family: var(--font-mono); white-space: pre-wrap; }
+
+/* ---------- G. Panel + toolbar ---------- */
+.panel {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 24px 28px;
+  margin-bottom: 16px;
+}
+.panel-header {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; margin-bottom: 16px; flex-wrap: wrap;
+}
+.panel-hint {
+  font-family: var(--font-mono);
+  font-size: var(--t-caption); color: var(--muted);
+  white-space: nowrap;
+}
+.toolbar {
+  display: flex; align-items: flex-end; gap: 12px;
+  margin-bottom: 16px; flex-wrap: wrap;
+}
+.toolbar > .form-field--inline { min-width: 180px; }
+.toolbar > .form-field--inline > .form-label { font-size: var(--t-caption); color: var(--muted); }
+.toolbar > .form-field--inline > .form-input,
+.toolbar > .form-field--inline > .form-select { min-width: 160px; }
+
+/* ---------- H. ProjectSwitcher modal list ---------- */
+.project-list { display: flex; flex-direction: column; gap: 8px; }
+.project-list-items {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.project-list-item { background: transparent; }
+.project-list-button {
+  display: flex; flex-direction: column; align-items: flex-start; gap: 4px;
+  width: 100%; text-align: left;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--surface);
+  cursor: pointer;
+  transition: border-color var(--t-fast), background var(--t-fast);
+}
+.project-list-button:hover { border-color: var(--accent); background: var(--accent-tint); }
+.project-list-button:focus-visible { outline: none; box-shadow: 0 0 0 3px var(--accent-ring); }
+.project-list-item.is-active .project-list-button {
+  border-color: var(--accent); background: var(--accent-tint);
+}
+.project-list-name { font-weight: 600; color: var(--fg); font-size: var(--t-body); }
+.project-list-product { font-size: var(--t-caption); color: var(--muted); }
+.project-list-description {
+  font-size: var(--t-caption); color: var(--fg-2);
+  margin-top: 2px; line-height: 1.45;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ---------- I. RunCard new BEM ---------- */
+.run-card-header {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  gap: 12px; margin-bottom: 14px;
+}
+.run-card-heading { min-width: 0; flex: 1; }
+.run-card-title {
+  font-family: var(--font-display);
+  font-size: var(--t-h3); font-weight: 600;
+  color: var(--fg); letter-spacing: -0.01em;
+}
+.run-card-description { font-size: var(--t-caption); color: var(--muted); margin-top: 2px; }
+.run-card-status { flex: 0 0 auto; }
+.run-card-counters {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px; margin-bottom: 12px;
+}
+.run-card-counter {
+  padding: 8px 10px;
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  min-width: 0;
+}
+.run-card-counter-label {
+  font-size: var(--t-micro);
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--muted); font-weight: 600;
+  margin-bottom: 2px;
+}
+.run-card-counter-value {
+  font-family: var(--font-mono);
+  font-weight: 600; color: var(--fg);
+  font-variant-numeric: tabular-nums;
+  font-size: var(--t-body);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+}
+.run-card-footer {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px;
+  border-top: 1px solid var(--divider);
+  padding-top: 12px;
+  flex-wrap: wrap;
+}
+.run-card-meta {
+  display: flex; flex-wrap: wrap; gap: 12px;
+  font-size: var(--t-caption); color: var(--muted);
+  font-family: var(--font-mono);
+}
+.run-card-actions { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.run-card-error { font-size: var(--t-caption); color: var(--danger); }
+
+/* Run-card status-driven accent (matches prototype .run-card.<status>) */
+.run-card[data-status="running"] { border-color: var(--accent-soft); }
+.run-card[data-status="completed"] { border-color: var(--success-soft); }
+.run-card[data-status="failed"] { border-color: var(--danger-soft); background: var(--danger-tint); }
+.run-card[data-status="partial_failed"] { border-color: var(--warn-soft); background: var(--warn-tint); }
+
+/* ---------- J. Analysis stepper ---------- */
+.analysis-stepper {
+  display: flex; align-items: center; gap: 4px;
+  padding: 14px 18px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  margin-bottom: 16px;
+}
+.stepper-step {
+  display: flex; align-items: center; gap: 10px;
+  flex: 1; min-width: 0;
+  padding: 4px 6px;
+  border-radius: var(--r-md);
+}
+.stepper-step-number {
+  width: 24px; height: 24px;
+  border-radius: 50%;
+  background: var(--surface-2); color: var(--muted);
+  display: grid; place-items: center;
+  font-family: var(--font-mono); font-size: var(--t-caption);
+  font-weight: 600;
+  border: 1px solid var(--border);
+  flex: 0 0 auto;
+}
+.stepper-step-label {
+  font-size: var(--t-small); font-weight: 550;
+  color: var(--fg);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  min-width: 0;
+}
+.stepper-step.is-active .stepper-step-number {
+  background: var(--accent); color: var(--on-accent);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 4px var(--accent-soft);
+}
+.stepper-step.is-active .stepper-step-label { color: var(--accent-strong); }
+.stepper-step.is-done .stepper-step-number {
+  background: var(--success); color: var(--on-accent);
+  border-color: var(--success);
+}
+.stepper-step.is-done .stepper-step-label { color: var(--fg); }
+
+/* ---------- K. Run launch + by-id + history list ---------- */
+.run-launch {
+  display: flex; align-items: center; gap: 12px;
+  padding: 14px 16px;
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  margin-bottom: 14px; flex-wrap: wrap;
+}
+.run-launch-hint { font-size: var(--t-caption); color: var(--muted); }
+.run-by-id {
+  display: flex; align-items: flex-end; gap: 8px;
+  margin-bottom: 14px; flex-wrap: wrap;
+}
+.run-by-id > .form-field--inline { flex: 1 1 280px; min-width: 240px; }
+.run-history-block { margin-top: 14px; }
+.run-history-block-head {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 8px;
+}
+.run-history-block-title {
+  font-family: var(--font-display);
+  font-size: var(--t-h3); font-weight: 600;
+  color: var(--fg);
+}
+.run-history-empty { color: var(--muted); font-size: var(--t-small); padding: 12px 0; }
+.run-history {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; flex-direction: column; gap: 6px;
+}
+.run-history-item > button {
+  width: 100%; justify-content: flex-start; text-align: left;
+  height: auto; min-height: 32px; padding: 8px 14px;
+  gap: 10px;
+}
+.run-history-item > button > code {
+  font-family: var(--font-mono); font-size: var(--t-caption);
+  color: var(--fg-2);
+}
+.run-history-time { font-size: var(--t-caption); color: var(--muted); margin-left: auto; }
+
+/* ---------- L. Pagination ---------- */
+.pagination {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; padding: 12px 0; flex-wrap: wrap;
+}
+.pagination-meta { font-size: var(--t-caption); color: var(--muted); }
+.pagination-controls { display: flex; gap: 6px; }
+
+/* ---------- M. Feedback table column widths / selected / empty row ---------- */
+.col-id { font-family: var(--font-mono); font-size: var(--t-caption); color: var(--muted); white-space: nowrap; }
+.col-content {
+  max-width: 360px; color: var(--fg); line-height: 1.45;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.col-time { font-size: var(--t-caption); color: var(--fg-2); white-space: nowrap; }
+.data-table-row { cursor: pointer; }
+.data-table-row:focus-visible { outline: none; box-shadow: inset 3px 0 0 var(--accent); }
+.data-table-row.is-selected { background: var(--accent-tint); }
+.data-table-row.is-selected td:first-child { box-shadow: inset 3px 0 0 var(--accent); }
+.data-table-empty {
+  text-align: center; color: var(--muted);
+  padding: 24px 16px; font-size: var(--t-small);
+}
+
+/* ---------- N. Upload extras ---------- */
+.drop-zone-icon {
+  font-size: 32px; color: var(--accent);
+  margin: 0 auto 12px;
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  background: var(--accent-tint);
+  display: grid; place-items: center;
+  line-height: 1;
+}
+.drop-zone-text {
+  display: flex; align-items: center; gap: 10px;
+  flex-wrap: wrap; justify-content: center;
+}
+.drop-zone-text > strong { font-size: var(--t-body); color: var(--fg); font-weight: 600; }
+.drop-zone-text > span:not(.btn) { color: var(--muted); font-size: var(--t-small); }
+.drop-zone-input {
+  position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none;
+}
+.drop-zone.is-dragging { border-color: var(--accent); background: var(--accent-tint); }
+.bullet-list {
+  margin: 6px 0 0; padding-left: 20px;
+  list-style: disc; color: var(--fg-2);
+  font-size: var(--t-caption);
+}
+.bullet-list > li { margin-bottom: 2px; }
+.preview-hint {
+  margin-top: 8px; font-size: var(--t-caption);
+  color: var(--muted); text-align: right;
+}
+.upload-actions {
+  display: flex; align-items: center; gap: 12px;
+  margin-top: 14px; flex-wrap: wrap;
+}
+
+/* ---------- O. Overview recent-list + opportunity-list ---------- */
+.recent-list, .opportunity-list {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; flex-direction: column;
+}
+.recent-list-item {
+  display: flex; align-items: flex-start; gap: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--divider);
+}
+.recent-list-item:last-child { border-bottom: 0; }
+.recent-list-id {
+  font-family: var(--font-mono); font-size: var(--t-caption);
+  color: var(--muted); min-width: 140px; flex-shrink: 0;
+}
+.recent-list-content {
+  flex: 1; min-width: 0; color: var(--fg);
+  font-size: var(--t-small); line-height: 1.5;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.recent-list-meta {
+  display: flex; flex-direction: column; align-items: flex-end; gap: 4px;
+  font-size: var(--t-caption); color: var(--muted);
+  flex-shrink: 0;
+}
+.opportunity-item { padding: 12px 0; border-bottom: 1px solid var(--divider); }
+.opportunity-item:last-child { border-bottom: 0; }
+.opportunity-item-head { margin-bottom: 4px; }
+.opportunity-item-title {
+  font-weight: 600; color: var(--fg); font-size: var(--t-body);
+}
+.opportunity-item-meta { font-size: var(--t-caption); color: var(--muted); }
+
+/* ---------- P. Mobile overrides ---------- */
+@media (max-width: 600px) {
+  .run-card-counters { grid-template-columns: repeat(2, 1fr); }
+  .run-card-footer { flex-direction: column; align-items: flex-start; }
+  .run-card-actions { width: 100%; }
+  .toolbar { flex-direction: column; align-items: stretch; }
+  .toolbar > .form-field--inline {
+    flex-direction: column; align-items: stretch; gap: 4px;
+  }
+  .toolbar > .form-field--inline > .form-label { margin-bottom: 4px; }
+  .toolbar > .form-field--inline > .form-input,
+  .toolbar > .form-field--inline > .form-select { min-width: 0; width: 100%; }
+  .analysis-stepper { padding: 12px; gap: 4px; overflow-x: auto; }
+  .stepper-step { flex: 0 0 140px; }
+  .drawer-meta { grid-template-columns: 1fr; gap: 4px 0; }
+  .drawer-meta dt { margin-top: 6px; }
+  /* Phase 7 P3-fix5 (Codex 390px measurement): after forcing
+     .drawer-overlay > .drawer to translateX(0), the drawer box
+     itself is now visible at 95vw ≈ 370.5px. The header
+     (eyebrow + h2 external_id + 关闭 button) used
+     ``align-items: flex-start`` with a 12px gap and let the
+     ``.drawer-title`` h2 overflow the right edge whenever the
+     feedback external_id was a long UUID (Codex measured the
+     box right boundary leaving the viewport). We wrap the
+     header so the close button can sit on its own row if
+     needed, shrink the title font, allow it to break inside
+     a long ID, and tighten the body padding to reclaim the
+     24px+24px → 16px+16px difference. */
+  .drawer-header { flex-wrap: wrap; padding: 12px 14px; gap: 8px; }
+  .drawer-title { font-size: 16px; word-break: break-all; overflow-wrap: anywhere; }
+  .drawer-body { padding: 16px; }
+  .modal-header { padding: 16px 16px 0; }
+  .modal-body { padding: 16px; }
+  .modal-actions { padding: 12px 16px; }
+  .panel { padding: 16px; }
+  .panel-header { flex-direction: column; align-items: flex-start; gap: 6px; }
+  .recent-list-item { flex-direction: column; gap: 6px; }
+  .recent-list-id { min-width: 0; }
+  .recent-list-meta { flex-direction: row; align-items: center; gap: 12px; }
+  .data-table-row.is-selected td:first-child { box-shadow: none; }
+  .pagination { flex-direction: column; align-items: stretch; }
+  .pagination-controls { justify-content: flex-end; }
+}
 
 /* =============================================================
    Phase 7 P1 — Real AppShell layout (production)
@@ -1776,7 +2395,17 @@ table.data-table {
 }
 .modal--sm {
   width: 420px;
-  max-width: 100%;
+  /* Phase 7 P3-fix6 (Codex 390px measurement): pair the .modal
+     width change above with a viewport-relative cap on the
+     ProjectSwitcher size variant. ``max-width: 100%`` resolved
+     against the grid-item's containing block but did NOT
+     actually clamp the box (measured 420 on a 390 viewport with
+     right=436). ``calc(100vw - 32px)`` is the same value the
+     .modal-overlay uses to leave a 16px gutter on each side, so
+     the .modal--sm box now sits flush within the gutter. On
+     desktops >= 452px the 420px design width still wins
+     (420 < calc(100vw - 32px)). */
+  max-width: calc(100vw - 32px);
 }
 
 /* Phase 7 P1 fix: ProjectSwitcher renders <div class="modal-overlay">
@@ -1877,4 +2506,1000 @@ table.data-table {
      sidebar's `position: sticky`). */
   html, body { overflow-x: clip; }
   .app-shell { overflow-x: clip; }
+}
+
+/* =============================================================
+   Phase 7 P3 — Visual rework pack 2 (production JSX coverage)
+
+   Single writer pass that covers the remaining 7 pages and their
+   shared sub-components. Codex flagged two carryover issues from
+   pack 1 — the .page-header flex-row squish (now patched earlier in
+   this file) and the data-table-wrapper having no data-card frame
+   (also patched earlier). Everything below covers real class names
+   emitted by src/app/{insights,insights/[id],requirements,requirements/[id],
+   prds,prds/[id],evaluation}/page.tsx that pack 1 missed.
+
+   Coverage groups:
+     Q. Insight list — body / head / stats / actions / column
+     R. Insight detail — hero / tags / lead / hero-meta
+     S. Meta grid (kv pair layout) used by all detail pages
+     T. Evidence list / row / quote / ai block
+     U. Opportunity score — score-snap / score-table / ai-reasoning
+     V. Decision panel / actions / cta-bar.disabled
+     W. BV form (PM Business Value 0..10 input)
+     X. History list / row
+     Y. Requirement detail dynamic rows + CTA integration
+     Z. PRD detail — 13 sections / editor dynamic rows / history
+     AA. PRD grounding warnings
+     BB. Evaluation — eval-list / runs / cases / detail header / tables
+     DD. Mobile overrides for all the new structures
+   ============================================================= */
+
+/* ---------- Q. Insight list (insights/page.tsx) ---------- */
+/* The legacy .insight-card rule (pack 1) is ``grid-template-columns:
+   1fr 320px`` to host a .side rail; the production list page renders
+   only a single .body child. The 320px right column would render as a
+   visible empty gutter, which Codex flagged. Flip the base grid to
+   1fr and re-arm the 2-col layout only when .side is present, via
+   :has() — supported by all browsers shipping in late 2025+. */
+.insight-card {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 12px;
+}
+.insight-card:has(> .side) {
+  grid-template-columns: minmax(0, 1fr) 320px;
+  gap: 24px;
+}
+.insight-card .head {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.insight-card h3 {
+  font-family: var(--font-display);
+  font-size: var(--t-h3);
+  font-weight: 600;
+  color: var(--fg);
+  margin: 0 0 6px;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+.insight-card .summary {
+  margin: 0 0 10px;
+  color: var(--fg-2);
+  font-size: var(--t-small);
+  line-height: 1.55;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.insight-card .stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 20px;
+  font-size: var(--t-caption);
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+.insight-card .stats b {
+  color: var(--fg);
+  font-weight: 600;
+  margin-left: 4px;
+}
+.insight-card .actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+/* ---------- R. Insight detail — hero ---------- */
+/* .section.hero — the title-band card at the top of /insights/[id].
+   Sits on the same .section primitive but gets an accent-tint wash
+   so the title and tags read as a distinct hero rather than another
+   plain section. */
+.section.hero {
+  background: linear-gradient(180deg, var(--surface) 0%, var(--accent-tint) 100%);
+  border-color: var(--border-2);
+}
+.section.hero .hero-tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.section.hero .lead {
+  font-family: var(--font-display);
+  font-size: 18px;
+  line-height: 1.55;
+  color: var(--fg);
+  letter-spacing: -0.005em;
+  margin: 0 0 14px;
+  max-width: 70ch;
+}
+.section.hero .hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 22px;
+  font-size: var(--t-caption);
+  color: var(--muted);
+}
+.section.hero .hero-meta b {
+  color: var(--fg);
+  font-weight: 600;
+  margin-left: 4px;
+}
+
+/* ---------- S. Meta grid (kv pair) — used by every detail page ---------- */
+/* 2-col label / value layout. Falls back to a single column on narrow
+   viewports (Phase 7 P3 mobile override). The grid is local-scoped
+   to .section so a meta-grid inside a drawer / modal still works. */
+.section .meta-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px 28px;
+}
+.section .meta-item {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.section .meta-k {
+  font-size: var(--t-micro);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 600;
+}
+.section .meta-v {
+  font-size: var(--t-small);
+  color: var(--fg);
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+.section .meta-v.mono { font-family: var(--font-mono); }
+
+/* ---------- T. Evidence list (insight detail page) ---------- */
+.evidence-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.evidence-row {
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 14px 16px;
+  display: grid;
+  grid-template-columns: 140px minmax(0, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+.evidence-id {
+  font-family: var(--font-mono);
+  font-size: var(--t-caption);
+  color: var(--muted);
+  word-break: break-all;
+  padding-top: 2px;
+}
+.evidence-body {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.evidence-quote {
+  background: var(--surface);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--r-sm);
+  padding: 10px 14px;
+  font-family: var(--font-display);
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--fg);
+}
+.evidence-quote .raw-quote-inline {
+  display: block;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.evidence-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 16px;
+  font-size: var(--t-caption);
+  color: var(--muted);
+}
+.evidence-meta b { color: var(--fg); font-weight: 600; margin-left: 4px; }
+.evidence-ai {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 14px;
+  font-size: var(--t-caption);
+  background: var(--ai-bg);
+  border: 1px solid var(--ai-border);
+  border-radius: var(--r-sm);
+  padding: 8px 12px;
+  color: var(--ai-fg);
+}
+.evidence-ai b { color: var(--fg); font-weight: 600; margin-left: 4px; }
+.evidence-ai--empty {
+  background: var(--surface-1);
+  border-color: var(--border);
+  color: var(--muted);
+}
+
+/* ---------- U. Opportunity score (snap + table + reasoning) ---------- */
+.score-snap {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 2fr);
+  gap: 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-lg);
+  padding: 20px 22px;
+  margin-bottom: 18px;
+}
+.score-headline {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-right: 1px solid var(--divider);
+  padding-right: 20px;
+}
+.score-num {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  font-family: var(--font-display);
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+.score-value {
+  font-size: 44px;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  color: var(--fg);
+}
+.score-value.pending {
+  color: var(--muted);
+  font-weight: 500;
+}
+.out-of {
+  color: var(--muted);
+  font-size: 16px;
+  font-weight: 500;
+}
+.score-meta {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px 24px;
+  align-content: start;
+}
+.score-meta-item {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* score-table — referenced by mobile rule (line 62) for local scroll.
+   Full-width table with sticky header, matching the data-table look
+   so analysts can map dimension names → values at a glance. */
+table.score-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--t-small);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  overflow: hidden;
+}
+table.score-table thead th {
+  text-align: left;
+  font-weight: 600;
+  font-size: var(--t-micro);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 10px 14px;
+  background: var(--surface-1);
+  border-bottom: 1px solid var(--border);
+}
+table.score-table tbody td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--divider);
+  color: var(--fg);
+  vertical-align: middle;
+}
+table.score-table tbody tr:last-child td { border-bottom: 0; }
+table.score-table .num { text-align: right; font-family: var(--font-mono); }
+table.score-table .label-cell { font-weight: 550; }
+table.score-table .weight-cell { text-align: right; color: var(--muted); }
+table.score-table .value-cell {
+  text-align: right;
+  font-weight: 600;
+  color: var(--fg);
+}
+table.score-table .value-cell.unavailable {
+  color: var(--muted-2);
+  font-weight: 450;
+}
+table.score-table .reason-cell {
+  color: var(--fg-2);
+  font-size: var(--t-caption);
+  max-width: 280px;
+}
+
+/* AI reasoning card under the score table. */
+.ai-reasoning {
+  margin-top: 18px;
+  background: var(--ai-bg);
+  border: 1px solid var(--ai-border);
+  border-radius: var(--r-md);
+  padding: 14px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.ai-reasoning-label {
+  font-size: var(--t-micro);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ai-fg);
+  font-weight: 600;
+}
+.ai-reasoning-body {
+  font-size: var(--t-small);
+  line-height: 1.6;
+  color: var(--fg);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+/* ---------- V. Decision panel / actions / cta-bar.disabled ---------- */
+.decision-panel {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 14px;
+}
+.decision-box {
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+.decision-box.ai {
+  background: var(--ai-bg);
+  border-color: var(--ai-border);
+}
+.decision-label {
+  font-size: var(--t-micro);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 600;
+}
+.decision-box.ai .decision-label { color: var(--ai-fg); }
+.decision-value {
+  font-size: var(--t-small);
+  color: var(--fg);
+  line-height: 1.55;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+.decision-value .badge { margin-right: 6px; }
+
+.decision-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  padding-top: 12px;
+  border-top: 1px solid var(--divider);
+}
+
+/* cta-bar.disabled — used by the insight detail page when the
+   "create requirement" CTA gate is closed. Dims the bar so the
+   explanation copy still reads as a banner, not a button. */
+.cta-bar.disabled {
+  background: var(--surface-1);
+  border-color: var(--border);
+  filter: saturate(0.6);
+}
+.cta-bar.disabled h4 { color: var(--fg-2); }
+
+/* ---------- W. BV form (PM Business Value 0..10) ---------- */
+/* The insight detail page wraps the BV label / input / submit /
+   inline error in a flex row. The inline styles on the JSX side
+   already enforce margin / gap; here we harden the input width,
+   give the error a stable colour, and keep the row wrapping on
+   narrow viewports. */
+.bv-form { width: 100%; }
+.bv-form .form-field { margin-bottom: 0; }
+.bv-form .form-input { max-width: 220px; }
+.bv-form-error {
+  color: var(--danger);
+  font-size: var(--t-caption);
+  align-self: center;
+}
+
+/* ---------- X. History list (decision history drawer) ---------- */
+.history-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.history-row {
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.history-row-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 14px;
+}
+
+/* ---------- Y. Requirement detail dynamic rows + CTA integration ---------- */
+/* The existing .metric-row / .risk-row / .evidence-row-ref rules
+   (line 1461) already cover the three dynamic arrays. The CTA
+   bar on this page reuses .cta-bar from pack 1; no new selectors
+   needed here, but we ensure the unknown-enum badge row sits
+   cleanly inside its parent card. */
+.section .alert.alert-warning {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: var(--t-caption);
+  background: var(--warn-tint);
+  border: 1px solid var(--warn-soft);
+  color: var(--warn);
+  border-radius: var(--r-sm);
+  padding: 8px 12px;
+  margin-bottom: 8px;
+}
+.section .badge.badge-warning {
+  background: var(--warn-soft);
+  color: var(--warn);
+}
+
+/* ---------- Z. PRD detail — 13 sections + editor + history ---------- */
+/* prd-section — every PRD body block (background / problem / etc.)
+   is a <article class="prd-section">. The editor variant
+   (.prd-section-editor) adds padding for the form fields inside. */
+.prd-section {
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 16px 18px;
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.prd-section h4 {
+  font-family: var(--font-display);
+  font-size: var(--t-h3);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--fg);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.prd-section-text {
+  margin: 0;
+  font-size: var(--t-small);
+  line-height: 1.6;
+  color: var(--fg);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.prd-section-editor {
+  background: var(--surface);
+  border-color: var(--border-2);
+}
+.prd-section-editor .textarea {
+  margin-bottom: 8px;
+}
+
+/* Functional-requirements list (ordered) */
+.prd-fr-list {
+  list-style: decimal inside;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.prd-fr-item,
+.prd-fr-item-editor {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  padding: 10px 12px;
+  font-size: var(--t-small);
+  color: var(--fg);
+  line-height: 1.55;
+}
+.prd-fr-text { display: block; }
+
+/* Edge-case list — unordered, badge + description */
+.prd-edge-case-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.prd-edge-case-item,
+.prd-edge-case-item-editor {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: var(--t-small);
+  color: var(--fg);
+}
+.prd-edge-case-item .badge { align-self: flex-start; }
+.prd-edge-case-description {
+  line-height: 1.55;
+  color: var(--fg);
+}
+
+/* Acceptance-criteria list — verifiable badge + text + evidence */
+.prd-ac-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.prd-ac-item,
+.prd-ac-item-editor {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: var(--t-small);
+  color: var(--fg);
+}
+.prd-ac-item .badge { align-self: flex-start; }
+.prd-ac-text { line-height: 1.55; color: var(--fg); }
+
+/* Success-metrics list — name + type badge + optional note */
+.prd-metric-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.prd-metric-item,
+.prd-metric-item-editor {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: var(--t-small);
+  color: var(--fg);
+}
+.prd-metric-item .badge { align-self: flex-start; }
+.prd-metric-name { font-weight: 550; color: var(--fg); }
+
+/* Risks list — category badge + description + optional mitigation */
+.prd-risk-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.prd-risk-item,
+.prd-risk-item-editor {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: var(--t-small);
+  color: var(--fg);
+}
+.prd-risk-item .badge { align-self: flex-start; }
+.prd-risk-description { line-height: 1.55; color: var(--fg); }
+
+/* MVP scope — 2-col grid (in / out) */
+.prd-mvp-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+.prd-mvp-grid > div {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Evidence lists — 2-col grid (sources / ids) */
+.prd-evidence-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+.prd-evidence-grid > div {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.prd-evidence-id-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.prd-evidence-id-list li { min-width: 0; }
+/* Phase 7 P3-fix4 (Codex 390px measurement): a long source label
+   such as a URL or a feedback_id-shaped string lands inside a plain
+   <code class="mono"> which is inline by default and therefore does
+   NOT shrink below its longest unbreakable token. With the
+   parent .prd-evidence-grid column dropping to a single 326px
+   column on <=600px, an unbroken ID pushed the <main> out to 432px
+   (Codex's Playwright run). We force the inline code to honour
+   the <li> box, then wrap at any character for monospace runs.
+   overflow-wrap:anywhere + word-break:break-word together let
+   CJK punctuation also break cleanly. */
+.prd-evidence-id-list code.mono {
+  display: inline-block;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+.prd-evidence-ids {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.prd-evidence-id {
+  font-family: var(--font-mono);
+  font-size: var(--t-caption);
+  background: var(--surface-2);
+  color: var(--fg-2);
+  padding: 2px 8px;
+  border-radius: var(--r-sm);
+  word-break: break-all;
+}
+
+/* PRD editor wrapper — sits where PrdBody would otherwise render,
+   exposes the same .prd-section children. */
+.prd-editor {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* PRD history list — sibling of prd-list / prd-row.
+   Each row carries an is-current modifier when it equals the
+   currently-open PRD. The current row gets an accent-tint wash
+   so the user can find their place in the timeline. */
+.prd-history-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.prd-history-row {
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  font-size: var(--t-small);
+  color: var(--fg);
+}
+.prd-history-row.is-current {
+  background: var(--accent-tint);
+  border-color: var(--accent-soft);
+}
+.prd-history-row .btn { margin-left: 0; }
+
+/* ---------- AA. PRD grounding warnings ---------- */
+.grounding-warning-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.grounding-warning-row {
+  background: var(--warn-tint);
+  border: 1px solid var(--warn-soft);
+  border-radius: var(--r-sm);
+  padding: 10px 14px;
+  font-size: var(--t-small);
+  color: var(--warn);
+  line-height: 1.55;
+}
+.grounding-warning-row code {
+  font-family: var(--font-mono);
+  background: var(--surface);
+  color: var(--fg-2);
+  padding: 1px 6px;
+  border-radius: var(--r-xs);
+  font-size: var(--t-caption);
+  margin-right: 4px;
+}
+
+/* ---------- BB. Evaluation page ---------- */
+/* Runs list — each row is a <li class="eval-row"> wrapping a
+   full-width <button>. The active row gets an accent-tint wash so
+   the user can see which run owns the detail panel. */
+.eval-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.eval-row {
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 0;
+  transition: border-color var(--t-fast), background var(--t-fast);
+}
+.eval-row.is-active {
+  background: var(--accent-tint);
+  border-color: var(--accent-soft);
+}
+.eval-row-btn {
+  width: 100%;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px 14px;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  color: inherit;
+}
+.eval-row-btn:focus-visible {
+  outline: none;
+  box-shadow: inset 3px 0 0 var(--accent);
+  background: var(--surface);
+}
+.eval-row-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.eval-row-id {
+  font-family: var(--font-mono);
+  font-size: var(--t-caption);
+  color: var(--muted);
+  letter-spacing: 0.02em;
+}
+.eval-row-meta {
+  margin: 0;
+  font-size: var(--t-caption);
+  color: var(--muted);
+}
+
+/* Detail header — eyebrow + title + meta-grid (dataset / model / etc.) */
+.eval-detail-header {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--divider);
+}
+.eval-detail-header h3 {
+  font-family: var(--font-display);
+  font-size: var(--t-h2);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  color: var(--fg);
+  margin: 0;
+  word-break: break-all;
+}
+.eval-detail-header .meta-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 24px;
+}
+
+/* metric-table — same card look as data-table but scoped to the
+   evaluation page so the metric_name (which is the full enum key)
+   gets a fixed-width mono column. */
+table.metric-table,
+table.case-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--t-small);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  overflow: hidden;
+}
+table.metric-table thead th,
+table.case-table thead th {
+  text-align: left;
+  font-weight: 600;
+  font-size: var(--t-micro);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 10px 14px;
+  background: var(--surface-1);
+  border-bottom: 1px solid var(--border);
+}
+table.metric-table tbody td,
+table.case-table tbody td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--divider);
+  color: var(--fg);
+  vertical-align: top;
+}
+table.metric-table tbody tr:last-child td,
+table.case-table tbody tr:last-child td { border-bottom: 0; }
+table.metric-table td.mono,
+table.case-table td.mono {
+  font-family: var(--font-mono);
+  font-size: var(--t-caption);
+  color: var(--fg-2);
+  word-break: break-all;
+}
+table.case-table td:nth-child(3) { color: var(--danger); font-weight: 600; }
+
+/* ---------- DD. Mobile overrides for the new pack 2 structures ----------
+   Each rule tightens a pack 2 surface at <=600px so the 390px
+   viewport stays readable and the page does not push past the
+   body width (the html/body overflow-x: clip rule above is the
+   safety net). */
+@media (max-width: 600px) {
+  .section.hero { padding: 16px; }
+  .section.hero .lead { font-size: 16px; }
+  .section .meta-grid { grid-template-columns: minmax(0, 1fr); }
+  .evidence-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
+  }
+  .evidence-id { font-size: var(--t-micro); }
+  .score-snap {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+    padding: 16px;
+  }
+  .score-headline {
+    border-right: 0;
+    border-bottom: 1px solid var(--divider);
+    padding-right: 0;
+    padding-bottom: 12px;
+  }
+  .score-value { font-size: 36px; }
+  .score-meta { grid-template-columns: minmax(0, 1fr); }
+  .decision-panel { grid-template-columns: minmax(0, 1fr); }
+  .decision-actions .btn { flex: 1 1 auto; }
+  /* Phase 7 P3-fix7 (Codex 390px measurement):
+     ``.cta-bar`` (insight detail "Create Requirement" footer,
+     requirement detail save bar) is a flex row with a text
+     <div> on the left and an inline-styled button cluster on
+     the right. The .btn rule carries ``white-space: nowrap``
+     (line 238) so the right cluster can never shrink below
+     its longest button, and at 390px the section's content
+     box is only ~290px wide, so the cluster overflowed
+     rect.right=458 (Codex measured). We stack the bar
+     vertically on narrow viewports, give every child
+     full width, and turn the button cluster into a
+     vertical stack so each button sits on its own row and
+     stays tappable. The desktop row layout (space-between
+     + gap 16) is untouched — the rule lives only inside
+     the <=600px media query. */
+  .cta-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+    padding: 14px 16px;
+  }
+  .cta-bar > div { width: 100%; min-width: 0; }
+  .cta-bar > div:last-child {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .cta-bar > div:last-child > .btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .history-row-head { font-size: var(--t-caption); }
+  .prd-section { padding: 14px; }
+  .prd-section h4 { font-size: 15px; }
+  .prd-mvp-grid,
+  .prd-evidence-grid { grid-template-columns: minmax(0, 1fr); }
+  .eval-detail-header .meta-grid { grid-template-columns: minmax(0, 1fr); }
+  .eval-row-btn { padding: 10px 12px; }
+  /* Phase 7 P3-fix1 (Codex re-re-test 390px):
+     Earlier passes pinned ``table.score-table { min-width:
+     480px }`` and ``main { overflow-x: hidden }``. The clip
+     on main was a band-aid: it kept the page from scrolling
+     but the table's own box was still 480px wide, so the
+     rightmost 150px of the score-table fell off the right
+     edge of the viewport and the user could not scroll to
+     the last column. The real fix is the opposite — let the
+     table shrink to the section content box (~326px) and let
+     its OWN overflow-x: auto provide a local horizontal
+     scrollbar, with cell ``white-space: nowrap`` keeping
+     every column readable (browser cannot collapse a
+     nowrap column to fit). ``min-width: 0`` + ``max-width:
+     100%`` defensively cap the table; the table's
+     ``overflow: auto`` is itself a BFC so it cannot push the
+     .section / <main> boxes wider than the viewport. We
+     therefore drop the main-level clip as well. */
+  table.score-table {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+  table.score-table th,
+  table.score-table td {
+    white-space: nowrap;
+  }
 }

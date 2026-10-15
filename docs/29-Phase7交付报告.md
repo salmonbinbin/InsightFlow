@@ -67,3 +67,13 @@
 ## User Acceptance Steps / Next Recommended Phase
 
 逐步操作及每步预期见 [Phase 7 User Acceptance Test](30-Phase7人工复测流程.md)。三文鱼完成产品、语义和界面人工复核后再判断 Phase 7 最终 Gate。下一阶段仅在三文鱼明确批准时讨论；本交付到此 **STOP**。
+
+## 2026-10-15 修订版原型视觉返工与复验
+
+三文鱼指出正式页面的按钮、窗口样式覆盖不足。Codex 将修订版原型与正式页面逐页对照，确认原因是原型 CSS 与正式 React 类名不一致。Claude Code 在原会话 `03c20a03-1a17-4b6e-af35-03d69b8cafa0` 中只修改 `frontend/src/styles/app.css`；Codex 独立检查差异、构建和浏览器行为。视觉返工 job：`03780e60e7364ca0b9414cfb1dbc488c`、`3dedbb7a2e394679962be311349a98c4`、`ac7007012dbf4409a5c6f9083fdb3076`；浏览器缺陷续修 job：`7656f0a32878432fae6e2c2e8da04fe5`、`3c2ce9b3703e44698f22d577d5d8ed59`、`3dc315464cc44a2597f3c17aa68c4ae6`、`23673f587c9d4074a89393918a844c49`、`a53204490e1c41ca822059f68ad3dfc6`。
+
+本次补齐了导航、页头、指标卡、表单、数据表、详情区、状态提示、操作按钮、项目弹窗、反馈抽屉、PRD 和评测区域的正式类名样式。真实浏览器一度发现反馈抽屉只显示遮罩、项目弹窗右侧超出手机屏幕 46px、洞察详情评分表及底部操作区撑宽页面；均根据 DOM 边界测量续修。最终 390px 下项目弹窗为 left 16/right 374、反馈抽屉为 left 19.5/right 390 且关闭按钮在屏幕内；评分表自身 right 341、clientWidth 290、scrollWidth 777，可在表内滚到末列；洞察 CTA 的两个按钮 right 341，页面 main/body scrollWidth 均为 390。
+
+Codex 最终独立运行前端 lint **PASS**、Vitest **107 passed / 15 files**、带 18000 后端地址的生产构建 **11 路由 PASS**。隔离 PostgreSQL、FastAPI 与生产 Next.js 重启后，11 个路由在 390px 和 1440px 均返回 HTTP 200、正常显示标题；手机全部 main/body scrollWidth=390，桌面 body=1440。项目弹窗打开/关闭、反馈详情抽屉打开/Escape 关闭、PRD 长 Evidence 文本换行、洞察评分表局部滚动及 CTA 按钮边界已用真实浏览器验证。本轮只改 CSS；前轮后端回归与真实 AI 主链路证据沿用上文，聚类模型复核失败和人工语义限制不变。
+
+**与原型仍有结构差异：** 原型首页的 528 等汇总、趋势、导出和设置为静态 Mock/演示交互，正式首页显示数据库中的 12 条反馈、最近分类 12/12、洞察 1，缺失指标明确标 N/A；本次视觉返工未引入虚构统计或本地伪持久化。页面视觉向修订版原型靠拢，但不宣称像素一致或原型所有 Mock 控件都已成为正式功能。
