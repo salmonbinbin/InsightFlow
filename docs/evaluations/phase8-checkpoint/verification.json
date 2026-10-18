@@ -44,5 +44,13 @@
     "frontend-lint.log": "36261c2e45360ac04f0ffa7b65df767f2e23a0119d624dcc7e13332dc742b1b7",
     "frontend-build.log": "e873132d66110e8f41bb4b977924d01ed8f260391669a22c16a280bc5549b4df",
     "ruff.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+  },
+  "publication": {
+    "repository": "https://github.com/salmonbinbin/InsightFlow",
+    "visibility": "PUBLIC",
+    "branch": "codex/phase8-checkpoint",
+    "checkpoint_commit": "2c31032f8c1cb21df9808c10a92c90d8b3691c3d",
+    "checkpoint_remote_sha_verified": "2c31032f8c1cb21df9808c10a92c90d8b3691c3d",
+    "documentation_receipt_follows_checkpoint": true
   }
 }

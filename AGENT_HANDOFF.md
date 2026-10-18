@@ -1,3 +1,5 @@
+> **2026-10-19公开归档已推送：** [GitHub仓库](https://github.com/salmonbinbin/InsightFlow)，默认分支`codex/phase8-checkpoint`，代码检查点`2c31032f8c1cb21df9808c10a92c90d8b3691c3d`已由GitHub API核对一致。当前入口为[52号归档/缺口/后续方案](docs/52-Phase8阶段归档与后续修复计划.md)，工程新检查见[evaluations/phase8-checkpoint](docs/evaluations/phase8-checkpoint/verification.json)。回执文档随后的提交同步同分支；Phase8 PARTIAL/Research FAIL/正式验收NOT MEASURED不变。原分支保留，未启动Phase9。
+
 > **2026-10-19阶段8检查点归档授权：[52号](docs/52-Phase8阶段归档与后续修复计划.md)。** 三文鱼明确要求提交并推送第8阶段，授权新建公开仓库；允许按PARTIAL归档，覆盖此前本轮“禁止提交/push”的操作限制，但不改变Research质量FAIL和正式用户验收NOT MEASURED，不启动Phase9。代码、已知失败、文献与后续修复方案均有记录；新回归SQLite1509/11skip、新PG1520及迁移往返、前端193/lint/build、Ruff通过。远端实际状态以Git和后续操作回执为准，不将本地提交当作推送成功。下方旧禁止推送记录保留历史语境。
 
 > **2026-10-18动态展示补充：[51号清理与复验](docs/51-动态数据展示清理与复验.md)。** 修复评分依据/AI建议审计串、状态及生成正文/编辑框内部主题标记；前端193项、生产构建和18页74项实页检查通过，用户页面已刷新。50号原检查覆盖范围已更正；评分/决策对象、90项保护文件及191项后端指纹未变。未提交/push，Phase8 PARTIAL及Research主要限制保留。
