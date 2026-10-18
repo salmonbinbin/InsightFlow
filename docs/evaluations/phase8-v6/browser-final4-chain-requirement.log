@@ -1,0 +1,6 @@
+### Result
+{"status":503,"body":{"detail":"PRD tool input missing required fields: ['acceptance_criteria', 'edge_cases', 'evidence_ids', 'evidence_sources', 'functional_requirements', 'mvp_scope', 'problem', 'product_goal', 'proposed_solution', 'risks', 'success_metrics', 'target_user', 'user_flow', 'user_story']"}}
+### Ran Playwright code
+```js
+await (async (page) => { const p=page.waitForResponse(r=>r.url().includes("/requirements") && r.request().method()==="POST",{timeout:180000}); await page.getByTestId("create-requirement").click(); const r=await p; return {status:r.status(),body:await r.json()}; })(page);
+```

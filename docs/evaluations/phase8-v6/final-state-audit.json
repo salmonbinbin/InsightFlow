@@ -1,0 +1,32 @@
+{
+  "code_manifest_unchanged": true,
+  "protected_file_count": 71,
+  "protected_changes": [
+    "backend/tests/test_phase8_research.py",
+    "backend/tests/test_phase8_research_v4.py"
+  ],
+  "protected_change_reason": "active v6 module/version declarations only; historical negative quote assertions retained",
+  "isolated_database_revision": "0015",
+  "isolated_data_directory": "/private/var/folders/x6/nd4hh2p91m7g7wmzm4x3zxbw0000gn/T/insightflow-p8-completion-xayo481c/data",
+  "raw_rows": 12,
+  "raw_fields": [
+    "id",
+    "project_id",
+    "external_id",
+    "content",
+    "source",
+    "user_id",
+    "user_type",
+    "feedback_created_at",
+    "created_at"
+  ],
+  "raw_all_fields_unchanged": true,
+  "raw_before_normalized_sha256": "782d1695f41eb2e5c4a1deb832a6f23fda99a64fde3c7b0ee94e4c35e67ec2d0",
+  "raw_after_normalized_sha256": "782d1695f41eb2e5c4a1deb832a6f23fda99a64fde3c7b0ee94e4c35e67ec2d0",
+  "simulated_target_count": 1,
+  "head": "449e8790b8da8b9f04f4e3739cd9740606241cc4",
+  "branch": "codex/phase6-evaluation",
+  "index_empty": true,
+  "user_database_mutated": false,
+  "push_performed": false
+}

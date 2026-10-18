@@ -1,0 +1,248 @@
+### Page
+- Page URL: http://127.0.0.1:13080/requirements/caef3eff-48db-4560-adf1-0f09a97d4ec6
+- Page Title: InsightFlow — 反馈到产品的中转站
+- Console: 1 errors, 0 warnings
+### Snapshot
+```yaml
+- generic [active] [ref=f4e1]:
+  - generic [ref=f4e2]:
+    - complementary "主导航" [ref=f4e3]:
+      - generic [ref=f4e4]:
+        - generic [aria-hidden] [ref=f4e5]: ◆
+        - generic [ref=f4e6]: InsightFlow
+      - navigation [ref=f4e7]:
+        - generic [ref=f4e8]: MVP
+        - list [ref=f4e9]:
+          - listitem [ref=f4e10]:
+            - link "概览" [ref=f4e11] [cursor=pointer]:
+              - /url: /
+          - listitem [ref=f4e12]:
+            - link "反馈列表" [ref=f4e13] [cursor=pointer]:
+              - /url: /feedback
+          - listitem [ref=f4e14]:
+            - link "分析" [ref=f4e15] [cursor=pointer]:
+              - /url: /analysis
+          - listitem [ref=f4e16]:
+            - link "上传 CSV" [ref=f4e17] [cursor=pointer]:
+              - /url: /upload
+          - listitem [ref=f4e18]:
+            - link "洞察 / 机会评分" [ref=f4e19] [cursor=pointer]:
+              - /url: /insights
+          - listitem [ref=f4e20]:
+            - link "需求" [ref=f4e21] [cursor=pointer]:
+              - /url: /requirements
+          - listitem [ref=f4e22]:
+            - link "PRD" [ref=f4e23] [cursor=pointer]:
+              - /url: /prds
+          - listitem [ref=f4e24]:
+            - link "评测" [ref=f4e25] [cursor=pointer]:
+              - /url: /evaluation
+      - generic [ref=f4e26]: Phase 7 — 前端 MVP
+    - generic [ref=f4e28]:
+      - banner [ref=f4e29]:
+        - button "当前项目 Phase8 completion 隔离验收 A AI photo workspace" [ref=f4e45] [cursor=pointer]:
+          - generic [ref=f4e32]: 当前项目
+          - generic [ref=f4e33]: Phase8 completion 隔离验收 A
+          - generic [ref=f4e34]: AI photo workspace
+          - generic [aria-hidden] [ref=f4e35]: ▾
+        - generic [ref=f4e36]: Phase 7 · MVP
+      - main [ref=f4e38]:
+        - generic [ref=f4e46]:
+          - generic [ref=f4e47]:
+            - generic [ref=f4e48]: Requirement · B2
+            - heading "图片上传支持多张批量选择" [level=1] [ref=f4e49]
+            - paragraph [ref=f4e50]:
+              - text: 来自 Insight
+              - code [ref=f4e51]: 0f737652
+              - text: · Decision
+              - code [ref=f4e52]: 3d734f52
+              - text: · 更新 3 小时前
+          - generic [ref=f4e54]:
+            - generic [ref=f4e55]:
+              - generic [ref=f4e56]: PM Priority
+              - generic [ref=f4e57]:
+                - generic [ref=f4e58]: P2
+                - text: 由上游 Decision 设定，本页只读。
+            - generic [ref=f4e59]:
+              - generic [ref=f4e60]: Insight Status Snapshot
+              - generic [ref=f4e61]: draft
+            - generic [ref=f4e62]:
+              - generic [ref=f4e63]: Decision Status Snapshot
+              - generic [ref=f4e64]: accepted
+            - generic [ref=f4e65]:
+              - generic [ref=f4e66]: AI Priority Snapshot
+              - generic [ref=f4e67]: P2
+          - generic [ref=f4e68]:
+            - heading "状态" [level=3] [ref=f4e69]
+            - generic [ref=f4e70]:
+              - generic [ref=f4e71]: Requirement Status
+              - combobox "Requirement Status" [ref=f4e72]:
+                - option "草稿" [selected]
+                - option "复核中"
+                - option "已批准"
+                - option "已驳回"
+                - option "已归档"
+          - generic [ref=f4e74]:
+            - generic [ref=f4e75]: Name
+            - textbox "Name" [ref=f4e76]: 图片上传支持多张批量选择
+          - generic [ref=f4e78]:
+            - generic [ref=f4e79]: Problem
+            - textbox "Problem" [ref=f4e80]: 用户在上传图片时，每次选择操作只能选中一张图片。在需要上传多张图片（例如一次分享一组旅游照片）的场景下，用户必须反复多次执行“选择—确认—上传”这一流程，单次操作成本被显著放大。证据显示，有用户在上传旅游照片时需要重复选择数十次，整体流程被拖慢，体验上产生明显的复发性操作负担。
+          - generic [ref=f4e82]:
+            - generic [ref=f4e83]: Target User
+            - textbox "Target User" [ref=f4e84]: 在产品中存在向同一会话/入口批量上传多张图片需求的用户。该需求在反馈中以“旅游照片一次性上传”为典型场景体现；用户身份、规模、付费特征、地域分布等在现有证据中未给出，因此不在此处做推断。
+          - generic [ref=f4e86]:
+            - generic [ref=f4e87]: User Story
+            - textbox "User Story" [ref=f4e88]: As a 需要一次性上传多张图片的用户 I want to 在上传入口一次性多选并提交多张图片 So that 我不必反复执行单张选择操作，能以更少的步骤完成整组图片的上传。 As a 在上传旅游/活动等多图场景下的用户 I want to 一次性选中并上传一组图片 So that 可以减少“选一张—确认—再选”的循环次数，整体操作更顺畅。
+          - generic [ref=f4e90]:
+            - generic [ref=f4e91]: Solution Hypothesis
+            - textbox "Solution Hypothesis" [ref=f4e92]: （假设）若在图片上传组件中将“单次最多选一张”的限制改为允许一次选中并提交多张图片，则用户在多图上传场景下的重复操作次数可显著下降，整体上传流程的体感效率有望提升。该方案为假设，需通过可用性验证（例如对比新旧流程的完成步数、用户主观负担评分）来确认是否能真正缓解复发性操作负担，而非引入新的复杂度。
+          - generic [ref=f4e93]:
+            - heading "Success Metrics · 2" [level=3] [ref=f4e94]
+            - paragraph [ref=f4e95]: 可为空数组；每项须含非空 name（note 与 sources 为可选），否则保存被拒。
+            - generic [ref=f4e96]:
+              - generic [ref=f4e97]:
+                - generic [ref=f4e98]: 指标名称
+                - textbox "指标名称" [ref=f4e99]: 建立“每次上传操作的图片选择次数”基线
+              - generic [ref=f4e100]:
+                - generic [ref=f4e101]: 类型
+                - combobox "类型" [ref=f4e102]:
+                  - option "指标定义"
+                  - option "仅基线" [selected]
+              - generic [ref=f4e103]:
+                - generic [ref=f4e104]: 来源（每行一条）
+                - textbox "来源（每行一条）" [ref=f4e105]: F001 F002 F003
+              - generic [ref=f4e106]:
+                - generic [ref=f4e107]: 说明
+                - textbox "说明" [ref=f4e108]: 基于现有证据建立基线：当前每次上传流程仅允许选择 1 张图片；F002 中用户描述了一次上传任务中重复选择“几十次”的现象。后续可在该基线上观察行为变化，但本需求不预设定量提升目标。
+              - button "删除" [ref=f4e110] [cursor=pointer]
+            - generic [ref=f4e111]:
+              - generic [ref=f4e112]:
+                - generic [ref=f4e113]: 指标名称
+                - textbox "指标名称" [ref=f4e114]: 建立“图片上传模块复发性操作抱怨”反馈基线
+              - generic [ref=f4e115]:
+                - generic [ref=f4e116]: 类型
+                - combobox "类型" [ref=f4e117]:
+                  - option "指标定义"
+                  - option "仅基线" [selected]
+              - generic [ref=f4e118]:
+                - generic [ref=f4e119]: 来源（每行一条）
+                - textbox "来源（每行一条）" [ref=f4e120]: F001 F002 F003
+              - generic [ref=f4e121]:
+                - generic [ref=f4e122]: 说明
+                - textbox "说明" [ref=f4e123]: 当前已有 3 条围绕“每次只能选一张”的 feature_request 类型反馈，sentiment 为 negative/mixed，severity 2–3，作为后续观察反馈量与情绪变化的基线。
+              - button "删除" [ref=f4e125] [cursor=pointer]
+            - button "+ 添加指标" [ref=f4e126] [cursor=pointer]
+          - generic [ref=f4e127]:
+            - heading "Risks · 4" [level=3] [ref=f4e128]
+            - paragraph [ref=f4e129]: 可为空数组；每项须含非空 description，否则保存被拒。
+            - generic [ref=f4e130]:
+              - generic [ref=f4e131]:
+                - generic [ref=f4e132]: 类别
+                - combobox "类别" [ref=f4e133]:
+                  - option "已知风险" [selected]
+                  - option "推测风险"
+              - generic [ref=f4e134]:
+                - generic [ref=f4e135]: 描述
+                - textbox "描述" [ref=f4e136]: 用户已经对“每次只能选一张”形成了明确认知（F001/F002/F003），若仅做最小改动（例如仍限制单次但优化确认步骤），可能无法缓解其复发性操作痛点，导致反馈持续。
+              - generic [ref=f4e137]:
+                - generic [ref=f4e138]: 缓解方案
+                - textbox "缓解方案" [ref=f4e139]: 在方案上线前通过可用性测试验证多选行为是否真正覆盖用户的“一次性传一组”场景；保留原有单张上传入口以兼容其他使用习惯。
+              - generic [ref=f4e140]:
+                - generic [ref=f4e141]: Evidence IDs（每行一条）
+                - textbox "Evidence IDs（每行一条）" [ref=f4e142]: F001 F002 F003
+              - button "删除" [ref=f4e144] [cursor=pointer]
+            - generic [ref=f4e145]:
+              - generic [ref=f4e146]:
+                - generic [ref=f4e147]: 类别
+                - combobox "类别" [ref=f4e148]:
+                  - option "已知风险" [selected]
+                  - option "推测风险"
+              - generic [ref=f4e149]:
+                - generic [ref=f4e150]: 描述
+                - textbox "描述" [ref=f4e151]: F003 中用户明确表示“上传本身挺快的，只是每次只能选一张”，说明现有上传链路在单图条件下体验尚可；新方案若改变上传流程或重排序交互，可能影响现有对速度满意的用户。
+              - generic [ref=f4e152]:
+                - generic [ref=f4e153]: 缓解方案
+                - textbox "缓解方案" [ref=f4e154]: 将改动范围限定在“选择环节允许多选”，尽量避免改动上传与处理链路；上线后关注该模块的整体耗时与失败率变化。
+              - generic [ref=f4e155]:
+                - generic [ref=f4e156]: Evidence IDs（每行一条）
+                - textbox "Evidence IDs（每行一条）" [ref=f4e157]: F003
+              - button "删除" [ref=f4e159] [cursor=pointer]
+            - generic [ref=f4e160]:
+              - generic [ref=f4e161]:
+                - generic [ref=f4e162]: 类别
+                - combobox "类别" [ref=f4e163]:
+                  - option "已知风险"
+                  - option "推测风险" [selected]
+              - generic [ref=f4e164]:
+                - generic [ref=f4e165]: 描述
+                - textbox "描述" [ref=f4e166]: 多图批量选择可能带来新的问题，例如：单次选择过多图片导致失败率上升、大文件并发上传受限于网络或服务端容量、UI 视觉密度增加造成选择困难等。
+              - generic [ref=f4e167]:
+                - generic [ref=f4e168]: 缓解方案
+                - textbox "缓解方案" [ref=f4e169]: 在验证阶段设置分批上限与单批大小限制；提供进度反馈与失败重试入口；通过小流量灰度观察失败率与用户主观反馈。
+              - generic [ref=f4e170]:
+                - generic [ref=f4e171]: Evidence IDs（每行一条）
+                - textbox "Evidence IDs（每行一条）" [ref=f4e172]
+              - button "删除" [ref=f4e174] [cursor=pointer]
+            - generic [ref=f4e175]:
+              - generic [ref=f4e176]:
+                - generic [ref=f4e177]: 类别
+                - combobox "类别" [ref=f4e178]:
+                  - option "已知风险"
+                  - option "推测风险" [selected]
+              - generic [ref=f4e179]:
+                - generic [ref=f4e180]: 描述
+                - textbox "描述" [ref=f4e181]: 现有证据集中在多图场景，“每次只能选一张”是否为所有用户群体的共性需求仍需验证；若实际多图需求仅占少数用户行为，可能存在过度设计风险。
+              - generic [ref=f4e182]:
+                - generic [ref=f4e183]: 缓解方案
+                - textbox "缓解方案" [ref=f4e184]: 在落地前对上传入口的实际使用模式（单图 vs 多图占比）进行埋点分析，作为决策是否扩展到全量的依据。
+              - generic [ref=f4e185]:
+                - generic [ref=f4e186]: Evidence IDs（每行一条）
+                - textbox "Evidence IDs（每行一条）" [ref=f4e187]
+              - button "删除" [ref=f4e189] [cursor=pointer]
+            - button "+ 添加风险" [ref=f4e190] [cursor=pointer]
+          - generic [ref=f4e191]:
+            - heading "Evidence References · 3" [level=3] [ref=f4e192]
+            - paragraph [ref=f4e193]: 至少 1 条；每项须含非空 external_id 与 usage，否则保存被拒。
+            - generic [ref=f4e194]:
+              - generic [ref=f4e195]:
+                - generic [ref=f4e196]: External ID
+                - textbox "External ID" [ref=f4e197]: F001
+              - generic [ref=f4e198]:
+                - generic [ref=f4e199]: Usage
+                - textbox "Usage" [ref=f4e200]: 用于 problem 中描述“每次只能选一张”造成的复发性操作负担；用于 user_story 与 solution_hypothesis 中“支持多选”的核心假设；用于 success_metrics 的基线；用于 risks 中“最小改动不足以缓解痛点”这一 known 风险。
+              - button "删除" [ref=f4e202] [cursor=pointer]
+            - generic [ref=f4e203]:
+              - generic [ref=f4e204]:
+                - generic [ref=f4e205]: External ID
+                - textbox "External ID" [ref=f4e206]: F002
+              - generic [ref=f4e207]:
+                - generic [ref=f4e208]: Usage
+                - textbox "Usage" [ref=f4e209]: 用于 problem 中举例“旅游照片需选几十次”的复发现象；用于 target_user 中“旅游/活动等多图场景”描述；用于 success_metrics 中“每次上传操作的图片选择次数”基线；用于 risks 中“现有认知已固化”的 known 风险。
+              - button "删除" [ref=f4e211] [cursor=pointer]
+            - generic [ref=f4e212]:
+              - generic [ref=f4e213]:
+                - generic [ref=f4e214]: External ID
+                - textbox "External ID" [ref=f4e215]: F003
+              - generic [ref=f4e216]:
+                - generic [ref=f4e217]: Usage
+                - textbox "Usage" [ref=f4e218]: 用于 problem 中说明用户对上传速度本身满意、痛点集中在选择环节；用于 risks 中“改动上传链路可能影响现有满意体验”的 known 风险。
+              - button "删除" [ref=f4e220] [cursor=pointer]
+            - button "+ 添加 Evidence Reference" [ref=f4e221] [cursor=pointer]
+          - generic [ref=f4e222]:
+            - generic [ref=f4e223]:
+              - heading "同步状态" [level=4] [ref=f4e232]
+              - paragraph [ref=f4e225]: 当前未对内容做修改。
+            - generic [ref=f4e226]:
+              - link "返回列表" [ref=f4e227] [cursor=pointer]:
+                - /url: /requirements
+              - button "生成 PRD" [ref=f4e233] [cursor=pointer]
+              - button "保存" [disabled] [ref=f4e229]
+          - alert [ref=f4e234]:
+            - generic [ref=f4e235]: 生成 PRD 失败
+            - generic [ref=f4e236]: 服务暂不可用，请稍后再试。
+            - button "重试" [ref=f4e237] [cursor=pointer]
+  - alert [ref=f4e44]
+```
+### Events
+- New console entries: work/phase8-supervision/20261017-completion/.playwright-cli/console-2026-10-17T13-19-15-366Z.log#L1

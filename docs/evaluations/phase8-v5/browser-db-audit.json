@@ -1,0 +1,193 @@
+{
+  "raw_all_fields_unchanged": true,
+  "tool_runs": [
+    {
+      "id": "577ca423-7ea9-42e0-a7ec-dcd6c64e7fb6",
+      "status": "cancelled",
+      "external_id": null
+    },
+    {
+      "id": "39b609c9-7082-456e-86c3-787c8143365d",
+      "status": "cancelled",
+      "external_id": null
+    },
+    {
+      "id": "65082b39-5bc6-4777-b7bf-0fc3f1d30276",
+      "status": "completed",
+      "external_id": "SIM-fbbc8718e39e44948de9d421"
+    }
+  ],
+  "simulated_count": 1,
+  "research": [
+    {
+      "id": "3bbaaf48-83eb-444a-84bf-6c30507a861c",
+      "status": "completed",
+      "prompt_version": "research-agent-v5",
+      "source_count": 2,
+      "finding_count": 11,
+      "coverage_report": {
+        "task_question": "According to official Google Drive Help, what are the Android app steps to upload files? Cite only official Google Drive Help.",
+        "parse_status": "parsed",
+        "items": [
+          {
+            "requirement_id": "req-product-1",
+            "role": "core",
+            "kind": "product",
+            "status": "covered",
+            "evidence_ids": [
+              "df9584-00@377#1",
+              "df9584-00@377#2",
+              "df9584-00@377#3",
+              "df9584-00@377#4"
+            ],
+            "evidence_source_ids": [
+              "df9584-00"
+            ],
+            "gap": ""
+          },
+          {
+            "requirement_id": "req-platform-2",
+            "role": "core",
+            "kind": "platform",
+            "status": "covered",
+            "evidence_ids": [
+              "df9584-00@377#1"
+            ],
+            "evidence_source_ids": [
+              "df9584-00"
+            ],
+            "gap": ""
+          },
+          {
+            "requirement_id": "req-operation-3",
+            "role": "core",
+            "kind": "operation",
+            "status": "covered",
+            "evidence_ids": [
+              "df9584-00@377#1",
+              "df9584-00@377#2",
+              "df9584-00@377#3",
+              "df9584-00@377#4"
+            ],
+            "evidence_source_ids": [
+              "df9584-00"
+            ],
+            "gap": ""
+          },
+          {
+            "requirement_id": "req-procedure-4",
+            "role": "core",
+            "kind": "procedure",
+            "status": "covered",
+            "evidence_ids": [
+              "df9584-00@377#1",
+              "df9584-00@377#2",
+              "df9584-00@377#3",
+              "df9584-00@377#4"
+            ],
+            "evidence_source_ids": [
+              "df9584-00"
+            ],
+            "gap": ""
+          }
+        ],
+        "procedure_status": "complete",
+        "overall_completable": true,
+        "failure_reasons": [],
+        "semantic_review": "NOT_MEASURED"
+      }
+    },
+    {
+      "id": "a423ba26-2121-4915-9eba-bab164e465af",
+      "status": "partial_failed",
+      "prompt_version": "research-agent-v5",
+      "source_count": 2,
+      "finding_count": 12,
+      "coverage_report": {
+        "task_question": "According to official Google Photos Help, what are the steps to manually back up one photo or video in the Android app? Cite only official Google Help; distinguish automatic backup.",
+        "parse_status": "parsed",
+        "items": [
+          {
+            "requirement_id": "req-product-1",
+            "role": "core",
+            "kind": "product",
+            "status": "covered",
+            "evidence_ids": [
+              "6adc70-00@4023#1"
+            ],
+            "evidence_source_ids": [
+              "6adc70-00"
+            ],
+            "gap": ""
+          },
+          {
+            "requirement_id": "req-platform-2",
+            "role": "core",
+            "kind": "platform",
+            "status": "covered",
+            "evidence_ids": [
+              "6adc70-00@4023#1"
+            ],
+            "evidence_source_ids": [
+              "6adc70-00"
+            ],
+            "gap": ""
+          },
+          {
+            "requirement_id": "req-operation-3",
+            "role": "core",
+            "kind": "operation",
+            "status": "covered",
+            "evidence_ids": [
+              "6adc70-00@4023#1",
+              "6adc70-00@4023#2",
+              "6adc70-00@4023#3",
+              "6adc70-00@4023#4",
+              "6adc70-00@4023#5",
+              "6adc70-00@4048+135",
+              "6adc70-00@4424+21"
+            ],
+            "evidence_source_ids": [
+              "6adc70-00"
+            ],
+            "gap": ""
+          },
+          {
+            "requirement_id": "req-procedure-4",
+            "role": "core",
+            "kind": "procedure",
+            "status": "covered",
+            "evidence_ids": [
+              "6adc70-00@4023#1",
+              "6adc70-00@4023#2",
+              "6adc70-00@4023#3",
+              "6adc70-00@4023#4",
+              "6adc70-00@4023#5",
+              "6adc70-00@4048+135",
+              "6adc70-00@4424+21"
+            ],
+            "evidence_source_ids": [
+              "6adc70-00"
+            ],
+            "gap": ""
+          },
+          {
+            "requirement_id": "req-distinguish-auto-5",
+            "role": "core",
+            "kind": "distinguish_auto",
+            "status": "not_verified",
+            "evidence_ids": [],
+            "evidence_source_ids": [],
+            "gap": "evidence does not match the requested flow (manual vs automatic)"
+          }
+        ],
+        "procedure_status": "complete",
+        "overall_completable": false,
+        "failure_reasons": [
+          "req-distinguish-auto-5(distinguish_auto='both'): not_verified evidence does not match the requested flow (manual vs automatic)"
+        ],
+        "semantic_review": "NOT_MEASURED"
+      }
+    }
+  ]
+}

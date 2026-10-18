@@ -1,0 +1,627 @@
+{
+  "reviewed_at": "2026-10-17T03:15:59.043045+00:00",
+  "method": "Independent HTTP fetch and plain HTMLParser, separate from production reader/validator; list prefixes excluded only for audit string comparison; semantic review recorded separately",
+  "pages": [
+    {
+      "url": "https://help.dropbox.com/create-upload/upload-mobile",
+      "final_url": "https://help.dropbox.com/create-upload/upload-mobile",
+      "http_status": 200,
+      "sha256_html": "5a89d411955d1bc9746fabfe591440125accafa6b1b3773bc83e87e3e11553c1",
+      "sha256_text": "940072fa48b77f1a3cc95f7a2b1d525561950123cc766e141615071518dd9d8d",
+      "text_file": "56943ff82d626f50.txt"
+    },
+    {
+      "url": "https://help.dropbox.com/create-upload/upload-mobile?fallback=true",
+      "final_url": "https://help.dropbox.com/create-upload/upload-mobile?fallback=true",
+      "http_status": 200,
+      "sha256_html": "5a89d411955d1bc9746fabfe591440125accafa6b1b3773bc83e87e3e11553c1",
+      "sha256_text": "940072fa48b77f1a3cc95f7a2b1d525561950123cc766e141615071518dd9d8d",
+      "text_file": "9896719c6d023684.txt"
+    },
+    {
+      "url": "https://support.apple.com/guide/icloud/upload-and-download-photos-mmb5dbaf376f/icloud",
+      "final_url": "https://support.apple.com/guide/icloud/upload-and-download-photos-mmb5dbaf376f/icloud",
+      "http_status": 200,
+      "sha256_html": "b5887c49fb9fbd153e2e3001c6af4269ba765fe59a87bccd5f35114cbda39f27",
+      "sha256_text": "2ff63efe0fb629b81272b874ac66d18c106e1af07e5fd0780084d743925bba7b",
+      "text_file": "89967b50b14a0cc3.txt"
+    },
+    {
+      "url": "https://support.apple.com/guide/iphone/add-content-to-an-icloud-shared-photo-library-iphc6c5d25ce/ios",
+      "final_url": "https://support.apple.com/guide/iphone/add-content-to-an-icloud-shared-photo-library-iphc6c5d25ce/ios",
+      "http_status": 200,
+      "sha256_html": "3ccd0e42c9bdbbbe0b5f5fd001cb43e777bea9c5deff92afd4f8bf466268480d",
+      "sha256_text": "af2439d8c6f0672a1767642b0583ca351b1c9b57552300d8f668d79b74f4e725",
+      "text_file": "9c668feb7fb8afa5.txt"
+    },
+    {
+      "url": "https://support.google.com/drive/answer/2424368?hl=en&co=GENIE.Platform%3DAndroid",
+      "final_url": "https://support.google.com/drive/answer/2424368?hl=en&co=GENIE.Platform%3DAndroid",
+      "http_status": 200,
+      "sha256_html": "71e405b25da35a8e5d37b68e0c5ec0dca9f580950317f4a7000af9c24f05a2e9",
+      "sha256_text": "dd84b8eacd66c049d3a285a97cd1b5d1050553da9df1f43f1c5f32c9d7ce39fc",
+      "text_file": "1e3bd3ce3f39508a.txt"
+    },
+    {
+      "url": "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid",
+      "final_url": "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid",
+      "http_status": 200,
+      "sha256_html": "980e258053cbbd8c7b92fb921cf80b46c6833138a5b73d97838b3bc8ae13e8d8",
+      "sha256_text": "d35566cc56ac828a432b35c8b287653e82f7d9ddea2aa52334461907f48193ea",
+      "text_file": "93af343621c6b0d1.txt"
+    },
+    {
+      "url": "https://support.microsoft.com/en-us/onedrive/manually-upload-files-or-photos-to-onedrive-in-ios",
+      "final_url": "https://support.microsoft.com/en-us/onedrive/manually-upload-files-or-photos-to-onedrive-in-ios",
+      "http_status": 200,
+      "sha256_html": "82c25ba71c14fbb17554c395d56150af17f40e1eede8078d8ce73cf250e803e7",
+      "sha256_text": "176458952d3a47307e09ffacac2bb23b356a04873f4793410db612e4f3e6c823",
+      "text_file": "ee88d30899a0627a.txt"
+    },
+    {
+      "url": "https://support.microsoft.com/en-us/onedrive/troubleshoot-onedrive-for-ios-app-problems",
+      "final_url": "https://support.microsoft.com/en-us/onedrive/troubleshoot-onedrive-for-ios-app-problems",
+      "http_status": 200,
+      "sha256_html": "30562de041314d318f4672051df806e307a6fab83f3fa71c0ccbba698f96664e",
+      "sha256_text": "1f2f056b4b3227fbf13325acb8e80d6a0a784394015ac86423b352394d3e7c83",
+      "text_file": "9d101f8ea1429862.txt"
+    }
+  ],
+  "samples": [
+    {
+      "sample": 1,
+      "run_id": "30882032-6718-4e08-ad3a-549d9dfbfee6",
+      "question": "In the Google Photos Android app, can a user manually select several photos and start backup in one action? Cite only official Google Help; separate manual upload from automatic backup.",
+      "program_status": "partial_failed",
+      "confirmed_checks": [
+        {
+          "quote": "- If you want to back up multiple photos or videos: Touch and hold the photos or videos you want to back up, and then tap Back up.",
+          "sources": [
+            {
+              "url": "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "oll to the bottom, then tap Back up now. Tips: When you open a single photo and you don't have enough storage: The badge shows \"Not enough storage to back up.\" If you want to back up multiple photos or videos: Touch and hold the photos or videos you want to back up, and then tap Back up. Check your overall backup status Important: If backup is on and you have enough storage, you can find the backup status at the top of your library. On your Android device, open Google Photos Photos. At the top, check th",
+              "error_type": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sample": 2,
+      "run_id": "c641fdbc-f9a4-43e4-9482-b7151a1e61bd",
+      "question": "In the Dropbox iPhone app, can a user select and upload multiple photos at once? Cite only official Dropbox Help and state any limits actually documented.",
+      "program_status": "partial_failed",
+      "confirmed_checks": []
+    },
+    {
+      "sample": 3,
+      "run_id": "12442ebb-49ab-419e-86ac-090590bddf6f",
+      "question": "In the OneDrive iPhone app, can a user manually select multiple photos for one upload? Cite only official Microsoft Support; separate manual upload from camera upload.",
+      "program_status": "partial_failed",
+      "confirmed_checks": [
+        {
+          "quote": "Users of iOS 16 may not be able to use the two-fingered pan gesture to select multiple files in OneDrive.",
+          "sources": [
+            {
+              "url": "https://support.microsoft.com/en-us/onedrive/troubleshoot-onedrive-for-ios-app-problems",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "the video, then choose to download. Make the video offline. Select the video, then then Make available offline. Slide to select not working in OneDrive for iOS Users of iOS 16 may not be able to use the two-fingered pan gesture to select multiple files in OneDrive. We are aware of the issue and working on a solution. Workaround Select one photo first, then use two fingers to slide to select multiple files or photos. Whiteboard sharing not working in OneDrive for work or school As ",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "Select one photo first, then use two fingers to slide to select multiple files or photos.",
+          "sources": [
+            {
+              "url": "https://support.microsoft.com/en-us/onedrive/troubleshoot-onedrive-for-ios-app-problems",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "OS 16 may not be able to use the two-fingered pan gesture to select multiple files in OneDrive. We are aware of the issue and working on a solution. Workaround Select one photo first, then use two fingers to slide to select multiple files or photos. Whiteboard sharing not working in OneDrive for work or school As of 7/30/21, to use the Whiteboard sharing feature, iOS users must be on app version 12.2.6 or greater. Update to the latest version to use the Whiteboard ",
+              "error_type": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sample": 4,
+      "run_id": "db8baf49-5ffd-4af3-be46-54082d2347e2",
+      "question": "On iPhone, distinguish the Photos app iCloud sync, iCloud.com upload, and Shared Photo Library. Which of these supports selecting multiple photos for a manual upload? Cite only official Apple Support.",
+      "program_status": "partial_failed",
+      "confirmed_checks": [
+        {
+          "quote": "2. Tap the photo or video you want to add. Or to add multiple photos and videos at the same time, tap Select, then tap the thumbnails you want to add.",
+          "sources": [
+            {
+              "url": "https://support.apple.com/guide/iphone/add-content-to-an-icloud-shared-photo-library-iphc6c5d25ce/ios",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "ared Photo Library You can add individual photos and videos from your personal library to the iCloud Shared Photo Library. Go to the Photos app on your iPhone. Tap the photo or video you want to add. Or to add multiple photos and videos at the same time, tap Select, then tap the thumbnails you want to add. Tap the More button, then tap Move to Shared Library. Tip: To see suggestions for photos and videos you might want to add to your Shared Library, tap Collections , tap your account in the top-right corner, then tap For ",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "After you set up or join an iCloud Shared Photo Library in the Photos app, you can continue to add photos and videos in several ways:",
+          "sources": [
+            {
+              "url": "https://support.apple.com/guide/iphone/add-content-to-an-icloud-shared-photo-library-iphc6c5d25ce/ios",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "nvironment Disposal and recycling information Unauthorized modification of iOS Copyright and trademarks Add content to an iCloud Shared Photo Library on iPhone After you set up or join an iCloud Shared Photo Library in the Photos app, you can continue to add photos and videos in several ways: Manually move photos from your personal library Save photos and videos you take directly to the shared library from Camera Share photos you take when other members of the shared library are nearby Share photos and video",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "You can upload photos and videos in multiple formats from your computer to your personal library, albums, and shared albums.",
+          "sources": [
+            {
+              "url": "https://support.apple.com/guide/icloud/upload-and-download-photos-mmb5dbaf376f/icloud",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "iCloud Photos and are visible on all of your devices that have iCloud Photos turned on. You can also download photos to keep them on your device. Upload photos You can upload photos and videos in multiple formats from your computer to your personal library, albums, and shared albums. See the Apple Support article Shared Album limits. Go to icloud.com/photos, then sign in to your Apple Account (if necessary). Select Library in the sidebar, or select an album, then select the Add Photos to Album butto",
+              "error_type": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sample": 5,
+      "run_id": "4fafa0e8-365b-4dff-af04-762dfa3b75aa",
+      "question": "In the Google Drive Android app, can a user select multiple device photos and upload them in one action? Cite only official Google Drive Help; if official documentation is absent, mark not verified.",
+      "program_status": "partial_failed",
+      "confirmed_checks": []
+    },
+    {
+      "sample": 6,
+      "run_id": "c18a1d92-b011-42ac-b3ca-db9bc1e4e995",
+      "question": "According to official Google Photos Help, what are the steps to manually back up one photo or video in the Android app? Cite only official Google Help; distinguish automatic backup.",
+      "program_status": "partial_failed",
+      "confirmed_checks": [
+        {
+          "quote": "1. On your Android device, open the Google Photos app Photos .",
+          "sources": [
+            {
+              "url": "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": false,
+              "independent_page_context": "",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "2. Sign in to your Google Account.",
+          "sources": [
+            {
+              "url": "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": " backup, depending on your internet connection, size of your uploads, and other conditions. On your Android phone or tablet, open the Google Photos app Photos. Sign in to your Google Account. At the top right, tap your Profile picture or Initial. Tap Photos settings Settings and then Backup. Turn Backup on or off. Turn Backup on or off Check if backup is complete On your Android phone or tablet, open the Goo",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "3. Open the photo or video.",
+          "sources": [
+            {
+              "url": "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "the steps to check up backup status Manually back up photos & videos On your Android device, open the Google Photos app Photos. Sign in to your Google Account. Open the photo or video. Tap Back up now. Alternatively, you can tap the Back up button or scroll to the bottom, then tap Back up now. Tips: When you open a single photo and you don't have enough storage: The badge shows \"Not enough storage to ",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "4. Tap Back up now.",
+          "sources": [
+            {
+              "url": "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "kup status Manually back up photos & videos On your Android device, open the Google Photos app Photos. Sign in to your Google Account. Open the photo or video. Tap Back up now. Alternatively, you can tap the Back up button or scroll to the bottom, then tap Back up now. Tips: When you open a single photo and you don't have enough storage: The badge shows \"Not enough storage to back up.\" If you ",
+              "error_type": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sample": 7,
+      "run_id": "1851b097-eda9-4715-a126-282946d38377",
+      "question": "According to official Dropbox Help, can mobile users manually add photos when camera uploads are disabled? Cite only official Dropbox Help.",
+      "program_status": "partial_failed",
+      "confirmed_checks": [
+        {
+          "quote": "1. Open the Dropbox mobile app.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/upload-mobile",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "and save your content. How to upload photos and videos If you don't have camera uploads enabled, you can manually add photos to your Dropbox account. To do so: Open the Dropbox mobile app. Open the Dropbox folder where you'd like to store your photos. Tap the \"+\" (plus sign) at the bottom of your screen. Choose Upload Photos. Tap the photos you would like to upload. Tap the folder icon (Android) or Next (",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "2. Open the Dropbox folder where you'd like to store your photos.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/upload-mobile",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": " upload photos and videos If you don't have camera uploads enabled, you can manually add photos to your Dropbox account. To do so: Open the Dropbox mobile app. Open the Dropbox folder where you'd like to store your photos. Tap the \"+\" (plus sign) at the bottom of your screen. Choose Upload Photos. Tap the photos you would like to upload. Tap the folder icon (Android) or Next (iOS), and select where you'd like the files to be added. Tap Se",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "4. Choose Upload Photos.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/upload-mobile",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "nt. To do so: Open the Dropbox mobile app. Open the Dropbox folder where you'd like to store your photos. Tap the \"+\" (plus sign) at the bottom of your screen. Choose Upload Photos. Tap the photos you would like to upload. Tap the folder icon (Android) or Next (iOS), and select where you'd like the files to be added. Tap Set location. Tap Upload. Note: The Dropbox app for Windows devices does not c",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "5. Tap the photos you would like to upload.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/upload-mobile",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": " Dropbox mobile app. Open the Dropbox folder where you'd like to store your photos. Tap the \"+\" (plus sign) at the bottom of your screen. Choose Upload Photos. Tap the photos you would like to upload. Tap the folder icon (Android) or Next (iOS), and select where you'd like the files to be added. Tap Set location. Tap Upload. Note: The Dropbox app for Windows devices does not currently support video uploads. This is d",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "6. Tap the folder icon (Android) or Next (iOS), and select where you'd like the files to be added.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/upload-mobile",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "der where you'd like to store your photos. Tap the \"+\" (plus sign) at the bottom of your screen. Choose Upload Photos. Tap the photos you would like to upload. Tap the folder icon (Android) or Next (iOS), and select where you'd like the files to be added. Tap Set location. Tap Upload. Note: The Dropbox app for Windows devices does not currently support video uploads. This is due to operating system limitations. How to upload photos overnight in iOS If you have to upload ",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "7. Tap Set location.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/upload-mobile",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": " Choose Upload Photos. Tap the photos you would like to upload. Tap the folder icon (Android) or Next (iOS), and select where you'd like the files to be added. Tap Set location. Tap Upload. Note: The Dropbox app for Windows devices does not currently support video uploads. This is due to operating system limitations. How to upload photos overnight in iOS If you have to upload a large amount of ",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "8. Tap Upload.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/upload-mobile",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "tos. Tap the photos you would like to upload. Tap the folder icon (Android) or Next (iOS), and select where you'd like the files to be added. Tap Set location. Tap Upload. Note: The Dropbox app for Windows devices does not currently support video uploads. This is due to operating system limitations. How to upload photos overnight in iOS If you have to upload a large amount of photos or vi",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "1. Open the Dropbox mobile app.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/upload-mobile?fallback=true",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "and save your content. How to upload photos and videos If you don't have camera uploads enabled, you can manually add photos to your Dropbox account. To do so: Open the Dropbox mobile app. Open the Dropbox folder where you'd like to store your photos. Tap the \"+\" (plus sign) at the bottom of your screen. Choose Upload Photos. Tap the photos you would like to upload. Tap the folder icon (Android) or Next (",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "2. Open the Dropbox folder where you'd like to store your photos.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/upload-mobile?fallback=true",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": " upload photos and videos If you don't have camera uploads enabled, you can manually add photos to your Dropbox account. To do so: Open the Dropbox mobile app. Open the Dropbox folder where you'd like to store your photos. Tap the \"+\" (plus sign) at the bottom of your screen. Choose Upload Photos. Tap the photos you would like to upload. Tap the folder icon (Android) or Next (iOS), and select where you'd like the files to be added. Tap Se",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "4. Choose Upload Photos.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/upload-mobile?fallback=true",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "nt. To do so: Open the Dropbox mobile app. Open the Dropbox folder where you'd like to store your photos. Tap the \"+\" (plus sign) at the bottom of your screen. Choose Upload Photos. Tap the photos you would like to upload. Tap the folder icon (Android) or Next (iOS), and select where you'd like the files to be added. Tap Set location. Tap Upload. Note: The Dropbox app for Windows devices does not c",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "5. Tap the photos you would like to upload.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/upload-mobile?fallback=true",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": " Dropbox mobile app. Open the Dropbox folder where you'd like to store your photos. Tap the \"+\" (plus sign) at the bottom of your screen. Choose Upload Photos. Tap the photos you would like to upload. Tap the folder icon (Android) or Next (iOS), and select where you'd like the files to be added. Tap Set location. Tap Upload. Note: The Dropbox app for Windows devices does not currently support video uploads. This is d",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "6. Tap the folder icon (Android) or Next (iOS), and select where you'd like the files to be added.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/upload-mobile?fallback=true",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "der where you'd like to store your photos. Tap the \"+\" (plus sign) at the bottom of your screen. Choose Upload Photos. Tap the photos you would like to upload. Tap the folder icon (Android) or Next (iOS), and select where you'd like the files to be added. Tap Set location. Tap Upload. Note: The Dropbox app for Windows devices does not currently support video uploads. This is due to operating system limitations. How to upload photos overnight in iOS If you have to upload ",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "7. Tap Set location.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/upload-mobile?fallback=true",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": " Choose Upload Photos. Tap the photos you would like to upload. Tap the folder icon (Android) or Next (iOS), and select where you'd like the files to be added. Tap Set location. Tap Upload. Note: The Dropbox app for Windows devices does not currently support video uploads. This is due to operating system limitations. How to upload photos overnight in iOS If you have to upload a large amount of ",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "8. Tap Upload.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/upload-mobile?fallback=true",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "tos. Tap the photos you would like to upload. Tap the folder icon (Android) or Next (iOS), and select where you'd like the files to be added. Tap Set location. Tap Upload. Note: The Dropbox app for Windows devices does not currently support video uploads. This is due to operating system limitations. How to upload photos overnight in iOS If you have to upload a large amount of photos or vi",
+              "error_type": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sample": 8,
+      "run_id": "931d236c-d887-4f9b-a3db-6286adedee91",
+      "question": "According to official Microsoft Support, how does an iPhone user select existing pictures for a manual upload in OneDrive? Cite only official Microsoft Support.",
+      "program_status": "completed",
+      "confirmed_checks": [
+        {
+          "quote": "1. In the OneDrive app, tap OneDrive add icon at the top of the screen.",
+          "sources": [
+            {
+              "url": "https://support.microsoft.com/en-us/onedrive/manually-upload-files-or-photos-to-onedrive-in-ios",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "pload to OneDrive automatically, read how to Automatically save photos and videos from OneDrive on iOS. Upload files and folders using the OneDrive for iOS app In the OneDrive app, tap OneDrive add icon at the top of the screen. Then tap to Take a photo, Scan a document, Create a folder or Upload a file or photo. Note OneDrive cannot upload photos optimized for iCloud. To disable optimization, tap Settings > iCloud > Photos and uncheck Optimize",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "2. Then tap to Take a photo, Scan a document, Create a folder or Upload a file or photo.",
+          "sources": [
+            {
+              "url": "https://support.microsoft.com/en-us/onedrive/manually-upload-files-or-photos-to-onedrive-in-ios",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "s and videos from OneDrive on iOS. Upload files and folders using the OneDrive for iOS app In the OneDrive app, tap OneDrive add icon at the top of the screen. Then tap to Take a photo, Scan a document, Create a folder or Upload a file or photo. Note OneDrive cannot upload photos optimized for iCloud. To disable optimization, tap Settings > iCloud > Photos and uncheck Optimize Storage. Learn how to upload HEIF and HEVC photos and videos to OneDrive. If you choo",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "- If you tap Choose Existing, links appear to the Photos app on your device.",
+          "sources": [
+            {
+              "url": "https://support.microsoft.com/en-us/onedrive/manually-upload-files-or-photos-to-onedrive-in-ios",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": " Photo, your device's camera app opens. You might be asked if you want OneDrive to access your camera - tap Yes to allow your pictures to be saved in OneDrive. If you tap Choose Existing, links appear to the Photos app on your device. Browse to the pictures you want to upload, select them, then on the top bar, tap Done. Move files between folders in the OneDrive for iOS app Select the files you want to move. Tap More icon in the OneDrive app for iOS ",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "Browse to the pictures you want to upload, select them, then on the top bar, tap Done.",
+          "sources": [
+            {
+              "url": "https://support.microsoft.com/en-us/onedrive/manually-upload-files-or-photos-to-onedrive-in-ios",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "rive to access your camera - tap Yes to allow your pictures to be saved in OneDrive. If you tap Choose Existing, links appear to the Photos app on your device. Browse to the pictures you want to upload, select them, then on the top bar, tap Done. Move files between folders in the OneDrive for iOS app Select the files you want to move. Tap More icon in the OneDrive app for iOS at the top of the screen, then tap Move. You can move folders into another folder, as w",
+              "error_type": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sample": 9,
+      "run_id": "65a03fd5-780a-49ce-9069-8a70d57122ab",
+      "question": "According to official Apple Support, which upload choices does iCloud.com show on a phone or tablet, and where should users upload to a Shared Photo Library? Cite only official Apple Support.",
+      "program_status": "partial_failed",
+      "confirmed_checks": [
+        {
+          "quote": "1. Go to icloud.com/photos, then sign in to your Apple Account (if necessary).",
+          "sources": [
+            {
+              "url": "https://support.apple.com/guide/icloud/upload-and-download-photos-mmb5dbaf376f/icloud",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "hotos and videos in multiple formats from your computer to your personal library, albums, and shared albums. See the Apple Support article Shared Album limits. Go to icloud.com/photos, then sign in to your Apple Account (if necessary). Select Library in the sidebar, or select an album, then select the Add Photos to Album button. Select the Choose Files button, then do either of the following: On a phone or tablet: Choose Photo Library, Take Photo or V",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "2. Select Library in the sidebar, or select an album, then select the Add Photos to Album button .",
+          "sources": [
+            {
+              "url": "https://support.apple.com/guide/icloud/upload-and-download-photos-mmb5dbaf376f/icloud",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": false,
+              "independent_page_context": "",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "3. Select the Choose Files button , then do either of the following:",
+          "sources": [
+            {
+              "url": "https://support.apple.com/guide/icloud/upload-and-download-photos-mmb5dbaf376f/icloud",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": false,
+              "independent_page_context": "",
+              "error_type": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sample": 10,
+      "run_id": "b1b24f32-1656-4f2c-b9d6-a0b58d6c56e7",
+      "question": "According to official Google Drive Help, what are the Android app steps to upload files? Cite only official Google Drive Help.",
+      "program_status": "completed",
+      "confirmed_checks": [
+        {
+          "quote": "1. On your Android phone or tablet, open the Google Drive app.",
+          "sources": [
+            {
+              "url": "https://support.google.com/drive/answer/2424368?hl=en&co=GENIE.Platform%3DAndroid",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "ive, it will take up space in your Drive, even if you upload to a folder owned by someone else. Types of files Documents Images Audio Video Upload & find files On your Android phone or tablet, open the Google Drive app. Tap New Add question and then Upload. Find and tap the files you want to upload. Find uploaded files in My Drive until you move them. Convert documents into Google formats If you want to upload files like Microsoft Word",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "2. Tap New Add question and then Upload.",
+          "sources": [
+            {
+              "url": "https://support.google.com/drive/answer/2424368?hl=en&co=GENIE.Platform%3DAndroid",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": " to a folder owned by someone else. Types of files Documents Images Audio Video Upload & find files On your Android phone or tablet, open the Google Drive app. Tap New Add question and then Upload. Find and tap the files you want to upload. Find uploaded files in My Drive until you move them. Convert documents into Google formats If you want to upload files like Microsoft Word documents, you can change a setting t",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "3. Find and tap the files you want to upload.",
+          "sources": [
+            {
+              "url": "https://support.google.com/drive/answer/2424368?hl=en&co=GENIE.Platform%3DAndroid",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "pes of files Documents Images Audio Video Upload & find files On your Android phone or tablet, open the Google Drive app. Tap New Add question and then Upload. Find and tap the files you want to upload. Find uploaded files in My Drive until you move them. Convert documents into Google formats If you want to upload files like Microsoft Word documents, you can change a setting to convert files. Important: You can only ch",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "4. Find uploaded files in My Drive until you move them.",
+          "sources": [
+            {
+              "url": "https://support.google.com/drive/answer/2424368?hl=en&co=GENIE.Platform%3DAndroid",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "pload & find files On your Android phone or tablet, open the Google Drive app. Tap New Add question and then Upload. Find and tap the files you want to upload. Find uploaded files in My Drive until you move them. Convert documents into Google formats If you want to upload files like Microsoft Word documents, you can change a setting to convert files. Important: You can only change Google Drive settings from your computer. Turn m",
+              "error_type": null
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "manual_inspection_notes": [
+    "35条confirmed引文均核对保存正文及独立重取官方页面；不包含未验证摘要的真实性背书。",
+    "独立简易解析器不添加图片alt左右空格：Google #6第一句及Apple #9两句字符串对比为false；人工核对原HTML/alt及正文确认系格式差异，不修改生产精确引文校验。",
+    "第4题电脑多格式句原文真实但离开iPhone语境，记录相关性误收1；事实误阳性未发现，不等于总体语义安全通过。"
+  ],
+  "classifications": [
+    {
+      "sample": 1,
+      "classification": "来源支持局部事实",
+      "reason": "Google官方正文Tips明确multiple photos/videos与touch and hold→Back up；未确认单张步骤/自动区别，复杂能力问题超出窄语法，整题未闭合。"
+    },
+    {
+      "sample": 2,
+      "classification": "未验证",
+      "reason": "无confirmed；summary_invalid、缺tool_use、summary_invalid用尽3次LLM。官方手动流程仅普通复数，不能替代保留的明确多选数量守卫，限制也未证明。"
+    },
+    {
+      "sample": 3,
+      "classification": "来源支持局部事实",
+      "reason": "仅iOS16手势故障/两指滑选workaround confirmed；Microsoft原文存在，但不能回答跨版本多图上传完整流程。新门槛阻止旧完整性误阳性。"
+    },
+    {
+      "sample": 4,
+      "classification": "来源支持局部事实",
+      "reason": "Shared Library的多选步骤与several ways有原文；另confirmed电脑多格式上传句只是原文事实，和iPhone目标不相干，记1条相关性误收。不能推断三入口均支持多选。"
+    },
+    {
+      "sample": 5,
+      "classification": "未验证",
+      "reason": "普通Drive Android四步文档存在，但并无通过严格数量门的明确多选核心事实；无confirmed，不据此认定产品不支持。"
+    },
+    {
+      "sample": 6,
+      "classification": "来源支持局部事实",
+      "reason": "四个手动单张备份步骤均由Google官方正文支持；区别自动备份的核心要求未被选中证据覆盖，程序partial符合缺口。"
+    },
+    {
+      "sample": 7,
+      "classification": "来源支持局部事实",
+      "reason": "Dropbox八步流程中七步confirmed，两个URL重复共14条；第3步内部双引号仍被v14守卫降级，camera uploads未启用条件句没有成为确认发现。不能整题完成。"
+    },
+    {
+      "sample": 8,
+      "classification": "完整回答",
+      "reason": "官方Microsoft手动上传页：顶部Add→Upload file/photo，Choose Existing进入设备Photos，浏览、选择→Done；四条confirmed覆盖本题窄流程。未外推明确多选能力或所有版本。"
+    },
+    {
+      "sample": 9,
+      "classification": "来源支持局部事实",
+      "reason": "Apple guide已进入检索/保存正文；只选前3个顶层步骤，未确认手机三个选项和Shared Library应使用Photos App的关键子项。多意图计划不能解析，不能完成。"
+    },
+    {
+      "sample": 10,
+      "classification": "完整回答",
+      "reason": "Google Drive Android官方Upload & find files同节四步全部确认：打开Drive→New/Upload→找到并点选文件→My Drive查找；没有外推明确多选。"
+    }
+  ]
+}

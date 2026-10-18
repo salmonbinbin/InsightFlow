@@ -1,0 +1,209 @@
+How to upload Motion & Live Photos on Dropbox - Dropbox Help
+Dropbox
+Main navigation
+Help center
+Community
+Dropbox learn
+Contact support
+Help center
+Community
+Dropbox learn
+Contact support
+Open/close search
+Help center
+Account
+Account access
+Billing
+Account settings
+Plans
+Storage space
+Security
+Using Dropbox
+Sync
+Delete and restore
+Share
+View and edit
+Installs
+Create and upload
+Organize
+Integrations
+AI integrations
+Products
+Dropbox Dash
+Dropbox Protect
+Dropbox Sign
+Dropbox DocSend
+Dropbox Backup
+Dropbox Replay
+Dropbox Transfer
+Get started
+Dropbox Help Center - How to use Dropbox
+Create and upload
+How to upload Motion Photos and Live Photos to Dropbox
+How to upload Motion Photos and Live Photos to Dropbox
+Updated Sep 19, 2025
+In this article
+The information in this article applies to all Dropbox users.
+You can securely upload, store, view, download, and share Android Motion Photos and iOS Live Photos on the Dropbox mobile app.
+Note: You can also view and share Motion Photos and Live Photos on dropbox.com. This option is currently only available on computers using the Google Chrome browser.
+How to upload Motion Photos on Android
+You can upload and share Motion Photos via the Dropbox mobile app.
+Note: To access this feature, make sure your Dropbox mobile app is updated to the latest version.
+To upload your Motion Photos:
+Open the Dropbox mobile app.
+Tap ☑ (add).
+Tap Upload photos and videos.
+Select a Motion Photo from your Android Gallery.
+Motion Photos will look like regular photos when selected, but they’ll be uploaded in the correct format.
+Tap the down arrow and select where you’d like your Motion Photo to be added.
+Tap Set location.
+Tap ☑ (upload).
+Note: You can also upload Motion Photos to Dropbox using your camera app.
+How to share Motion Photos
+To share your Motion Photos with others, you can create and share a link, invite them to a file folder, or send directly through your preferred sharing method.
+How to upload Live Photos on iOS
+You can upload and share Live Photos via the Dropbox mobile app.
+Note: To access this feature, make sure your Dropbox mobile app is updated to the latest version.
+To upload your Live Photos:
+Open the Dropbox mobile app.
+Tap ☑ (add).
+Tap Upload photos.
+Select a Live Photo from your iOS photo gallery.
+To save your Live photo as a still image, tap Live on under “Image preferences” and select Still image. To change it back, tap Live off and select Live photo.
+If your Live Photo’s file type is HEIC, you can convert it to JPG by tapping Save as JPG under “Image preferences.”
+Tap the folder where’d you like the Live Photo to be added.
+Tap ☑ (upload).
+Note: To preview a Live Photo, tap the play button on the Live Photo or press and hold the Live Photo.
+How to share Live Photos
+To share your Live Photos with others, you can create and share a link, invite them to a file folder, or send directly through your preferred sharing method.
+Was this article helpful?
+Yes, thanks!
+Not really
+Let us know how why it didn't help:
+Thanks for letting us know!
+The article didn't answer my question
+The steps in the article didn't work for me
+I found this article confusing and difficult to read
+Other
+Please enter feedback before submitting.
+Submit feedback
+Thanks for your feedback!
+Related Articles
+Dropbox Replay FAQs
+How can I export to an SD card from my Android phone?
+How to manage files and projects in Dropbox Replay
+How to save screenshots to Dropbox
+Community answers
+How can I force Dropbox to re-upload all my phone photos?
+Posted by: Laura45
+385 days ago
+289
+4
+How do you backup the motion pictures to Dropbox?
+Posted by: brachiosaurus
+587 days ago
+96
+1
+Camera uploads from my phone and some photos of my cats
+Posted by: Graham
+607 days ago
+8883
+6
+How to turn on Mobile Camera Uploads
+Posted by: Theresa
+670 days ago
+423
+0
+What do I do about my Live Photos and metadata on other uploads?
+Posted by: LBNLBNLBN
+2065 days ago
+3905
+3
+Other ways to get help
+Icon depicting a speech bubble
+Contact support
+Icon depicting two people
+Community
+Twitter Icon
+Social media support
+Footer-Help
+Dropbox
+Desktop app
+Mobile app
+Integrations
+Features
+Solutions
+Security
+Early access
+Templates
+Free tools
+Products
+Plus
+Professional
+Business
+Enterprise
+Dash
+DocSend
+Dropbox Sign
+Reclaim.ai
+Plans
+Product updates
+Features
+Send large files
+Send long videos
+Cloud photo storage
+Secure file transfer
+Cloud backup
+Edit PDFs
+Electronic signatures
+Convert to PDF
+Support
+Help center
+Contact us
+Privacy & terms
+Cookie policy
+Cookies & CCPA preferences
+AI principles
+Sitemap
+Learning resources
+Resources
+Blog
+Events
+Customer stories
+Resources library
+Developers
+Community forums
+Referrals
+Reseller partners
+Integration partners
+Find a partner
+Company
+About us
+Jobs
+Investor relations
+Corporate responsibility
+Choose a language
+Bahasa Indonesia
+Bahasa Malaysia
+Dansk
+Deutsch
+English (Australia)
+English (United Kingdom)
+English (United States)
+Español (España)
+Español (Latinoamérica)
+Français (France)
+Italiano
+Nederlands
+Norsk (bokmål)
+Polski
+Português (Brasil)
+Pусский
+Svenska
+Українська
+ไทย
+中文（简体）
+中文（繁體）
+日本語
+한국어
+English (United States)

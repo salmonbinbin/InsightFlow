@@ -1,0 +1,217 @@
+How to upload to a Dropbox file request - Dropbox Help
+Dropbox
+Main navigation
+Help center
+Community
+Dropbox learn
+Contact support
+Help center
+Community
+Dropbox learn
+Contact support
+Open/close search
+Help center
+Account
+Account access
+Billing
+Account settings
+Plans
+Storage space
+Security
+Using Dropbox
+Sync
+Delete and restore
+Share
+View and edit
+Installs
+Create and upload
+Organize
+Integrations
+AI integrations
+Products
+Dropbox Dash
+Dropbox Protect
+Dropbox Sign
+Dropbox DocSend
+Dropbox Backup
+Dropbox Replay
+Dropbox Transfer
+Get started
+Dropbox Help Center - How to use Dropbox
+Share
+How to upload to a Dropbox file request
+How to upload to a Dropbox file request
+Updated Dec 09, 2024
+In this article
+This information in this article applies to customers on Dropbox Basic, Plus, Family, Professional, Essentials, Business, Business Plus, Standard, Advanced, and Enterprise.
+Dropbox users can send file requests to collect files from you, even if you don’t have a Dropbox account.
+This article explains how to send files through a file request and answers some FAQs about file requests.
+Not using Dropbox yet? See how Dropbox helps you effortlessly share files and folders.
+How to send files through a Dropbox file request
+You may receive a file request in an email or as a link. To send files to a Dropbox user through a file request:
+Open the file request invitation or click the link you received.
+Click Add files and select Files from computer, Folders from computer, or From Dropbox.
+If you have more files to upload, click +Add more files.
+Once you've added all the files you want to upload, you may be prompted to enter your name and email address so that the file requester knows who uploaded the files.
+Click Upload.
+A green check mark appears to show you’ve successfully uploaded your files.
+FAQs about uploading to a file request
+Why was I sent a Dropbox file request?
+If you received a file request, it means that someone with a Dropbox account would like to collect files from you.
+You don't need a Dropbox account, or need to be signed into one, to respond to a file request. However, if you do have a Dropbox account, you can log in and upload files right from your account.
+Do Dropbox file requests have a deadline?
+If you received a file request invitation in your inbox, the email includes details on whether there’s a deadline to upload your files. Here’s what you should know about deadlines:
+The time and date of the deadline are in the file requester’s time zone
+If you forward the file request invitation to someone not originally invited by the creator of the file request, they won't receive a reminder email
+You won’t receive an email update if the file request creator changes the deadline
+If the person requesting files allows late submissions, any files uploaded after the deadline will be accepted but marked as late
+Why didn’t I receive a file request I was expecting?
+If you're expecting a file request invitation but didn't receive one, try the following:
+Check to see if the file request invitation went to your spam folder
+Clarify your email address with the file requester
+Add no-reply@dropbox.com to your email contacts and ask the file requester to resend your invitation
+If the above steps don't resolve the issue, please contact your email provider, or ask the requester to copy the link to their request and send that to you instead
+What do I do if I accidentally upload the wrong file?
+If you upload the wrong file, you can use the same file request to upload the correct file. Both versions will be sent to the person requesting files.
+Read more
+Why do I get an error message when I try to upload a file?
+There are several reasons why you might see an error message when trying to upload files to a file request. Here are a few error messages that you may see and how to fix them:
+Error: Please upload files under 2 GB
+If the file request was created by a Dropbox Basic, Plus, or Family user, you can only upload files up to 2 GB. For files larger than 2 GB, consider using a shared link.
+Note: File requests created by users on Dropbox Professional, Essentials, Business, Business Plus, Standard, Advanced, and Enterprise can accept files up to 250 GB in size.
+Error: [Requester’s name] doesn't have enough Dropbox Space for these files
+Ask the file requester to check how much space they have in their Dropbox account.
+Error: Something went wrong. Please try sending your files again
+If the file requester has enough space in their Dropbox account and the file is under 2 GB, try to upload the file request in a new browser (Google Chrome, Mozilla Firefox, or Safari) or in an incognito/private browser window.
+You can also clear your browser's cache and reattempt uploading the file.
+Was this article helpful?
+Yes, thanks!
+Not really
+Let us know how why it didn't help:
+Thanks for letting us know!
+The article didn't answer my question
+The steps in the article didn't work for me
+I found this article confusing and difficult to read
+Other
+Please enter feedback before submitting.
+Submit feedback
+Thanks for your feedback!
+Related Articles
+Add shared folders
+Can I share a subfolder inside a shared folder?
+Create a file request
+Dropbox Transfer
+Community answers
+How can my clients comment on a file when they are uploading using a file request link?
+Posted by: Jeff B.63
+569 days ago
+97
+1
+How do I upload a file to someone else's Dropbox account?
+Posted by: joannasm
+902 days ago
+117306
+6
+Do you know how to preserve location data when uploading photos and videos via a File Request?
+Posted by: oneoftheelks
+1198 days ago
+2072
+5
+How to see upload history to someone else's file request?
+Posted by: Tripti12
+1572 days ago
+1675
+2
+Create a form to upload file to Dropbox file request folder
+Posted by: pep11
+2384 days ago
+9395
+6
+Other ways to get help
+Icon depicting a speech bubble
+Contact support
+Icon depicting two people
+Community
+Twitter Icon
+Social media support
+Footer-Help
+Dropbox
+Desktop app
+Mobile app
+Integrations
+Features
+Solutions
+Security
+Early access
+Templates
+Free tools
+Products
+Plus
+Professional
+Business
+Enterprise
+Dash
+DocSend
+Dropbox Sign
+Reclaim.ai
+Plans
+Product updates
+Features
+Send large files
+Send long videos
+Cloud photo storage
+Secure file transfer
+Cloud backup
+Edit PDFs
+Electronic signatures
+Convert to PDF
+Support
+Help center
+Contact us
+Privacy & terms
+Cookie policy
+Cookies & CCPA preferences
+AI principles
+Sitemap
+Learning resources
+Resources
+Blog
+Events
+Customer stories
+Resources library
+Developers
+Community forums
+Referrals
+Reseller partners
+Integration partners
+Find a partner
+Company
+About us
+Jobs
+Investor relations
+Corporate responsibility
+Choose a language
+Bahasa Indonesia
+Bahasa Malaysia
+Dansk
+Deutsch
+English (Australia)
+English (United Kingdom)
+English (United States)
+Español (España)
+Español (Latinoamérica)
+Français (France)
+Italiano
+Nederlands
+Norsk (bokmål)
+Polski
+Português (Brasil)
+Pусский
+Svenska
+Українська
+ไทย
+中文（简体）
+中文（繁體）
+日本語
+한국어
+English (United States)

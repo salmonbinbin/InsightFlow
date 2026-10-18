@@ -2,6 +2,7 @@
 
 import { useCallback, useRef, useState, type ChangeEvent, type DragEvent } from 'react';
 import Link from 'next/link';
+import { userMessage } from '../../lib/presentation';
 import { useProjectContext } from '../../contexts/ProjectContext';
 import { getApiClient } from '../../lib/api/client';
 import { useProjectScopedFetch } from '../../lib/useProjectScopedFetch';
@@ -109,10 +110,14 @@ export default function UploadPage() {
         <span className="eyebrow">上传 CSV</span>
         <h1 className="page-title">导入原始反馈</h1>
         <p className="page-subtitle">
-          文件大小不超过 10 MiB；必填列 feedback_id、content；
-          可选列 source、user_id、user_type、created_at。最大 10,000 行。
+          支持 CSV 文件，最大 10 MB、10,000 条反馈。
         </p>
       </header>
+      <details className="technical-details">
+        <summary>查看文件格式</summary>
+        <p>必填列：<code>feedback_id</code>（反馈编号）、<code>content</code>（内容）。</p>
+        <p>可选列：<code>source</code>（来源）、<code>user_id</code>（用户编号）、<code>user_type</code>（用户类型）、<code>created_at</code>（反馈时间）。</p>
+      </details>
 
       <div
         className={`drop-zone${dragging ? ' is-dragging' : ''}`}
@@ -163,14 +168,14 @@ export default function UploadPage() {
                   <strong>解析提示：</strong>
                   <ul className="bullet-list">
                     {state.parseErrors.map((e, i) => (
-                      <li key={i}>{e.message}</li>
+                      <li key={i}>{userMessage(e.message)}</li>
                     ))}
                   </ul>
                 </div>
               ) : null}
               {state.rows.length > MAX_ROW_COUNT ? (
                 <div className="alert alert-warn" role="alert">
-                  超过 {MAX_ROW_COUNT} 行上限，仅展示前 {MAX_ROW_COUNT} 行；后端将拒绝整批。
+                  超过 {MAX_ROW_COUNT} 行上限，仅展示前 {MAX_ROW_COUNT} 行，请减少记录后重新选择文件。
                 </div>
               ) : null}
               {state.rows.length === 0 ? (
@@ -184,11 +189,11 @@ export default function UploadPage() {
                     <thead>
                       <tr>
                         <th>#</th>
-                        <th>feedback_id</th>
-                        <th>content (截断)</th>
-                        <th>source</th>
-                        <th>user_id</th>
-                        <th>created_at</th>
+                        <th>反馈编号</th>
+                        <th>反馈内容</th>
+                        <th>来源</th>
+                        <th>用户编号</th>
+                        <th>反馈时间</th>
                       </tr>
                     </thead>
                     <tbody>

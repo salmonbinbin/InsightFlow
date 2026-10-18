@@ -1,18 +1,18 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { NotMeasured, StatusPill } from './StateViews';
+import { NotMeasured } from './StateViews';
+import { TechnicalDetails } from './TechnicalDetails';
+import { displayLabel, readableSystemText, sourceLabel, topicLabel } from '../lib/presentation';
 import {
   formatDateTime,
   formatPercent,
-  sentimentLabel,
 } from '../lib/format';
 import type {
   Feedback,
   FeedbackAnalysisRead,
   FeedbackAnalysisSelection,
   FeedbackType,
-  Sentiment,
 } from '../lib/api/types';
 
 export interface FeedbackDrawerProps {
@@ -51,8 +51,8 @@ const FEEDBACK_TYPE_LABELS: Record<FeedbackType, string> = {
 };
 
 const SELECTION_MODE_LABELS: Record<FeedbackAnalysisSelection['mode'], string> = {
-  latest: '最新分类 Run',
-  explicit: '指定 Run',
+  latest: '最新分析',
+  explicit: '指定分析',
 };
 
 /* ``sentimentLabel`` accepts the strict ``Sentiment`` literal; the
@@ -61,10 +61,7 @@ const SELECTION_MODE_LABELS: Record<FeedbackAnalysisSelection['mode'], string> =
  * helper type-guards so we route known values through the existing
  * label table and surface the raw string otherwise. */
 function renderSentiment(s: string): string {
-  if (s === 'positive' || s === 'neutral' || s === 'negative') {
-    return sentimentLabel(s as Sentiment);
-  }
-  return s;
+  return displayLabel(s);
 }
 
 /**
@@ -170,11 +167,11 @@ export function FeedbackDrawer({
                 <h3 className="drawer-section-title">原始反馈</h3>
                 <dl className="drawer-meta">
                   <dt>来源</dt>
-                  <dd>{feedback.source || <NotMeasured />}</dd>
+                  <dd>{feedback.source ? sourceLabel(feedback.source) : <NotMeasured />}</dd>
                   <dt>用户 ID</dt>
                   <dd>{feedback.user_id || <NotMeasured />}</dd>
                   <dt>用户类型</dt>
-                  <dd>{feedback.user_type || <NotMeasured />}</dd>
+                  <dd>{feedback.user_type ? displayLabel(feedback.user_type) : <NotMeasured />}</dd>
                   <dt>原始时间</dt>
                   <dd>{formatDateTime(feedback.feedback_created_at ?? null)}</dd>
                   <dt>入库时间</dt>
@@ -192,13 +189,13 @@ export function FeedbackDrawer({
                       <dd>
                         {FEEDBACK_TYPE_LABELS[
                           analysis.feedback_type as FeedbackType
-                        ] ?? analysis.feedback_type}
+                        ] ?? displayLabel(analysis.feedback_type)}
                       </dd>
                       <dt>主题 / 模块</dt>
-                      <dd>{analysis.module || <NotMeasured />}</dd>
-                      <dt>意图 (intent)</dt>
-                      <dd>{analysis.intent || <NotMeasured />}</dd>
-                      <dt>痛点 (pain_point)</dt>
+                      <dd>{topicLabel(analysis.module)}</dd>
+                      <dt>用户意图</dt>
+                      <dd>{readableSystemText(analysis.intent, '待核对')}</dd>
+                      <dt>用户痛点</dt>
                       <dd>
                         {analysis.pain_point ? (
                           analysis.pain_point
@@ -212,18 +209,6 @@ export function FeedbackDrawer({
                       <dd>{analysis.severity} / 5</dd>
                       <dt>置信度</dt>
                       <dd>{formatPercent(analysis.confidence)}</dd>
-                      <dt>语义文本</dt>
-                      <dd>
-                        {analysis.semantic_text ? (
-                          analysis.semantic_text
-                        ) : (
-                          <NotMeasured />
-                        )}
-                      </dd>
-                      <dt>来源 Run ID</dt>
-                      <dd>
-                        <code className="mono">{analysis.run_id}</code>
-                      </dd>
                       <dt>分析时间</dt>
                       <dd>{formatDateTime(analysis.created_at)}</dd>
                     </dl>
@@ -231,20 +216,22 @@ export function FeedbackDrawer({
                 ) : (
                   <div className="drawer-empty">
                     <p>
-                      AI 分析 N/A — 该反馈在所选 Run 下没有分类结果。
+                      该反馈尚无分析结果。
                     </p>
                     <NotMeasured label="尚无 AI 分析" />
                   </div>
                 )}
+                <TechnicalDetails label="查看分析详情">
+                {analysis ? <p>分析记录编号：<code>{analysis.run_id}</code></p> : null}
                 {selection ? (
                   <div className="drawer-meta-inline drawer-meta-inline--block">
-                    <span>选择模式</span>
+                    <span>分析来源</span>
                     <span>{SELECTION_MODE_LABELS[selection.mode]}</span>
                   </div>
                 ) : null}
                 {selection ? (
                   <div className="drawer-meta-inline drawer-meta-inline--block">
-                    <span>选定 Run ID</span>
+                    <span>分析记录编号</span>
                     <span>
                       {selection.selected_run_id ? (
                         <code className="mono">{selection.selected_run_id}</code>
@@ -254,22 +241,7 @@ export function FeedbackDrawer({
                     </span>
                   </div>
                 ) : null}
-                {selection ? (
-                  <p className="drawer-note drawer-note--mono">
-                    {selection.selection_rule}
-                  </p>
-                ) : null}
-              </section>
-
-              <section className="drawer-section">
-                <h3 className="drawer-section-title">流转</h3>
-                <div className="drawer-meta-inline">
-                  <span>当前状态</span>
-                  <StatusPill status="pending_review">尚未流转</StatusPill>
-                </div>
-                <p className="drawer-note">
-                  后续工作包（B/C）将接入机会评分、决策、需求与 PRD。当前阶段仅呈现最基础流转位。
-                </p>
+                </TechnicalDetails>
               </section>
             </>
           )}

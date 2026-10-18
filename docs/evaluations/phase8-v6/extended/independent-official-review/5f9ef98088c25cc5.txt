@@ -1,0 +1,386 @@
+Make creations with Google Photos - Android phone & tablet - Google Photos Help Skip to main content
+Google Photos Help
+Sign in
+Google Help
+Help Center
+Community
+Google Photos
+Privacy Policy
+Terms of Service
+Submit feedback
+Send feedback on...
+This help content & information
+General Help Center experience
+CloseNext
+Help Center
+Community
+Can't find your photos?
+Google Photos
+Make creations with Google Photos
+Important: You can now find creation tools in one dedicated space for quicker and easier access. Some creations are automatically created for you.
+With creations, you can make visual stories and moving images with your photos and videos. You can create:
+Animations: A quick-moving GIF of selected photos and videos.
+Cinematic photos: A 3D effect added to photos.
+Collage: A template with customizable layout to arrange your photos and videos.
+Highlight videos: A video with music using photos and videos.
+Moods: Apply unique filters that adapt to your photos.
+Photo to video: Animate your photo and turn static moments into dynamic six-second video clips.
+Photo remix: Reimagine your favorite photos in just a few taps with easy to use AI-powered templates.
+Video remix: Make advanced and creative edits like relighting, background replacement, and stylization.
+Wardrobe: A digital wardrobe where you can organize your clothes from your pictures, mix and match outfits virtually, and get styling advice. Learn how to create your digital closet with Google Photos wardrobe.
+New for you
+Google Photos suggests creations like collages, cinematic photos, animations, and AI-powered remix styles based on your recent events.
+Save a creation
+Clicking on the creation shows if you are able to save, share or edit.
+On your Android device, open the Google Photos app Photos.
+Navigate to the Create tab.
+If there are recent available creations you will have a section called “New for you”.
+Select Save on the creation.
+If you tap the creation for a full-screen view, you can also select Save at the top right.
+Edit a creation
+Important: You cannot edit animations or cinematic photos.
+Clicking on the creation shows if you are able to save, share or edit.
+On your Android device, open the Google Photos app Photos.
+Navigate to the Create tab
+If there are recent available creations you will have a section called “New for you”.
+Select Edit on the creation.
+If you tap the creation for a full-screen view, you can also select Edit at the bottom.
+Tip: To send feedback, tap More More and then Send feedback.
+Disable creations in “New for you” or “Memories”
+On your Android device, open the Google Photos app Photos.
+At the top right, tap your Profile picture or Initials.
+Tap Photos settings Settings and then Preferences.
+Tap Creations and then choose which creations to toggle off.
+Remove a creation
+On your Android device, open the Google Photos app Photos.
+Navigate to the Create tab.
+If there are recent available creations you will have a section called “New for you”.
+Tap on the creation, long press and then Remove.
+Explore creation tools
+The Create tab helps make it fun and effortless to turn your photos and videos into unique, shareable content using tools with fresh inspiration all in one place.
+A dedicated space for creation tools like:
+Animation
+Cinematic photo
+Collage
+Highlight video
+Moods
+Photo to video
+Photo remix
+Video remix
+Access the Create tab:
+On your Android device, open the Google Photos app Photos.
+At the bottom, tap Create Edit.
+Browse the available tools.
+To start creating, select a tool.
+Make animations
+Important: You can’t speed up or slow down your animation.
+You can create a slideshow of your selected photos and videos.
+On your Android device, open the Google Photos app Photos.
+At the bottom, tap Create Edit and then Animation.
+Select the photos you want in your animation.
+At the top, tap Create.
+Create a cinematic photo
+You can add a 3D effect to your photos.
+On your Android device, open the Google Photos app Photos.
+Tap the photo you want.
+Swipe up.
+Tap Create Edit and then Cinematic photo.
+At the bottom, tap Save.
+You can also create Cinematic photos another way:
+On your Android device, open the Google Photos app Photos.
+At the bottom, tap Create Edit and then Cinematic photo.
+Select a photo.
+At the bottom, tap Save.
+Make & edit collages
+Important: Some collage editing features aren't available on the web.
+Start your collage
+There are multiple ways to start a photo collage.
+Start with photo:
+You can pre-select up to 6 photos directly from your library.
+To access the Collage editor, at the bottom, tap Create Edit and then Collage .
+Start with a design (template-first): You can start with a template design, then add your photos.
+To start with a template, at the bottom, tap Create Edit and then Collage .
+On the Create tab, scroll to the "Collages" section.
+Select a template.
+Start from the Overflow menu:
+Tap a photo from your Photos library.
+At the top, tap the Overflow menu More and then Create Edit and then Collage .
+Start through the navigation bar:
+At the top right, tap Create Edit and then Collage .
+Edit your collage
+You can customize your collage using these options:
+Select a collage design template and layout: You can explore a wide range of templates based on themes and number of photos.
+Customize your collage: For the grid templates, you can change the border size, shape, and color.
+Add or remove photos: You can easily add or remove photos from your collage by switching between different photo-count layouts directly within the editor.
+Edit your photos: You can still edit, replace, resize, or change the order of the photos in your collage.
+Review, save & share your collage
+Once you've chosen a collage layout and finished your edits, you can either save the collage to your library or share it directly with others.
+To save your collage: Tap Save.
+To share your collage: Tap Share Share.
+Learn more on how to make and edit your collages.
+Create a Highlight video
+Important:
+If you have an older device, you may not be able to create highlight videos.
+In Google Photos, you now have more control over the types of videos you can create with highlight videos.
+You have 2 ways to create a highlight video:
+Start with a template
+On your Android device, open the Google Photos app Photos.
+At the bottom, tap Create Edit and then Highlight video.
+Browse through templates for different themes and narratives.
+Templates are pre-packaged videos that already come with music, text, and beat-matching.
+When you find the template you want to use for your video, tap Use template.
+Select your photos or videos.
+Manually select the best photos or videos from your gallery based on the story you want to tell.
+To use the assisted content selection for template, tap Help me select . It’ll automatically select the content you want to include in your video.
+With Search: In the Search box, type a few words about the people, places, themes, or dates to include in your highlight video. For example, "Birthday," "Museum," or "Japan."
+With suggested people, places, and time frames: From the suggested items, select "Who," "Where," "When," and more.
+At the top right, tap Next.
+Review your video.
+Based on the story you want to create, you can customize your video by changing the clips, music, or text.
+When you’re done, tap Save.
+To watch your highlight video, tap Play Play or wait to be notified when the highlight video is ready.
+Tip: If you don’t see the people or time frame you would like in the suggestions, tap Add person person add or Date range date range.
+Start with content
+On your Android device, open the Google Photos app Photos.
+At the bottom, tap Create Edit and then Highlight video.
+At the top, tap Select content.
+To automatically select the content to make a video, use the assisted content selection.
+With Search: In the Search box, type a few words about the people, places, themes, or dates to include in your highlight video. For example, "Birthday," "Museum," or "Japan."
+With suggested people, places, and time frames: From the suggested items, select "Who," "Where," "When," and more.
+To manually select the best photos or videos from your gallery based on the story you want to tell, tap or choose specific photos & videos .
+Tap Create video.
+If you manually select the content, tap Next.
+Review your video.
+Based on the story you want to create, you can customize your video by changing the clips, music, or text.
+When you’re done, tap Save.
+To watch your highlight video, tap Play Play or wait to be notified when the highlight video is ready.
+Tip: If you don’t see the people or time frame you would like in the suggestions, tap Add person person add or Date range date range.
+Edit a highlight video
+Important:
+To add downloaded music to your video, allow music and audio access for the Google Photos app from Settings.
+Any music accompanying content is for personal, non-commercial use only. Using this music for monetary gain is strictly prohibited and violates our policies. Learn more about the policy for use of music.
+On your Android device, open the Google Photos app Photos.
+To access Highlight video:
+Through the Create Tab: At the bottom, tap Create Edit and then Highlight video.
+Through the Photo Grid:
+Select the multiple photos or videos you want to include in the highlight video.
+Tap Create Edit and then Highlight video.​​​​
+Open the highlight video you want to edit.
+Tap Edit Edit icon (2025).
+To resize the video to a different aspect ratio: Tap Aspect ratio and then Done Done.
+To adjust your video:
+Tap Adjust Edit icon (2025).
+Select the type of adjustment you want to apply to your video and move the dial to make changes.
+When you’re finished, tap Done Done.
+To undo an adjustment, deselect the option or tap Cancel Remove.
+To apply effects to your video:
+Tap Effects .
+Select an effect from the tab.
+To apply, tap Done Done.
+You can:
+Preview how effects appear on your video.
+Choose from multiple effects.
+Apply one effect at a time.
+A new effect replaces your current one.
+Remove effects as needed.
+To add music: Tap Add Music .
+Alternatively, tap Add Create and then Add Music .
+To change the section of the song you want to use: Tap Section .
+To change the volume of "Video audio" and "Soundtrack:"
+Tap Volume .
+Touch and hold, then drag the trim handles.
+Tap Done Done.
+To change the song you want to use: Tap Change .
+To remove the song from your video: Tap Remove Delete.
+To add text to the video: Tap Create and then Add text .
+To add more photos and videos to your highlight video: Tap Create and then Add photos & videos .
+To reorder clips: Tap and hold a clip to drag it to a different order.
+To remove clips: Tap the clip you want to remove and then Remove Delete.
+When you're done, tap Save.
+Tips:
+Learn more about how to edit your videos.
+The selected music segment will have the same duration as that of the video.
+If the video is 10 seconds long, the music segment will also be 10 seconds long.
+If you delete photos or videos from Google Photos:
+If you delete a photo or video from your Photos view, it won't be deleted from your saved highlight videos.
+If you want to delete the item from your highlight video as well, open the editor. When you open the highlight video editor, the deleted item automatically gets removed from your highlight video.
+Learn how to delete photos or videos.
+Use Generative AI to transform your photos
+Important:
+These features aren't available in all regions at this time. Functionality can vary by location. Some features may have additional eligibility requirements.
+The photos you want to edit must be backed up. Learn how to back up photos and videos.
+These features require network connection.
+You can only generate a limited number of photos or videos per day. Purchasing a Google AI plan increases your number of generations.
+You can transform your photos with Generative AI through Photo to video, Photo remix, and Video remix. These features may give unexpected or inaccurate results. When you leave feedback, you can help improve Photo to video, Photo remix, and Video remix for everyone.
+Eligibility
+You must be at least 13 years old.
+Both Photo remix and Video remix are only available to users 18 years old and over.
+The ability to input your own prompts in Photo to video is initially available only to users 18 years old or over.
+You need a personal Google Account. These features aren’t available to Google Workspace or school accounts.
+Remix your photos
+Photo remix is a new tool in the “Create” tab. It simplifies the creative process through AI templates to help you reimagine your photos into unique, shareable creations with just one tap.
+To begin your creation, you can browse the full selection or select a featured template directly:
+On your Android device, open the Google Photos app Photos.
+At the bottom, tap Create Edit.
+Open the “Remix” tool in one of the two ways:
+Find the “Remix your photos” header and select a template.
+Tap Photo remix and you’ll be directed to the available templates.
+If this is your first time to use the feature, an acknowledgement screen shows to guide you through important information. To proceed, tap Try now.
+To start with a featured template:
+Under the "Remix your photos" header, find the featured template cards.
+Scroll to browse the available templates.
+To browse all available templates:
+Tap View all.
+Scroll to go through every template option.
+To filter templates based on your preference:
+Tap the specific category labels.
+Scroll to go through every template option.
+To try a different creative direction, tap a new category at any time to filter the available templates.
+Tap your chosen template.
+Personalized templates: These are the templates identified with a Badge .
+Insights from your life are used to generate unique and relevant creations.
+Some of these templates don't require you to upload an image. When you select some of these templates, the generation starts immediately.
+To use any badged template, you must first meet the eligibility requirements for Gemini features in Photos.
+All other templates: Specific creative styles or visual effects are applied to generate a photo of you.
+If you select this template, it requires you to add a reference photo before generation begins.
+Tap Add photo.
+To select an existing photo: From the picker view, select a photo. You can refine the view when you search or tap any of the filters.
+To take a new photo with your device’s camera: Tap the Camera thumbnail .
+When you take a photo, you can either accept or reject it. Rejections are irreversible.
+To change the selected photo: Tap Edit .
+Tap Generate.
+To save the video: Tap Save .
+To share the video: Tap Share Share.
+To get a different result in the same template: Tap Regenerate .
+To share your experience and help us improve: Tap Send feedback.
+Tip: To bring you new creative options, templates are regularly updated. Some templates may change or be removed over time.
+Photo to video
+Important: Videos generated through the Photo to video tool may now contain audio.
+You can transform your photo into dynamic short video clips using effects or text prompts.
+On your Android device, open the Google Photos app Photos.
+At the bottom, tap Create Edit and then Photo to video Photo to video.
+To try out Photo to video, tap Try Now.
+Tap Add photo.
+To select an existing photo: From the picker view, select a photo. You can refine the view when you search or tap on any of the filters.
+If you select a landscape photo, the photo is automatically cropped to fit the portrait video format.
+To take a new photo with your device’s camera: Tap the Camera thumbnail .
+When you take a photo, you can either accept or reject it. Rejections are irreversible.
+To change the selected: Tap Edit .
+Choose an effect or write a prompt.
+Subtle movements : Add photorealistic motion to the subjects in your photo like waving or smiling.
+I’m feeling lucky I'm feeling lucky: It can sometimes be a subtle movement or it may turn your photo into a video with more movement like dancing or add special effects like confetti or balloons.
+Use text prompts:
+Important: This feature is only available to users 18 years old or over.
+Use the suggested prompt or type a text prompt to describe the movement, scene, or effect you want in your video.
+To edit your current prompt, tap Refine to return to the prompt box.
+Wait a few moments while your video generates.
+You can find the finished video at the results page.
+To save the video: Tap Save.
+To share the video: Tap Share.
+To share your experience and help us improve: Tap Send feedback.
+Tip: The video you created saves to the day you created it and not on the original date the photo was taken.
+Remix your videos
+Important: Video remix is only available to users 18 years old and over.
+With Video remix, you can easily make advanced and creative edits like relighting, background replacement, and stylization.
+On your Android device, open the Google Photos app Photos.
+At the bottom, tap Create Edit.
+Open the “Video remix” tool in one of the two ways:
+Under “Remix your videos,” select a template.
+In the "Tools" section, tap Video remix.
+It directs you to the available templates.
+If this is your first time to use the feature, an acknowledgement screen shows to guide you through important information. To proceed, tap Try now.
+Choose a template.
+Reimagine: You can change the background of a video to visuals like a beach sunset or coffee shop.
+Filters: You can apply a relighting effect like golden hour or dreamy glow to a video.
+Art styles: You can apply an artistic style like anime, watercolor, or sketchbook.
+Select the video you want to edit.
+Choose a video under 60 seconds long.
+To edit videos, use the trim handles to select a segment of your video between one and ten seconds long.
+To change your selected video, swipe back to the video picker screen.
+Tap Generate.
+Save or share your edited video:
+To save the video: Tap Save.
+To share the video: Tap Share.
+Tips:
+You can edit videos that are:
+Filmed in a 9:16 or 16:9 aspect ratio.
+Videos with different aspect ratios are automatically center-cropped.
+Square videos are set to 9:16 by default.
+Backed up.
+If you run out of generations, on your next attempt, you can upgrade to a Google AI subscription for more. If you run out of generations with Google AI Ultra or Google AI Pro, then you’ll have to wait till the next day to use the feature again.
+Moods
+Moods allows you to apply unique filters that adapt to your photos.
+On your Android device, open the Google Photos app Photos.
+At the bottom, tap Create Edit and then Moods.
+Select a photo you wish to transform.
+Browse available templates, then tap one to preview the effect.
+Tap Save to apply the mood and save your creation.
+Terms of Service
+You agree that your use of Photo to video, Photo remix, and Video remix are subject to the Google Terms of Service and the Generative AI Prohibited Use Policy.
+Find your highlight videos, animations & collages
+On your Android device, open the Google Photos appPhotos.
+At the bottom, tap Search.
+Tap the search bar.
+Enter "Highlight videos" or "Animations" or “Collages.”
+Tap Highlight videos or Animations or Collages.
+Related resources
+Edit your photos
+Edit your videos
+Make & edit collages in Google Photos
+Use AI to create with Google Photos
+Was this helpful?
+How can we improve it?
+YesNo
+Submit
+Android phone & tablet ComputeriPhone & iPad
+More
+Need more help?
+Try these next steps:
+Post to the help community Get answers from community members
+true
+Help
+1 of 9
+Edit your photos
+2 of 9
+Make creations with Google Photos
+3 of 9
+Edit your videos with Google Photos
+4 of 9
+Make & edit collages in Google Photos
+5 of 9
+About Google Photos features for Pixel devices
+6 of 9
+Edit a photo or video on your Pixel phone or tablet
+7 of 9
+Create stickers from your photos
+8 of 9
+Use AI to create with Google Photos
+9 of 9
+Create your digital closet with Google Photos wardrobe
+©2026 Google
+Privacy Policy
+Terms of Service
+Language català‎dansk‎Deutsch‎eesti‎English (United Kingdom)‎español‎español (Latinoamérica)‎Filipino‎français‎hrvatski‎Indonesia‎italiano‎latviešu‎lietuvių‎magyar‎Melayu‎Nederlands‎norsk‎polski‎português‎português (Brasil)‎română‎slovenčina‎slovenščina‎suomi‎svenska‎Tiếng Việt‎Türkçe‎íslenska‎čeština‎Ελληνικά‎български‎русский‎српски‎українська‎‏עברית‏العربية‏فارسیमराठी‎हिन्दी‎తెలుగు‎ไทย‎中文（简体）‎中文（繁體）‎日本語‎한국어‎ English‎
+Enable Dark Mode
+Send feedback on...
+This help content & information General Help Center experience
+Search
+Clear search
+Close search
+Google apps
+Main menu
+15534379375345760527
+true
+Search Help Center
+false
+true
+true
+true
+true
+true
+105394
+false
+false
+false
+false
+false

@@ -9,7 +9,7 @@
  *   3. Evidence (paginated raw feedback — never an AI rewrite)
  *   4. Opportunity Score (snapshot — five-dimension breakdown, configured
  *      vs effective weights, thresholds, AI reasoning; missing dimensions
- *      render as "Pending PM Input" / "Not Available")
+ *      render as "待填写业务价值" / "暂无数据")
  *   5. PM Decision (Accept / Override / Defer / Reject with idempotency
  *      UUID; 409 conflict path refetches and asks the PM to retry)
  *   6. Decision history (drawer; append-only event log)
@@ -24,11 +24,14 @@
  */
 
 import Link from 'next/link';
+import { TechnicalDetails } from '../../../components/TechnicalDetails';
+import { displayLabel, sourceLabel, topicLabel, readableSystemText, scoreExplanation, userMessage } from '../../../lib/presentation';
 import { useParams, useRouter } from 'next/navigation';
 import {
   useCallback,
   useEffect,
   useMemo,
+  useRef,
   useState,
   type CSSProperties,
 } from 'react';
@@ -41,6 +44,7 @@ import {
   LoadingState,
   NotMeasured,
 } from '../../../components/StateViews';
+import { ResearchAnswer } from '../../../components/ResearchAnswer';
 import {
   classifyError,
   formatNumber,
@@ -58,6 +62,17 @@ import type {
   InsightEvidenceEntry,
   InsightEvidenceResponse,
   OpportunityScore,
+  ResearchCoverageItem,
+  ResearchCoverageReport,
+  ResearchFindingRead,
+  ResearchRunRead,
+  ResearchSourceRead,
+  ResearchTaskContract,
+  ResearchTaskContractItem,
+} from '../../../lib/api/types';
+import {
+  isResearchAnswerV7,
+  isResearchSupportV7,
 } from '../../../lib/api/types';
 
 const OVERRIDE_REASONS: ReadonlyArray<{ value: DecisionOverrideReason; label: string }> = [
@@ -71,9 +86,9 @@ const OVERRIDE_REASONS: ReadonlyArray<{ value: DecisionOverrideReason; label: st
 ];
 
 const PRIORITY_OPTIONS: ReadonlyArray<{ value: DecisionPriority; label: string }> = [
-  { value: 'P0', label: 'P0 · Critical' },
-  { value: 'P1', label: 'P1 · High' },
-  { value: 'P2', label: 'P2 · Medium' },
+  { value: 'P0', label: 'P0 · 紧急' },
+  { value: 'P1', label: 'P1 · 重要' },
+  { value: 'P2', label: 'P2 · 一般' },
 ];
 
 type DecisionStatusLabel =
@@ -100,6 +115,10 @@ export default function InsightDetailPage() {
   const client = getApiClient();
 
   const insightId = params?.id ?? '';
+  const requestScopeRef = useRef({ projectId: activeProjectId, id: insightId });
+  if (requestScopeRef.current.projectId !== activeProjectId || requestScopeRef.current.id !== insightId) {
+    requestScopeRef.current = { projectId: activeProjectId, id: insightId };
+  }
 
   const [insight, setInsight] = useState<Insight | null>(null);
   const [insightError, setInsightError] = useState<string | null>(null);
@@ -162,6 +181,57 @@ export default function InsightDetailPage() {
   const [requirementBusy, setRequirementBusy] = useState(false);
   const [requirementError, setRequirementError] = useState<string | null>(null);
   const [createdRequirementId, setCreatedRequirementId] = useState<string | null>(null);
+
+  /* ---------- External Research (Phase 8) ----------
+   *
+   * The runner synchronously POSTs a new ``research_run`` for the
+   * current Insight; the page optimistically renders a "Running"
+   * badge during the request window and refetches the history
+   * once the response lands. Findings, sources and the run row
+   * for the currently-selected run are loaded on demand so the
+   * page does not surface a foreign project's research surface
+   * (``activeProjectId`` is appended to every per-run GET as a
+   * REQUIRED ``project_id`` query — the backend 404s on mismatch,
+   * we surface a clear error and refuse to fall back).
+   *
+   * No sessionStorage, no local cache: a refresh always re-reads
+   * from the backend via the history endpoint. */
+  const [researchQuestion, setResearchQuestion] = useState('');
+  const [researchScope, setResearchScope] = useState('');
+  const [researchSubmitting, setResearchSubmitting] = useState(false);
+  const [researchSubmitError, setResearchSubmitError] = useState<string | null>(null);
+  const [researchHistory, setResearchHistory] = useState<ResearchRunRead[] | null>(null);
+  const [researchHistoryError, setResearchHistoryError] = useState<string | null>(null);
+  const [researchHistoryLoading, setResearchHistoryLoading] = useState(false);
+  /* Synthetic "Running" status local to the page: the backend
+   * synchronously finalises every run before returning 200, so a
+   * real client never sees ``status === 'running'``. The page
+   * surfaces the synthetic state exclusively during the active
+   * POST window, then re-reads from the server so a true
+   * terminal status (``completed`` / ``partial_failed`` /
+   * ``failed``) replaces it immediately. */
+  const [researchRunningRunId, setResearchRunningRunId] = useState<string | null>(null);
+  const [selectedResearchRunId, setSelectedResearchRunId] = useState<string | null>(null);
+  const [selectedResearchRun, setSelectedResearchRun] = useState<ResearchRunRead | null>(null);
+  const [researchFindings, setResearchFindings] = useState<ResearchFindingRead[] | null>(null);
+  const [researchSources, setResearchSources] = useState<ResearchSourceRead[] | null>(null);
+  const [researchDetailLoading, setResearchDetailLoading] = useState(false);
+  const [researchDetailError, setResearchDetailError] = useState<string | null>(null);
+  /* expandedFindingIds tracks which competitor / opportunity /
+   * risk rows the user has opened so the citations block is
+   * collapsed by default — keeps the default view tight and
+   * exposes ``source_refs`` only on demand to avoid implying
+   * every finding carries a citation. */
+  const [expandedFindingIds, setExpandedFindingIds] = useState<Record<string, boolean>>({});
+  /* v6 — ``supportExpandedFindingIds`` tracks which
+   * ``inference`` / ``recommendation`` rows the user has
+   * opened so the supports block is collapsed by default.
+   * Kept independent from ``expandedFindingIds`` because
+   * the two toggles serve different affordances (citations
+   * vs. supporting facts) and a user may want both open on
+   * the same row. */
+  const [supportExpandedFindingIds, setSupportExpandedFindingIds] = useState<Record<string, boolean>>({});
+  const [researchUnrecoverable, setResearchUnrecoverable] = useState<string | null>(null);
 
   /* ---------- Project isolation ----------
    *
@@ -253,7 +323,7 @@ export default function InsightDetailPage() {
     if (mySignal.aborted) return;
     if (res.error && res.error.status === 404) {
       // Phase 4 snapshot has not been generated yet. Distinguish from real
-      // errors so the UI can show "Pending PM Input" rather than an error.
+      // errors so the UI can show "待填写业务价值" rather than an error.
       setScore(null);
       setScoreMissing(true);
       setScoreError(null);
@@ -307,6 +377,215 @@ export default function InsightDetailPage() {
     setHistoryLoading(false);
   }, [client, insightId, signal]);
 
+  /* ---------- External Research fetchers (Phase 8) ---------- */
+
+  const fetchResearchHistory = useCallback(async () => {
+    if (!insightId || !signal || !activeProjectId) return;
+    const mySignal = signal;
+    setResearchHistoryLoading(true);
+    setResearchHistoryError(null);
+    // The backend's GET /insights/{id}/research takes a REQUIRED
+    // ``project_id`` query parameter (a missing value 422s). The
+    // page must always pass the active project id so a real call
+    // succeeds AND so the backend's own cross-project guard can
+    // 404 a request that targets a foreign insight.
+    const res = await client.listInsightResearchRuns(
+      insightId,
+      { project_id: activeProjectId, limit: 50, offset: 0 },
+      mySignal,
+    );
+    if (mySignal.aborted) return;
+    if (res.error || !res.data) {
+      setResearchHistoryError(
+        res.error ? classifyError(res.error) : '研究历史加载失败。',
+      );
+      setResearchHistory([]);
+      setResearchHistoryLoading(false);
+      return;
+    }
+    setResearchHistory(res.data.items);
+    setResearchHistoryLoading(false);
+    // Auto-pick the latest run on every fresh load — the page
+    // mirrors the backend's ``created_at DESC`` ordering, so
+    // ``items[0]`` is the most recent. The detail fetcher below
+    // reads the same id and triggers the full lookup.
+    const latest = res.data.items[0];
+    if (latest) {
+      setSelectedResearchRunId((prev) => prev ?? latest.id);
+    }
+  }, [activeProjectId, client, insightId, signal]);
+
+  /* Reload the detail (run row + findings + sources) for the
+   * currently selected run. Always passes the active project id
+   * as a REQUIRED ``project_id`` query — the backend 404s on
+   * mismatch and the page surfaces that as ``External Research
+   * Unavailable`` without leaking the foreign row. */
+  const fetchResearchDetail = useCallback(async () => {
+    if (!insightId || !signal || !activeProjectId) return;
+    if (!selectedResearchRunId) {
+      setSelectedResearchRun(null);
+      setResearchFindings(null);
+      setResearchSources(null);
+      return;
+    }
+    const mySignal = signal;
+    setResearchDetailLoading(true);
+    setResearchDetailError(null);
+    const projectId = activeProjectId;
+    const runId = selectedResearchRunId;
+    const [runRes, findingRes, sourceRes] = await Promise.all([
+      client.getResearchRun(runId, { project_id: projectId }, mySignal),
+      client.listResearchFindings(
+        runId,
+        { project_id: projectId, limit: 100, offset: 0 },
+        mySignal,
+      ),
+      client.listResearchSources(
+        runId,
+        { project_id: projectId, limit: 100, offset: 0 },
+        mySignal,
+      ),
+    ]);
+    if (mySignal.aborted) return;
+    // An isolation failure (404) collapses the entire surface to
+    // a single error rather than mixing partial data; the page
+    // also tags the run as ``Unrecoverable`` so a fresh selection
+    // can recover.
+    const firstErr = runRes.error || findingRes.error || sourceRes.error;
+    if (firstErr) {
+      setResearchDetailError(
+        'External Research 加载失败，请稍后再试或换一个 Run。',
+      );
+      if (runRes.error) {
+        setResearchUnrecoverable(
+          `External Research Unavailable (${runRes.error.status})`,
+        );
+      }
+      setResearchDetailLoading(false);
+      return;
+    }
+    if (!runRes.data) {
+      setResearchDetailError('External Research 数据为空。');
+      setResearchDetailLoading(false);
+      return;
+    }
+    // Drop the synthetic "Running" badge if the freshly-loaded
+    // row says the run has already finalised (or the run_id is
+    // the one we believed was still running). Once the server
+    // confirms a terminal status, the page no longer pretends
+    // the request is still in flight.
+    if (runId === researchRunningRunId && runRes.data.status !== 'running') {
+      setResearchRunningRunId(null);
+    }
+    setSelectedResearchRun(runRes.data);
+    setResearchFindings(findingRes.data?.items ?? []);
+    setResearchSources(sourceRes.data?.items ?? []);
+    setResearchDetailLoading(false);
+    setResearchUnrecoverable(null);
+    // Reset the expanded-citations dictionary on every run
+    // switch — the previous run's choice should not bleed into
+    // the new run. The v6 support-toggle dictionary is reset
+    // in lockstep so a click on a previous-run's
+    // ``inference`` does not auto-expand a same-id row in
+    // the new run.
+    setExpandedFindingIds({});
+    setSupportExpandedFindingIds({});
+  }, [
+    activeProjectId,
+    client,
+    insightId,
+    researchRunningRunId,
+    selectedResearchRunId,
+    signal,
+  ]);
+
+  /* Submit a new research run. The runtime pipeline is
+   * synchronous on the backend (200 lands with the finalised
+   * row), so the optimistic Running badge is ONLY shown during
+   * the network round-trip — once the row returns we refetch
+   * the history so the new entry appears in the picker and the
+   * detail pane reloads to reflect the server-side status. */
+  const submitResearchRun = useCallback(async () => {
+    if (!insightId || !signal || !activeProjectId) return;
+    const question = researchQuestion.trim();
+    if (question.length === 0) {
+      setResearchSubmitError('请填写研究问题。');
+      return;
+    }
+    if (question.length > 500) {
+      setResearchSubmitError('研究问题不能超过 500 字。');
+      return;
+    }
+    const scope = researchScope.trim();
+    if (scope.length > 2000) {
+      setResearchSubmitError('Scope 不能超过 2000 字。');
+      return;
+    }
+    if (liveInsightProjectMismatch || !insight) {
+      setResearchSubmitError('当前洞察不属于本项目，无法提交研究。');
+      return;
+    }
+    const mySignal = signal;
+    setResearchSubmitting(true);
+    setResearchSubmitError(null);
+    // Placeholder id for the synthetic Running badge — the
+    // server-assigned UUID only exists after the POST returns,
+    // so we label the badge by the user's intent ("提交中…")
+    // and clear it the moment the response lands.
+    setResearchRunningRunId('submitting');
+    const res = await client.startResearchRun(
+      insightId,
+      {
+        research_question: question,
+        scope: scope.length > 0 ? scope : null,
+        // Phase 8 v7 — pin the extractive answer contract
+        // explicitly. The backend accepts an unset
+        // ``prompt_version`` and defaults to v1; the page
+        // always opts into v7 so the v5/v6 LLM-authored
+        // audit shape never lands on a fresh run.
+        prompt_version: 'research-agent-v7',
+      },
+      mySignal,
+    );
+    if (mySignal?.aborted) {
+      setResearchSubmitting(false);
+      setResearchRunningRunId(null);
+      return;
+    }
+    setResearchSubmitting(false);
+    if (res.error) {
+      setResearchRunningRunId(null);
+      setResearchSubmitError(
+        res.error.status === 409
+          ? 'External Research 配置缺失，请联系管理员配置 Tavily 与 LLM 凭证。'
+          : classifyError(res.error),
+      );
+      return;
+    }
+    if (res.data) {
+      // Backend returned a finalised run — push the user input
+      // aside and route them to the new run's detail panel.
+      setResearchQuestion('');
+      setResearchScope('');
+      setSelectedResearchRunId(res.data.id);
+      setResearchRunningRunId(null);
+      // Refetch the history so the new run tops the list. The
+      // detail fetcher triggers automatically because we updated
+      // selectedResearchRunId.
+      await fetchResearchHistory();
+    }
+  }, [
+    activeProjectId,
+    client,
+    fetchResearchHistory,
+    insight,
+    insightId,
+    liveInsightProjectMismatch,
+    researchQuestion,
+    researchScope,
+    signal,
+  ]);
+
   /* ---------- Wire up ---------- */
 
   // B1 fix: when the active project changes (including the very first time
@@ -349,6 +628,28 @@ export default function InsightDetailPage() {
     setBvInputError(null);
     // evidencePage offsets are project-scoped too — reset to first page.
     setEvidencePage({ limit: 25, offset: 0 });
+    /* Phase 8 — wipe every piece of External Research state on a
+     * project switch so the new project never inherits a stale
+     * running-runnner id, a stale selected run or a stale error.
+     * The signal-based abort already cancels in-flight requests;
+     * this guard catches data that landed BEFORE the abort fired. */
+    setResearchQuestion('');
+    setResearchScope('');
+    setResearchSubmitting(false);
+    setResearchSubmitError(null);
+    setResearchHistory(null);
+    setResearchHistoryError(null);
+    setResearchHistoryLoading(false);
+    setResearchRunningRunId(null);
+    setSelectedResearchRunId(null);
+    setSelectedResearchRun(null);
+    setResearchFindings(null);
+    setResearchSources(null);
+    setResearchDetailLoading(false);
+    setResearchDetailError(null);
+    setExpandedFindingIds({});
+    setSupportExpandedFindingIds({});
+    setResearchUnrecoverable(null);
     // We DO list activeProjectId in deps. The hook fires on every project
     // change INCLUDING the initial null→first-project, which is exactly
     // what we want — a fresh project always means a fresh start.
@@ -359,7 +660,21 @@ export default function InsightDetailPage() {
     void fetchEvidence();
     void fetchOpportunityScore();
     void refetchDecision();
-  }, [fetchInsight, fetchEvidence, fetchOpportunityScore, refetchDecision]);
+    void fetchResearchHistory();
+  }, [
+    fetchInsight,
+    fetchEvidence,
+    fetchOpportunityScore,
+    refetchDecision,
+    fetchResearchHistory,
+  ]);
+
+  // Reload the External Research detail whenever the user picks
+  // a different run. The fetcher is a no-op until the history
+  // arrives (selectedResearchRunId stays null).
+  useEffect(() => {
+    void fetchResearchDetail();
+  }, [fetchResearchDetail]);
 
   /* ---------- Derived ----------
    *
@@ -570,7 +885,19 @@ export default function InsightDetailPage() {
     const mySignal = signal;
     setRequirementBusy(true);
     setRequirementError(null);
-    const res = await client.createRequirement(insight.id, mySignal ?? undefined);
+    const requestScope = requestScopeRef.current;
+    if (insight.project_id !== requestScope.projectId) return;
+    const res = await client.createRequirement(
+      insight.id,
+      mySignal ?? undefined,
+      // Phase 8 v7 — opt into the revised Requirement
+      // generation prompt. The backend treats an empty
+      // body as "use the active default", so passing
+      // ``undefined`` would still be valid; the explicit
+      // pin documents which prompt authored the row and
+      // keeps PM edit/approval flow unchanged.
+      'requirement-generation-v2', requestScope.projectId ?? undefined);
+    if (requestScopeRef.current !== requestScope) return;
     if (mySignal?.aborted) {
       setRequirementBusy(false);
       return;
@@ -578,7 +905,7 @@ export default function InsightDetailPage() {
     setRequirementBusy(false);
     if (res.error || !res.data) {
       setRequirementError(
-        res.error ? classifyError(res.error) : '创建 Requirement 失败。',
+        res.error ? classifyError(res.error) : '创建需求失败。',
       );
       return;
     }
@@ -634,7 +961,7 @@ export default function InsightDetailPage() {
       return (
         <EmptyState
           title="该洞察不属于当前项目"
-          description={`该洞察属于项目 ${insightForeignProject}，与当前激活项目不符。请在项目切换器中选择对应项目后再查看。`}
+          description="请切换到这条洞察所属的项目后查看。"
         />
       );
     }
@@ -651,7 +978,7 @@ export default function InsightDetailPage() {
     return (
       <EmptyState
         title="该洞察不属于当前项目"
-        description={`该洞察 (${insight.id.slice(0, 8)}…) 属于项目 ${insight.project_id}，与当前激活项目不符。请在项目切换器中选择对应项目后再查看。`}
+        description="请切换到这条洞察所属的项目后查看。"
       />
     );
   }
@@ -661,19 +988,19 @@ export default function InsightDetailPage() {
       <header className="page-header">
         <span className="eyebrow">洞察详情</span>
         <h1 className="page-title">{insight.title ?? '尚无标题'}</h1>
-        <p className="page-subtitle">
-          来源 run <code className="mono">{insight.run_id.slice(0, 8)}</code> · 聚类
-          <code className="mono"> {insight.source_cluster_external_id.slice(0, 8)}</code>
-        </p>
+        <p className="page-subtitle">更新于 {formatRelative(insight.created_at ?? null)}</p>
+        <TechnicalDetails label="查看来源记录">
+          <p>分析记录：<code>{insight.run_id}</code></p>
+          <p>聚类记录：<code>{insight.source_cluster_external_id}</code></p>
+        </TechnicalDetails>
       </header>
 
       <section className="section hero" data-od-id="hero">
         <div className="hero-tags">
           <span className="badge badge-accent">
-            {insight.status === 'needs_validation' ? 'Needs Validation' : 'Draft'}
+            {displayLabel(insight.status)}
           </span>
-          <span className="badge badge-outline mono">{insight.id.slice(0, 8)}</span>
-          <span className="badge badge-ai">AI-generated · 可追溯</span>
+          <span className="badge badge-ai">AI 生成</span>
           {decision ? (
             <span
               className={`badge ${
@@ -690,7 +1017,7 @@ export default function InsightDetailPage() {
             </span>
           ) : null}
         </div>
-        <p className="lead">{insight.affected_segment ?? '受影响人群尚未识别'}</p>
+        <p className="lead">{readableSystemText(insight.affected_segment, '受影响人群尚待确认')}</p>
         <div className="hero-meta">
           <span>
             置信度 <b className="mono">{formatPercent(insight.confidence)}</b>
@@ -704,8 +1031,8 @@ export default function InsightDetailPage() {
       {/* Product Insight body */}
       <section className="section" data-od-id="product-insight">
         <header className="section-head">
-          <h3>Product Insight</h3>
-          <span className="badge badge-ai">AI-generated</span>
+          <h3>洞察内容</h3>
+          <span className="badge badge-ai">AI 生成</span>
         </header>
         <blockquote
           style={{
@@ -720,20 +1047,20 @@ export default function InsightDetailPage() {
             maxWidth: '80ch',
           }}
         >
-          {insight.insight ?? '（尚无 AI 推断正文 — 可能 needs_validation）'}
+          {readableSystemText(insight.insight, '尚无洞察正文，请先核实相关反馈。')}
         </blockquote>
         <div className="meta-grid">
           <div className="meta-item">
-            <div className="meta-k">Pain Point</div>
-            <div className="meta-v">{insight.pain_point ?? <NotMeasured />}</div>
+            <div className="meta-k">用户痛点</div>
+            <div className="meta-v">{readableSystemText(insight.pain_point, '尚待确认')}</div>
           </div>
           <div className="meta-item">
-            <div className="meta-k">Affected Segment</div>
-            <div className="meta-v">{insight.affected_segment ?? <NotMeasured />}</div>
+            <div className="meta-k">受影响用户</div>
+            <div className="meta-v">{readableSystemText(insight.affected_segment, '尚待确认')}</div>
           </div>
           <div className="meta-item">
-            <div className="meta-k">Recommendation</div>
-            <div className="meta-v">{insight.recommendation ?? <NotMeasured />}</div>
+            <div className="meta-k">改进建议</div>
+            <div className="meta-v">{readableSystemText(insight.recommendation, '尚待补充建议')}</div>
           </div>
         </div>
       </section>
@@ -741,9 +1068,9 @@ export default function InsightDetailPage() {
       {/* Evidence */}
       <section className="section" data-od-id="evidence">
         <header className="section-head">
-          <h3>Evidence · {evidence?.total ?? 0}</h3>
+          <h3>反馈证据 · {evidence?.total ?? 0}</h3>
           <span className="muted" style={{ fontSize: 'var(--t-caption)' }}>
-            直接读自 <code className="mono">feedbacks.content</code>，绝无 AI 改写。
+            用户反馈原文
           </span>
         </header>
 
@@ -760,7 +1087,7 @@ export default function InsightDetailPage() {
         ) : evidence && evidence.items.length === 0 ? (
           <EmptyState
             title="尚无证据"
-            description="本 Insight 尚未生成代表反馈。可在分析页对此 Run 重试。"
+            description="尚无代表反馈，可到分析页重新生成洞察。"
           />
         ) : evidence ? (
           <ul className="evidence-list" data-testid="evidence-list">
@@ -774,26 +1101,26 @@ export default function InsightDetailPage() {
                     </span>
                   </div>
                   <div className="evidence-meta">
-                    <span>来源 {ev.feedback_source ?? <NotMeasured label="—" />}</span>
+                    <span>来源 {ev.feedback_source ? sourceLabel(ev.feedback_source) : <NotMeasured label="—" />}</span>
                     <span>用户 <span className="mono">{ev.feedback_user_id ?? '—'}</span></span>
-                    <span>证据类型 <span className="mono">{ev.evidence_type}</span></span>
+                    <span>证据类型 <span>{displayLabel(ev.evidence_type)}</span></span>
                     <span>相关度 <span className="mono">{formatNumber(ev.relevance_score)}</span></span>
                     <span>{formatRelative(ev.feedback_created_at ?? null)}</span>
                   </div>
                   {ev.feedback_analysis ? (
                     <div className="evidence-ai" data-testid="evidence-ai">
-                      <span className="badge badge-ai">AI Analysis</span>
+                      <span className="badge badge-ai">AI 分析</span>
                       <span>
-                        类型 <b className="mono">{ev.feedback_analysis.feedback_type}</b>
+                        类型 <b>{displayLabel(ev.feedback_analysis.feedback_type)}</b>
                       </span>
                       <span>
-                        模块 <b className="mono">{ev.feedback_analysis.module}</b>
+                        主题 <b>{topicLabel(ev.feedback_analysis.module)}</b>
                       </span>
                       <span>
-                        意图 <b className="mono">{ev.feedback_analysis.intent}</b>
+                        意图 <b>{readableSystemText(ev.feedback_analysis.intent, '待核对')}</b>
                       </span>
                       <span>
-                        情感 <b className="mono">{ev.feedback_analysis.sentiment}</b>
+                        情感 <b>{displayLabel(ev.feedback_analysis.sentiment)}</b>
                       </span>
                       <span>
                         严重度 <b className="mono">{ev.feedback_analysis.severity}/5</b>
@@ -807,8 +1134,8 @@ export default function InsightDetailPage() {
                     </div>
                   ) : (
                     <div className="evidence-ai evidence-ai--empty" data-testid="evidence-ai-empty">
-                      <span className="badge badge-outline">AI Analysis</span>
-                      <span className="muted">未生成（classification_run 无对应 FeedbackAnalysis）</span>
+                      <span className="badge badge-outline">AI 分析</span>
+                      <span className="muted">尚无分类分析结果</span>
                     </div>
                   )}
                 </div>
@@ -857,13 +1184,15 @@ export default function InsightDetailPage() {
       {/* Opportunity Score */}
       <section className="section" data-od-id="opportunity-score">
         <header className="section-head">
-          <h3>Opportunity Score · Snapshot</h3>
+          <h3>机会评分</h3>
+          <TechnicalDetails label="查看评分信息">
           {score ? (
             <span className="muted mono" style={{ fontSize: 'var(--t-caption)' }}>
-              Calculation {score.calculation_version} ·
+              评分规则 {score.calculation_version} ·
               模型 <span className="mono">{score.model ?? '—'}</span>
             </span>
           ) : null}
+          </TechnicalDetails>
         </header>
         {/* Phase 7 B1 fix — PM Business Value input. The backend
          * requires a complete score snapshot before
@@ -892,7 +1221,7 @@ export default function InsightDetailPage() {
               htmlFor="bv-input"
               style={{ marginBottom: 0 }}
             >
-              <span className="form-label">PM Business Value（0..10）</span>
+              <span className="form-label">业务价值（0–10）</span>
               <input
                 id="bv-input"
                 type="number"
@@ -917,7 +1246,7 @@ export default function InsightDetailPage() {
               disabled={decisionBusy || bvInput.trim() === ''}
               data-testid="bv-submit"
             >
-              保存 Business Value
+              保存业务价值
             </button>
             {bvInputError ? (
               <span
@@ -946,8 +1275,8 @@ export default function InsightDetailPage() {
           />
         ) : scoreMissing ? (
           <EmptyState
-            title="尚未生成 Opportunity Score"
-            description="请先在上方「PM Business Value」输入 0..10 之间的数值并保存——后端会在同一次 PATCH 中原子重算总分、AI priority 与权重，从而解锁后续 Accept / Override / Defer / Reject。"
+            title="尚无机会评分"
+            description="先填写业务价值并保存，即可查看评分并作出决策。"
             action={
               <button
                 type="button"
@@ -964,7 +1293,7 @@ export default function InsightDetailPage() {
                   setScoreMissing(false);
                 }}
               >
-                生成预览评分（BV 留空，仅查看结构）
+                预览评分
               </button>
             }
           />
@@ -976,24 +1305,24 @@ export default function InsightDetailPage() {
       {/* PM Decision */}
       <section className="section" data-od-id="decision">
         <header className="section-head">
-          <h3>Product Decision · Human-in-the-loop</h3>
-          <span className="badge badge-ai">AI 建议 + PM 终裁</span>
+          <h3>产品决策</h3>
+          <span className="badge badge-ai">由你确认最终决策</span>
         </header>
 
         <div className="decision-panel">
           <div className="decision-box ai">
-            <div className="decision-label">AI Recommendation</div>
+            <div className="decision-label">AI 建议</div>
             <div className="decision-value">
               <span className="badge badge-accent">
                 {score?.ai_priority ?? decision?.ai_priority ?? <NotMeasured label="—" />}
               </span>
               <span style={{ marginLeft: 12, color: 'var(--ai-fg)' }}>
-                {score?.ai_reasoning ?? 'AI 评分尚未生成，无独立建议；可直接由 PM 决策。'}
+                {score ? scoreExplanation(score.ai_reasoning) : '尚无评分建议，请结合反馈作出判断。'}
               </span>
             </div>
           </div>
           <div className="decision-box">
-            <div className="decision-label">PM Decision</div>
+            <div className="decision-label">产品决策</div>
             {decisionMissing ? (
               <div className="decision-value muted" style={{ fontSize: 'var(--t-small)' }}>
                 尚未提交 PM 决策。下方按钮可立即生效。
@@ -1001,7 +1330,7 @@ export default function InsightDetailPage() {
             ) : decision ? (
               <div className="decision-value">
                 <div>
-                  状态 <b className="mono">{decisionStatus}</b>
+                  状态 <b>{displayLabel(decisionStatus)}</b>
                   {decision.pm_priority ? (
                     <>
                       {' '}· 优先级 <span className="badge badge-accent">{decision.pm_priority}</span>
@@ -1009,7 +1338,7 @@ export default function InsightDetailPage() {
                   ) : null}
                   {decision.override_reason ? (
                     <>
-                      {' '}· 原因 <span className="mono">{decision.override_reason}</span>
+                      {' '}· 原因 <span className="mono">{OVERRIDE_REASONS.find((reason) => reason.value === decision.override_reason)?.label ?? "其他原因"}</span>
                     </>
                   ) : null}
                 </div>
@@ -1019,7 +1348,7 @@ export default function InsightDetailPage() {
                   </div>
                 ) : null}
                 <div className="muted mono" style={{ marginTop: 6, fontSize: 'var(--t-caption)' }}>
-                  version v{decision.version} · 更新 {formatRelative(decision.updated_at ?? null)}
+                  版本 {decision.version} · 更新 {formatRelative(decision.updated_at ?? null)}
                 </div>
               </div>
             ) : null}
@@ -1044,7 +1373,7 @@ export default function InsightDetailPage() {
             disabled={decisionBusy || decisionStatus === 'accepted'}
             data-action="accept"
           >
-            Accept
+            采纳
           </button>
           <button
             type="button"
@@ -1060,7 +1389,7 @@ export default function InsightDetailPage() {
             disabled={decisionBusy}
             data-action="override"
           >
-            Override
+            调整优先级
           </button>
           <button
             type="button"
@@ -1069,7 +1398,7 @@ export default function InsightDetailPage() {
             disabled={decisionBusy || decisionStatus === 'deferred'}
             data-action="defer"
           >
-            Defer
+            暂缓
           </button>
           <button
             type="button"
@@ -1078,7 +1407,7 @@ export default function InsightDetailPage() {
             disabled={decisionBusy || decisionStatus === 'rejected'}
             data-action="reject"
           >
-            Reject
+            驳回
           </button>
           <span style={{ flex: 1 }} />
           <button
@@ -1092,6 +1421,208 @@ export default function InsightDetailPage() {
         </div>
       </section>
 
+      {/* External Research (Phase 8) — fully separated surface
+          from Internal Evidence above. The launcher posts the
+          user's research question + scope to the synchronous
+          research runner; the history list refreshes on success
+          and the detail panel reloads the run + findings +
+          sources from the backend (always project-scoped — the
+          page passes the active project id to every per-run
+          GET so a foreign row 404s and the section clearly
+          disables itself). */}
+      <section
+        className="research-section"
+        data-od-id="external-research"
+        data-testid="external-research"
+      >
+        <header className="research-section-header">
+          <h3>外部研究</h3>
+          <span className="badge badge-outline">公开资料</span>
+          <span className="research-section-hint">
+            检索公开资料，为产品判断补充依据。
+          </span>
+        </header>
+
+        <div
+          className="research-launcher"
+          data-testid="research-launcher"
+        >
+          <label className="form-field" htmlFor="research-question">
+            <span className="form-label">研究问题</span>
+            <textarea
+              id="research-question"
+              className="form-textarea"
+              rows={2}
+              maxLength={500}
+              value={researchQuestion}
+              onChange={(e) => {
+                setResearchQuestion(e.target.value);
+                if (researchSubmitError) setResearchSubmitError(null);
+              }}
+              placeholder="例如：竞品 X 在 SMB 市场的定价策略是什么？"
+              disabled={researchSubmitting}
+              data-testid="research-question-input"
+            />
+          </label>
+          <label className="form-field" htmlFor="research-scope">
+            <span className="form-label">研究范围（可选）</span>
+            <textarea
+              id="research-scope"
+              className="form-textarea"
+              rows={2}
+              maxLength={2000}
+              value={researchScope}
+              onChange={(e) => {
+                setResearchScope(e.target.value);
+                if (researchSubmitError) setResearchSubmitError(null);
+              }}
+              placeholder="市场 / 时间窗口 / 人群。留空则仅用研究问题检索。"
+              disabled={researchSubmitting}
+              data-testid="research-scope-input"
+            />
+          </label>
+          <div className="research-launcher-cta" style={{ gridColumn: '1 / -1' }}>
+            {researchSubmitting ? (
+              <span
+                className="research-launcher-running"
+                data-testid="research-running"
+              >
+                <span
+                  className="research-launcher-progress"
+                  aria-hidden="true"
+                />
+                正在执行研究，请稍候…
+              </span>
+            ) : null}
+            <span style={{ flex: 1 }} />
+            <button
+              type="button"
+              className="btn btn-primary btn-sm"
+              disabled={
+                researchSubmitting ||
+                liveInsightProjectMismatch ||
+                researchQuestion.trim().length === 0
+              }
+              onClick={() => void submitResearchRun()}
+              data-testid="research-run-button"
+            >
+              开始研究
+            </button>
+          </div>
+          {researchSubmitError ? (
+            <div
+              className="research-launcher-error"
+              role="alert"
+              data-testid="research-submit-error"
+              style={{ gridColumn: '1 / -1' }}
+            >
+              {researchSubmitError}
+            </div>
+          ) : null}
+        </div>
+
+        {researchUnrecoverable ? (
+          <div
+            className="research-unavailable"
+            role="alert"
+            data-testid="research-unavailable"
+          >
+            <span className="research-unavailable-title">
+              研究暂不可用
+            </span>
+            {researchUnrecoverable}。当前项目无法查看这条研究记录。
+          </div>
+        ) : null}
+
+        <div className="research-section-divider">研究历史</div>
+
+        {researchHistoryLoading && !researchHistory ? (
+          <LoadingState />
+        ) : researchHistoryError && !researchHistory ? (
+          <ErrorState
+            message={researchHistoryError}
+            onRetry={() => {
+              setResearchHistoryError(null);
+              void fetchResearchHistory();
+            }}
+          />
+        ) : researchHistory && researchHistory.length === 0 ? (
+          <div className="research-history-empty" data-testid="research-history-empty">
+            尚无研究历史。输入研究问题，开始首次研究。
+          </div>
+        ) : researchHistory ? (
+          <ul className="research-history" data-testid="research-history">
+            {researchHistory.map((run) => {
+              const isActive = run.id === selectedResearchRunId;
+              const isRunning =
+                researchRunningRunId === 'submitting' && isActive;
+              return (
+                <li
+                  key={run.id}
+                  className={`research-history-item${isActive ? ' is-active' : ''}`}
+                  data-testid={`research-history-item-${run.id}`}
+                >
+                  <div className="research-history-row">
+                    <span
+                      className={`research-status-pill research-status-pill--${renderableResearchStatus(
+                        isRunning ? 'running' : run.status,
+                      )}`}
+                    >
+                      {renderResearchStatusLabel(
+                        isRunning ? 'running' : run.status,
+                      )}
+                    </span>
+
+                    <span className="research-history-row meta">
+                      {formatRelative(run.created_at)}
+                    </span>
+                    <span className="research-history-spacer" />
+                    <button
+                      type="button"
+                      className="btn btn-ghost btn-sm"
+                      onClick={() => {
+                        setSelectedResearchRunId(run.id);
+                        setResearchRunningRunId(null);
+                      }}
+                      disabled={
+                        researchSubmitting && isActive
+                      }
+                      data-testid={`research-select-${run.id}`}
+                    >
+                      查看
+                    </button>
+                  </div>
+                  <p className="research-history-question">
+                    {run.research_question}
+                  </p>
+                </li>
+              );
+            })}
+          </ul>
+        ) : null}
+
+        {selectedResearchRun ? (
+          <ResearchDetailPanel
+            run={selectedResearchRun}
+            findings={researchFindings}
+            sources={researchSources}
+            loading={researchDetailLoading}
+            error={researchDetailError}
+            expanded={expandedFindingIds}
+            onToggleFinding={(id) =>
+              setExpandedFindingIds((prev) => ({ ...prev, [id]: !prev[id] }))
+            }
+            supportExpanded={supportExpandedFindingIds}
+            onToggleSupport={(id) =>
+              setSupportExpandedFindingIds((prev) => ({
+                ...prev,
+                [id]: !prev[id],
+              }))
+            }
+          />
+        ) : null}
+      </section>
+
       {/* CTA — Create Requirement gate */}
       <section
         className={`cta-bar${ctaGate.enable ? '' : ' disabled'}`}
@@ -1102,25 +1633,23 @@ export default function InsightDetailPage() {
         <div>
           <h4>
             {ctaGate.enable
-              ? '下一步：创建 Requirement'
+              ? '下一步：创建需求'
               : decisionStatus === 'pending_review'
-                ? '需要先完成 PM Decision'
+                ? '请先确认产品决策'
                 : decisionStatus === 'deferred'
-                  ? 'Insight 已 Deferred'
+                  ? '这条洞察已暂缓'
                   : decisionStatus === 'rejected'
-                    ? 'Insight 已 Rejected'
-                    : '尚不能创建 Requirement'}
+                    ? '这条洞察已驳回'
+                    : '尚不能创建需求'}
           </h4>
           <p>
             {ctaGate.enable
-              ? '将该 Insight 转化为可工程化的 Requirement，并自动生成 PRD 草案。'
+              ? '将已确认的洞察整理为产品需求。'
               : !ctaGate.evidenceOk
-                ? `需要至少 1 条证据（当前 evidence_count = ${
-                    insight.evidence_count
-                  }）。请扩充 cluster 或重试 Insight。`
+                ? '请先补充反馈证据，再创建需求。'
                 : !ctaGate.accepted
-                  ? 'PM Decision 必须为 Accept / Override 才能创建 Requirement。'
-                  : 'PM 优先级缺失，无法创建 Requirement。请用 Override 指定。'}
+                  ? '采纳洞察或调整优先级后，即可创建需求。'
+                  : '请先设置需求优先级。'}
           </p>
         </div>
         <div style={{ display: 'flex', gap: 8 }}>
@@ -1132,7 +1661,7 @@ export default function InsightDetailPage() {
             data-testid="create-requirement"
             aria-disabled={!ctaGate.enable || liveInsightProjectMismatch}
           >
-            Create Requirement →
+            创建需求 →
           </button>
           <Link className="btn btn-ghost btn-sm" href="/insights">
             返回列表
@@ -1142,14 +1671,14 @@ export default function InsightDetailPage() {
 
       {requirementError ? (
         <ErrorState
-          title="创建 Requirement 失败"
+          title="创建需求失败"
           message={requirementError}
           onRetry={() => setRequirementError(null)}
         />
       ) : null}
       {createdRequirementId ? (
         <div className="alert alert-info" role="status" data-testid="requirement-created">
-          Requirement 已创建（{createdRequirementId.slice(0, 8)}…），详情页路由由后续工作包实现。
+          需求已创建（{createdRequirementId.slice(0, 8)}…），可在需求列表中查看。
         </div>
       ) : null}
 
@@ -1186,7 +1715,7 @@ export default function InsightDetailPage() {
                   onRetry={() => void fetchHistory()}
                 />
               ) : history.length === 0 ? (
-                <EmptyState title="尚无历史" description="本次 Insight 暂无 PM 操作事件。" />
+                <EmptyState title="尚无历史" description="这条洞察还没有决策记录。" />
               ) : (
                 <ul className="history-list">
                   {history.map((h) => (
@@ -1198,14 +1727,14 @@ export default function InsightDetailPage() {
                       </div>
                       {h.pm_priority || h.ai_priority ? (
                         <div className="muted" style={{ fontSize: 'var(--t-small)' }}>
-                          {h.ai_priority ? `AI priority: ${h.ai_priority}` : null}
-                          {h.pm_priority ? ` · PM priority: ${h.pm_priority}` : null}
-                          {h.override_reason ? ` · 原因: ${h.override_reason}` : null}
+                          {h.ai_priority ? `AI 建议：${h.ai_priority}` : null}
+                          {h.pm_priority ? ` · 最终优先级：${h.pm_priority}` : null}
+                          {h.override_reason ? ` · 原因: ${OVERRIDE_REASONS.find((reason) => reason.value === h.override_reason)?.label ?? "其他原因"}` : null}
                           {h.override_note ? ` · 备注: ${h.override_note}` : null}
                         </div>
                       ) : null}
                       <code className="muted mono" style={{ fontSize: 'var(--t-caption)' }}>
-                        request_id {h.request_id.slice(0, 8)}…
+                        操作编号 {h.request_id.slice(0, 8)}…
                       </code>
                     </li>
                   ))}
@@ -1231,8 +1760,8 @@ export default function InsightDetailPage() {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="modal-head">
-              <h3>Override PM Priority</h3>
-              <p>覆盖 AI 推荐的优先级，并记录 PM 决策原因。该操作会增加 Decision version。</p>
+              <h3>调整需求优先级</h3>
+              <p>调整优先级，并说明判断依据。</p>
             </div>
             <div className="modal-body">
               <label className="form-field">
@@ -1252,7 +1781,7 @@ export default function InsightDetailPage() {
                 </select>
               </label>
               <label className="form-field">
-                <span className="form-label">Override 原因（必填）</span>
+                <span className="form-label">调整原因（必填）</span>
                 <select
                   className="form-select"
                   value={overrideReason}
@@ -1275,7 +1804,7 @@ export default function InsightDetailPage() {
                   value={overrideNote}
                   onChange={(e) => setOverrideNote(e.target.value)}
                   maxLength={2000}
-                  placeholder="记录 PM 决策依据，便于下游 Requirement 引用。"
+                  placeholder="说明调整原因。"
                 />
               </label>
             </div>
@@ -1294,7 +1823,7 @@ export default function InsightDetailPage() {
                 disabled={decisionBusy}
                 data-testid="submit-override"
               >
-                提交 Override
+                确认调整
               </button>
             </div>
           </aside>
@@ -1306,8 +1835,8 @@ export default function InsightDetailPage() {
         <div className="drawer-backdrop open" role="presentation">
           <aside className="modal open" role="alertdialog" style={MODAL_STYLE}>
             <div className="modal-head">
-              <h3>Decision 版本冲突</h3>
-              <p>{conflictModal.message}</p>
+              <h3>决策已更新</h3>
+              <p>{userMessage(conflictModal.message)}</p>
             </div>
             <div className="modal-foot">
               <button
@@ -1351,7 +1880,7 @@ function OpportunityScoreBody({ score }: ScoreBodyProps) {
   const breakdown = score.breakdown;
   const totalScore = score.total_score;
   const bv = score.business_value;
-  const reasoning = score.ai_reasoning;
+  const reasoning = scoreExplanation(score.ai_reasoning);
 
   const totalAvailable = totalScore !== null && totalScore !== undefined;
 
@@ -1366,44 +1895,44 @@ function OpportunityScoreBody({ score }: ScoreBodyProps) {
             <span className="out-of">/ 10</span>
           </div>
           <div className="muted" style={{ fontSize: 'var(--t-caption)' }}>
-            权重配置 / 生效：见下方表格。AI priority：
+            建议优先级：
             <span className="badge badge-accent mono">
               {score.ai_priority ?? <NotMeasured label="未生成" />}
             </span>
           </div>
         </div>
+        <TechnicalDetails label="查看评分明细">
         <div className="score-meta">
           <div className="score-meta-item">
-            <div className="meta-k">Configured Weight Sum</div>
+            <div className="meta-k">配置权重合计</div>
             <div className="meta-v mono">
               {formatNumber(sumWeights(score.weights.configured))}
             </div>
           </div>
           <div className="score-meta-item">
-            <div className="meta-k">Effective Weight Sum</div>
+            <div className="meta-k">实际权重合计</div>
             <div className="meta-v mono">
               {formatNumber(sumWeights(score.weights.effective))}
             </div>
           </div>
           <div className="score-meta-item">
-            <div className="meta-k">Business Value</div>
-            <div className="meta-v mono">{bv !== null ? formatNumber(Number(bv)) : <NotMeasured label="Pending PM Input" />}</div>
+            <div className="meta-k">业务价值</div>
+            <div className="meta-v mono">{bv !== null ? formatNumber(Number(bv)) : <NotMeasured label="待填写业务价值" />}</div>
           </div>
           <div className="score-meta-item">
-            <div className="meta-k">Calculation Version</div>
+            <div className="meta-k">评分规则版本</div>
             <div className="meta-v mono">{score.calculation_version}</div>
           </div>
         </div>
-      </div>
 
       <table className="score-table" data-testid="score-table">
         <thead>
           <tr>
-            <th>Dimension</th>
-            <th className="num">Configured Wt</th>
-            <th className="num">Effective Wt</th>
-            <th className="num">Value</th>
-            <th>Status</th>
+            <th>评分维度</th>
+            <th className="num">配置权重</th>
+            <th className="num">实际权重</th>
+            <th className="num">得分</th>
+            <th>状态</th>
           </tr>
         </thead>
         <tbody>
@@ -1421,13 +1950,13 @@ function OpportunityScoreBody({ score }: ScoreBodyProps) {
                   {score.weights.effective[k] ?? <NotMeasured />}
                 </td>
                 <td className={`value-cell${available ? '' : ' unavailable'} mono`}>
-                  {available && value !== null ? value : 'Not Available'}
+                  {available && value !== null ? value : '暂无数据'}
                 </td>
                 <td className="reason-cell">
                   {available ? (
-                    'OK'
+                    '已评分'
                   ) : (
-                    <span className="muted">{dim.note ?? 'Pending PM Input'}</span>
+                    <span className="muted">{displayLabel(dim.note, '暂无评分依据')}</span>
                   )}
                 </td>
               </tr>
@@ -1435,10 +1964,12 @@ function OpportunityScoreBody({ score }: ScoreBodyProps) {
           })}
         </tbody>
       </table>
+        </TechnicalDetails>
+      </div>
 
       {reasoning ? (
         <div className="ai-reasoning">
-          <div className="ai-reasoning-label">AI Reasoning</div>
+          <div className="ai-reasoning-label">评分依据</div>
           <div className="ai-reasoning-body">{reasoning}</div>
         </div>
       ) : null}
@@ -1455,11 +1986,11 @@ const DIMENSION_KEYS: ReadonlyArray<keyof OpportunityScore['breakdown']> = [
 ];
 
 const DIMENSION_LABEL: Record<keyof OpportunityScore['breakdown'], string> = {
-  user_coverage: 'User Coverage',
-  severity: 'Severity',
-  growth: 'Growth',
-  user_value: 'User Value',
-  business_value: 'Business Value',
+  user_coverage: '用户覆盖',
+  severity: '问题严重度',
+  growth: '增长潜力',
+  user_value: '用户价值',
+  business_value: '业务价值',
 };
 
 function sumWeights(weights: Record<string, string>): number {
@@ -1471,6 +2002,1122 @@ function sumWeights(weights: Record<string, string>): number {
     if (Number.isFinite(n)) total += n;
   }
   return Math.round(total * 100) / 100;
+}
+
+/* ---------- Phase 8 — External Research helpers ----------
+ *
+ * The Research Detail Panel is intentionally separated from
+ * the Internal Evidence section above. Findings are grouped by
+ * category so the PM can scan competitors / market patterns /
+ * opportunities / risks independently. Every confirmed finding
+ * shows an "cited" badge; every not_verified finding is
+ * explicitly marked so the page can never silently pass off an
+ * ungrounded claim as a fact.
+ */
+
+type ResearchFindingCategoryLabel =
+  | 'competitor'
+  | 'market_pattern'
+  | 'opportunity'
+  | 'risk'
+  | 'summary';
+
+const RESEARCH_CATEGORY_ORDER: ReadonlyArray<ResearchFindingCategoryLabel> = [
+  'summary',
+  'competitor',
+  'market_pattern',
+  'opportunity',
+  'risk',
+];
+
+const RESEARCH_CATEGORY_LABEL: Record<
+  ResearchFindingCategoryLabel,
+  string
+> = {
+  summary: '摘要',
+  competitor: '竞品发现',
+  market_pattern: '市场模式',
+  opportunity: '机会',
+  risk: '风险',
+};
+
+function isKnownResearchCategory(
+  raw: string,
+): raw is ResearchFindingCategoryLabel {
+  return (
+    raw === 'summary' ||
+    raw === 'competitor' ||
+    raw === 'market_pattern' ||
+    raw === 'opportunity' ||
+    raw === 'risk'
+  );
+}
+
+function renderableResearchStatus(status: string | null | undefined): string {
+  // Backend returns one of: pending / running / completed /
+  // partial_failed / failed. Anything else (very old rows,
+  // unrecognised literals) collapses to ``pending`` so the CSS
+  // class lookup never blows up — same convention used for the
+  // ``Insight.status`` fallback further up the page.
+  switch (status) {
+    case 'pending':
+    case 'running':
+    case 'completed':
+    case 'partial_failed':
+    case 'failed':
+      return status;
+    default:
+      return 'pending';
+  }
+}
+
+function renderResearchStatusLabel(status: string | null | undefined): string {
+  switch (status) {
+    case 'completed':
+      return '已完成';
+    case 'partial_failed':
+      return '部分完成';
+    case 'failed':
+      return '失败';
+    case 'running':
+      return '研究中';
+    case 'pending':
+      return '等待中';
+    default:
+      return '状态待确认';
+  }
+}
+
+function renderFindingCategoryLabel(
+  raw: string | null | undefined,
+): string {
+  if (raw && isKnownResearchCategory(raw)) {
+    return RESEARCH_CATEGORY_LABEL[raw];
+  }
+  return '未分类';
+}
+
+interface ResearchFindingGroupView {
+  category: ResearchFindingCategoryLabel;
+  label: string;
+  findings: ResearchFindingRead[];
+}
+
+function analysisGapMessages(trace: unknown): string[] {
+  if (!trace || typeof trace !== 'object' || !('analysis_gaps' in trace)) return [];
+  const gaps = (trace as { analysis_gaps?: unknown }).analysis_gaps;
+  if (!Array.isArray(gaps)) return [];
+  const labels: Record<string, string> = { market_pattern: '市场模式', opportunity: '机会', risk: '风险' };
+  return gaps.flatMap((gap: unknown) => {
+    if (!gap || typeof gap !== 'object') return [];
+    const entry = gap as { category?: unknown; reason?: unknown };
+    if (typeof entry.category !== 'string' || !labels[entry.category]) return [];
+    const reason = entry.reason === 'candidate_support_rejected'
+      ? '分析候选未通过支持关系校验，仍需补充证据和人工核对。'
+      : '本次未提出具有已确认事实支持的候选；这不代表没有相关机会或风险。';
+    return [labels[entry.category] + '：' + reason];
+  });
+}
+
+function groupResearchFindings(
+  findings: ResearchFindingRead[] | null,
+): ResearchFindingGroupView[] {
+  if (!findings || findings.length === 0) return [];
+  const buckets: Record<string, ResearchFindingRead[]> = {};
+  for (const finding of findings) {
+    const cat = isKnownResearchCategory(finding.category)
+      ? finding.category
+      : 'summary';
+    if (!buckets[cat]) buckets[cat] = [];
+    buckets[cat].push(finding);
+  }
+  return RESEARCH_CATEGORY_ORDER.filter(
+    (c) => buckets[c] && buckets[c].length > 0,
+  ).map((c) => ({
+    category: c,
+    label: RESEARCH_CATEGORY_LABEL[c],
+    findings: buckets[c]!,
+  }));
+}
+
+/* ---------- Research v5 — evidence coverage audit ----------
+ *
+ * The backend's v5 ``ResearchRunRead`` carries a
+ * ``coverage_report`` (server-side per-requirement audit) and
+ * a ``task_contract`` (parser's structured view of the user
+ * question). The page reads them ONLY to display a
+ * code-rule-level audit; the field's own
+ * ``semantic_review`` is pinned to ``'NOT_MEASURED'`` on the
+ * server, and the page must never claim the run is
+ * "fully answered" based on any combination of these fields.
+ *
+ * Three orthogonal rules:
+ *
+ *   1. The summary label is derived from
+ *      ``overall_completable`` (the server's boolean) AND
+ *      the per-item ``status`` set. We never read
+ *      ``confidence``, ``confirmed`` count, the LLM's
+ *      ``model`` self-rating, or the ``semantic_review``
+ *      field as truth — the audit is bounded code rules.
+ *
+ *   2. The per-item row joins ``coverage_item.requirement_id``
+ *      back to ``task_contract.items[].id`` for the
+ *      human-readable ``value``. The raw ``requirement_id``
+ *      is treated as an internal handle and is never
+ *      rendered. Items that don't resolve to a
+ *      ``task_contract`` entry (parser didn't surface them)
+ *      fall back to the literal "需人工核对的要求" label
+ *      while keeping ``run.research_question`` queryable
+ *      above the section.
+ *
+ *   3. We do NOT display any portion of
+ *      ``execution_trace`` — it can carry internal step /
+ *      request ids and the brief forbids exposing them.
+ *
+ * Non-technical boundary: the rendered UI never shows the
+ * raw server field names (``coverage_report``,
+ * ``overall_completable``, ``semantic_review``,
+ * ``NOT_MEASURED``). PM-facing text is human-readable;
+ * the audit is described as a procedural pre-check that
+ * still requires manual semantic review.
+ */
+
+const COVERAGE_STATUS_LABEL: Readonly<Record<string, string>> = {
+  covered: '已覆盖',
+  partial: '部分覆盖',
+  not_verified: '未验证',
+  not_applicable: '不适用',
+};
+
+/* The v5 kind vocabulary the parser can surface. Any
+ * unknown value falls back to "待核对要求" — the brief
+ * is explicit that we must NEVER echo the raw English
+ * enum to the user (it would leak the implementation
+ * contract). */
+/* The v5 kind vocabulary the parser can surface. Any
+ * unknown value falls back to "待核对要求" — the brief
+ * is explicit that we must NEVER echo the raw English
+ * enum to the user (it would leak the implementation
+ * contract). The labels are deliberately phrased in
+ * non-technical, question-shape terms so a PM can read
+ * them at a glance. */
+const TASK_KIND_LABEL: Readonly<Record<string, string>> = {
+  product: '产品',
+  platform: '平台',
+  entry: '入口',
+  operation: '操作',
+  multi_select: '多选项（须多选）',
+  procedure: '完整操作步骤',
+  limit: '限制',
+  version: '版本',
+  where: '位置/语境',
+  choices: '选项',
+  distinguish_auto: '手动与自动的区别',
+  unresolved_clause: '未解析子句',
+  /* Phase 8 Research v6 — the parser can surface new
+   * ``coverage_report`` kind categories. Unknown v6
+   * kinds fall through to ``UNKNOWN_KIND_LABEL``
+   * ('待核对要求') so we never echo the raw English
+   * enum to the user — a fabricated mapping for an
+   * empty category would be worse than the conservative
+   * fallback. */
+  capability: '能力',
+  entry_listing: '入口列表',
+  destination: '目标',
+  condition: '条件',
+  restriction: '限制',
+  comparison: '对比',
+  analysis: '分析',
+};
+
+const UNKNOWN_KIND_LABEL = '待核对要求';
+
+/* Phase 8 Research v6 — ``claim_kind`` is a three-state
+ * taxonomy the LLM emits on top of a finding. ``fact`` is
+ * the only claim that is grounded in a cited source;
+ * ``inference`` and ``recommendation`` are the LLM's own
+ * synthesis ON TOP of cited facts. The page surfaces this
+ * distinction because the manual-semantic-review boundary
+ * is sharply different for the two — an inference /
+ * recommendation is ALWAYS treated as not-verified even
+ * when every supporting fact is confirmed. Unknown
+ * ``claim_kind`` values fall back to a conservative
+ * "分析" hint so we never echo a raw English enum. */
+const CLAIM_KIND_LABEL: Readonly<Record<string, string>> = {
+  fact: '事实',
+  inference: '推断',
+  recommendation: '建议',
+};
+
+const UNKNOWN_CLAIM_KIND_LABEL = '分析';
+
+function claimKindLabel(kind: string | null | undefined): string {
+  if (!kind) return UNKNOWN_CLAIM_KIND_LABEL;
+  return CLAIM_KIND_LABEL[kind] ?? UNKNOWN_CLAIM_KIND_LABEL;
+}
+
+function coverageStatusLabel(status: string): string {
+  return COVERAGE_STATUS_LABEL[status] ?? status;
+}
+
+function taskKindLabel(
+  kind: string | null | undefined,
+  value?: string | null,
+): string {
+  if (!kind) return UNKNOWN_KIND_LABEL;
+  /* The parser can surface a ``(kind, value)`` pair where
+   * the ``value`` is itself a program-internal token
+   * rather than a user-readable sub-question:
+   * ``distinguish_auto`` + ``both``,
+   * ``procedure`` + ``procedure``,
+   * ``multi_select`` + ``multi_select``. Echoing the raw
+   * ``value`` would leak the implementation contract to
+   * the PM. Each pair is mapped to a fixed Chinese
+   * phrase; any other pair falls through to the plain
+   * ``TASK_KIND_LABEL[kind]`` entry so legitimate user
+   * sub-questions (e.g. ``product`` + '企业段是否同价')
+   * still render verbatim. */
+  if (kind === 'distinguish_auto' && value === 'both') {
+    return '区分手动与自动操作';
+  }
+  if (kind === 'procedure' && value === 'procedure') {
+    return '完整操作步骤';
+  }
+  if (kind === 'multi_select' && value === 'multi_select') {
+    return '明确多选';
+  }
+  return TASK_KIND_LABEL[kind] ?? UNKNOWN_KIND_LABEL;
+}
+
+/** True when the parser produced a ``(kind, value)`` pair
+ *  where the ``value`` is itself a program-internal token
+ *  rather than a user-readable sub-question. For these
+ *  pairs the page uses the refined ``taskKindLabel``
+ *  output as the main row label — echoing the raw value
+ *  would leak the implementation contract. */
+function isProgramInternalValue(
+  kind: string | null | undefined,
+  value: string | null | undefined,
+): boolean {
+  if (!kind || !value) return false;
+  if (kind === 'distinguish_auto' && value === 'both') return true;
+  if (kind === 'procedure' && value === 'procedure') return true;
+  if (kind === 'multi_select' && value === 'multi_select') return true;
+  return false;
+}
+
+type CoverageOverallLabel = '已覆盖' | '部分覆盖' | '未验证';
+
+/** Overall summary derived ONLY from server
+ *  ``overall_completable`` and the per-item ``status`` set —
+ *  no LLM confidence / no confirmed-count. The rule table
+ *  is the v5 spec verbatim:
+ *
+ *   1. items empty / all not_verified  → 未验证
+ *   2. server bool false + any covered/partial item → 部分覆盖
+ *   3. server bool true + every core item covered (or
+ *      not_applicable)  → 已覆盖
+ *   4. anything else (e.g. true with a partial core item,
+ *      true with no core items) → 未验证
+ *
+ * Note: a real v5 "partial" sample is
+ * ``overall_completable === false`` with at least one
+ * covered/partial item; a fabricated ``true + partial``
+ * sample is NOT a valid case and is intentionally
+ * downgraded to "未验证" rather than mis-labelled. Also:
+ * a server ``overall_completable === true`` payload that
+ * contains NO ``role === 'core'`` items is structurally
+ * insufficient — we MUST NOT promote such a run to
+ * "已覆盖" just because the boolean is true. Without any
+ * core item, the report cannot be auditing the questions
+ * the PM actually cares about, so the safe label is
+ * "未验证". */
+function deriveCoverageOverall(
+  report: ResearchCoverageReport | import('../../../lib/api/types').ResearchSupportV7,
+): CoverageOverallLabel {
+  const items = report.items ?? [];
+  if (items.length === 0) return '未验证';
+  if (report.overall_completable === false) {
+    const hasCoveredOrPartial = items.some(
+      (i) => i.status === 'covered' || i.status === 'partial',
+    );
+    return hasCoveredOrPartial ? '部分覆盖' : '未验证';
+  }
+  // overall_completable === true
+  if (items.every((i) => i.status === 'not_verified')) return '未验证';
+  const coreItems = items.filter((i) => i.role === 'core');
+  if (coreItems.length === 0) return '未验证';
+  const allCoreCovered = coreItems.every(
+    (i) => i.status === 'covered' || i.status === 'not_applicable',
+  );
+  return allCoreCovered ? '已覆盖' : '未验证';
+}
+
+function findTaskItem(
+  contract: ResearchTaskContract | import('../../../lib/api/types').ResearchSpecV7 | null | undefined,
+  requirementId: string,
+): ResearchTaskContractItem | null {
+  if (!contract || !('items' in contract) || !contract.items) return null;
+  return contract.items.find((i) => i.id === requirementId) ?? null;
+}
+
+/** True when the parser did not produce a structured,
+ *  ``parsed``-status contract — i.e. the user question
+ *  could not be decomposed into ``task_contract.items``.
+ *  The page surfaces a "需人工核对的要求" row in that
+ *  case so a PM can review the original question. */
+function isUnparsedContract(
+  contract: ResearchTaskContract | import('../../../lib/api/types').ResearchSpecV7 | null | undefined,
+): boolean {
+  if (!contract || !('items' in contract)) return true;
+  if (contract.parse_status !== 'parsed') return true;
+  if (!contract.items || contract.items.length === 0) return true;
+  return false;
+}
+
+/* ---------- gap text + error_message sanitisation ----------
+ *
+ * The server's ``coverage_report.items[].gap`` field is
+ * raw server text — a mix of natural-language hints
+ * (e.g. "公开网页仅披露 SMB 段；企业段需登录后台") AND
+ * program-internal diagnostics (e.g. "review required
+ * from human reviewer", "evidence does not match the
+ * requested flow (manual vs automatic)", "insufficient_
+ * external_evidence: only 2 of 5 segments cited"). The
+ * page MUST translate the known diagnostic phrases to
+ * fixed Chinese, AND catch any other program-internal
+ * tokens (req-ids, snake_case enums, source paths,
+ * ``procedure=`` markers) so they never surface to the
+ * PM. Plain natural-language gaps are passed through
+ * unchanged — the brief explicitly says "普通自然语言
+ * gap 如 fixture 企业段需登录等保留".
+ *
+ * The matching is intentionally conservative: a gap
+ * must FAIL through every known-phrase check before
+ * we look at the internal-diagnostic heuristics, so a
+ * natural-language gap that happens to contain the word
+ * "review" is still preserved (e.g. "review the v3
+ * pricing page"). The known-phrase anchors are
+ * multi-word so a single common word can't false-
+ * trigger the mapping. */
+
+const GAP_KNOWN_PHRASE_MAPPING: ReadonlyArray<{ pattern: RegExp; label: string }> = [
+  { pattern: /manual vs automatic/i, label: '尚缺手动与自动操作区别的官方证据' },
+  { pattern: /official snapshot/i, label: '尚缺可核对完整步骤的官方正文' },
+  { pattern: /review required/i, label: '该要求仍需结合原问题人工核对' },
+];
+
+/* Heuristics for "the gap carries program-internal
+ * tokens the user must not see": a ``req-…`` handle, a
+ * ``procedure=``/``procedure.``/``procedure:`` marker,
+ * the word ``invariant``, a source-file ``file.ext:N``
+ * pattern, or any snake_case identifier of length ≥3
+ * on each side (catches ``insufficient_external_
+ * evidence`` / ``coverage_not_verified`` / ``evidence_
+ * source_ids`` / ``manual_vs_auto``). */
+const INTERNAL_DIAGNOSTIC_PATTERN =
+  /(?:req-[a-z0-9_-]+|procedure[=.:]|invariant|\b[a-z_]+\.[a-z_]+\.\w+:\d+|\b[a-z]{3,}_[a-z_]{3,}\b)/i;
+
+function translateGap(gap: string | null | undefined): string {
+  if (!gap) return '';
+  const trimmed = gap.trim();
+  if (!trimmed) return '';
+  for (const { pattern, label } of GAP_KNOWN_PHRASE_MAPPING) {
+    if (pattern.test(trimmed)) return label;
+  }
+  if (INTERNAL_DIAGNOSTIC_PATTERN.test(trimmed)) {
+    return '现有证据尚不能覆盖该要求，请核对官方原文';
+  }
+  return trimmed;
+}
+
+/* ---------- v6 analysis support filter ----------
+ *
+ * Resolves an analysis finding's
+ * ``supporting_finding_ids`` to the set of ``fact``
+ * rows the page can actually show. The filter is bounded
+ * to the findings the page already has in memory (the
+ * ``allFindings`` argument) so it never silently follows
+ * a support id into a foreign run, a different run, or a
+ * row the user has not yet loaded. The hard rules are:
+ *
+ *   1. The id must exist in ``allFindings`` — missing /
+ *      not-yet-loaded ids are silently dropped, never
+ *      rendered as broken links.
+ *   2. The resolved row must share ``run_id`` with the
+ *      analysis finding. Foreign-run facts are dropped
+ *      because the analysis run's audit is bounded to its
+ *      own Run.
+ *   3. The resolved row must have ``claim_kind === 'fact'``.
+ *      An analysis-on-analysis chain (a recommendation
+ *      citing another inference) is rejected so the page
+ *      never renders a recursive "查看支持事实" tree.
+ *   4. The resolved row must be ``status === 'confirmed'``
+ *      AND carry at least one ``source_refs`` entry —
+ *      otherwise the click would surface a link to nothing.
+ *
+ * The function is a pure helper (no React state) so a
+ * parent can memoize it on ``finding.id`` and
+ * ``allFindings`` identity. */
+function findSupportingFacts(
+  finding: ResearchFindingRead,
+  allFindings: ResearchFindingRead[],
+): ResearchFindingRead[] {
+  const ids = finding.supporting_finding_ids;
+  if (!ids || ids.length === 0) return [];
+  const byId = new Map<string, ResearchFindingRead>();
+  for (const f of allFindings) byId.set(f.id, f);
+  const supports: ResearchFindingRead[] = [];
+  for (const sid of ids) {
+    const fact = byId.get(sid);
+    if (!fact) continue;
+    if (fact.run_id !== finding.run_id) continue;
+    if (fact.claim_kind !== 'fact') continue;
+    if (fact.status !== 'confirmed') continue;
+    if (!fact.source_refs || fact.source_refs.length === 0) continue;
+    supports.push(fact);
+  }
+  return supports;
+}
+
+/** Fixed user-facing message for the Research detail
+ *  panel's ``run.error_message`` slot. The server-side
+ *  string can carry internal codes (procedure names,
+ *  status enums, raw exception text) — none of which
+ *  are user-readable. The brief: "中文一般提示'本次研
+ *  究仍有证据或执行缺口，请结合来源与逐项覆盖核对'".
+ *  The actual server string is intentionally NOT
+ *  rendered; the original is preserved only on the
+ *  per-item ``gap`` channel and the
+ *  ``failure_reasons`` line where it is sanitised. */
+const RESEARCH_ERROR_MESSAGE_PLACEHOLDER =
+  '本次研究仍有证据或执行缺口，请结合来源与逐项覆盖核对。';
+
+interface ResearchDetailPanelProps {
+  run: ResearchRunRead;
+  findings: ResearchFindingRead[] | null;
+  sources: ResearchSourceRead[] | null;
+  loading: boolean;
+  error: string | null;
+  expanded: Record<string, boolean>;
+  onToggleFinding: (id: string) => void;
+  /* v6 — analysis support trace. ``supportExpanded`` tracks
+   * which ``inference`` / ``recommendation`` rows the user
+   * has opened so the "查看支持事实" affordance is collapsed
+   * by default. The toggle is independent from the citation
+   * toggle (``expanded``) so a user can have one row's
+   * citations open AND a different row's supports open at
+   * the same time. */
+  supportExpanded: Record<string, boolean>;
+  onToggleSupport: (id: string) => void;
+}
+
+function ResearchDetailPanel({
+  run,
+  findings,
+  sources,
+  loading,
+  error,
+  expanded,
+  onToggleFinding,
+  supportExpanded,
+  onToggleSupport,
+}: ResearchDetailPanelProps) {
+  const groups = groupResearchFindings(findings);
+  // Surface ``not_verified`` once at the panel top so the PM
+  // can read the run's honest grounding state without having to
+  // scroll every group. A run composed entirely of confirmed
+  // findings reports zero — no need to surface a "100% cited"
+  // banner.
+  const notVerifiedCount =
+    findings?.filter((f) => f.status === 'not_verified').length ?? 0;
+
+  return (
+    <div
+      className="research-detail"
+      data-testid="research-detail-panel"
+      data-run-id={run.id}
+    >
+      <div className="research-detail-head">
+        <div className="research-detail-question">{run.research_question}</div>
+        <span
+          className={`research-status-pill research-status-pill--${renderableResearchStatus(
+            run.status,
+          )}`}
+          data-testid="research-detail-status"
+        >
+          {renderResearchStatusLabel(run.status)}
+        </span>
+      </div>
+      <TechnicalDetails label="查看研究详情">
+      <div className="research-detail-meta">
+        <span className="item">
+          <span className="k">搜索服务</span>
+          <span className="v">{run.provider}</span>
+        </span>
+        <span className="item">
+          <span className="k">提示词版本</span>
+          <span className="v">{run.prompt_version}</span>
+        </span>
+        {run.model ? (
+          <span className="item">
+            <span className="k">模型</span>
+            <span className="v">{run.model}</span>
+          </span>
+        ) : null}
+        <span className="item">
+          <span className="k">研究结论</span>
+          <span className="v" data-testid="research-finding-count">
+            {run.finding_count}
+          </span>
+        </span>
+        <span className="item">
+          <span className="k">资料来源</span>
+          <span className="v" data-testid="research-source-count">
+            {run.source_count}
+          </span>
+        </span>
+        <span className="item">
+          <span className="k">耗时</span>
+          <span className="v">{run.latency_ms} ms</span>
+        </span>
+      </div>
+      </TechnicalDetails>
+      {/* Completeness honesty notice — the brief is explicit that
+       * a "completed" run is NOT a promise the original research
+       * question was fully answered. We must surface this for
+       * every terminal status, never derive it from LLM
+       * ``confidence`` or a confirmed-count, and never mute it
+       * for ``running`` / ``pending`` so a long in-flight run
+       * can't accidentally read as "complete" mid-flight.
+       *
+       * v5 nuance: the backend's ``completed`` gate now also
+       * requires ``coverage_report.overall_completable === true``,
+       * so for v5 runs the "≥1 cited fact" framing is no longer
+       * accurate. We split the wording by report-presence so a
+       * PM can tell at a glance whether the run was actually
+       * audited (and which gaps remain) vs. a pre-v5 historical
+       * run that has no coverage report at all. */}
+      {run.status === 'completed' ||
+      run.status === 'partial_failed' ||
+      run.status === 'failed' ? (
+        run.coverage_report ? (
+          <div
+            className="alert alert-warn"
+            role="status"
+            data-testid="research-answer-completeness"
+          >
+            <b>回答完整性：未验证</b>
+            <br />
+            请对照引文核实研究结果。
+          </div>
+        ) : (
+          <div
+            className="alert alert-warn"
+            role="status"
+            data-testid="research-answer-completeness"
+          >
+            <b>回答完整性：未验证</b>
+            <br />
+            这条历史记录尚未核对完整性，请查看原始来源。
+          </div>
+        )
+      ) : null}
+
+      {/* Phase 8 v7 — extractive answer renderer. The
+       * backend pins the v7 envelope at
+       * ``coverage_report.version === 'research-support-v7'``;
+       * a v7 row MAY carry an ``answer`` payload
+       * (``coverage_report.answer.version ===
+       * 'research-answer-v7'``) when planning succeeded,
+       * or leave it ``null`` when planning failed.
+       *
+       * The page detects the v7 contract from the
+       * envelope version alone — NEVER from the
+       * presence of ``answer``. A planning-failed v7
+       * run is honest about its lack of an answer and
+       * renders the v7 "规划失败 / 未验证" row, which
+       * never reads any v5 field. A non-v7
+       * ``coverage_report`` (a v5 / v6 audit payload)
+       * falls through to the historical evidence-
+       * coverage section below. The two branches are
+       * strictly mutually exclusive: a v7 row MUST
+       * NEVER trigger the v5 ``failure_reasons`` /
+       * ``items`` / ``task_contract.items`` access. */}
+      {run.coverage_report && isResearchSupportV7(run.coverage_report) ? (
+        isResearchAnswerV7(run.coverage_report.answer) ? (
+          <ResearchAnswer
+            runId={run.id}
+            answer={run.coverage_report.answer}
+            findings={findings ?? []}
+          />
+        ) : (
+          <section
+            className="research-answer-v7-planning-failed"
+            data-testid="research-answer-v7-planning-failed"
+          >
+            <header className="research-answer-v7-head">
+              <span className="research-answer-v7-title">
+                研究回答
+              </span>
+              <span
+                className="research-answer-v7-meta muted"
+                data-testid="research-answer-v7-meta"
+              >
+                尚未形成回答 · 待人工复核
+              </span>
+            </header>
+            <p
+              className="research-answer-v7-planning-failed-body muted"
+              data-testid="research-answer-v7-planning-failed-body"
+            >
+              本次研究未形成可核对的回答，原问题仍未验证。请查看失败原因后重试。
+            </p>
+            {run.coverage_report.overall_completable ? (
+              <p
+                className="research-answer-v7-planning-failed-overall muted"
+                data-testid="research-answer-v7-planning-failed-overall"
+              >
+                程序结果仍需人工核对。
+              </p>
+            ) : null}
+          </section>
+        )
+      ) : null}
+
+      {/* Evidence coverage audit — only when the backend
+       * shipped a v5 ``coverage_report``. The section is a
+       * code-rule-level summary; we render the per-item
+       * requirement text (joined back to ``task_contract``),
+       * the kind label, the per-item status, and the
+       * server-supplied ``gap`` reason. We never collapse
+       * this into "fully answered" — the server itself pins
+       * ``semantic_review = 'NOT_MEASURED'`` so any
+       * "已覆盖" reading is a code-rule statement, not a
+       * semantic audit.
+       *
+       * The v5 branch and the v7 branch above are STRICTLY
+       * MUTUALLY EXCLUSIVE. A v7 ``coverage_report`` pins
+       * ``version === 'research-support-v7'``; reading its
+       * v5 fields (``items`` / ``failure_reasons`` /
+       * ``overall_completable``) would either crash on
+       * undefined or — worse — silently render stale v5
+       * data on top of the v7 renderer. We gate on
+       * ``!isResearchSupportV7`` so the v5 paths below
+       * only fire for legacy / v6 / non-v7 reports, and
+       * the typing narrows ``coverage_report`` to its v5
+       * shape. */}
+      {run.coverage_report && !isResearchSupportV7(run.coverage_report) ? (
+        (() => {
+          // The v5 branch only fires when
+          // ``!isResearchSupportV7(run.coverage_report)``.
+          // We still defensively default the v5-only array
+          // fields (``items`` / ``failure_reasons``) to
+          // empty arrays so the page can never crash on a
+          // future wire-drift row that carries the v7
+          // envelope shape but ships without a complete
+          // v5 audit payload.
+          const cr = run.coverage_report;
+          const items = cr.items ?? [];
+          const failureReasons = cr.failure_reasons ?? [];
+          return (
+        <section
+          className="research-coverage"
+          data-testid="research-evidence-coverage"
+        >
+          <header className="research-coverage-head">
+            <span className="research-coverage-title">
+              证据覆盖：{deriveCoverageOverall(cr)}
+            </span>
+            <span
+              className="research-coverage-meta muted"
+              data-testid="research-coverage-meta"
+            >
+              人工语义复核：未验证
+              {' · '}
+              服务端已逐项核对
+              {' · '}
+              {items.length} 项子问题
+            </span>
+          </header>
+          {failureReasons.length > 0 ? (
+            <p
+              className="muted"
+              data-testid="research-coverage-failure-reasons"
+            >
+              服务端程序检查未完全通过；请按下方逐项缺口人工核对。
+            </p>
+          ) : null}
+          {isUnparsedContract(run.task_contract) ? (
+            <div
+              className="alert alert-warn"
+              data-testid="research-coverage-unparsed"
+            >
+              需人工核对的要求：{run.research_question}
+            </div>
+          ) : items.length > 0 ? (
+            <ul
+              className="research-coverage-items"
+              data-testid="research-coverage-items"
+            >
+              {items.map((item) => {
+                const task = findTaskItem(run.task_contract, item.requirement_id);
+                const effectiveKind = item.kind || task?.kind;
+                // ``unresolved_clause`` items carry an
+                // internal review string in ``value`` —
+                // NOT a user-readable sub-question. The
+                // page MUST surface "需人工核对的要求：
+                // 原问题" instead, and never echo the
+                // program's review note to the PM. The
+                // program-taxonomy kind label is also
+                // suppressed for this branch because the
+                // whole row is "需人工核对".
+                if (effectiveKind === 'unresolved_clause') {
+                  return (
+                    <li
+                      key={item.requirement_id}
+                      className="research-coverage-item"
+                      data-testid={`research-coverage-item-${item.requirement_id}`}
+                    >
+                      <div
+                        className="research-coverage-item-label"
+                        data-testid="research-coverage-unresolved-clause"
+                      >
+                        需人工核对的要求：{run.research_question}
+                      </div>
+                      <div className="research-coverage-item-meta muted">
+                        {coverageStatusLabel(item.status)}
+                      </div>
+                    </li>
+                  );
+                }
+                const label = isProgramInternalValue(effectiveKind, task?.value)
+                  ? taskKindLabel(effectiveKind, task?.value)
+                  : task?.value || '需人工核对的要求';
+                const translatedGap = translateGap(item.gap);
+                return (
+                  <li
+                    key={item.requirement_id}
+                    className="research-coverage-item"
+                    data-testid={`research-coverage-item-${item.requirement_id}`}
+                  >
+                    <div className="research-coverage-item-label">{label}</div>
+                    <div className="research-coverage-item-meta muted">
+                      {taskKindLabel(effectiveKind, task?.value)} ·{' '}
+                      {coverageStatusLabel(item.status)}
+                    </div>
+                    {translatedGap ? (
+                      <p
+                        className="research-coverage-item-gap muted"
+                        data-testid={`research-coverage-gap-${item.requirement_id}`}
+                      >
+                        缺口：{translatedGap}
+                      </p>
+                    ) : null}
+                  </li>
+                );
+              })}
+            </ul>
+          ) : (
+            <div
+              className="alert alert-warn"
+              data-testid="research-coverage-unparsed"
+            >
+              需人工核对的要求：{run.research_question}
+            </div>
+          )}
+        </section>
+          );
+        })()
+      ) : null}
+
+      {run.error_message ? (
+        <div
+          className="research-detail-error"
+          data-testid="research-detail-error"
+        >
+          {RESEARCH_ERROR_MESSAGE_PLACEHOLDER}
+        </div>
+      ) : null}
+
+      {loading ? <LoadingState /> : null}
+
+      {error ? (
+        <div
+          className="research-unavailable"
+          role="alert"
+          data-testid="research-detail-error-banner"
+        >
+          <span className="research-unavailable-title">
+            研究暂不可用
+          </span>
+          {error}
+        </div>
+      ) : null}
+
+      {notVerifiedCount > 0 ? (
+        <div
+          className="alert alert-warn"
+          data-testid="research-not-verified-banner"
+        >
+          本次研究含 {notVerifiedCount} 条 <b>未验证</b> 结论，请结合来源复核后使用。
+        </div>
+      ) : null}
+
+      {analysisGapMessages(run.execution_trace).length > 0 ? (
+        <div className="alert alert-warn" data-testid="research-analysis-gaps">
+          {analysisGapMessages(run.execution_trace).map((message) => <p key={message}>{message}</p>)}
+        </div>
+      ) : null}
+
+      {groups.length > 0 ? (
+        <div className="research-findings" data-testid="research-findings">
+          {groups.map((group) => (
+            <div
+              key={group.category}
+              className="research-findings-group"
+              data-testid={`research-group-${group.category}`}
+            >
+              <div className="research-findings-group-label">
+                {group.label} · {group.findings.length}
+              </div>
+              {group.findings.map((finding) => (
+                <ResearchFindingRow
+                  key={finding.id}
+                  finding={finding}
+                  expanded={!!expanded[finding.id]}
+                  onToggle={() => onToggleFinding(finding.id)}
+                  allFindings={findings ?? []}
+                  supportExpanded={!!supportExpanded[finding.id]}
+                  onToggleSupport={() => onToggleSupport(finding.id)}
+                />
+              ))}
+            </div>
+          ))}
+        </div>
+      ) : null}
+
+      {sources && sources.length > 0 ? (
+        <div className="research-sources" data-testid="research-sources">
+          <div className="research-section-divider">
+            资料来源 · {sources.length}
+          </div>
+          <ul>
+            {sources.map((source) => (
+              <li
+                key={source.id}
+                className="research-source-card"
+                data-testid={`research-source-${source.id}`}
+              >
+                <div className="research-source-title">
+                  <a
+                    href={source.url}
+                    target="_blank"
+                    rel="noopener noreferrer nofollow"
+                    data-testid={`research-source-link-${source.id}`}
+                  >
+                    {source.title ?? source.url}
+                  </a>
+                </div>
+                <div className="research-source-meta">
+                  <span>{source.domain}</span>
+                  <span>获取于 {formatRelative(source.retrieved_at)}</span>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
+    </div>
+  );
+}
+
+interface ResearchFindingRowProps {
+  finding: ResearchFindingRead;
+  expanded: boolean;
+  onToggle: () => void;
+  /* v6 — analysis support trace. ``allFindings`` is the
+   * currently-loaded finding list (the same slice the
+   * panel rendered from). The row filters
+   * ``finding.supporting_finding_ids`` against this list
+   * so the page never follows a support id into a foreign
+   * run or a row that has not been loaded. */
+  allFindings: ResearchFindingRead[];
+  supportExpanded: boolean;
+  onToggleSupport: () => void;
+}
+
+function ResearchFindingRow({
+  finding,
+  expanded,
+  onToggle,
+  allFindings,
+  supportExpanded,
+  onToggleSupport,
+}: ResearchFindingRowProps) {
+  // ``status`` mirrors the backend enum (``confirmed`` /
+  // ``not_verified``). The page surfaces both verbatim and
+  // adds a third badge ``Insufficient Evidence`` for any
+  // competitor / market_pattern row that lands without sources
+  // — the backend actually returns ``not_verified`` for those,
+  // but the UI label clarifies the WHY so the PM never mistakes
+  // "the LLM refused to fake it" for "we'll come back to it".
+  const statusClass =
+    finding.status === 'confirmed'
+      ? 'research-finding-tag--confirmed'
+      : 'research-finding-tag--not_verified';
+  const statusLabel =
+    finding.status === 'confirmed' ? '有引用' : '未验证';
+  const insufficient =
+    finding.claim_kind !== 'inference' && finding.claim_kind !== 'recommendation' &&
+    finding.category !== 'opportunity' &&
+    finding.category !== 'risk' &&
+    finding.status !== 'confirmed';
+  const tagClass = insufficient
+    ? 'research-finding-tag--insufficient_evidence'
+    : statusClass;
+  const tagLabel = insufficient ? '证据不足' : statusLabel;
+  const citations = finding.source_refs ?? [];
+  /* v6 — analysis support trace. The toggle is shown
+   * whenever the row declares at least one support id;
+   * legacy rows (no ``supporting_finding_ids``) keep the
+   * pre-v6 behaviour. The supports list is filtered to
+   * same-Run, ``claim_kind === 'fact'``,
+   * ``status === 'confirmed'`` rows that are currently
+   * loaded — foreign / unverified / unknown ids are
+   * silently dropped, never rendered as broken links. */
+  const supportingIds = finding.supporting_finding_ids ?? [];
+  const hasSupportToggle = supportingIds.length > 0;
+  const supports = hasSupportToggle
+    ? findSupportingFacts(finding, allFindings)
+    : [];
+  const claimKindText = finding.claim_kind
+    ? claimKindLabel(finding.claim_kind)
+    : null;
+  return (
+    <div
+      className="research-finding"
+      data-testid={`research-finding-${finding.id}`}
+    >
+      <div className="research-finding-head">
+        <span className="research-finding-title">{finding.title}</span>
+        {claimKindText ? (
+          <span
+            className="research-finding-claim-kind"
+            data-testid={`research-claim-kind-${finding.id}`}
+          >
+            {claimKindText}
+          </span>
+        ) : null}
+        <span
+          className={`research-finding-tag ${tagClass}`}
+          data-testid={`research-finding-status-${finding.id}`}
+        >
+          {tagLabel}
+        </span>
+        {finding.confidence !== null && finding.confidence !== undefined ? (
+          <span className="research-finding-confidence">
+            置信度 {finding.confidence.toFixed(2)}
+          </span>
+        ) : null}
+      </div>
+      <p className="research-finding-description">{finding.description}</p>
+      {citations.length > 0 ? (
+        <button
+          type="button"
+          className="research-finding-toggle"
+          onClick={onToggle}
+          data-testid={`research-finding-toggle-${finding.id}`}
+          aria-expanded={expanded}
+        >
+          {expanded ? '隐藏引用' : `查看来源 (${citations.length})`}
+        </button>
+      ) : null}
+      {expanded && citations.length > 0 ? (
+        <div
+          className="research-finding-citations"
+          data-testid={`research-finding-citations-${finding.id}`}
+        >
+          <ul>
+            {citations.map((ref, idx) => (
+              <li key={`${ref.provider_source_id}-${idx}`}>
+                <a
+                  href={ref.url}
+                  target="_blank"
+                  rel="noopener noreferrer nofollow"
+                >
+                  {ref.title}
+                </a>
+                <span className="ref-domain">
+                  {(() => {
+                    try {
+                      return new URL(ref.url).hostname;
+                    } catch {
+                      return ref.url;
+                    }
+                  })()}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
+      {hasSupportToggle ? (
+        <button
+          type="button"
+          className="research-finding-support-toggle"
+          onClick={onToggleSupport}
+          data-testid={`research-support-toggle-${finding.id}`}
+          aria-expanded={supportExpanded}
+        >
+          {supportExpanded ? '隐藏支持事实' : '查看支持事实'}
+        </button>
+      ) : null}
+      {hasSupportToggle && supportExpanded ? (
+        <div
+          className="research-finding-supports"
+          data-testid={`research-supports-${finding.id}`}
+        >
+          {supports.length === 0 ? (
+            <p className="research-finding-supports-empty muted">
+              本次研究中尚无可支持这项分析的已确认事实。
+            </p>
+          ) : (
+            <ul>
+              {supports.map((fact) => (
+                <li
+                  key={fact.id}
+                  className="research-finding-support-item"
+                  data-testid={`research-support-item-${finding.id}-${fact.id}`}
+                >
+                  <p className="research-finding-support-description">
+                    {fact.description}
+                  </p>
+                  {fact.source_refs && fact.source_refs.length > 0 ? (
+                    <ul className="research-finding-support-citations">
+                      {fact.source_refs.map((ref, idx) => (
+                        <li
+                          key={`${fact.id}-${ref.provider_source_id}-${idx}`}
+                        >
+                          <a
+                            href={ref.url}
+                            target="_blank"
+                            rel="noopener noreferrer nofollow"
+                          >
+                            {ref.title}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : null}
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      ) : null}
+    </div>
+  );
 }
 
 /* ---------- Idempotency ID helper ----------

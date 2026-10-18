@@ -1,0 +1,20 @@
+import { afterEach, expect, it, vi } from 'vitest';
+import { InsightFlowClient } from './client';
+afterEach(() => vi.unstubAllGlobals());
+it('all eight artifact requests carry explicit project context without changing old URLs', async () => {
+  const fetcher = vi.fn<typeof fetch>().mockImplementation(async () => new Response('{}', { status: 200, headers: { 'Content-Type': 'application/json' } }));
+  vi.stubGlobal('fetch', fetcher);
+  const client = new InsightFlowClient();
+  await client.createRequirement('i', undefined, 'requirement-generation-v2', 'B');
+  await client.getRequirement('r', undefined, 'B');
+  await client.patchRequirement('r', { status: 'reviewing' }, undefined, 'B');
+  await client.createPrd('r', {}, undefined, 'B');
+  await client.getPrd('p', undefined, 'B');
+  await client.patchPrd('p', { status: 'reviewing' }, undefined, 'B');
+  await client.acceptPrd('p', undefined, 'B');
+  await client.listPrds('r', undefined, 'B');
+  for (const [url] of fetcher.mock.calls) expect(String(url)).toContain('project_id=B');
+  fetcher.mockClear();
+  await client.getRequirement('r'); await client.getPrd('p');
+  for (const [url] of fetcher.mock.calls) expect(String(url)).not.toContain('project_id=');
+});

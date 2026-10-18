@@ -18,6 +18,7 @@ import {
   NotMeasured,
 } from '../../components/StateViews';
 import { FeedbackDrawer } from '../../components/FeedbackDrawer';
+import { sourceLabel } from '../../lib/presentation';
 import {
   classifyError,
   formatDateTime,
@@ -282,11 +283,7 @@ export default function FeedbackListPage() {
   return (
     <div className="page page-feedback">
       <header className="page-header">
-        <span className="eyebrow">反馈列表</span>
-        <h1 className="page-title">原始反馈数据</h1>
-        <p className="page-subtitle">
-          来自后端 /projects/&#123;id&#125;/feedback 的真实分页数据。
-        </p>
+        <h1 className="page-title">用户反馈</h1>
       </header>
 
       <section className="toolbar">
@@ -295,7 +292,7 @@ export default function FeedbackListPage() {
           <input
             type="search"
             className="form-input"
-            placeholder="按反馈 ID 或内容关键字"
+            placeholder="搜索反馈编号或内容"
             value={view.search}
             onChange={(e) => setView((v) => ({ ...v, search: e.target.value }))}
           />
@@ -309,9 +306,9 @@ export default function FeedbackListPage() {
               setView((v) => ({ ...v, sort: e.target.value as LocalView['sort'] }))
             }
           >
-            <option value="server">后端默认（按原始时间）</option>
-            <option value="external_id_asc">反馈 ID A→Z</option>
-            <option value="external_id_desc">反馈 ID Z→A</option>
+            <option value="server">按反馈时间</option>
+            <option value="external_id_asc">编号升序</option>
+            <option value="external_id_desc">编号降序</option>
           </select>
         </label>
         <label className="form-field form-field--inline">
@@ -338,11 +335,6 @@ export default function FeedbackListPage() {
         </button>
       </section>
 
-      <div className="alert alert-info" role="status">
-        后端当前只支持按页加载（limit / offset），搜索与排序只对当前页生效；切页可看到完整数据。
-        跨页/全量搜索将在工作包 B 接入。
-      </div>
-
       {loading && !data ? (
         <LoadingState />
       ) : error ? (
@@ -356,7 +348,7 @@ export default function FeedbackListPage() {
       ) : data && data.items.length === 0 ? (
         <EmptyState
           title="该项目中没有反馈"
-          description="先到「上传 CSV」页签导入原始反馈。"
+          description="导入反馈后，即可在这里查看和分析。"
         />
       ) : data ? (
         <>
@@ -364,7 +356,7 @@ export default function FeedbackListPage() {
             <table className="data-table" role="table">
               <thead>
                 <tr>
-                  <th scope="col" className="col-id">反馈 ID</th>
+                  <th scope="col" className="col-id">反馈编号</th>
                   <th scope="col">内容</th>
                   <th scope="col">来源</th>
                   <th scope="col">用户</th>
@@ -391,8 +383,8 @@ export default function FeedbackListPage() {
                       aria-label={`打开反馈 ${fb.external_id} 的详情`}
                     >
                       <td className="col-id">{fb.external_id}</td>
-                      <td className="col-content">{truncate(fb.content, 240)}</td>
-                      <td>{fb.source || <NotMeasured />}</td>
+                      <td className="col-content"><div className="feedback-content-preview">{truncate(fb.content, 240)}</div></td>
+                      <td>{fb.source ? sourceLabel(fb.source) : <NotMeasured />}</td>
                       <td>{fb.user_id || <NotMeasured />}</td>
                       <td className="col-time">{formatRelative(fb.feedback_created_at ?? null)}</td>
                       <td className="col-time">{formatDateTime(fb.created_at ?? null)}</td>

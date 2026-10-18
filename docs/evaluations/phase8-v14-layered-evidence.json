@@ -1,0 +1,733 @@
+{
+  "type": "historical-v14-replay-not-live",
+  "samples": [
+    {
+      "competitor": "Google Photos",
+      "question": "In the Google Photos Android app, can a user manually select several photos and start backup in one action? Cite only official Google Help; separate manual upload from automatic backup.",
+      "run_id": "ca7f0301-fb62-4091-b06d-204aaa7038e2",
+      "status": "partial_failed",
+      "error_message": "research insufficient_external_evidence: no competitor or market_pattern finding carries an external source citation",
+      "attempt_count": 2,
+      "version": "14a",
+      "reproduced_query": "Google Photos Android photos select backup upload site:support.google.com/photos/answer",
+      "sources": [
+        {
+          "id": "9a8f9f70-cd6b-476b-b495-cba4a9d6b811",
+          "url": "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid",
+          "title": "Back up photos & videos - Android - Google Photos Help",
+          "domain": "support.google.com",
+          "snippet": "Empty thumbnail:Item isn’t backed up.\n Cloud check : Item is backed up.\n Uploading : Item is in the process of being backed up.\n In Queue or Paused : Item isn’t currently backing up but it will eventually.\n Permanent failure : Item permanently failed.\n\n## Change your backup settings\n\nBack up to a different account\n\n1. On your Android phone or tablet, open the Google Photos app Photos.\n2. Sign in to your Google Account.\n3. At the top right, tap your Profile picture or Initial.\n4. Tap Photos settings Settings and then Backup.\n5. Under \"Account & Storage,\" tap your Profile picture or Initial.\n6. Select the Google Account you want to back up to.\n\nBack up device folders [...] Set daily backup limits\n\n1. On your Android phone or tablet, open the Google Photos app Photos.\n2. At the top right, tap your account Profile photo or Initial.\n3. Select Photos settings Settings and then Backup and then Mobile data usage.\n4. You can:\n    Choose a daily limit for how much data Google Photos can use when automatically backing up photos and videos.\n    Turn off Back up videos over data.\n    Turn off Back up while roaming.\n\nBack up while roaming\n\n1. On your Android phone or tablet, open the Google Photos app Photos.\n2. Sign in to your Google Account.\n3. At the top right, tap your Profile picture or Initial.\n4. Tap Photos settings Settings and then Backup and then Mobile data usage.\n5. Turn on Backup while roaming.\n\nBack up with unrestricted data [...] 1. On your Android phone or tablet, open the Google Photos app Photos.\n2. Sign in to your Google Account.\n3. At the top right, tap your Profile picture or Initial.\n4. Tap Photos settings Settings and then Backup.\n5. Under \"Settings,\" tap Back up device folders.\n6. Tap the folders you want to back up.\n    Next to the folders you don't want to back up, turn off the setting.\n    Next to the folders you want to back up, turn on the setting.\n7. Optional: Turn Back up all device folders on or off.\n    If \"Back up all device folders\" is on, photos in new device folders automatically back up.\n\nTip: If you don’t want content from your device folders to appear in your Photos view, you can hide it. Learn how to hide content from your Photos view.\n\nSet daily backup limits"
+        },
+        {
+          "id": "9e56e0c2-12fc-4b40-b275-53fdcf504e8f",
+          "url": "https://support.google.com/photos/answer/6220791?hl=en&co=GENIE.Platform%3DAndroid",
+          "title": "Choose the backup quality of your photos & videos - Android phone & tablet - Google Photos Help",
+          "domain": "support.google.com",
+          "snippet": "## Change your backup quality\n\nImportant: If you're out of storage, you can't change your backup quality.\n\n1. On your Android device, open the Google Photos app Photos.\n2. Sign in to your Google Account.\n3. At the top, tap your Profile picture or Initial.\n4. Select Google Photos settings Settings and then Backup and then Photos & videos quality.\n5. Select a backup quality.\n\nTip: To check backup quality and size, go to a photo or video and swipe up. You can find backup details under \"Details.\"\n\n If a photo or video can't be compressed, under \"Details,” you'll find \"Not eligible for Storage saver.\" This will only appear if you’ve tried to back up the item in Storage saver quality.\n\nLearn about changes to backup quality [...] Google Photos Help\n\nSign in\n\nGoogle Help\n\n Help Center Community Google Photos\n\n Privacy Policy Terms of Service Submit feedback\n\nSend feedback on...\n\n Help Center\n Community\n Can't find your photos?\n\nGoogle Photos\n\n# Choose the backup quality of your photos & videos\n\nYou can automatically save your photos and videos to your Google Account when you turn on backup. Learn how to back up your photos and videos.\n\nEach Google Account comes with up to 15 GB of storage and you can always buy more storage or clean up your storage space.\n\nYou can also change the backup quality to fit your preferences or save storage space.\n\nImportant: If you're inactive in Google Photos for 2 years or more, your content may be deleted. Learn about the Google Photos inactivity policy. [...] Learn about changes to backup quality\n\n If you're signed in to your Google Account and use Google Photos on multiple devices, and you change your backup quality for one device, it won't affect the backup settings on any other device.\n If you change your backup quality from Express to either Storage saver, or Original quality, Google Photos will re-upload any existing photos or videos on your device.\n You may find an option to limit backup data usage.\n\n## Learn about Google Photos backup on your Pixel\n\nIf you turn on backup on your Pixel phone, photos and videos you take on your Pixel are automatically backed up from your phone to Google Photos. Learn more about Google Photos backup.\n\nPixel 3a-5"
+        },
+        {
+          "id": "cfcbda25-c4af-44c6-8b74-53148d946e6b",
+          "url": "https://support.google.com/photos/answer/6174018?hl=en&co=GENIE.Platform%3DAndroid",
+          "title": "Troubleshoot photos not backing up - Android - Google Photos Help",
+          "domain": "support.google.com",
+          "snippet": "Backup account: Make sure that the account listed matches the one you’re signed in to in the Google Photos app. To find which account you're viewing in the Google Photos app, at the top, tap your profile picture or initials and find your email address at the top.\n Backup device folders: Tap and select to back up photos and videos from other apps, like Google Chat and WhatsApp.\n Quality: Tap to change the backup quality of your photos and videos. Learn how to change your backup quality.\n Mobile data usage: Choose whether you want to back up your photos or videos using your mobile network instead of Wi-Fi. Charges from your service provider may apply.\n\nTip: Turn on \"back up while roaming\" if you want to back up photos and videos even when you’re in other countries or regions. [...] 1. On your Android device, open the Google Photos app Photos.\n2. Sign in to your Google Account.\n3. At the top right, tap your Profile picture or Initials.\n4. Tap Photos settings Settings and then Backup.\n5. Under \"Settings,\" tap Back up device folders.\n6. Tap the folders you want to back up.\n    Next to the folders you don't want to back up, turn off the setting.\n    Next to the folders you want to back up, turn on the setting.\n7. Optional: Turn Back up all device folders on or off.\n    If \"Back up all device folders\" is on, photos in new device folders automatically back up.\n\nTip: If you don’t want content from your device folders to appear in your Photos view, you can hide it. Learn how to hide content from your Photos view.\n\nPut your device on the charger [...] ### Troubleshoot your backup\n\nCheck your backup settings\n\n1. On your Android device, open the Google Photos app Photos.\n2. At the top, tap your Profile picture or Initials and then Photos settings and then Backup.\n3. If \"Backup\" is turned on, you should find these options:"
+        },
+        {
+          "id": "3036f828-8271-4210-ad0e-88140a1c2061",
+          "url": "https://support.google.com/photos/answer/6220791?hl=en&co=GENIE.Platform%3DDesktop",
+          "title": "Choose the backup quality of your photos & videos - Computer - Google Photos Help",
+          "domain": "support.google.com",
+          "snippet": "1. On your computer, go to photos.google.com.\n2. At the top, click Settings  and then Manage storage.\n3. Under “Recover storage,” click Convert existing photos & videos to Storage saver.\n\n## Change your backup quality\n\n1. On your computer, open photos.google.com/settings.\n2. Select a backup quality.\n\nTip: To check backup quality and size, go to a photo or video and click Info Info. You can find backup details under \"Details.\"\n\n If a photo or video can't be compressed, under \"Details,” you'll find \"Not eligible for Storage saver.\" This will only appear if you’ve tried to back up the item in Storage saver quality.\n\n## Related resources\n\n Back up photos & videos\n Delete photos & videos\n\n## Was this helpful?\n\nHow can we improve it?\n\nComputer Android phone & tabletiPhone & iPad [...] Google Photos Help\n\nSign in\n\nGoogle Help\n\n Help Center Community Google Photos\n\n Privacy Policy Terms of Service Submit feedback\n\nSend feedback on...\n\n Help Center\n Community\n Can't find your photos?\n\nGoogle Photos\n\n# Choose the backup quality of your photos & videos\n\nYou can automatically save your photos and videos to your Google Account when you turn on backup. Learn how to back up your photos and videos.\n\nEach Google Account comes with up to 15 GB of storage and you can always buy more storage or clean up your storage space.\n\nYou can also change the backup quality to fit your preferences or save storage space.\n\nImportant: If you're inactive in Google Photos for 2 years or more, your content may be deleted. Learn about the Google Photos inactivity policy. [...] ## Reduce the size of your photos & videos\n\nIf you have photos in Original quality and want to save some storage space, change your already backed-up photos and videos to Storage saver (previously named High quality). This setting won't appear if you have unlimited storage for Google Photos.\n\nImportant:\n\n You can only recover storage once a day. Storage recovery won’t change the quality of your future uploads.\n In some circumstances, certain photos and videos may not be compressed and will be stored at their original file size. Some Multi-Picture Format (mpf) .jpgs can't be compressed, for example portraits that you take on an Android device.\n  + You can check if an item is ineligible for Storage saver. Learn how to check backup details."
+        },
+        {
+          "id": "fecb5a48-741d-40e6-b001-01695e1e36fd",
+          "url": "https://support.google.com/photos/answer/14169846?hl=en&co=GENIE.Platform%3DAndroid",
+          "title": "Organize your Photos view - Android phone & tablet - Google Photos Help",
+          "domain": "support.google.com",
+          "snippet": "Find the source of a photo\n\nImportant: Photos backed up from apps aren’t available for partner sharing. Learn more about partner sharing.\n\n1. On your Android device, open the Google Photos app Photos.\n2. Tap a photo.\n3. At the top, tap More More and then About.\n4. Under “Details,” find the photo’s source Folders.\n\nCustomize your hide controls for an app\n\n1. On your Android device, open the Google Photos app Photos.\n2. Tap a Photo stack .\n3. At the bottom, tap the Thumbnail menu More and then Manage settings.\n4. Under “Content,” tap Customize by app.\n    Tip: This option will only be available if the “Show content from other apps” toggle is on.\n5. Tap an app name.\n6. Next to the app name, select the setting you prefer:\n    Not customized\n    Show all\n    Hide clutter\n    Hide all\n\nTips: [...] ## Hide photos from other apps\n\n1. On your Android device, open the Google Photos app Photos.\n2. Tap a Photo stack .\n3. At the bottom, tap the Thumbnail menu More and then Manage settings.\n4. Turn Show content from other apps on or off.\n5. Optional: If you turn “Show content from other apps” on, you can choose to:\n    Only show backed up content: All backed up photos from other apps appear in your Photos view.\n    Hide clutter from apps: Backed up photos from other apps like screenshots, GIFs, and memes, are hidden from your Photos view.\n    Customize by app: Select the setting you prefer for your chosen app:\n     + Show all\n     + Hide clutter\n     + Hide all\n\nFind the source of a photo [...] Share select photos from a stack\n\n1. On your Android device, open the Google Photos app Photos.\n2. Tap a Photo stack .\n3. At the bottom, tap the Thumbnail menu More and then Multi-select.\n4. Touch and hold to select photos you would like to share.\n5. Tap Share Share.\n\nChange the top pick\n\nImportant: For each stack, Photos automatically chooses the “Top pick.” “Top pick” is the cover photo for the stack in your Photos view. Chosen photos appear in your Photos view. You can change the top pick at any time.\n\n1. On your Android device, open the Google Photos app Photos.\n2. Tap a Photo stack .\n3. At the bottom, scroll the filmstrip to the photo you wish to set as Top pick.\n4. Tap the Thumbnail menu More and then Set as top pick.\n\nTip: Top picks are different from favorite photos."
+        }
+      ],
+      "findings": []
+    },
+    {
+      "competitor": "Dropbox",
+      "question": "In the Dropbox iPhone app, can a user select and upload multiple photos at once? Cite only official Dropbox Help and state any limits actually documented.",
+      "run_id": "8f37be12-6f8f-46de-8f86-3dfa9359bcfc",
+      "status": "partial_failed",
+      "error_message": "research insufficient_external_evidence: no competitor or market_pattern finding carries an external source citation",
+      "attempt_count": 2,
+      "version": "14a",
+      "reproduced_query": "Dropbox iPhone select upload multiple photos site:help.dropbox.com/create-upload",
+      "sources": [
+        {
+          "id": "1404dc21-7c93-40e4-9f33-03dd0938804b",
+          "url": "https://help.dropbox.com/create-upload/upload-mobile",
+          "title": "Upload files to Dropbox on a mobile device - Dropbox Help",
+          "domain": "help.dropbox.com",
+          "snippet": "Dropbox\n\n# How to upload files to Dropbox on a mobile device\n\n## In this article\n\nThe information in this article applies to all Dropbox users.\n\nThe Dropbox mobile app allows you to create and upload files directly to your Dropbox account from your phone or tablet. Uploaded files sync everywhere you access your files in Dropbox.\n\nNot using Dropbox yet? See how Dropbox makes syncing files easy.\n\n## How to upload content from other mobile apps\n\nYou can upload content from other mobile apps (Photos, Messages, etc.) to your Dropbox account. To do so:\n\nNote: You must be logged into your Dropbox account on the Dropbox mobile app.\n\n## How to upload photos and videos\n\nIf you don't have camera uploads enabled, you can manually add photos to your Dropbox account. To do so: [...] ## How to upload other types of files\n\nYou can also choose to create content using Microsoft Office applications.\n\nLearn more about creating content with Microsoft Office applications.\n\nIf your device has an SD card, you can upload files to Dropbox from there. To do so:\n\nNote: If you can't view your SD card when browsing for files to upload, verify that Show advanced devices is checked by tapping the menu button at the top of the screen and looking under Settings.\n\niPhone/iPad users can also upload other types of files using either of the following:\n\nYes, thanks!\n\nNot really\n\nLet us know how why it didn't help:\n\nThanks for letting us know!\n\nThanks for your feedback!\n\n### Related Articles\n\n#### Dropbox Replay FAQs\n\n#### How can I export to an SD card from my Android phone? [...] Note: The Dropbox app for Windows devices does not currently support video uploads. This is due to operating system limitations.\n\n## How to upload photos overnight in iOS\n\nIf you have to upload a large amount of photos or videos from your camera app, you can use the overnight uploads feature. Overnight uploads allows you to upload your photos and videos continuously through the night, keeping the Dropbox mobile app open and dimming your device’s brightness.\n\nLearn more about overnight uploads.\n\n## How to upload audio files\n\niOS users can record audio using the Dropbox mobile app and save directly to their Dropbox account. To do so:\n\nNote: The Dropbox mobile app for Windows in S mode (Dropbox Lite) and Android devices do not currently support audio capture."
+        },
+        {
+          "id": "dcef4d9e-757d-4b48-b66a-0201459af4be",
+          "url": "https://help.dropbox.com/create-upload/camera-uploads-overview",
+          "title": "How to use camera uploads - Dropbox Help",
+          "domain": "help.dropbox.com",
+          "snippet": "To turn photo uploads on or off on the Dropbox mobile app for Android:\n\nTo turn photo uploads on or off on the Dropbox mobile app for iOS:\n\n## How to upload photos and videos overnight on the Dropbox mobile app\n\nNote: This feature is available on iOS devices only.\n\nIf you have to upload a large amount of photos or videos from your camera app, you can use the overnight uploads feature. Overnight uploads allows you to upload your photos and videos continuously through the night, keeping the Dropbox mobile app open and dimming your device’s brightness.  \n  \nTo turn overnight uploads on or off:\n\nNote: To successfully upload your photos and videos overnight, you must:\n\n## Turn photo and video uploads on or off in the Dropbox desktop app [...] #### Why did camera uploads use all of my cellular data?\n\nBy default, camera uploads use cellular data when WiFi isn’t available. You can change this setting by following the instructions for your device below.  \n  \nAndroid:\n\niOS:\n\n#### Can I upload iOS Live Photos?\n\nYou can upload Live Photos on the Dropbox app. Learn how to upload iOS Live photos.  \n Note: Live Photos uploaded to Dropbox from other apps will be saved as normal photos.\n\n#### What should I do if camera uploads aren't working?\n\nIf camera uploads aren't working, follow the steps in our troubleshooting guide.\n\n#### Why don’t I see the option to turn on camera uploads?\n\nIf you’re on a Dropbox team and you don’t see a camera uploads option, your admin may have turned the feature off for your team. [...] To forget a connected device:\n\n## FAQs about camera and device uploads\n\n#### Can I choose which folder my photos upload to?\n\nBy default, your photos will be uploaded to a folder in your Dropbox account named Camera Uploads. You can’t change this; however, you can move your photos to a different folder in your Dropbox account after they’ve been uploaded.\n\n#### Why did camera uploads use all of my battery power?\n\nCamera uploads can use a large amount of battery power the first time your photos are uploaded. After the photos are uploaded, battery usage should return to normal. By default, the Dropbox app stops auto-uploading when your battery is low to save battery life.\n\n#### Why did camera uploads use all of my cellular data?"
+        },
+        {
+          "id": "6b0bbfb4-85d5-42c7-9b92-22d70f15cefa",
+          "url": "https://help.dropbox.com/create-upload/upload-live-photos",
+          "title": "How to upload Motion & Live Photos on Dropbox - Dropbox Help",
+          "domain": "help.dropbox.com",
+          "snippet": "### How to share Motion Photos\n\nTo share your Motion Photos with others, you can create and share a link, invite them to a file folder, or send directly through your preferred sharing method.\n\n## How to upload Live Photos on iOS\n\nYou can upload and share Live Photos via the Dropbox mobile app.\n\nNote:To access this feature, make sure your Dropbox mobile app is updated to the latest version.\n\nTo upload your Live Photos:\n\nNote: To preview a Live Photo, tap the play button on the Live Photo or press and hold the Live Photo.\n\n### How to share Live Photos\n\nTo share your Live Photos with others, you can create and share a link, invite them to a file folder, or send directly through your preferred sharing method.\n\nYes, thanks!\n\nNot really\n\nLet us know how why it didn't help: [...] Dropbox\n\n# How to upload Motion Photos and Live Photos to Dropbox\n\n## In this article\n\nThe information in this article applies to all Dropbox users.\n\nNote: You can also view and share Motion Photos and Live Photos on dropbox.com. This option is currently only available on computers using the Google Chrome browser.\n\n## How to upload Motion Photos on Android\n\nYou can upload and share Motion Photos via the Dropbox mobile app.\n\nNote: To access this feature, make sure your Dropbox mobile app is updated to the latest version.\n\nTo upload your Motion Photos:\n\nNote: You can also upload Motion Photos to Dropbox using your camera app.\n\n### How to share Motion Photos"
+        },
+        {
+          "id": "a58005d2-a456-476c-84f4-77ab4ed5c3df",
+          "url": "https://help.dropbox.com/create-upload/photos-not-appearing",
+          "title": "Why aren't my photos appearing in the Dropbox mobile app? - Dropbox Help",
+          "domain": "help.dropbox.com",
+          "snippet": "A digital photo usually has various pieces of information embedded in it, including the date and time it was taken. Dropbox uses this information to arrange your photos. If a photo's date is missing or incomplete, the photo will be sorted by the date it was last modified.\n\n## Dropbox team accounts\n\nA digital photo usually has various pieces of information embedded in it, including the date and time it was taken. Dropbox uses this information to arrange your photos. If a photo's date is missing or incomplete, the photo will be sorted by the date it was last modified.\n\n## Dropbox team accounts\n\nIf you don't see some of your photos under the Photos tab at first, scroll down to the bottom of your photos list and take a look there. [...] Dropbox\n\n# Why aren't my photos appearing in the Dropbox mobile app?\n\n## In this article\n\nThe information in this article applies to all Dropbox users on mobile devices.\n\nIf you don't see some of your photos under the Photos tab, they might be missing information about when they were taken.\n\nA digital photo usually has various pieces of information embedded in it, including the date and time it was taken. Dropbox uses this information to arrange your photos. If a photo's date is missing or incomplete, the photo will be sorted by the date it was last modified.\n\nHere are some other reasons why your photos or images might not appear on the Photos tab: [...] A digital photo usually has various pieces of information embedded in it, including the date and time it was taken. Dropbox uses this information to arrange your photos. If a photo's date is missing or incomplete, the photo will be sorted by the date it was last modified.\n\n## Still don't see some of your photos?\n\nA digital photo usually has various pieces of information embedded in it, including the date and time it was taken. Dropbox uses this information to arrange your photos. If a photo's date is missing or incomplete, the photo will be sorted by the date it was last modified.\n\n## Still don't see some of your photos?\n\nYes, thanks!\n\nNot really\n\nLet us know how why it didn't help:\n\nThanks for letting us know!\n\nThanks for your feedback!\n\n### Related Articles\n\n#### Dropbox Replay FAQs"
+        },
+        {
+          "id": "5efb4eea-64ac-4380-a7fa-0235509b543d",
+          "url": "https://help.dropbox.com/create-upload/ios-formats",
+          "title": "Support for HEIF (.heic) and HEVC photo and video files - Dropbox Help",
+          "domain": "help.dropbox.com",
+          "snippet": "Dropbox\n\n# Support for HEIF (.heic) and HEVC photo and video files\n\n## In this article\n\nThe information in this article applies to all Dropbox users.\n\nDropbox supports photo and video files stored in HEIF (.heic) and HEVC-encoded MOV (.mov) formats.\n\nHEIF and HEVC are the default file formats for photos and videos on many Apple devices running iOS 11 or later. Most Mac computers, iPhones, and iPads can open these files. Learn which devices use HEIF and HEVC file formats.\n\n## Use camera uploads to upload HEVC as a different file type\n\nIf you use the camera uploads feature to automatically upload your photos and videos to Dropbox, you can set your HEIF and HEVC files to upload as JPG and non-HEVC MOV files instead. Then, you can open them on non-Apple devices. [...] To set HEIF and HEVC files to upload as JPG and non-HEVC MOV:\n\nNotes:\n\n The Save HEIC Photos as option will only appear if you have an HEIF or HEVC file on your device.\n Saving your camera uploads as a JPG is likely a better option if you’re sharing files with someone who isn’t using an Apple device.\n Converting a file to JPG will remove some features of HEIF files.\n Changing how these files are uploaded won’t affect files that were already uploaded to Dropbox.\n\nNotes:\n\n## Use iPhone or iPad settings to upload HEVC as a different file type\n\nYou can upload HEIF and HEVC files as JPG and non-HEVC MOV by changing the settings on your iPhone or iPad and then manually connecting the device to a computer to upload. To do so:\n\n## Which operating systems support HEIF (.heic) and HEVC files? [...] ### HEIF (.heic) photos\n\n|  |  |\n --- |\n| Supported | Not supported |\n|  iPhone/iPad: iOS 11   Mac: macOS High Sierra 10.13 |  Windows: All versions   Mac: macOS Sierra 10.12 or earlier   Android: All versions   iPhone/iPad: iOS 10 or earlier |\n\nSupported\n\nNot supported\n\n### HEVC-encoded videos\n\n|  |  |\n --- |\n| Supported | Not supported |\n|  Windows: Windows 10 or later   Mac: macOS High Sierra 10.13   Android: Android 5 or later   iPhone iPad: iOS 11 |  Windows: Windows 8.1 or earlier   Mac: macOS Sierra 10.12 or earlier   Android: Android 4.4.4 or earlier   iPhone/iPad: iOS 10 or earlier |\n\nSupported\n\nNot supported\n\nTo learn more, visit these articles from Apple support:"
+        }
+      ],
+      "findings": []
+    },
+    {
+      "competitor": "OneDrive",
+      "question": "In the OneDrive iPhone app, can a user manually select multiple photos for one upload? Cite only official Microsoft Support; separate manual upload from camera upload.",
+      "run_id": "0bb2b5db-bda3-47c1-b1c8-b7eb3b90de3a",
+      "status": "completed",
+      "error_message": null,
+      "attempt_count": 3,
+      "version": "14a",
+      "reproduced_query": "OneDrive iPhone select multiple photos upload site:support.microsoft.com/en-us/onedrive",
+      "sources": [
+        {
+          "id": "e1278fdc-314d-4b83-b987-8751ad1d6273",
+          "url": "https://support.microsoft.com/en-us/onedrive/manually-upload-files-or-photos-to-onedrive-in-ios",
+          "title": "Manually upload files or photos to OneDrive in iOS | Microsoft Support",
+          "domain": "support.microsoft.com",
+          "snippet": "## Upload files and folders using the OneDrive for iOS app\n\n1. In the OneDrive app, tap  OneDrive add icon  at the top of the screen.\n2. Then tap to Take a photo, Scan a document, Create a folder or Upload a file or photo.\n\nNote\n\n OneDrive cannot upload photos optimized for iCloud. To disable optimization, tap Settings > iCloud > Photos and uncheck Optimize Storage.\n Learn how to upload HEIF and HEVC photos and videos to OneDrive.\n If you choose Take a Photo, your device's camera app opens. You might be asked if you want OneDrive to access your camera - tap Yes to allow your pictures to be saved in OneDrive.\n If you tap Choose Existing, links appear to the Photos app on your device. Browse to the pictures you want to upload, select them, then on the top bar, tap Done. [...] Microsoft \n\nSupport\n\nSign in\n\nSign in with Microsoft\n\nSign in or create an account.\n\nHello,\n\nSelect a different account.\n\nYou have multiple accounts\n\nChoose the account you want to sign in with.\n\n# Manually upload files or photos to OneDrive in iOS\n\nGet help with Copilot\n\nTell me about manually upload files or photos to OneDrive   How do I create folders in OneDrive for Android?   Help me create a new folder in the OneDrive for iOS app.\n\nUse the OneDrive app to upload photos and videos from your device, create new folders, and move photos and videos from one OneDrive folder to another.\n\nIf you want to have your device's camera roll upload to OneDrive automatically, read how to Automatically save photos and videos from OneDrive on iOS. [...] ## Move files between folders in the OneDrive for iOS app\n\n1. Select the files you want to move.\n2. Tap  More icon in the OneDrive app for iOS  at the top of the screen, then tap Move. You can move folders into another folder, as well as individual files.\n3. Your Files list appears. Tap the folder you want the files moved to, then tap Move.\n\n## Create a new folder in the OneDrive for iOS app\n\nYou can add folders in the Files view, or in any other folder in OneDrive.\n\n1. Go to the location where you want to add a new folder,\n2. Tap  OneDrive add icon  at the top of the screen and then tap Create a Folder.\n3. Under Folder name, tap where it says \"New folder\" and type in the name you want for the folder, then tap Create.\n\n## Learn more\n\nTroubleshoot OneDrive for iOS app problems"
+        },
+        {
+          "id": "4f7ce4ab-270c-48c3-8cc0-6988d71ca77e",
+          "url": "https://support.microsoft.com/en-us/onedrive/troubleshoot-onedrive-for-ios-app-problems",
+          "title": "Troubleshoot OneDrive for iOS app problems | Microsoft Support",
+          "domain": "support.microsoft.com",
+          "snippet": "Connect to Wi-Fi. Some devices and networks can have limited bandwidth at certain times.\n Download the video. Select the video, then choose  to download.\n Make the video offline. Select the video, then  then Make available offline.\n\n## Slide to select not working in OneDrive for iOS\n\nUsers of iOS 16 may not be able to use the two-fingered pan gesture to select multiple files in OneDrive. We are aware of the issue and working on a solution.\n\nWorkaround\n\nSelect one photo first, then use two fingers to slide to select multiple files or photos.\n\n## Whiteboard sharing not working in OneDrive for work or school [...] 1. Open the iOS Settings app and select General then iPhone storage.\n2. Select Offload Unused Apps.\n3. Scroll down and select OneDrive.\n4. Select Offload App.\n5. You'll get a message informing you that the app will be deleted, but its documents and data will remain. Tap Offload App.\n\nTip\n\nYou won't need to sign in, but you may have to set up your Camera Upload and Organize new uploads.\n\n## Learn more\n\n Use OneDrive on iOS\n Find lost or missing files in OneDrive\n Fix problems uploading files on the OneDrive website\n More fixes for recent OneDrive issues\n\n## Need more help?\n\n Personal accounts\n Work/school accounts\n\nAccount support. For help with your Microsoft account and subscriptions, visit Account & Billing Help. [...] A file won't upload if it doesn't fit in your available OneDrive storage space. To see how much space you have remaining or get more storage, go to your Storage page online.\n\n## OneDrive for iOS can't find this file\n\nIf you have issues with the app syncing your files or camera roll to OneDrive, you can reset it.\n\n1. Go to Profile > Settings > Account (and if you have more than one set up, select the account to reset)\n2. Select Reset.\n\nIf you still have issues, uninstall and reinstall the app."
+        },
+        {
+          "id": "8c178641-8a6b-4f7a-8a29-c2d655c2799b",
+          "url": "https://support.microsoft.com/en-us/onedrive/automatically-save-photos-and-videos-with-onedrive-on-ios",
+          "title": "Automatically save photos and videos with OneDrive on iOS | Microsoft Support",
+          "domain": "support.microsoft.com",
+          "snippet": "## Global\n\n# Automatically save photos and videos with OneDrive on iOS\n\nThe camera roll on your device only uploads to OneDrive - it does not sync photos both ways. That means you can delete uploaded photos and videos from your device, and the copies in OneDrive won't be affected.\n\n## To automatically upload your iPhone or iPad camera roll to OneDrive\n\nIn the OneDrive app, tap your account image:\n\nOneDrive app account image location\n\nOneDrive app account image location\n\nTap Settings\nOneDrive settings\n, then Camera Upload\n\nOneDrive settings\n\nImportant\n\nYou can only upload your camera roll to one account at a time, so make sure you're signed in with the account that you want to upload photos to. Tap the relevant account icon to switch accounts. [...] Flip the toggle on for the OneDrive account you want to enable Camera Upload.\n\nTo make sure videos automatically upload, turn on Include Videos.\n\n## Use Bedtime Backup to upload remaining photos\n\nIf you have large videos or need to upload lots of images, you may see some marked as \"Remaining\". We recommend using Bedtime Backup to upload your photos even faster with OneDrive's dedicated upload mode. Here's how:\n\n## If camera upload isn't working\n\nNote\n\nTo conserve battery life, iOS may go to \"sleep\" during a large camera upload, making the upload take a long time.\n\nIf automatic camera upload isn't working, or only some pictures are uploaded, follow these steps:\n\n## Learn more\n\nUpload HEIF and HEVC photos and videos to OneDrive\n\nManually upload files or photos to OneDrive in iOS [...] Manually upload files or photos to OneDrive in iOS\n\nTroubleshoot OneDrive for iOS app problems\n\nSeeing pictures that are not my photos in OneDrive\n\n## Need more help?\n\nAccount support. For help with your Microsoft account and subscriptions, visit Account & Billing Help.\n\nTechnical support. For technical support, select Contact Microsoft Support below, enter your problem and select Get Help.\n\nContact Microsoft Support\n\nMobile users can contact Support by opening the OneDrive app and gently shaking your device.\n\nCommunity support. Communities help you ask questions, give feedback, and hear from experts with rich knowledge. Ask the Microsoft Community. Do not disclose personal or sensitive information in public forums."
+        },
+        {
+          "id": "67899134-eac8-4764-b5eb-5d0ce6af2f42",
+          "url": "https://support.microsoft.com/en-us/onedrive/download-files-and-folders-from-onedrive-or-sharepoint",
+          "title": "Download files and folders from OneDrive or SharePoint | Microsoft Support",
+          "domain": "support.microsoft.com",
+          "snippet": "To download individual or multiple files, select each item by clicking the circle check box that appears. (The left image below shows items in List view, the right image shows items in Tiles or Photos view.) (You can also select several files at once by selecting one file, scrolling down the list, then hold down the Shift key while left-clicking the last item you want to select.)  \n\nScreenshot of selecting a file in OneDrive in list view\n  \nScreenshot of selecting a file in OneDrive in tile view\n\nScreenshot of selecting a file in OneDrive in list view\nScreenshot of selecting a file in OneDrive in tile view\n\nTo select all files in a folder, click the circle to the left of the header row, or press CTRL + A on your keyboard.\n\nScreenshot of selecting all files and folders in OneDrive. [...] Screenshot of selecting all files and folders in OneDrive.\n\nScreenshot of selecting all files and folders in OneDrive.\n\nTo select a folder, rather than just its contents, you may need to go up or back a level to select the whole folder.\n\nScreenshot that shows selecting a OneDrive folder.\n\nScreenshot that shows selecting a OneDrive folder.\n\nScreenshot that shows the selected file.\n\nScreenshot that shows the selected file.\n\nIn the top navigation, select Download. (You can also right-click the file, photo, or folder, and select Download.)  \n\nScreenshot of the selecting OneDrive files and downloading them.\n\nScreenshot of the selecting OneDrive files and downloading them.\n\nNote [...] Note\n\nIf your browser prompts you, choose Save or Save As and browse to the location where you want to save the download. (Some browsers just start saving right away to a Downloads folder on your computer.)\n\nNote\n\nFile explorer view\n\nIf you select multiple files or folders and then select Download from Microsoft OneDrive, SharePoint in Microsoft 365, or from SharePoint Server Subscription Edition, your browser will start downloading a .zip file containing all the files and folders you selected. If you're in a folder and you select Download without selecting any files or folders, your browser will begin downloading all contents of the folder.\n\n## Keep in mind\n\n## Make files available offline in a OneDrive mobile app"
+        },
+        {
+          "id": "e189148b-d09b-43b2-a200-3d1fd5eb91a3",
+          "url": "https://support.microsoft.com/en-us/onedrive/sort-rename-or-move-photos-and-files-in-onedrive",
+          "title": "Sort, rename, or move photos and files in OneDrive | Microsoft Support",
+          "domain": "support.microsoft.com",
+          "snippet": "Browse to the file or folder that you want to move.\n\nSelect the item you want to move. (In List view, check the circle that appears to the left of the item when you hover the pointer there; in Tiles or Photo view, check the circle in the upper-right corner of the tile when you hover the pointer there.) You can also select multiple items to move them together, as a group.\n\nIn the top navigation, select Move to\n\nIn the Move to pane, browse to the destination folder, and then select Move.  \nIf you want to create a new folder in which to store the item, select New folder. [...] ## Global\n\n# Sort, rename, or move photos and files in OneDrive\n\nAfter you upload photos and files to OneDrive, you can sort, rearrange, rename, and move them on the OneDrive website to keep them organized. To see these options, sign in to OneDrive on the web with your personal Microsoft account.\n\n## Sort files in OneDrive\n\nNote\n\nAs explained later in this article, the following steps don't apply to Photo view, because this web-only view aggregates photos from various folder locations in OneDrive.\n\nIn OneDrive on the web, select My files and go to the folder that contains the files or photos you want to sort.\n\nSelect a column header, then select the display order you prefer. (For example, select the Name header, then select A to Z or Z to A.)"
+        }
+      ],
+      "findings": [
+        {
+          "finding": {
+            "category": "competitor",
+            "status": "not_verified",
+            "title": "OneDrive for iOS app",
+            "description": "From the official help page. Evidence: \"Browse to the pictures you want to upload, select them, then on the top bar, tap Done.\"",
+            "source_refs": null
+          },
+          "matching_quote_candidates": [
+            {
+              "url": "https://support.microsoft.com/en-us/onedrive/manually-upload-files-or-photos-to-onedrive-in-ios",
+              "name_supported": true,
+              "quote_supported": true,
+              "description_shape": true,
+              "quantifier_required": true,
+              "quantifier_present": false
+            }
+          ],
+          "caveat": "Demoted original source refs were not retained; reconstructed candidates are diagnostics, not proof of original citation choice."
+        },
+        {
+          "finding": {
+            "category": "competitor",
+            "status": "confirmed",
+            "title": "OneDrive for iOS app",
+            "description": "From the official help page. Evidence: \"Select one photo first, then use two fingers to slide to select multiple files or photos.\"",
+            "source_refs": [
+              {
+                "provider_source_id": "93364b-01",
+                "source_id": "4f7ce4ab-270c-48c3-8cc0-6988d71ca77e"
+              }
+            ]
+          },
+          "matching_quote_candidates": [
+            {
+              "url": "https://support.microsoft.com/en-us/onedrive/troubleshoot-onedrive-for-ios-app-problems",
+              "name_supported": true,
+              "quote_supported": true,
+              "description_shape": true,
+              "quantifier_required": true,
+              "quantifier_present": true
+            }
+          ],
+          "caveat": "Demoted original source refs were not retained; reconstructed candidates are diagnostics, not proof of original citation choice."
+        },
+        {
+          "finding": {
+            "category": "market_pattern",
+            "status": "confirmed",
+            "title": "Two-finger slide multi-select on OneDrive iOS",
+            "description": "From the official help page. Evidence: \"Select one photo first, then use two fingers to slide to select multiple files or photos.\"",
+            "source_refs": [
+              {
+                "provider_source_id": "93364b-01",
+                "source_id": "4f7ce4ab-270c-48c3-8cc0-6988d71ca77e"
+              }
+            ]
+          },
+          "matching_quote_candidates": [
+            {
+              "url": "https://support.microsoft.com/en-us/onedrive/troubleshoot-onedrive-for-ios-app-problems",
+              "name_supported": true,
+              "quote_supported": true,
+              "description_shape": true,
+              "quantifier_required": true,
+              "quantifier_present": true
+            }
+          ],
+          "caveat": "Demoted original source refs were not retained; reconstructed candidates are diagnostics, not proof of original citation choice."
+        },
+        {
+          "finding": {
+            "category": "market_pattern",
+            "status": "not_verified",
+            "title": "Camera Upload is automatic and separate from manual upload",
+            "description": "From the official help page. Evidence: \"The camera roll on your device only uploads to OneDrive - it does not sync photos both ways.\"",
+            "source_refs": null
+          },
+          "matching_quote_candidates": [
+            {
+              "url": "https://support.microsoft.com/en-us/onedrive/automatically-save-photos-and-videos-with-onedrive-on-ios",
+              "name_supported": false,
+              "quote_supported": true,
+              "description_shape": true,
+              "quantifier_required": true,
+              "quantifier_present": false
+            }
+          ],
+          "caveat": "Demoted original source refs were not retained; reconstructed candidates are diagnostics, not proof of original citation choice."
+        }
+      ]
+    },
+    {
+      "competitor": "iCloud Photos",
+      "question": "On iPhone, distinguish the Photos app iCloud sync, iCloud.com upload, and Shared Photo Library. Which of these supports selecting multiple photos for a manual upload? Cite only official Apple Support.",
+      "run_id": "b0d31a38-c67b-45bd-86dc-d9031ab82db8",
+      "status": "partial_failed",
+      "error_message": "research insufficient_external_evidence: no competitor or market_pattern finding carries an external source citation",
+      "attempt_count": 3,
+      "version": "14a",
+      "reproduced_query": "iCloud iPhone photos sync upload multiple site:support.apple.com/en-us",
+      "sources": [
+        {
+          "id": "dc42f9f3-d078-4cc4-91bd-5f51eae755a6",
+          "url": "https://support.apple.com/en-us/108782",
+          "title": "Set up and use iCloud Photos - Apple Support",
+          "domain": "support.apple.com",
+          "snippet": "### On iPhone, iPad, or Apple Vision Pro\n\n In iOS 26 or later, open the Photos app, then tap Collections. Tap the profile button, then tap Pause.\n In iOS 18, open the Photos app, tap the profile button and tap Pause.\n In iOS 17 or earlier, open the Photos app. Tap Library. Select All Photos, then scroll down and tap Pause.\n\n### On Mac\n\n1. In the Photos app, in the sidebar, select Library.\n2. Click All Photos.\n3. Scroll down and click Pause.\n\n## Prioritize library uploads to iCloud\n\nTo prioritize syncing your iCloud Photos library, in version 27 or later of iOS, iPadOS, and visionOS, you can turn on Sync Immediately. If you allow Photos to use cellular data, this could lead to higher data usage. [...] Photos and videos are stored in iCloud in their original formats at full resolution (HEIF, JPEG, RAW, PNG, GIF, TIFF, HEVC, and MP4), as well as special formats you capture with your iPhone or iPad, like slo-mo, time-lapse, 4K videos, and Live Photos. Depending on your internet speed, the time it takes to see your photos and videos across your devices and iCloud.com can vary.\n\n## Turn on iCloud Photos\n\nMake sure that you set up iCloud and sign in to iCloud with the same Apple Account on all of your devices.\n\n### Turn on iCloud Photos on your iPhone, iPad, or Apple Vision Pro\n\n1. Go to Settings. Tap your name, then select iCloud.\n2. Tap Photos.\n3. Turn on Sync this device.\n\n### Turn on iCloud Photos on your Mac [...] 1. Go to Settings. Tap your name, then tap iCloud.\n2. Under Saved to iCloud, tap Photos.\n3. Tap Sync Immediately.\n4. Choose For Today.\n\nInformation about products not manufactured by Apple, or independent websites not controlled or tested by Apple, is provided without recommendation or endorsement. Apple assumes no responsibility with regard to the selection, performance, or use of third-party websites or products. Apple makes no representations regarding third-party website accuracy or reliability. Contact the vendor for additional information.\n\nPublished Date:\n\nThanks for your feedback.\n\n### Related topics"
+        },
+        {
+          "id": "35433f2d-ecfd-4531-9f40-66ec83c55fa9",
+          "url": "https://support.apple.com/en-us/118229",
+          "title": "How to use iCloud Shared Photo Library on iPhone or iPad - Apple Support",
+          "domain": "support.apple.com",
+          "snippet": "## Share photos straight from the camera\n\n1. On your iPhone or iPad, go to Settings, tap Apps, then select Photos. In iOS 17 or earlier, go to Settings, then tap Photos.\n2. Tap Shared Library.\n3. Tap Sharing from Camera and make sure that it's turned on. [...] ## Join a Shared Library\n\n1. On your iPhone or iPad, open the invitation from the library creator or go to Settings, tap Apps, then select Photos. In iOS 17 or earlier, go to Settings, then tap Photos.\n\n   If you have a Shared Library invitation, you can find it at the top of the Photos section of your device Settings, under “Shared Library Invitation.”\n2. Tap Accept & Continue.\n3. Follow the onscreen steps to choose photos and videos you want to move to your Shared Library, or choose to move photos later.\n4. Follow the onscreen steps to preview your Shared Library content and confirm the content that you want to share.\n\n## Share photos straight from the camera [...] ## Create a Shared Library\n\n1. On your iPhone or iPad, go to Settings. Tap Apps, then select Photos. In iOS 17 or earlier, go to Settings, then tap Photos.\n2. Tap Shared Library.\n3. Choose up to five people to invite, or you can invite participants later.\n4. Choose past photos and videos that you want to move to your Shared Library, or choose to move photos later.\n5. Follow the onscreen steps to preview your Shared Library, confirm the content that you want to share, and invite additional participants.\n\n   An iPhone screen showing a preview of a Shared Library during setup. The images in the preview include smiling people, a closeup of a plant, and landscapes.\n\n## Join a Shared Library"
+        },
+        {
+          "id": "f9bba065-2caa-4518-959c-693a1e152862",
+          "url": "https://support.apple.com/en-us/120267",
+          "title": "Transfer photos from your iPhone or iPad - Apple Support",
+          "domain": "support.apple.com",
+          "snippet": "## Use iCloud Photos\n\niCloud Photos keeps your photos and videos safe, up to date, and available automatically on all of your Apple devices, on iCloud.com, and even on your PC. When you use iCloud Photos, you don't need to import photos from one device to another. iCloud Photos always uploads and stores your original, full-resolution photos. You can keep full-resolution originals on each of your devices, or save space with device-optimized versions instead. Learn how to set up and use iCloud Photos.\n\nThe photos and videos that you keep in iCloud Photos use your iCloud storage. Before you turn on iCloud Photos, make sure that you have enough space in iCloud to store your entire collection. You can see how much space you need and then upgrade your storage plan if necessary."
+        },
+        {
+          "id": "4bb96980-f54e-4386-bcd0-439aec0bc4c5",
+          "url": "https://support.apple.com/en-us/102375",
+          "title": "Sync your photos manually using the Finder - Apple Support",
+          "domain": "support.apple.com",
+          "snippet": "### Stop syncing all photos\n\n1. Open a Finder window and connect your device to your computer using a USB cable.\n2. Unlock your device.\n3. Your device appears in the sidebar of the Finder window. Click the device to select it.\n4. If prompted, trust your device.\n5. Click the Photos tab below your device's information.\n6. Deselect \"Sync Photos\" then click \"Remove photos.\"\n7. Click Apply.\n\n## Update your photos with iCloud\n\nIf you use iCloud Photos, you can keep all your photos and videos stored in iCloud. They sync across all of your devices so you can access your library from your Mac, Apple TV, iPhone, iPad, and even your PC. Your newest shots and edits upload when you're connected to the internet.\n\nLearn how to set up and use iCloud Photos.\n\n## Learn more [...] 1. Open a Finder window and connect your device to your computer using a USB cable.\n2. Unlock your device.\n3. Your device appears in the sidebar of the Finder window. Click the device to select it.\n4. If prompted, trust your device.\n5. Click the Photos tab below your device's information.\n6. Select the checkbox next to Sync photos to your device from, then select Photos or a folder on your Mac.\n7. Choose between syncing all your photos and albums or only selected albums. You can also choose to sync only favorites, and whether to include videos.\n8. Click the Apply button in the lower-right corner of the window. If syncing doesn't start automatically, click the Sync button.\n\nPhotos sync settings for a connected iPhone in the Finder. [...] Photos sync settings for a connected iPhone in the Finder.\n\nImport Slo-Mo and Time-Lapse videos through the Photos app or Image Capture in OS X Yosemite or later. This ensures the Finder syncs their effect. When you use iCloud Photos, Slo-Mo and Time-Lapse videos keep their effects.\n\nLive Photos keep their effect when you import them to Photos in OS X El Capitan and later, but if you sync them back to your device using your computer, Live Photos lose their effect. Use iCloud Photos so that Live Photos keep their effect, no matter what device you use.\n\nYou can sync your device only with the System Photo Library. If you have more than one photo library on your Mac, be sure that you designate the correct one as the System Photo Library.\n\n## Turn off Finder syncing"
+        },
+        {
+          "id": "90b52a8c-a5f8-48c4-b92d-5b2370aa67a5",
+          "url": "https://support.apple.com/en-us/101984",
+          "title": "If you see \"Unable to Upload\" in the Photos app - Apple Support",
+          "domain": "support.apple.com",
+          "snippet": "# If you see \"Unable to Upload\" in the Photos app\n\nIf some of your photos aren't able to sync to iCloud, learn how to move these photos from the Unable to Upload album to your library.\n\nWhen you check the status of your library at the bottom of the Photos app on your iPhone, iPad, or Mac, you might see that some photos or videos are unable to sync to iCloud Photos. You might also see a status message that says \"Couldn’t Sync [number of items] to iCloud\" and a new Unable to Upload album in the Photos app.\n\nTo add these photos or videos to iCloud Photos, you can try exporting them from the Photos app and importing them again. Any edits or keywords that you previously applied to these photos or videos will be lost.\n\n## Upload your photos or videos to iCloud again on your iPhone or iPad [...] After you import your files again, you can delete them from the on-device location to save storage space on your iPhone.\n\n## Upload your photos or videos to iCloud again on your Mac\n\nTo see which items couldn't sync to iCloud in the Photos app, click the View button next to the message at the bottom of the Library window or click Unable to Upload in the sidebar. You can try to reimport the items from the Unable to Upload album into your Photos library to sync the items with iCloud Photos.\n\nYou can view photos that did not upload to your iCloud Photo Library in the Unable to Upload folder. [...] 1. Press Command-A to select all of the items in the Unable to Upload album, choose File and select Export, then choose Export Unmodified Original For [number] Photos.\n2. In the dialogs that follow, click Export, choose a save location, then click Export Originals.\n3. After the items export, make sure they are all still selected in the album, then choose Image and select Delete [number] Photos or Videos.\n4. Click Delete, then click OK.\n5. Choose the Recently Deleted album in the sidebar, then choose Delete All. Or select only the items that you just deleted.\n6. Choose File and click Import, then choose the images you previously exported. For any items successfully synced to iCloud Photos, edits or keywords that you added to the affected items might be lost.\n\n## Need more help?"
+        }
+      ],
+      "findings": [
+        {
+          "finding": {
+            "category": "competitor",
+            "status": "not_verified",
+            "title": "iCloud Photos (iPhone Photos app iCloud sync)",
+            "description": "From the official help page. Evidence: \"iCloud Photos keeps your photos and videos safe, up to date, and available automatically on all of your Apple devices, on iCloud.com, and even on your PC.\"",
+            "source_refs": null
+          },
+          "matching_quote_candidates": [
+            {
+              "url": "https://support.apple.com/en-us/120267",
+              "name_supported": false,
+              "quote_supported": true,
+              "description_shape": true,
+              "quantifier_required": true,
+              "quantifier_present": false
+            }
+          ],
+          "caveat": "Demoted original source refs were not retained; reconstructed candidates are diagnostics, not proof of original citation choice."
+        },
+        {
+          "finding": {
+            "category": "competitor",
+            "status": "not_verified",
+            "title": "iCloud Shared Photo Library (iPhone)",
+            "description": "From the official help page. Evidence: \"Choose past photos and videos that you want to move to your Shared Library, or choose to move photos later.\"",
+            "source_refs": null
+          },
+          "matching_quote_candidates": [
+            {
+              "url": "https://support.apple.com/en-us/118229",
+              "name_supported": false,
+              "quote_supported": true,
+              "description_shape": true,
+              "quantifier_required": true,
+              "quantifier_present": false
+            }
+          ],
+          "caveat": "Demoted original source refs were not retained; reconstructed candidates are diagnostics, not proof of original citation choice."
+        }
+      ]
+    },
+    {
+      "competitor": "Google Drive",
+      "question": "In the Google Drive Android app, can a user select multiple device photos and upload them in one action? Cite only official Google Drive Help; if official documentation is absent, mark not verified.",
+      "run_id": "2927e516-1722-49f7-8b05-2a2089c5a6f4",
+      "status": "partial_failed",
+      "error_message": "research insufficient_external_evidence: no competitor or market_pattern finding carries an external source citation",
+      "attempt_count": 2,
+      "version": "14a",
+      "reproduced_query": "Google Drive Android select multiple photos upload site:support.google.com/drive/answer",
+      "sources": [
+        {
+          "id": "6975e707-a7a2-4c26-94ce-af3be725945c",
+          "url": "https://support.google.com/drive/answer/2424384?hl=en&co=GENIE.Platform%3DAndroid",
+          "title": "How to use Google Drive - Android - Google Drive Help",
+          "domain": "support.google.com",
+          "snippet": "If your device is more than 600 dpi and on Android 12 or up:\n  1. On your Android device, open Google Drive Google Drive icon.\n  2. Next to a file, tap Menu More.\n  3. Select Open in split view.\n  4. At the top right of the new window, select your profile photo.\n  5. Switch your account.\n If your device is on Android 7 or up:\n  1. On your Android device, open Google Drive Google Drive icon.\n  2. Enter split screen mode with another app.\n  3. On any Drive item, tap Menu More.\n  4. Select Open in other window.\n  5. At the top right of the new window, select your profile photo.\n  6. Switch your account.\n\n## Related resources\n\n Search and find a file in Google Drive\n Use Google Drive files offline\n Manage your storage in Drive, Gmail, and Photos\n\nAndroid ComputeriPhone & iPad [...] To open 2 instances of the Drive app side-by-side:\n\n If your device is more than 600 dpi and on Android 12 or up:\n  1. On your Android device, open Google Drive Google Drive icon.\n  2. On any Drive item, tap Menu More.\n  3. Select Open in split view.\n If your device is on Android 7 or up:\n  1. On your Android device, open Google Drive Google Drive icon.\n  2. Enter split screen mode with another app.\n  3. On any Drive item, tap Menu More.\n  4. Select Open in other window.\n\nTo open 2 instances of the Drive app with 2 different accounts: [...] ## Use Google Drive on your Android device\n\nIn this section, you'll learn to:\n\n Use the Drive app on your android device\n Upload, share & organize your files\n Use Split Screen with Google Drive\n\n## Use the Drive app on your device\n\nOn your Android phone or tablet, open the Google Drive app. On the Home page, you can find:\n\n#### Home\n\nIn the '”Home” section of Google Drive, you can:\n\n Find the files and folders you upload or sync, such as:\n  + Docs\n  + Sheets\n  + Slides\n  + Forms\n Switch between ”Suggested” and ”Activity” tabs.\n  + To find the files and folders you're most likely to use, you can use the ”Suggested” tab.\n  + To find the files and folders based on recent changes and actions, you can use the ”Activity” tab.\n\n#### Starred"
+        },
+        {
+          "id": "66198661-a30a-4a15-9fbe-1af9e2f66d39",
+          "url": "https://support.google.com/drive/answer/2424368?hl=en&co=GENIE.Platform%3DAndroid&oco=0&sjid=15927239005934545429-NC",
+          "title": "Upload files & folders to Google Drive - Android - Google Drive Help",
+          "domain": "support.google.com",
+          "snippet": "Title: Upload files & folders to Google Drive - Android - Google Drive Help\n* Help Center* Community* Google Drive. * Privacy Policy* Terms of Service* Submit feedback. * Find, delete, and recover files. # Upload files & folders to Google Drive. Want advanced Google Workspace features for your business? You can upload, open, share, and edit files with Google Drive. When you upload a file to Google Drive, it will take up space in your Drive, even if you upload to a folder owned by someone else. ## Types of files. ## Upload & find files. 1. On your Android phone or tablet, open the Google Drive app. 2. Tap New Add question and then **Upload**. 3. Find and tap the files you want to upload. 4. Find uploaded files in My Drive until you move them. ## Convert documents into Google formats. If you want to upload files like Microsoft Word documents, you can change a setting to convert files. **Important**: You can only change Google Drive settings from your computer. ## Turn mobile data usage on or off. You can choose to use your mobile data or only use Wi-Fi to transfer files. 2. At the top left, tap Menu Menu and then **Settings**. 3. Under \"Data usage,\" turn **Transfer files only over Wi-Fi** on or off. * You only find the “Transfer files only over Wi-Fi” option when your device can get a mobile data/network. ## Need more help? ### Try these next steps:. Post to the help community   Get answers from community members Contact us Tell us more and we’ll help you get there. To get the latest tips, tricks, and how-to's, subscribe to our YouTube Channel."
+        },
+        {
+          "id": "2131a21e-0c8b-4d0c-8d46-5f3757a5e0cf",
+          "url": "https://support.google.com/drive/answer/2424368?hl=en&ref_topic=2375187&co=GENIE.Platform%3DAndroid",
+          "title": "Upload files & folders to Google Drive - Android - Google Drive Help",
+          "domain": "support.google.com",
+          "snippet": "Title: Upload files & folders to Google Drive - Android - Google Drive Help\n* Help Center* Community* Google Drive. * Privacy Policy* Terms of Service* Submit feedback. * Find, delete, and recover files. # Upload files & folders to Google Drive. Want advanced Google Workspace features for your business? You can upload, open, share, and edit files with Google Drive. When you upload a file to Google Drive, it will take up space in your Drive, even if you upload to a folder owned by someone else. ## Types of files. ## Upload & find files. 1. On your Android phone or tablet, open the Google Drive app. 2. Tap New Add question and then **Upload**. 3. Find and tap the files you want to upload. 4. Find uploaded files in My Drive until you move them. ## Convert documents into Google formats. If you want to upload files like Microsoft Word documents, you can change a setting to convert files. **Important**: You can only change Google Drive settings from your computer. ## Turn mobile data usage on or off. You can choose to use your mobile data or only use Wi-Fi to transfer files. 2. At the top left, tap Menu Menu and then **Settings**. 3. Under \"Data usage,\" turn **Transfer files only over Wi-Fi** on or off. * You only find the “Transfer files only over Wi-Fi” option when your device can get a mobile data/network. ## Need more help? ### Try these next steps:. Post to the help community   Get answers from community members Contact us Tell us more and we’ll help you get there. To get the latest tips, tricks, and how-to's, subscribe to our YouTube Channel."
+        },
+        {
+          "id": "094ab23d-6623-48e9-a16f-9c36e6266223",
+          "url": "https://support.google.com/drive/answer/2424368?hl=en&amp%3Bref_topic=2375187&co=GENIE.Platform%3DAndroid",
+          "title": "Upload files & folders to Google Drive - Android - Google Drive Help",
+          "domain": "support.google.com",
+          "snippet": "Title: Upload files & folders to Google Drive - Android - Google Drive Help\n* Help Center* Community* Google Drive. * Privacy Policy* Terms of Service* Submit feedback. * Find, delete, and recover files. # Upload files & folders to Google Drive. Want advanced Google Workspace features for your business? You can upload, open, share, and edit files with Google Drive. When you upload a file to Google Drive, it will take up space in your Drive, even if you upload to a folder owned by someone else. ## Types of files. ## Upload & find files. 1. On your Android phone or tablet, open the Google Drive app. 2. Tap New Add question and then **Upload**. 3. Find and tap the files you want to upload. 4. Find uploaded files in My Drive until you move them. ## Convert documents into Google formats. If you want to upload files like Microsoft Word documents, you can change a setting to convert files. **Important**: You can only change Google Drive settings from your computer. ## Turn mobile data usage on or off. You can choose to use your mobile data or only use Wi-Fi to transfer files. 2. At the top left, tap Menu Menu and then **Settings**. 3. Under \"Data usage,\" turn **Transfer files only over Wi-Fi** on or off. * You only find the “Transfer files only over Wi-Fi” option when your device can get a mobile data/network. ## Need more help? ### Try these next steps:. Post to the help community   Get answers from community members Contact us Tell us more and we’ll help you get there. To get the latest tips, tricks, and how-to's, subscribe to our YouTube Channel."
+        },
+        {
+          "id": "59c05fbe-c7fb-446e-9236-c7695099066e",
+          "url": "https://support.google.com/drive/answer/2424368?hl=en&amp%3Bref_topic=7000756&co=GENIE.Platform%3DAndroid",
+          "title": "Upload files & folders to Google Drive - Android - Google Drive Help",
+          "domain": "support.google.com",
+          "snippet": "Title: Upload files & folders to Google Drive - Android - Google Drive Help\n* Help Center* Community* Google Drive. * Privacy Policy* Terms of Service* Submit feedback. * Find, delete, and recover files. # Upload files & folders to Google Drive. Want advanced Google Workspace features for your business? You can upload, open, share, and edit files with Google Drive. When you upload a file to Google Drive, it will take up space in your Drive, even if you upload to a folder owned by someone else. ## Types of files. ## Upload & find files. 1. On your Android phone or tablet, open the Google Drive app. 2. Tap New Add question and then **Upload**. 3. Find and tap the files you want to upload. 4. Find uploaded files in My Drive until you move them. ## Convert documents into Google formats. If you want to upload files like Microsoft Word documents, you can change a setting to convert files. **Important**: You can only change Google Drive settings from your computer. ## Turn mobile data usage on or off. You can choose to use your mobile data or only use Wi-Fi to transfer files. 2. At the top left, tap Menu Menu and then **Settings**. 3. Under \"Data usage,\" turn **Transfer files only over Wi-Fi** on or off. * You only find the “Transfer files only over Wi-Fi” option when your device can get a mobile data/network. ## Need more help? ### Try these next steps:. Post to the help community   Get answers from community members Contact us Tell us more and we’ll help you get there. To get the latest tips, tricks, and how-to's, subscribe to our YouTube Channel."
+        }
+      ],
+      "findings": []
+    },
+    {
+      "competitor": "Google Photos",
+      "question": "According to official Google Photos Help, what are the steps to manually back up one photo or video in the Android app? Cite only official Google Help; distinguish automatic backup.",
+      "run_id": "5e3458d2-2b78-46c9-879a-360385c266c5",
+      "status": "partial_failed",
+      "error_message": "research insufficient_external_evidence: no competitor or market_pattern finding carries an external source citation",
+      "attempt_count": 2,
+      "version": "14b",
+      "reproduced_query": "Google Photos Android photos backup site:support.google.com/photos/answer",
+      "sources": [
+        {
+          "id": "bea62c16-3018-48ff-8f00-bc32b044ec3e",
+          "url": "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid",
+          "title": "Back up photos & videos - Android - Google Photos Help",
+          "domain": "support.google.com",
+          "snippet": "1. On your Android phone or tablet, open the Google Photos app Photos.\n2. Sign in to your Google Account.\n3. At the top right, tap your Profile picture or Initial.\n4. Tap Photos settings Settings and then Backup.\n5. Under \"Settings,\" tap Back up device folders.\n6. Tap the folders you want to back up.\n    Next to the folders you don't want to back up, turn off the setting.\n    Next to the folders you want to back up, turn on the setting.\n7. Optional: Turn Back up all device folders on or off.\n    If \"Back up all device folders\" is on, photos in new device folders automatically back up.\n\nTip: If you don’t want content from your device folders to appear in your Photos view, you can hide it. Learn how to hide content from your Photos view.\n\nSet daily backup limits [...] Turn Backup on or off\n\n## Check if backup is complete\n\n1. On your Android phone or tablet, open the Google Photos app Photos.\n2. Sign in to your Google Account.\n3. At the top right, tap your Profile picture or Initial.\n4. The progress of your backup is measured by how many items remain to upload.\n    When your items finish backing up, your status reads \"Backup complete.\"\n    If your backup status is off, your status reads \"Backup is off.\"\n\n## Manually back up photos & videos\n\n1. On your Android device, open the Google Photos app Photos.\n2. Sign in to your Google Account.\n3. Open the photo or video.\n4. Tap Back up now.\n    Alternatively, you can tap the Back up button or scroll to the bottom, then tap Back up now.\n\nTips: [...] 1. On your Android device, open Google Photos Photos.\n2. At the top, check the backup status.\n    Google Photos Photos: No backup.\n    Preparing backup: Backup is starting.\n    Backing up photos: Backup is in process.\n    Backup complete : Backup is done.\n    Backup paused : Backup is currently paused.\n3. To learn more, tap the status.\n4. Optional:\n    Turn on mobile data: If you can’t access Wi-Fi, you can use mobile data to start backup.\n    Notify me: Enable notifications to receive Photos updates about backup and other features.\n     + To turn on notifications, under the “Backup status,” tap Turn on notifications.\n5. To exit, tap Close Show less.\n\nTip: To make sure your media backs up successfully, check the requirements.\n\n## Check a photo or video's backup status"
+        },
+        {
+          "id": "1ed00bc3-76bc-4eb3-b2a8-dc90fcd6ba53",
+          "url": "https://support.google.com/photos/answer/14216276?hl=en-GB",
+          "title": "Give your device photos access to Google Photos - Google Photos Help",
+          "domain": "support.google.com",
+          "snippet": "Back up photos and videos with a connected Google Account\n\nWhen Google Photos backup is on, it backs up the photos from your gallery app. The Google Account connected to your device's default gallery app is the account used for backing up photos. To change the connected account, you need to change the Google Photos backup account:\n\n1. On your Android device, open the Google Photos app Photos.\n2. Sign in to your Google Account.\n3. At the top, tap your profile picture or initial.\n4. Tap Photos settings Settings and then Backup.\n5. Under 'Account and storage', tap your profile picture or initial.\n6. Choose the Google Account that you want to back up photos and videos to. [...] When Google Photos backup is off, the Google Account connected to your phone's phone app is the account that was active when you turned gallery access on. To change the connected account:\n\n1. On your Android device, open the Google Photos app Photos.\n2. Sign in to your Google Account.\n3. At the top, tap your profile picture or initial.\n4. Tap Photos settings Settings and then Apps and devices and then Google Photos access.\n5. Tap the name of your device's default gallery app.\n6. Tap the connected Google Account.\n7. Choose the Google Account that you want to be the connected account.\n\nLearn how to back up photos and videos.\n\nDelete or restore a photo or video [...] 1. On your Android device, open the Google Photos app Photos.\n2. Sign in to your Google Account.\n3. At the top right, tap your profile picture or initial.\n4. Tap Photos settings Settings and then Apps and devices and then Google Photos access.\n5. Tap the device's default gallery app name.\n6. Tap Remove access.\n\n## Allow access to your default gallery app\n\nImportant: If you want your default gallery app to access user data in Google Photos again, you must use the device's default gallery app. Your device's default gallery app might call this 'cloud-sync' or 'cloud-backup'.\n\nYou need to allow access to your device's default gallery app with Google Photos again, if you:\n\n Clear Google Photos app data\n Uninstall the Google Photos app\n Reset your device\n Get a new device"
+        },
+        {
+          "id": "1ff9f8c1-a8a5-47a3-b5c8-a69d546f3b16",
+          "url": "https://support.google.com/photos/answer/9343965?hl=en",
+          "title": "Find items from other apps & devices - Google Photos Help",
+          "domain": "support.google.com",
+          "snippet": "When you turn “Backup” on, your chosen device folders are automatically backed up too, not only your camera. You can choose to automatically backup all folders, or turn “Backup” on or off for individual device folders.\n\n1. On your Android device, open the Google Photos app Photos.\n2. At the top, tap your account Profile photo or Initial and then Photos settings and then Backup.\n3. Under “Settings,” tap Back up device folders.\n4. Choose the folders you want to back up.\n    Next to the folders you don’t want to back up, turn off the setting.\n    Next to the folders you want to back up, turn on the setting.\n5. Optional: Turn Back up all device folders on or off.\n    If “Back up all device folders” is on, photos in new device folders automatically back up.\n\nTips:"
+        },
+        {
+          "id": "796d37cb-c588-427e-9fc2-cb417ae30940",
+          "url": "https://support.google.com/photos/answer/14216276",
+          "title": "Give your device photos access to Google Photos - Google Photos Help",
+          "domain": "support.google.com",
+          "snippet": "Back up photos & videos with a connected Google Account\n\nWhen Google Photos backup is on, it backs up the photos from your gallery app. The Google Account connected to your device’s default gallery app is the account used for backing up photos. To change the connected account, you need to change the Google Photos backup account:\n\n1. On your Android device, open the Google Photos app Photos.\n2. Sign in to your Google Account.\n3. At the top, tap your Profile picture or Initial.\n4. Tap Photos settings Settings and then Backup.\n5. Under “Account & Storage,” tap your Profile picture or Initial.\n6. Choose the Google Account you want to back up photos and videos to. [...] When Google Photos backup is off, the Google Account connected to your phone's phone app is the account that was active when you turned gallery access on. To change the connected account:\n\n1. On your Android device, open the Google Photos app Photos.\n2. Sign in to your Google Account.\n3. At the top, tap your Profile picture or Initial.\n4. Tap Photos settings Settings and then Apps & devices and then Google Photos access.\n5. Tap the name of your device’s default gallery app.\n6. Tap the connected Google Account.\n7. Choose the Google Account you want to be the connected account.\n\nLearn how to back up photos and videos.\n\nDelete or restore a photo or video [...] 1. On your Android device, open the Google Photos app Photos.\n2. Sign in to your Google Account.\n3. At the top right, tap your Profile picture or Initial.\n4. Tap Photos settings Settings and then Apps and devices and then Google Photos access.\n5. Tap the device’s default gallery app name.\n6. Tap Remove access.\n\n## Allow access to your default gallery app\n\nImportant: If you want your default gallery app to access user data in Google Photos again, you must use the device’s default gallery app. Your device’s default gallery app might call this “cloud-sync” or “cloud-backup.”\n\nYou need to allow access to your device’s default gallery app with Google Photos again, if you:\n\n Clear Google Photos app data\n Uninstall the Google Photos app\n Reset your device\n Get a new device"
+        },
+        {
+          "id": "b579fed3-97d4-402e-9df2-80ee81aed2bc",
+          "url": "https://support.google.com/photos/answer/6174018?hl=en&co=GENIE.Platform%3DAndroid",
+          "title": "Troubleshoot photos not backing up - Android - Google Photos Help",
+          "domain": "support.google.com",
+          "snippet": "1. On your Android device, open the Google Photos app Photos.\n2. Sign in to your Google Account.\n3. At the top right, tap your Profile picture or Initials.\n4. Tap Photos settings Settings and then Backup.\n5. Under \"Settings,\" tap Back up device folders.\n6. Tap the folders you want to back up.\n    Next to the folders you don't want to back up, turn off the setting.\n    Next to the folders you want to back up, turn on the setting.\n7. Optional: Turn Back up all device folders on or off.\n    If \"Back up all device folders\" is on, photos in new device folders automatically back up.\n\nTip: If you don’t want content from your device folders to appear in your Photos view, you can hide it. Learn how to hide content from your Photos view.\n\nPut your device on the charger [...] ### Troubleshoot your backup\n\nCheck your backup settings\n\n1. On your Android device, open the Google Photos app Photos.\n2. At the top, tap your Profile picture or Initials and then Photos settings and then Backup.\n3. If \"Backup\" is turned on, you should find these options: [...] Backup account: Make sure that the account listed matches the one you’re signed in to in the Google Photos app. To find which account you're viewing in the Google Photos app, at the top, tap your profile picture or initials and find your email address at the top.\n Backup device folders: Tap and select to back up photos and videos from other apps, like Google Chat and WhatsApp.\n Quality: Tap to change the backup quality of your photos and videos. Learn how to change your backup quality.\n Mobile data usage: Choose whether you want to back up your photos or videos using your mobile network instead of Wi-Fi. Charges from your service provider may apply.\n\nTip: Turn on \"back up while roaming\" if you want to back up photos and videos even when you’re in other countries or regions."
+        }
+      ],
+      "findings": [
+        {
+          "finding": {
+            "category": "market_pattern",
+            "status": "not_verified",
+            "title": "Google Photos Android manual backup steps for a single photo/video",
+            "description": "From the official help page. Evidence: \"Open the photo or video.\"",
+            "source_refs": null
+          },
+          "matching_quote_candidates": [
+            {
+              "url": "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid",
+              "name_supported": false,
+              "quote_supported": true,
+              "description_shape": true,
+              "quantifier_required": false,
+              "quantifier_present": false
+            }
+          ],
+          "caveat": "Demoted original source refs were not retained; reconstructed candidates are diagnostics, not proof of original citation choice."
+        },
+        {
+          "finding": {
+            "category": "market_pattern",
+            "status": "not_verified",
+            "title": "Google Photos Android backup toggle (settings path)",
+            "description": "From the official help page. Evidence: \"Tap Photos settings Settings and then Backup.\"",
+            "source_refs": null
+          },
+          "matching_quote_candidates": [
+            {
+              "url": "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid",
+              "name_supported": false,
+              "quote_supported": true,
+              "description_shape": true,
+              "quantifier_required": false,
+              "quantifier_present": false
+            },
+            {
+              "url": "https://support.google.com/photos/answer/14216276?hl=en-GB",
+              "name_supported": false,
+              "quote_supported": true,
+              "description_shape": true,
+              "quantifier_required": false,
+              "quantifier_present": false
+            },
+            {
+              "url": "https://support.google.com/photos/answer/14216276",
+              "name_supported": false,
+              "quote_supported": true,
+              "description_shape": true,
+              "quantifier_required": false,
+              "quantifier_present": false
+            },
+            {
+              "url": "https://support.google.com/photos/answer/6174018?hl=en&co=GENIE.Platform%3DAndroid",
+              "name_supported": false,
+              "quote_supported": true,
+              "description_shape": true,
+              "quantifier_required": false,
+              "quantifier_present": false
+            }
+          ],
+          "caveat": "Demoted original source refs were not retained; reconstructed candidates are diagnostics, not proof of original citation choice."
+        }
+      ]
+    },
+    {
+      "competitor": "Dropbox",
+      "question": "According to official Dropbox Help, can mobile users manually add photos when camera uploads are disabled? Cite only official Dropbox Help.",
+      "run_id": "3fa7ca34-de32-497a-8001-3815980b96d2",
+      "status": "partial_failed",
+      "error_message": "research insufficient_external_evidence: no competitor or market_pattern finding carries an external source citation",
+      "attempt_count": 2,
+      "version": "14b",
+      "reproduced_query": "Dropbox photos site:help.dropbox.com/create-upload",
+      "sources": [
+        {
+          "id": "e5b35c17-8927-4641-abf6-94e2445d20fb",
+          "url": "https://help.dropbox.com/create-upload/photos-not-appearing",
+          "title": "Why aren't my photos appearing in the Dropbox mobile app? - Dropbox Help",
+          "domain": "help.dropbox.com",
+          "snippet": "A digital photo usually has various pieces of information embedded in it, including the date and time it was taken. Dropbox uses this information to arrange your photos. If a photo's date is missing or incomplete, the photo will be sorted by the date it was last modified.\n\n## Dropbox team accounts\n\nA digital photo usually has various pieces of information embedded in it, including the date and time it was taken. Dropbox uses this information to arrange your photos. If a photo's date is missing or incomplete, the photo will be sorted by the date it was last modified.\n\n## Dropbox team accounts\n\nIf you don't see some of your photos under the Photos tab at first, scroll down to the bottom of your photos list and take a look there. [...] Dropbox\n\n# Why aren't my photos appearing in the Dropbox mobile app?\n\n## In this article\n\nThe information in this article applies to all Dropbox users on mobile devices.\n\nIf you don't see some of your photos under the Photos tab, they might be missing information about when they were taken.\n\nA digital photo usually has various pieces of information embedded in it, including the date and time it was taken. Dropbox uses this information to arrange your photos. If a photo's date is missing or incomplete, the photo will be sorted by the date it was last modified.\n\nHere are some other reasons why your photos or images might not appear on the Photos tab: [...] A digital photo usually has various pieces of information embedded in it, including the date and time it was taken. Dropbox uses this information to arrange your photos. If a photo's date is missing or incomplete, the photo will be sorted by the date it was last modified.\n\n## Still don't see some of your photos?\n\nA digital photo usually has various pieces of information embedded in it, including the date and time it was taken. Dropbox uses this information to arrange your photos. If a photo's date is missing or incomplete, the photo will be sorted by the date it was last modified.\n\n## Still don't see some of your photos?\n\nYes, thanks!\n\nNot really\n\nLet us know how why it didn't help:\n\nThanks for letting us know!\n\nThanks for your feedback!\n\n### Related Articles\n\n#### Dropbox Replay FAQs"
+        },
+        {
+          "id": "372cbde2-f458-4896-ac1e-010927c12d57",
+          "url": "https://help.dropbox.com/create-upload/ios-formats",
+          "title": "Support for HEIF (.heic) and HEVC photo and video files - Dropbox Help",
+          "domain": "help.dropbox.com",
+          "snippet": "Dropbox\n\n# Support for HEIF (.heic) and HEVC photo and video files\n\n## In this article\n\nThe information in this article applies to all Dropbox users.\n\nDropbox supports photo and video files stored in HEIF (.heic) and HEVC-encoded MOV (.mov) formats.\n\nHEIF and HEVC are the default file formats for photos and videos on many Apple devices running iOS 11 or later. Most Mac computers, iPhones, and iPads can open these files. Learn which devices use HEIF and HEVC file formats.\n\n## Use camera uploads to upload HEVC as a different file type\n\nIf you use the camera uploads feature to automatically upload your photos and videos to Dropbox, you can set your HEIF and HEVC files to upload as JPG and non-HEVC MOV files instead. Then, you can open them on non-Apple devices. [...] ### HEIF (.heic) photos\n\n|  |  |\n --- |\n| Supported | Not supported |\n|  iPhone/iPad: iOS 11   Mac: macOS High Sierra 10.13 |  Windows: All versions   Mac: macOS Sierra 10.12 or earlier   Android: All versions   iPhone/iPad: iOS 10 or earlier |\n\nSupported\n\nNot supported\n\n### HEVC-encoded videos\n\n|  |  |\n --- |\n| Supported | Not supported |\n|  Windows: Windows 10 or later   Mac: macOS High Sierra 10.13   Android: Android 5 or later   iPhone iPad: iOS 11 |  Windows: Windows 8.1 or earlier   Mac: macOS Sierra 10.12 or earlier   Android: Android 4.4.4 or earlier   iPhone/iPad: iOS 10 or earlier |\n\nSupported\n\nNot supported\n\nTo learn more, visit these articles from Apple support: [...] To set HEIF and HEVC files to upload as JPG and non-HEVC MOV:\n\nNotes:\n\n The Save HEIC Photos as option will only appear if you have an HEIF or HEVC file on your device.\n Saving your camera uploads as a JPG is likely a better option if you’re sharing files with someone who isn’t using an Apple device.\n Converting a file to JPG will remove some features of HEIF files.\n Changing how these files are uploaded won’t affect files that were already uploaded to Dropbox.\n\nNotes:\n\n## Use iPhone or iPad settings to upload HEVC as a different file type\n\nYou can upload HEIF and HEVC files as JPG and non-HEVC MOV by changing the settings on your iPhone or iPad and then manually connecting the device to a computer to upload. To do so:\n\n## Which operating systems support HEIF (.heic) and HEVC files?"
+        },
+        {
+          "id": "99c4e066-25e5-43ad-8b03-4b592cda4050",
+          "url": "https://help.dropbox.com/create-upload/upload-live-photos",
+          "title": "How to upload Motion & Live Photos on Dropbox - Dropbox Help",
+          "domain": "help.dropbox.com",
+          "snippet": "Dropbox\n\n# How to upload Motion Photos and Live Photos to Dropbox\n\n## In this article\n\nThe information in this article applies to all Dropbox users.\n\nNote: You can also view and share Motion Photos and Live Photos on dropbox.com. This option is currently only available on computers using the Google Chrome browser.\n\n## How to upload Motion Photos on Android\n\nYou can upload and share Motion Photos via the Dropbox mobile app.\n\nNote: To access this feature, make sure your Dropbox mobile app is updated to the latest version.\n\nTo upload your Motion Photos:\n\nNote: You can also upload Motion Photos to Dropbox using your camera app.\n\n### How to share Motion Photos [...] ### How to share Motion Photos\n\nTo share your Motion Photos with others, you can create and share a link, invite them to a file folder, or send directly through your preferred sharing method.\n\n## How to upload Live Photos on iOS\n\nYou can upload and share Live Photos via the Dropbox mobile app.\n\nNote:To access this feature, make sure your Dropbox mobile app is updated to the latest version.\n\nTo upload your Live Photos:\n\nNote: To preview a Live Photo, tap the play button on the Live Photo or press and hold the Live Photo.\n\n### How to share Live Photos\n\nTo share your Live Photos with others, you can create and share a link, invite them to a file folder, or send directly through your preferred sharing method.\n\nYes, thanks!\n\nNot really\n\nLet us know how why it didn't help: [...] Not really\n\nLet us know how why it didn't help:\n\nThanks for letting us know!\n\nThanks for your feedback!\n\n### Related Articles\n\n#### Dropbox Replay FAQs\n\n#### How can I export to an SD card from my Android phone?\n\n#### How to manage files and projects in Dropbox Replay\n\n#### How to save screenshots to Dropbox\n\n### Community answers\n\n## Other ways to get help\n\nIcon depicting a speech bubble\nIcon depicting two people\nTwitter Icon\n\n##### Dropbox\n\n##### Products\n\n##### Features\n\n##### Support\n\n##### Resources\n\n##### Company\n\n## Choose a language"
+        },
+        {
+          "id": "ace1034a-9ac0-4a35-b1b0-d4d3fa7f7817",
+          "url": "https://help.dropbox.com/create-upload/import-facebook-photos-videos",
+          "title": "How to import photos and videos from Facebook - Dropbox Help",
+          "domain": "help.dropbox.com",
+          "snippet": "Dropbox\n\n# Import photos and videos from Facebook\n\n## In this article\n\nThis article discusses a feature that is available to users on Dropbox Basic, Plus, Family, and Professional plans.\n\nYou can import photos and videos from Facebook to your Dropbox account using the Facebook data transfer tool.\n\nTo import photos or videos from facebook.com or the Facebook mobile app:\n\nLearn how to transfer a copy of your Facebook photos and videos in Facebook’s help center.\n\nOnce the transfer is complete, the photos and videos you imported will be saved in a new folder in your Dropbox account. To find the folder on dropbox.com:\n\nPhotos and videos will be sorted by album, if applicable.\n\n## FAQs\n\n#### Are my photos and videos still available on Facebook? [...] #### Are my photos and videos still available on Facebook?\n\nYes. The Transfer a Copy of Your Information process creates copies of your files and saves them in your Dropbox account. All your photos and videos will still be available on Facebook.\n\n#### Will new Facebook photos and videos automatically be backed up to Dropbox after I set up the transfer?\n\nNo. The transfer process includes all the photos or videos that exist in your Facebook account at the time you initiate the transfer. To keep your Facebook content up-to-date in Dropbox, you’ll need to import your photos and videos periodically.\n\n#### Will photos and videos go to the same Dropbox folder each time? [...] Each time you back up your Facebook photos and videos, a new folder will be created in your Dropbox account in the Meta folder. The folder will be named “Photo Transfer” or “Video Transfer”, followed by a number. All the photos or videos in your Facebook account will be copied every time you initiate a transfer.\n\n#### Can I use the Facebook data transfer tool to import photos and videos to a Dropbox team account?\n\nNo. Currently, the Facebook data transfer tool can’t be used with a Dropbox team plan.\n\n#### Will Facebook have full access to my Dropbox account?\n\nNo. When you allow Facebook to transfer a copy of your information and give access your Dropbox account, Facebook will only receive permission to add files to the single Dropbox folder that contains the export.\n\nYes, thanks!"
+        }
+      ],
+      "findings": []
+    },
+    {
+      "competitor": "OneDrive",
+      "question": "According to official Microsoft Support, how does an iPhone user select existing pictures for a manual upload in OneDrive? Cite only official Microsoft Support.",
+      "run_id": "8e15eb36-1fa3-4d5f-9390-5da23f1f2995",
+      "status": "completed",
+      "error_message": null,
+      "attempt_count": 3,
+      "version": "14b",
+      "reproduced_query": "OneDrive iPhone select upload site:support.microsoft.com/en-us/onedrive",
+      "sources": [
+        {
+          "id": "d8b38133-adaf-412e-9658-283a93e3f64b",
+          "url": "https://support.microsoft.com/en-us/onedrive/manually-upload-files-or-photos-to-onedrive-in-ios",
+          "title": "Manually upload files or photos to OneDrive in iOS | Microsoft Support",
+          "domain": "support.microsoft.com",
+          "snippet": "## Upload files and folders using the OneDrive for iOS app\n\n1. In the OneDrive app, tap  OneDrive add icon  at the top of the screen.\n2. Then tap to Take a photo, Scan a document, Create a folder or Upload a file or photo.\n\nNote\n\n OneDrive cannot upload photos optimized for iCloud. To disable optimization, tap Settings > iCloud > Photos and uncheck Optimize Storage.\n Learn how to upload HEIF and HEVC photos and videos to OneDrive.\n If you choose Take a Photo, your device's camera app opens. You might be asked if you want OneDrive to access your camera - tap Yes to allow your pictures to be saved in OneDrive.\n If you tap Choose Existing, links appear to the Photos app on your device. Browse to the pictures you want to upload, select them, then on the top bar, tap Done. [...] Microsoft \n\nSupport\n\nSign in\n\nSign in with Microsoft\n\nSign in or create an account.\n\nHello,\n\nSelect a different account.\n\nYou have multiple accounts\n\nChoose the account you want to sign in with.\n\n# Manually upload files or photos to OneDrive in iOS\n\nGet help with Copilot\n\nTell me about manually upload files or photos to OneDrive   How do I create folders in OneDrive for Android?   Help me create a new folder in the OneDrive for iOS app.\n\nUse the OneDrive app to upload photos and videos from your device, create new folders, and move photos and videos from one OneDrive folder to another.\n\nIf you want to have your device's camera roll upload to OneDrive automatically, read how to Automatically save photos and videos from OneDrive on iOS. [...] ## Move files between folders in the OneDrive for iOS app\n\n1. Select the files you want to move.\n2. Tap  More icon in the OneDrive app for iOS  at the top of the screen, then tap Move. You can move folders into another folder, as well as individual files.\n3. Your Files list appears. Tap the folder you want the files moved to, then tap Move.\n\n## Create a new folder in the OneDrive for iOS app\n\nYou can add folders in the Files view, or in any other folder in OneDrive.\n\n1. Go to the location where you want to add a new folder,\n2. Tap  OneDrive add icon  at the top of the screen and then tap Create a Folder.\n3. Under Folder name, tap where it says \"New folder\" and type in the name you want for the folder, then tap Create.\n\n## Learn more\n\nTroubleshoot OneDrive for iOS app problems"
+        },
+        {
+          "id": "113a82f0-64f1-4523-bbdd-4a2f39804045",
+          "url": "https://support.microsoft.com/en-us/onedrive/use-onedrive-on-android-and-ios-devices",
+          "title": "Use OneDrive on Android and iOS devices | Microsoft Support",
+          "domain": "support.microsoft.com",
+          "snippet": "Download\n\n## Using OneDrive on mobile\n\n### Upload files\n\n1. Open the OneDrive app.\n2. Tap the ⁠(+)⁠ icon at the bottom of the screen.\n3. Select Upload.\n4. Choose the files you want to upload from your device.\n\n### Access your files\n\n1. Open the OneDrive app.\n2. Browse through your folders or use the search bar to find specific files.\n3. Tap on a file to open it.\n\n### Share files\n\n1. Open the OneDrive app.\n2. Navigate to the file you want to share.\n3. Tap the three dots (...) next to the file name.\n4. Select Share.\n5. Choose how you want to share the file (e.g., via email, link, or other apps).\n\n### Offline access\n\n1. Open the OneDrive app.\n2. Navigate to the file you want to access offline.\n3. Tap the three dots (...) next to the file name.\n4. Select Make available offline. [...] Microsoft \n\nSupport\n\nSign in\n\nSign in with Microsoft\n\nSign in or create an account.\n\nSelect a different account.\n\nYou have multiple accounts\n\nChoose the account you want to sign in with.\n\nRelated topics\n\n×\n\nGet started\n\n Download OneDrive\n Use OneDrive on your mobile\n Upload & save files\n Share & collaborate\n Protect files with Personal Vault\n Add OneDrive as a service\n Reinstall OneDrive\n\nBack up\n\n Back up your folders\n Sync files & folders\n Choose which folders to sync\n Pause syncing\n Backing up playlist files\n Stop or cancel syncing\n\nManage files [...] ### Managing your files\n\nCreate folders\n\n1. Open the OneDrive app.\n2. Tap the (+) icon at the bottom of the screen.\n3. Select Folder.\n4. Enter a name for the folder and select OK.\n\nDelete files\n\n1. Open the OneDrive app.\n2. Navigate to the file you want to delete.\n3. Tap the three dots (...) next to the file name.\n4. Select Delete.\n\nRestore deleted files\n\n1. Open the OneDrive app.\n2. Tap the Me icon at the upper left of the screen.\n3. Select Recycle bin.\n4. Tap the three dots (...) next to the file you want to restore.\n5. Select Restore.\n\n## Camera backup\n\n Use the Camera backup (tap the Me icon at the upper left of the screen > Settings > Camera backup) feature to automatically save photos and videos from your device to OneDrive.\n\n## Troubleshooting"
+        },
+        {
+          "id": "46c756e4-46ad-4139-ac0a-cda3436cf7a5",
+          "url": "https://support.microsoft.com/en-us/onedrive/troubleshoot-onedrive-for-ios-app-problems",
+          "title": "Troubleshoot OneDrive for iOS app problems | Microsoft Support",
+          "domain": "support.microsoft.com",
+          "snippet": "1. Open the iOS Settings app and select General then iPhone storage.\n2. Select Offload Unused Apps.\n3. Scroll down and select OneDrive.\n4. Select Offload App.\n5. You'll get a message informing you that the app will be deleted, but its documents and data will remain. Tap Offload App.\n\nTip\n\nYou won't need to sign in, but you may have to set up your Camera Upload and Organize new uploads.\n\n## Learn more\n\n Use OneDrive on iOS\n Find lost or missing files in OneDrive\n Fix problems uploading files on the OneDrive website\n More fixes for recent OneDrive issues\n\n## Need more help?\n\n Personal accounts\n Work/school accounts\n\nAccount support. For help with your Microsoft account and subscriptions, visit Account & Billing Help. [...] A file won't upload if it doesn't fit in your available OneDrive storage space. To see how much space you have remaining or get more storage, go to your Storage page online.\n\n## OneDrive for iOS can't find this file\n\nIf you have issues with the app syncing your files or camera roll to OneDrive, you can reset it.\n\n1. Go to Profile > Settings > Account (and if you have more than one set up, select the account to reset)\n2. Select Reset.\n\nIf you still have issues, uninstall and reinstall the app. [...] Connect to Wi-Fi. Some devices and networks can have limited bandwidth at certain times.\n Download the video. Select the video, then choose  to download.\n Make the video offline. Select the video, then  then Make available offline.\n\n## Slide to select not working in OneDrive for iOS\n\nUsers of iOS 16 may not be able to use the two-fingered pan gesture to select multiple files in OneDrive. We are aware of the issue and working on a solution.\n\nWorkaround\n\nSelect one photo first, then use two fingers to slide to select multiple files or photos.\n\n## Whiteboard sharing not working in OneDrive for work or school"
+        },
+        {
+          "id": "8bd1488a-7a6e-4a48-bf76-4f325643b8db",
+          "url": "https://support.microsoft.com/en-us/onedrive/automatically-save-photos-and-videos-with-onedrive-on-ios",
+          "title": "Automatically save photos and videos with OneDrive on iOS | Microsoft Support",
+          "domain": "support.microsoft.com",
+          "snippet": "## Global\n\n# Automatically save photos and videos with OneDrive on iOS\n\nThe camera roll on your device only uploads to OneDrive - it does not sync photos both ways. That means you can delete uploaded photos and videos from your device, and the copies in OneDrive won't be affected.\n\n## To automatically upload your iPhone or iPad camera roll to OneDrive\n\nIn the OneDrive app, tap your account image:\n\nOneDrive app account image location\n\nOneDrive app account image location\n\nTap Settings\nOneDrive settings\n, then Camera Upload\n\nOneDrive settings\n\nImportant\n\nYou can only upload your camera roll to one account at a time, so make sure you're signed in with the account that you want to upload photos to. Tap the relevant account icon to switch accounts. [...] Manually upload files or photos to OneDrive in iOS\n\nTroubleshoot OneDrive for iOS app problems\n\nSeeing pictures that are not my photos in OneDrive\n\n## Need more help?\n\nAccount support. For help with your Microsoft account and subscriptions, visit Account & Billing Help.\n\nTechnical support. For technical support, select Contact Microsoft Support below, enter your problem and select Get Help.\n\nContact Microsoft Support\n\nMobile users can contact Support by opening the OneDrive app and gently shaking your device.\n\nCommunity support. Communities help you ask questions, give feedback, and hear from experts with rich knowledge. Ask the Microsoft Community. Do not disclose personal or sensitive information in public forums. [...] Flip the toggle on for the OneDrive account you want to enable Camera Upload.\n\nTo make sure videos automatically upload, turn on Include Videos.\n\n## Use Bedtime Backup to upload remaining photos\n\nIf you have large videos or need to upload lots of images, you may see some marked as \"Remaining\". We recommend using Bedtime Backup to upload your photos even faster with OneDrive's dedicated upload mode. Here's how:\n\n## If camera upload isn't working\n\nNote\n\nTo conserve battery life, iOS may go to \"sleep\" during a large camera upload, making the upload take a long time.\n\nIf automatic camera upload isn't working, or only some pictures are uploaded, follow these steps:\n\n## Learn more\n\nUpload HEIF and HEVC photos and videos to OneDrive\n\nManually upload files or photos to OneDrive in iOS"
+        },
+        {
+          "id": "d62f8333-f7d9-4492-9630-3dbecefd50b7",
+          "url": "https://support.microsoft.com/en-us/onedrive/upload-and-save-files-and-folders-to-onedrive",
+          "title": "Upload and save files and folders to OneDrive | Microsoft Support",
+          "domain": "support.microsoft.com",
+          "snippet": "Upload files or folders to OneDrive\n\nYou can store over 300 types of files on OneDrive. With Microsoft Edge or Google Chrome:\n\n1. Select Add new > Files upload or Folder upload > Folder.\n2. Select the files or folder you want to upload.\n3. Select Open or Select Folder.\n\nWith other browsers:\n\n Select Upload, select the files you want to upload, and select Open.\n If you don't see Upload > Folder, create a folder, and then upload the files to that folder.\n\nScreenshot showing Upload selected\n\nNote\n\nIf you have the OneDrive sync app installed, you can also upload with File Explorer. Select the files you want to upload and drag them to OneDrive in the File Explorer Navigation pane.\n\nSave a file to OneDrive [...] # Upload and save files and folders to OneDrive\n\nNote\n\nThis Quick Start is for OneDrive for home and personal accounts. For work and school accounts, see OneDrive for work or school Quick Start.\n\nUse OneDrive in your browser\n\n1. Sign in to office.com.  \n    Sign in to https:⁠//login.partner.microsoftonline.cn and select OneDrive.  \n    Sign in to https:⁠//portal.office.de and select OneDrive.\n2. Select the app launcher icon   App launcher icon  , and then select OneDrive.\n3. Pick a file or folder by selecting the circle in the upper corner of the item, and then select a command at the top of the page.\n\nA browser window with the app launcher open and the OneDrive app highlighted\n\nUpload files or folders to OneDrive [...] Microsoft \n\nSupport\n\nSign in\n\nSign in with Microsoft\n\nSign in or create an account.\n\nSelect a different account.\n\nYou have multiple accounts\n\nChoose the account you want to sign in with.\n\nRelated topics\n\n×\n\nGet started\n\n Download OneDrive\n Use OneDrive on your mobile\n Upload & save files\n Share & collaborate\n Protect files with Personal Vault\n Add OneDrive as a service\n Reinstall OneDrive\n\nBack up\n\n Back up your folders\n Sync files & folders\n Choose which folders to sync\n Pause syncing\n Backing up playlist files\n Stop or cancel syncing\n\nManage files"
+        }
+      ],
+      "findings": [
+        {
+          "finding": {
+            "category": "competitor",
+            "status": "confirmed",
+            "title": "OneDrive for iOS",
+            "description": "From the official help page. Evidence: \"If you tap Choose Existing, links appear to the Photos app on your device. Browse to the pictures you want to upload, select them, then on the top bar, tap Done.\"",
+            "source_refs": [
+              {
+                "provider_source_id": "f8f7e4-00",
+                "source_id": "d8b38133-adaf-412e-9658-283a93e3f64b"
+              }
+            ]
+          },
+          "matching_quote_candidates": [
+            {
+              "url": "https://support.microsoft.com/en-us/onedrive/manually-upload-files-or-photos-to-onedrive-in-ios",
+              "name_supported": true,
+              "quote_supported": true,
+              "description_shape": true,
+              "quantifier_required": false,
+              "quantifier_present": false
+            }
+          ],
+          "caveat": "Demoted original source refs were not retained; reconstructed candidates are diagnostics, not proof of original citation choice."
+        },
+        {
+          "finding": {
+            "category": "competitor",
+            "status": "not_verified",
+            "title": "OneDrive for iOS (multi-select gesture workaround)",
+            "description": "From the official help page. Evidence: \"Select one photo first, then use two fingers to slide to select multiple files or photos.\"",
+            "source_refs": null
+          },
+          "matching_quote_candidates": [
+            {
+              "url": "https://support.microsoft.com/en-us/onedrive/troubleshoot-onedrive-for-ios-app-problems",
+              "name_supported": false,
+              "quote_supported": true,
+              "description_shape": true,
+              "quantifier_required": false,
+              "quantifier_present": true
+            }
+          ],
+          "caveat": "Demoted original source refs were not retained; reconstructed candidates are diagnostics, not proof of original citation choice."
+        }
+      ]
+    },
+    {
+      "competitor": "iCloud Photos",
+      "question": "According to official Apple Support, which upload choices does iCloud.com show on a phone or tablet, and where should users upload to a Shared Photo Library? Cite only official Apple Support.",
+      "run_id": "f8d51c18-a421-4389-9545-72424c3b7b4d",
+      "status": "partial_failed",
+      "error_message": "research insufficient_external_evidence: no competitor or market_pattern finding carries an external source citation",
+      "attempt_count": 3,
+      "version": "14b",
+      "reproduced_query": "Apple Support upload site:support.apple.com/en-us",
+      "sources": [
+        {
+          "id": "61f3f8b3-40ee-4fad-af84-848a5e5c1675",
+          "url": "https://support.apple.com/en-us/101984",
+          "title": "If you see \"Unable to Upload\" in the Photos app - Apple Support",
+          "domain": "support.apple.com",
+          "snippet": "1. In the Photos app, choose the Unable to Upload album.\n2. Tap Select, then tap Select All to select all files.\n3. Tap the Share buttonNo alt supplied for Image , then scroll and tap Save to Files. Choose a location from On My iPhone, then tap Save to save the files to your device.\n4. Open the Files app to confirm that the files exported.\n5. To delete the files from the Unable to Upload album, select the items, then tap the Trash buttonNo alt supplied for Image and choose Delete. Choose the Recently Deleted Album, tap Select, then choose the items you want to delete. Tap the three dots, then tap Delete to confirm.\n6. To import the files again, in the Files app, choose the folder with your files. Then tap the Share buttonNo alt supplied for Image and tap Save. [...] After you import your files again, you can delete them from the on-device location to save storage space on your iPhone.\n\n## Upload your photos or videos to iCloud again on your Mac\n\nTo see which items couldn't sync to iCloud in the Photos app, click the View button next to the message at the bottom of the Library window or click Unable to Upload in the sidebar. You can try to reimport the items from the Unable to Upload album into your Photos library to sync the items with iCloud Photos.\n\nYou can view photos that did not upload to your iCloud Photo Library in the Unable to Upload folder. [...] # If you see \"Unable to Upload\" in the Photos app\n\nIf some of your photos aren't able to sync to iCloud, learn how to move these photos from the Unable to Upload album to your library.\n\nWhen you check the status of your library at the bottom of the Photos app on your iPhone, iPad, or Mac, you might see that some photos or videos are unable to sync to iCloud Photos. You might also see a status message that says \"Couldn’t Sync [number of items] to iCloud\" and a new Unable to Upload album in the Photos app.\n\nTo add these photos or videos to iCloud Photos, you can try exporting them from the Photos app and importing them again. Any edits or keywords that you previously applied to these photos or videos will be lost.\n\n## Upload your photos or videos to iCloud again on your iPhone or iPad"
+        },
+        {
+          "id": "26e57a5a-4136-456d-98b8-656f0d3887c4",
+          "url": "https://support.apple.com/en-us/101559",
+          "title": "If your iCloud Photos aren't syncing or syncing with iCloud is paused - Apple Support",
+          "domain": "support.apple.com",
+          "snippet": "5. Check if you have an album named Unable to Upload. Edit each photo or video, then check to see if the photo or video uploads to iCloud. Or upload items in the Unable to Upload folder to iCloud again from your iPhone or iPad, or reimport items in the Unable to Upload folder to iCloud from your Mac. [...] Depending on the size of your library and your Wi-Fi speed, you may need to wait overnight for your device to finish syncing. Some larger-sized files may take longer to upload or sync.\n\n## Learn what your status message means\n\nIf your photos aren't syncing, don't turn iCloud Photos off. Syncing with iCloud pauses for a variety of reasons.\n\n### If you see Low Data Mode or Low Power Mode\n\nIf you see a message that says Low Data Mode or Low Power Mode, syncing paused to reduce network data usage or save battery. You can turn these behaviors on or off in Settings.\n\n### If you see Optimizing Battery Power, Optimizing System Performance, or Poor Network Connection [...] 1. Don't turn off iCloud or iCloud Photos. This restarts the syncing process.\n2. Make sure that you updated your device to the latest version of iOS, iPadOS, or macOS.\n3. Check if other iCloud services that you use are working, such as Mail, Contacts, or Messages. If other services also aren't working, check your Wi-Fi connection and the System Status for outages.\n4. Make sure that you're using supported file types. Supported file types include HEIF, JPEG, RAW, PNG, GIF, TIFF, HEVC, MP4, and special iPhone and iPad formats like slo-mo, time-lapse, 4K videos, and Live Photos."
+        },
+        {
+          "id": "cbd0d67d-15b1-4b58-9333-f708f963efa1",
+          "url": "https://support.apple.com/en-us/109344",
+          "title": "Add your Desktop and Documents files to iCloud Drive - Apple Support",
+          "domain": "support.apple.com",
+          "snippet": "### On your iPhone or iPad\n\n1. Open the Files app.\n2. Tap Browse.\n3. Under Locations, tap iCloud Drive.\n4. Tap the Desktop folder or Documents folder.\n\nYou can use any compatible app to access and edit your files.\n\n### On iCloud.com\n\n1. Sign in to your Apple Account on iCloud.com.\n2. Go to iCloud Drive.\n3. Double-click the Desktop folder or Documents folder.\n\nTo edit or use the file, click the Download button to download it. When you're done, upload the file to iCloud Drive so that the latest version syncs across your devices. You can edit Pages, Numbers, or Keynote files on the web, and changes save directly to iCloud Drive.\n\n## Delete files from Desktop and Documents folders [...] If you use a feature from another cloud provider that syncs or manages your Desktop folder and Documents folder, you need to turn it off to use Desktop & Documents Folders.\n\n### If you have media libraries\n\niCloud Drive won't upload these types of library files from your Desktop folder and Documents folder to your other devices:\n\n iMovie libraries\n Photos libraries\n Aperture libraries\n\nThey're labeled as Ineligible in the Finder.\n\n## Find your Desktop and Documents files on your device\n\nWhen you add your Desktop folder and Documents folder to iCloud Drive, all of your files move to iCloud and any new files you create are automatically stored in iCloud. Then you can find your files on all of your devices."
+        },
+        {
+          "id": "b185b943-d87f-40a9-8635-a7051a52853f",
+          "url": "https://support.apple.com/en-us/108782",
+          "title": "Set up and use iCloud Photos - Apple Support",
+          "domain": "support.apple.com",
+          "snippet": "### Turn on Optimize Storage on your Mac\n\n1. In the Photos app, from the Photos menu in the menu bar, choose Settings (Preferences).\n2. Click the iCloud tab, then choose a storage setting.\n\nTo keep your original, full-size photos and videos in iCloud and on your Mac, select Download Originals to this Mac.\n\n## Pause library uploads to iCloud\n\nWhen you turn on iCloud Photos, the time it takes for photos and videos to upload to iCloud depends on the size of your collection and your internet speed. Larger content collections might take more time. You can check the status and pause the upload for one day. Depending on your library status, pause might not be available.\n\n### On iPhone, iPad, or Apple Vision Pro [...] ## Download copies of your photos and videos\n\nWhen you turn on iCloud Photos, your photos and videos automatically upload to iCloud. They're not duplicated in your iCloud backup, so keep backup copies of your library.\n\n## Manage your on-device storage with Optimize Storage\n\nPhotos and videos that you keep in iCloud Photos use your iCloud storage and your device storage. To save space on your device, you can turn on Optimize Storage. [...] ### On iPhone, iPad, or Apple Vision Pro\n\n In iOS 26 or later, open the Photos app, then tap Collections. Tap the profile button, then tap Pause.\n In iOS 18, open the Photos app, tap the profile button and tap Pause.\n In iOS 17 or earlier, open the Photos app. Tap Library. Select All Photos, then scroll down and tap Pause.\n\n### On Mac\n\n1. In the Photos app, in the sidebar, select Library.\n2. Click All Photos.\n3. Scroll down and click Pause.\n\n## Prioritize library uploads to iCloud\n\nTo prioritize syncing your iCloud Photos library, in version 27 or later of iOS, iPadOS, and visionOS, you can turn on Sync Immediately. If you allow Photos to use cellular data, this could lead to higher data usage."
+        },
+        {
+          "id": "c3801647-a3a0-4972-ba3f-c654fab54c98",
+          "url": "https://support.apple.com/en-us/108306",
+          "title": "Archive or make copies of the information you store in iCloud - Apple Support",
+          "domain": "support.apple.com",
+          "snippet": "If you need help with any third-party data that is stored on iCloud, contact the app developer directly. Third-party data might use your iCloud storage, even if you can't see the details.\n\n## Photos and videos\n\nIf you use iCloud Photos, your photos and videos automatically upload to iCloud at full resolution.\n\n### Download copies of your photos and videos from your iPhone or iPad\n\nConnect an external storage device to your iPhone or iPad.\n\nOpen the Settings app, then tap your name.\n\nTap iCloud, then tap Photos.\n\nSelect Download and Keep Originals.\n\nGo to your library in the Photos app.\n\nSelect the photos and videos that you want to copy.\n\nTap the Share button, then tap Export Unmodified Original.\n\nUnder Locations, tap your external storage device.\n\nTap Save. [...] ### Copy files from iCloud Drive to your Mac\n\nClick iCloud Drive in the sidebar of any Finder window.\n\nSelect the files that you want to copy.\n\nFrom the Edit menu, click Copy [items].\n\nPaste the files in the new location.\n\n### Copy files from the Files app on your iPhone\n\nOpen the Files app and choose Browse to show locations.\n\nTap iCloud Drive in Locations, then tap the More button.\n\nTap Select, then choose the files and folders you want to copy.\n\nChoose how you want to send a copy of the file. Tap More, then tap Copy Items.\n\nGo to On my Device or another cloud service in Locations.\n\nTouch and hold a folder in the new location, then tap Paste.\n\n### Copy files from the Files app on your iPad\n\nOpen the Files app and choose iCloud Drive under Locations in the sidebar."
+        }
+      ],
+      "findings": []
+    },
+    {
+      "competitor": "Google Drive",
+      "question": "According to official Google Drive Help, what are the Android app steps to upload files? Cite only official Google Drive Help.",
+      "run_id": "83a3291e-727e-402f-9dcb-38c0a4e94587",
+      "status": "partial_failed",
+      "error_message": "research insufficient_external_evidence: no competitor or market_pattern finding carries an external source citation",
+      "attempt_count": 2,
+      "version": "14b",
+      "reproduced_query": "Google Drive Android upload files site:support.google.com/drive/answer",
+      "sources": [
+        {
+          "id": "81458f7b-5aa9-4285-bd04-e1556c2a79d3",
+          "url": "https://support.google.com/drive/answer/2424368?hl=en&co=GENIE.Platform%3DAndroid",
+          "title": "Upload files & folders to Google Drive - Android - Google Drive Help",
+          "domain": "support.google.com",
+          "snippet": "Documents\n Images\n Audio\n Video\n\n## Upload & find files\n\n1. On your Android phone or tablet, open the Google Drive app.\n2. Tap New Add question and then Upload.\n3. Find and tap the files you want to upload.\n4. Find uploaded files in My Drive until you move them.\n\n## Convert documents into Google formats\n\nIf you want to upload files like Microsoft Word documents, you can change a setting to convert files.\n\nImportant: You can only change Google Drive settings from your computer.\n\n## Turn mobile data usage on or off\n\nYou can choose to use your mobile data or only use Wi-Fi to transfer files. [...] 1. On your Android phone or tablet, open the Google Drive app.\n2. At the top left, tap Menu Menu and then Settings.\n3. Under \"Data usage,\" turn Transfer files only over Wi-Fi on or off.\n    You only find the “Transfer files only over Wi-Fi” option when your device can get a mobile data/network.\n\nAndroid ComputeriPhone & iPad\n\n## Need more help?\n\n### Try these next steps:\n\nPost to the help community   Get answers from community members Contact us Tell us more and we’ll help you get there\n\ntrue\n\nWatch video tutorials\n\nWatch video tutorials\n\nTo get the latest tips, tricks, and how-to's, subscribe to our YouTube Channel.\n\nClear search\n\nClose search\n\nGoogle apps\n\nMain menu\n\ntrue\n\nSearch Help Center\n\ntrue\n\ntrue\n\ntrue\n\ntrue\n\ntrue\n\nfalse\n\nfalse\n\nfalse\n\nfalse\n\nfalse [...] Google Drive Help\n\nSign in\n\nGoogle Help\n\n Help Center Community Google Drive\n\n Privacy Policy Terms of Service Submit feedback\n\nSend feedback on...\n\n Help Center\n Community\n Find, delete, and recover files\n\nGoogle Drive\n\n# Upload files & folders to Google Drive\n\nWant advanced Google Workspace features for your business?\n\nTry Google Workspace today!\n\nYou can upload, open, share, and edit files with Google Drive. When you upload a file to Google Drive, it will take up space in your Drive, even if you upload to a folder owned by someone else.\n\n## Types of files\n\n Documents\n Images\n Audio\n Video\n\n## Upload & find files"
+        },
+        {
+          "id": "30982955-a74d-4405-8680-83df977367fe",
+          "url": "https://support.google.com/drive/answer/2424384?hl=en&co=GENIE.Platform%3DAndroid",
+          "title": "How to use Google Drive - Android - Google Drive Help",
+          "domain": "support.google.com",
+          "snippet": "## Use Google Drive on your Android device\n\nIn this section, you'll learn to:\n\n Use the Drive app on your android device\n Upload, share & organize your files\n Use Split Screen with Google Drive\n\n## Use the Drive app on your device\n\nOn your Android phone or tablet, open the Google Drive app. On the Home page, you can find:\n\n#### Home\n\nIn the '”Home” section of Google Drive, you can:\n\n Find the files and folders you upload or sync, such as:\n  + Docs\n  + Sheets\n  + Slides\n  + Forms\n Switch between ”Suggested” and ”Activity” tabs.\n  + To find the files and folders you're most likely to use, you can use the ”Suggested” tab.\n  + To find the files and folders based on recent changes and actions, you can use the ”Activity” tab.\n\n#### Starred [...] Upload files and folders to Google Drive\n Scan documents with Google Drive\n Work with Office files\n Create, edit, and format Google Docs, Sheets, and Slides\n\n#### Share & organize files\n\nYou can share files or folders for others to access, edit, or comment on.\n\n Share files from Google Drive\n Share folders from Google Drive\n Make someone else the owner of a file\n\nTo find files that others have shared with you, go to Shared with me.\n\n## Use Split Screen with Google Drive\n\nOn an Android device with a large screen, you can open 2 instances of the Drive app side-by-side. For example, you can open a PDF on one side of your screen and scroll through your folders on the other screen.\n\nTo open 2 instances of the Drive app side-by-side: [...] Stored in Google Drive: You can use the ”My Drive” tab.\n Sync in Drive for desktop: You can use the “Computer” tab. Learn how to use Drive for desktop.\n\n#### Sign out of Google Drive\n\nTo sign out of Drive on Android, remove your Google Account from your device. To remove a Google Account:\n\n1. On your Android device, open Settings Settings app.\n2. Tap Users & accounts.\n3. Select the account you want to remove.\n4. Tap Remove account and then Remove account.\n\nTo prevent access to your device from others:\n\n Learn how to set a screen lock\n Learn how to use guest mode\n\n## Upload, share & organize your files\n\n### \n\n#### Upload or create files\n\nYou can upload files from your computer or create files in Google Drive."
+        },
+        {
+          "id": "df190eef-afab-4b43-8e1b-931bd436715d",
+          "url": "https://support.google.com/drive/answer/2375091?hl=en&co=GENIE.Platform%3DAndroid",
+          "title": "Organize your files in Google Drive - Android - Google Drive Help",
+          "domain": "support.google.com",
+          "snippet": "Drag files into and out of Drive\n\nYou can drag and drop files into Drive to upload them. You can also drag files out of Drive and drop them into other apps. When you drag a file out of Drive, you will paste a link to the file in the other app.\n\nImportant: Your device must be on Android N or later and be in split screen mode. Not all apps support drag and drop.\n\n1. Touch and hold the item.\n2. Drag the item into another app.\n3. Lift your finger to drop the item.\n\nFind duplicate files or folders [...] Remember, the goal is to make your Google Drive easy to use and navigate. A simple, organized structure helps you find what you need quickly and efficiently.\n\nTip: If you organize a lot of files or folders at once, it might take time for the changes to appear.\n\n## Create, move & copy files\n\n### Create a folder\n\n1. On your Android phone or tablet, open the Google Drive App.\n2. At the bottom right, tap Add Add question.\n3. Tap Folder.\n4. Name the folder.\n5. Tap Create.\n\nMove a file or folder\n\nImportant: To move a file, you must have permission to move the file from the source to the destination, otherwise the file won’t be moved. A shortcut is created in the destination folder instead.\n\nYou can move an item from anywhere in Google Drive: the main window, the left panel, or search results. [...] Note: If you move folders with a lot of files or subfolders, it might take some time for the changes to appear.\n\n1. On your Android phone or tablet, open the Google Drive App.\n2. Next to the file you want to copy, click More More and then Move.\n3. Choose the folder, then tap Move here.\n    To create a new folder, tap New folder Create new folder.\n\nYou can also move items between side-by-side screens open in the Drive app.\n\nImportant: Both instances of Drive must be logged into the same account.\n\n1. On your Android device, open 2 instances of the Drive app side by side.\n2. From your primary Drive account, long press on the file or folder you want to move.\n3. Drag your selected file or folder into its new location.\n\nMake a copy of a file"
+        },
+        {
+          "id": "27091ea1-baae-4aa2-a9c3-012b8dc19600",
+          "url": "https://support.google.com/drive/answer/2423694?hl=en&co=GENIE.Platform%3DAndroid",
+          "title": "Store & play video in Google Drive - Android phone & tablet - Google Drive Help",
+          "domain": "support.google.com",
+          "snippet": "Use the Google Drive app: If you upload from a web browser, try the Google Drive desktop app or mobile app for a better upload performance.\n Check the file format: Different video formats are supported by Google Drive, if yours is unusual, you need to convert it.\n Check for updates: Verify that your browser or app is up to date. An outdated version can cause compatibility issues.\n Log out and back in: To resolve these issues, log out of your Google Account and back in.\n Uninstall and reinstall the Drive app: Uninstall the Drive app and reinstall it. Try to upload video files again. [...] Google Drive Help\n\nSign in\n\nGoogle Help\n\n Help Center Community Google Drive\n\n Privacy Policy Terms of Service Submit feedback\n\nSend feedback on...\n\n Help Center\n Community\n Find, delete, and recover files\n\nGoogle Drive\n\n Find items in Google Drive\n Images, videos, and other file types\n Store & play video in Google Drive\n\n# Store & play video in Google Drive\n\nWant advanced Google Workspace features for your business?\n\nTry Google Workspace today!\n\nYou can store and play videos directly from Google Drive.\n\n## Upload & play videos\n\nUpload videos\n\n1. On your Android phone or tablet, open your photos app.\n2. Select the video you want to upload.\n3. Tap Share Share.\n4. Tap Driveand then Save.\n\nNote: For best upload speed, upload videos over a Wi-Fi connection.\n\nPlay videos [...] Check your internet connection for stability: A slow or bad connection can cause uploads to fail.\n Check the file size: Your video can’t be bigger than your available storage in Drive.\n Try incognito mode: Open a new incognito window in your browser and try to upload the video again. This can help bypass issues related to cookies or extensions.\n Use a different browser: Switch to another browser or clear the cache and cookies of your current browser. Turn off any browser extensions temporarily, as they can interfere with uploads.\n Check for the CORS plugin: If you’re a developer with this plugin installed in Chrome, turn it off and try to upload your files again."
+        },
+        {
+          "id": "faded8b2-6806-4e8a-a400-49f9865f8e31",
+          "url": "https://support.google.com/drive/answer/2424368?hl=en&co=GENIE.Platform%3DiOS",
+          "title": "Upload files & folders to Google Drive - iPhone & iPad - Google Drive Help",
+          "domain": "support.google.com",
+          "snippet": "Google Drive Help\n\nSign in\n\nGoogle Help\n\n Help Center Community Google Drive\n\n Privacy Policy Terms of Service Submit feedback\n\nSend feedback on...\n\n Help Center\n Community\n Find, delete, and recover files\n\nGoogle Drive\n\n# Upload files & folders to Google Drive\n\nWant advanced Google Workspace features for your business?\n\nTry Google Workspace today!\n\nYou can upload, open, share, and edit files with Google Drive. When you upload a file to Google Drive, it will take up space in your Drive, even if you upload to a folder owned by someone else.\n\n## Types of files\n\n Documents\n Images\n Audio\n Video\n\n## Upload & find files\n\n1. On your iPhone or iPad, open the Google Drive app.\n2. Tap Add Add question and then File upload.\n3. Find and tap the files you want to upload. [...] 1. To select the file upload location, tap Location.\n    Select the folder where you want the file to go.\n\nTips:\n\n If you upload a single file, you can find the:\n  + File thumbnail\n  + Name\n  + Upload location on the \"Upload to Drive\" screen\n If you upload multiple files, the location field is at the bottom of the \"Upload to Drive\" screen.\n\n1. To rename the file:\n   1. Tap File Name.\n   2. Enter the new file name.\n2. Tap Upload.\n\n## Convert documents into Google formats\n\nIf you want to upload files like Microsoft Word documents, you can change a setting to convert files.\n\nImportant: You can only change Google Drive settings from your computer.\n\n## Turn mobile data usage on or off\n\nYou can choose to use your mobile data or only use Wi-Fi to transfer files."
+        }
+      ],
+      "findings": [
+        {
+          "finding": {
+            "category": "competitor",
+            "status": "not_verified",
+            "title": "Google Drive Android app",
+            "description": "From the official help page. Evidence: \"1. On your Android phone or tablet, open the Google Drive app. 2. Tap New Add question and then Upload. 3. Find and tap the files you want to upload.\"",
+            "source_refs": null
+          },
+          "matching_quote_candidates": [],
+          "caveat": "Demoted original source refs were not retained; reconstructed candidates are diagnostics, not proof of original citation choice."
+        }
+      ]
+    }
+  ]
+}

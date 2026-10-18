@@ -1,0 +1,28 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+_______ test_v6_equal_fact_coverage_preserves_a_later_supported_analysis _______
+
+SessionLocal = sessionmaker(class_='Session', bind=Engine(sqlite:////private/var/folders/x6/nd4hh2p91m7g7wmzm4x3zxbw0000gn/T/pytest-of-salmon/pytest-444/test_v6_equal_fact_coverage_pr0/p8.db), autoflush=True, expire_on_commit=False)
+fake_settings = Settings(database_url='postgresql+psycopg://insightflow:insightflow_local@localhost:5433/insightflow', llm_api_key='te...onds=5.0, tavily_max_results=5, tavily_max_retries=2, research_max_evidence=5, research_evidence_excerpt_max_chars=400)
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x10cdd1430>
+
+    def test_v6_equal_fact_coverage_preserves_a_later_supported_analysis(
+        SessionLocal, fake_settings, monkeypatch
+    ):
+        q,data,output=_small_drive_case();calls=0
+        def later_analysis(m):
+            nonlocal calls
+            calls+=1;p=output(m);p['tasks'][0]['subject']['product']='Unmentioned Product'
+            if calls==1:p['analyses']=[]
+            return p
+        install(monkeypatch,data,later_analysis);db,run=run_case(SessionLocal,q)
+        try:
+            rows=db.scalars(select(ResearchFinding).where(ResearchFinding.run_id==run.id)).all()
+>           assert any(f.claim_kind=='recommendation' for f in rows)
+E           assert False
+E            +  where False = any(<generator object test_v6_equal_fact_coverage_preserves_a_later_supported_analysis.<locals>.<genexpr> at 0x10cf98e10>)
+
+backend/tests/test_phase8_v6_supervisor.py:654: AssertionError
+=========================== short test summary info ============================
+FAILED backend/tests/test_phase8_v6_supervisor.py::test_v6_equal_fact_coverage_preserves_a_later_supported_analysis
+1 failed, 10 deselected in 0.66s

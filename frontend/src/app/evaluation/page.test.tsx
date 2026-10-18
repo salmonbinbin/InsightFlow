@@ -69,7 +69,7 @@ describe('Evaluation dashboard', () => {
     const metricRows = screen.getAllByTestId('eval-metric-row');
     expect(metricRows[0]?.querySelector('[data-testid="eval-metric-actual"]')?.textContent).toBe('0.000000');
     expect(metricRows[0]?.querySelector('[data-testid="eval-metric-target"]')?.textContent).toContain('90%');
-    expect(metricRows[1]?.querySelector('[data-testid="eval-metric-actual"]')?.textContent).toBe('NOT MEASURED');
+    expect(metricRows[1]?.querySelector('[data-testid="eval-metric-actual"]')?.textContent).toBe('未测量');
     expect(metricRows[1]?.querySelector('[data-testid="eval-metric-target"]')?.textContent).toContain('85%');
     expect((await screen.findByTestId('eval-case-row')).textContent).toContain('F001');
     expect(client.callLog.some((c) => c.path === '/api/evaluations/run-a')).toBe(true);

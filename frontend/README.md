@@ -1,3 +1,5 @@
+> **2026-10-19状态更新：** 当前已包含洞察、需求、PRD、评测、Phase8外部研究及模拟任务审批页面；下方“路由占位/后端不提供历史”等早期描述为历史快照。最新前端193项、lint及生产构建通过，业务质量限制仍保留。请先读[当前归档记录](../docs/52-Phase8阶段归档与后续修复计划.md)。开发安装使用`npm ci`复用已有锁文件，不为归档升级依赖。
+
 # InsightFlow Frontend (Phase 7 — Work Package A)
 
 正式前端 MVP。Next.js 14 (App Router) + React 18 + TypeScript strict。

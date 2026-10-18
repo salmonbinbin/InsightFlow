@@ -705,6 +705,22 @@ export interface RequirementPatchRequest {
   content?: RequirementContent;
 }
 
+/**
+ * Body for ``POST /api/insights/{insight_id}/requirement`` —
+ * mirrors backend ``RequirementCreateRequest``. The backend
+ * accepts an empty body and returns 201 with the freshly-
+ * generated ``RequirementRead``; an optional
+ * ``prompt_version`` pin (``requirement-generation-v2`` opts
+ * into the revised PM-facing prompt) is forwarded verbatim.
+ * The client intentionally does NOT take content fields
+ * here: PM-editable fields are applied later via
+ * ``patchRequirement``. Older callers that send ``{}`` are
+ * preserved.
+ */
+export interface RequirementCreateRequest {
+  prompt_version?: string | null;
+}
+
 /* ---------- PRD ----------
  *
  * Phase 7 work package C1 — full PRD contract that mirrors
@@ -901,9 +917,15 @@ export interface ProjectPrdPage {
  * Body for ``POST /api/requirements/{requirement_id}/prds``.
  * ``content`` is optional — when absent, the AI client generates the
  * PRD; when present, the row is marked PM-authored.
+ * ``prompt_version`` is an optional pin
+ * (``prd-generation-v4`` opts into the revised PRD prompt);
+ * the backend accepts an empty body and defaults to its
+ * active prompt version, so older callers that send
+ * ``{}`` or ``{ content: ... }`` continue to work.
  */
 export interface PrdCreateRequest {
   content?: PrdContent;
+  prompt_version?: string | null;
 }
 
 /**
@@ -1124,6 +1146,807 @@ export interface ProjectEvaluationRunPage {
  */
 export interface EvaluationRunQuery extends Pagination {
   project_id?: ProjectId;
+}
+
+/* ---------- Research (Phase 8) ----------
+ *
+ * Phase 8 work package B — front-end contract for the Research Agent
+ * (external market intelligence). Mirrors
+ *   backend/app/schemas/research.py
+ *   backend/app/models/research.py
+ *
+ * External Research is intentionally separated from the Internal Evidence
+ * surface: the two live in different tables, the UI renders them in
+ * different sections, and the API client never conflates them. An
+ * Insight's Evidence list (feedback-driven) and its Research findings
+ * (external search-driven) are NOT interchangeable — even when the
+ * topic overlaps, a finding here is grounded (or explicitly marked
+ * not-grounded) by a Tavily hit, never by raw customer feedback.
+ *
+ * Status invariant: ``ResearchRun.status`` always one of
+ *   pending / running / completed / partial_failed / failed.
+ * The ``running`` state is only observable in-process — the backend
+ * commits the run row and finalises before the HTTP 200 returns, so
+ * a real client never sees ``status === 'running'``. The frontend
+ * surfaces a synthetic "Running" badge during the synchronous POST
+ * window only, then re-reads from the server (which always reports
+ * a terminal state).
+ *
+ * Finding status invariant: ``ResearchFinding.status`` is
+ *   confirmed   — carries ≥1 ``source_refs`` whose provider_source_id
+ *                 resolves to a persisted ``ResearchSource`` row.
+ *   not_verified — carries no ``source_refs``. The DB CHECK
+ *                 constraint rejects every combination that violates
+ *                 this invariant before INSERT.
+ *
+ * ``summary`` category findings are always ``not_verified`` because
+ * the LLM's headline ``summary`` is not tied to a single provider
+ * source; the prompt pins the headline to the internal context alone.
+ */
+
+/** Run status literal — mirrors backend ``ResearchRunStatus`` enum. */
+export type ResearchRunStatus =
+  | 'pending'
+  | 'running'
+  | 'completed'
+  | 'partial_failed'
+  | 'failed';
+
+/** Finding category literal — mirrors backend ``ResearchFindingCategory``. */
+export type ResearchFindingCategory =
+  | 'summary'
+  | 'competitor'
+  | 'market_pattern'
+  | 'opportunity'
+  | 'risk';
+
+/** Finding provenance literal — mirrors backend ``ResearchFindingStatus``. */
+export type ResearchFindingStatus = 'confirmed' | 'not_verified';
+
+/* ---- Phase 8 Research v6 — analysis support trace ----
+ *
+ * The v6 contract extends a finding with a ``claim_kind`` so
+ * the page can distinguish a ground-truth ``fact`` (the LLM
+ * cited a source) from an ``inference`` / ``recommendation``
+ * the LLM authored ON TOP of the cited facts. An inference or
+ * recommendation is ALWAYS treated as not-verified on the
+ * page — even when every supporting fact carries citations,
+ * the analytical layer is the LLM's own synthesis and the
+ * audit boundary the brief mandates is "manual semantic
+ * review required".
+ *
+ * The optional ``evidence_location`` is a positioning object
+ * (url + section / paragraph / line range) so a reviewer can
+ * confirm where in the cited source the fact is grounded.
+ * All four v6 fields are OPTIONAL on the read shape so legacy
+ * pre-v6 rows continue to type-check without forcing a
+ * synchronous fixture rewrite.
+ *
+ * ``supporting_finding_ids`` is strictly the set of finding
+ * ids the v6 analysis layer grounded on. The page never
+ * follows a support id into a foreign run — the helper
+ * filter is bounded to the currently-loaded findings, the
+ * same run_id, ``claim_kind === 'fact'`` and
+ * ``status === 'confirmed'``. Missing / unverified / foreign
+ * ids are silently dropped rather than rendered as broken
+ * links. */
+
+export interface ResearchSourceRefRead {
+  provider_source_id: string;
+  url: string;
+  title: string;
+}
+
+export interface ResearchEvidenceSummaryRead {
+  external_id: string;
+  summary: string;
+}
+
+/**
+ * Read shape for ``research_runs.internal_context`` — the snapshot
+ * the LLM saw during the run. The Insight title, pain point,
+ * affected segment, recommendation, the first N evidence external_ids
+ * with bounded per-entry summaries, the PM Decision snapshot and
+ * the user-supplied research question / scope are echoed verbatim so
+ * a reviewer can confirm what the LLM was grounded on.
+ */
+export interface ResearchInternalContextRead {
+  insight_title: string;
+  insight_pain_point: string;
+  insight_affected_segment: string;
+  insight_recommendation: string;
+  evidence_external_ids: string[];
+  evidence_summaries: ResearchEvidenceSummaryRead[];
+  decision_status: string | null;
+  decision_priority: string | null;
+  research_question: string;
+  scope: string | null;
+}
+
+/** Claim kind literal — mirrors backend v6
+ *  ``ResearchFindingClaimKind`` enum. ``string & {}`` keeps
+ *  the literal union open so a future backend addition
+ *  compiles without a coordinated frontend release — the
+ *  page renders any unknown value through a conservative
+ *  fallback label rather than echoing the raw enum. */
+export type ResearchClaimKind =
+  | 'fact'
+  | 'inference'
+  | 'recommendation'
+  | (string & {});
+
+/** Exact saved-snapshot location, including matching-only section context.
+ * Optional fields tolerate historical rows and future metadata additions. */
+export interface ResearchFindingLocation {
+  provider_source_id?: string;
+  offset?: number;
+  length?: number;
+  text?: string;
+  sha256?: string;
+  first_failed_guard?: string;
+  section?: string;
+  context?: string;
+  step_index?: number;
+  step_total?: number;
+  product_key?: string;
+}
+
+export interface ResearchFindingRead {
+  id: string;
+  run_id: string;
+  category: ResearchFindingCategory | string;
+  title: string;
+  description: string;
+  confidence: number | null;
+  status: ResearchFindingStatus | string;
+  /**
+   * Resolved citations. Backend hydrates ``source_refs`` by
+   * joining every persisted ``ResearchSource`` row referenced
+   * in the raw JSON column, so the UI can render the URL + title
+   * without a follow-up round-trip. ``null`` for not_verified
+   * findings (the source-code invariant forbids entries on those
+   * rows).
+   */
+  source_refs: ResearchSourceRefRead[] | null;
+  created_at: string;
+  /* Phase 8 Research v6 — analysis support trace. All
+   * three fields are OPTIONAL so legacy pre-v6 rows
+   * continue to type-check without a synchronous fixture
+   * rewrite. The page only surfaces the new affordances
+   * when ``claim_kind`` is present. */
+  claim_kind?: ResearchClaimKind | null;
+  supporting_finding_ids?: string[] | null;
+  evidence_location?: ResearchFindingLocation | null;
+}
+
+export interface ResearchSourceRead {
+  id: string;
+  run_id: string;
+  provider: string;
+  provider_source_id: string;
+  url: string;
+  title: string | null;
+  domain: string;
+  snippet: string | null;
+  retrieved_at: string;
+  created_at: string;
+}
+
+/* ---------- Phase 8 Research v5 — task contract + coverage report ----------
+ *
+ * The backend's v5 ResearchRunRead carries two new bounded
+ * payloads alongside the existing run metadata. Both are
+ * nullable on legacy rows from before the migration; the
+ * read shape MUST tolerate that so historical research runs
+ * keep rendering with the existing honesty-only banner.
+ *
+ * The wire payload is typed ``dict`` in
+ * backend/app/schemas/research.py:ResearchRunRead so the
+ * page reads these as code-rule-level audit data only —
+ * NOT a semantic review. The backend pins
+ * ``coverage_report.semantic_review = 'NOT_MEASURED'`` to
+ * mark the boundary; the page must never claim a run is
+ * "fully answered" based on this report.
+ *
+ * The parse_status / coverage-status enums are modelled as
+ * ``(string & {})`` rather than a strict literal union so
+ * future backend additions land without a frontend rebuild.
+ * The page renders only the documented set; anything
+ * unknown falls through to a "需人工核对" boundary. */
+
+export type ResearchTaskContractParseStatus =
+  | 'parsed'
+  | 'partial'
+  | 'unparseable'
+  | (string & {});
+
+export interface ResearchTaskContractItem {
+  /** Server-side requirement id; the coverage item of the
+   *  same name references it. We never render this raw id
+   *  to the user — the page maps it to ``value`` below for
+   *  the human-readable label. */
+  id: string;
+  role: string;
+  kind: string;
+  /** The human-readable sub-question / scope / predicate
+   *  text. This is the value the UI surfaces. */
+  value: string;
+  predicate_note: string | null;
+}
+
+export interface ResearchTaskContract {
+  question: string;
+  parse_status: ResearchTaskContractParseStatus;
+  items: ResearchTaskContractItem[];
+  parse_notes: string[];
+}
+
+export type ResearchCoverageItemStatus =
+  | 'covered'
+  | 'partial'
+  | 'not_verified'
+  | 'not_applicable'
+  | (string & {});
+
+export interface ResearchCoverageItem {
+  requirement_id: string;
+  role: string;
+  kind: string;
+  status: ResearchCoverageItemStatus;
+  /** Internal evidence ids — not surfaced to the user. */
+  evidence_ids: string[];
+  /** Internal source ids — not surfaced to the user. */
+  evidence_source_ids: string[];
+  /** Short, human-readable reason for ``partial`` /
+   *  ``not_verified``; empty for ``covered``. */
+  gap: string | null;
+}
+
+export interface ResearchCoverageReport {
+  task_question: string;
+  parse_status: ResearchTaskContractParseStatus;
+  items: ResearchCoverageItem[];
+  procedure_status: string;
+  /** Server-computed: a v5 ``completed`` run only lands when
+   *  this is ``true``. The page reads it but does NOT
+   *  collapse it into a "fully answered" verdict. */
+  overall_completable: boolean;
+  failure_reasons: string[];
+  /** Pinned by the backend as ``'NOT_MEASURED'`` — the page
+   *  must surface this honestly and never infer a real
+   *  semantic audit from any other field on this report. */
+  semantic_review: 'NOT_MEASURED' | string;
+  /* Phase 8 v7 — discriminator fields. A v5 row leaves both
+   * fields undefined. A v7 row carries
+   *   version: 'research-support-v7'
+   *   answer?: ResearchAnswerV7 | null
+   * ``answer`` may be ``null`` on a v7 row whose planner
+   * never produced a payload (planning failed, or the spec
+   * never finished); the page detects the v7 contract from
+   * ``version`` alone, NOT from the presence of ``answer``,
+   * and falls back to a "v7 规划失败 / 未验证" honesty row
+   * for the answer-less case.
+   *
+   * The fields are OPTIONAL so existing v5 fixtures and
+   * pre-v5 mock objects can keep their current shape without
+   * a synchronous rewrite. The page never reads v5 keys
+   * (``items`` / ``failure_reasons`` / ``overall_completable``)
+   * for a v7 row. */
+  version?: string;
+  answer?: ResearchAnswerV7 | null;
+}
+
+export interface ResearchRunRead {
+  id: string;
+  project_id: ProjectId;
+  insight_id: InsightId;
+  classification_run_id: string;
+  clustering_run_id: string;
+  insight_decision_id: string | null;
+  research_question: string;
+  scope: string | null;
+  provider: string;
+  provider_query: string;
+  model: string | null;
+  prompt_version: string;
+  status: ResearchRunStatus | string;
+  started_at: string | null;
+  completed_at: string | null;
+  created_at: string;
+  error_message: string | null;
+  internal_context: ResearchInternalContextRead;
+  internal_context_hash: string;
+  /* Phase 8 Research v5 — server-side task contract /
+   * coverage report. All three are nullable on legacy rows
+   * that pre-date the v5 migration; the page renders those
+   * with the historical-only honesty banner. ``task_contract``
+   * and ``coverage_report`` are bounded code-rule payloads —
+   * they are NOT a semantic review. ``execution_trace`` is
+   * opaque and is never displayed in the UI (it can carry
+   * internal step ids).
+   *
+   * The fields are OPTIONAL (not just nullable) so existing
+   * fixtures and pre-v5 mock objects can simply omit them
+   * without breaking the type checker — the v5 migration
+   * must not force a synchronous update of every test
+   * fixture. */
+  task_contract?: ResearchTaskContract | ResearchSpecV7 | null;
+  coverage_report?: ResearchCoverageReport | ResearchSupportV7 | null;
+  execution_trace?: unknown;
+  input_count: number;
+  processed_count: number;
+  source_count: number;
+  finding_count: number;
+  input_tokens: number;
+  output_tokens: number;
+  unknown_token_calls: number;
+  latency_ms: number;
+  attempt_count: number;
+  retry_count: number;
+}
+
+export interface ResearchRunListPage {
+  total: number;
+  items: ResearchRunRead[];
+  limit: number;
+  offset: number;
+}
+
+export interface ResearchSourceListPage {
+  total: number;
+  items: ResearchSourceRead[];
+  limit: number;
+  offset: number;
+}
+
+export interface ResearchFindingListPage {
+  total: number;
+  items: ResearchFindingRead[];
+  limit: number;
+  offset: number;
+}
+
+/* ---------- Tool Layer (Phase 8) ----------
+ *
+ * Phase 8 work package C — front-end contract for the simulated
+ * external-tool surface. Mirrors
+ *   backend/app/schemas/tool.py
+ *   backend/app/services/tool_service.py
+ *   backend/app/api/tools.py
+ *
+ * Wire rule: every per-run endpoint requires ``project_id`` as a
+ * query parameter (the backend ``Query(...)`` decorator without a
+ * default would 422 a missing value). The page always supplies the
+ * active project id so a multi-tenant deployment never lets the
+ * page render a foreign project's tool run.
+ *
+ * Frozen-snapshot rule: the page never re-derives the Title /
+ * Description / Priority / Source-Insight preview. Those four
+ * fields are server-derived at Prepare time and persisted on
+ * ``ToolRunRead.request_payload`` (a ``ToolRunSnapshot``). Approve
+ * re-uses the same snapshot — a later Requirement edit cannot
+ * drift the audited content. The frontend surfaces the snapshot
+ * verbatim so an audit can match what the simulator adapter saw.
+ *
+ * Idempotency rule: ``(project_id, request_id)`` is the unique key
+ * for the Prepare call. A repeated Prepare with the same pair
+ * returns the existing row (the API answers 201 first time, 200 on
+ * duplicate) and the page treats both as success.
+ *
+ * State machine: ``awaiting_approval`` → ``cancelled`` (Cancel) or
+ * → ``completed`` (Approve). Any other transition surfaces 409 and
+ * the page renders a friendly "state conflict" error. A second
+ * Approve on a completed run is a no-op (returns the existing row
+ * without producing a duplicate audit row).
+ */
+
+/** Run status literal — mirrors backend ``ToolRunStatus`` enum. */
+export type ToolRunStatus =
+  | 'pending'
+  | 'awaiting_approval'
+  | 'running'
+  | 'completed'
+  | 'failed'
+  | 'cancelled';
+
+/** Frozen audit-visible snapshot persisted on
+ *  ``ToolRunRead.request_payload`` at Prepare time. For
+ *  ``simulated_issue_tracker`` the four server-derived fields
+ *  describe the simulated external-issue ticket the simulator
+ *  would create — the user's ``{}`` payload is intentionally
+ *  ignored. The page renders this snapshot verbatim during the
+ *  ``awaiting_approval`` window and again after Approve so a
+ *  reviewer can confirm what the human approved. */
+export interface ToolRunSnapshot {
+  title: string;
+  description: string;
+  priority: string | null;
+  source_insight_preview: string;
+}
+
+export interface ToolRunRead {
+  id: string;
+  project_id: ProjectId;
+  requirement_id: RequirementId;
+  agent_run_id: string | null;
+
+  tool_name: string;
+  tool_action: string;
+  tool_version: string;
+  request_id: string;
+
+  status: ToolRunStatus | string;
+  execution_mode: 'simulation' | 'real' | string;
+  /**
+   * Simulator-produced external id (``SIM-...``) surfaced on the
+   * row after a successful Approve. ``null`` while the run is
+   * still ``awaiting_approval`` / ``running``. The frontend never
+   * constructs a real link from this — the brief mandates that
+   * no real Jira / external URL is fabricated.
+   */
+  external_id: string | null;
+
+  request_payload: ToolRunSnapshot;
+  response_summary: string | null;
+  failure_category: string | null;
+
+  attempt_count: number;
+  retry_count: number;
+
+  created_at: string;
+  updated_at: string;
+  approved_at: string | null;
+  completed_at: string | null;
+}
+
+/** Paginated tool-run history scoped to one Requirement. The
+ *  ``active_run_id`` pointer is the awaiting_approval run if one
+ *  exists, otherwise the most recent non-cancelled run. The page
+ *  MUST NOT derive the active pointer from the current ``items``
+ *  slice because pagination can skip past the newest row. */
+export interface ToolRunPage {
+  total: number;
+  items: ToolRunRead[];
+  limit: number;
+  offset: number;
+  active_run_id: string | null;
+}
+
+/** Body for ``POST /requirements/{requirement_id}/tool-runs``.
+ *  ``request_id`` is REQUIRED and must be UUID-shaped; the service
+ *  layer uses ``(project_id, request_id)`` as the idempotency key
+ *  for the Prepare call. ``payload`` is empty for the simulator
+ *  (``extra=forbid`` on the registered input schema rejects any
+ *  injected field). The page sends a fresh UUID per Prepare
+ *  click so each user-driven Prepare is a new row. */
+export interface ToolPrepareRequest {
+  tool_name: string;
+  tool_action: string;
+  request_id: string;
+  payload: Record<string, never>;
+  agent_run_id?: string | null;
+}
+
+/** Body for ``POST /tool-runs/{tool_run_id}/cancel``. Empty by
+ *  design (``extra=forbid``); any field the client tries to claim
+ *  is rejected with 422. */
+export type ToolCancelRequest = Record<string, never>;
+
+/** Body for ``POST /tool-runs/{tool_run_id}/approve``. Empty by
+ *  design (``extra=forbid``); the Approve endpoint is a single
+ *  explicit acknowledgement. */
+export type ToolApproveRequest = Record<string, never>;
+
+/**
+ * Body for ``POST /api/insights/{insight_id}/research`` —
+ * mirrored verbatim on the backend (``extra="forbid"``); an
+ * unknown key would 422 the request.
+ *
+ * Length caps mirror the DB CHECK constraints and the LLM prompt
+ * contract: ``research_question`` is 1..500 chars, ``scope`` is
+ * optional but ≤2000. ``prompt_version`` is the explicit prompt
+ * pin; the page sends ``research-agent-v7`` to opt into the
+ * v7 extractive contract, while older callers may still
+ * leave it unset and let the backend default to v1.
+ */
+export interface ResearchRunRequest {
+  research_question: string;
+  scope?: string | null;
+  prompt_version?: string | null;
+}
+
+/* ---------- Phase 8 Research v7 — extractive answer contract ----------
+ *
+ * Phase 8 v7 (research-agent-v7) replaces the v5 / v6
+ * "LLM-authored, post-hoc audited" model with a strict
+ * extractive contract. The wire payload is rooted at
+ * ``coverage_report.answer`` for a v7 run; the rest of
+ * ``coverage_report`` retains the v5 / v6 keys so the
+ * existing page rendering still resolves. The page
+ * detects the v7 contract by reading
+ * ``coverage_report.answer.version === 'research-answer-v7'``
+ * and routes the panel into the v7 renderer.
+ *
+ * Three typed sub-contracts with strict version
+ * discriminators so the page can refuse to render a row
+ * whose ``version`` does not match (and so a future v8
+ * migration can land without a silent fallback):
+ *
+ *   ResearchSpecV7     — research-spec-v7   — the planning
+ *                        payload. The page surfaces only
+ *                        the user-visible subset
+ *                        (original_question, requirements
+ *                        with question_text + kind,
+ *                        unresolved clauses).
+ *   ResearchSupportV7  — research-support-v7 — per-requirement
+ *                        status / reason_codes /
+ *                        answer_polarity / adopted_attempt.
+ *                        The page reads from ``answer.items``
+ *                        which already merges this in.
+ *   ResearchAnswerV7   — research-answer-v7 — the user-visible
+ *                        payload. Items carry
+ *                        question / kind / status /
+ *                        answer_polarity / quotes[] / gap /
+ *                        adopted_attempt. ``analyses[]``
+ *                        carries the per-facet inference /
+ *                        recommendation derivation; each
+ *                        row exposes ``supporting_finding_ids``
+ *                        so the page can expand a row to its
+ *                        cited fact premises.
+ *
+ * The v7 contract pins ``semantic_review = 'NOT_MEASURED'``;
+ * the page MUST continue to render the manual-semantic-
+ * review boundary exactly as it does for v5 / v6.
+ */
+
+/** Version discriminator — every v7 sub-contract pins this
+ *  literal. ``string & {}`` keeps the literal union narrow
+ *  while still letting the runtime check reject a row whose
+ *  ``version`` is something else. */
+export type ResearchV7Version =
+  | 'research-spec-v7'
+  | 'research-support-v7'
+  | 'research-answer-v7'
+  | 'research-analysis-v7'
+  | 'research-fact-v7'
+  | 'research-execution-v7'
+  | (string & {});
+
+export interface ResearchSpecRequirementV7 {
+  id: string;
+  anchor_ids: string[];
+  kind: string;
+  products: string[];
+  platform: string | null;
+  entry: string | null;
+  action: string | null;
+  object: string | null;
+  mode: string;
+  quantity: string;
+  condition_quotes: string[];
+  version: string | null;
+  analysis_facets: string[];
+  /** Derived from the anchors joined back to the original
+   *  question; this is the user-visible question for the
+   *  requirement. The page surfaces this verbatim. */
+  question_text: string;
+  mandatory_quantity: string;
+  mandatory_conditions: string[];
+}
+
+export interface ResearchSpecAnchorV7 {
+  id: string;
+  start: number;
+  end: number;
+  text: string;
+}
+
+export interface ResearchSpecPolicySpanV7 {
+  start: number;
+  end: number;
+  text: string;
+}
+
+export interface ResearchSpecUnresolvedV7 {
+  id: string;
+  text: string;
+  reason: string;
+}
+
+export interface ResearchSpecV7 {
+  version: 'research-spec-v7';
+  original_question: string;
+  original_scope: string | null;
+  policy_spans: ResearchSpecPolicySpanV7[];
+  anchors: ResearchSpecAnchorV7[];
+  requirements: ResearchSpecRequirementV7[];
+  unresolved: ResearchSpecUnresolvedV7[];
+  queries: Array<{ id: string; text: string }>;
+  fingerprint: string;
+}
+
+/** A single cited fact (extractive premise). The page must
+ *  render this with the original source quote ``text`` and
+ *  the ``provider_source_id`` / ``url`` as the citation —
+ *  it MUST NOT promote the internal ``evidence_id`` to a
+ *  visible title (the spec warns that the model can write
+ *  arbitrary titles, so only the saved span text is honest). */
+export interface ResearchAnswerQuoteV7 {
+  finding_id: string;
+  evidence_id: string;
+  text: string;
+  provider_source_id: string;
+  url: string;
+}
+
+export type ResearchAnswerItemStatusV7 =
+  | 'covered'
+  | 'partial'
+  | 'not_verified'
+  | (string & {});
+
+export type ResearchAnswerPolarityV7 =
+  | 'positive'
+  | 'negative'
+  | 'conflicting'
+  | 'unknown'
+  | (string & {});
+
+/** One per-requirement row. ``quotes`` is the set of
+ *  saved fact spans the run actually grounded on; ``gap``
+ *  is a server-derived code string (e.g. ``evidence_missing``)
+ *  the page renders through a conservative Chinese label. */
+export interface ResearchVersionConstraintV7 {
+  platform: string;
+  relation: 'at_least' | 'at_most' | 'required' | 'earlier_than' | 'later_than';
+  version: string;
+  evidence_ids: string[];
+  product_key?: string;
+}
+
+export interface ResearchAnswerItemV7 {
+  requirement_id: string;
+  question: string;
+  kind: string;
+  status: ResearchAnswerItemStatusV7;
+  answer_polarity: ResearchAnswerPolarityV7;
+  quotes: ResearchAnswerQuoteV7[];
+  gap: string;
+  adopted_attempt: number | null;
+  version_constraints?: ResearchVersionConstraintV7[];
+  conflict_groups?: Array<{ attempt: number | null; evidence_ids: string[]; version_constraints?: ResearchVersionConstraintV7[] }>;
+
+}
+
+/** An analysis derivation — inference or recommendation on
+ *  top of confirmed fact premises. The page distinguishes
+ *  ``claim_kind: 'inference' | 'recommendation'`` so the
+ *  user never mistakes the LLM's own synthesis for a
+ *  cited fact. ``premises`` is the per-facet binding
+ *  back to the requirements; ``supporting_finding_ids``
+ *  is the matching list of fact ids so the user can
+ *  expand the row and see the cited premises. */
+export interface ResearchAnalysisPremiseV7 {
+  requirement_id: string;
+  evidence_ids: string[];
+}
+
+export interface ResearchAnalysisV7 {
+  finding_id: string;
+  title: string;
+  description: string;
+  claim_kind: 'inference' | 'recommendation' | (string & {});
+  supporting_finding_ids: string[];
+  /* Carried verbatim from the backend analysis meta. The
+   * page never claims this row is semantically audited;
+   * ``semantic_review`` is pinned to ``'NOT_MEASURED'``. */
+  version?: string;
+  requirement_id?: string;
+  facet?: string;
+  operator?: string;
+  premises?: ResearchAnalysisPremiseV7[];
+  scenario?: string | null;
+  proposal?: string | null;
+  semantic_review?: 'NOT_MEASURED' | string;
+}
+
+export interface ResearchAnswerV7 {
+  version: 'research-answer-v7' | (string & {});
+  items: ResearchAnswerItemV7[];
+  unresolved: ResearchSpecUnresolvedV7[];
+  analyses: ResearchAnalysisV7[];
+  semantic_review: 'NOT_MEASURED' | string;
+}
+
+/** Type guard for the v7 answer. A coverage_report may
+ *  carry a v7 answer (``coverage_report.answer``) or a v5
+ *  / v6 audit payload (``coverage_report.items``,
+ *  ``coverage_report.overall_completable``). The page uses
+ *  this guard to pick the renderer without ever poking
+ *  at the old keys for a v7 run. */
+export function isResearchAnswerV7(
+  answer: unknown,
+): answer is ResearchAnswerV7 {
+  if (!answer || typeof answer !== 'object') return false;
+  const v = (answer as { version?: unknown }).version;
+  return v === 'research-answer-v7';
+}
+
+/* ---------- v7 coverage envelope ----------
+ *
+ * Phase 8 v7 wires the ``coverage_report`` discriminator at
+ * the envelope level (``coverage_report.version ===
+ * 'research-support-v7'``). The envelope carries per-
+ * requirement support verdicts (the ``evaluate_support``
+ * ledger), a list of rejected evidence ids, an
+ * ``overall_completable`` summary flag, and an OPTIONAL
+ * ``answer`` payload. A planning-failed v7 run leaves
+ * ``answer`` null — the page must NOT use ``answer``
+ * presence to discriminate v5 vs v7; only ``version``
+ * does. */
+
+export type ResearchSupportItemStatusV7 =
+  | 'covered'
+  | 'partial'
+  | 'not_verified'
+  | (string & {});
+
+export type ResearchSupportPolarityV7 =
+  | 'positive'
+  | 'negative'
+  | 'conflicting'
+  | 'unknown'
+  | (string & {});
+
+/** One per-requirement verdict from the v7
+ *  ``evaluate_support`` ledger. ``reason_codes`` are the
+ *  closed-code support rejections; ``gap`` is the
+ *  ``;``-joined code string the page already maps through
+ *  ``gapLabel``. ``adopted_attempt`` records which pipeline
+ *  attempt the page should cite (``采用第 N 轮``); ``null``
+ *  when the run never adopted a verdict for this row. */
+export interface ResearchSupportV7Item {
+  requirement_id: string;
+  status: ResearchSupportItemStatusV7;
+  evidence_ids: string[];
+  reason_codes: string[];
+  gap: string;
+  role: string;
+  answer_polarity: ResearchSupportPolarityV7;
+  adopted_attempt: number | null;
+  version_constraints?: ResearchVersionConstraintV7[];
+  conflict_groups?: Array<{ attempt: number | null; evidence_ids: string[]; version_constraints?: ResearchVersionConstraintV7[] }>;
+
+  /** Only present when two covered attempts disagree on
+   *  polarity and the ledger demoted the row to
+   *  ``conflicting``. The page surfaces it as audit
+   *  context, never as a user verdict. */
+  conflicting_attempts?: number[] | null;
+}
+
+/** The v7 ``coverage_report`` envelope. A row is v7 iff
+ *  ``version === 'research-support-v7'``; ``answer`` is
+ *  optional (a planning-failed run leaves it ``null``).
+ *  The page reads ``answer.items`` / ``answer.analyses``
+ *  via the ``ResearchAnswer`` renderer when ``answer`` is
+ *  present, and renders the v7 honesty row otherwise. */
+export interface ResearchSupportV7 {
+  version: 'research-support-v7';
+  items: ResearchSupportV7Item[];
+  rejected_ids?: string[];
+  overall_completable: boolean;
+  answer?: ResearchAnswerV7 | null;
+}
+
+/** Type guard for the v7 coverage envelope. The page uses
+ *  it to decide whether to render the v7 renderer (with or
+ *  without an ``answer``) or fall back to the v5 / v6
+ *  evidence-coverage section. */
+export function isResearchSupportV7(
+  report: unknown,
+): report is ResearchSupportV7 {
+  if (!report || typeof report !== 'object') return false;
+  return (report as { version?: unknown }).version === 'research-support-v7';
 }
 
 /* ---------- Error ---------- */

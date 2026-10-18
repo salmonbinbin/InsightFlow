@@ -267,6 +267,13 @@ def _require_project(db: Session, project_id: UUID) -> Project:
     return project
 
 
+def _guard_project(db, model, resource_id, project_id):
+    if project_id is not None:
+        row = db.get(model, resource_id)
+        if row is None or row.project_id != project_id:
+            raise HTTPException(404, "资源不存在")
+
+
 # ---- Routes -----------------------------------------------------------------
 
 
@@ -278,11 +285,15 @@ def _require_project(db: Session, project_id: UUID) -> Project:
 def create_requirement_route(
     insight_id: UUID,
     body: RequirementCreateRequest = Body(default_factory=RequirementCreateRequest),
+    project_id: UUID | None = Query(default=None),
     db: Session = Depends(get_db),
 ) -> RequirementRead:
+    _guard_project(db, Insight, insight_id, project_id)
     _require_insight(db, insight_id)
     try:
-        outcome: RequirementOutcome = create_requirement(db, insight_id, pm_content=body.content)
+        outcome: RequirementOutcome = create_requirement(
+            db, insight_id, pm_content=body.content, requested_prompt_version=body.prompt_version
+        )
     except Exception as exc:
         db.rollback()
         raise _handle_requirement_error(exc) from exc
@@ -297,8 +308,10 @@ def create_requirement_route(
 )
 def get_requirement_route(
     requirement_id: UUID,
+    project_id: UUID | None = Query(default=None),
     db: Session = Depends(get_db),
 ) -> RequirementRead:
+    _guard_project(db, Requirement, requirement_id, project_id)
     try:
         row = get_requirement(db, requirement_id)
     except RequirementNotFoundError as exc:
@@ -313,8 +326,10 @@ def get_requirement_route(
 def patch_requirement_route(
     requirement_id: UUID,
     body: RequirementPatchRequest = Body(...),
+    project_id: UUID | None = Query(default=None),
     db: Session = Depends(get_db),
 ) -> RequirementRead:
+    _guard_project(db, Requirement, requirement_id, project_id)
     if body.status is not None and body.status not in _REQUIREMENT_STATUS_VALUES:
         raise HTTPException(422, f"unknown status: {body.status}")
     try:
@@ -371,10 +386,17 @@ def list_requirements_route(
 def create_prd_route(
     requirement_id: UUID,
     body: PRDCreateRequest = Body(default_factory=PRDCreateRequest),
+    project_id: UUID | None = Query(default=None),
     db: Session = Depends(get_db),
 ) -> PRDRead:
+    _guard_project(db, Requirement, requirement_id, project_id)
     try:
-        outcome: PRDOutcome = create_prd_version(db, requirement_id, pm_content=body.content)
+        outcome: PRDOutcome = create_prd_version(
+            db,
+            requirement_id,
+            pm_content=body.content,
+            requested_prompt_version=body.prompt_version,
+        )
     except RequirementNotFoundError as exc:
         db.rollback()
         raise HTTPException(404, str(exc)) from exc
@@ -403,7 +425,10 @@ def create_prd_route(
     "/prds/{prd_id}",
     response_model=PRDRead,
 )
-def get_prd_route(prd_id: UUID, db: Session = Depends(get_db)) -> PRDRead:
+def get_prd_route(
+    prd_id: UUID, project_id: UUID | None = Query(default=None), db: Session = Depends(get_db)
+) -> PRDRead:
+    _guard_project(db, PRD, prd_id, project_id)
     try:
         row = get_prd(db, prd_id)
     except RequirementNotFoundError as exc:
@@ -418,8 +443,10 @@ def get_prd_route(prd_id: UUID, db: Session = Depends(get_db)) -> PRDRead:
 def patch_prd_route(
     prd_id: UUID,
     body: PRDPatchRequest = Body(...),
+    project_id: UUID | None = Query(default=None),
     db: Session = Depends(get_db),
 ) -> PRDRead:
+    _guard_project(db, PRD, prd_id, project_id)
     if body.status is not None and body.status not in _PRD_STATUS_VALUES:
         raise HTTPException(422, f"unknown PRD status: {body.status}")
     try:
@@ -442,6 +469,7 @@ def patch_prd_route(
 def accept_prd_route(
     prd_id: UUID,
     body: PRDAcceptRequest = Body(default_factory=PRDAcceptRequest),
+    project_id: UUID | None = Query(default=None),
     db: Session = Depends(get_db),
 ) -> PRDRead:
     # No user system → the audit row must NOT carry an identity
@@ -449,6 +477,7 @@ def accept_prd_route(
     # (extra=forbid) so any submitted key already returns 422 before
     # we get here. The service call therefore always passes
     # ``accepted_by=None``.
+    _guard_project(db, PRD, prd_id, project_id)
     try:
         row = accept_prd(db, prd_id)
     except RequirementNotFoundError as exc:
@@ -470,8 +499,10 @@ def list_prds_route(
     requirement_id: UUID,
     limit: int = Query(50, ge=1, le=200),
     offset: int = Query(0, ge=0),
+    project_id: UUID | None = Query(default=None),
     db: Session = Depends(get_db),
 ) -> PRDPage:
+    _guard_project(db, Requirement, requirement_id, project_id)
     try:
         get_requirement(db, requirement_id)
     except RequirementNotFoundError as exc:
@@ -534,9 +565,7 @@ def list_project_prds_route(
     """
     _require_project(db, project_id)
     where_clauses = [PRD.project_id == project_id]
-    total = (
-        db.scalar(select(func.count()).select_from(PRD).where(*where_clauses)) or 0
-    )
+    total = db.scalar(select(func.count()).select_from(PRD).where(*where_clauses)) or 0
     rows = db.scalars(
         select(PRD)
         .where(*where_clauses)

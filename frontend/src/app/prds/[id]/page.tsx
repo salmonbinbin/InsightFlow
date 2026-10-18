@@ -40,11 +40,14 @@
  */
 
 import Link from 'next/link';
+import { TechnicalDetails } from '../../../components/TechnicalDetails';
+import { displayLabel, sectionLabel, warningLabel, metricNote, documentText } from '../../../lib/presentation';
 import { useParams, useRouter } from 'next/navigation';
 import {
   useCallback,
   useEffect,
   useMemo,
+  useRef,
   useState,
 } from 'react';
 import { useProjectContext } from '../../../contexts/ProjectContext';
@@ -116,6 +119,10 @@ export default function PrdDetailPage() {
   const { signal } = useProjectScopedFetch();
   const client = getApiClient();
   const prdId = params?.id ?? '';
+  const requestScopeRef = useRef({ projectId: activeProjectId, id: prdId });
+  if (requestScopeRef.current.projectId !== activeProjectId || requestScopeRef.current.id !== prdId) {
+    requestScopeRef.current = { projectId: activeProjectId, id: prdId };
+  }
 
   const [prd, setPrd] = useState<PrdRead | null>(null);
   const [loadError, setLoadError] = useState<string | null>(null);
@@ -214,14 +221,17 @@ export default function PrdDetailPage() {
   /* ---------- Load PRD ---------- */
 
   const load = useCallback(async () => {
-    if (!prdId || !signal) return;
+    if (!prdId || !signal || !activeProjectId) return;
     const mySignal = signal;
     const myId = prdId;
     setLoading(true);
     setLoadError(null);
     setNotFound(false);
     setProjectMismatch(false);
-    const res = await client.getPrd(prdId, mySignal);
+    const requestScope = requestScopeRef.current;
+    const res = await client.getPrd(prdId, mySignal, requestScope.projectId ?? undefined);
+    if (requestScopeRef.current !== requestScope) return;
+    if (res.data && res.data.project_id !== requestScope.projectId) { setProjectMismatch(true); setLoading(false); return; }
     if (mySignal.aborted) return;
     if (myId !== prdId) return;
     if (res.error) {
@@ -244,7 +254,7 @@ export default function PrdDetailPage() {
     }
     setPrd(res.data);
     setLoading(false);
-  }, [client, prdId, signal]);
+  }, [activeProjectId, client, prdId, signal]);
 
   useEffect(() => {
     void load();
@@ -285,15 +295,17 @@ export default function PrdDetailPage() {
    * never bleed into a different requirement's history.
    */
   const loadHistory = useCallback(async () => {
-    if (!prd || !signal) return;
+    if (!prd || !signal || prd.project_id !== activeProjectId || prd.id !== prdId) return;
     const mySignal = signal;
     const myId = prdId;
     setHistoryLoading(true);
     setHistoryError(null);
+    const requestScope = requestScopeRef.current;
+    if (prd.project_id !== requestScope.projectId) return;
     const res = await client.listPrds(
       prd.requirement_id,
-      mySignal ?? undefined,
-    );
+      mySignal ?? undefined, requestScope.projectId ?? undefined);
+    if (requestScopeRef.current !== requestScope) return;
     if (mySignal.aborted) return;
     if (myId !== prdId) return;
     if (res.error || !res.data) {
@@ -310,7 +322,7 @@ export default function PrdDetailPage() {
     setHistory(filtered);
     setHistoryTotal(res.data.total);
     setHistoryLoading(false);
-  }, [client, prd, prdId, signal]);
+  }, [activeProjectId, client, prd, prdId, signal]);
 
   useEffect(() => {
     void loadHistory();
@@ -381,7 +393,10 @@ export default function PrdDetailPage() {
     setRegenerating(true);
     setRegenerateError(null);
     setRegenerateSuccess(null);
-    const res = await client.createPrd(prd.requirement_id, {}, mySignal ?? undefined);
+    const requestScope = requestScopeRef.current;
+    if (prd.project_id !== requestScope.projectId) return;
+    const res = await client.createPrd(prd.requirement_id, prd.prompt_version === 'prd-generation-v4' ? { prompt_version: 'prd-generation-v4' } : {}, mySignal ?? undefined, requestScope.projectId ?? undefined);
+    if (requestScopeRef.current !== requestScope) return;
     if (mySignal?.aborted) {
       setRegenerating(false);
       return;
@@ -389,7 +404,7 @@ export default function PrdDetailPage() {
     setRegenerating(false);
     if (res.error || !res.data) {
       setRegenerateError(
-        res.error ? classifyError(res.error) : '生成 PRD 失败。',
+        res.error ? classifyError(res.error) : '生成文档失败。',
       );
       return;
     }
@@ -432,14 +447,17 @@ export default function PrdDetailPage() {
     setAccepting(true);
     setAcceptError(null);
     setAcceptSuccess(false);
-    const res = await client.acceptPrd(prd.id, mySignal ?? undefined);
+    const requestScope = requestScopeRef.current;
+    if (prd.project_id !== requestScope.projectId) return;
+    const res = await client.acceptPrd(prd.id, mySignal ?? undefined, requestScope.projectId ?? undefined);
+    if (requestScopeRef.current !== requestScope) return;
     if (mySignal?.aborted) {
       setAccepting(false);
       return;
     }
     setAccepting(false);
     if (res.error || !res.data) {
-      setAcceptError(res.error ? classifyError(res.error) : '接受 PRD 失败。');
+      setAcceptError(res.error ? classifyError(res.error) : '接受文档失败。');
       return;
     }
     setPrd(res.data);
@@ -493,11 +511,13 @@ export default function PrdDetailPage() {
     const myDraft = draftContent;
     setSaving(true);
     setSaveError(null);
+    const requestScope = requestScopeRef.current;
+    if (prd.project_id !== requestScope.projectId) return;
     const res = await client.patchPrd(
       prd.id,
       { content: myDraft },
-      mySignal ?? undefined,
-    );
+      mySignal ?? undefined, requestScope.projectId ?? undefined);
+    if (requestScopeRef.current !== requestScope) return;
     if (mySignal?.aborted) {
       setSaving(false);
       return;
@@ -513,7 +533,7 @@ export default function PrdDetailPage() {
       // Real failure: keep the draft + edit mode so the PM can fix
       // and retry. The error must surface visibly — never claim a
       // save that did not happen.
-      setSaveError(res.error ? classifyError(res.error) : '保存 PRD 失败。');
+      setSaveError(res.error ? classifyError(res.error) : '保存文档失败。');
       return;
     }
     // Success — adopt the canonical server row, exit edit mode,
@@ -549,7 +569,7 @@ export default function PrdDetailPage() {
     return (
       <EmptyState
         title="请先选择项目"
-        description="在右上角选择或创建一个项目，以查看 PRD 详情。"
+        description="在右上角选择或创建一个项目，以查看需求文档。"
       />
     );
   }
@@ -558,9 +578,9 @@ export default function PrdDetailPage() {
   if (notFound) {
     return (
       <EmptyState
-        title="PRD 不存在"
-        description={`该 PRD（${prdId.slice(0, 8)}…）在当前项目下不存在，可能属于其它项目或已被删除。`}
-        action={<Link className="btn btn-ghost btn-sm" href="/prds">返回 PRD 列表</Link>}
+        title="文档不存在"
+        description={'当前项目中没有这份文档，请检查所选项目。'}
+        action={<Link className="btn btn-ghost btn-sm" href="/prds">返回文档列表</Link>}
       />
     );
   }
@@ -572,35 +592,22 @@ export default function PrdDetailPage() {
       />
     );
   }
+  if (projectMismatch) return <ErrorState title="PRD 与当前项目不匹配" message="该 PRD 不属于当前项目，无法展示或修改。" />;
   if (!prd) return <LoadingState />;
 
-  if (projectMismatch) {
-    return (
-      <ErrorState
-        title="PRD 与当前项目不匹配"
-        message={`该 PRD（${prd.id.slice(0, 8)}…）属于项目 ${prd.project_id.slice(0, 8)}…，无法在当前项目下展示或修改。请切换到对应项目。`}
-      />
-    );
-  }
 
   const content = prd.content;
 
   return (
     <div className="page page-prd-detail">
       <header className="page-header">
-        <span className="eyebrow">PRD · C2</span>
+        <span className="eyebrow">需求文档</span>
         <h1 className="page-title" data-testid="prd-page-title">
-          PRD v{prd.version}
+          需求文档 v{prd.version}
         </h1>
         <p className="page-subtitle">
-          来自 Requirement{' '}
-          <Link href={`/requirements/${prd.requirement_id}`} className="mono">
-            {prd.requirement_id.slice(0, 8)}
-          </Link>
-          {' · 来源 Insight '}
-          <code className="mono">{prd.insight_id.slice(0, 8)}</code>
-          {' · 更新 '}
-          <b className="mono">{formatRelative(prd.updated_at ?? null)}</b>
+          <Link href={`/requirements/${prd.requirement_id}`}>查看关联需求</Link>
+          {' · 更新于 '}{formatRelative(prd.updated_at ?? null)}
         </p>
       </header>
 
@@ -617,24 +624,26 @@ export default function PrdDetailPage() {
                 className={`badge ${STATUS_BADGE[prd.status as PrdStatus] ?? 'badge-outline'}`}
                 data-testid="prd-status-badge"
               >
-                {STATUS_LABEL[prd.status as PrdStatus] ?? prd.status}
+                {STATUS_LABEL[prd.status as PrdStatus] ?? displayLabel(prd.status)}
               </span>
             </div>
           </div>
           <div className="meta-item">
-            <div className="meta-k">AI Generated Draft</div>
+            <div className="meta-k">AI 草稿</div>
             <div className="meta-v mono" data-testid="prd-ai-draft-flag">
               {prd.is_ai_generated_draft ? '是' : '否'}
             </div>
           </div>
+          <TechnicalDetails label="查看生成信息">
           <div className="meta-item">
             <div className="meta-k">模型</div>
             <div className="meta-v mono">{prd.model ?? '—'}</div>
           </div>
           <div className="meta-item">
-            <div className="meta-k">Prompt 版本</div>
+            <div className="meta-k">提示词版本</div>
             <div className="meta-v mono">{prd.prompt_version}</div>
           </div>
+          </TechnicalDetails>
           <div className="meta-item">
             <div className="meta-k">接受时间</div>
             <div className="meta-v mono" data-testid="prd-accepted-at">
@@ -647,20 +656,14 @@ export default function PrdDetailPage() {
       {prd.grounding_warnings.length > 0 ? (
         <section className="section" data-od-id="prd-grounding-warnings">
           <h3>
-            Grounding Warnings ·{' '}
+            待复核事项 ·{' '}
             <span className="muted">{prd.grounding_warnings.length}</span>
           </h3>
           <ul className="grounding-warning-list" data-testid="grounding-warning-list">
             {prd.grounding_warnings.map((w, idx) => (
               <li key={idx} className="grounding-warning-row">
-                <code className="mono">{w.code}</code>
-                {w.section ? <span> · section: <code className="mono">{w.section}</code></span> : null}
-                {w.evidence_id ? (
-                  <span> · evidence_id: <code className="mono">{w.evidence_id}</code></span>
-                ) : null}
-                <div className="muted" style={{ fontSize: 'var(--t-caption)' }}>
-                  {w.message}
-                </div>
+                <span>{w.section ? `${sectionLabel(w.section)}：` : ''}{warningLabel(w.code)}</span>
+                {w.evidence_id ? <span> · 关联反馈：{w.evidence_id}</span> : null}
               </li>
             ))}
           </ul>
@@ -784,7 +787,7 @@ export default function PrdDetailPage() {
         {isReadOnly && !editing ? (
           <p className="muted" style={{ fontSize: 'var(--t-caption)', marginTop: 8 }}>
             {isAccepted
-              ? '本版本已采纳，AI snapshot 已固化。如需修改，请回到 Requirement 详情页生成新版本。'
+              ? '本版本已采纳。如需修改，请从关联需求生成新版本。'
               : isArchived
                 ? '本版本已归档，禁止编辑。'
                 : '当前项目不匹配，禁止编辑。'}
@@ -800,7 +803,7 @@ export default function PrdDetailPage() {
       {saveError ? (
         <div data-testid="prd-save-error">
           <ErrorState
-            title="保存 PRD 失败"
+            title="保存文档失败"
             message={saveError}
             onRetry={() => { setSaveError(null); void saveDraft(); }}
           />
@@ -815,7 +818,7 @@ export default function PrdDetailPage() {
       {regenerateError ? (
         <div data-testid="regenerate-error">
           <ErrorState
-            title="生成 PRD 失败"
+            title="生成文档失败"
             message={regenerateError}
             onRetry={() => { setRegenerateError(null); void onRegenerate(); }}
           />
@@ -828,7 +831,7 @@ export default function PrdDetailPage() {
       ) : null}
       {acceptError ? (
         <ErrorState
-          title="接受 PRD 失败"
+          title="接受文档失败"
           message={acceptError}
           onRetry={() => { setAcceptError(null); void onAccept(); }}
         />
@@ -851,7 +854,7 @@ export default function PrdDetailPage() {
           <span className="muted">{historyTotal}</span>
         </h3>
         <p className="muted" style={{ fontSize: 'var(--t-caption)' }}>
-          按 <code className="mono">version DESC, id DESC</code> 稳定排序；每行可以打开查看具体版本。
+          选择版本查看内容。
         </p>
         {historyError ? (
           <ErrorState
@@ -867,7 +870,7 @@ export default function PrdDetailPage() {
         ) : null}
         {history !== null && history.length === 0 && !historyLoading && !historyError ? (
           <p className="muted" style={{ fontSize: 'var(--t-caption)' }} data-testid="prd-history-empty">
-            暂无版本历史，本 Requirement 尚未生成过 PRD。
+            暂无版本历史，这条需求尚未生成文档。
           </p>
         ) : null}
         <ul
@@ -902,7 +905,7 @@ export default function PrdDetailPage() {
                   <span
                     className={`badge ${STATUS_BADGE[row.status as PrdStatus] ?? 'badge-outline'}`}
                   >
-                    {STATUS_LABEL[row.status as PrdStatus] ?? row.status}
+                    {STATUS_LABEL[row.status as PrdStatus] ?? displayLabel(row.status)}
                   </span>
                   {row.id === prd.id ? (
                     <span
@@ -917,7 +920,7 @@ export default function PrdDetailPage() {
                       className="badge badge-success"
                       data-testid="prd-history-backend-active"
                     >
-                      Backend Active
+                      最新版本
                     </span>
                   ) : null}
                   <Link
@@ -1018,72 +1021,72 @@ function PrdBody({ content }: { content: PrdContent }) {
   return (
     <section className="section" data-od-id="prd-body">
       <EvidenceBackedSectionBlock
-        label="背景 (Background)"
+        label="背景"
         data-testid="prd-section-background"
         section={content.background}
       />
       <EvidenceBackedSectionBlock
-        label="问题 (Problem)"
+        label="用户问题"
         data-testid="prd-section-problem"
         section={content.problem}
       />
       <EvidenceBackedSectionBlock
-        label="目标用户 (Target User)"
+        label="目标用户"
         data-testid="prd-section-target-user"
         section={content.target_user}
       />
       <EvidenceBackedSectionBlock
-        label="用户故事 (User Story)"
+        label="用户故事"
         data-testid="prd-section-user-story"
         section={content.user_story}
       />
       <EvidenceBackedSectionBlock
-        label="产品目标 (Product Goal)"
+        label="产品目标"
         data-testid="prd-section-product-goal"
         section={content.product_goal}
       />
       <ProposedSolutionBlock
-        label="建议方案 (Proposed Solution)"
+        label="建议方案"
         data-testid="prd-section-proposed-solution"
         section={content.proposed_solution}
       />
       <FunctionalRequirementsBlock
-        label="功能需求 (Functional Requirements)"
+        label="功能需求"
         data-testid="prd-section-functional-requirements"
         items={content.functional_requirements}
       />
       <EvidenceBackedSectionBlock
-        label="用户流程 (User Flow)"
+        label="用户流程"
         data-testid="prd-section-user-flow"
         section={content.user_flow}
       />
       <EdgeCasesBlock
-        label="边界情况 (Edge Cases)"
+        label="边界情况"
         data-testid="prd-section-edge-cases"
         items={content.edge_cases}
       />
       <AcceptanceCriteriaBlock
-        label="验收标准 (Acceptance Criteria)"
+        label="验收标准"
         data-testid="prd-section-acceptance-criteria"
         items={content.acceptance_criteria}
       />
       <SuccessMetricsBlock
-        label="成功指标 (Success Metrics)"
+        label="成功指标"
         data-testid="prd-section-success-metrics"
         items={content.success_metrics}
       />
       <RisksBlock
-        label="风险 (Risks)"
+        label="风险"
         data-testid="prd-section-risks"
         items={content.risks}
       />
       <MvpScopeBlock
-        label="MVP 范围 (MVP Scope)"
+        label="首版范围"
         data-testid="prd-section-mvp-scope"
         section={content.mvp_scope}
       />
       <EvidenceListsBlock
-        label="证据 (Evidence)"
+        label="引用证据"
         data-testid="prd-section-evidence"
         sources={content.evidence_sources}
         ids={content.evidence_ids}
@@ -1104,7 +1107,7 @@ function EvidenceBackedSectionBlock({
   return (
     <article className="prd-section" data-testid={rest['data-testid']}>
       <h4>{label}</h4>
-      <p className="prd-section-text">{section.text}</p>
+      <p className="prd-section-text">{documentText(section.text)}</p>
       <EvidenceIds ids={section.evidence_ids} />
     </article>
   );
@@ -1130,7 +1133,7 @@ function ProposedSolutionBlock({
           {section.is_proposed ? '提议' : '已确认'}
         </span>
       </h4>
-      <p className="prd-section-text">{section.text}</p>
+      <p className="prd-section-text">{documentText(section.text)}</p>
       <EvidenceIds ids={section.evidence_ids} />
     </article>
   );
@@ -1151,7 +1154,7 @@ function FunctionalRequirementsBlock({
       <ol className="prd-fr-list">
         {items.map((item, idx) => (
           <li key={idx} className="prd-fr-item" data-testid="prd-fr-item">
-            <span className="prd-fr-text">{item.text}</span>
+            <span className="prd-fr-text">{documentText(item.text)}</span>
             <EvidenceIds ids={item.evidence_ids} />
           </li>
         ))}
@@ -1176,9 +1179,9 @@ function EdgeCasesBlock({
         {items.map((item, idx) => (
           <li key={idx} className="prd-edge-case-item" data-testid="prd-edge-case-item">
             <span className="badge badge-outline mono">
-              {EDGE_CATEGORY_LABEL[item.category] ?? item.category}
+              {EDGE_CATEGORY_LABEL[item.category] ?? displayLabel(item.category)}
             </span>
-            <span className="prd-edge-case-description">{item.description}</span>
+            <span className="prd-edge-case-description">{documentText(item.description)}</span>
             <EvidenceIds ids={item.evidence_ids} />
           </li>
         ))}
@@ -1207,10 +1210,10 @@ function AcceptanceCriteriaBlock({
             >
               {item.verifiable ? '可验证' : '不可验证'}
             </span>
-            <span className="prd-ac-text">{item.text}</span>
+            <span className="prd-ac-text">{documentText(item.text)}</span>
             {item.note ? (
               <span className="muted" style={{ fontSize: 'var(--t-caption)' }}>
-                {item.note}
+                {documentText(item.note)}
               </span>
             ) : null}
             <EvidenceIds ids={item.evidence_ids} />
@@ -1236,13 +1239,13 @@ function SuccessMetricsBlock({
       <ul className="prd-metric-list">
         {items.map((m, idx) => (
           <li key={idx} className="prd-metric-item" data-testid="prd-metric-item">
-            <span className="prd-metric-name">{m.name}</span>
+            <span className="prd-metric-name">{documentText(m.name)}</span>
             <span className="badge badge-outline mono">
-              {METRIC_TYPE_LABEL[m.type] ?? m.type}
+              {METRIC_TYPE_LABEL[m.type] ?? displayLabel(m.type)}
             </span>
             {m.note ? (
               <span className="muted" style={{ fontSize: 'var(--t-caption)' }}>
-                {m.note}
+                {metricNote(m.note ?? '')}
               </span>
             ) : null}
             {m.sources.length > 0 ? (
@@ -1269,16 +1272,21 @@ function RisksBlock({
   return (
     <article className="prd-section" data-testid={rest['data-testid']}>
       <h4>{label} · <span className="muted">{items.length}</span></h4>
+      {items.some((risk) => risk.category === 'known') ? (
+        <p className="muted" data-testid="known-risk-review-boundary">
+          请对照原始反馈核实已知风险。
+        </p>
+      ) : null}
       <ul className="prd-risk-list">
         {items.map((r, idx) => (
           <li key={idx} className="prd-risk-item" data-testid="prd-risk-item">
             <span className="badge badge-outline mono">
-              {RISK_CATEGORY_LABEL[r.category] ?? r.category}
+              {RISK_CATEGORY_LABEL[r.category] ?? displayLabel(r.category)}
             </span>
-            <span className="prd-risk-description">{r.description}</span>
+            <span className="prd-risk-description">{documentText(r.description)}</span>
             {r.mitigation ? (
               <div className="muted" style={{ fontSize: 'var(--t-caption)' }}>
-                缓解：{r.mitigation}
+                缓解：{documentText(r.mitigation)}
               </div>
             ) : null}
             <EvidenceIds ids={r.evidence_ids} />
@@ -1303,12 +1311,12 @@ function MvpScopeBlock({
       <h4>{label}</h4>
       <div className="prd-mvp-grid">
         <div>
-          <div className="meta-k">包含 (In Scope)</div>
-          <p className="prd-section-text">{section.in_scope}</p>
+          <div className="meta-k">包含内容</div>
+          <p className="prd-section-text">{documentText(section.in_scope)}</p>
         </div>
         <div>
-          <div className="meta-k">排除 (Out of Scope)</div>
-          <p className="prd-section-text">{section.out_of_scope}</p>
+          <div className="meta-k">暂不包含</div>
+          <p className="prd-section-text">{documentText(section.out_of_scope)}</p>
         </div>
       </div>
     </article>
@@ -1331,7 +1339,7 @@ function EvidenceListsBlock({
       <h4>{label}</h4>
       <div className="prd-evidence-grid">
         <div>
-          <div className="meta-k">来源 (Sources)</div>
+          <div className="meta-k">资料来源</div>
           {sources.length > 0 ? (
             <ul className="prd-evidence-id-list">
               {sources.map((s, idx) => (
@@ -1345,7 +1353,7 @@ function EvidenceListsBlock({
           )}
         </div>
         <div>
-          <div className="meta-k">证据 ID (Evidence IDs)</div>
+          <div className="meta-k">反馈编号</div>
           <EvidenceIds ids={ids} />
         </div>
       </div>
@@ -1503,7 +1511,7 @@ function TextSectionEditor({
       <textarea
         className="textarea"
         data-testid={`prd-draft-${testIdPrefix}-text`}
-        value={text}
+        value={documentText(text)}
         onChange={(e) => onChange({ text: e.target.value, evidence_ids: evidenceIds })}
         rows={3}
         disabled={disabled}
@@ -1514,7 +1522,7 @@ function TextSectionEditor({
         value={evidenceIds}
         onChange={(next) => onChange({ text, evidence_ids: next })}
         disabled={disabled}
-        placeholder="evidence_id（多个用逗号分隔）"
+        placeholder="反馈编号，多个用逗号分隔"
         required
       />
     </article>
@@ -1549,11 +1557,11 @@ function PrdEditor({ draftContent, onChange, disabled }: PrdEditorProps) {
 
   return (
     <section className="section prd-editor" data-od-id="prd-editor" data-testid="prd-editor">
-      <h3>编辑 PRD · 13 节</h3>
+      <h3>编辑需求文档</h3>
 
       <TextSectionEditor
         testIdPrefix="background"
-        label="背景 (Background)"
+        label="背景"
         text={draftContent.background.text}
         evidenceIds={draftContent.background.evidence_ids}
         onChange={updateTextSection('background')}
@@ -1561,7 +1569,7 @@ function PrdEditor({ draftContent, onChange, disabled }: PrdEditorProps) {
       />
       <TextSectionEditor
         testIdPrefix="problem"
-        label="问题 (Problem)"
+        label="用户问题"
         text={draftContent.problem.text}
         evidenceIds={draftContent.problem.evidence_ids}
         onChange={updateTextSection('problem')}
@@ -1569,7 +1577,7 @@ function PrdEditor({ draftContent, onChange, disabled }: PrdEditorProps) {
       />
       <TextSectionEditor
         testIdPrefix="target-user"
-        label="目标用户 (Target User)"
+        label="目标用户"
         text={draftContent.target_user.text}
         evidenceIds={draftContent.target_user.evidence_ids}
         onChange={updateTextSection('target_user')}
@@ -1577,7 +1585,7 @@ function PrdEditor({ draftContent, onChange, disabled }: PrdEditorProps) {
       />
       <TextSectionEditor
         testIdPrefix="user-story"
-        label="用户故事 (User Story)"
+        label="用户故事"
         text={draftContent.user_story.text}
         evidenceIds={draftContent.user_story.evidence_ids}
         onChange={updateTextSection('user_story')}
@@ -1585,7 +1593,7 @@ function PrdEditor({ draftContent, onChange, disabled }: PrdEditorProps) {
       />
       <TextSectionEditor
         testIdPrefix="product-goal"
-        label="产品目标 (Product Goal)"
+        label="产品目标"
         text={draftContent.product_goal.text}
         evidenceIds={draftContent.product_goal.evidence_ids}
         onChange={updateTextSection('product_goal')}
@@ -1594,11 +1602,11 @@ function PrdEditor({ draftContent, onChange, disabled }: PrdEditorProps) {
 
       {/* proposed_solution — extra is_proposed checkbox. */}
       <article className="prd-section prd-section-editor" data-testid="prd-section-proposed-solution">
-        <h4>建议方案 (Proposed Solution)</h4>
+        <h4>建议方案</h4>
         <textarea
           className="textarea"
           data-testid="prd-draft-proposed-text"
-          value={draftContent.proposed_solution.text}
+          value={documentText(draftContent.proposed_solution.text)}
           onChange={(e) =>
             updateSection('proposed_solution', {
               ...draftContent.proposed_solution,
@@ -1622,7 +1630,7 @@ function PrdEditor({ draftContent, onChange, disabled }: PrdEditorProps) {
             }
             disabled={disabled}
           />
-          提议 (is_proposed)
+          方案提案
         </label>
         <CsvField
           testId="prd-draft-proposed-evidence"
@@ -1634,21 +1642,21 @@ function PrdEditor({ draftContent, onChange, disabled }: PrdEditorProps) {
             })
           }
           disabled={disabled}
-          placeholder="evidence_id（多个用逗号分隔）"
+          placeholder="反馈编号，多个用逗号分隔"
           required
         />
       </article>
 
       {/* functional_requirements */}
       <article className="prd-section prd-section-editor" data-testid="prd-section-functional-requirements">
-        <h4>功能需求 (Functional Requirements) · <span className="muted">{draftContent.functional_requirements.length}</span></h4>
+        <h4>功能需求 · <span className="muted">{draftContent.functional_requirements.length}</span></h4>
         <ol className="prd-fr-list">
           {draftContent.functional_requirements.map((item, idx) => (
             <li key={idx} className="prd-fr-item-editor" data-testid={`prd-draft-fr-item-${idx}`} style={{ display: 'flex', flexDirection: 'column', gap: FIELD_GAP, marginBottom: FIELD_GAP }}>
               <textarea
                 className="textarea"
                 data-testid={`prd-draft-fr-item-${idx}-text`}
-                value={item.text}
+                value={documentText(item.text)}
                 onChange={(e) =>
                   updateArray(
                     'functional_requirements',
@@ -1673,7 +1681,7 @@ function PrdEditor({ draftContent, onChange, disabled }: PrdEditorProps) {
                     )
                   }
                   disabled={disabled}
-                  placeholder="evidence_id（多个用逗号分隔）"
+                  placeholder="反馈编号，多个用逗号分隔"
                   required
                 />
                 <button
@@ -1720,7 +1728,7 @@ function PrdEditor({ draftContent, onChange, disabled }: PrdEditorProps) {
 
       <TextSectionEditor
         testIdPrefix="user-flow"
-        label="用户流程 (User Flow)"
+        label="用户流程"
         text={draftContent.user_flow.text}
         evidenceIds={draftContent.user_flow.evidence_ids}
         onChange={updateTextSection('user_flow')}
@@ -1729,7 +1737,7 @@ function PrdEditor({ draftContent, onChange, disabled }: PrdEditorProps) {
 
       {/* edge_cases */}
       <article className="prd-section prd-section-editor" data-testid="prd-section-edge-cases">
-        <h4>边界情况 (Edge Cases) · <span className="muted">{draftContent.edge_cases.length}</span></h4>
+        <h4>边界情况 · <span className="muted">{draftContent.edge_cases.length}</span></h4>
         <ul className="prd-edge-case-list">
           {draftContent.edge_cases.map((item, idx) => (
             <li key={idx} className="prd-edge-case-item-editor" data-testid={`prd-draft-edge-item-${idx}`} style={{ display: 'flex', flexDirection: 'column', gap: FIELD_GAP, marginBottom: FIELD_GAP }}>
@@ -1776,7 +1784,7 @@ function PrdEditor({ draftContent, onChange, disabled }: PrdEditorProps) {
               <textarea
                 className="textarea"
                 data-testid={`prd-draft-edge-item-${idx}-description`}
-                value={item.description}
+                value={documentText(item.description)}
                 onChange={(e) =>
                   updateArray(
                     'edge_cases',
@@ -1800,7 +1808,7 @@ function PrdEditor({ draftContent, onChange, disabled }: PrdEditorProps) {
                   )
                 }
                 disabled={disabled}
-                placeholder="evidence_id（多个用逗号分隔）"
+                placeholder="反馈编号，多个用逗号分隔"
                 required
               />
             </li>
@@ -1824,7 +1832,7 @@ function PrdEditor({ draftContent, onChange, disabled }: PrdEditorProps) {
 
       {/* acceptance_criteria */}
       <article className="prd-section prd-section-editor" data-testid="prd-section-acceptance-criteria">
-        <h4>验收标准 (Acceptance Criteria) · <span className="muted">{draftContent.acceptance_criteria.length}</span></h4>
+        <h4>验收标准 · <span className="muted">{draftContent.acceptance_criteria.length}</span></h4>
         <ul className="prd-ac-list">
           {draftContent.acceptance_criteria.map((item, idx) => (
             <li key={idx} className="prd-ac-item-editor" data-testid={`prd-draft-ac-item-${idx}`} style={{ display: 'flex', flexDirection: 'column', gap: FIELD_GAP, marginBottom: FIELD_GAP }}>
@@ -1832,7 +1840,7 @@ function PrdEditor({ draftContent, onChange, disabled }: PrdEditorProps) {
                 <textarea
                   className="textarea"
                   data-testid={`prd-draft-ac-item-${idx}-text`}
-                  value={item.text}
+                  value={documentText(item.text)}
                   onChange={(e) =>
                     updateArray(
                       'acceptance_criteria',
@@ -1882,8 +1890,8 @@ function PrdEditor({ draftContent, onChange, disabled }: PrdEditorProps) {
                   type="text"
                   className="input"
                   data-testid={`prd-draft-ac-item-${idx}-note`}
-                  value={item.note}
-                  placeholder="备注 (note)"
+                  value={documentText(item.note)}
+                  placeholder="备注"
                   onChange={(e) =>
                     updateArray(
                       'acceptance_criteria',
@@ -1908,7 +1916,7 @@ function PrdEditor({ draftContent, onChange, disabled }: PrdEditorProps) {
                   )
                 }
                 disabled={disabled}
-                placeholder="evidence_id（多个用逗号分隔）"
+                placeholder="反馈编号，多个用逗号分隔"
                 required
               />
             </li>
@@ -1932,7 +1940,7 @@ function PrdEditor({ draftContent, onChange, disabled }: PrdEditorProps) {
 
       {/* success_metrics */}
       <article className="prd-section prd-section-editor" data-testid="prd-section-success-metrics">
-        <h4>成功指标 (Success Metrics) · <span className="muted">{draftContent.success_metrics.length}</span></h4>
+        <h4>成功指标 · <span className="muted">{draftContent.success_metrics.length}</span></h4>
         <ul className="prd-metric-list">
           {draftContent.success_metrics.map((item, idx) => (
             <li key={idx} className="prd-metric-item-editor" data-testid={`prd-draft-metric-item-${idx}`} style={{ display: 'flex', flexDirection: 'column', gap: FIELD_GAP, marginBottom: FIELD_GAP }}>
@@ -1941,7 +1949,7 @@ function PrdEditor({ draftContent, onChange, disabled }: PrdEditorProps) {
                   type="text"
                   className="input"
                   data-testid={`prd-draft-metric-item-${idx}-name`}
-                  value={item.name}
+                  value={documentText(item.name)}
                   placeholder="指标名"
                   onChange={(e) =>
                     updateArray(
@@ -1993,8 +2001,8 @@ function PrdEditor({ draftContent, onChange, disabled }: PrdEditorProps) {
                 type="text"
                 className="input"
                 data-testid={`prd-draft-metric-item-${idx}-note`}
-                value={item.note}
-                placeholder="备注 (note)"
+                value={documentText(item.note)}
+                placeholder="备注"
                 onChange={(e) =>
                   updateArray(
                     'success_metrics',
@@ -2040,7 +2048,7 @@ function PrdEditor({ draftContent, onChange, disabled }: PrdEditorProps) {
 
       {/* risks */}
       <article className="prd-section prd-section-editor" data-testid="prd-section-risks">
-        <h4>风险 (Risks) · <span className="muted">{draftContent.risks.length}</span></h4>
+        <h4>风险 · <span className="muted">{draftContent.risks.length}</span></h4>
         <ul className="prd-risk-list">
           {draftContent.risks.map((item, idx) => (
             <li key={idx} className="prd-risk-item-editor" data-testid={`prd-draft-risk-item-${idx}`} style={{ display: 'flex', flexDirection: 'column', gap: FIELD_GAP, marginBottom: FIELD_GAP }}>
@@ -2087,7 +2095,7 @@ function PrdEditor({ draftContent, onChange, disabled }: PrdEditorProps) {
               <textarea
                 className="textarea"
                 data-testid={`prd-draft-risk-item-${idx}-description`}
-                value={item.description}
+                value={documentText(item.description)}
                 placeholder="风险描述"
                 onChange={(e) =>
                   updateArray(
@@ -2112,14 +2120,14 @@ function PrdEditor({ draftContent, onChange, disabled }: PrdEditorProps) {
                   )
                 }
                 disabled={disabled}
-                placeholder="evidence_id（多个用逗号分隔）"
+                placeholder="反馈编号，多个用逗号分隔"
                 required
               />
               <input
                 type="text"
                 className="input"
                 data-testid={`prd-draft-risk-item-${idx}-mitigation`}
-                value={item.mitigation}
+                value={documentText(item.mitigation)}
                 placeholder="缓解方案"
                 onChange={(e) =>
                   updateArray(
@@ -2157,14 +2165,14 @@ function PrdEditor({ draftContent, onChange, disabled }: PrdEditorProps) {
 
       {/* mvp_scope */}
       <article className="prd-section prd-section-editor" data-testid="prd-section-mvp-scope">
-        <h4>MVP 范围 (MVP Scope)</h4>
+        <h4>首版范围</h4>
         <div className="prd-mvp-grid">
           <div>
-            <div className="meta-k">包含 (In Scope)</div>
+            <div className="meta-k">包含内容</div>
             <textarea
               className="textarea"
               data-testid="prd-draft-mvp-in-scope"
-              value={draftContent.mvp_scope.in_scope}
+              value={documentText(draftContent.mvp_scope.in_scope)}
               onChange={(e) =>
                 updateSection('mvp_scope', {
                   ...draftContent.mvp_scope,
@@ -2177,11 +2185,11 @@ function PrdEditor({ draftContent, onChange, disabled }: PrdEditorProps) {
             />
           </div>
           <div>
-            <div className="meta-k">排除 (Out of Scope)</div>
+            <div className="meta-k">暂不包含</div>
             <textarea
               className="textarea"
               data-testid="prd-draft-mvp-out-of-scope"
-              value={draftContent.mvp_scope.out_of_scope}
+              value={documentText(draftContent.mvp_scope.out_of_scope)}
               onChange={(e) =>
                 updateSection('mvp_scope', {
                   ...draftContent.mvp_scope,
@@ -2198,10 +2206,10 @@ function PrdEditor({ draftContent, onChange, disabled }: PrdEditorProps) {
 
       {/* Top-level evidence_sources + evidence_ids */}
       <article className="prd-section prd-section-editor" data-testid="prd-section-evidence">
-        <h4>证据 (Evidence)</h4>
+        <h4>引用证据</h4>
         <div className="prd-evidence-grid">
           <div>
-            <div className="meta-k">来源 (Sources)</div>
+            <div className="meta-k">资料来源</div>
             <CsvField
               testId="prd-draft-evidence-sources"
               value={draftContent.evidence_sources}
@@ -2211,13 +2219,13 @@ function PrdEditor({ draftContent, onChange, disabled }: PrdEditorProps) {
             />
           </div>
           <div>
-            <div className="meta-k">证据 ID (Evidence IDs)</div>
+            <div className="meta-k">反馈编号</div>
             <CsvField
               testId="prd-draft-evidence-evidence"
               value={draftContent.evidence_ids}
               onChange={(next) => updateSection('evidence_ids', next)}
               disabled={disabled}
-              placeholder="evidence_id（多个用逗号分隔）"
+              placeholder="反馈编号，多个用逗号分隔"
               required
             />
           </div>

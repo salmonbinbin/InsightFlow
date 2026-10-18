@@ -2,6 +2,7 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { InsightFlowClient } from './client';
 import { MockInsightFlowClient } from './mock';
 import type {
+  Insight,
   PrdContent,
   PrdPatchRequest,
   RequirementPatchRequest,
@@ -621,6 +622,254 @@ describe('InsightFlowClient', () => {
     expect(res.data?.items[0]?.failed_stage).toBe('classification');
     expect(res.data?.items[1]?.failed_stage).toBeNull();
   });
+
+  // ---------- Phase 8 Research (B1) ----------
+
+  it('startResearchRun posts the typed contract to /insights/{id}/research', async () => {
+    // POST body must carry ``research_question`` (required) and the
+    // optional ``scope``. Unknown keys would 422 against the
+    // backend ``extra=forbid`` schema, so the client intentionally
+    // does NOT forward ``prompt_version`` when the caller did not
+    // pin one — the backend defaults to ``research-agent-v1``.
+    fetchMock.mockResolvedValueOnce(
+      jsonResponse({ id: 'run-r1', project_id: 'proj-1', status: 'completed' }, { status: 200 }),
+    );
+    const client = new InsightFlowClient({ baseUrl: '/api', fetchImpl: fetchMock as unknown as typeof fetch });
+    const res = await client.startResearchRun('ins-1', {
+      research_question: 'How is Feature X priced?',
+      scope: 'EU market 2026',
+    });
+    expect(res.error).toBeNull();
+    const [url, init] = fetchMock.mock.calls[0]!;
+    expect(url).toBe('/api/insights/ins-1/research');
+    expect((init as RequestInit).method).toBe('POST');
+    const sent = JSON.parse((init as RequestInit).body as string);
+    expect(sent.research_question).toBe('How is Feature X priced?');
+    expect(sent.scope).toBe('EU market 2026');
+  });
+
+  it('listInsightResearchRuns forwards project_id + limit + offset', async () => {
+    // The backend's GET /insights/{id}/research route uses
+    // ``project_id: UUID = Query(...)`` (REQUIRED) — a missing
+    // project_id 422s before the service layer runs. The client
+    // must always forward the active project id alongside
+    // limit/offset, mirroring the per-run GET shape used by
+    // ``getResearchRun`` / ``listResearchSources`` /
+    // ``listResearchFindings``.
+    fetchMock.mockResolvedValueOnce(
+      jsonResponse({ items: [], total: 0, limit: 25, offset: 25 }),
+    );
+    const client = new InsightFlowClient({ baseUrl: '/api', fetchImpl: fetchMock as unknown as typeof fetch });
+    const res = await client.listInsightResearchRuns('ins-1', {
+      project_id: 'proj-1',
+      limit: 25,
+      offset: 25,
+    });
+    expect(res.error).toBeNull();
+    const [url] = fetchMock.mock.calls[0]!;
+    expect(url).toContain('/api/insights/ins-1/research?');
+    expect(url).toContain('project_id=proj-1');
+    expect(url).toContain('limit=25');
+    expect(url).toContain('offset=25');
+  });
+
+  it('getResearchRun forwards project_id query (REQUIRED for cross-project isolation)', async () => {
+    // The backend collapses missing / mismatched project_id to 404
+    // so a foreign project's run never leaks. The client must
+    // always supply the active project id.
+    fetchMock.mockResolvedValueOnce(
+      jsonResponse({ id: 'run-1', project_id: 'proj-1', status: 'completed' }),
+    );
+    const client = new InsightFlowClient({ baseUrl: '/api', fetchImpl: fetchMock as unknown as typeof fetch });
+    await client.getResearchRun('run-1', { project_id: 'proj-1' });
+    const [url] = fetchMock.mock.calls[0]!;
+    expect(url).toContain('/api/research/run-1?');
+    expect(url).toContain('project_id=proj-1');
+  });
+
+  it('listResearchSources forwards project_id + limit + offset', async () => {
+    fetchMock.mockResolvedValueOnce(
+      jsonResponse({ items: [], total: 0, limit: 10, offset: 5 }),
+    );
+    const client = new InsightFlowClient({ baseUrl: '/api', fetchImpl: fetchMock as unknown as typeof fetch });
+    await client.listResearchSources('run-1', {
+      project_id: 'proj-1',
+      limit: 10,
+      offset: 5,
+    });
+    const [url] = fetchMock.mock.calls[0]!;
+    expect(url).toContain('/api/research/run-1/sources?');
+    expect(url).toContain('project_id=proj-1');
+    expect(url).toContain('limit=10');
+    expect(url).toContain('offset=5');
+  });
+
+  it('listResearchFindings forwards project_id + limit + offset', async () => {
+    fetchMock.mockResolvedValueOnce(
+      jsonResponse({ items: [], total: 0, limit: 10, offset: 5 }),
+    );
+    const client = new InsightFlowClient({ baseUrl: '/api', fetchImpl: fetchMock as unknown as typeof fetch });
+    await client.listResearchFindings('run-1', {
+      project_id: 'proj-1',
+      limit: 10,
+      offset: 5,
+    });
+    const [url] = fetchMock.mock.calls[0]!;
+    expect(url).toContain('/api/research/run-1/findings?');
+    expect(url).toContain('project_id=proj-1');
+    expect(url).toContain('limit=10');
+    expect(url).toContain('offset=5');
+  });
+
+  // ---------- Phase 8 Tool Layer (C) — real-client wire contract ----------
+
+  it('prepareToolRun posts the typed contract to /requirements/{id}/tool-runs', async () => {
+    // The body MUST carry the four Prepare fields (tool_name +
+    // tool_action + request_id + payload). ``extra=forbid`` on
+    // the backend rejects any unknown key with 422. The client
+    // must NOT add a default ``agent_run_id`` when the caller
+    // did not pass one — the backend treats ``None`` as
+    // "no upstream agent".
+    fetchMock.mockResolvedValueOnce(
+      jsonResponse(
+        {
+          id: 'trun-1',
+          project_id: 'proj-1',
+          requirement_id: 'req-1',
+          agent_run_id: null,
+          tool_name: 'simulated_issue_tracker',
+          tool_action: 'create_issue',
+          tool_version: 'sim-v1',
+          request_id: '00000000-0000-4000-8000-000000000001',
+          status: 'awaiting_approval',
+          execution_mode: 'simulation',
+          external_id: null,
+          request_payload: {
+            title: '[Simulated] R',
+            description: 'd',
+            priority: 'P1',
+            source_insight_preview: 'p',
+          },
+          response_summary: null,
+          failure_category: null,
+          attempt_count: 0,
+          retry_count: 0,
+          created_at: '2026-01-01T00:00:00Z',
+          updated_at: '2026-01-01T00:00:00Z',
+          approved_at: null,
+          completed_at: null,
+        },
+        { status: 201, statusText: 'Created' },
+      ),
+    );
+    const client = new InsightFlowClient({ baseUrl: '/api', fetchImpl: fetchMock as unknown as typeof fetch });
+    const res = await client.prepareToolRun(
+      'req-1',
+      { project_id: 'proj-1' },
+      {
+        tool_name: 'simulated_issue_tracker',
+        tool_action: 'create_issue',
+        request_id: '00000000-0000-4000-8000-000000000001',
+        payload: {},
+      },
+    );
+    expect(res.error).toBeNull();
+    const [url, init] = fetchMock.mock.calls[0]!;
+    expect(url).toBe('/api/requirements/req-1/tool-runs?project_id=proj-1');
+    expect(url).toContain('project_id=proj-1');
+    expect((init as RequestInit).method).toBe('POST');
+    const sent = JSON.parse((init as RequestInit).body as string);
+    expect(sent).toEqual({
+      tool_name: 'simulated_issue_tracker',
+      tool_action: 'create_issue',
+      request_id: '00000000-0000-4000-8000-000000000001',
+      payload: {},
+    });
+    // Guard against a leaked agent_run_id (the page never
+    // sends it; the backend treats null as "no upstream").
+    expect(sent).not.toHaveProperty('agent_run_id');
+  });
+
+  it('listToolRuns forwards project_id + limit + offset', async () => {
+    fetchMock.mockResolvedValueOnce(
+      jsonResponse({
+        items: [],
+        total: 0,
+        limit: 25,
+        offset: 25,
+        active_run_id: null,
+      }),
+    );
+    const client = new InsightFlowClient({ baseUrl: '/api', fetchImpl: fetchMock as unknown as typeof fetch });
+    const res = await client.listToolRuns('req-1', {
+      project_id: 'proj-1',
+      limit: 25,
+      offset: 25,
+    });
+    expect(res.error).toBeNull();
+    const [url] = fetchMock.mock.calls[0]!;
+    expect(url).toContain('/api/requirements/req-1/tool-runs?');
+    expect(url).toContain('project_id=proj-1');
+    expect(url).toContain('limit=25');
+    expect(url).toContain('offset=25');
+  });
+
+  it('cancelToolRun posts an empty body to /tool-runs/{id}/cancel', async () => {
+    // ``ToolCancelRequest`` is empty by design (extra=forbid);
+    // any client-claimed field would 422. The page must send
+    // exactly ``{}``.
+    fetchMock.mockResolvedValueOnce(
+      jsonResponse({ id: 'trun-1', status: 'cancelled' }),
+    );
+    const client = new InsightFlowClient({ baseUrl: '/api', fetchImpl: fetchMock as unknown as typeof fetch });
+    await client.cancelToolRun('trun-1', { project_id: 'proj-1' });
+    const [url, init] = fetchMock.mock.calls[0]!;
+    expect(url).toBe('/api/tool-runs/trun-1/cancel?project_id=proj-1');
+    expect(url).toContain('project_id=proj-1');
+    expect((init as RequestInit).method).toBe('POST');
+    expect(JSON.parse((init as RequestInit).body as string)).toEqual({});
+  });
+
+  it('approveToolRun posts an empty body to /tool-runs/{id}/approve', async () => {
+    fetchMock.mockResolvedValueOnce(
+      jsonResponse({
+        id: 'trun-1',
+        status: 'completed',
+        external_id: 'SIM-1',
+      }),
+    );
+    const client = new InsightFlowClient({ baseUrl: '/api', fetchImpl: fetchMock as unknown as typeof fetch });
+    await client.approveToolRun('trun-1', { project_id: 'proj-1' });
+    const [url, init] = fetchMock.mock.calls[0]!;
+    expect(url).toBe('/api/tool-runs/trun-1/approve?project_id=proj-1');
+    expect(url).toContain('project_id=proj-1');
+    expect((init as RequestInit).method).toBe('POST');
+    expect(JSON.parse((init as RequestInit).body as string)).toEqual({});
+  });
+
+  it('forwards AbortSignal through the tool layer', async () => {
+    // The page passes a per-project AbortController so a
+    // project switch aborts the in-flight Prepare / Cancel /
+    // Approve. The client MUST forward the signal to fetch.
+    fetchMock.mockResolvedValueOnce(
+      jsonResponse({ id: 'trun-1', status: 'awaiting_approval' }),
+    );
+    const client = new InsightFlowClient({ baseUrl: '/api', fetchImpl: fetchMock as unknown as typeof fetch });
+    const controller = new AbortController();
+    await client.prepareToolRun(
+      'req-1',
+      { project_id: 'proj-1' },
+      {
+        tool_name: 'simulated_issue_tracker',
+        tool_action: 'create_issue',
+        request_id: '00000000-0000-4000-8000-000000000002',
+        payload: {},
+      },
+      controller.signal,
+    );
+    const [, init] = fetchMock.mock.calls[0]!;
+    expect((init as RequestInit).signal).toBe(controller.signal);
+  });
 });
 
 describe('MockInsightFlowClient — Evaluation (Phase 7 D2a)', () => {
@@ -803,9 +1052,441 @@ describe('MockInsightFlowClient — Evaluation (Phase 7 D2a)', () => {
     });
     expect(missing.error?.status).toBe(404);
   });
+
+  // ---------- Phase 8 Research (mock) ----------
+  //
+  // Pins the mock surface so the page's Research UI always works
+  // in tests even when the real backend is unreachable. The mock
+  // mirrors the same cross-project isolation contract as the real
+  // backend: any run that does not belong to the supplied project
+  // returns 404, never the row payload.
+
+  it('startResearchRun logs the POST + records the new run', async () => {
+    const mock = new MockInsightFlowClient();
+    const res = await mock.startResearchRun('ins-1', {
+      research_question: 'Pricing of competitor X?',
+      scope: 'US / EU',
+    });
+    expect(res.error).toBeNull();
+    expect(mock.researchRuns).toHaveLength(1);
+    expect(mock.researchRuns[0]?.research_question).toBe('Pricing of competitor X?');
+    expect(mock.researchRuns[0]?.scope).toBe('US / EU');
+    const last = mock.callLog[mock.callLog.length - 1]!;
+    expect(last).toMatchObject({
+      method: 'POST',
+      path: '/api/insights/ins-1/research',
+    });
+    expect(last.body).toMatchObject({
+      research_question: 'Pricing of competitor X?',
+      scope: 'US / EU',
+    });
+  });
+
+  it('listInsightResearchRuns filters by insight_id and sorts created_at DESC', async () => {
+    const mock = new MockInsightFlowClient();
+    // Seed matching insights so the project_id check passes
+    // (the route 404s on a missing insight OR on a project /
+    // insight mismatch — same as the real backend).
+    mock.insights.push(
+      buildSampleInsight('ins-1', 'proj-a'),
+      buildSampleInsight('ins-2', 'proj-a'),
+    );
+    mock.researchRuns.push(
+      buildSampleResearchRun({
+        id: 'r-older',
+        project_id: 'proj-a',
+        insight_id: 'ins-1',
+        created_at: '2026-01-01T00:00:00Z',
+      }),
+      buildSampleResearchRun({
+        id: 'r-newer',
+        project_id: 'proj-a',
+        insight_id: 'ins-1',
+        created_at: '2026-01-02T00:00:00Z',
+      }),
+      buildSampleResearchRun({
+        id: 'r-other',
+        project_id: 'proj-a',
+        insight_id: 'ins-2',
+        created_at: '2026-01-03T00:00:00Z',
+      }),
+    );
+    const page = await mock.listInsightResearchRuns('ins-1', {
+      project_id: 'proj-a',
+      limit: 25,
+      offset: 0,
+    });
+    expect(page.error).toBeNull();
+    expect(page.data?.total).toBe(2);
+    expect(page.data?.items.map((r) => r.id)).toEqual(['r-newer', 'r-older']);
+  });
+
+  it('listInsightResearchRuns returns 404 on project_id / insight mismatch (cross-project)', async () => {
+    // The backend collapses unknown insight and foreign-project
+    // cases to a single 404 so a malicious caller cannot
+    // distinguish the two. The mock mirrors that surface so the
+    // page's "External Research Unavailable" path can be
+    // exercised in tests.
+    const mock = new MockInsightFlowClient();
+    mock.insights.push(buildSampleInsight('ins-1', 'proj-a'));
+    mock.researchRuns.push(
+      buildSampleResearchRun({
+        id: 'r-1',
+        project_id: 'proj-a',
+        insight_id: 'ins-1',
+      }),
+    );
+    const ok = await mock.listInsightResearchRuns('ins-1', { project_id: 'proj-a' });
+    expect(ok.error).toBeNull();
+    const foreign = await mock.listInsightResearchRuns('ins-1', { project_id: 'proj-b' });
+    expect(foreign.error?.status).toBe(404);
+    const missing = await mock.listInsightResearchRuns('ins-missing', { project_id: 'proj-a' });
+    expect(missing.error?.status).toBe(404);
+  });
+
+  it('getResearchRun enforces project_id isolation (404 on mismatch)', async () => {
+    const mock = new MockInsightFlowClient();
+    mock.researchRuns.push(
+      buildSampleResearchRun({
+        id: 'run-1',
+        project_id: 'proj-a',
+        insight_id: 'ins-1',
+      }),
+    );
+    const ok = await mock.getResearchRun('run-1', { project_id: 'proj-a' });
+    expect(ok.error).toBeNull();
+    expect(ok.data?.id).toBe('run-1');
+    const denied = await mock.getResearchRun('run-1', { project_id: 'proj-b' });
+    expect(denied.error?.status).toBe(404);
+  });
+
+  // ---------- Phase 8 Tool Layer (C) — mock contract ----------
+  //
+  // Pins the mock surface so the page's Tool Action Preview
+  // always works in tests even when the real backend is
+  // unreachable. The mock mirrors the same cross-project
+  // isolation contract as the real backend, plus the same
+  // state-machine 409 surface (cancel a completed run →
+  // 409, approve an already-completed run → no-op 200).
+  it('prepareToolRun stores an awaiting_approval row + frozen snapshot', async () => {
+    const mock = new MockInsightFlowClient();
+    mock.requirements = [
+      { ...BASE_REQ, id: 'req-1', project_id: 'proj-a', status: 'approved' },
+    ];
+    const res = await mock.prepareToolRun(
+      'req-1',
+      { project_id: 'proj-a' },
+      {
+        tool_name: 'simulated_issue_tracker',
+        tool_action: 'create_issue',
+        request_id: '00000000-0000-4000-8000-000000000001',
+        payload: {},
+      },
+    );
+    expect(res.error).toBeNull();
+    expect(mock.toolRuns).toHaveLength(1);
+    const run = mock.toolRuns[0]!;
+    expect(run.status).toBe('awaiting_approval');
+    expect(run.project_id).toBe('proj-a');
+    expect(run.requirement_id).toBe('req-1');
+    // Frozen snapshot is persisted on the row so a later Approve
+    // re-uses the same content even if the Requirement drifts.
+    expect(run.request_payload.title).toContain('Activation funnel');
+    expect(run.request_payload.priority).toBe('P1');
+    expect(run.request_payload.source_insight_preview.length).toBeGreaterThan(0);
+    const last = mock.callLog[mock.callLog.length - 1]!;
+    expect(last).toMatchObject({
+      method: 'POST',
+      path: '/api/requirements/req-1/tool-runs',
+    });
+  });
+
+  it('prepareToolRun rejects a non-approved Requirement with 409', async () => {
+    // The brief mandates only approved Requirements can prepare
+    // a simulated issue. The mock mirrors the backend's
+    // 409 ``requirement_not_approved`` shape.
+    const mock = new MockInsightFlowClient();
+    mock.requirements = [
+      { ...BASE_REQ, id: 'req-1', project_id: 'proj-a', status: 'draft' },
+    ];
+    const res = await mock.prepareToolRun(
+      'req-1',
+      { project_id: 'proj-a' },
+      {
+        tool_name: 'simulated_issue_tracker',
+        tool_action: 'create_issue',
+        request_id: '00000000-0000-4000-8000-000000000001',
+        payload: {},
+      },
+    );
+    expect(res.error?.status).toBe(409);
+    expect(mock.toolRuns).toHaveLength(0);
+  });
+
+  it('prepareToolRun is idempotent on (project_id, request_id)', async () => {
+    // A repeated Prepare with the same (project_id,
+    // request_id) pair returns the existing row, never
+    // produces a second audit row.
+    const mock = new MockInsightFlowClient();
+    mock.requirements = [
+      { ...BASE_REQ, id: 'req-1', project_id: 'proj-a', status: 'approved' },
+    ];
+    const body = {
+      tool_name: 'simulated_issue_tracker' as const,
+      tool_action: 'create_issue' as const,
+      request_id: '00000000-0000-4000-8000-000000000001',
+      payload: {} as Record<string, never>,
+    };
+    const first = await mock.prepareToolRun('req-1', { project_id: 'proj-a' }, body);
+    const second = await mock.prepareToolRun('req-1', { project_id: 'proj-a' }, body);
+    expect(first.error).toBeNull();
+    expect(second.error).toBeNull();
+    expect(mock.toolRuns).toHaveLength(1);
+    expect(first.data?.id).toBe(second.data?.id);
+  });
+
+  it('listToolRuns surfaces active_run_id (awaiting > non-cancelled) + paginates', async () => {
+    const mock = new MockInsightFlowClient();
+    mock.requirements = [
+      { ...BASE_REQ, id: 'req-1', project_id: 'proj-a', status: 'approved' },
+    ];
+    // Seed three rows: an older completed, a newer cancelled,
+    // and the most recent awaiting_approval. The active pointer
+    // MUST prefer awaiting_approval over the others.
+    mock.toolRuns.push(
+      {
+        ...buildSampleToolRun({
+          id: 't-old',
+          project_id: 'proj-a',
+          requirement_id: 'req-1',
+          created_at: '2026-01-01T00:00:00Z',
+        }),
+        status: 'completed',
+        external_id: 'SIM-1',
+      },
+      {
+        ...buildSampleToolRun({
+          id: 't-mid',
+          project_id: 'proj-a',
+          requirement_id: 'req-1',
+          created_at: '2026-01-02T00:00:00Z',
+        }),
+        status: 'cancelled',
+      },
+      buildSampleToolRun({
+        id: 't-new',
+        project_id: 'proj-a',
+        requirement_id: 'req-1',
+        created_at: '2026-01-03T00:00:00Z',
+      }),
+    );
+    const page = await mock.listToolRuns('req-1', {
+      project_id: 'proj-a',
+      limit: 50,
+      offset: 0,
+    });
+    expect(page.error).toBeNull();
+    expect(page.data?.total).toBe(3);
+    expect(page.data?.active_run_id).toBe('t-new');
+    // Sort: created_at DESC, id DESC — t-new first.
+    expect(page.data?.items.map((r) => r.id)).toEqual(['t-new', 't-mid', 't-old']);
+  });
+
+  it('cancelToolRun transitions awaiting_approval → cancelled + 409 on completed', async () => {
+    const mock = new MockInsightFlowClient();
+    const awaiting = buildSampleToolRun({
+      id: 't-1',
+      project_id: 'proj-a',
+      requirement_id: 'req-1',
+    });
+    mock.toolRuns.push(awaiting);
+
+    const ok = await mock.cancelToolRun('t-1', { project_id: 'proj-a' });
+    expect(ok.error).toBeNull();
+    expect(ok.data?.status).toBe('cancelled');
+
+    // A second Cancel on the now-cancelled row surfaces 409
+    // — the page re-fetches the history and renders the
+    // "cancelled" view rather than silently rewriting.
+    const second = await mock.cancelToolRun('t-1', { project_id: 'proj-a' });
+    expect(second.error?.status).toBe(409);
+  });
+
+  it('approveToolRun transitions awaiting_approval → completed + assigns SIM- external_id', async () => {
+    const mock = new MockInsightFlowClient();
+    const awaiting = buildSampleToolRun({
+      id: 't-1',
+      project_id: 'proj-a',
+      requirement_id: 'req-1',
+    });
+    mock.toolRuns.push(awaiting);
+    const res = await mock.approveToolRun('t-1', { project_id: 'proj-a' });
+    expect(res.error).toBeNull();
+    expect(res.data?.status).toBe('completed');
+    expect(res.data?.external_id).toBe('SIM-1');
+    // The page MUST NOT fabricate a real external link from
+    // this id; the brief pins it as audit-only.
+    expect(res.data?.external_id).toMatch(/^SIM-\d+$/);
+  });
+
+  it('approveToolRun is a no-op on an already-completed row (no duplicate audit row)', async () => {
+    // The backend's Approve on a completed row returns the
+    // existing row WITHOUT running the adapter again. The
+    // mock mirrors that — ``toolSimCounter`` does NOT
+    // increment, so a second Approve cannot produce a
+    // duplicate ``SIM-2`` id.
+    const mock = new MockInsightFlowClient();
+    const completed = {
+      ...buildSampleToolRun({
+        id: 't-1',
+        project_id: 'proj-a',
+        requirement_id: 'req-1',
+      }),
+      status: 'completed' as const,
+      external_id: 'SIM-7',
+    };
+    mock.toolRuns.push(completed);
+    const res = await mock.approveToolRun('t-1', { project_id: 'proj-a' });
+    expect(res.error).toBeNull();
+    expect(res.data?.external_id).toBe('SIM-7');
+    expect(mock.toolSimCounter).toBe(0);
+  });
+
+  it('tool layer enforces cross-project isolation (404 on mismatch)', async () => {
+    const mock = new MockInsightFlowClient();
+    mock.requirements = [
+      { ...BASE_REQ, id: 'req-1', project_id: 'proj-a', status: 'approved' },
+    ];
+    // Prepare on a foreign project surfaces 404 (the
+    // cross-project check runs before any state-machine
+    // gate).
+    const wrongProj = await mock.prepareToolRun(
+      'req-1',
+      { project_id: 'proj-b' },
+      {
+        tool_name: 'simulated_issue_tracker',
+        tool_action: 'create_issue',
+        request_id: '00000000-0000-4000-8000-000000000001',
+        payload: {},
+      },
+    );
+    expect(wrongProj.error?.status).toBe(404);
+  });
 });
 
 /* ---------- helpers ---------- */
+
+/** Minimal Requirement fixture for the tool-layer mock contract
+ *  tests. The page-level test fixture in
+ *  ``requirements/[id]/page.test.tsx`` is a richer shape; this
+ *  one is enough for ``prepareToolRun`` / ``listToolRuns`` /
+ *  ``cancelToolRun`` / ``approveToolRun`` and the cross-project
+ *  isolation paths. */
+const BASE_REQ = {
+  id: 'req-1',
+  project_id: 'proj-a',
+  insight_id: 'ins-1',
+  decision_id: 'decision-1',
+  score_id: null,
+  insight_status_snapshot: 'accepted',
+  decision_status_snapshot: 'accepted',
+  ai_priority_snapshot: 'P1',
+  pm_priority: 'P1',
+  pm_override_reason_snapshot: null,
+  source_snapshot_hash: 'h',
+  name: 'Activation funnel guidance',
+  problem: 'New users have no clear next step after signup.',
+  target_user: 'Trial users within their first 14 days.',
+  user_story: 'As a trial user, I want a guided onboarding.',
+  solution_hypothesis: 'Step-by-step onboarding will lift D1 activation.',
+  success_metrics: [
+    { name: 'D1', type: 'metric_definition', sources: [], note: '' },
+  ],
+  risks: [
+    { category: 'known', description: 'R', evidence_ids: [], mitigation: '' },
+  ],
+  evidence_references: [{ external_id: 'ext-1', usage: 'u' }],
+  status: 'approved' as const,
+  model: 'mock',
+  prompt_version: 'v1',
+  input_tokens: 0,
+  output_tokens: 0,
+  unknown_token_calls: 0,
+  latency_ms: 0,
+  attempt_count: 0,
+  retry_count: 0,
+  next_version: 1,
+  created_at: '2026-01-01T00:00:00Z',
+  updated_at: '2026-01-01T00:00:00Z',
+};
+
+/** Build a minimal-but-valid ToolRunRead so the mock contract
+ *  tests can seed fixtures without hand-writing every field. The
+ *  status defaults to ``awaiting_approval`` because that is the
+ *  state the row lands in after a successful Prepare. */
+function buildSampleToolRun(opts: {
+  id: string;
+  project_id?: string;
+  requirement_id?: string;
+  created_at?: string;
+}) {
+  const created_at = opts.created_at ?? '2026-01-01T00:00:00Z';
+  return {
+    id: opts.id,
+    project_id: opts.project_id ?? 'proj-a',
+    requirement_id: opts.requirement_id ?? 'req-1',
+    agent_run_id: null,
+    tool_name: 'simulated_issue_tracker',
+    tool_action: 'create_issue',
+    tool_version: 'sim-v1',
+    request_id: '00000000-0000-4000-8000-000000000099',
+    status: 'awaiting_approval' as const,
+    execution_mode: 'simulation' as const,
+    external_id: null,
+    request_payload: {
+      title: '[Simulated] Activation funnel guidance',
+      description:
+        'Requirement: Activation funnel guidance\n\nProblem: New users have no clear next step after signup.',
+      priority: 'P1',
+      source_insight_preview: 'Activation funnel guidance',
+    },
+    response_summary: null,
+    failure_category: null,
+    attempt_count: 0,
+    retry_count: 0,
+    created_at,
+    updated_at: created_at,
+    approved_at: null,
+    completed_at: null,
+  };
+}
+
+/** Build a minimal-but-valid Insight so the mock contract tests
+ *  can seed fixtures without hand-writing every field. Only the
+ *  fields the test actually inspects (``id`` / ``project_id``)
+ *  need to be honest — the rest default to type-valid placeholders. */
+function buildSampleInsight(id: string, project_id: string): Insight {
+  return {
+    id,
+    project_id,
+    run_id: 'run-1',
+    cluster_id: 'cluster-1',
+    clustering_run_id: 'clustering-1',
+    title: 'Mock insight',
+    pain_point: null,
+    affected_segment: null,
+    insight: null,
+    recommendation: null,
+    confidence: null,
+    status: 'draft',
+    feedback_count: 0,
+    evidence_count: 0,
+    source_cluster_external_id: 'cluster-1',
+    source_member_external_ids: [],
+    model: null,
+    prompt_version: 'v1',
+  };
+}
 
 /** Build a minimal-but-valid PRDContent so the createPrd test
  *  exercises the structured-payload shape end-to-end without
@@ -888,5 +1569,61 @@ function buildSampleEvaluationRun(opts: {
     created_at,
     error_message: null,
     notes: null,
+  };
+}
+
+/** Build a minimal-but-valid ResearchRunRead so the mock contract
+ *  tests can seed fixtures without hand-writing every field. The
+ *  backend ``extra=forbid`` schema rejects unknown keys, so this
+ *  helper must stay aligned with
+ *  backend/app/schemas/research.py:ResearchRunRead. */
+function buildSampleResearchRun(opts: {
+  id: string;
+  project_id?: string;
+  insight_id?: string;
+  created_at?: string;
+}) {
+  const created_at = opts.created_at ?? '2026-01-01T00:00:00Z';
+  return {
+    id: opts.id,
+    project_id: opts.project_id ?? 'proj-a',
+    insight_id: opts.insight_id ?? 'ins-1',
+    classification_run_id: 'mock-classification',
+    clustering_run_id: 'mock-clustering',
+    insight_decision_id: null,
+    research_question: 'Mock research question?',
+    scope: null,
+    provider: 'tavily',
+    provider_query: 'Mock provider query',
+    model: 'mock-model',
+    prompt_version: 'research-agent-v1',
+    status: 'completed',
+    started_at: created_at,
+    completed_at: created_at,
+    created_at,
+    error_message: null,
+    internal_context: {
+      insight_title: 'mock insight',
+      insight_pain_point: 'mock pain_point',
+      insight_affected_segment: 'mock affected_segment',
+      insight_recommendation: 'mock recommendation',
+      evidence_external_ids: [],
+      evidence_summaries: [],
+      decision_status: null,
+      decision_priority: null,
+      research_question: 'Mock research question?',
+      scope: null,
+    },
+    internal_context_hash: 'mock-hash',
+    input_count: 1,
+    processed_count: 1,
+    source_count: 0,
+    finding_count: 0,
+    input_tokens: 0,
+    output_tokens: 0,
+    unknown_token_calls: 0,
+    latency_ms: 0,
+    attempt_count: 1,
+    retry_count: 0,
   };
 }

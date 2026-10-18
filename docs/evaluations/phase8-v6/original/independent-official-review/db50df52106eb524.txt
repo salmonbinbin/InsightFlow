@@ -1,0 +1,179 @@
+Turn camera uploads on/off for a Dropbox team - Dropbox Help
+Dropbox
+Main navigation
+Help center
+Community
+Dropbox learn
+Contact support
+Help center
+Community
+Dropbox learn
+Contact support
+Open/close search
+Help center
+Account
+Account access
+Billing
+Account settings
+Plans
+Storage space
+Security
+Using Dropbox
+Sync
+Delete and restore
+Share
+View and edit
+Installs
+Create and upload
+Organize
+Integrations
+AI integrations
+Products
+Dropbox Dash
+Dropbox Protect
+Dropbox Sign
+Dropbox DocSend
+Dropbox Backup
+Dropbox Replay
+Dropbox Transfer
+Get started
+Dropbox Help Center - How to use Dropbox
+Create and upload
+Turn camera uploads on or off for your Dropbox team
+Turn camera uploads on or off for your Dropbox team
+Updated Jan 24, 2025
+In this article
+The information in this article applies to certain types of admins on Dropbox Standard, Business, Advanced, Business Plus, and Enterprise.
+Camera uploads is a feature that automatically uploads photos from your mobile device to Dropbox. If you’re a Dropbox team admin, you can turn camera uploads on or off for your team. To do so:
+Log in to dropbox.com with your admin credentials.
+Click Admin console.
+Click Settings.
+Under Content, click Device backups.
+Toggle camera uploads to On or Off.
+Click Save.
+Was this article helpful?
+Yes, thanks!
+Not really
+Let us know how why it didn't help:
+Thanks for letting us know!
+The article didn't answer my question
+The steps in the article didn't work for me
+I found this article confusing and difficult to read
+Other
+Please enter feedback before submitting.
+Submit feedback
+Thanks for your feedback!
+Related Articles
+Dropbox Replay FAQs
+How can I export to an SD card from my Android phone?
+How to manage files and projects in Dropbox Replay
+How to save screenshots to Dropbox
+Community answers
+Dropbox is stuck on storage overflow and will not update.
+Posted by: sdfglsk
+112 days ago
+141
+4
+Dropbox not importing photos over wired connection between iPhone and MacBook
+Posted by: ccaravello
+1092 days ago
+1869
+7
+Manually backup iOS Photo gallery
+Posted by: lazyfrog
+1569 days ago
+3027
+2
+Camera Sync Very Slow
+Posted by: Jeff H.8
+1650 days ago
+2573
+3
+Other ways to get help
+Icon depicting a speech bubble
+Contact support
+Icon depicting two people
+Community
+Twitter Icon
+Social media support
+Footer-Help
+Dropbox
+Desktop app
+Mobile app
+Integrations
+Features
+Solutions
+Security
+Early access
+Templates
+Free tools
+Products
+Plus
+Professional
+Business
+Enterprise
+Dash
+DocSend
+Dropbox Sign
+Reclaim.ai
+Plans
+Product updates
+Features
+Send large files
+Send long videos
+Cloud photo storage
+Secure file transfer
+Cloud backup
+Edit PDFs
+Electronic signatures
+Convert to PDF
+Support
+Help center
+Contact us
+Privacy & terms
+Cookie policy
+Cookies & CCPA preferences
+AI principles
+Sitemap
+Learning resources
+Resources
+Blog
+Events
+Customer stories
+Resources library
+Developers
+Community forums
+Referrals
+Reseller partners
+Integration partners
+Find a partner
+Company
+About us
+Jobs
+Investor relations
+Corporate responsibility
+Choose a language
+Bahasa Indonesia
+Bahasa Malaysia
+Dansk
+Deutsch
+English (Australia)
+English (United Kingdom)
+English (United States)
+Español (España)
+Español (Latinoamérica)
+Français (France)
+Italiano
+Nederlands
+Norsk (bokmål)
+Polski
+Português (Brasil)
+Pусский
+Svenska
+Українська
+ไทย
+中文（简体）
+中文（繁體）
+日本語
+한국어
+English (United States)

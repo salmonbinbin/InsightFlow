@@ -33,6 +33,7 @@
  */
 
 import Link from 'next/link';
+import { displayLabel } from '../../lib/presentation';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useProjectContext } from '../../contexts/ProjectContext';
 import { getApiClient } from '../../lib/api/client';
@@ -107,7 +108,7 @@ export default function PrdsListPage() {
     if (mySignal.aborted) return;
     if (myProject !== activeProjectId) return;
     if (res.error || !res.data) {
-      setError(res.error ? classifyError(res.error) : '加载 PRD 列表失败。');
+      setError(res.error ? classifyError(res.error) : '加载 需求文档失败。');
       setData(null);
       setLoading(false);
       return;
@@ -135,7 +136,7 @@ export default function PrdsListPage() {
     return (
       <EmptyState
         title="请先选择项目"
-        description="在右上角选择或创建一个项目，以查看对应 PRD 列表。"
+        description="在右上角选择或创建一个项目，以查看对应 需求文档。"
       />
     );
   }
@@ -157,21 +158,17 @@ export default function PrdsListPage() {
   return (
     <div className="page page-prds-list">
       <header className="page-header">
-        <span className="eyebrow">PRD · C1</span>
-        <h1 className="page-title">PRD 列表</h1>
-        <p className="page-subtitle">
-          来自后端的真实 PRDRead 数据（项目
-          <code className="mono"> {activeProjectId.slice(0, 8)}…</code>
-          ），按 <code className="mono">version DESC, id DESC</code> 稳定排序；同一 Requirement 的多个版本都保留，不折叠为最新一行。
-        </p>
+        <span className="eyebrow">需求文档</span>
+        <h1 className="page-title">需求文档</h1>
+        <p className="page-subtitle">查看需求文档与历史版本。</p>
       </header>
 
       <section className="section" data-od-id="prds-list">
         {loading && data ? <LoadingState /> : null}
         {empty ? (
           <EmptyState
-            title="该项目下尚无 PRD"
-            description="先在需求详情页生成 PRD；该项目所有版本会在此显示。"
+            title="还没有需求文档"
+            description="从已批准的需求生成文档，即可在这里查看。"
             action={
               <Link href="/requirements" className="btn btn-secondary btn-sm">
                 前往需求列表
@@ -201,7 +198,7 @@ export default function PrdsListPage() {
                       className={`badge ${STATUS_BADGE[prd.status as PrdStatus] ?? 'badge-outline'}`}
                       data-testid="prd-status-badge"
                     >
-                      {STATUS_LABEL[prd.status as PrdStatus] ?? prd.status}
+                      {STATUS_LABEL[prd.status as PrdStatus] ?? displayLabel(prd.status)}
                     </span>
                     {prd.is_ai_generated_draft ? (
                       <span
@@ -213,25 +210,10 @@ export default function PrdsListPage() {
                     ) : null}
                   </div>
                   <p className="prd-row-meta">
-                    关联 Requirement{' '}
-                    <Link
-                      href={`/requirements/${prd.requirement_id}`}
-                      className="mono"
-                      data-testid="prd-requirement-link"
-                    >
-                      {prd.requirement_id.slice(0, 8)}
-                    </Link>
-                    {' '}· 项目 <code className="mono">{prd.project_id.slice(0, 8)}</code>
-                    {' '}· 更新 <b className="mono">{formatRelative(prd.updated_at ?? null)}</b>
+                    <Link href={`/requirements/${prd.requirement_id}`} data-testid="prd-requirement-link">查看关联需求</Link>
+                    {' · 更新于 '}{formatRelative(prd.updated_at ?? null)}
                   </p>
-                  <p className="prd-row-snippet">
-                    来源 Insight{' '}
-                    <code className="mono">{prd.insight_id.slice(0, 8)}</code>
-                    {' · 模型 '}
-                    <code className="mono">{prd.model ?? '—'}</code>
-                    {' · prompt '}
-                    <code className="mono">{prd.prompt_version}</code>
-                  </p>
+                  <p className="prd-row-snippet">{prd.content.problem.text}</p>
                 </div>
                 <div className="prd-row-actions">
                   <Link
@@ -250,7 +232,7 @@ export default function PrdsListPage() {
         {items.length > 0 && total > page.limit ? (
           <footer className="pagination">
             <span className="pagination-meta">
-              共 {total} 条 PRD · 第 {currentPage} / {pageCount} 页
+              共 {total} 份文档 · 第 {currentPage} / {pageCount} 页
             </span>
             <div className="pagination-controls">
               <button
@@ -286,7 +268,7 @@ export default function PrdsListPage() {
         {!empty && total > 0 && items.length > 0 && total <= page.limit ? (
           <footer className="pagination">
             <span className="pagination-meta">
-              共 {total} 条 PRD · 单页全量
+              共 {total} 份文档 · 已显示全部
             </span>
           </footer>
         ) : null}

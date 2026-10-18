@@ -17,3 +17,11 @@ frontend/.env.local
 frontend/coverage/
 frontend/dist/
 frontend/*.tsbuildinfo
+
+# Local-only credentials, browser evidence and reference archives.
+key/
+.playwright-cli/
+output/
+*.dump
+InsightFlow-桌面端-SaaS-原型.zip
+InsightFlow-桌面端-SaaS-原型-审核修订版.zip

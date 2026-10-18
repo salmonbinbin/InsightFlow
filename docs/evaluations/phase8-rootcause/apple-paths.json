@@ -1,0 +1,29 @@
+[
+  {
+    "url": "https://support.apple.com/guide/icloud/upload-and-download-photos-mmb5dbaf376f/icloud",
+    "status": 200,
+    "final_url": "https://support.apple.com/guide/icloud/upload-and-download-photos-mmb5dbaf376f/icloud",
+    "allowed_path_before": true,
+    "allowed_path_after": true,
+    "query_path_matches_final": false,
+    "contains_phone_choices": true
+  },
+  {
+    "url": "https://support.apple.com/en-us/guide/icloud/mmb5dbaf376f/icloud",
+    "status": 200,
+    "final_url": "https://support.apple.com/guide/icloud/upload-and-download-photos-mmb5dbaf376f/icloud",
+    "allowed_path_before": true,
+    "allowed_path_after": true,
+    "query_path_matches_final": false,
+    "contains_phone_choices": true
+  },
+  {
+    "url": "https://support.apple.com/en-ca/guide/icloud/mmb5dbaf376f/icloud",
+    "status": 200,
+    "final_url": "https://support.apple.com/en-ca/guide/icloud/mmb5dbaf376f/icloud",
+    "allowed_path_before": false,
+    "allowed_path_after": false,
+    "query_path_matches_final": false,
+    "contains_phone_choices": true
+  }
+]

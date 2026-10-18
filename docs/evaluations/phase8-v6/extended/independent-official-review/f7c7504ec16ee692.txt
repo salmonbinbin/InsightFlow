@@ -1,0 +1,204 @@
+Give your device photos access to Google Photos - Google Photos Help Skip to main content
+Google Photos Help
+Sign in
+Google Help
+Help Center
+Community
+Google Photos
+Privacy Policy
+Terms of Service
+Submit feedback
+Send feedback on...
+This help content & information
+General Help Center experience
+CloseNext
+Help Center
+Community
+Can't find your photos?
+Google Photos
+Give your device photos access to Google Photos
+When you allow Google Photos to share access with your device’s default gallery app:
+You give Google Photos permission to share account information, like your email address and Google Photos auto-backup status from your device’s default gallery app.
+You can access all photos backed up to Google Photos in your device’s default gallery app.
+To use this feature, you need:
+A device that works with this feature. Here are some brands that do:
+Xiaomi
+Oppo
+OnePlus
+Realme
+The latest version of the Google Photos app.
+Android 11 or a newer version.
+You might get a pop-up that asks permission for your device’s default gallery app to access Google Photos.
+To choose whether to give access or not, tap Don’t allow or Allow.
+To change this later, go to the Google Photos settings or your device’s default gallery app settings.
+Remove access to your default gallery app
+You can change Google Photos’ access to your device photos at any time. To remove access to your device’s default gallery app:
+On your Android device, open the Google Photos app Photos.
+Sign in to your Google Account.
+At the top right, tap your Profile picture or Initial.
+Tap Photos settings Settings and then Apps and devices and then Google Photos access.
+Tap the device’s default gallery app name.
+Tap Remove access.
+Allow access to your default gallery app
+Important: If you want your default gallery app to access user data in Google Photos again, you must use the device’s default gallery app. Your device’s default gallery app might call this “cloud-sync” or “cloud-backup.”
+You need to allow access to your device’s default gallery app with Google Photos again, if you:
+Clear Google Photos app data
+Uninstall the Google Photos app
+Reset your device
+Get a new device
+To give Google Photos access to your device’s default gallery app:
+On your Android device, open your device’s default gallery app.
+Go to the Settings.
+To grant permission for Google Photos to share data with the device default gallery app, follow the on-screen instructions.
+Tip: When you let your device’s default gallery app access Google Photos, any photos you delete from your device’s default gallery app might also be deleted from Google Photos. This can happen even if they've been backed up, depending on your device’s default gallery app.
+Remove a photo or video from your device
+You can remove an individual photo or video from your device’s default gallery app without deleting the backed up copy in Google Photos:
+On your Android device, open the Google Photos app Photos.
+Choose the photo or video you want to remove from your device’s default gallery app.
+At the top, tap More More and then Delete from device.
+Tip: To delete all photos or videos from your default gallery app without deleting the backed up copies in Google Photos, use the free up space feature. Learn how to free up space on your device.
+How Google Photos works with your device’s default gallery
+Back up photos & videos with a connected Google Account
+When Google Photos backup is on, it backs up the photos from your gallery app. The Google Account connected to your device’s default gallery app is the account used for backing up photos. To change the connected account, you need to change the Google Photos backup account:
+On your Android device, open the Google Photos app Photos.
+Sign in to your Google Account.
+At the top, tap your Profile picture or Initial.
+Tap Photos settings Settings and then Backup.
+Under “Account & Storage,” tap your Profile picture or Initial.
+Choose the Google Account you want to back up photos and videos to.
+When Google Photos backup is off, the Google Account connected to your phone's phone app is the account that was active when you turned gallery access on. To change the connected account:
+On your Android device, open the Google Photos app Photos.
+Sign in to your Google Account.
+At the top, tap your Profile picture or Initial.
+Tap Photos settings Settings and then Apps & devices and then Google Photos access.
+Tap the name of your device’s default gallery app.
+Tap the connected Google Account.
+Choose the Google Account you want to be the connected account.
+Learn how to back up photos and videos.
+Delete or restore a photo or video
+When you delete or restore photos from photos.google.com or another device, it might not sync with the default gallery app on the original device. To resolve out-of-sync problems:
+On your Android device, open the Google Photos app Photos.
+Sign into your Google Account.
+At the top, tap your Profile picture or Initial.
+Tap Review out-of-sync changes.
+Follow the on-screen instructions.
+When you allow your device's default gallery app to access Google Photos, any photos you delete from the default gallery app are also deleted from Google Photos, even if they're backed up.
+Tip: To delete a photo or video from your default gallery app without deleting the backed up copy in Google Photos, use the free up space feature. Learn how to free up space on your device.
+Edit a photo
+If you edit a photo on photos.google.com or a different device, the changes might not sync to the original device. To resolve out-of-sync problems:
+On your Android device, open the Google Photos app Photos.
+Sign into your Google Account.
+At the top, tap your Profile picture or Initial.
+Tap Review out-of-sync changes.
+Follow the on-screen instructions.
+When you edit a photo in your device’s default gallery app, the Photos app might keep the old cloud copy. For special photo types like portraits, the device default gallery app might save your edits over the existing photo.
+Learn how to edit your photos.
+Move items to a hidden album
+Important: This article details the current retention policy. This is also in the latest version of Google Photos app.
+When you move a photo that's been backed up to a private or hidden album in your device’s default gallery app app, it deletes all the copies on your phone. It also tries to remove the cloud copy on Google Photos.
+If the cloud copy on Google Photos couldn't be deleted from the Google Account, you’ll get a message from the device default gallery app. To remove the photo from your Google Account manually:
+On your Android device, open the Google Photos app Photos.
+Sign in to your Google Account.
+Touch and hold a photo or video you want to move to the trash.
+Tip: You can choose multiple items.
+Tap Trash Delete and then Move to trash.
+Tip: If you delete a photo or video in Google Photos, it stays in your trash for 30 days. Learn how to empty your trash.
+Duplicate files on your device
+When there are multiple copies of the same photo on your device, your device’s default gallery app shows all the local copies on your phone in the all photos tab. The Google Photos app only shows one copy.
+When you delete a photo in the Google Photos app, it asks you if you want to remove all local copies from your device. If you delete a photo from your device’s default gallery app, it might delete the selected copy on your phone and on Google Photos, but keep the other copies.
+Learn how to delete photos and videos.
+Rename albums in your device’s default gallery app
+Important: Albums in your device’s default gallery app aren't the same as albums in your Google Photos app.
+If you renamed an album in your device’s default gallery app and you can’t find it in the Photos app, you might find the previous album name in your device folders.
+Delete Google Photos or clear Google Photos app data
+If you delete Google Photos or clear Google Photos app data, your device’s default gallery app will no longer have access to the Google Photos app. If you haven't fixed any out-of-sync problems caused by editing, deleting, or restoring photos from photos.google.com or another device, Google Photos might reupload the original device files from your device again after you clear your Google Photos app data.
+Learn how to manage your storage.
+Manage album data
+Back up your album metadata
+Important:
+To back up your album data from your device’s default gallery app, Google Photos backup needs to be turned on. Learn more about backup.
+Currently, backing up album data on Google Photos is only available on Vivo devices.
+If you allow your device’s default gallery app to access Google Photos, your album data is backed up to Google Photos. Your device maker can only back up folder information for files that have been backed up by Google Photos. The albums from your device’s default gallery app won't show up in Google Photos, but you can:
+Sync your albums on other devices made by the same company.
+Restore albums in your device's default gallery app.
+If you have devices from different companies, Google Photos stores the album data separately for each company.
+Tip: If your albums don’t sync properly across devices with the same manufacturer, contact your device manufacturer.
+Delete your album metadata
+You can delete the data for each device manufacturer separately. This won’t impact your photos or videos.
+On your computer, go to photos.google.com.
+At the top, click Settings .
+Next to "Delete default gallery album data," click Expand Down arrow.
+Next to the default gallery app’s name, click Delete album data and then Delete data.
+Keep your device activity going
+If you don't use any devices from the same company for 6 months, your album data might be deleted from Google Photos. Before that happens, you’ll get:
+An email notification.
+You’ll be notified one month before your album data is eligible for deletion.
+A chance to stop your album data from being deleted.
+To stop this, you need to use the device with the same default gallery app.
+To download your content from Google services.
+Learn how to download your Google data.
+Tip: If your album data is deleted, it won’t affect your photos or videos.
+Fix issues with your photos
+Find missing photos
+Find lost photos and videos.
+If you think that your photos were lost during the transfer from your device's default gallery app to Google Photos, contact your gallery app’s support team.
+Check if your device’s default gallery app and the Photos app are still connected. Learn how to turn default gallery access on or off.
+Check whether backup is on. Also check your backup account. Learn more about backing up photos and videos.
+Related resources
+Back up photos and videos
+Delete photos and videos
+Edit your photos
+Move photos to archive
+Hide your sensitive photos and videos
+Was this helpful?
+How can we improve it?
+YesNo
+Submit
+Need more help?
+Try these next steps:
+Post to the help community Get answers from community members
+true
+Help
+1 of 8
+Get started with Google Photos
+2 of 8
+Abuse Program Policies and Enforcement
+3 of 8
+Set up & manage your face groups
+4 of 8
+How your Google storage works
+5 of 8
+Learn about High Dynamic Range (HDR) photos
+6 of 8
+Give your device photos access to Google Photos
+7 of 8
+Search by people, things & places in your photos
+8 of 8
+Find the latest photo updates in your Photos app
+©2026 Google
+Privacy Policy
+Terms of Service
+Language català‎dansk‎Deutsch‎eesti‎English (United Kingdom)‎español‎español (Latinoamérica)‎Filipino‎français‎hrvatski‎Indonesia‎italiano‎latviešu‎lietuvių‎magyar‎Melayu‎Nederlands‎norsk‎polski‎português‎português (Brasil)‎română‎slovenčina‎slovenščina‎suomi‎svenska‎Tiếng Việt‎Türkçe‎íslenska‎čeština‎Ελληνικά‎български‎русский‎српски‎українська‎‏עברית‏العربية‏فارسیमराठी‎हिन्दी‎తెలుగు‎ไทย‎中文（简体）‎中文（繁體）‎日本語‎한국어‎ English‎
+Enable Dark Mode
+Send feedback on...
+This help content & information General Help Center experience
+Search
+Clear search
+Close search
+Google apps
+Main menu
+6972280855798396108
+true
+Search Help Center
+false
+true
+true
+true
+true
+true
+105394
+false
+false
+false
+false
+false

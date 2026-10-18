@@ -1,0 +1,1262 @@
+你现在继续开发 InsightFlow — AI Product Insight Agent。
+
+项目路径：
+
+/Users/salmon/Desktop/InsightFlow
+
+当前前置阶段：
+
+- Phase 1：AI Feedback Classification
+- Phase 2：Embedding + Semantic Clustering
+- Phase 3：Insight + Evidence
+- Phase 4：Opportunity Score + Human-in-the-loop Decision
+- Phase 5：Requirement + PRD
+- Phase 6：Evaluation System
+- Phase 7：Frontend MVP
+
+这些阶段默认已经完成并通过用户验收。
+
+你本次只负责：
+
+# Phase 8 — Integrations / Agent Expansion
+
+核心目标：
+
+在现有完整产品闭环之上，增加“外部研究 + 工具调用 + Agent 协作”能力，让 InsightFlow 从内部用户反馈分析工具，升级为可同时利用内部 Evidence 和外部市场信息的 AI Product Intelligence Agent。
+
+━━━━━━━━━━━━━━━━━━
+一、开发前必须先阅读
+━━━━━━━━━━━━━━━━━━
+
+请先完整阅读：
+
+- 工作记录.md
+- README.md
+- docs/11-长期开发总纲与Agent交接规范.md
+- docs/09-验证与交付记录.md
+- docs/08-决策记录与修正.md
+- docs/02-V1-PRD.md
+- docs/05-数据库与API设计.md
+
+以及 Phase 7 最新：
+
+- Delivery Report
+- Acceptance Report
+- Frontend 实现说明
+- API Mapping
+- 当前测试
+- 当前 Git 状态
+
+不要根据旧聊天内容猜项目状态。
+
+以：
+
+实际代码 + 数据库 + API + Tests + 工作记录
+
+作为唯一真实依据。
+
+━━━━━━━━━━━━━━━━━━
+二、开发前先检查基线
+━━━━━━━━━━━━━━━━━━
+
+先执行：
+
+git status
+git log --oneline -10
+
+然后运行 Backend 完整基线：
+
+cd /Users/salmon/Desktop/InsightFlow/backend
+
+uv sync --locked
+uv run pytest -q
+uv run ruff check app tests alembic scripts
+
+同时运行前端现有：
+
+lint
+test
+build
+核心 E2E
+
+确认 Phase 1～7 全部正常后再进入 Phase 8。
+
+如果已有失败：
+
+先报告并修复，不要直接叠加新 Agent 能力。
+
+━━━━━━━━━━━━━━━━━━
+三、Phase 8 总体架构目标
+━━━━━━━━━━━━━━━━━━
+
+当前核心流程：
+
+Internal Feedback
+↓
+Classification
+↓
+Clustering
+↓
+Insight
+↓
+Evidence
+↓
+Opportunity
+↓
+PM Decision
+↓
+Requirement
+↓
+PRD
+
+Phase 8 扩展为：
+
+Internal Evidence
+        +
+External Research
+        ↓
+Product Intelligence
+        ↓
+PM Decision
+        ↓
+Requirement / PRD
+        ↓
+External Tools / Workspace
+
+重点：
+
+Internal Evidence 和 External Research 必须严格区分。
+
+不要把互联网研究结果伪装成用户反馈 Evidence。
+
+━━━━━━━━━━━━━━━━━━
+四、本阶段必须完成的第一部分：Research Agent
+━━━━━━━━━━━━━━━━━━
+
+新增：
+
+# Research Agent
+
+主要用于针对某个 Product Insight 做外部产品研究。
+
+例如：
+
+Insight：
+用户希望支持批量图片上传。
+
+用户可以点击：
+
+Research Competitors
+
+Research Agent 自动研究：
+
+- 竞品是否支持该功能
+- 功能如何设计
+- 限制条件
+- 典型用户体验
+- 产品差异
+- 潜在机会
+
+输出：
+
+Competitor Findings
+Product Patterns
+Strengths
+Weaknesses
+Differentiation Opportunities
+Sources
+
+━━━━━━━━━━━━━━━━━━
+五、Research Agent 输入
+━━━━━━━━━━━━━━━━━━
+
+输入必须包含：
+
+- insight_id
+- insight title
+- insight summary
+- pain point
+- affected segment
+- representative evidence summary
+- PM decision（如果已有）
+- research question / scope
+
+不要直接把全部 Raw Feedback 无限塞给 Research Agent。
+
+━━━━━━━━━━━━━━━━━━
+六、Research Agent 输出
+━━━━━━━━━━━━━━━━━━
+
+建议 Structured Output：
+
+{
+  "summary": "...",
+  "competitors": [
+    {
+      "name": "...",
+      "feature": "...",
+      "strengths": [],
+      "weaknesses": [],
+      "source_refs": []
+    }
+  ],
+  "market_patterns": [],
+  "opportunities": [],
+  "risks": [],
+  "confidence": 0.0
+}
+
+必须 Schema Validation。
+
+━━━━━━━━━━━━━━━━━━
+七、Research Source Grounding
+━━━━━━━━━━━━━━━━━━
+
+Research Agent 的结论必须关联来源。
+
+必须保存：
+
+- source URL / source id
+- title
+- provider / domain
+- retrieved_at
+- supporting finding
+
+禁止：
+
+Research Agent 无来源地写：
+
+“所有竞品都支持这个功能。”
+
+如果没有来源：
+
+必须显示：
+
+Not verified / insufficient evidence
+
+━━━━━━━━━━━━━━━━━━
+八、Internal vs External Evidence
+━━━━━━━━━━━━━━━━━━
+
+这是 Phase 8 的核心设计之一。
+
+必须明确区分：
+
+# Internal Evidence
+
+来自：
+
+用户反馈
+访谈
+客服
+App Review
+现有 InsightFlow Dataset
+
+# External Research
+
+来自：
+
+公开网页
+竞品文档
+产品页面
+公开资料
+
+UI 和 Database 都不能把二者混在一起。
+
+Insight Detail 中建议设计两个区域：
+
+Internal Evidence
+External Research
+
+━━━━━━━━━━━━━━━━━━
+九、Research 数据结构
+━━━━━━━━━━━━━━━━━━
+
+根据当前架构设计最小合理结构。
+
+建议：
+
+research_runs
+
+字段例如：
+
+id
+project_id
+insight_id
+status
+model
+prompt_version
+query
+started_at
+completed_at
+input_tokens
+output_tokens
+latency_ms
+created_at
+
+新增：
+
+research_sources
+
+例如：
+
+id
+research_run_id
+url
+title
+domain
+retrieved_at
+metadata
+
+新增：
+
+research_findings
+
+例如：
+
+id
+research_run_id
+finding_type
+content
+confidence
+source_ids
+created_at
+
+具体可以优化，但必须支持：
+
+Run Traceability
+Source Traceability
+Version Traceability
+
+━━━━━━━━━━━━━━━━━━
+十、Research Prompt
+━━━━━━━━━━━━━━━━━━
+
+必须版本化，例如：
+
+research-agent-v1
+
+Prompt 必须强调：
+
+- 不得发明竞品能力
+- 结论必须引用来源
+- 区分事实与推断
+- 不得将外部市场资料冒充内部用户 Evidence
+- 无法验证时明确说明
+
+━━━━━━━━━━━━━━━━━━
+十一、Research API
+━━━━━━━━━━━━━━━━━━
+
+至少提供：
+
+POST /insights/{insight_id}/research
+
+启动研究。
+
+GET /research/{run_id}
+
+查询 Run。
+
+GET /insights/{insight_id}/research
+
+查看该 Insight 的历史 Research。
+
+GET /research/{run_id}/sources
+
+查看 Sources。
+
+具体路径可以按项目现有 API 风格调整。
+
+━━━━━━━━━━━━━━━━━━
+十二、Research Frontend
+━━━━━━━━━━━━━━━━━━
+
+在 Insight Detail 增加：
+
+# External Research
+
+按钮：
+
+Run Research
+
+状态：
+
+Not Started
+Running
+Completed
+Failed
+
+完成后显示：
+
+Competitor Findings
+Market Patterns
+Opportunities
+Sources
+
+每条 Finding 能展开查看 Source。
+
+不要把 Research 自动塞入 Internal Evidence。
+
+━━━━━━━━━━━━━━━━━━
+十三、第二部分：Tool / MCP Layer
+━━━━━━━━━━━━━━━━━━
+
+在 Research Agent 稳定以后，增加统一 Tool Layer。
+
+目标：
+
+不要让 Agent 直接在代码里硬写每个外部系统的调用逻辑。
+
+建议抽象：
+
+tools/
+    web_research
+    workspace
+    issue_tracker
+    document_sync
+
+如果项目已有 Agent Tool 架构：
+
+沿用，不要重复造一套。
+
+━━━━━━━━━━━━━━━━━━
+十四、优先集成范围
+━━━━━━━━━━━━━━━━━━
+
+Phase 8 不要一次集成十个工具。
+
+优先只做：
+
+# 1. Research Tool
+
+必须。
+
+然后最多再选：
+
+# 2. 一个文档类工具
+例如 Notion / Feishu
+
+# 3. 一个任务类工具
+例如 Jira
+
+具体选择基于当前真正可用的 API / MCP / Connector。
+
+如果当前没有可靠凭据或能力：
+
+只做 Tool Interface + Mock Contract
+
+但不能声称已真实集成。
+
+━━━━━━━━━━━━━━━━━━
+十五、MCP
+━━━━━━━━━━━━━━━━━━
+
+如果项目当前技术栈适合 MCP：
+
+可以建立：
+
+MCP Tool Adapter Layer
+
+让 Agent 通过统一接口调用外部工具。
+
+但请先确认：
+
+- MCP Server 来源
+- 安全性
+- Auth
+- Tool Schema
+- Timeout
+- Retry
+- Audit
+
+不要为了“简历上能写 MCP”强行引入。
+
+只有真正调用成功才算完成。
+
+━━━━━━━━━━━━━━━━━━
+十六、外部写操作必须 Human Approval
+━━━━━━━━━━━━━━━━━━
+
+这是强制规则。
+
+Agent 可以自动：
+
+Search
+Read
+Draft
+Prepare Action
+
+但任何外部写入：
+
+Create Jira Ticket
+Create Notion Page
+Write Feishu Doc
+Update External System
+
+必须先经过：
+
+# Human Approval
+
+流程：
+
+Agent prepares action
+↓
+Show preview
+↓
+PM confirms
+↓
+Tool executes
+↓
+Return external result
+
+不能后台自动执行。
+
+━━━━━━━━━━━━━━━━━━
+十七、Tool Action 数据
+━━━━━━━━━━━━━━━━━━
+
+建议保存：
+
+tool_runs
+
+字段：
+
+id
+project_id
+agent_run_id
+tool_name
+action
+status
+request_payload
+response_summary
+started_at
+completed_at
+created_at
+
+敏感信息不要存。
+
+━━━━━━━━━━━━━━━━━━
+十八、Tool 状态
+━━━━━━━━━━━━━━━━━━
+
+统一：
+
+pending
+awaiting_approval
+running
+completed
+failed
+cancelled
+
+外部写操作：
+
+必须先进入：
+
+awaiting_approval
+
+━━━━━━━━━━━━━━━━━━
+十九、Tool Retry / Idempotency
+━━━━━━━━━━━━━━━━━━
+
+必须考虑：
+
+- network failure
+- timeout
+- provider 5xx
+- duplicate user click
+- external system slow response
+
+尤其：
+
+Create Jira
+Create Notion
+
+不能因为 Retry 创建两个重复对象。
+
+如外部 API 支持：
+
+使用 idempotency key。
+
+否则需要内部去重策略。
+
+━━━━━━━━━━━━━━━━━━
+二十、Agent Tool Security
+━━━━━━━━━━━━━━━━━━
+
+禁止：
+
+- API Key 写源码
+- Secret 写日志
+- Agent 自己读取任意环境变量
+- 模型自由构造未注册 Tool
+- Tool 参数绕过 Schema Validation
+
+必须：
+
+LLM
+↓
+Tool Schema Validation
+↓
+Permission Check
+↓
+Human Approval（写操作）
+↓
+Execution
+
+━━━━━━━━━━━━━━━━━━
+二十一、第三部分：Multi-Agent（可选但推荐）
+━━━━━━━━━━━━━━━━━━
+
+只有 Research Agent 和 Tool Layer 稳定后，才能考虑 Multi-Agent。
+
+不要一开始就拆 8 个 Agent。
+
+建议最大结构：
+
+Product Manager Agent
+        │
+ ┌──────┼──────────┐
+ ▼      ▼          ▼
+Insight Research   PRD
+Agent   Agent       Agent
+
+其中：
+
+Insight Agent
+
+负责内部 Evidence / Insight。
+
+Research Agent
+
+负责外部公开信息。
+
+PRD Agent
+
+负责把：
+
+Internal Insight
++
+External Research
++
+PM Decision
+
+转成 Requirement / PRD 输入。
+
+━━━━━━━━━━━━━━━━━━
+二十二、Multi-Agent 必须有明确职责边界
+━━━━━━━━━━━━━━━━━━
+
+禁止：
+
+三个 Agent 都能：
+
+- 搜索
+- 写 PRD
+- 决定 Priority
+- 修改 Decision
+
+每个 Agent 必须有：
+
+Role
+Allowed Inputs
+Allowed Tools
+Allowed Outputs
+
+例如：
+
+Research Agent：
+
+允许：
+Web Research
+
+不允许：
+修改 PM Priority
+写 Requirement Final
+执行外部写操作
+
+━━━━━━━━━━━━━━━━━━
+二十三、Orchestrator
+━━━━━━━━━━━━━━━━━━
+
+如果实现 Multi-Agent：
+
+必须有明确 Orchestrator。
+
+负责：
+
+- Routing
+- Context Passing
+- State
+- Handoff
+- Failure Handling
+- Retry
+
+不要让 Agent 之间自由无限对话。
+
+━━━━━━━━━━━━━━━━━━
+二十四、Handoff
+━━━━━━━━━━━━━━━━━━
+
+Handoff 必须结构化。
+
+例如：
+
+Research Agent → Product Agent
+
+传：
+
+{
+  "insight_id": "...",
+  "research_run_id": "...",
+  "findings": [...],
+  "source_refs": [...]
+}
+
+不要传整段聊天历史。
+
+━━━━━━━━━━━━━━━━━━
+二十五、Agent State
+━━━━━━━━━━━━━━━━━━
+
+必须能够追踪：
+
+Current Agent
+Current Step
+Input
+Output
+Tool Calls
+Failure
+Duration
+
+如果当前已有 Agent Run / Trace 体系：
+
+扩展现有体系。
+
+不要再建完全平行的新系统。
+
+━━━━━━━━━━━━━━━━━━
+二十六、Tracing
+━━━━━━━━━━━━━━━━━━
+
+Phase 8 至少能够追踪：
+
+Orchestrator
+↓
+Agent
+↓
+Tool Call
+↓
+Result
+↓
+Handoff
+
+记录：
+
+agent
+model
+prompt_version
+tool
+latency
+tokens
+status
+
+不要记录 Secret。
+
+━━━━━━━━━━━━━━━━━━
+二十七、Phase 8 Evaluation
+━━━━━━━━━━━━━━━━━━
+
+Phase 8 不能只验证“能调用工具”。
+
+至少评测：
+
+Research Groundedness
+
+Source Validity
+
+Tool Call Success Rate
+
+Tool Schema Success Rate
+
+External Action Success Rate
+
+Agent Routing Accuracy
+
+Handoff Success Rate
+
+Human Approval Compliance
+
+━━━━━━━━━━━━━━━━━━
+二十八、Research Evaluation
+━━━━━━━━━━━━━━━━━━
+
+至少人工抽查：
+
+5～10 个 Insight Research Runs。
+
+检查：
+
+- 竞品信息是否真实
+- Source 是否能支持 Finding
+- 有没有把推断当事实
+- 有没有遗漏来源
+- Opportunity 是否与 Research 一致
+
+━━━━━━━━━━━━━━━━━━
+二十九、Tool Evaluation
+━━━━━━━━━━━━━━━━━━
+
+至少测试：
+
+- valid call
+- invalid arguments
+- timeout
+- retry
+- duplicate submission
+- user rejects approval
+- user approves
+- provider failure
+
+尤其测试：
+
+拒绝 Human Approval 后：
+
+外部系统不能产生写入。
+
+━━━━━━━━━━━━━━━━━━
+三十、Multi-Agent Evaluation
+━━━━━━━━━━━━━━━━━━
+
+如果做 Multi-Agent：
+
+至少测试：
+
+- 正确 Routing
+- 错误 Routing
+- Research Agent Failure
+- Tool Failure
+- Handoff Invalid Schema
+- Agent Timeout
+- User Cancel
+
+不要只跑 Happy Path。
+
+━━━━━━━━━━━━━━━━━━
+三十一、前端 Phase 8
+━━━━━━━━━━━━━━━━━━
+
+建议新增最小 UI：
+
+Insight Detail
+    ↓
+External Research
+
+包括：
+
+Run Research
+
+Research Status
+
+Competitors
+
+Findings
+
+Sources
+
+以及：
+
+Tool Action Preview
+
+例如：
+
+Create Jira Ticket
+
+预览：
+
+Title
+Description
+Priority
+Source Insight
+
+按钮：
+
+Approve
+Cancel
+
+执行成功后：
+
+显示：
+
+External ID / Link
+
+━━━━━━━━━━━━━━━━━━
+三十二、不要破坏原核心流程
+━━━━━━━━━━━━━━━━━━
+
+Phase 8 是增强。
+
+不能破坏：
+
+Feedback
+Classification
+Clustering
+Insight
+Evidence
+Opportunity
+PM Decision
+Requirement
+PRD
+Evaluation
+
+即使 Research / Tool 全部失败：
+
+原来的 InsightFlow 核心流程也必须可用。
+
+━━━━━━━━━━━━━━━━━━
+三十三、降级策略
+━━━━━━━━━━━━━━━━━━
+
+如果 Research Provider 不可用：
+
+显示：
+
+External Research Unavailable
+
+不能阻塞 Insight Detail。
+
+如果 MCP / External Tool 不可用：
+
+PM 仍然可以：
+
+复制 Requirement
+复制 PRD
+继续核心工作流。
+
+━━━━━━━━━━━━━━━━━━
+三十四、错误处理
+━━━━━━━━━━━━━━━━━━
+
+至少处理：
+
+Research timeout
+Invalid source
+Provider failure
+Tool unavailable
+Tool schema error
+Unauthorized
+User denies approval
+Duplicate action
+External API 409 / 429 / 5xx
+Agent handoff failure
+
+不要向用户显示内部 stack trace。
+
+━━━━━━━━━━━━━━━━━━
+三十五、测试
+━━━━━━━━━━━━━━━━━━
+
+新增自动测试至少覆盖：
+
+Research Run
+Source Validation
+Structured Output
+Tool Schema
+Human Approval
+Idempotency
+Agent Routing
+Handoff
+Failure Recovery
+Project Isolation
+
+并继续运行完整原有测试。
+
+━━━━━━━━━━━━━━━━━━
+三十六、真实 End-to-End
+━━━━━━━━━━━━━━━━━━
+
+至少跑一条：
+
+Insight
+↓
+Run External Research
+↓
+View Competitor Findings
+↓
+View Sources
+↓
+PM Decision
+↓
+Requirement
+↓
+PRD
+
+如果 Tool Integration 可用，再跑：
+
+Accepted Requirement
+↓
+Prepare External Action
+↓
+Human Approval
+↓
+Create External Item
+↓
+Return Result
+
+━━━━━━━━━━━━━━━━━━
+三十七、Document Update
+━━━━━━━━━━━━━━━━━━
+
+完成后更新：
+
+工作记录.md
+
+docs/09-验证与交付记录.md
+
+如发生重要架构变化：
+
+docs/08-决策记录与修正.md
+
+另外建议新增：
+
+docs/Phase8-Agent与集成架构.md
+
+记录：
+
+- Agent roles
+- Tool registry
+- MCP
+- Approval policy
+- Handoff contract
+- Security boundary
+
+━━━━━━━━━━━━━━━━━━
+三十八、Git
+━━━━━━━━━━━━━━━━━━
+
+开发前：
+
+git status
+git log --oneline -10
+
+完成后：
+
+git diff
+git status
+
+禁止提交：
+
+.env
+API Key
+OAuth Token
+Connector Secret
+缓存
+临时数据库
+
+━━━━━━━━━━━━━━━━━━
+三十九、Commit
+━━━━━━━━━━━━━━━━━━
+
+只有在：
+
+完整测试通过
+真实 Research 验证通过
+Human Approval 流程通过
+文档更新完成
+
+后 Commit。
+
+推荐：
+
+feat: add research agent and tool integration layer
+
+如果拆：
+
+feat: add grounded competitor research agent
+
+feat: add agent tool and approval framework
+
+feat: add optional multi-agent orchestration
+
+test: cover phase 8 research and tool workflows
+
+docs: record phase 8 agent architecture
+
+未经明确授权：
+
+禁止 push。
+
+━━━━━━━━━━━━━━━━━━
+四十、Phase 8 必须完成项
+━━━━━━━━━━━━━━━━━━
+
+必须：
+
+[ ] Research Agent
+[ ] Research Run 可追踪
+[ ] Research Sources 可追溯
+[ ] Internal / External Evidence 分离
+[ ] Research Structured Output
+[ ] Research Prompt Version
+[ ] Source Grounding
+[ ] Insight Detail Research UI
+[ ] Tool Layer / Registry
+[ ] Human Approval Framework
+[ ] Tool Call Schema Validation
+[ ] Tool Retry / Idempotency
+[ ] Tool Audit / Run Record
+[ ] Phase 1～7 未被破坏
+[ ] 完整测试通过
+[ ] Frontend Test 通过
+[ ] Backend Test 通过
+[ ] Real Research Flow 通过
+[ ] 文档更新
+[ ] Git Commit
+
+━━━━━━━━━━━━━━━━━━
+四十一、可选完成项
+━━━━━━━━━━━━━━━━━━
+
+只有核心稳定后再做：
+
+[ ] MCP
+[ ] Notion / Feishu
+[ ] Jira
+[ ] Multi-Agent
+[ ] Orchestrator
+[ ] Structured Handoff
+[ ] Agent Routing Evaluation
+
+如果时间或环境不允许：
+
+可以明确标：
+
+DEFERRED
+
+不要为了完成 Checklist 做假集成。
+
+━━━━━━━━━━━━━━━━━━
+四十二、Phase 8 Delivery Report
+━━━━━━━━━━━━━━━━━━
+
+完成后输出：
+
+# Phase 8 Delivery Report
+
+包括：
+
+Status
+
+Research Agent
+
+Research Architecture
+
+Research Sources
+
+Tool Layer
+
+MCP
+
+External Integrations
+
+Human Approval
+
+Multi-Agent（如果实现）
+
+Agent Roles
+
+Handoff Design
+
+Security Controls
+
+Tests Added
+
+Test Results
+
+Real Research Result
+
+External Tool Result
+
+Evaluation Results
+
+Known Issues
+
+Deferred Items
+
+Technical Debt
+
+Files Changed
+
+Git Commit
+
+User Retest Steps
+
+Next Recommended Phase
+
+━━━━━━━━━━━━━━━━━━
+四十三、用户复测步骤
+━━━━━━━━━━━━━━━━━━
+
+请给我一套人工复测流程。
+
+至少：
+
+1. 启动 Backend
+2. 启动 Frontend
+3. 打开一个 Insight
+4. 点击 Run Research
+5. 查看 Running
+6. 查看 Competitor Findings
+7. 点击 Source
+8. 检查来源真实性
+9. 确认 Internal Evidence 与 External Research 分开
+10. 继续 PM Decision
+11. Create Requirement
+12. Generate PRD
+
+如果实现外部 Tool：
+
+13. Prepare External Action
+14. 查看 Preview
+15. Cancel 一次，确认未写入
+16. 再次执行
+17. Approve
+18. 检查外部对象确实创建成功
+19. 检查 InsightFlow 保存 External Result
+
+━━━━━━━━━━━━━━━━━━
+四十四、STOP
+━━━━━━━━━━━━━━━━━━
+
+Phase 8 完成后立即：
+
+STOP
+
+不要开始：
+
+Deployment
+Cloud Production
+Portfolio Polish
+Public Demo
+
+这些属于 Phase 9。
+
+只完成：
+
+Research
+→ Tool Layer
+→ Human Approval
+→ 可选 MCP / Multi-Agent
+→ Evaluation
+→ Tests
+→ Docs
+→ Git
+→ Delivery Report
+
+等待我人工验收。
+
+只有我明确说：
+
+Phase 8 验收通过，开始 Phase 9。
+
+才能继续。

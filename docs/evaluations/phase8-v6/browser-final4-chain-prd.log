@@ -1,0 +1,15 @@
+### Result
+{"status":503,"body":{"detail":"PRD tool input missing required fields: ['acceptance_criteria', 'edge_cases', 'evidence_ids', 'evidence_sources', 'functional_requirements', 'mvp_scope', 'problem', 'product_goal', 'proposed_solution', 'risks', 'success_metrics', 'target_user', 'user_flow', 'user_story']"}}
+### Ran Playwright code
+```js
+await (async (page) => { const p=page.waitForResponse(r=>r.url().includes("/prds") && r.request().method()==="POST",{timeout:180000}); await page.getByTestId("generate-prd").click(); const r=await p; return {status:r.status(),body:await r.json()}; })(page);
+```
+### Open tabs
+- 0: [InsightFlow — 反馈到产品的中转站](http://127.0.0.1:13080/prds/1c4d4848-3b14-4dc7-a460-7766743778e7)
+- 1: (current) [InsightFlow — 反馈到产品的中转站](http://127.0.0.1:13080/requirements/0357e0b7-6163-4278-8d2a-c4050d62050e)
+### Page
+- Page URL: http://127.0.0.1:13080/requirements/0357e0b7-6163-4278-8d2a-c4050d62050e
+- Page Title: InsightFlow — 反馈到产品的中转站
+- Console: 3 errors, 0 warnings
+### Events
+- New console entries: .playwright-cli/console-2026-10-17T13-44-49-350Z.log#L3

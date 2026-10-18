@@ -1,0 +1,240 @@
+备份照片和视频 - Android 手机和平板电脑 - Google 相册帮助 跳到主要内容
+Google 相册帮助
+登录
+Google 帮助
+帮助中心
+Google 相册
+隐私政策
+服务条款
+提交反馈
+发送以下项目的反馈
+本帮助内容和信息
+帮助中心常规体验
+关闭下一页
+Google 相册帮助论坛（英文）论坛
+备份照片和视频
+开启备份功能后，系统会自动将照片和视频保存到您的 Google 账号。您可以通过任何已登录账号的设备访问这些已保存的照片和视频。您备份的照片和视频都不会公开，除非您选择共享，否则仅可在您已登录账号的设备上查看。您一次只能将照片和视频备份到一个 Google 账号。了解如何解决备份问题。
+准备工作
+备份照片和视频时的注意事项
+重要提示：您 Google 账号存储空间由 Google 相册、Google 云端硬盘和 Gmail 等多个产品共用。如果存储空间已用完，您可以购买更多存储空间或清理存储空间。
+良好的互联网连接。
+可备份的文件大小：
+照片最大为 200 MB 或 2 亿像素。
+视频最大为 10 GB。
+内容必须大于 256 x 256。
+可备份的文件类型：
+照片：.jpg、.heic、.heif、.png、.webp、.gif、.avif 和大部分 RAW 文件。
+视频：.mpg、.mod、.mmv、.tod、.wmv、.asf、.avi、.divx、.mov、.m4v、.3gp、.3g2、.mp4、.m2t、.m2ts、.mts 和 .mkv 文件。
+可备份的文件格式：
+10-bit HDR 视频。
+使用“最佳照片”功能挑选的照片（仅限 Pixel）。
+慢动作视频。
+深度视频。
+动态照片。
+实况照片（在 iPhone 或 iPad 上使用 Google 相册应用时）。
+如果此处未列出您尝试备份的文件类型，则表示 Google 相册可能不支持该文件类型。
+可备份的 RAW 文件类型
+佳能
+EOS-1D X Mark III、EOS-1D X Mark II、EOS-1D X、EOS-1Ds Mark III、EOS-1Ds Mark II、EOS-1D Mark IV、EOS-1D Mark III、EOS-1D Mark II、EOS-1D C、EOS-1D Mark II N、EOS 5D Mark IV、EOS 5D Mark III、EOS 5D Mark II、EOS 5D、EOS 5Ds、EOS 5Ds R、EOS R5、EOS 6D Mark II、EOS 6D、EOS R6、EOS R、EOS Ra、EOS RP、EOS 7D Mark II、EOS 7D、EOS 90D、EOS 80D、EOS 70D、EOS 60D、EOS 60Da、EOS 50D、EOS 40D、EOS 30D、EOS 20D、EOS 20Da、EOS 9000D (EOS 77D)、EOS 8000D (EOS REBEL T6S/EOS 760D)、EOS Kiss X10i (EOS REBEL T8i/EOS 850D)、EOS Kiss X9i (EOS REBEL T7i/EOS 800D)、EOS Kiss X8i (EOS REBEL T6i/EOS 750D)、EOS Kiss X7i (EOS REBEL T5i/EOS 700D)、EOS Kiss X6i (EOS REBEL T4i/EOS 650D)、EOS Kiss X10 (EOS REBEL SL3/EOS 250D/EOS 200D II)、EOS Kiss X9 (EOS REBEL SL2/EOS 200D)、EOS Kiss X7 (EOS REBEL SL1/EOS 100D)、EOS Kiss X5 (EOS REBEL T3i/EOS 600D)、EOS Kiss X4 (EOS REBEL T2i/EOS 550D)、EOS Kiss X3 (EOS REBEL T1i/EOS 500D)、EOS Kiss X2 (EOS DIGITAL REBEL XSi/EOS 450D)、EOS Kiss X90 (EOS REBEL T7/EOS 2000D/EOS 1500D)、EOS Kiss X80 (EOS REBEL T6/EOS 1300D)、EOS Kiss X70 (EOS REBEL T5/EOS 1200D)、EOS Kiss X50 (EOS REBEL T3/EOS 1100D)、EOS Kiss F (EOS DIGITAL REBEL XS/EOS 1000D)、EOS Kiss Digital X (EOS DIGITAL REBEL XTi/EOS 400D DIGITAL)、EOS Kiss Digital N (EOS DIGITAL REBEL XT/EOS 350D DIGITAL)、EOS Kiss M (EOS M50)、EOS M6 Mark II、EOS M6、EOS M5、EOS M3、EOS M2、EOS M、EOS M10、EOS M200、EOS M100、PowerShot G9 X Mark II、PowerShot G9 X、PowerShot G7 X Mark III、PowerShot G7 X Mark II、PowerShot G7 X、PowerShot G5 X Mark II、PowerShot G5 X、PowerShot G3 X、PowerShot G1 X Mark III、PowerShot G1 X Mark II、PowerShot G1 X、PowerShot G16、PowerShot G15、PowerShot G12、PowerShot G11、PowerShot G10、PowerShot S120、PowerShot S110、PowerShot S100、PowerShot S95、PowerShot S90、PowerShot SX70 HS、PowerShot SX60 HS、PowerShot SX50 HS、PowerShot SX1 IS
+富士
+X100
+尼康
+1AW1、1J1、1J2、1J3、1J4、1S1、1S2、1V1、1V2、1V3、D3、D3X、D4、D4S、D40、D40X、D50、D60、D70、D70s、D80、D90、D200、D300、D300s、D600、D610、D700、D750、D800、D800E、D810、D3000、D3100、D3200、D3300、D5000、D5100、D5200、D5300、D5500、D7000、D7100、D7200、Df
+Coolpix：A、P7800
+奥林巴斯
+E-M1、E-M5、E-M10、E-P1、E-P2、E-P3、E-P5、E-PL3、E-PL5、E-PL7、OM-D E-M5 Mark II
+松下
+CM1、FZ300、G70、GF1、GF3、GF5、GF7、GH3、GH4、GM1、GM5、GX1、GX8、LX5、LX7、LX100
+索尼
+A7、A7R、A7S、A7 Mark II、A55、A58、A65、A77、A77 Mark II、A99、A700、A3000、A5000、A5100、A6000、QX1、NEX-5、NEX-5N、NEX-5R、NEX-6、NEX-7、NEX-C3、NEX-F3、RX1、RX1R、RX10、RX10 Mark II、RX100、RX100 Mark II、RX100 Mark III、RX100 Mark IV
+DNG 文件
+大多数 .dng 格式
+开启或关闭备份功能
+重要提示：完成备份可能需要一点时间，具体取决于网络连接状况、上传内容的大小以及其他条件。
+在 Android 手机或平板电脑上，打开 Google 相册应用 Google 相册。
+登录您的 Google 账号。
+在右上角，点按您的个人资料照片或账号名称首字母。
+依次点按“相册设置”图标 设置 然后 备份。
+开启或关闭备份功能。
+开启或关闭备份功能
+检查备份是否已完成
+在 Android 手机或平板电脑上，打开 Google 相册应用 Google 相册。
+登录您的 Google 账号。
+在右上角，点按您的个人资料照片或账号名称首字母。
+备份进度是根据待上传内容的数量来测算的。
+完成备份后，状态会显示为“备份完成”。
+如果备份功能处于关闭状态，则状态会显示为“备份功能已关闭”。
+手动备份照片和视频
+在 Android 设备上打开 Google 相册应用 Google 相册。
+登录您的 Google 账号。
+打开照片或视频。
+点按立即备份。
+或者，您也可以点按备份按钮或滚动到底部，然后点按立即备份。
+提示：
+打开单张照片时，如果存储空间不足，系统会显示“存储空间不足，无法备份”标记。
+如要备份多张照片或多个视频，请轻触并按住要备份的照片或视频，然后点按备份。
+查看整体备份状态
+重要提示：如果备份功能已开启且存储空间充足，您可以在媒体库顶部查看备份状态。
+在 Android 设备上打开 Google 相册 Google 相册。
+在顶部查看备份状态。
+Google 相册 Google 相册：无备份。
+正在准备备份：备份正在开始。
+正在备份照片：备份正在进行中。
+备份完成 ：备份已完成。
+备份已暂停 ：备份操作现已暂停。
+如需了解详情，请点按相应状态。
+可选操作：
+开启移动流量：如果您无法访问 Wi-Fi，可以使用移动流量开始备份。
+通知我：启用通知，以便接收有关备份和其他功能的 Google 相册动态。
+如需开启通知，请在“备份状态”下方点按开启通知。
+如需退出，请点按“关闭”图标 收起。
+提示：为确保媒体成功备份，请查看相关要求。
+查看照片或视频的备份状态
+在 Android 设备上打开 Google 相册应用 Google 相册。
+点按相应照片或视频。
+依次点按“更多”图标 更多 然后 关于。
+滚动到“详细信息”。
+如果照片已备份，“已备份”图标 已同步至云端 下方会显示备份状态和大小。
+提示：您可以随时更改备份画质。了解如何选择照片和视频的备份画质。
+在照片视图中查看照片或视频的备份状态
+您可以在照片视图中查看照片或视频的备份状态，具体查看方式取决于备份功能处于开启还是关闭状态。
+如果备份功能已开启
+如果您在 Google 相册中登录的至少一个 Google 账号开启了备份功能，则可以查看照片的如下备份状态：
+空白缩略图：内容已备份。
+正在上传 ：内容正在备份。
+正在排队或已暂停 ：内容目前未在备份，但最终会备份。
+带斜线的云图标：内容未备份，且不会进行备份。
+永久失败：内容备份永久失败。
+提示：最近备份的内容只会显示带对勾的云图标 3 秒钟。然后，已备份的照片会显示空白缩略图。
+如果备份功能已关闭
+如果您在 Google 相册中登录的所有 Google 账号均已关闭备份功能，您可以查看照片的如下备份状态：
+空白缩略图：内容未备份。
+带对勾的云图标 ：内容已备份。
+正在上传 ：内容正在备份。
+正在排队或已暂停 ：内容目前未在备份，但最终会备份。
+永久失败：内容备份永久失败。
+更改备份设置
+备份到其他账号
+在 Android 手机或平板电脑上，打开 Google 相册应用 Google 相册。
+登录您的 Google 账号。
+在右上角，点按您的个人资料照片或账号名称首字母。
+依次点按“相册设置”图标 设置 然后 备份。
+在“账号与存储空间”下方，点按您的个人资料照片或账号名称首字母。
+选择您要备份到的 Google 账号。
+备份设备文件夹
+重要提示：开启“备份”功能后，系统不仅会备份您相机中的内容，还会自动备份您选择的设备文件夹。您可以选择自动备份所有文件夹，也可以为各个设备文件夹单独开启或关闭“备份”功能。
+在 Android 设备上打开 Google 相册应用 Google 相册。
+登录您的 Google 账号。
+在右上角，点按您的个人资料照片或账号名称首字母。
+依次点按 Google 相册“设置”图标 设置 然后 备份。
+在“设置”下方，点按备份设备文件夹。
+点按要备份的文件夹。
+在您不想备份的文件夹旁边，关闭相应设置。
+在要备份的文件夹旁边，开启相应设置。
+可选：开启或关闭备份所有设备文件夹。
+如果“备份所有设备文件夹”处于开启状态，系统会自动备份新的设备文件夹中的照片。
+提示：如果您不希望设备文件夹中的内容出现在照片视图中，可以将其隐藏。了解如何在照片视图中隐藏内容。
+设置每日备份上限
+在 Android 手机或平板电脑上，打开 Google 相册应用 Google 相册。
+在右上角，点按您的个人资料照片或账号名称首字母。
+依次点按“相册设置”图标 设置 然后 备份 然后 移动流量使用量。
+您可以：
+选择 Google 相册在自动备份照片和视频时每日可使用的移动数据流量上限。
+关闭通过移动数据备份视频。
+关闭在漫游时备份。
+在漫游时备份
+在 Android 手机或平板电脑上，打开 Google 相册应用 Google 相册。
+登录您的 Google 账号。
+在右上角，点按您的个人资料照片或账号名称首字母。
+依次点按“相册设置”图标 设置 然后 备份 然后 移动流量使用量。
+开启在漫游时备份。
+使用无限移动数据网络备份
+有些移动运营商会提供“无限移动数据流量套餐”，其中的数据流量不受运营商流量配额或限制的影响。目前，部分运营商（例如美国的 Verizon 和 AT&T）的一些用户可使用此选项。如果您使用其中某一运营商的此类服务，则可能会看到相关选项，允许您使用“WLAN 和无限移动数据网络”进行备份。
+重要提示：无限移动数据网络可能仅适用于 5G。
+在 Android 手机或平板电脑上，打开 Google 相册应用 Google 相册。
+在右上方，依次点按您的个人资料照片或帐号名称首字母图片 然后 相册设置 设置。
+依次点按备份 然后 移动数据用量 然后 没有 WLAN 时。
+点按仅使用无限移动数据网络，此时流量不会计入流量套餐。
+排查与备份相关的问题
+重要提示：如果您为 Google 相册应用开启了电池优化功能，则备份功能可能无法正常运行。如果您遇到此问题，可以关闭电池优化功能。
+要在部分 Android 设备上关闭电池优化功能，请执行以下操作：
+打开设备的“设置”应用。
+点按顶部的“搜索”图标 。
+搜索电池优化、电池用量或优化电池。
+点按电池优化。
+依次点按所有应用 接着点按 相册 接着点按 不优化 接着点按 完成。
+关闭其他 Android 设备上的电池优化功能
+在主屏幕上，轻触并按住 Google 相册应用 Google 相册。
+点按“信息”图标 信息。
+在“管理电池用量”下，选择无限制。
+撤销设备备份
+您可以将设备上当前存在的所有照片和视频从 Google 相册中移除，但不从设备中移除。了解如何撤销设备备份。
+了解备份照片有哪些好处
+开启备份功能后，可获得以下好处：
+保留所有回忆：设备开启备份功能后，通过该设备拍摄的所有照片都会保存到您的 Google 账号。
+手动或自动备份内容后，则可获得以下好处：
+自动同步：您可以在登录账号的任何设备上访问自己拍摄的所有照片以及您对照片所做的任何编辑。如果您在手机上编辑并保存了照片，则 Google 相册中的照片也会发生相应变化。
+快速且强大的搜索功能：启用面孔分组功能后，您可以按照片中的人物来搜索照片。您还可以按照片中的地点和事物进行搜索，且不必事先为照片添加标记。
+自动智能创作：Google 相册会根据您的照片自动创建精彩集锦视频、拼图、动画和全景图片，让您的照片更加生动。
+从 Google 相册中移除已备份的照片和视频
+在 Android 设备上的 Google 相册应用中关闭备份功能。
+在要保留照片或视频的设备上关闭备份功能。
+在电脑或移动浏览器中，访问 photos.google.com/login。
+删除所选的已备份照片和视频。
+在 Android 设备上，稍等几分钟，确保设备已连接到 Wi-Fi。
+关闭 Google 相册应用，然后重新打开。
+删除的照片可能仍会显示在照片视图中。这些照片只是本地副本。
+如需查看照片的备份状态，请依次点按相应照片 接着点按“更多”图标 更多 滚动到“详细信息”。
+为确保照片或视频不会再次备份到 Google 相册，且本地副本不会被删除，请让备份功能保持关闭状态。
+了解删除照片和视频后会出现什么情况。
+相关资源
+Google 存储空间的运作方式
+选择照片和视频的备份画质
+删除照片和视频
+本页面可能包含使用 AI 技术翻译的内容。AI 翻译未必准确无误。
+该内容对您有帮助吗？
+您有什么改进建议？
+是否
+提交
+Android 手机和平板电脑 计算机iPhone 和 iPad
+更多
+需要更多帮助？
+请尝试以下步骤：
+向帮助社区发帖 向社区成员寻求答案
+true
+帮助
+1 / 4
+备份照片和视频
+2 / 4
+选择照片和视频的备份画质
+3 / 4
+管理存储空间
+4 / 4
+关于您的 Google 相册活动和存储空间
+©2026 Google
+隐私政策
+服务条款
+语言 català‎dansk‎Deutsch‎eesti‎English‎English (United Kingdom)‎español‎español (Latinoamérica)‎Filipino‎français‎hrvatski‎Indonesia‎italiano‎latviešu‎lietuvių‎magyar‎Melayu‎Nederlands‎norsk‎polski‎português‎português (Brasil)‎română‎slovenčina‎slovenščina‎suomi‎svenska‎Tiếng Việt‎Türkçe‎íslenska‎čeština‎Ελληνικά‎български‎русский‎српски‎українська‎‏עברית‏العربية‏فارسیमराठी‎हिन्दी‎తెలుగు‎ไทย‎中文（繁體）‎日本語‎한국어‎ 中文（简体）‎
+启用夜间模式
+发送以下项目的反馈
+本帮助内容和信息 帮助中心常规体验
+搜索
+清除搜索内容
+关闭搜索框
+Google 应用
+主菜单
+15469224456453278387
+true
+搜索支持中心
+false
+true
+true
+true
+true
+true
+105394
+false
+false
+false
+false
+false

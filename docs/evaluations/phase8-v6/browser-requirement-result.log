@@ -1,0 +1,443 @@
+### Page
+- Page URL: http://127.0.0.1:13080/insights/0f737652-21fd-45eb-82d5-a5af4e05669e
+- Page Title: InsightFlow — 反馈到产品的中转站
+- Console: 3 errors, 0 warnings
+### Snapshot
+```yaml
+- generic [active] [ref=f3e1]:
+  - generic [ref=f3e2]:
+    - complementary "主导航" [ref=f3e3]:
+      - generic [ref=f3e4]:
+        - generic [aria-hidden] [ref=f3e5]: ◆
+        - generic [ref=f3e6]: InsightFlow
+      - navigation [ref=f3e7]:
+        - generic [ref=f3e8]: MVP
+        - list [ref=f3e9]:
+          - listitem [ref=f3e10]:
+            - link "概览" [ref=f3e11] [cursor=pointer]:
+              - /url: /
+          - listitem [ref=f3e12]:
+            - link "反馈列表" [ref=f3e13] [cursor=pointer]:
+              - /url: /feedback
+          - listitem [ref=f3e14]:
+            - link "分析" [ref=f3e15] [cursor=pointer]:
+              - /url: /analysis
+          - listitem [ref=f3e16]:
+            - link "上传 CSV" [ref=f3e17] [cursor=pointer]:
+              - /url: /upload
+          - listitem [ref=f3e18]:
+            - link "洞察 / 机会评分" [ref=f3e19] [cursor=pointer]:
+              - /url: /insights
+          - listitem [ref=f3e20]:
+            - link "需求" [ref=f3e21] [cursor=pointer]:
+              - /url: /requirements
+          - listitem [ref=f3e22]:
+            - link "PRD" [ref=f3e23] [cursor=pointer]:
+              - /url: /prds
+          - listitem [ref=f3e24]:
+            - link "评测" [ref=f3e25] [cursor=pointer]:
+              - /url: /evaluation
+      - generic [ref=f3e26]: Phase 7 — 前端 MVP
+    - generic [ref=f3e28]:
+      - banner [ref=f3e29]:
+        - button "当前项目 Phase8 completion 隔离验收 A AI photo workspace" [ref=f3e45] [cursor=pointer]:
+          - generic [ref=f3e32]: 当前项目
+          - generic [ref=f3e33]: Phase8 completion 隔离验收 A
+          - generic [ref=f3e34]: AI photo workspace
+          - generic [aria-hidden] [ref=f3e35]: ▾
+        - generic [ref=f3e36]: Phase 7 · MVP
+      - main [ref=f3e38]:
+        - generic [ref=f3e46]:
+          - generic [ref=f3e47]:
+            - generic [ref=f3e48]: 洞察详情
+            - heading "图片上传仅支持单张选择，复发性操作负担突出" [level=1] [ref=f3e49]
+            - paragraph [ref=f3e50]:
+              - text: 来源 run
+              - code [ref=f3e51]: 8e998fb4
+              - text: · 聚类
+              - code [ref=f3e52]: 32a636b5
+          - generic [ref=f3e53]:
+            - generic [ref=f3e54]:
+              - generic [ref=f3e55]: Draft
+              - generic [ref=f3e56]: 0f737652
+              - generic [ref=f3e57]: AI-generated · 可追溯
+              - generic [ref=f3e290]: PM 已采纳
+            - paragraph [ref=f3e58]: unknown
+            - generic [ref=f3e59]:
+              - generic [ref=f3e60]: 置信度 85.0%
+              - generic [ref=f3e61]: 反馈 3
+              - generic [ref=f3e62]: 证据 3
+              - generic [ref=f3e63]: 更新 1 小时前
+          - generic [ref=f3e64]:
+            - generic [ref=f3e65]:
+              - heading "Product Insight" [level=3] [ref=f3e66]
+              - generic [ref=f3e67]: AI-generated
+            - blockquote [ref=f3e68]: 三条反馈均集中在"上传图片每次只能选一张"这一现象上，其中一位用户在上传旅游照片时需重复选择数十次，说明单张上传限制在多图场景下造成了明显的重复操作。
+            - generic [ref=f3e69]:
+              - generic [ref=f3e70]:
+                - generic [ref=f3e71]: Pain Point
+                - generic [ref=f3e72]: 用户在上传图片时，每次只能选择一张，需要反复操作多次才能完成多张图片的上传。
+              - generic [ref=f3e73]:
+                - generic [ref=f3e74]: Affected Segment
+                - generic [ref=f3e75]: unknown
+              - generic [ref=f3e76]:
+                - generic [ref=f3e77]: Recommendation
+                - generic [ref=f3e78]: 建议验证多图批量选择是否能缓解用户反复操作的体验负担（待验证假设）。
+          - generic [ref=f3e79]:
+            - generic [ref=f3e80]:
+              - heading "Evidence · 3" [level=3] [ref=f3e81]
+              - generic [ref=f3e82]:
+                - text: 直接读自
+                - code [ref=f3e83]: feedbacks.content
+                - text: ，绝无 AI 改写。
+            - list [ref=f3e84]:
+              - listitem [ref=f3e85]:
+                - generic [ref=f3e86]: F001
+                - generic [ref=f3e87]:
+                  - generic [ref=f3e88]: 为什么每次只能上传一张图片？
+                  - generic [ref=f3e90]:
+                    - generic [ref=f3e91]: 来源 in_app
+                    - generic [ref=f3e92]: 用户 U001
+                    - generic [ref=f3e93]: 证据类型 representative
+                    - generic [ref=f3e94]: 相关度 0.85
+                    - generic [ref=f3e95]: 2026/10/01 08:00
+                  - generic [ref=f3e96]:
+                    - generic [ref=f3e97]: AI Analysis
+                    - generic [ref=f3e98]: 类型 feature_request
+                    - generic [ref=f3e99]: 模块 image_upload
+                    - generic [ref=f3e100]: 意图 Upload multiple images at once instead of one at a time
+                    - generic [ref=f3e101]: 情感 negative
+                    - generic [ref=f3e102]:
+                      - text: 严重度
+                      - generic [ref=f3e103]: 3/5
+                    - generic [ref=f3e104]: 置信度 0.85
+              - listitem [ref=f3e105]:
+                - generic [ref=f3e106]: F003
+                - generic [ref=f3e107]:
+                  - generic [ref=f3e108]: 上传图片其实挺快的，就是每次只能选一张。
+                  - generic [ref=f3e110]:
+                    - generic [ref=f3e111]: 来源 app_store
+                    - generic [ref=f3e112]: 用户 U002
+                    - generic [ref=f3e113]: 证据类型 diverse_expression
+                    - generic [ref=f3e114]: 相关度 0.7
+                    - generic [ref=f3e115]: 2026/10/03 08:00
+                  - generic [ref=f3e116]:
+                    - generic [ref=f3e117]: AI Analysis
+                    - generic [ref=f3e118]: 类型 feature_request
+                    - generic [ref=f3e119]: 模块 image_upload
+                    - generic [ref=f3e120]: 意图 Select multiple images at once for upload
+                    - generic [ref=f3e121]: 情感 mixed
+                    - generic [ref=f3e122]:
+                      - text: 严重度
+                      - generic [ref=f3e123]: 2/5
+                    - generic [ref=f3e124]: 置信度 0.85
+              - listitem [ref=f3e125]:
+                - generic [ref=f3e126]: F002
+                - generic [ref=f3e127]:
+                  - generic [ref=f3e128]: 我传旅游照片要选几十次，能不能支持多选？
+                  - generic [ref=f3e130]:
+                    - generic [ref=f3e131]: 来源 support
+                    - generic [ref=f3e132]: 用户 U001
+                    - generic [ref=f3e133]: 证据类型 high_severity
+                    - generic [ref=f3e134]: 相关度 0.95
+                    - generic [ref=f3e135]: 2026/10/02 08:00
+                  - generic [ref=f3e136]:
+                    - generic [ref=f3e137]: AI Analysis
+                    - generic [ref=f3e138]: 类型 feature_request
+                    - generic [ref=f3e139]: 模块 image_upload
+                    - generic [ref=f3e140]: 意图 Upload many travel photos in a single multi-select action
+                    - generic [ref=f3e141]: 情感 negative
+                    - generic [ref=f3e142]:
+                      - text: 严重度
+                      - generic [ref=f3e143]: 3/5
+                    - generic [ref=f3e144]: 置信度 0.9
+          - generic [ref=f3e145]:
+            - generic [ref=f3e146]:
+              - heading "Opportunity Score · Snapshot" [level=3] [ref=f3e147]
+              - generic [ref=f3e291]: Calculation opportunity-score-v1 · 模型 MiniMax-M3
+            - generic [ref=f3e292]:
+              - generic [ref=f3e293]:
+                - generic [ref=f3e294]: PM Business Value（0..10）
+                - spinbutton "PM Business Value（0..10）" [ref=f3e295]: "5"
+              - button "保存 Business Value" [ref=f3e296] [cursor=pointer]
+            - generic [ref=f3e297]:
+              - generic [ref=f3e298]:
+                - generic [ref=f3e299]:
+                  - generic [ref=f3e300]: "4.37"
+                  - generic [ref=f3e301]: / 10
+                - generic [ref=f3e302]:
+                  - text: 权重配置 / 生效：见下方表格。AI priority：
+                  - generic [ref=f3e303]: P2
+              - generic [ref=f3e304]:
+                - generic [ref=f3e305]:
+                  - generic [ref=f3e306]: Configured Weight Sum
+                  - generic [ref=f3e307]: "1"
+                - generic [ref=f3e308]:
+                  - generic [ref=f3e309]: Effective Weight Sum
+                  - generic [ref=f3e310]: "1"
+                - generic [ref=f3e311]:
+                  - generic [ref=f3e312]: Business Value
+                  - generic [ref=f3e313]: "5"
+                - generic [ref=f3e314]:
+                  - generic [ref=f3e315]: Calculation Version
+                  - generic [ref=f3e316]: opportunity-score-v1
+            - table [ref=f3e317]:
+              - rowgroup [ref=f3e318]:
+                - row [ref=f3e319]:
+                  - columnheader "Dimension" [ref=f3e320]
+                  - columnheader "Configured Wt" [ref=f3e321]
+                  - columnheader "Effective Wt" [ref=f3e322]
+                  - columnheader "Value" [ref=f3e323]
+                  - columnheader "Status" [ref=f3e324]
+              - rowgroup [ref=f3e325]:
+                - row [ref=f3e326]:
+                  - cell "User Coverage" [ref=f3e327]
+                  - cell "0.25" [ref=f3e328]
+                  - cell "0.3035714285714285714285714285" [ref=f3e329]
+                  - cell "3.33" [ref=f3e330]
+                  - cell "OK" [ref=f3e331]
+                - row [ref=f3e332]:
+                  - cell "Severity" [ref=f3e333]
+                  - cell "0.25" [ref=f3e334]
+                  - cell "0.3035714285714285714285714285" [ref=f3e335]
+                  - cell "4.18" [ref=f3e336]
+                  - cell "OK" [ref=f3e337]
+                - row [ref=f3e338]:
+                  - cell "Growth" [ref=f3e339]
+                  - cell "0.15" [ref=f3e340]
+                  - cell "0" [ref=f3e341]
+                  - cell "Not Available" [ref=f3e342]
+                  - cell "insufficient_window" [ref=f3e343]
+                - row [ref=f3e344]:
+                  - cell "User Value" [ref=f3e345]
+                  - cell "0.20" [ref=f3e346]
+                  - cell "0.2428571428571428571428571428" [ref=f3e347]
+                  - cell "5.5" [ref=f3e348]
+                  - cell "OK" [ref=f3e349]
+                - row [ref=f3e350]:
+                  - cell "Business Value" [ref=f3e351]
+                  - cell "0.15" [ref=f3e352]
+                  - cell "0.15" [ref=f3e353]
+                  - cell "5" [ref=f3e354]
+                  - cell "OK" [ref=f3e355]
+            - generic [ref=f3e356]:
+              - generic [ref=f3e357]: AI Reasoning
+              - generic [ref=f3e358]: "calculation_version=opportunity-score-v1 | feedback_count=3 | affected_unique_users=2 | snapshot_unique_users=6 | user_value_available=True | effective_weights={'user_coverage': '0.3035714285714285714285714285', 'severity': '0.3035714285714285714285714285', 'growth': '0', 'user_value': '0.2428571428571428571428571428', 'business_value': '0.15'} | total_score=4.37 | ai_priority=P2 | user_value_reasoning=三条反馈一致指向\"图片上传每次仅能选一张\"这一明确痛点，平均严重度2.67，影响2位独立用户，证据集中且方向一致。痛点场景（旅游照片多张上传）描述具体，重复操作负担可见。不足：affected_segment为unknown，受影响人群规模无法量化；feedback_count仅3条，无法推断普遍性；无留存/转化等量化指标。综合证据一致性与场景明确性，给予中等偏上用户价值分数。"
+          - generic [ref=f3e159]:
+            - generic [ref=f3e160]:
+              - heading "Product Decision · Human-in-the-loop" [level=3] [ref=f3e161]
+              - generic [ref=f3e162]: AI 建议 + PM 终裁
+            - generic [ref=f3e163]:
+              - generic [ref=f3e164]:
+                - generic [ref=f3e165]: AI Recommendation
+                - generic [ref=f3e166]:
+                  - generic [ref=f3e167]: P2
+                  - text: "calculation_version=opportunity-score-v1 | feedback_count=3 | affected_unique_users=2 | snapshot_unique_users=6 | user_value_available=True | effective_weights={'user_coverage': '0.3035714285714285714285714285', 'severity': '0.3035714285714285714285714285', 'growth': '0', 'user_value': '0.2428571428571428571428571428', 'business_value': '0.15'} | total_score=4.37 | ai_priority=P2 | user_value_reasoning=三条反馈一致指向\"图片上传每次仅能选一张\"这一明确痛点，平均严重度2.67，影响2位独立用户，证据集中且方向一致。痛点场景（旅游照片多张上传）描述具体，重复操作负担可见。不足：affected_segment为unknown，受影响人群规模无法量化；feedback_count仅3条，无法推断普遍性；无留存/转化等量化指标。综合证据一致性与场景明确性，给予中等偏上用户价值分数。"
+              - generic [ref=f3e169]:
+                - generic [ref=f3e170]: PM Decision
+                - generic [ref=f3e171]:
+                  - generic [ref=f3e359]:
+                    - text: 状态 accepted · 优先级
+                    - generic [ref=f3e473]: P2
+                  - generic [ref=f3e360]: version v2 · 更新 1 分钟前
+            - generic [ref=f3e172]:
+              - button "Accept" [disabled] [ref=f3e173]
+              - button "Override" [ref=f3e174] [cursor=pointer]
+              - button "Defer" [ref=f3e175] [cursor=pointer]
+              - button "Reject" [ref=f3e176] [cursor=pointer]
+              - button "查看决策历史" [ref=f3e177] [cursor=pointer]
+          - generic [ref=f3e178]:
+            - generic [ref=f3e179]:
+              - heading "External Research" [level=3] [ref=f3e180]
+              - generic [ref=f3e181]: Tavily · 真实研究
+              - generic [ref=f3e182]: 基于公开来源的竞品 / 市场模式 / 机会 / 风险研究；研究对象与 Internal Evidence 分表存储，互不污染。
+            - generic [ref=f3e183]:
+              - generic [ref=f3e184]:
+                - generic [ref=f3e185]: 研究问题（1..500 字）
+                - textbox "研究问题（1..500 字）" [ref=f3e186]:
+                  - /placeholder: 例如：竞品 X 在 SMB 市场的定价策略是什么？
+              - generic [ref=f3e187]:
+                - generic [ref=f3e188]: Scope（可选，0..2000 字）
+                - textbox "Scope（可选，0..2000 字）" [ref=f3e189]:
+                  - /placeholder: 市场 / 时间窗口 / 人群。留空则仅用研究问题检索。
+              - button "Run Research" [disabled] [ref=f3e191]
+            - generic [ref=f3e192]: 研究历史
+            - list [ref=f3e193]:
+              - listitem [ref=f3e361]:
+                - generic [ref=f3e362]:
+                  - generic [ref=f3e363]: Partial Failed
+                  - code [ref=f3e364]: 47ea764f
+                  - generic [ref=f3e365]: 2 分钟前
+                  - button "查看" [ref=f3e366] [cursor=pointer]
+                - paragraph [ref=f3e367]: According to official Google Photos Help, what are the steps to manually back up one photo or video in the Android app? Cite only official Google Help; distinguish automatic backup.
+              - listitem [ref=f3e269]:
+                - generic [ref=f3e270]:
+                  - generic [ref=f3e271]: Partial Failed
+                  - code [ref=f3e272]: 90de22a1
+                  - generic [ref=f3e273]: 5 分钟前
+                  - button "查看" [ref=f3e274] [cursor=pointer]
+                - paragraph [ref=f3e275]: According to official Apple Support, which upload choices does iCloud.com show on a phone or tablet, and where should users upload to a Shared Photo Library? Cite only official Apple Support.
+              - listitem [ref=f3e194]:
+                - generic [ref=f3e195]:
+                  - generic [ref=f3e196]: Partial Failed
+                  - code [ref=f3e197]: fe4726f2
+                  - generic [ref=f3e198]: 1 小时前
+                  - button "查看" [ref=f3e199] [cursor=pointer]
+                - paragraph [ref=f3e200]: According to official Apple Support, which upload choices does iCloud.com show on a phone or tablet, and where should users upload to a Shared Photo Library? Cite only official Apple Support.
+            - generic [ref=f3e201]:
+              - generic [ref=f3e202]:
+                - generic [ref=f3e203]: According to official Google Photos Help, what are the steps to manually back up one photo or video in the Android app? Cite only official Google Help; distinguish automatic backup.
+                - generic [ref=f3e204]: Partial Failed
+              - generic [ref=f3e205]:
+                - generic [ref=f3e206]:
+                  - generic [ref=f3e207]: Provider
+                  - generic [ref=f3e208]: tavily
+                - generic [ref=f3e209]:
+                  - generic [ref=f3e210]: Prompt
+                  - generic [ref=f3e211]: research-agent-v6
+                - generic [ref=f3e212]:
+                  - generic [ref=f3e213]: Model
+                  - generic [ref=f3e214]: MiniMax-M3
+                - generic [ref=f3e215]:
+                  - generic [ref=f3e216]: Findings
+                  - generic [ref=f3e217]: "10"
+                - generic [ref=f3e218]:
+                  - generic [ref=f3e219]: Sources
+                  - generic [ref=f3e220]: "2"
+                - generic [ref=f3e221]:
+                  - generic [ref=f3e222]: Latency
+                  - generic [ref=f3e223]: 17173 ms
+              - status [ref=f3e224]:
+                - generic [ref=f3e225]: 回答完整性：未验证
+                - text: 程序已检查证据覆盖，回答语义仍需人工核对；逐项 状态见下方「证据覆盖」。请核对产品、平台、操作、 数量、限制与时间语境，未获原文支持的部分仍未验证。
+              - generic [ref=f3e226]:
+                - generic [ref=f3e227]:
+                  - generic [ref=f3e228]: 证据覆盖：部分覆盖
+                  - generic [ref=f3e229]: 人工语义复核：未验证 · 服务端已逐项核对 · 2 项子问题
+                - paragraph [ref=f3e230]: 服务端程序检查未完全通过；请按下方逐项缺口人工核对。
+                - list [ref=f3e368]:
+                  - listitem [ref=f3e369]:
+                    - generic [ref=f3e370]: what are the steps to manually back up one photo or video in the Android app
+                    - generic [ref=f3e371]: 完整操作步骤 · 已覆盖
+                  - listitem [ref=f3e372]:
+                    - generic [ref=f3e373]: distinguish automatic backup
+                    - generic [ref=f3e374]: 对比 · 部分覆盖
+                    - paragraph [ref=f3e375]: 缺口：证据尚未覆盖这一要求
+              - generic [ref=f3e232]: 本次研究仍有证据或执行缺口，请结合来源与逐项覆盖核对。
+              - generic [ref=f3e376]:
+                - text: 本次研究含 1 条
+                - generic [ref=f3e377]: Not Verified
+                - text: 结论，推断与建议仍需人工复核；事实的证据或适用范围缺口见逐项覆盖。后端不会把它们伪装成「已证实事实」。
+              - generic [ref=f3e378]:
+                - paragraph [ref=f3e379]: 市场模式：本次未提出具有已确认事实支持的候选；这不代表没有相关机会或风险。
+                - paragraph [ref=f3e380]: 机会：本次未提出具有已确认事实支持的候选；这不代表没有相关机会或风险。
+                - paragraph [ref=f3e381]: 风险：本次未提出具有已确认事实支持的候选；这不代表没有相关机会或风险。
+              - generic [ref=f3e382]:
+                - generic [ref=f3e383]:
+                  - generic [ref=f3e384]: 摘要 · 1
+                  - generic [ref=f3e385]:
+                    - generic [ref=f3e386]:
+                      - generic [ref=f3e387]: 内部上下文
+                      - generic [ref=f3e388]: Insufficient Evidence
+                    - paragraph [ref=f3e389]: 内部上下文：图片上传仅支持单张选择，复发性操作负担突出
+                - generic [ref=f3e390]:
+                  - generic [ref=f3e391]: 竞品发现 · 9
+                  - generic [ref=f3e392]:
+                    - generic [ref=f3e393]:
+                      - generic [ref=f3e394]: Back up photos & videos - Android - Google Photos Help
+                      - generic [ref=f3e395]: 事实
+                      - generic [ref=f3e396]: Cited
+                    - paragraph [ref=f3e397]: 1. On your Android device, open the Google Photos app Photos .
+                    - button "隐藏引用" [expanded] [ref=f3e467] [cursor=pointer]
+                    - list [ref=f3e469]:
+                      - listitem [ref=f3e470]:
+                        - link "Back up photos & videos - Android - Google Photos Help" [ref=f3e471] [cursor=pointer]:
+                          - /url: https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid
+                        - generic [ref=f3e472]: support.google.com
+                  - generic [ref=f3e399]:
+                    - generic [ref=f3e400]:
+                      - generic [ref=f3e401]: Back up photos & videos - Android - Google Photos Help
+                      - generic [ref=f3e402]: 事实
+                      - generic [ref=f3e403]: Cited
+                    - paragraph [ref=f3e404]: 2. Sign in to your Google Account.
+                    - button "查看来源 (1)" [ref=f3e405] [cursor=pointer]
+                  - generic [ref=f3e406]:
+                    - generic [ref=f3e407]:
+                      - generic [ref=f3e408]: Back up photos & videos - Android - Google Photos Help
+                      - generic [ref=f3e409]: 事实
+                      - generic [ref=f3e410]: Cited
+                    - paragraph [ref=f3e411]: 3. Open the photo or video.
+                    - button "查看来源 (1)" [ref=f3e412] [cursor=pointer]
+                  - generic [ref=f3e413]:
+                    - generic [ref=f3e414]:
+                      - generic [ref=f3e415]: Back up photos & videos - Android - Google Photos Help
+                      - generic [ref=f3e416]: 事实
+                      - generic [ref=f3e417]: Cited
+                    - paragraph [ref=f3e418]: 4. Tap Back up now.
+                    - button "查看来源 (1)" [ref=f3e419] [cursor=pointer]
+                  - generic [ref=f3e420]:
+                    - generic [ref=f3e421]:
+                      - generic [ref=f3e422]: Back up photos & videos - Android - Google Photos Help
+                      - generic [ref=f3e423]: 事实
+                      - generic [ref=f3e424]: Cited
+                    - paragraph [ref=f3e425]: "- If you want to back up multiple photos or videos: Touch and hold the photos or videos you want to back up, and then tap Back up."
+                    - button "查看来源 (1)" [ref=f3e426] [cursor=pointer]
+                  - generic [ref=f3e427]:
+                    - generic [ref=f3e428]:
+                      - generic [ref=f3e429]: Back up photos & videos - Android - Google Photos Help
+                      - generic [ref=f3e430]: 事实
+                      - generic [ref=f3e431]: Cited
+                    - paragraph [ref=f3e432]: "- Alternatively, you can tap the Back up button or scroll to the bottom, then tap Back up now."
+                    - button "查看来源 (1)" [ref=f3e433] [cursor=pointer]
+                  - generic [ref=f3e434]:
+                    - generic [ref=f3e435]:
+                      - generic [ref=f3e436]: Back up photos & videos - Android - Google Photos Help
+                      - generic [ref=f3e437]: 事实
+                      - generic [ref=f3e438]: Cited
+                    - paragraph [ref=f3e439]: You can automatically save your photos and videos to your Google Account when you turn on backup.
+                    - button "查看来源 (1)" [ref=f3e440] [cursor=pointer]
+                  - generic [ref=f3e441]:
+                    - generic [ref=f3e442]:
+                      - generic [ref=f3e443]: Back up photos & videos - Android - Google Photos Help
+                      - generic [ref=f3e444]: 事实
+                      - generic [ref=f3e445]: Cited
+                    - paragraph [ref=f3e446]: 1. On your Android phone or tablet, open the Google Photos app Photos .
+                    - button "查看来源 (1)" [ref=f3e447] [cursor=pointer]
+                  - generic [ref=f3e448]:
+                    - generic [ref=f3e449]:
+                      - generic [ref=f3e450]: Back up photos & videos - Android - Google Photos Help
+                      - generic [ref=f3e451]: 事实
+                      - generic [ref=f3e452]: Cited
+                    - paragraph [ref=f3e453]: 2. Sign in to your Google Account.
+                    - button "查看来源 (1)" [ref=f3e454] [cursor=pointer]
+              - generic [ref=f3e233]:
+                - generic [ref=f3e234]: Sources · 2
+                - list [ref=f3e235]:
+                  - listitem [ref=f3e455]:
+                    - link "Back up photos & videos - Android - Google Photos Help" [ref=f3e457] [cursor=pointer]:
+                      - /url: https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid
+                    - generic [ref=f3e458]:
+                      - generic [ref=f3e459]: support.google.com
+                      - generic [ref=f3e460]: retrieved 2 分钟前
+                  - listitem [ref=f3e461]:
+                    - link "Troubleshoot photos not backing up - Android - Google Photos Help" [ref=f3e463] [cursor=pointer]:
+                      - /url: https://support.google.com/photos/answer/6174018?hl=en&co=GENIE.Platform%3DAndroid
+                    - generic [ref=f3e464]:
+                      - generic [ref=f3e465]: support.google.com
+                      - generic [ref=f3e466]: retrieved 2 分钟前
+          - generic [ref=f3e260]:
+            - generic [ref=f3e261]:
+              - heading "下一步：创建 Requirement" [level=4] [ref=f3e474]
+              - paragraph [ref=f3e263]: 将该 Insight 转化为可工程化的 Requirement，并自动生成 PRD 草案。
+            - generic [ref=f3e264]:
+              - button "Create Requirement →" [ref=f3e265] [cursor=pointer]
+              - link "返回列表" [ref=f3e266] [cursor=pointer]:
+                - /url: /insights
+          - alert [ref=f3e475]:
+            - generic [ref=f3e476]: 创建 Requirement 失败
+            - generic [ref=f3e477]: risks[2].evidence_ids[0] must be non-empty
+            - button "重试" [ref=f3e478] [cursor=pointer]
+  - alert [ref=f3e44]
+```
+### Events
+- New console entries: .playwright-cli/console-2026-10-17T08-09-32-071Z.log#L7

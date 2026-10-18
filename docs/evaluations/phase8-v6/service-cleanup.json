@@ -1,0 +1,9 @@
+{
+  "owned_api_and_next_ports_closed": {
+    "13080": true,
+    "18080": true
+  },
+  "owned_pg_cleanup": "owned-pg-cleanup.json",
+  "other_project_8000": "COMMAND     PID   USER   FD   TYPE             DEVICE SIZE/OFF NODE NAME\npython3.1 62733 salmon    3u  IPv4 0x241897c88fc16730      0t0  TCP *:8000 (LISTEN)\npython3.1 62739 salmon    3u  IPv4 0x241897c88fc16730      0t0  TCP *:8000 (LISTEN)",
+  "no_user_services_stopped": true
+}

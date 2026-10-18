@@ -1,0 +1,196 @@
+Uploading to Dropbox: how to add files and folders to your Dropbox account - Dropbox Help
+Dropbox
+Main navigation
+Help center
+Community
+Dropbox learn
+Contact support
+Help center
+Community
+Dropbox learn
+Contact support
+Open/close search
+Help center
+Account
+Account access
+Billing
+Account settings
+Plans
+Storage space
+Security
+Using Dropbox
+Sync
+Delete and restore
+Share
+View and edit
+Installs
+Create and upload
+Organize
+Integrations
+AI integrations
+Products
+Dropbox Dash
+Dropbox Protect
+Dropbox Sign
+Dropbox DocSend
+Dropbox Backup
+Dropbox Replay
+Dropbox Transfer
+Get started
+Dropbox Help Center - How to use Dropbox
+Create and upload
+Add files and folders to your Dropbox account
+Uploading to Dropbox: how to add files and folders to your Dropbox account
+Updated Apr 21, 2026
+In this article
+The information in this article applies to all Dropbox users.
+You can upload files and folders to your Dropbox account on dropbox.com and the Dropbox desktop app. Each file or folder uploaded on dropbox.com can be up to 350 GB. Each file or folder uploaded on the Dropbox desktop app can be up to 2 TB.
+You can also upload files with the Dropbox mobile app.
+Tip: To upload files larger than 350 GB, we recommend downloading the Dropbox desktop app on your computer and uploading your file from there. You can also compress your file to reduce its size to under 350 GB, and then upload it via dropbox.com. Learn more about Dropbox file size limits.
+Upload files and folders to your Dropbox account
+Log in to dropbox.com.
+Click Upload under the search bar at the top.
+Choose one of the following:
+File: Select as many files as you like, then click Open.
+Folder: Select a folder, then click Upload.
+Import from Google Drive: Choose a location to upload to, connect your Google account, select files then click Upload.
+Import from Microsoft OneDrive: Choose a location, connect your Microsoft account, select files, then click Upload.
+Note: The option to import from Microsoft OneDrive may only be available on certain individual Dropbox plans.
+On the Dropbox desktop app
+Open the Dropbox folder in File Explorer (Windows) or Finder (Mac).
+Locate the files or folders you’d like to add, then drag and drop, or copy and paste them into the open Dropbox folder.
+Notes:
+You can save new or existing files directly into the Dropbox folder.
+Files in the Dropbox folder on your computer automatically sync everywhere you access your files in Dropbox, including dropbox.com and the mobile app.
+Watch this video for a quick overview of how to upload and download files in Dropbox.
+Was this article helpful?
+Yes, thanks!
+Not really
+Let us know how why it didn't help:
+Thanks for letting us know!
+The article didn't answer my question
+The steps in the article didn't work for me
+I found this article confusing and difficult to read
+Other
+Please enter feedback before submitting.
+Submit feedback
+Thanks for your feedback!
+Related Articles
+Copy or duplicate Dropbox files
+How to use Dropbox Paper templates
+Create a Dropbox Paper doc
+Creating and using folders in Dropbox
+Community answers
+What’s New This Month - October 2026
+Posted by: Theresa
+12 days ago
+410
+0
+A folder I added to my Dropbox account shows up online, but not in File Explorer.
+Posted by: Nina C.3
+34 days ago
+210
+10
+How does syncing work between devices, and does it happen automatically?
+Posted by: lpvmc
+49 days ago
+325
+9
+Files I add to my account from my phone never sync to my computer's Dropbox folder
+Posted by: John B.131
+49 days ago
+130
+5
+How can I make sure that files I add to a folder in my Dropbox folder sync to my account?
+Posted by: Patsycola
+746 days ago
+429
+3
+Other ways to get help
+Icon depicting a speech bubble
+Contact support
+Icon depicting two people
+Community
+Bird icon
+Social media support
+Footer-Help
+Dropbox
+Desktop app
+Mobile app
+Integrations
+Features
+Solutions
+Security
+Early access
+Templates
+Free tools
+Products
+Plus
+Professional
+Business
+Enterprise
+Dash
+DocSend
+Dropbox Sign
+Reclaim.ai
+Plans
+Product updates
+Features
+Send large files
+Send long videos
+Cloud photo storage
+Secure file transfer
+Cloud backup
+Edit PDFs
+Electronic signatures
+Convert to PDF
+Support
+Help center
+Contact us
+Privacy & terms
+Cookie policy
+Cookies & CCPA preferences
+AI principles
+Sitemap
+Learning resources
+Resources
+Blog
+Events
+Customer stories
+Resources library
+Developers
+Community forums
+Referrals
+Reseller partners
+Integration partners
+Find a partner
+Company
+About us
+Jobs
+Investor relations
+Corporate responsibility
+Choose a language
+Bahasa Indonesia
+Bahasa Malaysia
+Dansk
+Deutsch
+English (Australia)
+English (United Kingdom)
+English (United States)
+Español (España)
+Español (Latinoamérica)
+Français (France)
+Italiano
+Nederlands
+Norsk (bokmål)
+Polski
+Português (Brasil)
+Pусский
+Svenska
+Українська
+ไทย
+中文（简体）
+中文（繁體）
+日本語
+한국어
+English (United States)

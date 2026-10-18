@@ -17,13 +17,13 @@ const NAV_ITEMS: NavItem[] = [
   { label: '概览', href: '/', match: (p) => p === '/' || p === null },
   { label: '反馈列表', href: '/feedback', match: (p) => p?.startsWith('/feedback') ?? false },
   { label: '分析', href: '/analysis', match: (p) => p?.startsWith('/analysis') ?? false },
-  { label: '上传 CSV', href: '/upload', match: (p) => p?.startsWith('/upload') ?? false },
+  { label: '导入反馈', href: '/upload', match: (p) => p?.startsWith('/upload') ?? false },
   // Phase 7 insights: real List + Detail pages backed by
   // /api/projects/{id}/insights; replaces the deprecated
   // /opportunities placeholder.
-  { label: '洞察 / 机会评分', href: '/insights', match: (p) => p?.startsWith('/insights') ?? false },
+  { label: '洞察与机会', href: '/insights', match: (p) => p?.startsWith('/insights') ?? false },
   { label: '需求', href: '/requirements', match: (p) => p?.startsWith('/requirements') ?? false },
-  { label: 'PRD', href: '/prds', match: (p) => p?.startsWith('/prds') ?? false },
+  { label: '需求文档', href: '/prds', match: (p) => p?.startsWith('/prds') ?? false },
   // Evaluation list is read-only — POST /evaluations is owned by
   // the Phase 1 / Phase 2 detail pages because the runner needs
   // the upstream source-run linkage that this list view does not
@@ -50,7 +50,7 @@ export function AppShell({ children }: AppShellProps) {
           <span className="brand-name">InsightFlow</span>
         </div>
         <nav className="nav">
-          <div className="nav-section-title">MVP</div>
+          <div className="nav-section-title">工作空间</div>
           <ul className="nav-list">
             {NAV_ITEMS.map((item) => (
               <li key={item.href}>
@@ -66,7 +66,7 @@ export function AppShell({ children }: AppShellProps) {
           </ul>
         </nav>
         <div className="sidebar-footer">
-          <span className="sidebar-footer-text">Phase 7 — 前端 MVP</span>
+          <span className="sidebar-footer-text">从用户反馈到产品决策</span>
         </div>
       </aside>
 
@@ -95,9 +95,6 @@ export function AppShell({ children }: AppShellProps) {
                 {error}
               </span>
             ) : null}
-          </div>
-          <div className="topbar-right">
-            <span className="topbar-env">Phase 7 · MVP</span>
           </div>
         </header>
         <main className="app-content">

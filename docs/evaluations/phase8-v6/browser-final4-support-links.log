@@ -1,0 +1,6 @@
+### Result
+[{"text":"Back up photos & videos - Android - Google Photos Help","url":"https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid"},{"text":"Back up photos & videos - Android - Google Photos Help","url":"https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid"},{"text":"Back up photos & videos - Android - Google Photos Help","url":"https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid"},{"text":"Upload files to Dropbox on a mobile device - Dropbox Help","url":"https://help.dropbox.com/create-upload/upload-mobile"},{"text":"Upload files to Dropbox on a mobile device - Dropbox Help","url":"https://help.dropbox.com/create-upload/upload-mobile"}]
+### Ran Playwright code
+```js
+await (async (page) => { const target = page.getByRole("button", {name:"隐藏支持事实", exact:true}).locator(".."); await target.scrollIntoViewIfNeeded(); await page.screenshot({path:"browser-final4-support.png"}); return await target.locator("a").evaluateAll(nodes => nodes.map(n => ({text:n.textContent,url:n.href}))); })(page);
+```

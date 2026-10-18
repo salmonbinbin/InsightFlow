@@ -1,0 +1,203 @@
+Troubleshoot issues with camera uploads - Dropbox Help
+Dropbox
+Main navigation
+Help center
+Community
+Dropbox learn
+Contact support
+Help center
+Community
+Dropbox learn
+Contact support
+Open/close search
+Help center
+Account
+Account access
+Billing
+Account settings
+Plans
+Storage space
+Security
+Using Dropbox
+Sync
+Delete and restore
+Share
+View and edit
+Installs
+Create and upload
+Organize
+Integrations
+AI integrations
+Products
+Dropbox Dash
+Dropbox Protect
+Dropbox Sign
+Dropbox DocSend
+Dropbox Backup
+Dropbox Replay
+Dropbox Transfer
+Get started
+Dropbox Help Center - How to use Dropbox
+Create and upload
+Troubleshoot issues with camera uploads
+Troubleshoot issues with camera uploads
+Updated Jan 24, 2025
+In this article
+The information in this article applies to all Dropbox users.
+Many issues with camera uploads, no matter what device you’re using or what the specific issue is, can be solved with the following solutions.
+Restart the Dropbox app
+Learn how to restart an app on Android
+Learn how to restart an app on iOS
+To restart the Dropbox desktop app:
+Click the Dropbox icon in your taskbar (Windows) or menu bar (Mac), and then click your profile picture or initials.
+Click Quit Dropbox.
+Open your applications menu, re-launch Dropbox, and then sign in again (if necessary).
+Check your internet connection
+Camera uploads might be slower if your internet connection is weak. Try connecting to a different Wi-Fi network or turning off cellular data.
+Make sure your battery is charged
+Camera uploads might be slower if your battery is low. Try plugging in your computer, phone, or tablet.
+Make sure you have enough storage space
+Check how much storage space you have left in your Dropbox account. If you're out of storage space, you can delete files and folders, leave shared folders, or upgrade your account.
+Make sure your Dropbox app is up to date
+Your device settings determine whether you have to update the apps on your device manually or if they’re updated automatically. Check if the Dropbox app is up to date on your device:
+Learn how to update apps on Windows
+Learn how to update apps on Mac
+Learn how to update apps on Android
+Learn how to update apps on iPhone and iPad
+Note: If you’re on a Dropbox Basic plan, you must have the Dropbox desktop app installed to use camera uploads.
+If you’ve tried the solutions above and you’re still experiencing issues, there are a few other reasons your photos may not be appearing in the mobile app.
+Make sure your operating system is up to date
+Check to see if the operating system on your device is supported by Dropbox. If it's not, upgrade to the latest version.
+Check the upload settings on your phone
+Sometimes the settings on your device prevent you from uploading photos in the background. Learn how to adjust your upload settings.
+Was this article helpful?
+Yes, thanks!
+Not really
+Let us know how why it didn't help:
+Thanks for letting us know!
+The article didn't answer my question
+The steps in the article didn't work for me
+I found this article confusing and difficult to read
+Other
+Please enter feedback before submitting.
+Submit feedback
+Thanks for your feedback!
+Related Articles
+Dropbox Replay FAQs
+How can I export to an SD card from my Android phone?
+How to manage files and projects in Dropbox Replay
+How to save screenshots to Dropbox
+Community answers
+Sync issues after renaming the Camera Uploads folder to 'Camera_Uploads'
+Posted by: njet01
+854 days ago
+375
+1
+Issue uploading photos with Camera Uploads from Android via WiFi
+Posted by: Anders W.
+865 days ago
+1828
+10
+Camera uploads only works once and then if the file is deleted, it won't work.
+Posted by: Tingle Cowboy
+1022 days ago
+1037
+3
+Dropbox iPhone consistently does not see or upload all photos
+Posted by: daveah
+1296 days ago
+5428
+6
+Issues with Camera Upload
+Posted by: Pc2fire
+1580 days ago
+8845
+45
+Other ways to get help
+Icon depicting a speech bubble
+Contact support
+Icon depicting two people
+Community
+Twitter Icon
+Social media support
+Footer-Help
+Dropbox
+Desktop app
+Mobile app
+Integrations
+Features
+Solutions
+Security
+Early access
+Templates
+Free tools
+Products
+Plus
+Professional
+Business
+Enterprise
+Dash
+DocSend
+Dropbox Sign
+Reclaim.ai
+Plans
+Product updates
+Features
+Send large files
+Send long videos
+Cloud photo storage
+Secure file transfer
+Cloud backup
+Edit PDFs
+Electronic signatures
+Convert to PDF
+Support
+Help center
+Contact us
+Privacy & terms
+Cookie policy
+Cookies & CCPA preferences
+AI principles
+Sitemap
+Learning resources
+Resources
+Blog
+Events
+Customer stories
+Resources library
+Developers
+Community forums
+Referrals
+Reseller partners
+Integration partners
+Find a partner
+Company
+About us
+Jobs
+Investor relations
+Corporate responsibility
+Choose a language
+Bahasa Indonesia
+Bahasa Malaysia
+Dansk
+Deutsch
+English (Australia)
+English (United Kingdom)
+English (United States)
+Español (España)
+Español (Latinoamérica)
+Français (France)
+Italiano
+Nederlands
+Norsk (bokmål)
+Polski
+Português (Brasil)
+Pусский
+Svenska
+Українська
+ไทย
+中文（简体）
+中文（繁體）
+日本語
+한국어
+English (United States)

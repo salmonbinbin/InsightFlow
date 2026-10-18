@@ -1,0 +1,166 @@
+Search by people, things & places in your photos - Android phone & tablet - Google Photos Help Skip to main content
+Google Photos Help
+Sign in
+Google Help
+Help Center
+Community
+Google Photos
+Privacy Policy
+Terms of Service
+Submit feedback
+Send feedback on...
+This help content & information
+General Help Center experience
+CloseNext
+Help Center
+Community
+Can't find your photos?
+Google Photos
+Search by people, things & places in your photos
+Google Photos offers multiple ways to find your photos, from classic keyword searches to conversational summaries in results with Ask Photos, if you opt into this experience.
+You can also use Search to find different features and collections in Google Photos, like People & pets, Albums, Documents, and more.
+Important:
+Some features aren't available in all geographic regions, all domains, or all account types.
+To search your photos using Ask Photos, you'll first need to opt in to Gemini features in Photos. Learn how to start using Ask Photos.
+Before you get started
+Download and install the Google Photos app.
+Determine your desired search experience
+Understand the classic search experience
+When "Ask Photos" isn’t enabled, you'll have a more classic search experience. This type of search works best when you have a simple goal in mind.
+Use this experience when you want to find:
+All the videos of a person.
+A photo of a pet’s vet invoice by the vet clinic’s name.
+Pictures of colorful sunsets in Mexico.
+Understand the Ask Photos search experience
+With "Ask Photos" enabled, you expand on what you can accomplish with a single search.
+Use this experience when you want to:
+Try a complex search such as, “Photos that’d make a great phone background,” or “What did I eat on my trip to Barcelona?”
+This feature is still experimental, so it may give unexpected or inaccurate results. When you leave feedback, you can help improve Ask Photos for everyone.
+Search for your photos
+Important:
+When you use your voice to search, your voice recordings aren't stored anywhere. Learn more about what data is stored when you use voice input for Ask Photos.
+To easily search and manage your photos, apply a label to people or pets. These appear in photos grouped with Google Photos. Learn how to set up Face Groups.
+On your Android device, open the Google Photos app Photos.
+At the bottom, tap Search or Ask .
+To use voice input during your searches: Tap Microphone Microphone.
+If you’re not opted in to Ask Photos: You may find a toggle to opt in to Ask Photos at the top of your search page if you’re eligible.
+You can follow the prompts to opt in at any point. Learn how to opt in to Ask Photos.
+Enter your search into the text box or find the face labels.
+Use quotation marks if you want to find exact text matches in filenames, camera models, captions, or text within photos.
+Without quotation marks, you’ll get a wider range of results not limited to text.
+Your search results may include photos and videos from the shared albums or conversations you didn't save in your library. You’ll find a shared content badge at the bottom left of the shared item.
+To exclude shared items from your search results, at the top right of the search results page, tap More More and then Include shared with me.
+Review the results by relevance or recency.
+If you’re opted in to Ask Photos: You can toggle between Ask and classic search views at the top of your search results page.
+This doesn’t impact your overall opt in to the Ask Photos feature.
+If the Ask view is enabled for your search:
+You can see a descriptive summary of your search.
+You can keep the conversation going with a follow-up question or clarification about your search.
+You can also start a new search when you enter a completely different question in the text box.
+Tips:
+To get new results for the same question when the Ask view is enabled: At the top right, tap More More and then Redo .
+To show which album or conversation an item is from: At the top left, tap owner Profile picture or Initial.
+Searching for your unsaved shared content is available only in classic search at this time.
+Search for a photo or video
+Learn how Face Groups help you search
+To easily search and manage your photos, apply a label to people or pets that appear in photos grouped with Google Photos.
+Once you apply these labels, you can search by face labels.
+To search by face labels:
+On your Android device, open the Google Photos app Photos.
+At the bottom, tap Search or Ask .
+To go to the page of one of your top people or pets: Tap on their face.
+To find pages of other people and pets: Tap More More.
+Tips:
+You can use the text box to search photos with a name or nickname only if you’ve labeled people or pets. Learn how to set up Face Groups.
+You can find face labels only when the Face Groups feature is on. Learn how to turn Face Groups on or off.
+Leave feedback on Ask Photos
+This experimental feature from Google Labs won't always get it right, and may give inaccurate or inappropriate answers that don't represent Google's views.
+On your Android device, open Google Photos Photos.
+Tap Ask .
+Toggle on to enable Ask Photos.
+Ask a question.
+Tap Thumbs up or Thumbs down .
+If the Thumbs up and Thumbs down buttons aren’t displayed, tap Menu More and then Help & Feedback to share input.
+Optional: If you tap Thumbs down , you can send additional details and feedback.
+Write your own feedback.
+Tap Send.
+Tips:
+When you send feedback, use the checkbox to indicate if you wish to grant Google permission to communicate with you about your feedback.
+To remove feedback, including any additional feedback, tap Thumbs up or Thumbs down again.
+Learn more about what’s shared when you give feedback.
+Navigate the Photos app using search
+You can use search to find other content organized in:
+Albums
+Archive
+Documents
+Favorites
+Locked Folder
+Partner Sharing
+People & pets
+Places
+Recently Added
+Screenshots
+Trash
+Videos
+You can also search for these items:
+On your Android device, open the Google Photos app Photos.
+At the bottom, tap Search or Ask .
+Enter the name of the item that you want to find.
+You can use words like “Abigail,” “Documents,” “Favorites,” and more.
+When it appears in the search suggestions, tap the item’s name.
+Related resources
+Can't find your photos? Get help finding photos.
+Was this helpful?
+How can we improve it?
+YesNo
+Submit
+Android phone & tablet ComputeriPhone & iPad
+More
+Need more help?
+Try these next steps:
+Post to the help community Get answers from community members
+true
+Help
+1 of 8
+Get started with Google Photos
+2 of 8
+Abuse Program Policies and Enforcement
+3 of 8
+Set up & manage your face groups
+4 of 8
+How your Google storage works
+5 of 8
+Learn about High Dynamic Range (HDR) photos
+6 of 8
+Give your device photos access to Google Photos
+7 of 8
+Search by people, things & places in your photos
+8 of 8
+Find the latest photo updates in your Photos app
+©2026 Google
+Privacy Policy
+Terms of Service
+Language català‎dansk‎Deutsch‎eesti‎English (United Kingdom)‎español‎español (Latinoamérica)‎Filipino‎français‎hrvatski‎Indonesia‎italiano‎latviešu‎lietuvių‎magyar‎Melayu‎Nederlands‎norsk‎polski‎português‎português (Brasil)‎română‎slovenčina‎slovenščina‎suomi‎svenska‎Tiếng Việt‎Türkçe‎íslenska‎čeština‎Ελληνικά‎български‎русский‎српски‎українська‎‏עברית‏العربية‏فارسیमराठी‎हिन्दी‎తెలుగు‎ไทย‎中文（简体）‎中文（繁體）‎日本語‎한국어‎ English‎
+Enable Dark Mode
+Send feedback on...
+This help content & information General Help Center experience
+Search
+Clear search
+Close search
+Google apps
+Main menu
+9315642996261596539
+true
+Search Help Center
+false
+true
+true
+true
+true
+true
+105394
+false
+false
+false
+false
+false

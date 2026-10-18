@@ -1,0 +1,28 @@
+[
+  {
+    "url": "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid",
+    "final_url": "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid",
+    "status": 200,
+    "sha256": "892686e4c20bbde1872c9a3f41bac6de836d2ed73c1be7d414658dac99bb967e",
+    "excerpts": [
+      "ur status reads \"Backup complete.\"\nIf your backup status is off, your status reads \"Backup is off.\"\nManually back up photos & videos\nOn your Android device, open the Google Photos app\n.\nSign in to your Google Account.\nOpen the photo or video.\nTap\nBack up now\n.\nAlternatively, you can tap the\nBack up\nbutton or scroll to the bottom, then tap\nBack up now\n.\nTips:\nWhen you open a single photo and you don't have enough storage:\nThe badge shows \"Not enough storage to back up.\"\nIf you want to back up multiple photos or videos:\nTouch and hold the photos or videos you want to back up, and then tap\nBack up\n.\nCheck your overall backup status\nImportant:\nIf backup is on and you have enough storage, you can find the backup status at the top of your library",
+      " don't have enough storage:\nThe badge shows \"Not enough storage to back up.\"\nIf you want to back up multiple photos or videos:\nTouch and hold the photos or videos you want to back up, and then tap\nBack up\n.\nCheck your overall backup status\nImportant:\nIf backup is on and you have enough storage, you can find the backup status at the top of your library.\nOn your Android device, open Google Photos\n.\nAt the top, check the backup status.\nGoogle Photos\n:\nNo backup.\nPreparing backup:\nBackup is starting.\nBacking up photos:\nBackup is in process.\nBackup complete\n:\nBackup is done.\nBackup paused\n:\nBackup is currently paused.\nTo learn more, tap the status.\nOptional:\nTurn on mobile data:\nIf you can’t access Wi-Fi, you can use mobile data to start backup."
+    ]
+  },
+  {
+    "url": "https://help.dropbox.com/create-upload/upload-mobile",
+    "final_url": "https://help.dropbox.com/create-upload/upload-mobile",
+    "status": 200,
+    "sha256": "b4f4bcf99b27e629db8187f65c132f311fc0fe24cd603e968c278272ac52d6e3",
+    "excerpts": []
+  },
+  {
+    "url": "https://support.google.com/drive/answer/2424368?hl=en&co=GENIE.Platform%3DAndroid",
+    "final_url": "https://support.google.com/drive/answer/2424368?hl=en&co=GENIE.Platform%3DAndroid",
+    "status": 200,
+    "sha256": "c57e0b6c4652c3401ed4e7989eb8386e187880cc7b7a4dd235e5634edcef5859",
+    "excerpts": [
+      "eo\nUpload & find files\nOn your Android phone or tablet, open the Google Drive app.\nTap New\nUpload\n.\nFind and tap the files you want to upload.\nFind uploaded files in My Drive until you move them.\nConvert documents into Google formats\nIf you want to upload files like Microsoft Word documents, you can change a setting to convert files.\nImportant\n: You can only change Google Drive settings from your computer.\nTurn mobile data usage on or off\nYou can choose to use your mobile data or only use Wi-Fi to transfer files.\nOn your Android phone or tablet, open the Google Drive app.\nAt the top left, tap Menu\nSettings\n.\nUnder \"Data usage,\" turn\nTransfer files only over Wi-Fi\non or off.\nYou only find the “Transfer files only over Wi-Fi” option when your"
+    ]
+  }
+]

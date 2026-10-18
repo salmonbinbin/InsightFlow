@@ -1,0 +1,83 @@
+{
+  "id": "0357e0b7-6163-4278-8d2a-c4050d62050e",
+  "project_id": "71e46ed7-717f-4f50-94f3-c53874429b21",
+  "insight_id": "0f7d38fb-633d-4258-a56b-c0b23ba800a6",
+  "decision_id": "23e9e824-4ac2-4ef6-b4e4-4d8a69ad1756",
+  "score_id": "ee4121b7-3398-4b73-8a27-70a9a379decf",
+  "insight_status_snapshot": "draft",
+  "decision_status_snapshot": "accepted",
+  "ai_priority_snapshot": "P2",
+  "pm_priority": "P2",
+  "pm_override_reason_snapshot": null,
+  "source_snapshot_hash": "248ad32236a96004ec3f54f69dac3dfce8f1234dc3bd60f7513315727a8f81bf",
+  "name": "图片上传支持多选以改善批量传图体验",
+  "problem": "用户在需要上传多张图片（尤其是旅游照片等批量场景）时，每次操作只能选择一张图片，必须反复重复选择流程，导致批量传图过程繁琐、效率低。该问题在多条反馈中被反复提及（F001、F002、F003），用户明确表达了\"为什么每次只能上传一张\"\"能不能支持多选\"等诉求，构成一致性的体验障碍。",
+  "target_user": "当前反馈仅来自少量已知用户（U001、U002），均涉及图片上传模块（module: image_upload）。从证据内容可推断的目标用户是：需要在产品内上传图片、且实际场景中存在一次性上传多张图片需求的用户，例如分享旅游/出行照片等批量传图场景的用户。具体用户规模、付费特征、地理分布在现有 Evidence 中未提供，不做推断。",
+  "user_story": "As a 需要批量上传图片的用户（例如分享旅游照片的用户），\nI want 在一次操作中同时选择并上传多张图片，\nSo that 不用反复重复\"选一张→确认→再选一张\"的流程，降低批量传图的操作成本。",
+  "solution_hypothesis": "假设当前\"每次只能选择一张图片\"是上传组件的交互限制而非产品策略所致，那么将该上传组件改造为支持一次选择多张图片（多选），即可显著降低批量上传场景中的重复操作次数。该方案为待验证的假设，最终方案需在确认现有产品策略与交互限制后确定。",
+  "success_metrics": [
+    {
+      "name": "批量上传场景下平均完成多张图片上传所需的\"选择次数\"",
+      "type": "baseline_only",
+      "sources": [
+        "F001",
+        "F002",
+        "F003"
+      ],
+      "note": "当前为 baseline 阶段：依据反馈内容（F001\"每次只能上传一张图片\"、F002\"要选几十次\"、F003\"每次只能选一张\"），可定性确认当前每张图片需要一次独立选择操作。具体定量基线需要在产品内埋点确认后补全。"
+    },
+    {
+      "name": "用户反馈中关于\"单张上传限制\"的相关投诉/功能请求数量",
+      "type": "baseline_only",
+      "sources": [
+        "F001",
+        "F002",
+        "F003"
+      ],
+      "note": "当前聚类下反馈条数为 3 条，作为基线参考；后续是否下降需要在上线后观察相同主题的反馈变化。"
+    }
+  ],
+  "risks": [
+    {
+      "category": "known",
+      "description": "当前\"每次只能选择一张\"可能是产品策略（例如上传大小、网络、鉴黄/审核或后端处理约束）刻意设置，而非单纯的交互限制。Insight 的 recommendation 已建议先确认这一点。",
+      "evidence_ids": [
+        "F001",
+        "F003"
+      ],
+      "mitigation": "在进入实现前先与相关模块负责人确认是否为产品策略限制；若存在后端/审核/带宽限制，需要评估多选对单请求体积和成功率的影响。"
+    },
+    {
+      "category": "speculative",
+      "description": "支持多选后，可能出现单次请求体积过大、上传失败率上升、或与既有审核/图片处理流水线的兼容性问题。",
+      "evidence_ids": [],
+      "mitigation": "通过分批上传、并发限流、客户端预校验等方式控制单次请求体量，并在灰度环境观察失败率与耗时。"
+    }
+  ],
+  "evidence_references": [
+    {
+      "external_id": "F001",
+      "usage": "用于 problem（\"为什么每次只能上传一张图片\"作为体验障碍的直接证据）、user_story、success_metrics baseline、known 风险（验证是否策略限制）。"
+    },
+    {
+      "external_id": "F002",
+      "usage": "用于 problem（旅游照片批量场景下\"要选几十次\"的诉求）、user_story、success_metrics baseline、known 风险。"
+    },
+    {
+      "external_id": "F003",
+      "usage": "用于 problem（用户确认上传速度尚可，唯一障碍是单选限制）、success_metrics baseline、known 风险。"
+    }
+  ],
+  "status": "draft",
+  "model": "MiniMax-M3",
+  "prompt_version": "requirement-generation-v1",
+  "input_tokens": 2081,
+  "output_tokens": 1055,
+  "unknown_token_calls": 0,
+  "latency_ms": 13087,
+  "attempt_count": 1,
+  "retry_count": 0,
+  "next_version": 1,
+  "created_at": "2026-10-17T13:47:06.712864Z",
+  "updated_at": "2026-10-17T13:47:06.712871Z"
+}

@@ -1,0 +1,42 @@
+
+> insightflow-frontend@0.1.0 build
+> next build
+
+  ▲ Next.js 14.2.35
+  - Experiments (use with caution):
+    · proxyTimeout
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/11) ...
+   Generating static pages (2/11) 
+   Generating static pages (5/11) 
+   Generating static pages (8/11) 
+ ✓ Generating static pages (11/11)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                              Size     First Load JS
+┌ ○ /                                    3.1 kB          103 kB
+├ ○ /_not-found                          875 B          88.2 kB
+├ ○ /analysis                            5.37 kB        96.4 kB
+├ ○ /evaluation                          4.6 kB         95.6 kB
+├ ○ /feedback                            4.95 kB          96 kB
+├ ○ /insights                            3.54 kB         103 kB
+├ ƒ /insights/[id]                       14.5 kB         114 kB
+├ ○ /prds                                2.93 kB         103 kB
+├ ƒ /prds/[id]                           8.62 kB         108 kB
+├ ○ /requirements                        2.75 kB         102 kB
+├ ƒ /requirements/[id]                   7.84 kB         108 kB
+└ ○ /upload                              3.79 kB         104 kB
++ First Load JS shared by all            87.3 kB
+  ├ chunks/117-b93b2d5c59297f67.js       31.7 kB
+  ├ chunks/fd9d1056-dcba7f094ce3d609.js  53.7 kB
+  └ other shared chunks (total)          1.9 kB
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand
+

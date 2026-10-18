@@ -201,6 +201,7 @@ class RequirementClient:
         base_url: str | None,
         model: str | None,
         timeout_seconds: float,
+        prompt_module: Any | None = None,
     ) -> None:
         if not api_key:
             raise RequirementLLMConfigError("LLM_API_KEY is not configured")
@@ -208,6 +209,7 @@ class RequirementClient:
             raise RequirementLLMConfigError("LLM_BASE_URL is not configured")
         if not model:
             raise RequirementLLMConfigError("LLM_MODEL is not configured")
+        self._prompt_module = prompt_module
         self._base_url = base_url.rstrip("/")
         self._model = model
         self._timeout = timeout_seconds
@@ -218,6 +220,14 @@ class RequirementClient:
                 "anthropic-version": "2023-06-01",
                 "content-type": "application/json",
             },
+        )
+
+    @property
+    def prompt_version(self) -> str:
+        return (
+            self._prompt_module.PROMPT_VERSION
+            if self._prompt_module
+            else "requirement-generation-v1"
         )
 
     def close(self) -> None:
@@ -235,15 +245,28 @@ class RequirementClient:
         body = {
             "model": self._model,
             "max_tokens": 4096,
-            "system": REQ_SYSTEM_PROMPT,
+            "system": (
+                self._prompt_module.SYSTEM_PROMPT if self._prompt_module else REQ_SYSTEM_PROMPT
+            ),
             "tools": [
                 {
-                    "name": REQ_TOOL_NAME,
-                    "description": REQ_TOOL_DESCRIPTION,
-                    "input_schema": REQ_TOOL_SCHEMA,
+                    "name": (
+                        self._prompt_module.TOOL_NAME if self._prompt_module else REQ_TOOL_NAME
+                    ),
+                    "description": (
+                        self._prompt_module.TOOL_DESCRIPTION
+                        if self._prompt_module
+                        else REQ_TOOL_DESCRIPTION
+                    ),
+                    "input_schema": (
+                        self._prompt_module.TOOL_SCHEMA if self._prompt_module else REQ_TOOL_SCHEMA
+                    ),
                 }
             ],
-            "tool_choice": {"type": "tool", "name": REQ_TOOL_NAME},
+            "tool_choice": {
+                "type": "tool",
+                "name": (self._prompt_module.TOOL_NAME if self._prompt_module else REQ_TOOL_NAME),
+            },
             "messages": [
                 {
                     "role": "user",
@@ -257,13 +280,17 @@ class RequirementClient:
             client=self._client,
             base_url=self._base_url,
             body=body,
-            tool_name=REQ_TOOL_NAME,
+            tool_name=(self._prompt_module.TOOL_NAME if self._prompt_module else REQ_TOOL_NAME),
             protocol_error_cls=RequirementLLMProtocolError,
         )
-        allowed = set(REQ_TOOL_SCHEMA["properties"].keys())
+        allowed = set(
+            (self._prompt_module.TOOL_SCHEMA if self._prompt_module else REQ_TOOL_SCHEMA)[
+                "properties"
+            ].keys()
+        )
         inp = _extract_tool_payload(
             data=data,
-            tool_name=REQ_TOOL_NAME,
+            tool_name=(self._prompt_module.TOOL_NAME if self._prompt_module else REQ_TOOL_NAME),
             allowed_keys=allowed,
             protocol_error_cls=RequirementLLMProtocolError,
         )
@@ -283,6 +310,7 @@ class PRDClient:
         base_url: str | None,
         model: str | None,
         timeout_seconds: float,
+        prompt_module: Any | None = None,
     ) -> None:
         if not api_key:
             raise PRDLLMConfigError("LLM_API_KEY is not configured")
@@ -290,6 +318,7 @@ class PRDClient:
             raise PRDLLMConfigError("LLM_BASE_URL is not configured")
         if not model:
             raise PRDLLMConfigError("LLM_MODEL is not configured")
+        self._prompt_module = prompt_module
         self._base_url = base_url.rstrip("/")
         self._model = model
         self._timeout = timeout_seconds
@@ -301,6 +330,10 @@ class PRDClient:
                 "content-type": "application/json",
             },
         )
+
+    @property
+    def prompt_version(self) -> str:
+        return self._prompt_module.PROMPT_VERSION if self._prompt_module else "prd-generation-v3"
 
     def close(self) -> None:
         self._client.close()
@@ -317,15 +350,28 @@ class PRDClient:
         body = {
             "model": self._model,
             "max_tokens": 8192,
-            "system": PRD_SYSTEM_PROMPT,
+            "system": (
+                self._prompt_module.SYSTEM_PROMPT if self._prompt_module else PRD_SYSTEM_PROMPT
+            ),
             "tools": [
                 {
-                    "name": PRD_TOOL_NAME,
-                    "description": PRD_TOOL_DESCRIPTION,
-                    "input_schema": PRD_TOOL_SCHEMA,
+                    "name": (
+                        self._prompt_module.TOOL_NAME if self._prompt_module else PRD_TOOL_NAME
+                    ),
+                    "description": (
+                        self._prompt_module.TOOL_DESCRIPTION
+                        if self._prompt_module
+                        else PRD_TOOL_DESCRIPTION
+                    ),
+                    "input_schema": (
+                        self._prompt_module.TOOL_SCHEMA if self._prompt_module else PRD_TOOL_SCHEMA
+                    ),
                 }
             ],
-            "tool_choice": {"type": "tool", "name": PRD_TOOL_NAME},
+            "tool_choice": {
+                "type": "tool",
+                "name": (self._prompt_module.TOOL_NAME if self._prompt_module else PRD_TOOL_NAME),
+            },
             "messages": [
                 {
                     "role": "user",
@@ -339,13 +385,17 @@ class PRDClient:
             client=self._client,
             base_url=self._base_url,
             body=body,
-            tool_name=PRD_TOOL_NAME,
+            tool_name=(self._prompt_module.TOOL_NAME if self._prompt_module else PRD_TOOL_NAME),
             protocol_error_cls=PRDLLMProtocolError,
         )
-        allowed = set(PRD_TOOL_SCHEMA["properties"].keys())
+        allowed = set(
+            (self._prompt_module.TOOL_SCHEMA if self._prompt_module else PRD_TOOL_SCHEMA)[
+                "properties"
+            ].keys()
+        )
         inp = _extract_tool_payload(
             data=data,
-            tool_name=PRD_TOOL_NAME,
+            tool_name=(self._prompt_module.TOOL_NAME if self._prompt_module else PRD_TOOL_NAME),
             allowed_keys=allowed,
             protocol_error_cls=PRDLLMProtocolError,
         )

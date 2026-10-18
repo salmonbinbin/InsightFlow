@@ -1,0 +1,36 @@
+{
+  "reviewer": "Codex Supervisor",
+  "decision": "新增0015，仅ResearchFinding增可空语义与支持关系；不重写0012-0014",
+  "reason": "旧status/source_refs无法表达有事实支持但并非已证实官方事实的分析；支持关系不能只藏trace",
+  "columns": {
+    "claim_kind": "nullable fact/inference/recommendation",
+    "supporting_finding_ids": "nullable JSON UUID strings; same run/project; facts only; no cycles",
+    "evidence_location": "nullable JSON with provider_source_id, offset, length, text, snapshot_sha256; code derived"
+  },
+  "invariants": [
+    "旧行NULL兼容",
+    "confirmed仍必须source_refs非空；not_verified不许source_refs",
+    "inference/recommendation必须not_verified并有已确认事实支持",
+    "模型只提供本Run offered evidence IDs；服务端转成实际Finding UUID",
+    "所有fact逐字重取snapshot且长度<=200，来源ID/URL/名称/数量守卫保留",
+    "新结构化引用没有任何引文外事实文案；旧v14字符串负例继续拒绝",
+    "分析不参与Run完成；市场概括至少两产品且限本次样本，不推全市场"
+  ],
+  "protocol": "v6同次响应 tasks + evidence_ids + analysis_candidates；服务器生成内部summary，规划无额外调用；总LLM<=3",
+  "source_limits": {
+    "queries": 3,
+    "pages": 5,
+    "sources": 5,
+    "offered_units": 100,
+    "selected": 40,
+    "reader_redirects": 3,
+    "reader_seconds": 10,
+    "decoded_bytes": 4194304,
+    "text_chars": 24000
+  },
+  "frontend_scope": [
+    "typed API",
+    "Insight详情及测试"
+  ],
+  "old_quality_limits": "Phase2/3/4/6/7保留"
+}

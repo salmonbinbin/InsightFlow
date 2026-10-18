@@ -1,0 +1,40 @@
+{
+  "checked_at": "2026-10-17T14:21:31.199058+00:00",
+  "head": "449e8790b8da8b9f04f4e3739cd9740606241cc4",
+  "branch": "codex/phase6-evaluation",
+  "index_empty": true,
+  "protected_source_test_file_count": 243,
+  "frozen_checks": {
+    "docs/evaluations/phase8-v6/final4-code-manifest.json": {
+      "count": 26,
+      "mismatches": []
+    },
+    "docs/evaluations/phase8-v6/manifest.json": {
+      "count": 118,
+      "mismatches": []
+    }
+  },
+  "config_files_exist": {
+    "key/.env": true,
+    "backend/.env": false
+  },
+  "fresh_full_engineering_tests": false,
+  "fresh_real_calls": false,
+  "user_database_connected": false,
+  "migration_file_head": "0015",
+  "config_check": "CONFIG_PRESENT_NOT_CALL_TESTED",
+  "historical_worker_jobs_count": 66,
+  "historical_active_worker_jobs": 0,
+  "interactive_claude_in_project": {
+    "pid": 62936,
+    "stat": "S+",
+    "mcp_prompt_process": false,
+    "terminated_by_codex": false
+  },
+  "unrelated_port_8000_owner": "AI小商/backend",
+  "own_ports_13080_18080_listening": false,
+  "user_pg_processes_observed": [
+    76393,
+    90198
+  ]
+}

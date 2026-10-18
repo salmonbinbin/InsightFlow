@@ -1,3 +1,54 @@
+# InsightFlow — AI Product Insight Agent
+
+将用户反馈整理为有证据的产品洞察，帮助产品经理评估优先级、形成需求与PRD草稿。
+
+> **2026-10-19：Phase8部分完成检查点（PARTIAL）。** Research质量仍未通过，正式用户验收尚未完成。工具写入只有模拟，真实外部集成延期；没有启动Phase9或进行公网部署。当前功能、真实结果、限制和后续方案以[52号归档记录](docs/52-Phase8阶段归档与后续修复计划.md)为准，下方旧阶段说明保留为历史。
+
+## 当前功能
+
+CSV导入 → AI分类 → 相似反馈聚类 → 洞察/原话证据 → 评分/人工决策 → Requirement → 版本化PRD草稿。
+
+洞察页另有外部研究、来源与引文查看；需求页有模拟任务预览/取消/批准及审计。原始反馈与AI分析、内部Evidence与外部Research分开保存。中文页面和动态说明已经整理，缺失或未验证结果保留真实状态。
+
+**主要限制：** 正常中文/改写研究、流程与条件支持及竞品分析仍不稳定；外研来源尚未完整传入需求/PRD。当前内容需要人工复核，不能当作可靠自动产品决策。`local-hash-v1`只是测试嵌入，不代表语义Embedding质量通过。项目隔离不等于企业用户认证。
+
+## 本机运行
+
+需要Python 3.12+、uv、Node.js/npm。两端分别在终端运行：
+
+```bash
+cd backend
+uv sync --locked
+cp .env.example .env
+uv run --with pgserver==0.1.4 python scripts/dev.py
+```
+
+启动器创建本机独立开发PG并迁移到head（0001—0015），接口文档为`http://127.0.0.1:8000/docs`。已运行或已有数据时先确认进程和数据目录，不重复启动或覆盖已有配置。
+
+```bash
+cd frontend
+npm ci
+npm run dev
+```
+
+页面为`http://localhost:3000`，默认代理到8000后端。配置不同API地址时设置`NEXT_PUBLIC_API_BASE_URL`，生产构建需在构建时设置。真实AI和搜索凭据仅在后端本机环境中配置，参考`backend/.env.example`，不要上传`.env`或将密钥放进前端。无真实配置不代表真实AI链路通过。
+
+## 最近验证与文档
+
+2026-10-19：后端SQLite1509通过/11跳过；全新PG1520通过及另一新PG迁移往返；Ruff通过；前端193项、lint及生产构建通过。本次未重跑付费研究；最近真实研究仍有主要失败，见[49号](docs/49-Phase8搜索适配与本轮复验.md)。页面动态内容复验见[51号](docs/51-动态数据展示清理与复验.md)。
+
+- [当前阶段归档与后续方案](docs/52-Phase8阶段归档与后续修复计划.md)
+- [项目交接入口](AGENT_HANDOFF.md)
+- [工作记录](工作记录.md)
+- [验证与交付记录](docs/09-验证与交付记录.md)
+- [前端说明](frontend/README.md)
+
+源码公开与阶段验收分开；本仓库不是生产部署说明。密钥、数据库、备份、本机控制日志及缓存不进入Git。
+
+---
+
+## 历史README（以下保留原阶段快照）
+
 > **当前状态（2026-10-14）：Phase 6 Evaluation System 工程回归通过，阶段交付 PARTIAL。** 分类/聚类/Insight Evidence 评测、逐例追踪和真实 Baseline 已完成；人工标签与语义复核、Phase 4/5 Artifact Evaluation、完整 Feedback→PRD 质量仍未测得。详见 [Phase 6 报告](docs/24-Phase6监督验收与交付报告.md) 与 [Baseline](docs/evaluations/phase6-baseline-evaluation.md)。STOP，等待三文鱼人工验收。下方为历史状态。
 
 > **当前状态（2026-10-14）：Phase 5 工程验收通过，阶段交付 PARTIAL。** Requirement、PRD Draft/版本与人工编辑/接受 API 已实现；SQLite417通过/5跳过、隔离PostgreSQL422通过，0010迁移及真实TCP HTTP无模型链路通过。真实AI生成、CSV完整AI端到端及人工语义抽查因本地模型配置缺失尚未完成。详见[Phase5报告](docs/23-Phase5监督验收与交付报告.md)。STOP，不进入Phase6。下方状态为历史记录。

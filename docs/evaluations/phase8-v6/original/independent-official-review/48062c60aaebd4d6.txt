@@ -1,0 +1,125 @@
+Troubleshoot photos not backing up - Android phone & tablet - Google Photos Help Skip to main content
+Google Photos Help
+Sign in
+Google Help
+Help Center
+Community
+Google Photos
+Privacy Policy
+Terms of Service
+Submit feedback
+Send feedback on...
+This help content & information
+General Help Center experience
+CloseNext
+Help Center
+Community
+Can't find your photos?
+Google Photos
+Troubleshoot photos not backing up
+If your photos and videos don't sync to your Google Account, check your backup status.
+Backup is a storage service that automatically saves your photos and videos to your Google Account. These photos and videos are accessible from any device where you’re signed in to your account. Learn more about backup benefits.
+Check your backup status
+On your Android device, open the Google Photos app Photos.
+At the top, touch and hold, then drag down. You can find one of these status messages:
+Backup complete: You have no more items waiting to back up.
+Backup is off: "Backup" is turned off. To turn on backup, tap Turn on backup.
+Backing up: Your photos and videos are currently backing up. You’ll also find the number of items remaining.
+Preparing backup or Getting ready to back up: Your photos and videos are getting ready to back up.
+Waiting for connection or Waiting for Wi-Fi: Wi-Fi Off Change your settings or connect to a Wi-Fi or mobile network.
+Troubleshoot your backup
+Check your backup settings
+On your Android device, open the Google Photos app Photos.
+At the top, tap your Profile picture or Initials and then Photos settings and then Backup.
+If "Backup" is turned on, you should find these options:
+Backup account: Make sure that the account listed matches the one you’re signed in to in the Google Photos app. To find which account you're viewing in the Google Photos app, at the top, tap your profile picture or initials and find your email address at the top.
+Backup device folders: Tap and select to back up photos and videos from other apps, like Google Chat and WhatsApp.
+Quality: Tap to change the backup quality of your photos and videos. Learn how to change your backup quality.
+Mobile data usage: Choose whether you want to back up your photos or videos using your mobile network instead of Wi-Fi. Charges from your service provider may apply.
+Tip: Turn on "back up while roaming" if you want to back up photos and videos even when you’re in other countries or regions.
+Check the file size or type
+Your photo or video may not upload because it doesn't meet requirements:
+Photos can't exceed 200 MB or 200 megapixels
+Videos can't exceed 10 GB
+Check which photos are backed up
+As your backup progresses, at the top, you can find how many photos are left and their thumbnails.
+Check which photo isn’t backed up
+Select a photo.
+If a photo isn't backed up, at the top, you can find Back up .
+Tip: To find all your backed-up photos and videos, on your computer, go to photos.google.com. Every photo and video you find here has been backed up.
+Back up device folders
+Important: When you turn “Backup” on, your chosen device folders are automatically backed up too, not only your camera. You can choose to automatically backup all folders, or turn “Backup” on or off for individual device folders.
+On your Android device, open the Google Photos app Photos.
+Sign in to your Google Account.
+At the top right, tap your Profile picture or Initials.
+Tap Photos settings Settings and then Backup.
+Under "Settings," tap Back up device folders.
+Tap the folders you want to back up.
+Next to the folders you don't want to back up, turn off the setting.
+Next to the folders you want to back up, turn on the setting.
+Optional: Turn Back up all device folders on or off.
+If "Back up all device folders" is on, photos in new device folders automatically back up.
+Tip: If you don’t want content from your device folders to appear in your Photos view, you can hide it. Learn how to hide content from your Photos view.
+Put your device on the charger
+To save your battery, the backup process may pause when your device screen is off or in screen saver mode.
+Delete blank or empty photo & video files
+Important: To remove blank or empty photo and video files from your Android device, download the Files by Google app.
+On your Android device, open the Files by Google app Files by Google.
+Tap Images or Videos.
+At the top, tap More More and then Sort by and then Smallest first.
+Select files with a byte size of 0.
+Tap Delete Delete and then Move files to Trash.
+Tip: To select multiple photo or video files, touch and hold the first file, then tap the other files you want to delete.
+If you still have problems, send feedback to Google Photos.
+Related resources
+Back up photos & videos
+Delete photos & videos
+Find lost photos & videos
+Was this helpful?
+How can we improve it?
+YesNo
+Submit
+Android phone & tablet iPhone & iPad
+More
+Need more help?
+Try these next steps:
+Post to the help community Get answers from community members
+true
+Help
+1 of 5
+Send feedback or ask a question
+2 of 5
+Find lost photos & videos
+3 of 5
+Troubleshoot photos not backing up
+4 of 5
+My photos appear incorrectly
+5 of 5
+File an appeal for a policy enforcement
+©2026 Google
+Privacy Policy
+Terms of Service
+Language català‎dansk‎Deutsch‎eesti‎English (United Kingdom)‎español‎español (Latinoamérica)‎Filipino‎français‎hrvatski‎Indonesia‎italiano‎latviešu‎lietuvių‎magyar‎Melayu‎Nederlands‎norsk‎polski‎português‎português (Brasil)‎română‎slovenčina‎slovenščina‎suomi‎svenska‎Tiếng Việt‎Türkçe‎íslenska‎čeština‎Ελληνικά‎български‎русский‎српски‎українська‎‏עברית‏العربية‏فارسیमराठी‎हिन्दी‎తెలుగు‎ไทย‎中文（简体）‎中文（繁體）‎日本語‎한국어‎ English‎
+Enable Dark Mode
+Send feedback on...
+This help content & information General Help Center experience
+Search
+Clear search
+Close search
+Google apps
+Main menu
+16618316517465988524
+true
+Search Help Center
+false
+true
+true
+true
+true
+true
+105394
+false
+false
+false
+false
+false

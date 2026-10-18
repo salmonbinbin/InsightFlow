@@ -1,0 +1,7 @@
+{
+  "owned_pg_pid": 1210,
+  "directory_verified": true,
+  "stop_exit_code": 0,
+  "message": "waiting for server to shut down.... done\nserver stopped",
+  "user_pg_touched": false
+}

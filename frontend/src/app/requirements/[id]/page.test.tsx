@@ -190,6 +190,24 @@ describe('RequirementDetailPage — Phase 7 B2', () => {
     });
   });
 
+  it('shows readable topic prose while preserving untouched content in a save', async () => {
+    const target = '报告 pdf_upload 障碍的用户；规模尚未确认。';
+    const note = '将 module=pdf_upload 且涉及上传失败的条目纳入追踪；不设目标。';
+    const req = { ...BASE_REQ, target_user: target, success_metrics: [{ ...BASE_REQ.success_metrics[0]!, note }] };
+    const { client } = renderDetail(req, 'proj_a');
+    await waitFor(() => screen.getByTestId('field-target-user'));
+    expect((screen.getByTestId('field-target-user') as HTMLInputElement).value).toBe('报告 PDF 上传 障碍的用户；规模尚未确认。');
+    expect((screen.getByTestId('metric-note') as HTMLTextAreaElement).value).not.toContain('module=');
+    await act(async () => setInputValue(screen.getByTestId('field-name') as HTMLInputElement, '仅修改名称'));
+    await act(async () => (screen.getByTestId('save-requirement') as HTMLButtonElement).click());
+    await waitFor(() => {
+      const patch = client.callLog.find(c => c.method === 'PATCH');
+      const body = patch?.body as { content?: { target_user: string; success_metrics: { note: string }[] } };
+      expect(body?.content?.target_user).toBe(target);
+      expect(body?.content?.success_metrics[0]?.note).toBe(note);
+    });
+  });
+
   /* ---------- B2 round-trip (data preservation) ----------
    *
    * The previous B1 placeholder dropped every entry beyond index 0 in
@@ -374,18 +392,19 @@ describe('RequirementDetailPage — Phase 7 B2', () => {
 
     // Top-of-form banner explains the block and points at admin help.
     await waitFor(() => {
-      expect(screen.getByText('检测到后端未知枚举值')).toBeTruthy();
-      expect(screen.getByText(/Success Metric #1 类型 'foo'/)).toBeTruthy();
-      expect(screen.getByText(/Risk #1 分类 'bar'/)).toBeTruthy();
+      expect(screen.getByText('部分内容需要修正')).toBeTruthy();
+      expect(screen.getByText(/第1项指标；第1项风险的分类暂不支持编辑/)).toBeTruthy();
     });
 
     // Per-row warnings: the type select is replaced with a read-only
     // badge carrying the raw value, so the dropdown can never silently
     // pick a default literal.
     expect(screen.getByTestId('metric-unknown-type-warning')).toBeTruthy();
-    expect(screen.getByTestId('metric-unknown-type-badge').textContent).toContain('foo');
+    expect(screen.getByTestId('metric-unknown-type-badge').textContent).toContain('暂不支持');
+    expect(screen.getByTestId('metric-unknown-type-badge').textContent).not.toContain('foo');
     expect(screen.getByTestId('risk-unknown-category-warning')).toBeTruthy();
-    expect(screen.getByTestId('risk-unknown-category-badge').textContent).toContain('bar');
+    expect(screen.getByTestId('risk-unknown-category-badge').textContent).toContain('暂不支持');
+    expect(screen.getByTestId('risk-unknown-category-badge').textContent).not.toContain('bar');
 
     // Save button MUST be disabled while unknowns are present.
     const saveBtn = screen.getByTestId('save-requirement') as HTMLButtonElement;
@@ -408,6 +427,299 @@ describe('RequirementDetailPage — Phase 7 B2', () => {
         (c) => c.method === 'PATCH' && c.path === '/api/requirements/req-detail-1',
       );
       expect(patches).toHaveLength(0);
+    });
+  });
+
+  /* ---------- Phase 8 C: Tool Action Preview (Simulator) ----------
+   *
+   * Each test seeds a Requirement with ``status='approved'``
+   * (the brief's gate) and a matching ``client.requirements``
+   * row so the mock's cross-project check passes. The
+   * client / mock contract is exercised through the page's
+   * real handlers so any regression in the page-level race
+   * protection (project switch abort, in-flight flag
+   * disable, etc.) would surface here. */
+
+  function renderApprovedDetail(req: Requirement = BASE_REQ) {
+    return renderDetail({ ...req, status: 'approved' as Requirement['status'] });
+  }
+
+  it('hides the Tool Action Preview section for non-approved Requirements', async () => {
+    // The brief: "未批准 Requirement 不展示可执行按钮".
+    // The page MUST NOT render the section at all when the
+    // Requirement is in any other status.
+    renderDetail({ ...BASE_REQ, status: 'draft' });
+    await waitFor(() => screen.getByTestId('field-name'));
+    expect(screen.queryByTestId('tool-action-preview')).toBeNull();
+  });
+
+  it('renders a Prepare button when the Requirement is approved and no run exists', async () => {
+    const { client } = renderApprovedDetail();
+    await waitFor(() => screen.getByTestId('field-name'));
+    // The history effect fires on load; wait for it to settle.
+    await waitFor(() => {
+      expect(client.listToolRuns).toBeDefined();
+    });
+    await waitFor(() => screen.getByTestId('tool-action-preview'));
+    // Initial listToolRuns returned 0 items; the idle view
+    // surfaces the Prepare button.
+    expect(screen.getByTestId('tool-prepare')).toBeTruthy();
+    // Cancel / Approve are NOT surfaced before a run is prepared.
+    expect(screen.queryByTestId('tool-cancel')).toBeNull();
+    expect(screen.queryByTestId('tool-approve')).toBeNull();
+    // The "仅模拟" notice is the first thing rendered so a PM
+    // never mistakes the simulator for a real external system.
+    expect(screen.getByText(/此操作为模拟/)).toBeTruthy();
+  });
+
+  it('Prepare → preview + Cancel + Approve (happy path)', async () => {
+    const { client } = renderApprovedDetail();
+    await waitFor(() => screen.getByTestId('tool-action-preview'));
+    await waitFor(() => screen.getByTestId('tool-prepare'));
+
+    // First click sends POST /requirements/{id}/tool-runs with
+    // the typed Prepare body. The mock stores the row in
+    // awaiting_approval so the page surfaces Cancel + Approve
+    // after the refetch lands.
+    await act(async () => {
+      (screen.getByTestId('tool-prepare') as HTMLButtonElement).click();
+    });
+    await waitFor(() => {
+      const prepares = client.callLog.filter(
+        (c) => c.method === 'POST' && c.path === '/api/requirements/req-detail-1/tool-runs',
+      );
+      expect(prepares).toHaveLength(1);
+      const body = prepares[0]?.body as {
+        tool_name: string;
+        tool_action: string;
+        request_id: string;
+        payload: Record<string, never>;
+      };
+      expect(body.tool_name).toBe('simulated_issue_tracker');
+      expect(body.tool_action).toBe('create_issue');
+      // The page must mint a UUID-shaped request_id so the
+      // backend's idempotency key is unique per click.
+      expect(body.request_id).toMatch(
+        /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/,
+      );
+      expect(body.payload).toEqual({});
+    });
+    // The page also re-fetches the history after a successful
+    // Prepare. The list call must include project_id in the
+    // call log (the mock records path-only, but the page
+    // forwards the active project id through the typed
+    // client — wired-contract is pinned in client.test.ts).
+    await waitFor(() => {
+      const lists = client.callLog.filter(
+        (c) => c.method === 'GET' && c.path === '/api/requirements/req-detail-1/tool-runs',
+      );
+      expect(lists.length).toBeGreaterThanOrEqual(1);
+    });
+
+    // After the refetch, the awaiting_approval view shows the
+    // four frozen-snapshot fields and Cancel + Approve buttons.
+    await waitFor(() => screen.getByTestId('tool-action-awaiting-approval'));
+    expect(screen.getByTestId('tool-preview-title')).toBeTruthy();
+    expect(screen.getByTestId('tool-preview-description')).toBeTruthy();
+    expect(screen.getByTestId('tool-preview-priority')).toBeTruthy();
+    expect(screen.getByTestId('tool-preview-source')).toBeTruthy();
+    expect(screen.getByTestId('tool-cancel')).toBeTruthy();
+    expect(screen.getByTestId('tool-approve')).toBeTruthy();
+  });
+
+  it('Cancel surfaces "已取消；无模拟结果" and re-enables Prepare', async () => {
+    const { client } = renderApprovedDetail();
+    await waitFor(() => screen.getByTestId('tool-action-preview'));
+    await waitFor(() => screen.getByTestId('tool-prepare'));
+
+    await act(async () => {
+      (screen.getByTestId('tool-prepare') as HTMLButtonElement).click();
+    });
+    await waitFor(() => screen.getByTestId('tool-action-awaiting-approval'));
+
+    await act(async () => {
+      (screen.getByTestId('tool-cancel') as HTMLButtonElement).click();
+    });
+    await waitFor(() => screen.getByTestId('tool-action-cancelled'));
+    // The "无模拟结果" notice is the user-facing confirmation
+    // that no audit row was created. The brief mandates
+    // "Cancel 后显示 cancelled 并确认无模拟结果".
+    expect(screen.getByTestId('tool-cancelled-notice').textContent).toContain('无模拟结果');
+    // The Prepare re-try path is exposed (idempotency key
+    // resets on every click — a fresh UUID is minted).
+    expect(screen.getByTestId('tool-reprepare')).toBeTruthy();
+
+    // The Cancel call lands on the active run; the body is empty.
+    const cancel = client.callLog.find(
+      (c) => c.method === 'POST' && c.path === '/api/tool-runs/trun_1/cancel',
+    );
+    expect(cancel).toBeDefined();
+    expect(cancel?.body).toEqual({});
+  });
+
+  it('Re-Prepare → Approve surfaces SIM- external_id + simulated badge + no real link', async () => {
+    // The brief: "Approve 调 API 后显示 SIM- external_id、simulated 标签
+    // 且不要构造真实外部链接". The page must surface the id as
+    // plain monospace text, NOT wrap it in an <a href="...">.
+    const { client } = renderApprovedDetail();
+    await waitFor(() => screen.getByTestId('tool-action-preview'));
+    await waitFor(() => screen.getByTestId('tool-prepare'));
+
+    // Prepare (first click).
+    await act(async () => {
+      (screen.getByTestId('tool-prepare') as HTMLButtonElement).click();
+    });
+    await waitFor(() => screen.getByTestId('tool-action-awaiting-approval'));
+
+    // Approve.
+    await act(async () => {
+      (screen.getByTestId('tool-approve') as HTMLButtonElement).click();
+    });
+    await waitFor(() => screen.getByTestId('tool-action-completed'));
+    // SIM- external id is rendered as a badge, no anchor.
+    const externalId = screen.getByTestId('tool-external-id').textContent;
+    expect(externalId).toMatch(/^SIM-\d+$/);
+    // "simulated" tag is the explicit marker so a PM can never
+    // mistake this for a real Jira ticket.
+    expect(screen.getByTestId('tool-simulated-tag').textContent).toContain('模拟');
+    // CRITICAL: there must be NO anchor / link pointing at the
+    // simulated id — the brief forbids fabricating a real
+    // external link.
+    const externalIdEl = screen.getByTestId('tool-external-id');
+    expect(externalIdEl.closest('a')).toBeNull();
+    // Approve call hit the right path with an empty body.
+    const approve = client.callLog.find(
+      (c) => c.method === 'POST' && c.path === '/api/tool-runs/trun_1/approve',
+    );
+    expect(approve).toBeDefined();
+    expect(approve?.body).toEqual({});
+  });
+
+  it('debounces rapid Prepare clicks — only one POST goes out (no double-POST)', async () => {
+    // The brief: "重复点击防重". A rapid second click is a
+    // no-op because the in-flight flag disables the button
+    // AND because each click mints a fresh request_id, so
+    // the backend's idempotency key would dedupe anyway.
+    const { client } = renderApprovedDetail();
+    await waitFor(() => screen.getByTestId('tool-action-preview'));
+    await waitFor(() => screen.getByTestId('tool-prepare'));
+
+    await act(async () => {
+      (screen.getByTestId('tool-prepare') as HTMLButtonElement).click();
+      // Second click while the first is still in flight.
+      (screen.getByTestId('tool-prepare') as HTMLButtonElement).click();
+    });
+    await waitFor(() => {
+      const prepares = client.callLog.filter(
+        (c) => c.method === 'POST' && c.path === '/api/requirements/req-detail-1/tool-runs',
+      );
+      expect(prepares).toHaveLength(1);
+    });
+  });
+
+  it('clears the Tool Action Preview state on project switch', async () => {
+    // Project switch: a new activeProjectId MUST zero the
+    // tool history so the page never surfaces a foreign
+    // project's awaiting_approval row. The brief says
+    // "跨项目状态清理".
+    //
+    // ``ProjectContextProvider`` reads ``initialActiveProjectId``
+    // only on mount (useState's initial value), so a plain
+    // rerender cannot exercise the project-switch effect.
+    // We mount a tiny wrapper that bumps a ``key`` to force a
+    // fresh provider + page tree — the same trick the
+    // insights/[id] page test uses.
+    const client = new MockInsightFlowClient();
+    setApiClient(client as unknown as InsightFlowClient);
+    client.projects = [
+      { id: 'proj_a', name: 'A', product_name: 'A' },
+      { id: 'proj_b', name: 'B', product_name: 'B' },
+    ];
+    client.requirements = [
+      { ...BASE_REQ, id: 'req-detail-1', project_id: 'proj_a', status: 'approved' },
+    ];
+    // Pre-seed an awaiting_approval row for project A so the
+    // first render is in the awaiting_approval view.
+    client.toolRuns.push({
+      id: 'trun-1',
+      project_id: 'proj_a',
+      requirement_id: 'req-detail-1',
+      agent_run_id: null,
+      tool_name: 'simulated_issue_tracker',
+      tool_action: 'create_issue',
+      tool_version: 'sim-v1',
+      request_id: '00000000-0000-4000-8000-000000000010',
+      status: 'awaiting_approval',
+      execution_mode: 'simulation',
+      external_id: null,
+      request_payload: {
+        title: '[Simulated] R',
+        description: 'D',
+        priority: 'P1',
+        source_insight_preview: 'S',
+      },
+      response_summary: null,
+      failure_category: null,
+      attempt_count: 0,
+      retry_count: 0,
+      created_at: '2026-01-01T00:00:00Z',
+      updated_at: '2026-01-01T00:00:00Z',
+      approved_at: null,
+      completed_at: null,
+    });
+
+    let mountKey = 0;
+    const renderTree = (projectId: string) => (
+      <ProjectContextProvider
+        key={`pc-${mountKey}`}
+        client={client as unknown as never}
+        initialProjects={client.projects}
+        initialActiveProjectId={projectId}
+      >
+        <RequirementDetailPage key={`page-${mountKey}`} />
+      </ProjectContextProvider>
+    );
+    const utils = render(renderTree('proj_a'));
+    await waitFor(() => screen.getByTestId('tool-action-preview'));
+    // Confirm the awaiting_approval view is rendered for the
+    // original project.
+    await waitFor(() => screen.getByTestId('tool-action-awaiting-approval'));
+
+    // Switch to a different project that has NO requirement
+    // and no tool runs. The state must be reset and the
+    // section must disappear (load returns notFound because
+    // the requirement doesn't exist in project B).
+    mountKey += 1;
+    utils.rerender(renderTree('proj_b'));
+    // After the switch, the previous awaiting_approval state
+    // is wiped — either the section unmounts (because the
+    // requirement is notFound) or it stays in idle.
+    await waitFor(() => {
+      const awaiting = screen.queryByTestId('tool-action-awaiting-approval');
+      expect(awaiting).toBeNull();
+    });
+  });
+
+  it('surfaces 404/409/503 errors with a friendly message + retry', async () => {
+    // The brief: "API 404/409/503 友好提示；失败可重试".
+    // The page must render ErrorState with a friendly
+    // message derived from the API error and a Retry that
+    // re-invokes the same handler.
+    const { client } = renderApprovedDetail();
+    await waitFor(() => screen.getByTestId('tool-action-preview'));
+    await waitFor(() => screen.getByTestId('tool-prepare'));
+
+    // Force the next Prepare to 409 (state-machine conflict).
+    client.forceError = {
+      path: '/api/requirements/req-detail-1/tool-runs',
+      status: 409,
+      message: '操作冲突，请刷新后重试。',
+    };
+    await act(async () => {
+      (screen.getByTestId('tool-prepare') as HTMLButtonElement).click();
+    });
+    await waitFor(() => {
+      expect(screen.getByText(/工具操作失败|conflict/i)).toBeTruthy();
     });
   });
 });

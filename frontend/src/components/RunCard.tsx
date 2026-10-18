@@ -3,6 +3,7 @@
 import type { ReactNode } from 'react';
 import { StatusPill } from './StateViews';
 import { formatDateTime, formatNumber } from '../lib/format';
+import { userMessage } from '../lib/presentation';
 
 export interface RunCardProps {
   title: string;
@@ -97,7 +98,7 @@ export function RunCard(props: RunCardProps) {
           {actions}
           {status === 'failed' && errorMessage ? (
             <span className="run-card-error" role="alert">
-              {errorMessage}
+              {userMessage(errorMessage)}
             </span>
           ) : null}
         </div>

@@ -1,0 +1,264 @@
+{
+  "method": "Codex按实际确认事实、完整子问题、条件、数量及官方原文人工判读；独立HTTP字面比对辅助，不能代替语义判断。局部不代表整题通过。",
+  "program_counts": {
+    "partial_failed": 6,
+    "completed": 4
+  },
+  "independent_counts": {
+    "partial": 3,
+    "not_verified": 3,
+    "complete": 4
+  },
+  "confirmed_count": 44,
+  "factual_false_positives": 0,
+  "relevance_false_positive_count": 3,
+  "completeness_false_positive_count": 0,
+  "literal_audit_representation_mismatches": 2,
+  "representation_note": "差异均为HTML图片alt与标点之间空格；人工检查文字与按钮一致，未修改生产严格引文规则。",
+  "samples": [
+    {
+      "sample": 1,
+      "run_id": "b62ce4dc-3cce-469f-8d4a-78b154c5cb1c",
+      "question": "In the Google Photos Android app, can a user manually select several photos and start backup in one action? Cite only official Google Help; separate manual upload from automatic backup.",
+      "program_status": "partial_failed",
+      "independent_grade": "partial",
+      "reason": "多选Tips有确认事实，但手动/自动区别及任务约束失败；官方有答案，程序未闭合。",
+      "confirmed_count": 1,
+      "analysis_count": 0,
+      "factual_false_positives": 0,
+      "relevance_false_positives": [],
+      "completeness_false_positive": false,
+      "literal_audit_representation_mismatches": 0,
+      "budget": {
+        "logical_searches": 3,
+        "official_reads": 2,
+        "sources": 2,
+        "offered_unique_evidence_units": 100,
+        "llm_calls": 3
+      }
+    },
+    {
+      "sample": 2,
+      "run_id": "233d3fb5-5925-4b4a-ae82-9f6cc5ae3c67",
+      "question": "In the Dropbox iPhone app, can a user select and upload multiple photos at once? Cite only official Dropbox Help and state any limits actually documented.",
+      "program_status": "partial_failed",
+      "independent_grade": "not_verified",
+      "reason": "0条确认事实。完整手动八步已选入但逐句数量门全部降级；限制子题未覆盖。普通复数不自动证明严格多选。",
+      "confirmed_count": 0,
+      "analysis_count": 0,
+      "factual_false_positives": 0,
+      "relevance_false_positives": [],
+      "completeness_false_positive": false,
+      "literal_audit_representation_mismatches": 0,
+      "budget": {
+        "logical_searches": 3,
+        "official_reads": 5,
+        "sources": 5,
+        "offered_unique_evidence_units": 100,
+        "llm_calls": 3
+      }
+    },
+    {
+      "sample": 3,
+      "run_id": "e5e67351-6073-4656-a314-b6fa61d15329",
+      "question": "In the OneDrive iPhone app, can a user manually select multiple photos for one upload? Cite only official Microsoft Support; separate manual upload from camera upload.",
+      "program_status": "partial_failed",
+      "independent_grade": "not_verified",
+      "reason": "0条确认事实。已有完整手动/Choose Existing正文，逐句数量门全部降级及unknown_evidence_id；不能说官方无答案。",
+      "confirmed_count": 0,
+      "analysis_count": 0,
+      "factual_false_positives": 0,
+      "relevance_false_positives": [],
+      "completeness_false_positive": false,
+      "literal_audit_representation_mismatches": 0,
+      "budget": {
+        "logical_searches": 2,
+        "official_reads": 4,
+        "sources": 4,
+        "offered_unique_evidence_units": 100,
+        "llm_calls": 3
+      }
+    },
+    {
+      "sample": 4,
+      "run_id": "4cb23f68-2a77-4500-bf18-f2cf364fa5d1",
+      "question": "On iPhone, distinguish the Photos app iCloud sync, iCloud.com upload, and Shared Photo Library. Which of these supports selecting multiple photos for a manual upload? Cite only official Apple Support.",
+      "program_status": "partial_failed",
+      "independent_grade": "partial",
+      "reason": "确认Shared Library多选局部事实；iCloud同步、网页上传及共享图库三入口比较未完成。",
+      "confirmed_count": 2,
+      "analysis_count": 0,
+      "factual_false_positives": 0,
+      "relevance_false_positives": [],
+      "completeness_false_positive": false,
+      "literal_audit_representation_mismatches": 0,
+      "budget": {
+        "logical_searches": 2,
+        "official_reads": 4,
+        "sources": 4,
+        "offered_unique_evidence_units": 100,
+        "llm_calls": 3
+      }
+    },
+    {
+      "sample": 5,
+      "run_id": "68166bbb-152f-4d9f-b2dc-ebb96c2e8f32",
+      "question": "In the Google Drive Android app, can a user select multiple device photos and upload them in one action? Cite only official Google Drive Help; if official documentation is absent, mark not verified.",
+      "program_status": "partial_failed",
+      "independent_grade": "not_verified",
+      "reason": "0条确认事实，普通上传四步已取得；不据普通复数推断明确多选，另有任务类型/约束失败。",
+      "confirmed_count": 0,
+      "analysis_count": 0,
+      "factual_false_positives": 0,
+      "relevance_false_positives": [],
+      "completeness_false_positive": false,
+      "literal_audit_representation_mismatches": 0,
+      "budget": {
+        "logical_searches": 3,
+        "official_reads": 2,
+        "sources": 2,
+        "offered_unique_evidence_units": 100,
+        "llm_calls": 3
+      }
+    },
+    {
+      "sample": 6,
+      "run_id": "029fcc6e-e414-45b9-9868-91a344a5f7fb",
+      "question": "According to official Google Photos Help, what are the steps to manually back up one photo or video in the Android app? Cite only official Google Help; distinguish automatic backup.",
+      "program_status": "completed",
+      "independent_grade": "complete",
+      "reason": "手动四步、替代按钮、单图存储条件及自动备份独立依据齐全；多选Tips是额外背景。",
+      "confirmed_count": 12,
+      "analysis_count": 0,
+      "factual_false_positives": 0,
+      "relevance_false_positives": [],
+      "completeness_false_positive": false,
+      "literal_audit_representation_mismatches": 2,
+      "budget": {
+        "logical_searches": 1,
+        "official_reads": 2,
+        "sources": 2,
+        "offered_unique_evidence_units": 50,
+        "llm_calls": 1
+      }
+    },
+    {
+      "sample": 7,
+      "run_id": "475d22a6-b702-4507-ab38-c4f85056a7c7",
+      "question": "According to official Dropbox Help, can mobile users manually add photos when camera uploads are disabled? Cite only official Dropbox Help.",
+      "program_status": "completed",
+      "independent_grade": "complete",
+      "reason": "禁用camera uploads仍可手动添加的条件句及八步齐全；第三步内部双引号保留。",
+      "confirmed_count": 9,
+      "analysis_count": 0,
+      "factual_false_positives": 0,
+      "relevance_false_positives": [],
+      "completeness_false_positive": false,
+      "literal_audit_representation_mismatches": 0,
+      "budget": {
+        "logical_searches": 2,
+        "official_reads": 4,
+        "sources": 4,
+        "offered_unique_evidence_units": 85,
+        "llm_calls": 2
+      }
+    },
+    {
+      "sample": 8,
+      "run_id": "9c5d15eb-2002-42e4-a661-15936a81b1b2",
+      "question": "According to official Microsoft Support, how does an iPhone user select existing pictures for a manual upload in OneDrive? Cite only official Microsoft Support.",
+      "program_status": "completed",
+      "independent_grade": "complete",
+      "reason": "Add→Upload→Choose Existing→Photos→浏览/选择→Done齐全；另有非所问Take a Photo分支和导航噪声。",
+      "confirmed_count": 9,
+      "analysis_count": 0,
+      "factual_false_positives": 0,
+      "relevance_false_positives": [
+        {
+          "finding_id": "a9b7a032-2ed6-4984-80c9-e52b4bd59261",
+          "quote": "- If you choose Take a Photo, your device's camera app opens.",
+          "reason": "非所问的拍新照片分支/导航；目标是选择已有图片。",
+          "source_refs": [
+            {
+              "provider_source_id": "048b47-00",
+              "source_id": "1df69f50-489a-4316-8d12-d8edfe00da89"
+            }
+          ]
+        },
+        {
+          "finding_id": "5cffdaec-9e67-4db6-a9e5-5510d24ceab5",
+          "quote": "You might be asked if you want OneDrive to access your camera - tap Yes to allow your pictures to be saved in OneDrive.",
+          "reason": "非所问的拍新照片分支/导航；目标是选择已有图片。",
+          "source_refs": [
+            {
+              "provider_source_id": "048b47-00",
+              "source_id": "1df69f50-489a-4316-8d12-d8edfe00da89"
+            }
+          ]
+        },
+        {
+          "finding_id": "143b6b1d-6064-4a97-b939-c7957e4b2036",
+          "quote": "- Learn how to upload HEIF and HEVC photos and videos to OneDrive.",
+          "reason": "非所问的拍新照片分支/导航；目标是选择已有图片。",
+          "source_refs": [
+            {
+              "provider_source_id": "048b47-00",
+              "source_id": "1df69f50-489a-4316-8d12-d8edfe00da89"
+            }
+          ]
+        }
+      ],
+      "completeness_false_positive": false,
+      "literal_audit_representation_mismatches": 0,
+      "budget": {
+        "logical_searches": 1,
+        "official_reads": 2,
+        "sources": 2,
+        "offered_unique_evidence_units": 85,
+        "llm_calls": 2
+      }
+    },
+    {
+      "sample": 9,
+      "run_id": "9d68d675-4dcc-4719-ad15-d835a84b6ab3",
+      "question": "According to official Apple Support, which upload choices does iCloud.com show on a phone or tablet, and where should users upload to a Shared Photo Library? Cite only official Apple Support.",
+      "program_status": "partial_failed",
+      "independent_grade": "partial",
+      "reason": "仅确认Shared Library既有内容移动事实；未给出iCloud.com手机三选项及上传共享图库应使用Photos App的关键注释。",
+      "confirmed_count": 7,
+      "analysis_count": 0,
+      "factual_false_positives": 0,
+      "relevance_false_positives": [],
+      "completeness_false_positive": false,
+      "literal_audit_representation_mismatches": 0,
+      "budget": {
+        "logical_searches": 2,
+        "official_reads": 4,
+        "sources": 4,
+        "offered_unique_evidence_units": 100,
+        "llm_calls": 3
+      }
+    },
+    {
+      "sample": 10,
+      "run_id": "1bca3bb8-abfc-4101-97bf-80cd66bb727c",
+      "question": "According to official Google Drive Help, what are the Android app steps to upload files? Cite only official Google Drive Help.",
+      "program_status": "completed",
+      "independent_grade": "complete",
+      "reason": "Android四步及My Drive去向齐全；未把普通复数扩成严格多选。",
+      "confirmed_count": 4,
+      "analysis_count": 0,
+      "factual_false_positives": 0,
+      "relevance_false_positives": [],
+      "completeness_false_positive": false,
+      "literal_audit_representation_mismatches": 0,
+      "budget": {
+        "logical_searches": 1,
+        "official_reads": 2,
+        "sources": 2,
+        "offered_unique_evidence_units": 50,
+        "llm_calls": 1
+      }
+    }
+  ]
+}

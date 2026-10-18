@@ -50,6 +50,7 @@ import type {
   PageResponse,
   Pagination,
   PrdCreateRequest,
+  RequirementCreateRequest,
   PrdId,
   PrdPage,
   PrdPatchRequest,
@@ -65,6 +66,18 @@ import type {
   RequirementId,
   RequirementPage,
   RequirementPatchRequest,
+  ResearchFindingListPage,
+  ResearchFindingRead,
+  ResearchRunListPage,
+  ResearchRunRead,
+  ResearchRunRequest,
+  ResearchSourceListPage,
+  ResearchSourceRead,
+  ToolApproveRequest,
+  ToolCancelRequest,
+  ToolPrepareRequest,
+  ToolRunPage,
+  ToolRunRead,
 } from './types';
 
 let requestCounter = 0;
@@ -580,25 +593,37 @@ export class InsightFlowClient {
   // 201 with the freshly-generated RequirementRead. The client intentionally
   // does NOT take content fields here: PM editable fields are applied later
   // via `patchRequirement`.
+  //
+  // The optional ``promptVersion`` is forwarded verbatim — the page passes
+  // ``requirement-generation-v2`` to opt into the revised PM-facing
+  // prompt. Older callers (no third arg) still send ``{}`` so the empty-
+  // body behaviour is preserved for the legacy test path.
   createRequirement(
     insightId: InsightId,
     signal?: AbortSignal,
+    promptVersion?: string | null,
+    projectId?: ProjectId,
   ): Promise<ApiResult<Requirement>> {
+    const body: RequirementCreateRequest =
+      promptVersion && promptVersion.length > 0
+        ? { prompt_version: promptVersion }
+        : {};
     return this.request<Requirement>(
       'POST',
       `/api/insights/${insightId}/requirement`,
-      { body: {}, signal },
+      { body, signal, query: projectId ? { project_id: projectId } : undefined },
     );
   }
 
   getRequirement(
     requirementId: RequirementId,
     signal?: AbortSignal,
+    projectId?: ProjectId,
   ): Promise<ApiResult<Requirement>> {
     return this.request<Requirement>(
       'GET',
       `/api/requirements/${requirementId}`,
-      { signal },
+      { signal, query: projectId ? { project_id: projectId } : undefined },
     );
   }
 
@@ -609,11 +634,12 @@ export class InsightFlowClient {
     requirementId: RequirementId,
     body: RequirementPatchRequest,
     signal?: AbortSignal,
+    projectId?: ProjectId,
   ): Promise<ApiResult<Requirement>> {
     return this.request<Requirement>(
       'PATCH',
       `/api/requirements/${requirementId}`,
-      { body, signal },
+      { body, signal, query: projectId ? { project_id: projectId } : undefined },
     );
   }
 
@@ -635,11 +661,12 @@ export class InsightFlowClient {
   listPrds(
     requirementId: RequirementId,
     signal?: AbortSignal,
+    projectId?: ProjectId,
   ): Promise<ApiResult<PrdPage>> {
     return this.request<PrdPage>(
       'GET',
       `/api/requirements/${requirementId}/prds`,
-      { signal },
+      { signal, query: projectId ? { project_id: projectId } : undefined },
     );
   }
 
@@ -668,11 +695,12 @@ export class InsightFlowClient {
     requirementId: RequirementId,
     body: PrdCreateRequest = {},
     signal?: AbortSignal,
+    projectId?: ProjectId,
   ): Promise<ApiResult<PrdRead>> {
     return this.request<PrdRead>(
       'POST',
       `/api/requirements/${requirementId}/prds`,
-      { body, signal },
+      { body, signal, query: projectId ? { project_id: projectId } : undefined },
     );
   }
 
@@ -680,8 +708,9 @@ export class InsightFlowClient {
   getPrd(
     prdId: PrdId,
     signal?: AbortSignal,
+    projectId?: ProjectId,
   ): Promise<ApiResult<PrdRead>> {
-    return this.request<PrdRead>('GET', `/api/prds/${prdId}`, { signal });
+    return this.request<PrdRead>('GET', `/api/prds/${prdId}`, { signal, query: projectId ? { project_id: projectId } : undefined });
   }
 
   // PATCH /api/prds/{prd_id} — both ``status`` and ``content``
@@ -690,11 +719,12 @@ export class InsightFlowClient {
     prdId: PrdId,
     body: PrdPatchRequest,
     signal?: AbortSignal,
+    projectId?: ProjectId,
   ): Promise<ApiResult<PrdRead>> {
     return this.request<PrdRead>(
       'PATCH',
       `/api/prds/${prdId}`,
-      { body, signal },
+      { body, signal, query: projectId ? { project_id: projectId } : undefined },
     );
   }
 
@@ -707,11 +737,12 @@ export class InsightFlowClient {
   acceptPrd(
     prdId: PrdId,
     signal?: AbortSignal,
+    projectId?: ProjectId,
   ): Promise<ApiResult<PrdRead>> {
     return this.request<PrdRead>(
       'POST',
       `/api/prds/${prdId}/accept`,
-      { body: {}, signal },
+      { body: {}, signal, query: projectId ? { project_id: projectId } : undefined },
     );
   }
 
@@ -803,6 +834,227 @@ export class InsightFlowClient {
       'GET',
       `/api/evaluations/${runId}/cases`,
       { query: q, signal },
+    );
+  }
+
+  /* ---------- Research (Phase 8) ----------
+   *
+   * Front-end surface for the external market intelligence pipeline.
+   * Mirrors backend/app/api/research.py:
+   *
+   *   POST /api/insights/{insight_id}/research               — synchronous run.
+   *   GET  /api/insights/{insight_id}/research?project_id=   — paginated run
+   *                                                              history for
+   *                                                              one insight.
+   *   GET  /api/research/{run_id}?project_id=                — single run row.
+   *   GET  /api/research/{run_id}/sources?project_id=
+   *   GET  /api/research/{run_id}/findings?project_id=
+   *
+   * Every Research endpoint takes a REQUIRED ``project_id`` query
+   * parameter (the backend ``Query(...)`` decorator without a default
+   * rejects a missing value with 422). The page always supplies the
+   * active project id so a multi-tenant deployment never lets the
+   * page render a foreign project's research surface, and so a real
+   * call never trips the 422 on a bare request.
+   *
+   * Concurrency: the POST is synchronous on the backend (200 once
+   * the run row is finalised); the page optimistically surfaces a
+   * "Running" badge during the request window and refetches the
+   * history when the response lands. Cross-project switching clears
+   * every in-flight UI state via ``signal.aborted`` (the per-project
+   * AbortController in useProjectScopedFetch).
+   */
+
+  startResearchRun(
+    insightId: InsightId,
+    body: ResearchRunRequest,
+    signal?: AbortSignal,
+  ): Promise<ApiResult<ResearchRunRead>> {
+    return this.request<ResearchRunRead>(
+      'POST',
+      `/api/insights/${insightId}/research`,
+      { body, signal },
+    );
+  }
+
+  listInsightResearchRuns(
+    insightId: InsightId,
+    query: { project_id: ProjectId; limit?: number; offset?: number },
+    signal?: AbortSignal,
+  ): Promise<ApiResult<ResearchRunListPage>> {
+    return this.request<ResearchRunListPage>(
+      'GET',
+      `/api/insights/${insightId}/research`,
+      {
+        query: {
+          project_id: query.project_id,
+          limit: query.limit ?? 50,
+          offset: query.offset ?? 0,
+        },
+        signal,
+      },
+    );
+  }
+
+  getResearchRun(
+    runId: string,
+    query: { project_id: ProjectId },
+    signal?: AbortSignal,
+  ): Promise<ApiResult<ResearchRunRead>> {
+    return this.request<ResearchRunRead>(
+      'GET',
+      `/api/research/${runId}`,
+      { query: { project_id: query.project_id }, signal },
+    );
+  }
+
+  listResearchSources(
+    runId: string,
+    query: { project_id: ProjectId } & Pagination,
+    signal?: AbortSignal,
+  ): Promise<ApiResult<ResearchSourceListPage>> {
+    return this.request<ResearchSourceListPage>(
+      'GET',
+      `/api/research/${runId}/sources`,
+      {
+        query: {
+          project_id: query.project_id,
+          limit: query.limit,
+          offset: query.offset,
+        },
+        signal,
+      },
+    );
+  }
+
+  listResearchFindings(
+    runId: string,
+    query: { project_id: ProjectId } & Pagination,
+    signal?: AbortSignal,
+  ): Promise<ApiResult<ResearchFindingListPage>> {
+    return this.request<ResearchFindingListPage>(
+      'GET',
+      `/api/research/${runId}/findings`,
+      {
+        query: {
+          project_id: query.project_id,
+          limit: query.limit,
+          offset: query.offset,
+        },
+        signal,
+      },
+    );
+  }
+
+  /* ---------- Tool Layer (Phase 8) ----------
+   *
+   * Front-end surface for the simulated external-tool surface.
+   * Mirrors backend/app/api/tools.py:
+   *
+   *   POST /api/requirements/{requirement_id}/tool-runs?project_id=
+   *         — Prepare. Idempotent on (project_id, request_id);
+   *           first call returns 201, repeat returns 200 with the
+   *           existing awaiting_approval row. The frontend does
+   *           not read ``X-Tool-Run-Created`` — a 201/200 either
+   *           way is a successful Prepare.
+   *   GET  /api/requirements/{requirement_id}/tool-runs?project_id=
+   *         — paginated history with ``active_run_id`` pointer.
+   *   GET  /api/tool-runs/{tool_run_id}?project_id=
+   *         — single run row.
+   *   POST /api/tool-runs/{tool_run_id}/cancel?project_id=
+   *         — awaiting_approval → cancelled (empty body).
+   *   POST /api/tool-runs/{tool_run_id}/approve?project_id=
+   *         — drives the simulator (empty body). On success the
+   *           row is updated to ``completed`` and
+   *           ``external_id`` carries a ``SIM-...`` id.
+   *
+   * Every endpoint takes a REQUIRED ``project_id`` query
+   * parameter; the backend ``Query(...)`` decorator without a
+   * default rejects a missing value with 422. The page always
+   * supplies the active project id so a multi-tenant deployment
+   * never lets the page render a foreign project's tool run.
+   *
+   * Errors:
+   *   404 — unknown / cross-project.
+   *   409 — state-machine violation (e.g. cancel a completed run).
+   *   422 — schema rejection (bad request_id, unknown tool name,
+   *         injected payload field).
+   *   503 — simulator adapter config error.
+   */
+
+  prepareToolRun(
+    requirementId: RequirementId,
+    query: { project_id: ProjectId },
+    body: ToolPrepareRequest,
+    signal?: AbortSignal,
+  ): Promise<ApiResult<ToolRunRead>> {
+    return this.request<ToolRunRead>(
+      'POST',
+      `/api/requirements/${requirementId}/tool-runs`,
+      { query: { project_id: query.project_id }, body, signal },
+    );
+  }
+
+  listToolRuns(
+    requirementId: RequirementId,
+    query: { project_id: ProjectId; limit?: number; offset?: number },
+    signal?: AbortSignal,
+  ): Promise<ApiResult<ToolRunPage>> {
+    return this.request<ToolRunPage>(
+      'GET',
+      `/api/requirements/${requirementId}/tool-runs`,
+      {
+        query: {
+          project_id: query.project_id,
+          limit: query.limit ?? 50,
+          offset: query.offset ?? 0,
+        },
+        signal,
+      },
+    );
+  }
+
+  getToolRun(
+    toolRunId: string,
+    query: { project_id: ProjectId },
+    signal?: AbortSignal,
+  ): Promise<ApiResult<ToolRunRead>> {
+    return this.request<ToolRunRead>(
+      'GET',
+      `/api/tool-runs/${toolRunId}`,
+      { query: { project_id: query.project_id }, signal },
+    );
+  }
+
+  cancelToolRun(
+    toolRunId: string,
+    query: { project_id: ProjectId },
+    signal?: AbortSignal,
+  ): Promise<ApiResult<ToolRunRead>> {
+    return this.request<ToolRunRead>(
+      'POST',
+      `/api/tool-runs/${toolRunId}/cancel`,
+      {
+        query: { project_id: query.project_id },
+        body: {} as ToolCancelRequest,
+        signal,
+      },
+    );
+  }
+
+  approveToolRun(
+    toolRunId: string,
+    query: { project_id: ProjectId },
+    signal?: AbortSignal,
+  ): Promise<ApiResult<ToolRunRead>> {
+    return this.request<ToolRunRead>(
+      'POST',
+      `/api/tool-runs/${toolRunId}/approve`,
+      {
+        query: { project_id: query.project_id },
+        body: {} as ToolApproveRequest,
+        signal,
+      },
     );
   }
 }

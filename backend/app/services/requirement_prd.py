@@ -840,6 +840,7 @@ def _parse_prd_payload(
     payload: Mapping[str, Any],
     *,
     allowed_evidence_ids: set[str],
+    business_scan_payload: Mapping[str, Any] | None = None,
 ) -> tuple[dict[str, Any], list[GroundingWarning]]:
     """Validate a 13-section PRD payload.
 
@@ -851,7 +852,11 @@ def _parse_prd_payload(
     metrics with no sources).
     """
     try:
-        return _parse_prd_payload_inner(payload, allowed_evidence_ids=allowed_evidence_ids)
+        return _parse_prd_payload_inner(
+            payload,
+            allowed_evidence_ids=allowed_evidence_ids,
+            business_scan_payload=business_scan_payload,
+        )
     except RequirementValidationError as exc:
         # Shared grounding helpers raise RequirementValidationError;
         # the PRD LLM contract classifies those as a malformed tool
@@ -863,6 +868,7 @@ def _parse_prd_payload_inner(
     payload: Mapping[str, Any],
     *,
     allowed_evidence_ids: set[str],
+    business_scan_payload: Mapping[str, Any] | None = None,
 ) -> tuple[dict[str, Any], list[GroundingWarning]]:
     if not isinstance(payload, Mapping):
         raise PRDLLMProtocolError("PRD tool input is not an object")
@@ -897,7 +903,7 @@ def _parse_prd_payload_inner(
     # re-uses ``RequirementValidationError`` — the public wrapper
     # below translates it into ``PRDLLMProtocolError`` for the AI
     # call path.
-    _scan_business_commitments(payload)
+    _scan_business_commitments(payload if business_scan_payload is None else business_scan_payload)
 
     warnings: list[GroundingWarning] = []
     content: dict[str, Any] = {}
@@ -1211,10 +1217,45 @@ def _content_hash(content: Mapping[str, Any]) -> str:
 # ---- AI call wrappers -------------------------------------------------------
 
 
+def _generation_prompt(kind: str, version: str | None):
+    from app.agents.prompts import (
+        prd_generation_v3,
+        prd_generation_v4,
+        requirement_generation_v1,
+        requirement_generation_v2,
+    )
+
+    registry = {
+        "requirement": {
+            "requirement-generation-v1": requirement_generation_v1,
+            "requirement-generation-v2": requirement_generation_v2,
+        },
+        "prd": {"prd-generation-v3": prd_generation_v3, "prd-generation-v4": prd_generation_v4},
+    }
+    selected = version or (
+        settings.requirement_prompt_version
+        if kind == "requirement"
+        else settings.prd_prompt_version
+    )
+    if selected not in registry[kind]:
+        raise RequirementConfigError("generation prompt version unsupported")
+    return registry[kind][selected]
+
+
+def _check_raw_risk_support(risks, evidence, error_type):
+    from app.services.risk_support_v2 import RiskSupportError, validate_known_risks
+
+    try:
+        validate_known_risks(risks, evidence)
+    except RiskSupportError as error:
+        raise error_type(str(error)) from error
+
+
 def _call_requirement(
     *,
     payload: Mapping[str, Any],
     allowed_evidence_ids: set[str],
+    prompt_version: str | None = None,
 ) -> tuple[
     str,
     str,
@@ -1243,6 +1284,7 @@ def _call_requirement(
         raise RequirementConfigError(
             "LLM_API_KEY / LLM_BASE_URL / LLM_MODEL 未配置；无法生成 Requirement。"
         )
+    prompt_module = _generation_prompt("requirement", prompt_version)
     max_attempts = max(1, int(settings.requirement_max_retries) + 1)
     attempt_count = 0
     started = time.monotonic()
@@ -1255,6 +1297,7 @@ def _call_requirement(
                 base_url=settings.llm_base_url,
                 model=settings.llm_model,
                 timeout_seconds=settings.llm_timeout_seconds,
+                prompt_module=prompt_module,
             ) as client:
                 result: RequirementLLMResult = client.generate_requirement(dict(payload))
         except RequirementLLMTransportError as exc:
@@ -1265,6 +1308,41 @@ def _call_requirement(
         parsed = _parse_requirement_payload(
             result.payload, allowed_evidence_ids=allowed_evidence_ids
         )
+        if prompt_module.PROMPT_VERSION == "requirement-generation-v2":
+            from app.services.artifact_grounding_v2 import (
+                ArtifactSupportError,
+                index_evidence,
+                materialize_with_proof,
+            )
+
+            try:
+                for key in ("name", "problem", "target_user", "user_story", "solution_hypothesis"):
+                    _check_business_commitment(result.payload[key], field_path=key)
+                for metric in result.payload["success_metrics"]:
+                    for key in ("name", "note"):
+                        _check_business_commitment(metric.get(key, ""), field_path="metric." + key)
+                index_evidence(payload.get("evidence", []))
+                _check_raw_risk_support(
+                    result.payload["risks"],
+                    payload.get("evidence", []),
+                    RequirementLLMProtocolError,
+                )
+                grounded, _proof = materialize_with_proof(
+                    "requirement", result.payload, payload.get("evidence", [])
+                )
+                parsed = _parse_requirement_payload(
+                    grounded, allowed_evidence_ids=allowed_evidence_ids
+                )
+            except (ArtifactSupportError, RequirementValidationError) as error:
+                raise RequirementLLMProtocolError("artifact_support_or_budget_invalid") from error
+        if prompt_module.PROMPT_VERSION in {"requirement-generation-v2", "prd-generation-v4"}:
+            _check_raw_risk_support(
+                result.payload["risks"],
+                payload.get("evidence", []),
+                RequirementLLMProtocolError
+                if prompt_module.PROMPT_VERSION == "requirement-generation-v2"
+                else PRDLLMProtocolError,
+            )
         unknown = (
             1 if result.usage.input_tokens is None or result.usage.output_tokens is None else 0
         )
@@ -1294,6 +1372,7 @@ def _call_prd(
     *,
     payload: Mapping[str, Any],
     allowed_evidence_ids: set[str],
+    prompt_version: str | None = None,
 ) -> tuple[dict[str, Any], list[GroundingWarning], int, int, int, int, int, int]:
     """Invoke the PRD LLM client with bounded retry on transient LLM failures.
 
@@ -1339,6 +1418,7 @@ def _call_prd(
         raise RequirementConfigError(
             "LLM_API_KEY / LLM_BASE_URL / LLM_MODEL 未配置；无法生成 PRD。"
         )
+    prompt_module = _generation_prompt("prd", prompt_version)
     max_attempts = max(1, int(settings.prd_max_retries) + 1)
     attempt_count = 0
     started = time.monotonic()
@@ -1351,6 +1431,7 @@ def _call_prd(
                 base_url=settings.llm_base_url,
                 model=settings.llm_model,
                 timeout_seconds=settings.llm_timeout_seconds,
+                prompt_module=prompt_module,
             ) as client:
                 result: PRDLLMResult = client.generate_prd(dict(payload))
         except PRDLLMTransportError as exc:
@@ -1371,6 +1452,37 @@ def _call_prd(
         content, warnings = _parse_prd_payload(
             result.payload, allowed_evidence_ids=allowed_evidence_ids
         )
+        if prompt_module.PROMPT_VERSION == "prd-generation-v4":
+            from app.services.artifact_grounding_v2 import (
+                ArtifactSupportError,
+                index_evidence,
+                mask_verified_raw,
+                materialize_with_proof,
+            )
+
+            try:
+                index_evidence(payload.get("evidence", []))
+                _check_raw_risk_support(
+                    result.payload["risks"], payload.get("evidence", []), PRDLLMProtocolError
+                )
+                grounded, proof = materialize_with_proof(
+                    "prd", result.payload, payload.get("evidence", [])
+                )
+                content, warnings = _parse_prd_payload(
+                    grounded,
+                    allowed_evidence_ids=allowed_evidence_ids,
+                    business_scan_payload=mask_verified_raw(grounded, proof),
+                )
+            except (ArtifactSupportError, RequirementValidationError) as error:
+                raise PRDLLMProtocolError("artifact_support_or_budget_invalid") from error
+        if prompt_module.PROMPT_VERSION in {"requirement-generation-v2", "prd-generation-v4"}:
+            _check_raw_risk_support(
+                result.payload["risks"],
+                payload.get("evidence", []),
+                RequirementLLMProtocolError
+                if prompt_module.PROMPT_VERSION == "requirement-generation-v2"
+                else PRDLLMProtocolError,
+            )
         unknown = (
             1 if result.usage.input_tokens is None or result.usage.output_tokens is None else 0
         )
@@ -1614,6 +1726,7 @@ def create_requirement(
     insight_id: UUID,
     *,
     pm_content: PMRequirementContent | None = None,
+    requested_prompt_version: str | None = None,
 ) -> RequirementOutcome:
     """Create one Requirement row for the Insight.
 
@@ -1677,6 +1790,9 @@ def create_requirement(
             ) = _call_requirement(
                 payload=input_payload,
                 allowed_evidence_ids=allowed_evidence_ids,
+                **(
+                    {"prompt_version": requested_prompt_version} if requested_prompt_version else {}
+                ),
             )
         except RequirementConfigError:
             db.rollback()
@@ -1715,7 +1831,7 @@ def create_requirement(
         ]
         refs = [EvidenceReferenceRead(external_id=r.external_id, usage=r.usage) for r in refs_read]
         model = settings.llm_model
-        prompt_version = settings.requirement_prompt_version
+        prompt_version = _generation_prompt("requirement", requested_prompt_version).PROMPT_VERSION
 
     requirement = Requirement(
         project_id=snapshot.project_id,
@@ -1890,6 +2006,7 @@ def create_prd_version(
     requirement_id: UUID,
     *,
     pm_content: PRDContent | None = None,
+    requested_prompt_version: str | None = None,
 ) -> PRDOutcome:
     """Append a new PRD version to a Requirement.
 
@@ -1952,6 +2069,9 @@ def create_prd_version(
             ) = _call_prd(
                 payload=input_payload,
                 allowed_evidence_ids=allowed_evidence_ids,
+                **(
+                    {"prompt_version": requested_prompt_version} if requested_prompt_version else {}
+                ),
             )
         except RequirementConfigError:
             db.rollback()
@@ -1975,7 +2095,7 @@ def create_prd_version(
             for w in warnings_raw
         ]
         model = settings.llm_model
-        prompt_version = settings.prd_prompt_version
+        prompt_version = _generation_prompt("prd", requested_prompt_version).PROMPT_VERSION
 
     # Atomic version increment: SELECT-FOR-UPDATE on SQLite returns
     # immediately, but the UPDATE inside the transaction guarantees the

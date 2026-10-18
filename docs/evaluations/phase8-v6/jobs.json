@@ -1,0 +1,152 @@
+[
+  {
+    "jobId": "981c325d58f24953ab059f29a6f42960",
+    "threadId": "8d048dd4-fb66-4838-898b-44f10cedd34c",
+    "batch": "B tests only",
+    "allowed_files": [
+      "backend/tests/test_phase8_research_tasks.py"
+    ],
+    "status": "completed",
+    "codex_test_result": "40 failed; missing module"
+  },
+  {
+    "jobId": "f6eb0003b97a4630bffdd2819239f2eb",
+    "threadId": "8d048dd4-fb66-4838-898b-44f10cedd34c",
+    "batch": "B pure implementation",
+    "allowed_files": [
+      "backend/app/services/research_tasks.py"
+    ],
+    "status": "failed",
+    "error": "600s timeout; no production file written"
+  },
+  {
+    "jobId": "aa779c1f4c354333aebe86f8bf96ffff",
+    "threadId": "8d048dd4-fb66-4838-898b-44f10cedd34c",
+    "batch": "B minimal implementation retry",
+    "allowed_files": [
+      "backend/app/services/research_tasks.py"
+    ],
+    "status": "failed",
+    "coordination_note": "Codex copied pre-prepared independent selection test after job queued; no shared edited file, but ordering violated no-code-writes-during-worker rule; all further test copies wait for Worker done.",
+    "error": "600s timeout after four Reads; no implementation file"
+  },
+  {
+    "jobId": "c78c83d2218c491a98b871d7a4e3a378",
+    "threadId": "8d048dd4-fb66-4838-898b-44f10cedd34c",
+    "batch": "C exact sentence spans and empty query",
+    "allowed_files": [
+      "backend/app/services/research_selection.py",
+      "backend/app/services/research_pipeline.py"
+    ],
+    "status": "completed"
+  },
+  {
+    "jobId": "c1413d61684f4ac68342feddd7544ec9",
+    "threadId": "8d048dd4-fb66-4838-898b-44f10cedd34c",
+    "batch": "D scoped structured facts and analyses",
+    "allowed_files": [
+      "backend/app/services/research_claims.py"
+    ],
+    "status": "completed",
+    "independent_result": "initial 14 passed / 1 failed; added guard parity reveals total10 failed/14 passed; not accepted"
+  },
+  {
+    "jobId": "95de791025344e70b241961441924c35",
+    "threadId": "8d048dd4-fb66-4838-898b-44f10cedd34c",
+    "batch": "D strict guard parity repair",
+    "allowed_files": [
+      "backend/app/services/research_claims.py"
+    ],
+    "status": "completed",
+    "independent_result": "23 passed/1 failed; mobile app overlap still admits explicit computer directive; alias positives newly reproduced"
+  },
+  {
+    "jobId": "2400c0a0f7414b7880bb1e399fcb925c",
+    "threadId": "8d048dd4-fb66-4838-898b-44f10cedd34c",
+    "batch": "D platform category inclusion repair",
+    "allowed_files": [
+      "backend/app/services/research_claims.py"
+    ],
+    "status": "completed",
+    "independent_result": "31 passed; taskd-scope-green.log"
+  },
+  {
+    "jobId": "cf4325303e794994864243a1b9d616ab",
+    "threadId": "8d048dd4-fb66-4838-898b-44f10cedd34c",
+    "batch": "C v6 legacy regression repair",
+    "allowed_files": [
+      "backend/app/services/research_pipeline_v6.py"
+    ],
+    "status": "completed_without_implementation",
+    "independent_result": "No edits, all original failing code unchanged"
+  },
+  {
+    "jobId": "aaa0796ef5ce4be8afce9646f812f1c4",
+    "threadId": "8d048dd4-fb66-4838-898b-44f10cedd34c",
+    "batch": "C one dynamic reader call",
+    "allowed_files": [
+      "backend/app/services/research_pipeline_v6.py"
+    ],
+    "status": "completed"
+  },
+  {
+    "jobId": "ba77d1eee19c43f799a958c96dcefdf0",
+    "threadId": "8d048dd4-fb66-4838-898b-44f10cedd34c",
+    "batch": "C Chinese scope and exact nested branch",
+    "allowed_files": [
+      "backend/app/services/research_claims.py",
+      "backend/app/services/research_coverage.py"
+    ],
+    "status": "failed",
+    "error": "600s timeout, no implementation"
+  },
+  {
+    "jobId": "a0453f4337c5427082a036dfbce8df60",
+    "threadId": "42e973e0-5295-496d-a9bd-7c08d6d24ae4",
+    "batch": "E claim kind and same-run support UI",
+    "allowed_files": [
+      "frontend/src/lib/api/types.ts",
+      "frontend/src/app/insights/[id]/page.tsx"
+    ],
+    "status": "completed"
+  },
+  {
+    "jobId": "2dbcaeef98f44eeb834694578bb0150d",
+    "threadId": "8d048dd4-fb66-4838-898b-44f10cedd34c",
+    "batch": "C independent inventory and proven manual comparison union",
+    "allowed_files": [
+      "backend/app/services/research_coverage.py"
+    ],
+    "status": "completed",
+    "independent_result": "2 failed,16 passed; bound dict TypeError; incomplete proof guard"
+  },
+  {
+    "jobId": "0c6eeef8ea78486198a4b32cff1b82af",
+    "threadId": "8d048dd4-fb66-4838-898b-44f10cedd34c",
+    "batch": "C comparison proof repair",
+    "allowed_files": [
+      "backend/app/services/research_coverage.py"
+    ],
+    "status": "completed",
+    "independent_result": "19 targeted tests passed after comparison repair and multivendor fixture case correction"
+  },
+  {
+    "jobId": "74c5670abe6a4f81931faec3cf6c2a85",
+    "threadId": "8d048dd4-fb66-4838-898b-44f10cedd34c",
+    "batch": "C/D independent task/fact/analysis validation and official full snapshot guard",
+    "allowed_files": [
+      "backend/app/services/research_pipeline_v6.py"
+    ],
+    "status": "completed",
+    "independent_result": "12 passed /1 failed: legacy branch contract_failure uninitialized"
+  },
+  {
+    "jobId": "d7d73d0ca37f4e9a988cae6732989573",
+    "threadId": "8d048dd4-fb66-4838-898b-44f10cedd34c",
+    "batch": "C/D legacy branch variable initialization repair",
+    "allowed_files": [
+      "backend/app/services/research_pipeline_v6.py"
+    ],
+    "status": "completed"
+  }
+]

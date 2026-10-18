@@ -76,6 +76,27 @@ from app.models.requirement_prd import (
     RequirementStatus,
     RiskCategory,
 )
+from app.models.research import (
+    RESEARCH_FINDING_CATEGORIES,
+    RESEARCH_FINDING_STATUSES,
+    RESEARCH_RUN_STATUSES,
+    ResearchFinding,
+    ResearchFindingCategory,
+    ResearchFindingStatus,
+    ResearchRun,
+    ResearchRunStatus,
+    ResearchSource,
+)
+from app.models.tool import (
+    TOOL_EXECUTION_MODES,
+    TOOL_FAILURE_CATEGORIES,
+    TOOL_RUN_STATUSES,
+    SimulatedIssue,
+    ToolExecutionMode,
+    ToolFailureCategory,
+    ToolRun,
+    ToolRunStatus,
+)
 
 __all__ = [
     "Base",
@@ -149,4 +170,21 @@ __all__ = [
     "Requirement",
     "RequirementStatus",
     "RiskCategory",
+    "RESEARCH_FINDING_CATEGORIES",
+    "RESEARCH_FINDING_STATUSES",
+    "RESEARCH_RUN_STATUSES",
+    "ResearchFinding",
+    "ResearchFindingCategory",
+    "ResearchFindingStatus",
+    "ResearchRun",
+    "ResearchRunStatus",
+    "ResearchSource",
+    "SimulatedIssue",
+    "TOOL_EXECUTION_MODES",
+    "TOOL_FAILURE_CATEGORIES",
+    "TOOL_RUN_STATUSES",
+    "ToolExecutionMode",
+    "ToolFailureCategory",
+    "ToolRun",
+    "ToolRunStatus",
 ]

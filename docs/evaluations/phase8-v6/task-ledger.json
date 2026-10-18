@@ -1,0 +1,62 @@
+{
+  "phase": "8",
+  "overall": "PARTIAL",
+  "research_quality": "FAIL",
+  "commit_allowed": false,
+  "stop_after_phase8": true,
+  "tasks": [
+    {
+      "id": "A",
+      "status": "implemented_and_replayed",
+      "evidence": "site-audit.json;公开case-1/3/4/6/7/9/10夹具及red/green日志"
+    },
+    {
+      "id": "B",
+      "status": "implemented_quality_blocked",
+      "detail": "原问题span/锚点/能力/平台/入口/数量/条件及覆盖谓词已实施；真实subject/action/kind/quantity契约仍脆弱",
+      "evidence": "original/semantic-review.json;extended/semantic-review.json"
+    },
+    {
+      "id": "C",
+      "status": "implemented_quality_blocked",
+      "detail": "结构化逐字引用、嵌套正文、空查询/去重/预算/协议分层已实施；unknown_evidence_id、缺工具块、#9选证缺口仍在",
+      "evidence": "failure-pack.json"
+    },
+    {
+      "id": "D",
+      "status": "implemented_quality_blocked",
+      "detail": "0015事实/分析支持关系、实际4分类输出已出现；相关性与分析语义支持仍失败",
+      "evidence": "browser-analysis-semantic-review.json"
+    },
+    {
+      "id": "E",
+      "status": "execution_pass_quality_partial",
+      "detail": "生产浏览器分析支持/来源、项目切换和真实Research→PM→AI Requirement→AI PRD完成；上游known风险缺依据且首次PRD503",
+      "evidence": "workflow-final4-ids.json;workflow-final4-prd.json;final-tool-api-db-audit.json"
+    },
+    {
+      "id": "F",
+      "status": "executed_gate_failed",
+      "detail": "最终SQLite1194/11skip、PG1205完整往返、Ruff、前端157/lint/build通过；原10题4完整3局部3未验证，新8题4完整3局部1未验证；同代码稳定整集复验NOT_MEASURED",
+      "evidence": "quality-summary.json;final-state-audit.json"
+    }
+  ],
+  "remaining_blockers": [
+    "任务契约脆弱/有答案却未交付",
+    "逐句数量守卫降级辅助步骤",
+    "手机子项及目的地选证不全",
+    "中文检索选错功能/流程",
+    "分析场景范围和语义支持不足",
+    "协议可靠性和同代码稳定性未证实",
+    "PRD草稿known风险原因未由Raw证明，正式内容质量待人工"
+  ],
+  "user_acceptance": "NOT_SIGNED",
+  "historical_quality_limits": [
+    "Phase2真实语义Embedding",
+    "Phase3人工语义复核",
+    "Phase4正式业务评分",
+    "Phase6 Artifact和长期质量",
+    "Phase7稳定性及正式验收"
+  ],
+  "external_integrations": "DEFERRED; SIM only"
+}

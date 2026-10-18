@@ -1,0 +1,22 @@
+[
+  {
+    "path": "/research/8c89b069-ef72-471d-890d-da1932528ce4",
+    "project_id": "531f961e-cb55-44c0-9756-0c0be08dd315",
+    "status": 404
+  },
+  {
+    "path": "/research/8c89b069-ef72-471d-890d-da1932528ce4/sources",
+    "project_id": "531f961e-cb55-44c0-9756-0c0be08dd315",
+    "status": 404
+  },
+  {
+    "path": "/research/8c89b069-ef72-471d-890d-da1932528ce4/findings",
+    "project_id": "531f961e-cb55-44c0-9756-0c0be08dd315",
+    "status": 404
+  },
+  {
+    "path": "/insights/0f7d38fb-633d-4258-a56b-c0b23ba800a6/research",
+    "project_id": "531f961e-cb55-44c0-9756-0c0be08dd315",
+    "status": 404
+  }
+]

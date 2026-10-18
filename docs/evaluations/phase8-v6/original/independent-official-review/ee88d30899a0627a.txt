@@ -1,0 +1,246 @@
+Manually upload files or photos to OneDrive in iOS | Microsoft Support
+Skip to main content
+Microsoft
+Support
+Support
+Support
+Home
+Microsoft 365
+Office
+Products
+Microsoft 365
+Outlook
+Microsoft Teams
+OneDrive
+Microsoft Copilot
+OneNote
+Windows
+more ...
+Devices
+Surface
+PC Accessories
+Xbox
+PC Gaming
+HoloLens
+Surface Hub
+Hardware warranties
+Account & billing
+Resources
+Community forums
+Microsoft 365 Admins
+Developer
+Education
+Report a support scam
+Product safety
+More
+Buy Microsoft 365
+All Microsoft
+Global
+Microsoft 365
+Azure
+Copilot
+Windows
+Surface
+XBOX
+Deals
+Small Business
+Support
+Software
+Software
+Windows Apps
+Outlook
+OneDrive
+Microsoft Teams
+OneNote
+Microsoft Edge
+Moving from Skype to Teams
+PCs & Devices
+PCs & Devices
+Computers
+Shop XBOX
+Accessories
+VR & mixed reality
+Certified Refurbished
+Trade-in for cash
+Entertainment
+Entertainment
+XBOX Game Pass Ultimate
+PC Game Pass
+XBOX games
+PC games
+Business
+Business
+Microsoft AI
+Microsoft Security
+Dynamics 365
+Microsoft 365 for business
+Microsoft Power Platform
+Windows 365
+Small Business
+Digital Sovereignty
+Developer & IT
+Developer & IT
+Azure
+Microsoft Developer
+Microsoft Learn
+Support for AI marketplace apps
+Microsoft Tech Community
+Microsoft Marketplace
+Software companies
+Visual Studio
+Other
+Other
+Microsoft Rewards
+Free downloads & security
+Education
+Gift cards
+Licensing
+Unlocked stories
+View Sitemap
+Search
+Search for help
+No results
+Cancel
+Sign in
+Sign in with Microsoft
+Sign in or create an account.
+Hello,
+Select a different account.
+You have multiple accounts
+Choose the account you want to sign in with.
+Manually upload files or photos to OneDrive in iOS
+Get help with Copilot
+Tell me about manually upload files or photos to OneDrive
+How do I create folders in OneDrive for Android?
+Help me create a new folder in the OneDrive for iOS app.
+Use the OneDrive app to upload photos and videos from your device, create new folders, and move photos and videos from one OneDrive folder to another.
+If you want to have your device's camera roll upload to OneDrive automatically, read how to Automatically save photos and videos from OneDrive on iOS.
+Upload files and folders using the OneDrive for iOS app
+In the OneDrive app, tap
+OneDrive add icon
+at the top of the screen.
+Then tap to Take a photo, Scan a document, Create a folder or Upload a file or photo.
+Note
+OneDrive cannot upload photos optimized for iCloud. To disable optimization, tap Settings > iCloud > Photos and uncheck Optimize Storage.
+Learn how to upload HEIF and HEVC photos and videos to OneDrive.
+If you choose Take a Photo, your device's camera app opens. You might be asked if you want OneDrive to access your camera - tap Yes to allow your pictures to be saved in OneDrive.
+If you tap Choose Existing, links appear to the Photos app on your device. Browse to the pictures you want to upload, select them, then on the top bar, tap Done.
+Move files between folders in the OneDrive for iOS app
+Select the files you want to move.
+Tap
+More icon in the OneDrive app for iOS
+at the top of the screen, then tap Move. You can move folders into another folder, as well as individual files.
+Your Files list appears. Tap the folder you want the files moved to, then tap Move.
+Create a new folder in the OneDrive for iOS app
+You can add folders in the Files view, or in any other folder in OneDrive.
+Go to the location where you want to add a new folder,
+Tap
+OneDrive add icon
+at the top of the screen and then tap Create a Folder.
+Under Folder name, tap where it says "New folder" and type in the name you want for the folder, then tap Create.
+Learn more
+Troubleshoot OneDrive for iOS app problems
+Automatically save photos and videos from OneDrive on iOS
+Upload HEIF and HEVC photos and videos to OneDrive
+Scan a whiteboard, document, business card, or photo in OneDrive for iOS
+Need more help?
+Personal accounts
+Work/school accounts
+Account support. For help with your Microsoft account and subscriptions, visit Account & Billing Help.
+Technical support. For technical support, select Contact Microsoft Support below, enter your problem and select Get Help.
+Contact Microsoft Support
+Mobile users can contact Support by opening the OneDrive app and gently shaking your device.
+Community support. Communities help you ask questions, give feedback, and hear from experts with rich knowledge. Ask the Microsoft Community. Do not disclose personal or sensitive information in public forums.
+Technical support. For technical support, contact your organization's IT helpdesk, service desk, or admin.
+IT Admins. IT Admins should view Help for OneDrive Admins, the OneDrive Tech Community or contact Microsoft 365 for business support.
+Was this information helpful?
+Yes
+No
+Thank you! Any more feedback for Microsoft?
+Can you help us improve? (Send feedback to Microsoft so we can help.)
+What affected your experience?
+Resolved my issue
+Clear instructions
+Easy to follow
+No jargon
+Pictures helped
+Other
+Didn't match my screen
+Incorrect instructions
+Too technical
+Not enough information
+Not enough pictures
+Other
+Any additional feedback? (Optional)
+Submit feedback
+By pressing submit, your feedback will be used to improve Microsoft products and services.
+Your IT admin will be able to collect this data.
+Privacy Statement.
+Thank you for your feedback!
+×
+What's new
+Surface Laptop Ultra
+Surface Pro
+Surface Laptop
+Surface RTX Spark Dev Box
+Explore Copilot
+Explore Microsoft products
+Windows 11 apps
+Microsoft Store
+Account profile
+Download Center
+Microsoft Store support
+Returns
+Order tracking
+Certified Refurbished
+Why buy from Microsoft Store
+Flexible Payments
+Education
+Microsoft in education
+Devices for education
+Microsoft Teams for Education
+Microsoft 365 Education
+How to buy for your school
+Educator training and development
+Deals for students and parents
+AI for education
+Business
+Microsoft AI
+Microsoft Security
+Dynamics 365
+Microsoft 365
+Microsoft Power Platform
+Microsoft Teams
+Microsoft Copilot
+Small Business
+Developer & IT
+Azure
+Microsoft Developer
+Microsoft Learn
+Support for AI marketplace apps
+Microsoft Tech Community
+Microsoft Marketplace
+Software companies
+Visual Studio
+Company
+Careers
+About Microsoft
+Company news
+Privacy at Microsoft
+Investors
+Diversity and inclusion
+Accessibility
+Sustainability
+English (United States)
+Your Privacy Choices
+Consumer Health Privacy
+Sitemap
+Contact Microsoft
+Privacy
+Manage cookies
+Terms of use
+Trademarks
+Safety & eco
+Recycling
+About our ads
+© Microsoft 2026

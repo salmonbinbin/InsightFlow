@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { displayLabel, sourceLabel } from '../lib/presentation';
 import { useEffect, useState } from 'react';
 import { useProjectContext } from '../contexts/ProjectContext';
 import { getApiClient } from '../lib/api/client';
@@ -193,10 +194,7 @@ export default function OverviewPage() {
       <header className="page-header">
         <span className="eyebrow">概览</span>
         <h1 className="page-title">{activeProject.name}</h1>
-        <p className="page-subtitle">
-          基于后端实时统计：反馈总量、最近入库与已识别洞察。
-          缺失的指标以 N/A 显示，绝不替以估算。
-        </p>
+
       </header>
 
       <section className="metric-grid">
@@ -220,7 +218,7 @@ export default function OverviewPage() {
             visible.analysisRunsError
               ? visible.analysisRunsError
               : visible.latestClassificationRun
-              ? '基于 /api/projects/{id}/analysis-runs?run_type=classification'
+              ? '最近一次反馈分类结果'
               : '在「分析」页运行分类后会显示'
           }
         />
@@ -230,17 +228,17 @@ export default function OverviewPage() {
           hint={
             visible.insightsError
               ? `加载失败：${visible.insightsError}`
-              : '基于分页响应 total'
+              : '当前项目的洞察总数'
           }
         />
         <MetricCard
           label="机会评分"
           custom={
             <Link className="metric-card-link" href="/insights">
-              暂无项目级汇总 · 查看洞察
+              查看机会评分
             </Link>
           }
-          hint="后端无项目级评分 API；每条洞察在洞察详情页有独立评分"
+          hint="进入洞察查看各项机会评分"
         />
       </section>
 
@@ -269,7 +267,7 @@ export default function OverviewPage() {
                 <div className="recent-list-content">{f.content}</div>
                 <div className="recent-list-meta">
                   <span>{formatRelative(f.created_at ?? null)}</span>
-                  <span>{f.source || '—'}</span>
+                  <span>{f.source ? sourceLabel(f.source) : '—'}</span>
                 </div>
               </li>
             ))}
@@ -302,7 +300,7 @@ export default function OverviewPage() {
                   <span className="opportunity-item-title">{i.title}</span>
                 </div>
                 <div className="opportunity-item-meta">
-                  状态：{i.status} · 反馈 {formatNumber(i.feedback_count)} · 证据{' '}
+                  状态：{displayLabel(i.status)} · 反馈 {formatNumber(i.feedback_count)} · 证据{' '}
                   {formatNumber(i.evidence_count)} · 置信度 {formatNumber(i.confidence)}
                 </div>
               </li>

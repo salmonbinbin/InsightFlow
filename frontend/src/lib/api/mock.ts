@@ -42,6 +42,18 @@ import type {
   Requirement,
   RequirementPage,
   RequirementPatchRequest,
+  ResearchFindingListPage,
+  ResearchFindingRead,
+  ResearchRunListPage,
+  ResearchRunRead,
+  ResearchRunRequest,
+  ResearchSourceListPage,
+  ResearchSourceRead,
+  ToolApproveRequest,
+  ToolCancelRequest,
+  ToolPrepareRequest,
+  ToolRunPage,
+  ToolRunRead,
 } from './types';
 
 export class MockInsightFlowClient {
@@ -64,6 +76,18 @@ export class MockInsightFlowClient {
   evaluationRuns: EvaluationRunRead[] = [];
   evaluationMetrics: EvaluationMetricRead[] = [];
   evaluationCases: EvaluationCaseRead[] = [];
+  /* Phase 8 Research — separate stores from Evidence so a test can
+   * seed every field of the external-research surface in isolation. */
+  researchRuns: ResearchRunRead[] = [];
+  researchSources: ResearchSourceRead[] = [];
+  researchFindings: ResearchFindingRead[] = [];
+  /* Phase 8 Tool Layer — separate stores from Research so a test
+   * can seed every field of the simulated-tool surface in
+   * isolation. ``toolSimCounter`` powers the deterministic
+   * ``SIM-{counter}`` external_id surfaced after Approve so the
+   * page can assert on it without a clock / random tiebreaker. */
+  toolRuns: ToolRunRead[] = [];
+  toolSimCounter = 0;
   callLog: Array<{ method: string; path: string; body?: unknown }> = [];
 
   forceError: { path?: string; status: number; message: string } | null = null;
@@ -125,6 +149,55 @@ export class MockInsightFlowClient {
         method: 'MOCK',
         body: { detail: 'resource not found' },
         message: '资源不存在。',
+        requestId: `mock_${this.callLog.length}`,
+      },
+      requestId: `mock_${this.callLog.length}`,
+    };
+  }
+
+  /**
+   * Real "state-machine conflict" shape mirroring backend 409
+   * responses — the tool layer's state machine surfaces 409 for
+   * ``already_cancelled`` / ``already_approved`` /
+   * ``not_awaiting_approval`` / ``cross_project`` /
+   * ``requirement_not_approved``. The page reads
+   * ``error.status === 409`` to render a friendly
+   * "操作冲突" message and re-fetches the history.
+   */
+  conflict<T>(path: string, detail: string): ApiResult<T> {
+    return {
+      data: null,
+      error: {
+        status: 409,
+        statusText: 'Conflict',
+        url: path,
+        method: 'MOCK',
+        body: { detail },
+        message: detail,
+        requestId: `mock_${this.callLog.length}`,
+      },
+      requestId: `mock_${this.callLog.length}`,
+    };
+  }
+
+  /**
+   * Real "schema / unknown tool name" shape mirroring backend 422
+   * responses. The tool layer's ``ToolPrepareRequest`` is
+   * ``extra=forbid`` and the registered input schema rejects a
+   * payload with unknown fields. The page surfaces the friendly
+   * message from the real client; this helper keeps the mock
+   * aligned so the page's error-degradation path is testable.
+   */
+  unprocessable<T>(path: string, detail: string): ApiResult<T> {
+    return {
+      data: null,
+      error: {
+        status: 422,
+        statusText: 'Unprocessable Entity',
+        url: path,
+        method: 'MOCK',
+        body: { detail },
+        message: detail,
         requestId: `mock_${this.callLog.length}`,
       },
       requestId: `mock_${this.callLog.length}`,
@@ -1138,6 +1211,410 @@ export class MockInsightFlowClient {
       requestId: 'mock',
     };
   }
+
+  /* Research (Phase 8) — front-end mock surface.
+   *
+   * Mirrors backend/app/api/research.py:
+   *
+   *   POST /api/insights/{insight_id}/research   — synchronous run;
+   *          the real backend returns 200 once the run row is
+   *          committed and finalised; the mock returns a freshly-
+   *          minted ``completed`` row so the page exercises the
+   *          full happy path without a real Tavily call.
+   *   GET  /api/insights/{insight_id}/research   — insight-scoped
+   *          history (the project is taken from the insight row,
+   *          but the mock still filters by the active project's
+   *          known insights).
+   *   GET  /api/research/{run_id}?project_id=    — single run.
+   *   GET  /api/research/{run_id}/sources?project_id=
+   *   GET  /api/research/{run_id}/findings?project_id=
+   *
+   * ``project_id`` is REQUIRED on every per-run endpoint; the mock
+   * 404s on a mismatch so the page cannot silently render a foreign
+   * project's research row.
+   *
+   * ``callLog`` is updated through ``this.log(...)`` per the
+   * [[feedback-mock-test-logging]] rule so test harnesses can
+   * verify the wire calls. */
+  async startResearchRun(
+    insightId: string,
+    body: ResearchRunRequest,
+    _signal?: AbortSignal,
+  ): Promise<ApiResult<ResearchRunRead>> {
+    this.log('POST', `/api/insights/${insightId}/research`, body);
+    const now = new Date().toISOString();
+    const run: ResearchRunRead = {
+      id: `rrun_${this.researchRuns.length + 1}`,
+      project_id: 'mock-project',
+      insight_id: insightId,
+      classification_run_id: 'mock-classification',
+      clustering_run_id: 'mock-clustering',
+      insight_decision_id: null,
+      research_question: body.research_question,
+      scope: body.scope ?? null,
+      provider: 'tavily',
+      provider_query: body.research_question,
+      model: 'mock-model',
+      prompt_version: body.prompt_version ?? 'research-agent-v1',
+      status: 'completed',
+      started_at: now,
+      completed_at: now,
+      created_at: now,
+      error_message: null,
+      internal_context: {
+        insight_title: 'mock insight',
+        insight_pain_point: 'mock pain_point',
+        insight_affected_segment: 'mock affected_segment',
+        insight_recommendation: 'mock recommendation',
+        evidence_external_ids: [],
+        evidence_summaries: [],
+        decision_status: null,
+        decision_priority: null,
+        research_question: body.research_question,
+        scope: body.scope ?? null,
+      },
+      internal_context_hash: 'mock-hash',
+      input_count: 1,
+      processed_count: 1,
+      source_count: 0,
+      finding_count: 0,
+      input_tokens: 0,
+      output_tokens: 0,
+      unknown_token_calls: 0,
+      latency_ms: 0,
+      attempt_count: 1,
+      retry_count: 0,
+    };
+    this.researchRuns.push(run);
+    return { data: run, error: null, requestId: 'mock' };
+  }
+
+  async listInsightResearchRuns(
+    insightId: string,
+    query: { project_id: string; limit?: number; offset?: number },
+    _signal?: AbortSignal,
+  ): Promise<ApiResult<ResearchRunListPage>> {
+    this.log('GET', `/api/insights/${insightId}/research`, query);
+    // Backend cross-check: unknown insight OR insight owned by
+    // a different project → 404. The real backend's helper
+    // ``_require_insight`` raises 404 first, then the route
+    // itself rejects ``insight.project_id != project_id`` with
+    // 404, so a malicious caller cannot distinguish the two.
+    const path = `/api/insights/${insightId}/research`;
+    const insight = this.insights.find((i) => i.id === insightId);
+    if (!insight) return this.notFound(path);
+    if (insight.project_id !== query.project_id) return this.notFound(path);
+    const limit = query.limit ?? 50;
+    const offset = query.offset ?? 0;
+    const all = this.researchRuns.filter((r) => r.insight_id === insightId);
+    const sorted = [...all].sort((a, b) => {
+      if (b.created_at !== a.created_at) {
+        return b.created_at < a.created_at ? -1 : 1;
+      }
+      return b.id.localeCompare(a.id);
+    });
+    return {
+      data: {
+        items: sorted.slice(offset, offset + limit),
+        total: sorted.length,
+        limit,
+        offset,
+      },
+      error: null,
+      requestId: 'mock',
+    };
+  }
+
+  async getResearchRun(
+    runId: string,
+    query: { project_id: string },
+    _signal?: AbortSignal,
+  ): Promise<ApiResult<ResearchRunRead>> {
+    this.log('GET', `/api/research/${runId}`, query);
+    const run = this.researchRuns.find((r) => r.id === runId);
+    if (!run) return this.notFound(`/api/research/${runId}`);
+    if (run.project_id !== query.project_id) {
+      return this.notFound(`/api/research/${runId}`);
+    }
+    return { data: run, error: null, requestId: 'mock' };
+  }
+
+  async listResearchSources(
+    runId: string,
+    query: { project_id: string; limit?: number; offset?: number },
+    _signal?: AbortSignal,
+  ): Promise<ApiResult<ResearchSourceListPage>> {
+    this.log('GET', `/api/research/${runId}/sources`, query);
+    const run = this.researchRuns.find((r) => r.id === runId);
+    if (!run) return this.notFound(`/api/research/${runId}/sources`);
+    if (run.project_id !== query.project_id) {
+      return this.notFound(`/api/research/${runId}/sources`);
+    }
+    const limit = query.limit ?? 50;
+    const offset = query.offset ?? 0;
+    const all = this.researchSources.filter((s) => s.run_id === runId);
+    const items = all.slice(offset, offset + limit);
+    return {
+      data: { items, total: all.length, limit, offset },
+      error: null,
+      requestId: 'mock',
+    };
+  }
+
+  async listResearchFindings(
+    runId: string,
+    query: { project_id: string; limit?: number; offset?: number },
+    _signal?: AbortSignal,
+  ): Promise<ApiResult<ResearchFindingListPage>> {
+    this.log('GET', `/api/research/${runId}/findings`, query);
+    const run = this.researchRuns.find((r) => r.id === runId);
+    if (!run) return this.notFound(`/api/research/${runId}/findings`);
+    if (run.project_id !== query.project_id) {
+      return this.notFound(`/api/research/${runId}/findings`);
+    }
+    const limit = query.limit ?? 50;
+    const offset = query.offset ?? 0;
+    const all = this.researchFindings.filter((f) => f.run_id === runId);
+    const items = all.slice(offset, offset + limit);
+    return {
+      data: { items, total: all.length, limit, offset },
+      error: null,
+      requestId: 'mock',
+    };
+  }
+
+  /* Phase 8 Tool Layer (C) — front-end mock surface.
+   *
+   * Mirrors backend/app/api/tools.py + the state machine in
+   * app/services/tool_service.py:
+   *
+   *   POST /api/requirements/{requirement_id}/tool-runs  — Prepare.
+   *     Idempotent on (project_id, request_id): a repeated call
+   *     returns the existing awaiting_approval row, never
+   *     produces a second audit row. The body MUST carry
+   *     ``tool_name`` + ``tool_action`` + ``request_id``; a
+   *     missing or non-UUID request_id surfaces as 422 (the
+   *     page always supplies a freshly-minted UUID so this
+   *     branch is unreachable in practice).
+   *
+   *     Only ``simulated_issue_tracker`` is registered in the
+   *     demo dataset; a different ``tool_name`` is rejected
+   *     with 422 by the registered input schema. The frozen
+   *     snapshot persisted on ``request_payload`` mirrors the
+   *     backend's ``_derive_simulated_issue_fields`` so the
+   *     page can render the audit-visible Title / Description /
+   *     Priority / Source-Insight preview verbatim.
+   *
+   *   GET /api/requirements/{requirement_id}/tool-runs — history.
+   *     ``active_run_id`` is the awaiting_approval run if one
+   *     exists (the row the Cancel / Approve buttons target),
+   *     otherwise the most recent non-cancelled run. The page
+   *     MUST NOT derive the active pointer from ``items``
+   *     because pagination can skip past the newest row.
+   *
+   *   POST /api/tool-runs/{tool_run_id}/cancel — state
+   *     machine: ``awaiting_approval`` → ``cancelled``. Any
+   *     other source status surfaces 409 so a completed /
+   *     already-cancelled run cannot be silently rewritten.
+   *
+   *   POST /api/tool-runs/{tool_run_id}/approve — drives the
+   *     simulator. Only ``awaiting_approval`` rows are
+   *     flipped; cross-project access 404s, a non-eligible
+   *     status 409s, and a second Approve on a completed row
+   *     is a no-op that returns the existing row (no duplicate
+   *     audit row).
+   *
+   *   GET /api/tool-runs/{tool_run_id} — read one row.
+   *
+   * Cross-project isolation: every per-run method 404s when
+   * the ``project_id`` query does not match the row's owning
+   * project. ``callLog`` is updated through ``this.log(...)``
+   * so the [[feedback-mock-test-logging]] rule keeps
+   * ``callLog`` accurate. */
+  async prepareToolRun(
+    requirementId: string,
+    query: { project_id: string },
+    body: ToolPrepareRequest,
+    _signal?: AbortSignal,
+  ): Promise<ApiResult<ToolRunRead>> {
+    this.log('POST', `/api/requirements/${requirementId}/tool-runs`, body);
+    const path = `/api/requirements/${requirementId}/tool-runs`;
+    if (this.shouldError(path)) return this.applyError();
+    const requirement = this.requirements.find((r) => r.id === requirementId);
+    if (!requirement) return this.notFound(path);
+    if (requirement.project_id !== query.project_id) return this.notFound(path);
+    if (requirement.status !== 'approved') {
+      return this.conflict(path, 'requirement is not approved');
+    }
+    if (
+      body.tool_name !== 'simulated_issue_tracker' ||
+      body.tool_action !== 'create_issue'
+    ) {
+      return this.unprocessable(
+        path,
+        `tool '${body.tool_name}/${body.tool_action}' is not registered`,
+      );
+    }
+    if (!isUuid(body.request_id)) {
+      return this.unprocessable(path, 'request_id must be a UUID-shaped string');
+    }
+    // Idempotency: (project_id, request_id) must be unique.
+    const existing = this.toolRuns.find(
+      (r) =>
+        r.project_id === query.project_id &&
+        r.request_id === body.request_id,
+    );
+    if (existing) {
+      if (
+        existing.tool_name !== body.tool_name ||
+        existing.tool_action !== body.tool_action
+      ) {
+        return this.conflict(
+          path,
+          'request_id already used with a different tool_name/tool_action',
+        );
+      }
+      return { data: existing, error: null, requestId: 'mock' };
+    }
+    const now = new Date().toISOString();
+    const id = `trun_${this.toolRuns.length + 1}`;
+    const snapshot = buildSimulatedSnapshot(requirement);
+    const run: ToolRunRead = {
+      id,
+      project_id: query.project_id,
+      requirement_id: requirement.id,
+      agent_run_id: null,
+      tool_name: 'simulated_issue_tracker',
+      tool_action: 'create_issue',
+      tool_version: 'sim-v1',
+      request_id: body.request_id,
+      status: 'awaiting_approval',
+      execution_mode: 'simulation',
+      external_id: null,
+      request_payload: snapshot,
+      response_summary: null,
+      failure_category: null,
+      attempt_count: 0,
+      retry_count: 0,
+      created_at: now,
+      updated_at: now,
+      approved_at: null,
+      completed_at: null,
+    };
+    this.toolRuns.push(run);
+    return { data: run, error: null, requestId: 'mock' };
+  }
+
+  async listToolRuns(
+    requirementId: string,
+    query: { project_id: string; limit?: number; offset?: number },
+    _signal?: AbortSignal,
+  ): Promise<ApiResult<ToolRunPage>> {
+    this.log('GET', `/api/requirements/${requirementId}/tool-runs`, query);
+    const path = `/api/requirements/${requirementId}/tool-runs`;
+    if (this.shouldError(path)) return this.applyError();
+    const requirement = this.requirements.find((r) => r.id === requirementId);
+    if (!requirement) return this.notFound(path);
+    if (requirement.project_id !== query.project_id) return this.notFound(path);
+    const limit = query.limit ?? 50;
+    const offset = query.offset ?? 0;
+    const all = this.toolRuns
+      .filter((r) => r.requirement_id === requirementId)
+      .slice()
+      .sort((a, b) => {
+        if (b.created_at !== a.created_at) {
+          return b.created_at < a.created_at ? -1 : 1;
+        }
+        return b.id.localeCompare(a.id);
+      });
+    const items = all.slice(offset, offset + limit);
+    const awaiting = all.find((r) => r.status === 'awaiting_approval');
+    const nonCancelled = all.find((r) => r.status !== 'cancelled');
+    const active_run_id = awaiting?.id ?? nonCancelled?.id ?? null;
+    return {
+      data: {
+        items,
+        total: all.length,
+        limit,
+        offset,
+        active_run_id,
+      },
+      error: null,
+      requestId: 'mock',
+    };
+  }
+
+  async getToolRun(
+    toolRunId: string,
+    query: { project_id: string },
+    _signal?: AbortSignal,
+  ): Promise<ApiResult<ToolRunRead>> {
+    this.log('GET', `/api/tool-runs/${toolRunId}`, query);
+    const path = `/api/tool-runs/${toolRunId}`;
+    if (this.shouldError(path)) return this.applyError();
+    const run = this.toolRuns.find((r) => r.id === toolRunId);
+    if (!run) return this.notFound(path);
+    if (run.project_id !== query.project_id) return this.notFound(path);
+    return { data: run, error: null, requestId: 'mock' };
+  }
+
+  async cancelToolRun(
+    toolRunId: string,
+    query: { project_id: string },
+    _signal?: AbortSignal,
+  ): Promise<ApiResult<ToolRunRead>> {
+    this.log('POST', `/api/tool-runs/${toolRunId}/cancel`, {});
+    const path = `/api/tool-runs/${toolRunId}/cancel`;
+    if (this.shouldError(path)) return this.applyError();
+    const run = this.toolRuns.find((r) => r.id === toolRunId);
+    if (!run) return this.notFound(path);
+    if (run.project_id !== query.project_id) return this.notFound(path);
+    if (run.status !== 'awaiting_approval') {
+      return this.conflict(
+        path,
+        `tool run is not awaiting approval (status='${run.status}')`,
+      );
+    }
+    const now = new Date().toISOString();
+    run.status = 'cancelled';
+    run.completed_at = now;
+    run.updated_at = now;
+    return { data: run, error: null, requestId: 'mock' };
+  }
+
+  async approveToolRun(
+    toolRunId: string,
+    query: { project_id: string },
+    _signal?: AbortSignal,
+  ): Promise<ApiResult<ToolRunRead>> {
+    this.log('POST', `/api/tool-runs/${toolRunId}/approve`, {});
+    const path = `/api/tool-runs/${toolRunId}/approve`;
+    if (this.shouldError(path)) return this.applyError();
+    const run = this.toolRuns.find((r) => r.id === toolRunId);
+    if (!run) return this.notFound(path);
+    if (run.project_id !== query.project_id) return this.notFound(path);
+    // No-op on already-completed: the backend returns the existing
+    // row without producing a duplicate audit row.
+    if (run.status === 'completed') {
+      return { data: run, error: null, requestId: 'mock' };
+    }
+    if (run.status !== 'awaiting_approval') {
+      return this.conflict(
+        path,
+        `tool run is not awaiting approval (status='${run.status}')`,
+      );
+    }
+    this.toolSimCounter += 1;
+    const now = new Date().toISOString();
+    run.status = 'completed';
+    run.approved_at = now;
+    run.completed_at = now;
+    run.updated_at = now;
+    run.attempt_count = 1;
+    run.external_id = `SIM-${this.toolSimCounter}`;
+    run.response_summary = `Simulated issue created: ${run.external_id}`;
+    return { data: run, error: null, requestId: 'mock' };
+  }
 }
 
 /* ---------- helpers ---------- */
@@ -1258,4 +1735,47 @@ function buildMockRequirement(insightId: string, seq: number): Requirement {
     created_at: now,
     updated_at: now,
   };
+}
+
+/** Build the frozen ``SimulatedIssueSnapshot`` that the backend
+ *  persists on ``ToolRun.request_payload`` at Prepare time. The
+ *  four fields mirror ``_derive_simulated_issue_fields`` in
+ *  ``app/services/tool_service.py``:
+ *
+ *    title                    — ``[Simulated] {requirement.name}``
+ *    description              — Requirement sections joined by \n\n
+ *    priority                 — ``requirement.pm_priority`` (or null)
+ *    source_insight_preview   — bounded preview of the source Insight
+ *
+ *  The mock synthesises the source-insight preview from the
+ *  Requirement name (the real backend reads the source Insight row
+ *  by id) so a test does NOT have to seed a full Insight fixture
+ *  just to exercise the Tool Layer surface. */
+function buildSimulatedSnapshot(requirement: Requirement): ToolRunRead['request_payload'] {
+  const title = `[Simulated] ${requirement.name}`.slice(0, 200);
+  const description = [
+    `Requirement: ${requirement.name}`,
+    `Problem: ${requirement.problem}`,
+    `Target user: ${requirement.target_user}`,
+    `User story: ${requirement.user_story}`,
+    `Solution hypothesis: ${requirement.solution_hypothesis}`,
+  ].join('\n\n');
+  const preview = ' '.repeat(0) + (requirement.name || '').trim();
+  return {
+    title,
+    description: description.slice(0, 4000),
+    priority: requirement.pm_priority ?? null,
+    source_insight_preview: preview.slice(0, 400),
+  };
+}
+
+/** UUID-shape validator (8-4-4-4-12 hex digits separated by '-')
+ *  — mirrors ``_REQUEST_ID_RE`` in
+ *  ``backend/app/schemas/tool.py``. The page always supplies a
+ *  fresh ``crypto.randomUUID()`` so this branch is unreachable in
+ *  product code; it exists so a test that crafts a hand-written
+ *  body with a non-UUID request_id can exercise the 422 path. */
+const _UUID_RE = /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/;
+function isUuid(value: string): boolean {
+  return _UUID_RE.test(value);
 }

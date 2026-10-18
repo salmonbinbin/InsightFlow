@@ -1,0 +1,361 @@
+Automatically save photos and videos with OneDrive on iOS | Microsoft Support
+Skip to main content
+Microsoft
+Support
+Support
+Support
+Home
+Microsoft 365
+Office
+Products
+Microsoft 365
+Outlook
+Microsoft Teams
+OneDrive
+Microsoft Copilot
+OneNote
+Windows
+more ...
+Devices
+Surface
+PC Accessories
+Xbox
+PC Gaming
+HoloLens
+Surface Hub
+Hardware warranties
+Account & billing
+Resources
+Community forums
+Microsoft 365 Admins
+Developer
+Education
+Report a support scam
+Product safety
+More
+Buy Microsoft 365
+All Microsoft
+Global
+Microsoft 365
+Azure
+Copilot
+Windows
+Surface
+XBOX
+Deals
+Small Business
+Support
+Software
+Software
+Windows Apps
+Outlook
+OneDrive
+Microsoft Teams
+OneNote
+Microsoft Edge
+Moving from Skype to Teams
+PCs & Devices
+PCs & Devices
+Computers
+Shop XBOX
+Accessories
+VR & mixed reality
+Certified Refurbished
+Trade-in for cash
+Entertainment
+Entertainment
+XBOX Game Pass Ultimate
+PC Game Pass
+XBOX games
+PC games
+Business
+Business
+Microsoft AI
+Microsoft Security
+Dynamics 365
+Microsoft 365 for business
+Microsoft Power Platform
+Windows 365
+Small Business
+Digital Sovereignty
+Developer & IT
+Developer & IT
+Azure
+Microsoft Developer
+Microsoft Learn
+Support for AI marketplace apps
+Microsoft Tech Community
+Microsoft Marketplace
+Software companies
+Visual Studio
+Other
+Other
+Microsoft Rewards
+Free downloads & security
+Education
+Gift cards
+Licensing
+Unlocked stories
+View Sitemap
+Search
+Search for help
+No results
+Cancel
+Sign in
+Sign in with Microsoft
+Sign in or create an account.
+Hello,
+Select a different account.
+You have multiple accounts
+Choose the account you want to sign in with.
+Related topics
+Related topics
+×
+Get started
+Download OneDrive
+Use OneDrive on your mobile
+Upload & save files
+Share & collaborate
+Protect files with Personal Vault
+Add OneDrive as a service
+Reinstall OneDrive
+Back up
+Back up your folders
+Sync files & folders
+Choose which folders to sync
+Pause syncing
+Backing up playlist files
+Stop or cancel syncing
+Manage files
+Change views on OneDrive.com
+Delete files or folders
+Import cloud files using OneDrive
+Upload photos and files
+Change the location of your OneDrive folder
+Download files and folders
+Download files to your mobile
+Manually upload files or photos with OneDrive for Android
+How do I turn on AutoSave?
+Copy, transfer or import files to your personal OneDrive
+Ransomware detection and recovery
+Install OneDrive on an external drive
+Manage photos
+Automatically save photos in Android
+Automatically save photos in iOS
+Browse your photos on Windows
+Organize and find photos
+Group photos by people
+Samsung Gallery
+HEIF and HEVC files in OneDrive
+Restyle OneDrive images with AI
+Sharing
+Share files and folders
+Share with Android
+Share with iOS
+Add shortcuts to shared folders
+See files you shared
+See files shared with you
+Share with family or Outlook groups
+Unable to share OneDrive files
+Copilot
+Get started with Copilot
+Summarize your files
+Compare your files
+Ask questions about your files without opening them
+Generate audio overviews
+Share an AI agent in OneDrive
+Use context menu to review PDFs
+FAQs about Copilot in OneDrive
+Restore
+Restore files
+Restore entire OneDrive
+Restore previous versions
+Delete or restore files on Android or iOS
+Storage
+What is Microsoft cloud storage?
+Microsoft storage quotas
+My OneDrive says it's full
+Save disk space in Windows
+Save disk space on macOS
+Save disk space in Android
+Manage work or school storage
+Microsoft storage FAQs
+How to remove an outlook pst data file from OneDrive
+Changes to Microsoft 365 storage
+Account
+OneDrive account frozen?
+Reactivate a blocked account
+Add an account
+Remove an account
+What is OneDrive for work or school?
+Troubleshoot
+-- Sync issues --
+Fix sync problems
+Reset OneDrive
+Fix problems uploading to OneDrive.com
+Sync pending error
+Unable to sync a shortcut
+Improve sync performance
+Processing changes error
+File can't be synced error
+Fix paths that are too long to sync in OneDrive
+Can't sync to an SD card or USB drive
+-- File issues --
+Find lost or missing files
+File has been archived error
+Unable to share OneDrive files
+Why has my filename changed?
+Files will be erased message
+Can't open file error
+-- Account issues --
+Can't sign in to OneDrive
+Unlink and re-link OneDrive
+Syncing a different account error
+Emails from OneDrive
+-- Installation issues --
+OneDrive won't start
+Turn off, disable, or uninstall
+A newer version of OneDrive is installed error
+Two versions of OneDrive on macOS
+-- Other issues --
+Fixes or workarounds for recent issues
+OneDrive error codes
+OneDrive icons
+I can't see OneDrive icons
+Unable to access OneDrive from Insert menu
+Automatically save photos and videos with OneDrive on iOS
+The camera roll on your device only uploads to OneDrive - it does not sync photos both ways. That means you can delete uploaded photos and videos from your device, and the copies in OneDrive won't be affected.
+To automatically upload your iPhone or iPad camera roll to OneDrive
+In the OneDrive app, tap your account image:
+OneDrive app account image location
+Tap Settings
+OneDrive settings
+, then Camera Upload
+Important
+You can only upload your camera roll to one account at a time, so make sure you're signed in with the account that you want to upload photos to. Tap the relevant account icon to switch accounts.
+Flip the toggle on for the OneDrive account you want to enable Camera Upload.
+To make sure videos automatically upload, turn on Include Videos.
+Use Bedtime Backup to upload remaining photos
+If you have large videos or need to upload lots of images, you may see some marked as "Remaining". We recommend using Bedtime Backup to upload your photos even faster with OneDrive's dedicated upload mode. Here's how:
+Tap the Remaining
+and select Get Started.
+Ensure your device is connected to Wi-Fi and on charge, then select Turn on Bedtime Backup.
+Once uploads are complete, you'll be offered to can Turn Off Bedtime Backup.
+If camera upload isn't working
+Note
+To conserve battery life, iOS may go to "sleep" during a large camera upload, making the upload take a long time.
+If automatic camera upload isn't working, or only some pictures are uploaded, follow these steps:
+If you have issues with the app syncing your files or camera roll to OneDrive, you can reset it in the app by selecting Profile > Settings > Account > Reset.
+Connect your charger. iOS won't let OneDrive backup your photos if the battery is less than 20%.
+Ensure your device is not in Low Power Mode. Learn how to turn Low Power Mode on/off.
+Enable/disable Background App Refresh in the iOS settings: Settings > Scroll down to our app > toggle on/off Background App Refresh.
+Don't close the app. Apple recommends that customers leave the OneDrive app running in the background. Automatic uploading cannot work if the app has been Force Closed (double-tap Home and swipe up and away).
+Connect to Wi-Fi. If you're not connected to Wi-Fi, check your mobile OneDrive settings. If you want to use your mobile network, tap Settings, tap Camera Upload, and then turn on Upload Using Cellular Data.
+If your camera upload is taking too long to set up or look for photos, without giving any error message, it could be because you have too many photos in your camera roll.
+OneDrive cannot upload photos optimized for iCloud. To disable optimization, tap Settings > Photos and toggle off iCloud Photos.
+Learn more
+Upload HEIF and HEVC photos and videos to OneDrive
+Manually upload files or photos to OneDrive in iOS
+Troubleshoot OneDrive for iOS app problems
+Seeing pictures that are not my photos in OneDrive
+Need more help?
+Personal accounts
+Work/school accounts
+Account support. For help with your Microsoft account and subscriptions, visit Account & Billing Help.
+Technical support. For technical support, select Contact Microsoft Support below, enter your problem and select Get Help.
+Contact Microsoft Support
+Mobile users can contact Support by opening the OneDrive app and gently shaking your device.
+Community support. Communities help you ask questions, give feedback, and hear from experts with rich knowledge. Ask the Microsoft Community. Do not disclose personal or sensitive information in public forums.
+Technical support. For technical support, contact your organization's IT helpdesk, service desk, or admin.
+IT Admins. IT Admins should view Help for OneDrive Admins, the OneDrive Tech Community or contact Microsoft 365 for business support.
+Was this information helpful?
+Yes
+No
+Thank you! Any more feedback for Microsoft?
+Can you help us improve? (Send feedback to Microsoft so we can help.)
+What affected your experience?
+Resolved my issue
+Clear instructions
+Easy to follow
+No jargon
+Pictures helped
+Other
+Didn't match my screen
+Incorrect instructions
+Too technical
+Not enough information
+Not enough pictures
+Other
+Any additional feedback? (Optional)
+Submit feedback
+By pressing submit, your feedback will be used to improve Microsoft products and services.
+Your IT admin will be able to collect this data.
+Privacy Statement.
+Thank you for your feedback!
+×
+What's new
+Surface Laptop Ultra
+Surface Pro
+Surface Laptop
+Surface RTX Spark Dev Box
+Explore Copilot
+Explore Microsoft products
+Windows 11 apps
+Microsoft Store
+Account profile
+Download Center
+Microsoft Store support
+Returns
+Order tracking
+Certified Refurbished
+Why buy from Microsoft Store
+Flexible Payments
+Education
+Microsoft in education
+Devices for education
+Microsoft Teams for Education
+Microsoft 365 Education
+How to buy for your school
+Educator training and development
+Deals for students and parents
+AI for education
+Business
+Microsoft AI
+Microsoft Security
+Dynamics 365
+Microsoft 365
+Microsoft Power Platform
+Microsoft Teams
+Microsoft Copilot
+Small Business
+Developer & IT
+Azure
+Microsoft Developer
+Microsoft Learn
+Support for AI marketplace apps
+Microsoft Tech Community
+Microsoft Marketplace
+Software companies
+Visual Studio
+Company
+Careers
+About Microsoft
+Company news
+Privacy at Microsoft
+Investors
+Diversity and inclusion
+Accessibility
+Sustainability
+English (United States)
+Your Privacy Choices
+Consumer Health Privacy
+Sitemap
+Contact Microsoft
+Privacy
+Manage cookies
+Terms of use
+Trademarks
+Safety & eco
+Recycling
+About our ads
+© Microsoft 2026

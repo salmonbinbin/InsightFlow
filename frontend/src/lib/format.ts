@@ -4,16 +4,17 @@
  */
 
 import type { AnalysisStatus, Sentiment } from './api/types';
+import { userMessage } from './presentation';
 
 export function classifyError(err: { status: number; message: string } | null): string {
   if (!err) return '请求失败，请稍后再试。';
   if (err.status === 0) {
-    return '无法连接到服务，请确认后端进程或网络代理。';
+    return '暂时无法连接，请检查网络后重试。';
   }
   if (err.status >= 500) {
     return '服务暂不可用，请稍后再试。';
   }
-  return err.message || '请求失败。';
+  return userMessage(err.message);
 }
 
 export function isTerminalAnalysisStatus(status: AnalysisStatus): boolean {

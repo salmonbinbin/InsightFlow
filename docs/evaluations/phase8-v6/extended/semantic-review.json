@@ -1,0 +1,444 @@
+{
+  "method": "Codex按实际确认事实、完整子问题、条件、数量及官方原文人工判读；独立HTTP字面比对辅助，不能代替语义判断。局部不代表整题通过。",
+  "program_counts": {
+    "completed": 2,
+    "partial_failed": 6
+  },
+  "independent_counts": {
+    "complete": 4,
+    "partial": 3,
+    "not_verified": 1
+  },
+  "confirmed_count": 125,
+  "factual_false_positives": 0,
+  "relevance_false_positive_count": 23,
+  "completeness_false_positive_count": 0,
+  "literal_audit_representation_mismatches": 8,
+  "representation_note": "差异均为HTML图片alt与标点之间空格；人工检查文字与按钮一致，未修改生产严格引文规则。",
+  "samples": [
+    {
+      "sample": 1,
+      "run_id": "697fc7b2-411c-48fb-8cfb-e35bda7a035d",
+      "question": "请仅根据 Google 官方帮助，说明 Google Photos 安卓应用中手动备份一张照片或视频的完整步骤，并区分自动备份。",
+      "program_status": "completed",
+      "independent_grade": "complete",
+      "reason": "中文单张手动四步与自动依据齐全，程序completed。",
+      "confirmed_count": 15,
+      "analysis_count": 0,
+      "factual_false_positives": 0,
+      "relevance_false_positives": [],
+      "completeness_false_positive": false,
+      "literal_audit_representation_mismatches": 2,
+      "budget": {
+        "logical_searches": 2,
+        "official_reads": 4,
+        "sources": 4,
+        "offered_unique_evidence_units": 85,
+        "llm_calls": 2
+      }
+    },
+    {
+      "sample": 2,
+      "run_id": "2d8a5b32-bbc8-4428-b927-f7401b030885",
+      "question": "仅引用 Dropbox 官方帮助：关闭相机上传（camera uploads）后，移动端还能手动添加照片吗？请保留完整操作步骤和禁用条件。",
+      "program_status": "partial_failed",
+      "independent_grade": "partial",
+      "reason": "只取camera uploads启用、overnight等相邻事实，未回答禁用后手动八步；官方已存在完整目标答案。",
+      "confirmed_count": 24,
+      "analysis_count": 0,
+      "factual_false_positives": 0,
+      "relevance_false_positives": [
+        {
+          "finding_id": "924c7851-6b87-4d35-9573-dbe2636808ad",
+          "quote": "2. Tap Account.",
+          "reason": "自动camera uploads启用步骤替代了禁用后手动添加流程。",
+          "source_refs": [
+            {
+              "provider_source_id": "6413ba-01",
+              "source_id": "e9efe3ed-c9fa-4473-8bba-e817c9e37c5e"
+            }
+          ]
+        },
+        {
+          "finding_id": "caff6e90-efd3-4500-9923-b67b45967317",
+          "quote": "3. Tap Settings.",
+          "reason": "自动camera uploads启用步骤替代了禁用后手动添加流程。",
+          "source_refs": [
+            {
+              "provider_source_id": "6413ba-01",
+              "source_id": "e9efe3ed-c9fa-4473-8bba-e817c9e37c5e"
+            }
+          ]
+        },
+        {
+          "finding_id": "30347319-2192-4693-a267-257922af7699",
+          "quote": "4. Under Features, tap Camera uploads.",
+          "reason": "自动camera uploads启用步骤替代了禁用后手动添加流程。",
+          "source_refs": [
+            {
+              "provider_source_id": "6413ba-01",
+              "source_id": "e9efe3ed-c9fa-4473-8bba-e817c9e37c5e"
+            }
+          ]
+        },
+        {
+          "finding_id": "1cd6ad9b-c242-422d-aeca-ff5ff85377df",
+          "quote": "5. Tap Back up my photos.",
+          "reason": "自动camera uploads启用步骤替代了禁用后手动添加流程。",
+          "source_refs": [
+            {
+              "provider_source_id": "6413ba-01",
+              "source_id": "e9efe3ed-c9fa-4473-8bba-e817c9e37c5e"
+            }
+          ]
+        },
+        {
+          "finding_id": "3559604d-3800-480a-9ed2-93fe9588eafa",
+          "quote": "6. If prompted, tap Allow.",
+          "reason": "自动camera uploads启用步骤替代了禁用后手动添加流程。",
+          "source_refs": [
+            {
+              "provider_source_id": "6413ba-01",
+              "source_id": "e9efe3ed-c9fa-4473-8bba-e817c9e37c5e"
+            }
+          ]
+        },
+        {
+          "finding_id": "74621ce2-c12d-48f6-a6ca-0700fc0eb77c",
+          "quote": "2. Tap ☑ (account).",
+          "reason": "自动camera uploads启用步骤替代了禁用后手动添加流程。",
+          "source_refs": [
+            {
+              "provider_source_id": "6413ba-01",
+              "source_id": "e9efe3ed-c9fa-4473-8bba-e817c9e37c5e"
+            }
+          ]
+        },
+        {
+          "finding_id": "b1793a93-7346-4a7f-9983-1a43ab1d3441",
+          "quote": "3. Tap Camera uploads.",
+          "reason": "自动camera uploads启用步骤替代了禁用后手动添加流程。",
+          "source_refs": [
+            {
+              "provider_source_id": "6413ba-01",
+              "source_id": "e9efe3ed-c9fa-4473-8bba-e817c9e37c5e"
+            }
+          ]
+        },
+        {
+          "finding_id": "726d2a11-95aa-4de7-b606-f86b24a1e162",
+          "quote": "4. Tap Upload from, then Settings to give Dropbox access to your photos and videos.",
+          "reason": "自动camera uploads启用步骤替代了禁用后手动添加流程。",
+          "source_refs": [
+            {
+              "provider_source_id": "6413ba-01",
+              "source_id": "e9efe3ed-c9fa-4473-8bba-e817c9e37c5e"
+            }
+          ]
+        },
+        {
+          "finding_id": "765b85a9-e1c0-4cbb-822c-e41fe26a7386",
+          "quote": "5. In the Dropbox app, choose what you’d like to back up and whether you’d like to use cell data.",
+          "reason": "自动camera uploads启用步骤替代了禁用后手动添加流程。",
+          "source_refs": [
+            {
+              "provider_source_id": "6413ba-01",
+              "source_id": "e9efe3ed-c9fa-4473-8bba-e817c9e37c5e"
+            }
+          ]
+        },
+        {
+          "finding_id": "a98986e8-00d9-4352-9b3a-ec0b306fa842",
+          "quote": "6. Tap Turn on camera uploads.",
+          "reason": "自动camera uploads启用步骤替代了禁用后手动添加流程。",
+          "source_refs": [
+            {
+              "provider_source_id": "6413ba-01",
+              "source_id": "e9efe3ed-c9fa-4473-8bba-e817c9e37c5e"
+            }
+          ]
+        },
+        {
+          "finding_id": "3731db91-fa02-4e16-a427-424c7f0e9768",
+          "quote": "2. Tap the camera icon in the top-right corner.",
+          "reason": "overnight上传与目标禁用后手动添加流程不同。",
+          "source_refs": [
+            {
+              "provider_source_id": "6413ba-01",
+              "source_id": "e9efe3ed-c9fa-4473-8bba-e817c9e37c5e"
+            }
+          ]
+        },
+        {
+          "finding_id": "8841de42-db54-4cd7-8b5c-a7605d5b3071",
+          "quote": "3. Tap Start overnight uploads to start uploading content or tap Exit overnight uploads to stop uploading content.",
+          "reason": "overnight上传与目标禁用后手动添加流程不同。",
+          "source_refs": [
+            {
+              "provider_source_id": "6413ba-01",
+              "source_id": "e9efe3ed-c9fa-4473-8bba-e817c9e37c5e"
+            }
+          ]
+        },
+        {
+          "finding_id": "87bcf8d9-1829-4406-9550-af9cba28cbec",
+          "quote": "If you have to upload a large amount of photos or videos from your camera app, you can use the overnight uploads feature.",
+          "reason": "overnight上传与目标禁用后手动添加流程不同。",
+          "source_refs": [
+            {
+              "provider_source_id": "6413ba-01",
+              "source_id": "e9efe3ed-c9fa-4473-8bba-e817c9e37c5e"
+            }
+          ]
+        },
+        {
+          "finding_id": "c9a13b47-42de-441a-824b-076df2e7a601",
+          "quote": "Note: To successfully upload your photos and videos overnight, you must:",
+          "reason": "overnight上传与目标禁用后手动添加流程不同。",
+          "source_refs": [
+            {
+              "provider_source_id": "6413ba-01",
+              "source_id": "e9efe3ed-c9fa-4473-8bba-e817c9e37c5e"
+            }
+          ]
+        },
+        {
+          "finding_id": "21600960-4bed-4fa4-902c-51c55c1b3967",
+          "quote": "1. Keep your Dropbox app open.",
+          "reason": "overnight上传与目标禁用后手动添加流程不同。",
+          "source_refs": [
+            {
+              "provider_source_id": "6413ba-01",
+              "source_id": "e9efe3ed-c9fa-4473-8bba-e817c9e37c5e"
+            }
+          ]
+        },
+        {
+          "finding_id": "d051f233-a973-45d5-a20c-a8a198929dbc",
+          "quote": "2. Make sure your phone is connected to Wi-Fi.",
+          "reason": "overnight上传与目标禁用后手动添加流程不同。",
+          "source_refs": [
+            {
+              "provider_source_id": "6413ba-01",
+              "source_id": "e9efe3ed-c9fa-4473-8bba-e817c9e37c5e"
+            }
+          ]
+        },
+        {
+          "finding_id": "74e048be-9d01-4960-b7af-cdd579421756",
+          "quote": "3. Keep your phone plugged into a charger to prevent your phone from powering off.",
+          "reason": "overnight上传与目标禁用后手动添加流程不同。",
+          "source_refs": [
+            {
+              "provider_source_id": "6413ba-01",
+              "source_id": "e9efe3ed-c9fa-4473-8bba-e817c9e37c5e"
+            }
+          ]
+        },
+        {
+          "finding_id": "2a6b1836-8162-41f3-bb49-1125264e8abb",
+          "quote": "Note: The option to import from Microsoft OneDrive may only be available on certain individual Dropbox plans.",
+          "reason": "导入其他服务的套餐限制与禁用camera uploads后的手动添加无关。",
+          "source_refs": [
+            {
+              "provider_source_id": "2adc9a-00",
+              "source_id": "ee2f09fe-450a-4276-90e8-56a0a63d7ef7"
+            }
+          ]
+        }
+      ],
+      "completeness_false_positive": false,
+      "literal_audit_representation_mismatches": 0,
+      "budget": {
+        "logical_searches": 3,
+        "official_reads": 5,
+        "sources": 5,
+        "offered_unique_evidence_units": 100,
+        "llm_calls": 3
+      }
+    },
+    {
+      "sample": 3,
+      "run_id": "c12e6a8f-7612-4ae8-9b92-3143157b2f28",
+      "question": "仅引用 Apple 官方支持：iCloud.com 在手机或平板上提供哪些上传选项？如果要上传到共享照片图库，应使用哪个入口？请保留版本条件。",
+      "program_status": "partial_failed",
+      "independent_grade": "complete",
+      "reason": "确认手机三选项、Photos App入口及该页面iOS16.1/iPadOS16/macOS13版本注释；程序task_subject失败造成漏判。",
+      "confirmed_count": 6,
+      "analysis_count": 0,
+      "factual_false_positives": 0,
+      "relevance_false_positives": [],
+      "completeness_false_positive": false,
+      "literal_audit_representation_mismatches": 2,
+      "budget": {
+        "logical_searches": 3,
+        "official_reads": 5,
+        "sources": 5,
+        "offered_unique_evidence_units": 100,
+        "llm_calls": 3
+      }
+    },
+    {
+      "sample": 4,
+      "run_id": "4025a30f-d4b0-402d-9137-7e2c27ce968e",
+      "question": "Using only official Google Drive Help, explain how an Android user uploads files from the app and locates the uploaded files.",
+      "program_status": "partial_failed",
+      "independent_grade": "complete",
+      "reason": "确认Android上传四步及My Drive去向；程序冗余任务/未解析子句造成漏判，附带其他节噪声。",
+      "confirmed_count": 10,
+      "analysis_count": 0,
+      "factual_false_positives": 0,
+      "relevance_false_positives": [],
+      "completeness_false_positive": false,
+      "literal_audit_representation_mismatches": 0,
+      "budget": {
+        "logical_searches": 3,
+        "official_reads": 2,
+        "sources": 2,
+        "offered_unique_evidence_units": 100,
+        "llm_calls": 3
+      }
+    },
+    {
+      "sample": 5,
+      "run_id": "19cf387c-dba4-479b-9e2d-0cab0807b771",
+      "question": "仅引用 Microsoft 官方支持：iPhone 用户如何在 OneDrive 中选择已有图片并完成手动上传？",
+      "program_status": "completed",
+      "independent_grade": "complete",
+      "reason": "中文已有图片完整步骤及iCloud优化限制齐全。",
+      "confirmed_count": 6,
+      "analysis_count": 0,
+      "factual_false_positives": 0,
+      "relevance_false_positives": [],
+      "completeness_false_positive": false,
+      "literal_audit_representation_mismatches": 0,
+      "budget": {
+        "logical_searches": 3,
+        "official_reads": 2,
+        "sources": 2,
+        "offered_unique_evidence_units": 100,
+        "llm_calls": 3
+      }
+    },
+    {
+      "sample": 6,
+      "run_id": "7cb9a706-5a42-46a4-9449-1cb0f633ee47",
+      "question": "Compare manual photo upload entry points in Google Photos Android and Dropbox mobile using only official help pages. Give sample product patterns, scenario-relative strengths and weaknesses, opportunities and risks. Distinguish facts, inferences and recommendations.",
+      "program_status": "partial_failed",
+      "independent_grade": "partial",
+      "reason": "两产品事实、3条分析候选已持久化：竞品推断/样本模式/机会建议；风险缺项，相对优缺点不足，另有协议/任务失败和相关性误收。",
+      "confirmed_count": 38,
+      "analysis_count": 3,
+      "factual_false_positives": 0,
+      "relevance_false_positives": [
+        {
+          "finding_id": "72c8d515-99bd-4c81-af20-b97f3dea1767",
+          "quote": "Note: The Dropbox app for Windows devices does not currently support video uploads.",
+          "reason": "Windows视频限制不适用于所问移动端手动照片比较。",
+          "source_refs": [
+            {
+              "provider_source_id": "dbcec9-00",
+              "source_id": "9aa13c92-670c-4acf-93aa-cd8a7e3b8523"
+            }
+          ]
+        }
+      ],
+      "completeness_false_positive": false,
+      "literal_audit_representation_mismatches": 1,
+      "budget": {
+        "logical_searches": 3,
+        "official_reads": 5,
+        "sources": 5,
+        "offered_unique_evidence_units": 100,
+        "llm_calls": 3
+      }
+    },
+    {
+      "sample": 7,
+      "run_id": "d4c46f30-ba32-4088-a838-6acb97e13288",
+      "question": "请只依据 Google Photos 和 Dropbox 的官方帮助，比较移动端手动添加照片的流程。给出仅限本次两款产品样本的模式、相对该场景的优缺点、机会和风险；清楚区分事实、推断与建议。",
+      "program_status": "partial_failed",
+      "independent_grade": "partial",
+      "reason": "Dropbox手动步骤有事实；Google选入动画/创建内容步骤，任务与协议失败，无实际分析。",
+      "confirmed_count": 15,
+      "analysis_count": 0,
+      "factual_false_positives": 0,
+      "relevance_false_positives": [
+        {
+          "finding_id": "03f2c592-c327-4df5-80cf-7614bf618df3",
+          "quote": "3. Select the photos you want in your animation.",
+          "reason": "动画/创建内容节不能证明手动照片上传入口。",
+          "source_refs": [
+            {
+              "provider_source_id": "e74d26-00",
+              "source_id": "6e55ea11-dafc-4c34-9d6a-cdd877a5e9f6"
+            }
+          ]
+        },
+        {
+          "finding_id": "4274aef5-6a2b-4fce-a17b-fb928eb0925e",
+          "quote": "5. Select your photos or videos.",
+          "reason": "动画/创建内容节不能证明手动照片上传入口。",
+          "source_refs": [
+            {
+              "provider_source_id": "e74d26-00",
+              "source_id": "6e55ea11-dafc-4c34-9d6a-cdd877a5e9f6"
+            }
+          ]
+        },
+        {
+          "finding_id": "ab6d2227-964b-42e2-9343-6ae38cc92226",
+          "quote": "1. On your Android device, open the Google Photos app Photos .",
+          "reason": "动画/创建内容节不能证明手动照片上传入口。",
+          "source_refs": [
+            {
+              "provider_source_id": "e74d26-00",
+              "source_id": "6e55ea11-dafc-4c34-9d6a-cdd877a5e9f6"
+            }
+          ]
+        },
+        {
+          "finding_id": "f44ec123-7f77-496b-81f5-818a3df41085",
+          "quote": "2. At the bottom, tap Create Edit .",
+          "reason": "动画/创建内容节不能证明手动照片上传入口。",
+          "source_refs": [
+            {
+              "provider_source_id": "e74d26-00",
+              "source_id": "6e55ea11-dafc-4c34-9d6a-cdd877a5e9f6"
+            }
+          ]
+        }
+      ],
+      "completeness_false_positive": false,
+      "literal_audit_representation_mismatches": 2,
+      "budget": {
+        "logical_searches": 3,
+        "official_reads": 3,
+        "sources": 3,
+        "offered_unique_evidence_units": 100,
+        "llm_calls": 3
+      }
+    },
+    {
+      "sample": 8,
+      "run_id": "c98555f6-9877-42d4-980d-f1e1b5694058",
+      "question": "In Google Photos Android, what are the steps to manually back up one photo while offline? Cite only official Google Help. Keep the offline condition; do not infer unsupported capability.",
+      "program_status": "partial_failed",
+      "independent_grade": "not_verified",
+      "reason": "通用联网备份事实不证明离线条件；整体未验证，未宣称可离线上传。官方正文另有Good internet connection，条件尚未处理。",
+      "confirmed_count": 11,
+      "analysis_count": 0,
+      "factual_false_positives": 0,
+      "relevance_false_positives": [],
+      "completeness_false_positive": false,
+      "literal_audit_representation_mismatches": 1,
+      "budget": {
+        "logical_searches": 3,
+        "official_reads": 4,
+        "sources": 4,
+        "offered_unique_evidence_units": 100,
+        "llm_calls": 3
+      }
+    }
+  ]
+}

@@ -1,0 +1,2429 @@
+{
+  "kind": "browser real final4",
+  "samples": [
+    {
+      "id": "4b32e6ba-3f01-4c86-b933-a82a0f542ca1",
+      "project_id": "71e46ed7-717f-4f50-94f3-c53874429b21",
+      "insight_id": "0f737652-21fd-45eb-82d5-a5af4e05669e",
+      "classification_run_id": "d8444f00-e710-41a7-85b4-28e49107541e",
+      "clustering_run_id": "56772384-6164-43fd-a52d-34437cca39ab",
+      "insight_decision_id": "3d734f52-96e9-4dcf-bf80-7c2372392255",
+      "research_question": "Compare manual photo upload entry points in Google Photos Android and Dropbox mobile using only official help pages. Give sample product patterns, scenario-relative strengths and weaknesses, opportunities and risks. Distinguish facts, inferences and recommendations.",
+      "scope": null,
+      "provider": "tavily",
+      "provider_query": "Compare manual photo upload entry points in Google Photos Android and Dropbox mobile using only official help pages. Give sample product patterns, scenario-relative strengths and weaknesses, opportunities and risks. Distinguish facts, inferences and recommendations.",
+      "model": "MiniMax-M3",
+      "prompt_version": "research-agent-v6",
+      "status": "partial_failed",
+      "started_at": "2026-10-17T13:36:10.085697Z",
+      "completed_at": "2026-10-17T13:38:14.114404Z",
+      "created_at": "2026-10-17T13:36:10.087193Z",
+      "error_message": "research task_kind_not_in_question_anchor: original question remains partly unverified",
+      "internal_context": {
+        "insight_title": "图片上传仅支持单张选择，复发性操作负担突出",
+        "insight_pain_point": "用户在上传图片时，每次只能选择一张，需要反复操作多次才能完成多张图片的上传。",
+        "insight_affected_segment": "unknown",
+        "insight_recommendation": "建议验证多图批量选择是否能缓解用户反复操作的体验负担（待验证假设）。",
+        "evidence_external_ids": [
+          "F001",
+          "F003",
+          "F002"
+        ],
+        "evidence_summaries": [
+          {
+            "external_id": "F001",
+            "summary": "为什么每次只能上传一张图片？"
+          },
+          {
+            "external_id": "F003",
+            "summary": "上传图片其实挺快的，就是每次只能选一张。"
+          },
+          {
+            "external_id": "F002",
+            "summary": "我传旅游照片要选几十次，能不能支持多选？"
+          }
+        ],
+        "decision_status": "accepted",
+        "decision_priority": "P2",
+        "research_question": "Compare manual photo upload entry points in Google Photos Android and Dropbox mobile using only official help pages. Give sample product patterns, scenario-relative strengths and weaknesses, opportunities and risks. Distinguish facts, inferences and recommendations.",
+        "scope": null
+      },
+      "internal_context_hash": "6897412636f997f619e9183bee0e74a277117b0288b69eae266d919385c0bfe3",
+      "task_contract": {
+        "version": "research-tasks-v6",
+        "question": "Compare manual photo upload entry points in Google Photos Android and Dropbox mobile using only official help pages. Give sample product patterns, scenario-relative strengths and weaknesses, opportunities and risks. Distinguish facts, inferences and recommendations.",
+        "parse_status": "parsed",
+        "items": [
+          {
+            "id": "unresolved-1",
+            "question_span": [
+              0,
+              266
+            ],
+            "kind": "unresolved_clause",
+            "role": "core",
+            "subject": {
+              "product": null,
+              "platform": null,
+              "entry": null
+            },
+            "action": "Compare manual photo upload entry points in Google Photos Android and Dropbox mobile using only official help pages. Give sample product patterns, scenario-relative strengths and weaknesses, opportunities and risks. Distinguish facts, inferences and recommendations.",
+            "constraints": [],
+            "answer_mode": "human_review_required",
+            "value": "Compare manual photo upload entry points in Google Photos Android and Dropbox mobile using only official help pages. Give sample product patterns, scenario-relative strengths and weaknesses, opportunities and risks. Distinguish facts, inferences and recommendations."
+          }
+        ],
+        "parse_notes": [
+          "模型候选经原文位置校验；完成性由服务器证据谓词独立判断"
+        ]
+      },
+      "coverage_report": {
+        "task_question": "Compare manual photo upload entry points in Google Photos Android and Dropbox mobile using only official help pages. Give sample product patterns, scenario-relative strengths and weaknesses, opportunities and risks. Distinguish facts, inferences and recommendations.",
+        "parse_status": "parsed",
+        "items": [
+          {
+            "requirement_id": "unresolved-1",
+            "role": "core",
+            "kind": "unresolved_clause",
+            "status": "not_verified",
+            "evidence_ids": [],
+            "evidence_source_ids": [],
+            "gap": "证据尚未覆盖这一要求"
+          }
+        ],
+        "procedure_status": "insufficient",
+        "overall_completable": false,
+        "failure_reasons": [
+          "证据尚未覆盖这一要求"
+        ],
+        "semantic_review": "NOT_MEASURED"
+      },
+      "execution_trace": {
+        "version": "research-execution-v6",
+        "events": [
+          {
+            "stage": "search",
+            "query": "Compare manual photo upload entry points in Google Photos Android and Dropbox mobile using only official help pages. Give sample product patterns, scenario-relative strengths and weaknesses, opportunities and risks. Distinguish facts, inferences and recommendations.",
+            "query_index": 0,
+            "missing_requirement_ids": [],
+            "sources_before_filters": [
+              {
+                "provider_source_id": "bdb995-00",
+                "url": "https://www.reddit.com/r/dropbox/comments/10oisfc/dropbox_vs_google_photos_for_photo_backup",
+                "title": "Dropbox vs Google Photos for photo backup",
+                "snippet": "The Dropbox app and webpage is SLOW to refresh when browsing through the photos. It works reasonably on the iPhone, but Android app on"
+              },
+              {
+                "provider_source_id": "9f7e5a-01",
+                "url": "https://medium.com/viamineral/dropbox-vs-google-one-for-photographers-which-is-better-de3fbb4e7d31",
+                "title": "Dropbox vs. Google One for Photographers — Which Is Better? | by Mineral | viaMineral | Medium",
+                "snippet": "When people upload photos using the Google Photos desktop app, they can leverage Google’s facial recognition feature, as well as an impressive AI feature that lets you search for photos based on what they contain, such as “red table” or “cars” or anything that Google’s software has detected in the photo.\n\nSo, in some aspects, Google Photos are easier to use than Dropbox, and in others, Dropbox is the winner.\n\nUploading — Google One vs. Dropbox\n\nThis is where things get a little complicated for Google. [...] This is where things get a little complicated for Google.\n\nDropbox is one app. It works seamlessly. There is no confusion. Although the “photos” tab in the app isn’t the greatest, it’s still there, and you can at least search photos by date. Getting those photos into Dropbox doesn’t require mental gymnastics or multiple apps. Photos are either uploaded automatically from your phone or from the desktop app. Simple.\n\nIt’s completely different with Google One, I mean Drive, I mean Photos…\n\nIt works like this: There are two desktop apps — Google Drive and Google Photos — and two mobile apps. To make use of Google Photos’ AI features, you need to upload the photos using the Google Photos desktop app which isn’t the most user-friendly experience in the world. [...] Google Drive does not have such features.\n\nThe Google Photos Android and iOS apps automatically upload photos from a mobile phone to Google Photos, but this is not of much use to professional photographers who usually want to upload original photos from their DSL cameras. To do this, they would need to transfer their camera’s photos onto their desktop computers, and install the Google Photos desktop application, then configure the application to automatically upload certain folders.\n\nAnd then there’s Google One.\n\nGoogle One is a subscription that gives you cloud storage across Google’s suite of products — Gmail, Google Drive, Google Photos, etc."
+              },
+              {
+                "provider_source_id": "1d6d83-02",
+                "url": "https://www.capterra.com/compare/143068-253103/Dropbox-Business-vs-Google-Photos",
+                "title": "Compare Dropbox vs Google Photos 2026",
+                "snippet": "Unsure of what to choose? Check Capterra to compare Dropbox and Google Photos based on pricing, features, product details, and verified reviews."
+              },
+              {
+                "provider_source_id": "dd1cd2-03",
+                "url": "https://www.tomsguide.com/computing/cloud-storage/dropbox-vs-google-drive",
+                "title": "Dropbox vs. Google Drive: Which is right for you?",
+                "snippet": "In this guide, I'll compare Dropbox vs. Google Drive and run through their strengths and weaknesses to help you make your decision. Latest"
+              },
+              {
+                "provider_source_id": "bbd2ac-04",
+                "url": "https://www.multcloud.com/tutorials/dropbox-vs-google-photos-1207.html",
+                "title": "Dropbox vs Google Photos: Which is Better?",
+                "snippet": "Discover Dropbox vs Google Photos in 4 aspects. After reading, you can find out which cloud storage service is best suited for your needs."
+              }
+            ],
+            "source_ids_after_filters": []
+          },
+          {
+            "stage": "search",
+            "query": "google photos Android Mobile manual photos upload site:support.google.com",
+            "query_index": 1,
+            "missing_requirement_ids": [
+              "usable_official_source"
+            ],
+            "sources_before_filters": [
+              {
+                "provider_source_id": "6b12a2-00",
+                "url": "https://support.google.com/photos/thread/78432620/manual-backup-quality?hl=en",
+                "title": "Manual Backup Quality - Google Photos Community",
+                "snippet": "This seems to indicate that the setting to \"Original\" or \"High Quality\" in the web app also works for photos uploaded manually in the Google Photos app on mobile devices.\n\nOriginal PosterGoogle user marked this as an answer\n\nHelpful?\n\n2\n\nUpvote\n\nDownvote\n\nView conversation\n\nAll Replies (4)\n\njanvb Diamond Product Expert\n\nRecommended Answer\n\nOct 22, 2020\n\n10/22/2020, 8:46:43 AM\n\nGet link\n\nReport abuse\n\nI did a small experiment.\n\nOn my Android phone I am signed in to my main account 1 (where most photos are uploaded manually from computer), but photos are synced to another account 2, to separate them from my main collection. [...] Recommended Answer\n\njanvb Diamond Product Expert\n\nOct 22, 2020\n\n10/22/2020, 8:46:43 AM\n\nGet link\n\nReport abuse\n\nI did a small experiment.\n\nOn my Android phone I am signed in to my main account 1 (where most photos are uploaded manually from computer), but photos are synced to another account 2, to separate them from my main collection.\n\n1.   Setting on account 1 is \"High Quality\" (HQ).  \nI take a new photo, and upload it manually to account 1.  \nAfter a few minutes it is compressed to HQ.  \n2.   I change the setting to \"Original\" in account 1  \nI take another new photo, upload manually, and now it remains in Original quality (3,3 MB)  \nOn account 2 (where it is automatically uploaded), it is compressed to 900 kb (as expected) [...] 1.   Setting on account 1 is \"High Quality\" (HQ).  \nI take a new photo, and upload it manually to account 1.  \nAfter a few minutes it is compressed to HQ.  \n2.   I change the setting to \"Original\" in account 1  \nI take another new photo, upload manually, and now it remains in Original quality (3,3 MB)  \nOn account 2 (where it is automatically uploaded), it is compressed to 900 kb (as expected)\n\nThis seems to indicate that the setting to \"Original\" or \"High Quality\" in the web app also works for photos uploaded manually in the Google Photos app on mobile devices.\n\nOriginal PosterGoogle user marked this as an answer\n\njanvb Diamond Product Expert\n\nRecommended Answer\n\nOct 22, 2020\n\n10/22/2020, 11:49:37 AM\n\nGet link\n\nReport abuse\n\n@Garb StylesandRinus Alewijnse"
+              },
+              {
+                "provider_source_id": "a67208-01",
+                "url": "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid",
+                "title": "Back up photos & videos - Android - Google Photos Help",
+                "snippet": "Turn Backup on or off\n\n## Check if backup is complete\n\n1. On your Android phone or tablet, open the Google Photos app Photos.\n2. Sign in to your Google Account.\n3. At the top right, tap your Profile picture or Initial.\n4. The progress of your backup is measured by how many items remain to upload.\n    When your items finish backing up, your status reads \"Backup complete.\"\n    If your backup status is off, your status reads \"Backup is off.\"\n\n## Manually back up photos & videos\n\n1. On your Android device, open the Google Photos app Photos.\n2. Sign in to your Google Account.\n3. Open the photo or video.\n4. Tap Back up now.\n    Alternatively, you can tap the Back up button or scroll to the bottom, then tap Back up now.\n\nTips: [...] Empty thumbnail:Item isn’t backed up.\n Cloud check : Item is backed up.\n Uploading : Item is in the process of being backed up.\n In Queue or Paused : Item isn’t currently backing up but it will eventually.\n Permanent failure : Item permanently failed.\n\n## Change your backup settings\n\nBack up to a different account\n\n1. On your Android phone or tablet, open the Google Photos app Photos.\n2. Sign in to your Google Account.\n3. At the top right, tap your Profile picture or Initial.\n4. Tap Photos settings Settings and then Backup.\n5. Under \"Account & Storage,\" tap your Profile picture or Initial.\n6. Select the Google Account you want to back up to.\n\nBack up device folders [...] Empty thumbnail: Item is backed up.\n Uploading :Item is in the process of being backed up.\n In Queue or Paused : Item isn’t currently backing up but it will eventually.\n Cloud slash :Item isn’t backed up, and backup isn’t pending.\n Permanent failure : Item permanently failed.\n\nTip: Items that were recently backed up only show Cloud check  for 3 seconds. After that, the backed up photo shows an empty thumbnail.\n\nIf backup is off\n\nIf backup is off for all of the Google Accounts you’re logged into in Google Photos, you can check a photo’s backup status:"
+              },
+              {
+                "provider_source_id": "9cef35-02",
+                "url": "https://support.google.com/photos/answer/6131416?hl=en&co=GENIE.Platform%3DAndroid",
+                "title": "Share photos & videos - Android phone & tablet - Google Photos Help",
+                "snippet": "Create a shared album\n\n1. On your mobile device, open the Google Photos app Photos.\n2. Sign in to your Google Account.\n3. At the bottom, tap Photos.\n4. Select photos or videos for the new album.\n    To select one photo or video for the new album:\n     + Open the photo you want.\n     + At the bottom, tap Add Add and then Album and then New Album\n    To select multiple photos or videos for the new album:\n     + Touch and hold the photos or videos you want.\n     + At the bottom, tap Create Add  and then Album\n5. Enter an album title.\n6. Tap Done Done.\n7. When the album is complete, at the bottom, tap Share Share.\n8. Select who to share your album with.\n\nImportant: [...] You can turn Quick Edits on or off at any time.\n\n#### On the Quick Edits screen\n\n1. At the top right, tap the Gear icon  and then Turn off.\n\n#### In the app settings\n\n1. On your mobile device, open the Google Photos app Photos.\n2. At the top, tap your account Profile picture or Initial and then the Gear icon .\n3. Tap Sharing and then Manage sharing activity.\n4. Turn \"Quick edit before sharing\" on or off.\n\nCreate a shared album [...] Copy the photo for use in other apps\n\nYou can copy your photos and videos directly from Google Photos to your phone's clipboard and paste them into other apps.\n\n1. On your Android device, open the Google Photos app Photos.\n2. Sign in to your Google Account.\n3. Select a photo, album, or video.\n4. Tap Share Share.\n5. Scroll through the sharing options.\n6. Tap Copy .\n7. Paste the photo into the desired location.\n\nSend a link or share to other apps\n\n1. On your mobile device, open the Google Photos app Photos.\n2. Sign in to your Google Account.\n3. Select a photo, album, or video.\n4. Tap Share Share.\n5. To select another app to share, swipe left.\n6. To create and share a link, tap Create link."
+              },
+              {
+                "provider_source_id": "506683-03",
+                "url": "https://support.google.com/photos/answer/11828494?hl=en&co=GENIE.Platform%3DAndroid",
+                "title": "Import photos to your library - Android phone & tablet - Google Photos Help",
+                "snippet": "1. Open the Google Photos app Photos.\n2. At the top, tap Create Add.\n3. Under \"Get photos,\" tap Import from other places.\n4. From the listed services, tap your source.\n    You might need to sign in first.\n\n## Related resources\n\n Download photos or videos to your device\n Back up photos & videos\n\n## Was this helpful?\n\nHow can we improve it?\n\nAndroid phone & tablet ComputeriPhone & iPad\n\n## Need more help?\n\n### Try these next steps:\n\nPost to the help community   Get answers from community members\n\ntrue\n\nClear search\n\nClose search\n\nGoogle apps\n\nMain menu\n\ntrue\n\nSearch Help Center\n\ntrue\n\ntrue\n\ntrue\n\ntrue\n\ntrue\n\nfalse\n\nfalse\n\nfalse\n\nfalse\n\nfalse [...] Google Photos Help\n\nSign in\n\nGoogle Help\n\n Help Center Community Google Photos\n\n Privacy Policy Terms of Service Submit feedback\n\nSend feedback on...\n\n Help Center\n Community\n Can't find your photos?\n\nGoogle Photos\n\n# Import photos to your library\n\nYou can import photos to your library in many ways.\n\n## Import to Google Photos\n\nImportant: All third-party services that help users import photos into Google Photos and maintain qualification in the Google Photos API Partner Program are listed as import options. Service description, promotions, and icons are provided by the respective third-party. Services that provide digitization of physical media are subject to more processes and verification before they’re listed."
+              },
+              {
+                "provider_source_id": "babdc0-04",
+                "url": "https://support.google.com/photos/answer/14216276?hl=en-GB",
+                "title": "Give your device photos access to Google Photos - Google Photos Help",
+                "snippet": "If the cloud copy on Google Photos couldn't be deleted from the Google Account, you'll get a message from the device default gallery app. To remove the photo from your Google Account manually:\n\n1. On your Android device, open the Google Photos app Photos.\n2. Sign in to your Google Account.\n3. Touch and hold a photo or video that you want to move to the bin.\n    Tip: You can choose multiple items.\n4. Tap Bin Delete and then Move to bin.\n\nTip: If you delete a photo or video in Google Photos, it stays in your bin for 30 days. Learn how to empty your bin.\n\nDuplicate files on your device\n\nWhen there are multiple copies of the same photo on your device, your device's default gallery app shows all the local copies on your phone in the 'All photos' tab. The Google Photos app only shows one copy. [...] 1. On your Android device, open the Google Photos app Photos.\n2. Sign in to your Google Account.\n3. At the top right, tap your profile picture or initial.\n4. Tap Photos settings Settings and then Apps and devices and then Google Photos access.\n5. Tap the device's default gallery app name.\n6. Tap Remove access.\n\n## Allow access to your default gallery app\n\nImportant: If you want your default gallery app to access user data in Google Photos again, you must use the device's default gallery app. Your device's default gallery app might call this 'cloud-sync' or 'cloud-backup'.\n\nYou need to allow access to your device's default gallery app with Google Photos again, if you:\n\n Clear Google Photos app data\n Uninstall the Google Photos app\n Reset your device\n Get a new device [...] When Google Photos backup is off, the Google Account connected to your phone's phone app is the account that was active when you turned gallery access on. To change the connected account:\n\n1. On your Android device, open the Google Photos app Photos.\n2. Sign in to your Google Account.\n3. At the top, tap your profile picture or initial.\n4. Tap Photos settings Settings and then Apps and devices and then Google Photos access.\n5. Tap the name of your device's default gallery app.\n6. Tap the connected Google Account.\n7. Choose the Google Account that you want to be the connected account.\n\nLearn how to back up photos and videos.\n\nDelete or restore a photo or video"
+              }
+            ],
+            "source_ids_after_filters": [
+              "a67208-01",
+              "9cef35-02",
+              "506683-03",
+              "babdc0-04"
+            ]
+          },
+          {
+            "stage": "official_read",
+            "url": "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid",
+            "status": "read",
+            "sha256": "d85e30a97ada5669e47985a6037a38a73854e390ccfbdf528c45408e4a298216",
+            "byte_count": 1656478,
+            "final_url": "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid",
+            "latency_ms": 2760
+          },
+          {
+            "stage": "official_read",
+            "url": "https://support.google.com/photos/answer/6131416?hl=en&co=GENIE.Platform%3DAndroid",
+            "status": "read",
+            "sha256": "19e53dd2cda8f82f0678bfe5d992b5072240abbb398b17dc2edd31d06a75ebc9",
+            "byte_count": 1652550,
+            "final_url": "https://support.google.com/photos/answer/6131416?hl=en&co=GENIE.Platform%3DAndroid",
+            "latency_ms": 1984
+          },
+          {
+            "stage": "search",
+            "query": "dropbox Android Mobile manual photos upload site:help.dropbox.com",
+            "query_index": 2,
+            "missing_requirement_ids": [
+              "requested_official_vendor_inventory"
+            ],
+            "sources_before_filters": [
+              {
+                "provider_source_id": "8d658a-00",
+                "url": "https://help.dropbox.com/create-upload/upload-mobile",
+                "title": "Upload files to Dropbox on a mobile device - Dropbox Help",
+                "snippet": "Dropbox\n\n# How to upload files to Dropbox on a mobile device\n\n## In this article\n\nThe information in this article applies to all Dropbox users.\n\nThe Dropbox mobile app allows you to create and upload files directly to your Dropbox account from your phone or tablet. Uploaded files sync everywhere you access your files in Dropbox.\n\nNot using Dropbox yet? See how Dropbox makes syncing files easy.\n\n## How to upload content from other mobile apps\n\nYou can upload content from other mobile apps (Photos, Messages, etc.) to your Dropbox account. To do so:\n\nNote: You must be logged into your Dropbox account on the Dropbox mobile app.\n\n## How to upload photos and videos\n\nIf you don't have camera uploads enabled, you can manually add photos to your Dropbox account. To do so: [...] ## How to upload other types of files\n\nYou can also choose to create content using Microsoft Office applications.\n\nLearn more about creating content with Microsoft Office applications.\n\nIf your device has an SD card, you can upload files to Dropbox from there. To do so:\n\nNote: If you can't view your SD card when browsing for files to upload, verify that Show advanced devices is checked by tapping the menu button at the top of the screen and looking under Settings.\n\niPhone/iPad users can also upload other types of files using either of the following:\n\nYes, thanks!\n\nNot really\n\nLet us know how why it didn't help:\n\nThanks for letting us know!\n\nThanks for your feedback!\n\n### Related Articles\n\n#### Dropbox Replay FAQs\n\n#### How can I export to an SD card from my Android phone? [...] Note: The Dropbox app for Windows devices does not currently support video uploads. This is due to operating system limitations.\n\n## How to upload photos overnight in iOS\n\nIf you have to upload a large amount of photos or videos from your camera app, you can use the overnight uploads feature. Overnight uploads allows you to upload your photos and videos continuously through the night, keeping the Dropbox mobile app open and dimming your device’s brightness.\n\nLearn more about overnight uploads.\n\n## How to upload audio files\n\niOS users can record audio using the Dropbox mobile app and save directly to their Dropbox account. To do so:\n\nNote: The Dropbox mobile app for Windows in S mode (Dropbox Lite) and Android devices do not currently support audio capture."
+              },
+              {
+                "provider_source_id": "e249f7-01",
+                "url": "https://help.dropbox.com/installs/android-app-fixes",
+                "title": "Some common fixes for the Dropbox Android app - Dropbox Help",
+                "snippet": "The Dropbox Android app requires an internet connection to open, preview, and upload or download files. If you can't complete one of these actions, verify that you have a strong WiFi or data connection and try reloading your file.\n\nIf you're connected to internet and are still having issues, try signing out and signing back in:\n\nNote: In December 2021, we deleted the albums feature from the Android app. This change didn’t remove photos or videos you’ve uploaded to the app. You can still find your uploaded photos and videos in the Photos tab or at dropbox.com/photos.\n\n## Is my download or upload failing due to file size? [...] ## Is my download or upload failing due to file size?\n\nYou may encounter issues downloading large files from the Dropbox app on your mobile device. Unfortunately our mobile clients do not have a \"resume download\" feature, so large files (usually those larger than 100 MB) may not download properly. This is especially true over a mobile connection, where connectivity can be intermittent.\n\nIf an upload is failing on your mobile device, you can try uploading the file via the Dropbox desktop application on your computer. The Dropbox desktop application can handle files and folders of any size and any amount of files and folders. If you don't have Dropbox installed on your computer, you can download the application and log into your Dropbox account.\n\n## How do I cancel an upload? [...] ## How do I cancel an upload?\n\n## I seem to have a caching issue—what should I do?\n\nCaching issues can be cleared by reinstalling the Dropbox Android app, but you can also manually clear your cache:\n\n## How do I clear my search history?\n\n## What if I can’t update to the latest version of the Dropbox Android app?\n\nSome Android users have reported issues updating or auto-updating to new versions of the Dropbox Android app from Google Play.\n\nThe Dropbox engineering team is working with Google to help resolve the issue. In the meantime, you should be able to solve the problem by following these steps:\n\nGoogle Play should rebuild what it needs when you run it again. Once it does, you will be able to update to the latest version of the Dropbox Android app normally."
+              },
+              {
+                "provider_source_id": "a72759-02",
+                "url": "https://help.dropbox.com/create-upload/camera-uploads-overview",
+                "title": "How to use camera uploads - Dropbox Help",
+                "snippet": "Dropbox\n\n# How to use camera and mobile device uploads\n\n## In this article\n\nThis article describes a feature available to all Dropbox users, except:\n\n Dropbox users on Linux\n Dropbox teams who use Dropbox Enterprise Mobility Management (EMM) for Android\n\nThis article describes a feature available to all Dropbox users, except:\n\nYou can upload photos and videos from your phone or other devices to Dropbox by connecting them to your computer and using the camera uploads feature. Uploading your photos and videos to Dropbox ensures your files are securely backed up, accessible from any device, while freeing space on your phone.\n\nDropbox team admins: Learn how to turn camera uploads on or off for your team.\n\n## Turn photo and video uploads on or off on the Dropbox mobile app [...] To turn photo uploads on or off on the Dropbox mobile app for Android:\n\nTo turn photo uploads on or off on the Dropbox mobile app for iOS:\n\n## How to upload photos and videos overnight on the Dropbox mobile app\n\nNote: This feature is available on iOS devices only.\n\nIf you have to upload a large amount of photos or videos from your camera app, you can use the overnight uploads feature. Overnight uploads allows you to upload your photos and videos continuously through the night, keeping the Dropbox mobile app open and dimming your device’s brightness.  \n  \nTo turn overnight uploads on or off:\n\nNote: To successfully upload your photos and videos overnight, you must:\n\n## Turn photo and video uploads on or off in the Dropbox desktop app [...] #### Why did camera uploads use all of my cellular data?\n\nBy default, camera uploads use cellular data when WiFi isn’t available. You can change this setting by following the instructions for your device below.  \n  \nAndroid:\n\niOS:\n\n#### Can I upload iOS Live Photos?\n\nYou can upload Live Photos on the Dropbox app. Learn how to upload iOS Live photos.  \n Note: Live Photos uploaded to Dropbox from other apps will be saved as normal photos.\n\n#### What should I do if camera uploads aren't working?\n\nIf camera uploads aren't working, follow the steps in our troubleshooting guide.\n\n#### Why don’t I see the option to turn on camera uploads?\n\nIf you’re on a Dropbox team and you don’t see a camera uploads option, your admin may have turned the feature off for your team."
+              },
+              {
+                "provider_source_id": "34ff37-03",
+                "url": "https://help.dropbox.com/create-upload",
+                "title": "Create and upload - Dropbox Help",
+                "snippet": "Dropbox Replay FAQs\n\nHow to manage files and projects in Dropbox Replay\n\nTurn camera uploads on/off for a Dropbox team\n\nWhy aren't my photos appearing in the Dropbox mobile app?\n\nHow to save screenshots & screen recordings\n\nHow can I export to an SD card from my Android phone?\n\n## Uploading to Dropbox DocSend\n\nFile upload limitations in Dropbox DocSend\n\nConnect cloud storage providers in Dropbox DocSend\n\nUpload and extract ZIP files in Dropbox DocSend\n\nHow to fix custom font issues in Dropbox DocSend\n\nDocuments marked as final in Dropbox DocSend\n\nHow to upload files to Dropbox DocSend\n\n## Uploading images, photos, videos, and more\n\nFix issues uploading PDFs to Dropbox Sign\n\n## Creating documents in Dropbox DocSend\n\nSignable documents in Dropbox DocSend [...] Dropbox\n\n# Create and upload\n\nLearn how to create documents, upload files and folders, and more\n\n## Creating files and folders\n\nAdd files and folders to your Dropbox account\n\nHow to copy files from Google Drive to Dropbox\n\nCreating and using folders in Dropbox\n\nPackage files and Dropbox\n\nCopy or duplicate Dropbox files\n\nWhy is Dropbox unable to upload my files?\n\nHow to Email Files to Dropbox\n\nHow to use Dropbox Paper templates\n\nHow to write content using Dropbox Dash\n\nCreate a Dropbox Paper doc\n\n## Uploading images, photos, and videos\n\nUpload files to Dropbox on a mobile device\n\nTroubleshoot issues with camera uploads\n\nHow to upload Motion & Live Photos on Dropbox\n\nSupport for HEIF (.heic) and HEVC photo and video files\n\nDropbox Replay FAQs [...] How to pre-fill data in Dropbox Forms\n\nAdd merge fields to a template in Dropbox Sign\n\nHow to use Dropbox Sign\n\nDuplicate a template or template link in Dropbox Sign\n\nCreate and save signatures in Dropbox Sign\n\nAdd Dropbox Sign signature on smartphones\n\nHow to create Dropbox Sign templates\n\nHow to use the Dropbox Sign template gallery\n\nHow to use AI Auto-place Fields in Dropbox Sign\n\n## Scanning documents\n\nScan documents using the Dropbox mobile app\n\n## Frequently asked questions\n\n## Other ways to get help\n\nContact support icon\n\n### Contact support\n\nLearn about your support options, file a support ticket, and check the status of open tickets.\n\nCommunity forum icon\n\n### Community\n\nConnect with other Dropbox customers to get answers and learn best practices.\n\nLearn icon\n\n### Learn"
+              },
+              {
+                "provider_source_id": "12525a-04",
+                "url": "https://help.dropbox.com/create-upload/camera-uploads-fix",
+                "title": "Troubleshoot issues with camera uploads - Dropbox Help",
+                "snippet": "### Make sure your Dropbox app is up to date\n\nYour device settings determine whether you have to update the apps on your device manually or if they’re updated automatically. Check if the Dropbox app is up to date on your device:\n\nNote: If you’re on a Dropbox Basic plan, you must have the Dropbox desktop app installed to use camera uploads.\n\nIf you’ve tried the solutions above and you’re still experiencing issues, there are a few other reasons your photos may not be appearing in the mobile app.\n\n### Make sure your operating system is up to date\n\nCheck to see if the operating system on your device is supported by Dropbox. If it's not, upgrade to the latest version.\n\n### Check the upload settings on your phone [...] ### Check the upload settings on your phone\n\nSometimes the settings on your device prevent you from uploading photos in the background. Learn how to adjust your upload settings.\n\nYes, thanks!\n\nNot really\n\nLet us know how why it didn't help:\n\nThanks for letting us know!\n\nThanks for your feedback!\n\n### Related Articles\n\n#### Dropbox Replay FAQs\n\n#### How can I export to an SD card from my Android phone?\n\n#### How to manage files and projects in Dropbox Replay\n\n#### How to save screenshots to Dropbox\n\n### Community answers\n\n## Other ways to get help\n\nIcon depicting a speech bubble\nIcon depicting two people\nTwitter Icon\n\n##### Dropbox\n\n##### Products\n\n##### Features\n\n##### Support\n\n##### Resources\n\n##### Company\n\n## Choose a language"
+              }
+            ],
+            "source_ids_after_filters": [
+              "8d658a-00",
+              "a72759-02",
+              "12525a-04"
+            ]
+          },
+          {
+            "stage": "official_read",
+            "url": "https://help.dropbox.com/create-upload/upload-mobile",
+            "status": "read",
+            "sha256": "5e686ea99b09dc875b95347105aad601c681dee4ee3898379bdb5f77e21feb8e",
+            "byte_count": 697818,
+            "final_url": "https://help.dropbox.com/create-upload/upload-mobile",
+            "latency_ms": 1300
+          },
+          {
+            "stage": "official_read",
+            "url": "https://help.dropbox.com/create-upload/camera-uploads-overview",
+            "status": "read",
+            "sha256": "ffba05016a8c1c66ef4f148129b78565a7912fbfbc0dcf20a08ff13af07c0d9e",
+            "byte_count": 760998,
+            "final_url": "https://help.dropbox.com/create-upload/camera-uploads-overview",
+            "latency_ms": 1444
+          },
+          {
+            "stage": "official_read",
+            "url": "https://help.dropbox.com/create-upload/camera-uploads-fix",
+            "status": "read",
+            "sha256": "e3e69f53d31a3335ed7b7cf388bcad5a2772aeb9cfe54630231f07d9a95238d6",
+            "byte_count": 696642,
+            "final_url": "https://help.dropbox.com/create-upload/camera-uploads-fix",
+            "latency_ms": 1029
+          },
+          {
+            "stage": "llm",
+            "attempt": 1,
+            "retry_hint": null,
+            "response_metadata": {
+              "stop_reason": "tool_use",
+              "content_block_counts": {
+                "text": 1,
+                "tool_use": 1
+              },
+              "usage": {
+                "input_tokens": 12347,
+                "output_tokens": 5631,
+                "cache_creation_input_tokens": 0,
+                "cache_read_input_tokens": 128
+              }
+            },
+            "task_contract_failure": {
+              "code": "task_kind_not_in_question_anchor",
+              "detail": "tasks[2] kind=procedure. Use a kind allowed by this question anchor; remove redundant tasks for the same anchor. A can/whether question is capability, not an extra procedure."
+            },
+            "validation_code": "evidence_ids_too_many"
+          },
+          {
+            "stage": "llm",
+            "attempt": 2,
+            "retry_hint": "[validation code=evidence_ids_too_many]  Correct the closed schema; use one task per question anchor and a kind from allowed_kinds. Do not self-rate completion. Use only offered IDs; analyses need confirmed facts.",
+            "response_metadata": {
+              "stop_reason": "tool_use",
+              "content_block_counts": {
+                "tool_use": 1
+              },
+              "usage": {
+                "input_tokens": 15539,
+                "output_tokens": 2186,
+                "cache_creation_input_tokens": 0,
+                "cache_read_input_tokens": 128
+              }
+            },
+            "task_contract_failure": {
+              "code": "task_subject_not_in_question",
+              "detail": ""
+            },
+            "guard_failures": [],
+            "analysis_rejections": [],
+            "selected_evidence_ids": [
+              "a67208-01@4898#1",
+              "a67208-01@4898#2",
+              "a67208-01@4898#3",
+              "a67208-01@4898#4",
+              "a67208-01@5080+94",
+              "a67208-01@5296+130",
+              "8d658a-00@922+94",
+              "8d658a-00@887#1",
+              "8d658a-00@887#2",
+              "8d658a-00@887#3",
+              "8d658a-00@887#4",
+              "8d658a-00@887#5",
+              "8d658a-00@887#6",
+              "8d658a-00@887#7",
+              "8d658a-00@887#8",
+              "8d658a-00@1386+83",
+              "8d658a-00@749+77",
+              "8d658a-00@1556+121",
+              "8d658a-00@2875+74",
+              "8d658a-00@3249+196",
+              "a72759-02@645#5",
+              "a72759-02@1379+52",
+              "a72759-02@1432+121",
+              "a72759-02@1308#1",
+              "a72759-02@1308#2",
+              "a72759-02@1308#3",
+              "a72759-02@2055+72",
+              "a72759-02@1308#4",
+              "a72759-02@1308#5",
+              "a72759-02@1308#6"
+            ],
+            "coverage": {
+              "task_question": "Compare manual photo upload entry points in Google Photos Android and Dropbox mobile using only official help pages. Give sample product patterns, scenario-relative strengths and weaknesses, opportunities and risks. Distinguish facts, inferences and recommendations.",
+              "parse_status": "parsed",
+              "items": [
+                {
+                  "requirement_id": "unresolved-1",
+                  "role": "core",
+                  "kind": "unresolved_clause",
+                  "status": "not_verified",
+                  "evidence_ids": [],
+                  "evidence_source_ids": [],
+                  "gap": "证据尚未覆盖这一要求"
+                }
+              ],
+              "procedure_status": "insufficient",
+              "overall_completable": false,
+              "failure_reasons": [
+                "证据尚未覆盖这一要求"
+              ],
+              "semantic_review": "NOT_MEASURED"
+            }
+          },
+          {
+            "stage": "llm",
+            "attempt": 3,
+            "retry_hint": "[validation code=task_subject_not_in_question]  Each task must reference an existing question anchor and use a kind from allowed_kinds; one task per anchor, do not self-rate completion; return exactly tasks,evidence_ids,task_bindings,analyses.",
+            "response_metadata": {
+              "stop_reason": "tool_use",
+              "content_block_counts": {
+                "text": 1,
+                "tool_use": 1
+              },
+              "usage": {
+                "input_tokens": 16832,
+                "output_tokens": 4944,
+                "cache_creation_input_tokens": 0,
+                "cache_read_input_tokens": 128
+              }
+            },
+            "task_contract_failure": {
+              "code": "task_kind_not_in_question_anchor",
+              "detail": "tasks[2] kind=procedure. Use a kind allowed by this question anchor; remove redundant tasks for the same anchor. A can/whether question is capability, not an extra procedure."
+            },
+            "guard_failures": [],
+            "analysis_rejections": [],
+            "selected_evidence_ids": [
+              "a67208-01@4898#1",
+              "a67208-01@4898#2",
+              "a67208-01@4898#3",
+              "a67208-01@4898#4",
+              "a67208-01@5080+94",
+              "a67208-01@5296+130",
+              "a67208-01@5181+114",
+              "a67208-01@5175+5",
+              "a67208-01@1300+86",
+              "8d658a-00@922+94",
+              "8d658a-00@887#1",
+              "8d658a-00@887#2",
+              "8d658a-00@887#3",
+              "8d658a-00@887#4",
+              "8d658a-00@887#5",
+              "8d658a-00@887#6",
+              "8d658a-00@887#7",
+              "8d658a-00@887#8",
+              "8d658a-00@1386+83",
+              "8d658a-00@1556+121",
+              "8d658a-00@749+77",
+              "8d658a-00@2875+74",
+              "a72759-02@645#5",
+              "a72759-02@645#10",
+              "a72759-02@645#11",
+              "a72759-02@1308#1",
+              "a72759-02@1308#2",
+              "a72759-02@1308#3",
+              "a72759-02@1308#4",
+              "a72759-02@1308#5",
+              "a72759-02@1308#6",
+              "a72759-02@1379+52",
+              "a72759-02@1432+121",
+              "a72759-02@2055+72"
+            ],
+            "coverage": {
+              "task_question": "Compare manual photo upload entry points in Google Photos Android and Dropbox mobile using only official help pages. Give sample product patterns, scenario-relative strengths and weaknesses, opportunities and risks. Distinguish facts, inferences and recommendations.",
+              "parse_status": "parsed",
+              "items": [
+                {
+                  "requirement_id": "unresolved-1",
+                  "role": "core",
+                  "kind": "unresolved_clause",
+                  "status": "not_verified",
+                  "evidence_ids": [],
+                  "evidence_source_ids": [],
+                  "gap": "证据尚未覆盖这一要求"
+                }
+              ],
+              "procedure_status": "insufficient",
+              "overall_completable": false,
+              "failure_reasons": [
+                "证据尚未覆盖这一要求"
+              ],
+              "semantic_review": "NOT_MEASURED"
+            }
+          }
+        ],
+        "analysis_gaps": [],
+        "evidence_locations": [
+          {
+            "evidence_id": "a67208-01@4898#1",
+            "provider_source_id": "a67208-01",
+            "offset": 4934,
+            "length": 62,
+            "section": "Manually back up photos & videos"
+          },
+          {
+            "evidence_id": "a67208-01@4898#2",
+            "provider_source_id": "a67208-01",
+            "offset": 4997,
+            "length": 34,
+            "section": "Manually back up photos & videos"
+          },
+          {
+            "evidence_id": "a67208-01@5175+5",
+            "provider_source_id": "a67208-01",
+            "offset": 5175,
+            "length": 5,
+            "section": "Manually back up photos & videos"
+          },
+          {
+            "evidence_id": "a67208-01@4898#3",
+            "provider_source_id": "a67208-01",
+            "offset": 5032,
+            "length": 27,
+            "section": "Manually back up photos & videos"
+          },
+          {
+            "evidence_id": "a67208-01@4898#4",
+            "provider_source_id": "a67208-01",
+            "offset": 5060,
+            "length": 19,
+            "section": "Manually back up photos & videos"
+          },
+          {
+            "evidence_id": "8d658a-00@2288+125",
+            "provider_source_id": "8d658a-00",
+            "offset": 2288,
+            "length": 125,
+            "section": "How to upload audio files"
+          },
+          {
+            "evidence_id": "a72759-02@1379+52",
+            "provider_source_id": "a72759-02",
+            "offset": 1379,
+            "length": 52,
+            "section": "How to upload photos and videos overnight on the Dropbox mobile app"
+          },
+          {
+            "evidence_id": "a72759-02@4469+198",
+            "provider_source_id": "a72759-02",
+            "offset": 4469,
+            "length": 198,
+            "section": "Turn photo and video uploads on or off in the Dropbox desktop app"
+          },
+          {
+            "evidence_id": "a67208-01@5181+114",
+            "provider_source_id": "a67208-01",
+            "offset": 5181,
+            "length": 114,
+            "section": "Manually back up photos & videos"
+          },
+          {
+            "evidence_id": "9cef35-02@4207+119",
+            "provider_source_id": "9cef35-02",
+            "offset": 4207,
+            "length": 119,
+            "section": "Share photos & videos in a Conversation"
+          },
+          {
+            "evidence_id": "8d658a-00@922+94",
+            "provider_source_id": "8d658a-00",
+            "offset": 922,
+            "length": 94,
+            "section": "How to upload photos and videos"
+          },
+          {
+            "evidence_id": "8d658a-00@1386+83",
+            "provider_source_id": "8d658a-00",
+            "offset": 1386,
+            "length": 83,
+            "section": "How to upload photos and videos"
+          },
+          {
+            "evidence_id": "8d658a-00@1556+121",
+            "provider_source_id": "8d658a-00",
+            "offset": 1556,
+            "length": 121,
+            "section": "How to upload photos overnight in iOS"
+          },
+          {
+            "evidence_id": "a72759-02@645#10",
+            "provider_source_id": "a72759-02",
+            "offset": 1095,
+            "length": 83,
+            "section": "Turn photo and video uploads on or off on the Dropbox mobile app"
+          },
+          {
+            "evidence_id": "a72759-02@2289#12",
+            "provider_source_id": "a72759-02",
+            "offset": 4019,
+            "length": 84,
+            "section": "Turn photo and video uploads on or off in the Dropbox desktop app"
+          },
+          {
+            "evidence_id": "a72759-02@2289#13",
+            "provider_source_id": "a72759-02",
+            "offset": 4104,
+            "length": 71,
+            "section": "Turn photo and video uploads on or off in the Dropbox desktop app"
+          },
+          {
+            "evidence_id": "a72759-02@1432+121",
+            "provider_source_id": "a72759-02",
+            "offset": 1432,
+            "length": 121,
+            "section": "How to upload photos and videos overnight on the Dropbox mobile app"
+          },
+          {
+            "evidence_id": "a72759-02@2055+72",
+            "provider_source_id": "a72759-02",
+            "offset": 2055,
+            "length": 72,
+            "section": "How to upload photos and videos overnight on the Dropbox mobile app"
+          },
+          {
+            "evidence_id": "a72759-02@6771+85",
+            "provider_source_id": "a72759-02",
+            "offset": 6771,
+            "length": 85,
+            "section": "Can I upload iOS Live Photos?"
+          },
+          {
+            "evidence_id": "a67208-01@5296+130",
+            "provider_source_id": "a67208-01",
+            "offset": 5296,
+            "length": 130,
+            "section": "Manually back up photos & videos"
+          },
+          {
+            "evidence_id": "a67208-01@6941+131",
+            "provider_source_id": "a67208-01",
+            "offset": 6941,
+            "length": 131,
+            "section": "Check a photo or video’s backup status from your Photos view"
+          },
+          {
+            "evidence_id": "a67208-01@7510+123",
+            "provider_source_id": "a67208-01",
+            "offset": 7510,
+            "length": 123,
+            "section": "Check a photo or video’s backup status from your Photos view"
+          },
+          {
+            "evidence_id": "a67208-01@12980+86",
+            "provider_source_id": "a67208-01",
+            "offset": 12980,
+            "length": 86,
+            "section": "Learn what happens when you back up your photos"
+          },
+          {
+            "evidence_id": "9cef35-02@4327+107",
+            "provider_source_id": "9cef35-02",
+            "offset": 4327,
+            "length": 107,
+            "section": "Share photos & videos in a Conversation"
+          },
+          {
+            "evidence_id": "8d658a-00@887#6",
+            "provider_source_id": "8d658a-00",
+            "offset": 1251,
+            "length": 98,
+            "section": "How to upload photos and videos"
+          },
+          {
+            "evidence_id": "8d658a-00@3249+196",
+            "provider_source_id": "8d658a-00",
+            "offset": 3249,
+            "length": 196,
+            "section": "How to upload other types of files"
+          },
+          {
+            "evidence_id": "a72759-02@1308#2",
+            "provider_source_id": "a72759-02",
+            "offset": 1791,
+            "length": 47,
+            "section": "How to upload photos and videos overnight on the Dropbox mobile app"
+          },
+          {
+            "evidence_id": "a72759-02@2289#5",
+            "provider_source_id": "a72759-02",
+            "offset": 3116,
+            "length": 78,
+            "section": "Turn photo and video uploads on or off in the Dropbox desktop app"
+          },
+          {
+            "evidence_id": "a72759-02@5116+85",
+            "provider_source_id": "a72759-02",
+            "offset": 5116,
+            "length": 85,
+            "section": "How to connect or forget mobile devices in the Dropbox desktop app"
+          },
+          {
+            "evidence_id": "a72759-02@7245+108",
+            "provider_source_id": "a72759-02",
+            "offset": 7245,
+            "length": 108,
+            "section": "Can I use camera uploads on my personal and work account?"
+          },
+          {
+            "evidence_id": "a72759-02@7944+104",
+            "provider_source_id": "a72759-02",
+            "offset": 7944,
+            "length": 104,
+            "section": "Why do I see someone else’s photos in my Camera Uploads folder?"
+          },
+          {
+            "evidence_id": "a67208-01@5080+94",
+            "provider_source_id": "a67208-01",
+            "offset": 5080,
+            "length": 94,
+            "section": "Manually back up photos & videos"
+          },
+          {
+            "evidence_id": "a67208-01@10266+119",
+            "provider_source_id": "a67208-01",
+            "offset": 10266,
+            "length": 119,
+            "section": "Change your backup settings"
+          },
+          {
+            "evidence_id": "9cef35-02@6129#3",
+            "provider_source_id": "9cef35-02",
+            "offset": 6257,
+            "length": 116,
+            "section": "How to use Quick Edits"
+          },
+          {
+            "evidence_id": "9cef35-02@12347#2",
+            "provider_source_id": "9cef35-02",
+            "offset": 12412,
+            "length": 34,
+            "section": "On the Google Photos mobile app:"
+          },
+          {
+            "evidence_id": "9cef35-02@12347#4",
+            "provider_source_id": "9cef35-02",
+            "offset": 12505,
+            "length": 40,
+            "section": "On the Google Photos mobile app:"
+          },
+          {
+            "evidence_id": "9cef35-02@12347#5",
+            "provider_source_id": "9cef35-02",
+            "offset": 12682,
+            "length": 68,
+            "section": "On the Google Photos mobile app:"
+          },
+          {
+            "evidence_id": "9cef35-02@12347#6",
+            "provider_source_id": "9cef35-02",
+            "offset": 12751,
+            "length": 51,
+            "section": "On the Google Photos mobile app:"
+          },
+          {
+            "evidence_id": "9cef35-02@1776+85",
+            "provider_source_id": "9cef35-02",
+            "offset": 1776,
+            "length": 85,
+            "section": "Learn about what happens when you share photos & videos"
+          },
+          {
+            "evidence_id": "8d658a-00@887#1",
+            "provider_source_id": "8d658a-00",
+            "offset": 1027,
+            "length": 31,
+            "section": "How to upload photos and videos"
+          },
+          {
+            "evidence_id": "8d658a-00@887#2",
+            "provider_source_id": "8d658a-00",
+            "offset": 1059,
+            "length": 65,
+            "section": "How to upload photos and videos"
+          },
+          {
+            "evidence_id": "8d658a-00@887#3",
+            "provider_source_id": "8d658a-00",
+            "offset": 1125,
+            "length": 56,
+            "section": "How to upload photos and videos"
+          },
+          {
+            "evidence_id": "8d658a-00@887#4",
+            "provider_source_id": "8d658a-00",
+            "offset": 1182,
+            "length": 24,
+            "section": "How to upload photos and videos"
+          },
+          {
+            "evidence_id": "8d658a-00@887#5",
+            "provider_source_id": "8d658a-00",
+            "offset": 1207,
+            "length": 43,
+            "section": "How to upload photos and videos"
+          },
+          {
+            "evidence_id": "8d658a-00@887#7",
+            "provider_source_id": "8d658a-00",
+            "offset": 1350,
+            "length": 20,
+            "section": "How to upload photos and videos"
+          },
+          {
+            "evidence_id": "8d658a-00@887#8",
+            "provider_source_id": "8d658a-00",
+            "offset": 1371,
+            "length": 14,
+            "section": "How to upload photos and videos"
+          },
+          {
+            "evidence_id": "8d658a-00@749+77",
+            "provider_source_id": "8d658a-00",
+            "offset": 749,
+            "length": 77,
+            "section": "How to upload content from other mobile apps"
+          },
+          {
+            "evidence_id": "8d658a-00@2875+74",
+            "provider_source_id": "8d658a-00",
+            "offset": 2875,
+            "length": 74,
+            "section": "How to upload other types of files"
+          },
+          {
+            "evidence_id": "a72759-02@645#5",
+            "provider_source_id": "a72759-02",
+            "offset": 900,
+            "length": 25,
+            "section": "Turn photo and video uploads on or off on the Dropbox mobile app"
+          },
+          {
+            "evidence_id": "a72759-02@645#11",
+            "provider_source_id": "a72759-02",
+            "offset": 1179,
+            "length": 97,
+            "section": "Turn photo and video uploads on or off on the Dropbox mobile app"
+          },
+          {
+            "evidence_id": "a72759-02@1308#1",
+            "provider_source_id": "a72759-02",
+            "offset": 1759,
+            "length": 31,
+            "section": "How to upload photos and videos overnight on the Dropbox mobile app"
+          },
+          {
+            "evidence_id": "a72759-02@1308#3",
+            "provider_source_id": "a72759-02",
+            "offset": 1839,
+            "length": 114,
+            "section": "How to upload photos and videos overnight on the Dropbox mobile app"
+          },
+          {
+            "evidence_id": "a72759-02@1308#4",
+            "provider_source_id": "a72759-02",
+            "offset": 2128,
+            "length": 30,
+            "section": "How to upload photos and videos overnight on the Dropbox mobile app"
+          },
+          {
+            "evidence_id": "a72759-02@1308#5",
+            "provider_source_id": "a72759-02",
+            "offset": 2159,
+            "length": 46,
+            "section": "How to upload photos and videos overnight on the Dropbox mobile app"
+          },
+          {
+            "evidence_id": "a72759-02@1308#6",
+            "provider_source_id": "a72759-02",
+            "offset": 2206,
+            "length": 82,
+            "section": "How to upload photos and videos overnight on the Dropbox mobile app"
+          },
+          {
+            "evidence_id": "a72759-02@2289#1",
+            "provider_source_id": "a72759-02",
+            "offset": 2793,
+            "length": 37,
+            "section": "Turn photo and video uploads on or off in the Dropbox desktop app"
+          },
+          {
+            "evidence_id": "a72759-02@2289#2",
+            "provider_source_id": "a72759-02",
+            "offset": 2831,
+            "length": 131,
+            "section": "Turn photo and video uploads on or off in the Dropbox desktop app"
+          },
+          {
+            "evidence_id": "a72759-02@2289#3",
+            "provider_source_id": "a72759-02",
+            "offset": 2963,
+            "length": 21,
+            "section": "Turn photo and video uploads on or off in the Dropbox desktop app"
+          },
+          {
+            "evidence_id": "a72759-02@2289#4",
+            "provider_source_id": "a72759-02",
+            "offset": 2985,
+            "length": 17,
+            "section": "Turn photo and video uploads on or off in the Dropbox desktop app"
+          },
+          {
+            "evidence_id": "a72759-02@2289#6",
+            "provider_source_id": "a72759-02",
+            "offset": 3195,
+            "length": 44,
+            "section": "Turn photo and video uploads on or off in the Dropbox desktop app"
+          },
+          {
+            "evidence_id": "a72759-02@2289#7",
+            "provider_source_id": "a72759-02",
+            "offset": 3367,
+            "length": 33,
+            "section": "Turn photo and video uploads on or off in the Dropbox desktop app"
+          },
+          {
+            "evidence_id": "a72759-02@2289#8",
+            "provider_source_id": "a72759-02",
+            "offset": 3769,
+            "length": 77,
+            "section": "Turn photo and video uploads on or off in the Dropbox desktop app"
+          },
+          {
+            "evidence_id": "a72759-02@2289#9",
+            "provider_source_id": "a72759-02",
+            "offset": 3901,
+            "length": 77,
+            "section": "Turn photo and video uploads on or off in the Dropbox desktop app"
+          },
+          {
+            "evidence_id": "a72759-02@2289#10",
+            "provider_source_id": "a72759-02",
+            "offset": 3979,
+            "length": 21,
+            "section": "Turn photo and video uploads on or off in the Dropbox desktop app"
+          },
+          {
+            "evidence_id": "a72759-02@2289#11",
+            "provider_source_id": "a72759-02",
+            "offset": 4001,
+            "length": 17,
+            "section": "Turn photo and video uploads on or off in the Dropbox desktop app"
+          },
+          {
+            "evidence_id": "a72759-02@2289#14",
+            "provider_source_id": "a72759-02",
+            "offset": 4709,
+            "length": 27,
+            "section": "Turn photo and video uploads on or off in the Dropbox desktop app"
+          },
+          {
+            "evidence_id": "a72759-02@2289#15",
+            "provider_source_id": "a72759-02",
+            "offset": 4737,
+            "length": 30,
+            "section": "Turn photo and video uploads on or off in the Dropbox desktop app"
+          },
+          {
+            "evidence_id": "a72759-02@2289#16",
+            "provider_source_id": "a72759-02",
+            "offset": 4768,
+            "length": 25,
+            "section": "Turn photo and video uploads on or off in the Dropbox desktop app"
+          },
+          {
+            "evidence_id": "a72759-02@2289#17",
+            "provider_source_id": "a72759-02",
+            "offset": 4794,
+            "length": 27,
+            "section": "Turn photo and video uploads on or off in the Dropbox desktop app"
+          },
+          {
+            "evidence_id": "a72759-02@2289#18",
+            "provider_source_id": "a72759-02",
+            "offset": 4822,
+            "length": 68,
+            "section": "Turn photo and video uploads on or off in the Dropbox desktop app"
+          },
+          {
+            "evidence_id": "a72759-02@4891#2",
+            "provider_source_id": "a72759-02",
+            "offset": 5299,
+            "length": 131,
+            "section": "How to connect or forget mobile devices in the Dropbox desktop app"
+          },
+          {
+            "evidence_id": "a72759-02@7354#1",
+            "provider_source_id": "a72759-02",
+            "offset": 7782,
+            "length": 25,
+            "section": "Why do I see someone else’s photos in my Camera Uploads folder?"
+          },
+          {
+            "evidence_id": "a72759-02@7354#2",
+            "provider_source_id": "a72759-02",
+            "offset": 7808,
+            "length": 72,
+            "section": "Why do I see someone else’s photos in my Camera Uploads folder?"
+          },
+          {
+            "evidence_id": "a72759-02@6913+80",
+            "provider_source_id": "a72759-02",
+            "offset": 6913,
+            "length": 80,
+            "section": "What should I do if camera uploads aren't working?"
+          },
+          {
+            "evidence_id": "a72759-02@7053+128",
+            "provider_source_id": "a72759-02",
+            "offset": 7053,
+            "length": 128,
+            "section": "Why don’t I see the option to turn on camera uploads?"
+          },
+          {
+            "evidence_id": "a67208-01@6297#1",
+            "provider_source_id": "a67208-01",
+            "offset": 6339,
+            "length": 62,
+            "section": "Check a photo or video's backup status"
+          },
+          {
+            "evidence_id": "a67208-01@13394#1",
+            "provider_source_id": "a67208-01",
+            "offset": 13449,
+            "length": 69,
+            "section": "Remove backed up photos & videos from Google Photos"
+          },
+          {
+            "evidence_id": "a67208-01@13394#2",
+            "provider_source_id": "a67208-01",
+            "offset": 13591,
+            "length": 77,
+            "section": "Remove backed up photos & videos from Google Photos"
+          },
+          {
+            "evidence_id": "a67208-01@13394#4",
+            "provider_source_id": "a67208-01",
+            "offset": 13722,
+            "length": 86,
+            "section": "Remove backed up photos & videos from Google Photos"
+          },
+          {
+            "evidence_id": "a67208-01@1300+86",
+            "provider_source_id": "a67208-01",
+            "offset": 1300,
+            "length": 86,
+            "section": "Before you get started"
+          },
+          {
+            "evidence_id": "a67208-01@6925+15",
+            "provider_source_id": "a67208-01",
+            "offset": 6925,
+            "length": 15,
+            "section": "Check a photo or video’s backup status from your Photos view"
+          },
+          {
+            "evidence_id": "a67208-01@7493+16",
+            "provider_source_id": "a67208-01",
+            "offset": 7493,
+            "length": 16,
+            "section": "Check a photo or video’s backup status from your Photos view"
+          },
+          {
+            "evidence_id": "9cef35-02@3795#1",
+            "provider_source_id": "9cef35-02",
+            "offset": 4481,
+            "length": 62,
+            "section": "Share photos & videos in a Conversation"
+          },
+          {
+            "evidence_id": "9cef35-02@6129#1",
+            "provider_source_id": "9cef35-02",
+            "offset": 6156,
+            "length": 61,
+            "section": "How to use Quick Edits"
+          },
+          {
+            "evidence_id": "9cef35-02@6999#1",
+            "provider_source_id": "9cef35-02",
+            "offset": 7024,
+            "length": 61,
+            "section": "In the app settings"
+          },
+          {
+            "evidence_id": "9cef35-02@6999#5",
+            "provider_source_id": "9cef35-02",
+            "offset": 7288,
+            "length": 61,
+            "section": "In the app settings"
+          },
+          {
+            "evidence_id": "9cef35-02@6999#13",
+            "provider_source_id": "9cef35-02",
+            "offset": 8859,
+            "length": 62,
+            "section": "In the app settings"
+          },
+          {
+            "evidence_id": "9cef35-02@6999#20",
+            "provider_source_id": "9cef35-02",
+            "offset": 9148,
+            "length": 61,
+            "section": "In the app settings"
+          },
+          {
+            "evidence_id": "9cef35-02@6999#26",
+            "provider_source_id": "9cef35-02",
+            "offset": 9534,
+            "length": 62,
+            "section": "In the app settings"
+          },
+          {
+            "evidence_id": "9cef35-02@9921#1",
+            "provider_source_id": "9cef35-02",
+            "offset": 10029,
+            "length": 61,
+            "section": "Manage, review, or leave your conversations & albums"
+          },
+          {
+            "evidence_id": "9cef35-02@9921#5",
+            "provider_source_id": "9cef35-02",
+            "offset": 10317,
+            "length": 62,
+            "section": "Manage, review, or leave your conversations & albums"
+          },
+          {
+            "evidence_id": "9cef35-02@9921#9",
+            "provider_source_id": "9cef35-02",
+            "offset": 10681,
+            "length": 61,
+            "section": "Manage, review, or leave your conversations & albums"
+          },
+          {
+            "evidence_id": "9cef35-02@9921#16",
+            "provider_source_id": "9cef35-02",
+            "offset": 11408,
+            "length": 62,
+            "section": "Manage, review, or leave your conversations & albums"
+          },
+          {
+            "evidence_id": "9cef35-02@9921#21",
+            "provider_source_id": "9cef35-02",
+            "offset": 11784,
+            "length": 62,
+            "section": "Manage, review, or leave your conversations & albums"
+          },
+          {
+            "evidence_id": "9cef35-02@12347#1",
+            "provider_source_id": "9cef35-02",
+            "offset": 12385,
+            "length": 26,
+            "section": "On the Google Photos mobile app:"
+          },
+          {
+            "evidence_id": "9cef35-02@12347#3",
+            "provider_source_id": "9cef35-02",
+            "offset": 12447,
+            "length": 57,
+            "section": "On the Google Photos mobile app:"
+          },
+          {
+            "evidence_id": "9cef35-02@12347#7",
+            "provider_source_id": "9cef35-02",
+            "offset": 12958,
+            "length": 69,
+            "section": "On the Google Photos mobile app:"
+          },
+          {
+            "evidence_id": "9cef35-02@12347#8",
+            "provider_source_id": "9cef35-02",
+            "offset": 13028,
+            "length": 14,
+            "section": "On the Google Photos mobile app:"
+          },
+          {
+            "evidence_id": "9cef35-02@5162+5",
+            "provider_source_id": "9cef35-02",
+            "offset": 5162,
+            "length": 5,
+            "section": "Share photos & videos in a Conversation"
+          },
+          {
+            "evidence_id": "8d658a-00@405#5",
+            "provider_source_id": "8d658a-00",
+            "offset": 827,
+            "length": 59,
+            "section": "How to upload content from other mobile apps"
+          }
+        ],
+        "budgets": {
+          "logical_searches": 3,
+          "official_reads": 5,
+          "sources": 5,
+          "offered_unique_evidence_units": 100,
+          "llm_calls": 3
+        }
+      },
+      "input_count": 1,
+      "processed_count": 1,
+      "source_count": 5,
+      "finding_count": 40,
+      "input_tokens": 45102,
+      "output_tokens": 12761,
+      "unknown_token_calls": 0,
+      "latency_ms": 123463,
+      "attempt_count": 6,
+      "retry_count": 2,
+      "run_id": "4b32e6ba-3f01-4c86-b933-a82a0f542ca1",
+      "question": "Compare manual photo upload entry points in Google Photos Android and Dropbox mobile using only official help pages. Give sample product patterns, scenario-relative strengths and weaknesses, opportunities and risks. Distinguish facts, inferences and recommendations.",
+      "sources": [
+        {
+          "id": "889adba1-0e84-4988-8f97-c0d00c65d23e",
+          "run_id": "4b32e6ba-3f01-4c86-b933-a82a0f542ca1",
+          "provider": "tavily",
+          "provider_source_id": "a67208-01",
+          "url": "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid",
+          "title": "Back up photos & videos - Android - Google Photos Help",
+          "domain": "support.google.com",
+          "snippet": "# Back up photos & videos\nYou can automatically save your photos and videos to your Google Account when you turn on backup. You can access your saved photos and videos from any device you’re signed in to. Your backed-up photos and videos are private and viewable only by you on your signed-in devices unless shared. You can back up photos and videos to only one Google Account at a time. Learn how to fix backup issues.\n## Before you get started\nWhat you need to back up photos & videos\nImportant: Your Google Account storage is shared across multiple products like Google Photos, Google Drive, and Gmail. If you've used all of your storage, you can either buy more storage or clean up your storage space.\n- Good internet connection.\n- File sizes that can be backed up:\n- Photos up to 200 MB or 200 MP.\n- Videos up to 10 GB.\n- Items must be larger than 256 x 256.\n- File types that can be backed up:\n- Photos: .jpg, .heic, .heif, .png, .webp, .gif, .avif, and most RAW files.\n- Videos: .mpg, .mod, .mmv, .tod, .wmv, .asf, .avi, .divx, .mov, .m4v, .3gp, .3g2, .mp4, .m2t, .m2ts, .mts, and .mkv files.\n- File formats that can be backed up:\n- 10-bit HDR videos.\n- Topshot (Pixel only).\n- Slow-mo.\n- Depth videos.\n- Motion photos.\n- Live photos when you use the Google Photos app on your iPhone or iPad.\nIf you try to back up a file type not listed here, it may not work with Google Photos.\nTypes of RAW files you can back up\nCanon\nEOS-1D X Mark III, EOS-1D X Mark II, EOS-1D X, EOS-1Ds Mark III, EOS-1Ds Mark II, EOS-1D Mark IV, EOS-1D Mark III, EOS-1D Mark II, EOS-1D C, EOS-1D Mark II N, EOS 5D Mark IV, EOS 5D Mark III, EOS 5D Mark II, EOS 5D, EOS 5Ds, EOS 5Ds R, EOS R5, EOS 6D Mark II, EOS 6D, EOS R6, EOS R, EOS Ra, EOS RP, EOS 7D Mark II, EOS 7D, EOS 90D, EOS 80D, EOS 70D, EOS 60D, EOS 60Da, EOS 50D, EOS 40D, EOS 30D, EOS 20D, EOS 20Da, EOS 9000D (EOS 77D), EOS 8000D (EOS REBEL T6S/EOS 760D), EOS Kiss X10i (EOS REBEL T8i/EOS 850D), EOS Kiss X9i (EOS REBEL T7i/EOS 800D), EOS Kiss X8i (EOS REBEL T6i/EOS 750D), EOS Kiss X7i (EOS REBEL T5i/EOS 700D), EOS Kiss X6i (EOS REBEL T4i/EOS 650D), EOS Kiss X10 (EOS REBEL SL3/EOS 250D/EOS 200D II), EOS Kiss X9 (EOS REBEL SL2/EOS 200D), EOS Kiss X7 (EOS REBEL SL1/EOS 100D), EOS Kiss X5 (EOS REBEL T3i/EOS 600D), EOS Kiss X4 (EOS REBEL T2i/EOS 550D), EOS Kiss X3 (EOS REBEL T1i/EOS 500D), EOS Kiss X2 (EOS DIGITAL REBEL XSi/EOS 450D), EOS Kiss X90 (EOS REBEL T7/EOS 2000D/EOS 1500D), EOS Kiss X80 (EOS REBEL T6/EOS 1300D), EOS Kiss X70 (EOS REBEL T5/EOS 1200D), EOS Kiss X50 (EOS REBEL T3/EOS 1100D), EOS Kiss F (EOS DIGITAL REBEL XS/EOS 1000D), EOS Kiss Digital X (EOS DIGITAL REBEL XTi/EOS 400D DIGITAL), EOS Kiss Digital N (EOS DIGITAL REBEL XT/EOS 350D DIGITAL), EOS Kiss M (EOS M50), EOS M6 Mark II, EOS M6, EOS M5, EOS M3, EOS M2, EOS M, EOS M10, EOS M200, EOS M100, PowerShot G9 X Mark II, PowerShot G9 X, PowerShot G7 X Mark III, PowerShot G7 X Mark II, PowerShot G7 X, PowerShot G5 X Mark II, PowerShot G5 X, PowerShot G3 X, PowerShot G1 X Mark III, PowerShot G1 X Mark II, PowerShot G1 X, PowerShot G16, PowerShot G15, PowerShot G12, PowerShot G11, PowerShot G10, PowerShot S120, PowerShot S110, PowerShot S100, PowerShot S95, PowerShot S90, PowerShot SX70 HS, PowerShot SX60 HS, PowerShot SX50 HS, PowerShot SX1 IS\nFuji\nX100\nNikon\n1AW1, 1J1, 1J2, 1J3, 1J4, 1S1, 1S2, 1V1, 1V2, 1V3, D3, D3X, D4, D4S, D40, D40X, D50, D60, D70, D70s, D80, D90, D200, D300, D300s, D600, D610, D700, D750, D800, D800E, D810, D3000, D3100, D3200, D3300, D5000, D5100, D5200, D5300, D5500, D7000, D7100, D7200, Df\nCoolpix: A, P7800\nOlympus\nE-M1, E-M5, E-M10, E-P1, E-P2, E-P3, E-P5, E-PL3, E-PL5, E-PL7, OM-D E-M5 Mark II\nPanasonic\nCM1, FZ300, G70, GF1, GF3, GF5, GF7, GH3, GH4, GM1, GM5, GX1, GX8, LX5, LX7, LX100\nSony\nA7, A7R, A7S, A7 Mark II, A55, A58, A65, A77, A77 Mark II, A99, A700, A3000, A5000, A5100, A6000, QX1, NEX-5, NEX-5N, NEX-5R, NEX-6, NEX-7, NEX-C3, NEX-F3, RX1, RX1R, RX10, RX10 Mark II, RX100, RX100 Mark II, RX100 Mark III, RX100 Mark IV\nDNG files\nMost .dng formats\n## Turn backup on or off\nImportant: It can take a while to complete a backup, depending on your internet connection, size of your uploads, and other conditions.\n1. On your Android phone or tablet, open the Google Photos app Photos .\n2. Sign in to your Google Account.\n3. At the top right, tap your Profile picture or Initial.\n4. Tap Photos settings Settings and then Backup.\n5. Turn Backup on or off.\nTurn Backup on or off\n## Check if backup is complete\n1. On your Android phone or tablet, open the Google Photos app Photos .\n2. Sign in to your Google Account.\n3. At the top right, tap your Profile picture or Initial.\n4. The progress of your backup is measured by how many items remain to upload.\n- When your items finish backing up, your status reads \"Backup complete.\"\n- If your backup status is off, your status reads \"Backup is off.\"\nthe steps to check up backup status\n## Manually back up photos & videos\n1. On your Android device, open the Google Photos app Photos .\n2. Sign in to your Google Account.\n3. Open the photo or video.\n4. Tap Back up now.\n- Alternatively, you can tap the Back up button or scroll to the bottom, then tap Back up now.\nTips:\n- When you open a single photo and you don't have enough storage: The badge shows \"Not enough storage to back up.\"\n- If you want to back up multiple photos or videos: Touch and hold the photos or videos you want to back up, and then tap Back up.\n## Check your overall backup status\nImportant: If backup is on and you have enough storage, you can find the backup status at the top of your library.\n1. On your Android device, open Google Photos Photos .\n2. At the top, check the backup status.\n- Google Photos Photos : No backup.\n- Preparing backup: Backup is starting.\n- Backing up photos: Backup is in process.\n- Backup complete : Backup is done.\n- Backup paused : Backup is currently paused.\n3. To learn more, tap the status.\n4. Optional:\n- Turn on mobile data: If you can’t access Wi-Fi, you can use mobile data to start backup.\n- Notify me: Enable notifications to receive Photos updates about backup and other features.\n- To turn on notifications, under the “Backup status,” tap Turn on notifications.\n5. To exit, tap Close Show less .\nTip: To make sure your media backs up successfully, check the requirements.\n## Check a photo or video's backup status\n1. On your Android device, open the Google Photos app Photos .\n2. Tap a photo or video.\n3. Tap More More and then About.\n4. Scroll to “Details.”\n5. If the photo is backed up, the backup status and size displays beneath Backed up Cloud done .\n- Tip: You can change the backup quality at any time. Learn how to choose the backup quality of your photos and videos.\n### Check a photo or video’s backup status from your Photos view\nYou can find a photo or video's backup status from your photos view. How you check an item's backup status depends on whether your backup is turned on or off.\nIf backup is on\nIf backup is on for at least one of the Google Accounts you’re logged into in Google Photos, you can check a photo’s backup status:\n- Empty thumbnail: Item is backed up.\n- Uploading : Item is in the process of being backed up.\n- In Queue or Paused : Item isn’t currently backing up but it will eventually.\n- Cloud slash : Item isn’t backed up, and backup isn’t pending.\n- Permanent failure : Item permanently failed.\nTip: Items that were recently backed up only show Cloud check for 3 seconds. After that, the backed up photo shows an empty thumbnail.\nIf backup is off\nIf backup is off for all of the Google Accounts you’re logged into in Google Photos, you can check a photo’s backup status:\n- Empty thumbnail: Item isn’t backed up.\n- Cloud check : Item is backed up.\n- Uploading : Item is in the process of being backed up.\n- In Queue or Paused : Item isn’t currently backing up but it will eventually.\n- Permanent failure : Item permanently failed.\n## Change your backup settings\nBack up to a different account\n1. On your Android phone or tablet, open the Google Photos app Photos .\n2. Sign in to your Google Account.\n3. At the top right, tap your Profile picture or Initial.\n4. Tap Photos settings Settings and then Backup.\n5. Under \"Account & Storage,\" tap your Profile picture or Initial.\n6. Select the Google Account you want to back up to.\nBack up device folders\nImportant: When you turn “Backup” on, your chosen device folders are automatically backed up too, not only your camera. You can choose to automatically backup all folders, or turn “Backup” on or off for individual device folders.\n1. On your Android device, open the Google Photos app Photos .\n2. Sign in to your Google Account.\n3. At the top right, tap your Profile picture or Initials.\n4. Tap Photos settings Settings and then Backup.\n5. Under \"Settings,\" tap Back up device folders.\n6. Tap the folders you want to back up.\n- Next to the folders you don't want to back up, turn off the setting.\n- Next to the folders you want to back up, turn on the setting.\n7. Optional: Turn Back up all device folders on or off.\n- If \"Back up all device folders\" is on, photos in new device folders automatically back up.\nTip: If you don’t want content from your device folders to appear in your Photos view, you can hide it. Learn how to hide content from your Photos view.\nSet daily backup limits\n1. On your Android phone or tablet, open the Google Photos app Photos .\n2. At the top right, tap your account Profile photo or Initial.\n3. Select Photos settings Settings and then Backup and then Mobile data usage.\n4. You can:\n- Choose a daily limit for how much data Google Photos can use when automatically backing up photos and videos.\n- Turn off Back up videos over data.\n- Turn off Back up while roaming.\nBack up while roaming\n1. On your Android phone or tablet, open the Google Photos app Photos .\n2. Sign in to your Google Account.\n3. At the top right, tap your Profile picture or Initial.\n4. Tap Photos settings Settings and then Backup and then Mobile data usage.\n5. Turn on Backup while roaming.\nBack up with unrestricted data\nSome mobile operators provide access to \"unrestricted mobile data,\" which is data that doesn't count towards operator quotas or limits. This option is currently available to some users on operators like Verizon and AT&T in the US. If you use one of these operators, you may find an option that enables backup for \"Wi-Fi and unrestricted mobile data.\"\nImportant: Access to unrestricted data may be limited to 5G.\n1. On your Android phone or tablet, open the Google Photos app Photos .\n2. At the top right, tap your Profile picture or Initial and then Photos settings Settings .\n3. Tap Backup and then Mobile data usage and then When there's no Wi-Fi.\n4. Tap Only use unrestricted mobile data, when data won't count against your data plan.\nTroubleshoot issues with backup\nImportant: Backup might not work well if you have battery optimization turned on for the Photos app. If you have this issue, you can turn off battery optimization.\nTo turn off battery optimization on some Android devices:\n1. Open your device’s Settings app.\n2. At the top, tap Search .\n3. Search for battery optimization, battery usage, or optimize battery.\n4. Tap Battery optimization.\n5. Tap All apps and then Photos and then Don’t optimize and then Done.\n#### Turn off battery optimization on other Android devices\n1. From the home screen, touch and hold the Photos app Photos .\n2. Tap Info Info .\n3. Under “Manage battery usage,” select Unrestricted.\nUndo device backup\nYou can remove all the photos and videos that are currently found on your device from Google Photos, but not your device. Learn how to undo device backup.\n## Check your backup across multiple Google Accounts\nImportant: The Google Photos app displays all photos and videos stored directly on your device, regardless of which Google Account you’re signed in to. Even though all photos and videos are displayed, it does not mean that they are backed up or count towards your cloud storage.\n1. On your Android phone or tablet, open the Google Photos app Photos .\n1. Alternatively, you can go to photos.google.com.\n2. Sign in to your Google Account.\n3. Review your photos. If recent photos and videos are displayed, they have been backed up to this specific Google Account.\n1. Check your backup for this account.\n4. To switch Google Accounts, at the top right, tap your Profile picture or Initial.\n5. Review your photos. If recent photos and videos are displayed, they have been backed up to this specific Google Account.\n1. Check your backup for this account.\nTip: You can allow or remove access to your default gallery app. Learn more.\n## Learn what happens when you back up your photos\nIf you have backup turned on:\n- Never lose a memory: Any photos you take from a device with backup turned on are saved to your Google Account.\nIf you’ve backed up your content manually or automatically:\n- Automatic sync: You can access any photos you take and any edits you make to them on any device you sign in to. If you edit and save a photo on your phone, the photo looks the same on Google Photos.\n- Fast and powerful search: You can search your photos by the people in them when you turn on Face Groups. You can also search by places and things in the photos. No tagging is required.\n- Automatic creations: With automatically created highlight videos, collages, animations, and panoramas, you can bring your photos to life.\n## Remove backed up photos & videos from Google Photos\n1. On your Android device, in the Google Photos app, turn off backup.\n- Turn off backup on devices where you want the photo or video to stay.\n2. On your computer or in your mobile browser, go to photos.google.com/login.\n3. Delete your selected backed up photos and videos.\n4. On your Android device, wait a few minutes and make sure you’re connected to Wi-Fi.\n5. Close and reopen the Google Photos app.\n- Deleted photos may still be in your Photos view. These photos are only local copies.\n- To check the backup status of the photo, tap the photo and then More More Scroll to \"Details.\"\nTo ensure that your photo or video isn't backed up to Google Photos again and your local copy isn't deleted, leave backup off.\nLearn what happens when you delete photos & videos.\n## Related resources\n- How your Google storage works\n- Choose the backup quality of photos and videos\n- Delete photos & video\n## Was this helpful?\nHow can we improve it?\nYesNo\nSubmit\nAndroid phone & tablet ComputeriPhone & iPad\nMore\n## Need more help?\n### Try these next steps:\nPost to the help community Get answers from community members\ntrue\n## Help\n- 1 of 4Back up photos & videos\n- 2 of 4Choose the backup quality of your photos & videos\n- 3 of 4Manage your storage\n- 4 of 4About your Google Photos activity & storage\nGet More Storage.\nMore storage across Google Drive, Gmail and Google Photos for you and your family. Access to Google experts. Family sharing option. Expanded storage.\n©2026 Google\n- Privacy Policy\n- Terms of Service\nLanguage català‎dansk‎Deutsch‎eesti‎English (United Kingdom)‎español‎español (Latinoamérica)‎Filipino‎français‎hrvatski‎Indonesia‎italiano‎latviešu‎lietuvių‎magyar‎Melayu‎Nederlands‎norsk‎polski‎português‎português (Brasil)‎română‎slovenčina‎slovenščina‎suomi‎svenska‎Tiếng Việt‎Türkçe‎íslenska‎čeština‎Ελληνικά‎български‎русский‎српски‎українська‎‏עברית‏العربية‏فارسیमराठी‎हिन्दी‎తెలుగు‎ไทย‎中文（简体）‎中文（繁體）‎日本語‎한국어‎ English‎\nEnable Dark Mode\nSend feedback on...\nThis help content & information General Help Center experience\nSearch\nClear search\nClose search\nGoogle apps\nMain menu\n14968210894972197420\ntrue\nSearch Help Center\nfalse\ntrue\ntrue\ntrue\ntrue\ntrue\n105394\nfalse\nfalse\nfalse\nfalse\nfalse",
+          "retrieved_at": "2026-10-17T13:36:20.349256Z",
+          "created_at": "2026-10-17T13:36:20.352918Z"
+        },
+        {
+          "id": "fdf5ae76-f027-44bd-9069-676e30b4efb3",
+          "run_id": "4b32e6ba-3f01-4c86-b933-a82a0f542ca1",
+          "provider": "tavily",
+          "provider_source_id": "9cef35-02",
+          "url": "https://support.google.com/photos/answer/6131416?hl=en&co=GENIE.Platform%3DAndroid",
+          "title": "Share photos & videos - Android phone & tablet - Google Photos Help",
+          "domain": "support.google.com",
+          "snippet": "# Share photos & videos\nYou can share photos, videos, albums, and highlight videos with any of your contacts, even if they don't use the Google Photos app.\n## Before you get started\nDownload and install the Google Photos app.\n### Learn about what happens when you share photos & videos\nWhat happens when you share\n- When you send to a contact in Google Photos:\n- Contacts you’ve shared with get an in-app notification and a push notification from the app. The shared item or items appear in their Updates page.\n- When you share a new album or conversation with them, they’ll also receive an email notification.\n- Their account \"Profile picture\" or \"Initial\" is added to the album or conversation and will appear faded until they view the album or conversation.\n- When they view the album or conversation, their account \"Profile picture\" or \"Initial\" will appear in the activity view next to the latest photos, comments, or likes they have viewed.\n- If they join a shared album or like, comment, or add photos in a shared album or conversation, their profile image changes to their account \"Profile picture\" or \"Initial.\"\n- When you add photos or videos to albums or conversations, your account \"Profile picture\" or \"Initial\" will appear next to the latest photos you added.\n- If you share a video captured fully or partially in slow motion, others may be able to view any part of the video at a slower speed in their own player.\n- If you edit a photo that you previously shared via link sharing, people may be able to temporarily view the unedited version through the original link.\nWhat happens when someone shares with you\nImportant: If you think someone is spamming you, or violating other abuse policies, you can block or report them. Learn more about our abuse policies.\nIf your contact can’t share their media, you can help them find and connect with you.\n- When someone shares an album or conversation with you, you will receive an email.\n- If you already use Google Photos, you’ll also receive an in-app notification and a push notification and the share appears in your Updates page.\n- If you join an album, the photos and videos shared with you may appear on your search results. You'll see a shared content badge at the bottom left of the shared item.\n- To exclude shared items in your search results: At the top right of the search results page, tap More More and then Include shared with me.\n- An ownership tag shows on the shared item.\n- To check which album or conversation an item is from: At the top left, tap the owner’s Profile picture or Initial.\n- When you view the album or conversation, your account \"Profile picture\" or \"Initial\" in the album will light up and appear next to the latest photos, comments, or likes you have viewed.\n- If you join a shared album or like, comment, or add photos in a shared album or conversation, your account \"Profile picture\" or \"Initial\" will appear next to the action you took.\n- If someone edits a photo after they've shared the link with you, the original link sharing may not immediately update to the new version of the photo.\nLearn how to leave albums and conversations.\nSave photos & videos shared with you\nWhen you save a photo or video that has been shared with you, you receive a copy of it in your library. Any edits to the original shared photo after it has been saved will not apply to your saved copy. Saved photos and videos count toward your quota except for certain partner sharing instances. Learn more about partner sharing.\nTo find photos or videos in your device gallery app, you must download them. Learn how to download photos or videos.\nTo save photos and videos shared with you in a conversation:\n1. In the conversation, scroll to the photo or video that you want to save.\n2. Below the photo or video, tap Save .\n## Share photos & videos in a Conversation\nImportant: To share an item from a locked folder, remove it first from the locked folder. Learn more about Locked Folder.\nYou can share directly with anyone with a Google Account if they're in your contacts or by searching their email address or phone number. You can also use apps outside of Google Photos through link shares or directly share your photos and videos.\nIf your contact’s phone number isn’t associated with their Google Account, you can help them find and connect with you. If your contact doesn’t have a Google Account, you can send them a link or share using another app instead.\nTo share with other people in a Conversation:\n1. On your Android device, open the Google Photos app Photos .\n2. Sign in to your Google Account.\n3. Select a photo, album, or video.\n- If Quick Edits is turned on, you can crop or enhance your photo before sharing. Learn more about Quick Edits.\n4. Tap Share Share .\n5. Under \"Send in Photos,\" select people to share with.\n- To share with one person, tap their name.\n- To find someone specific:\n1. Tap Search .\n2. Enter their name, phone number, or email address.\n- To share with more than one person, select multiple people.\n- Optional: Add a message to go with your shared media.\n- Based on your interactions, Google makes suggestions. Learn more about suggestions.\n6. Tap Send.\nTips:\n- There is a 20,000 photo limit on Conversations.\n- To hide a suggested sharing contact, press and hold their profile photo and tap Hide suggestion. To find them again to share something with them later, tap Search , enter their name, and tap Show hidden suggestions.\nYou can also automatically share your entire library with someone.\nUse & manage Quick Edits\nQuick Edits is an optional feature that lets you quickly crop and enhance a photo before you share it. With one tap, enhance will automatically straighten your photo, apply high dynamic range (HDR), and add other basic filters.\nImportant:\n- This feature is only available on Android 14 and up.\n- The Quick Edits screen is available for your original photos or images you haven't edited yet. It typically doesn't appear for photos that have been edited and sorted into document albums such as receipts and screenshots. Learn more about how to manage your screenshots, screen recordings, and documents.\n### How to use Quick Edits\n1. On your mobile device, open the Google Photos app Photos .\n2. Select the photo you want to share.\n3. On the Quick Edits screen, you can crop your photo, enhance it, and compare the enhanced version to the original.\n- If you don't want to use any edits, tap Original.\n4. Tap Share Share .\n5. Choose your sharing options\n- If you share through an app like Messages or WhatsApp, the edited photo won’t be saved to your library.\n- If you send in Photos, create a share link, or add to a shared album, the edited version will be saved to your library.\nTip: If you don't want to use Quick Edits, on the Quick Edits screen, at the top right, tap the Gear icon and then Turn off.\n### Turn Quick Edits on or off\nYou can turn Quick Edits on or off at any time.\n#### On the Quick Edits screen\n1. At the top right, tap the Gear icon and then Turn off.\n#### In the app settings\n1. On your mobile device, open the Google Photos app Photos .\n2. At the top, tap your account Profile picture or Initial and then the Gear icon .\n3. Tap Sharing and then Manage sharing activity.\n4. Turn \"Quick edit before sharing\" on or off.\nCreate a shared album\n1. On your mobile device, open the Google Photos app Photos .\n2. Sign in to your Google Account.\n3. At the bottom, tap Photos.\n4. Select photos or videos for the new album.\n- To select one photo or video for the new album:\n- Open the photo you want.\n- At the bottom, tap Add Add and then Album and then New Album\n- To select multiple photos or videos for the new album:\n- Touch and hold the photos or videos you want.\n- At the bottom, tap Create Add and then Album\n5. Enter an album title.\n6. Tap Done Done .\n7. When the album is complete, at the bottom, tap Share Share .\n8. Select who to share your album with.\nImportant:\n- You can share directly to anyone with a Google Account if they're in your contacts or by search with their email address or phone number. For everyone else, you can create a link to share.\n- When you share a link to your album, anyone with the link can view the photos and add to the album. Learn how shared album controls give your photos more privacy.\n- If you share an album that automatically adds photos of face groups, anyone with access to the album can view photos as they're added.\n- You can generate QR codes for albums and share them physically or digitally. When scanned, these QR codes direct recipients to the shared album in Google Photos.\n- You can only add the selected items to the album or turn it into a photo stack. Learn more about taking actions on photo stacks.\nCopy the photo for use in other apps\nYou can copy your photos and videos directly from Google Photos to your phone's clipboard and paste them into other apps.\n1. On your Android device, open the Google Photos app Photos .\n2. Sign in to your Google Account.\n3. Select a photo, album, or video.\n4. Tap Share Share .\n5. Scroll through the sharing options.\n6. Tap Copy .\n7. Paste the photo into the desired location.\nSend a link or share to other apps\n1. On your mobile device, open the Google Photos app Photos .\n2. Sign in to your Google Account.\n3. Select a photo, album, or video.\n4. Tap Share Share .\n5. To select another app to share, swipe left.\n6. To create and share a link, tap Create link.\nAnyone that has the shared link will be able to view the album. Learn how to change your sharing options.\nCreate QR code to share albums\n1. On your Android device, open the Google Photos app Photos .\n2. Sign in to your Google Account.\n3. Select an album.\n4. Tap Share Share and then Show QR Code.\n5. Scan the QR code to share with other devices.\n- Tip: To share offline or print the QR code, you can take a screenshot of the QR code for your album.\nAnyone who scans the QR code can access the shared album in Google Photos.\n### Manage, review, or leave your conversations & albums\nFind links, memories & conversations you’ve shared\n1. On your mobile device, open the Google Photos app Photos .\n2. At the top, tap your account Profile picture or Initial and then Photos settings.\n3. Tap Sharing and then Manage sharing activity.\n4. Check your shared links, shared memories, and conversations.\nFind albums shared with you\n1. On your Android device, open the Google Photos app Photos .\n2. At the bottom, tap Collections and then Albums.\n3. At the top, tap Shared with me.\n4. To sort your albums, tap Sort by . You can sort by:\n- Album title\n- Last modified\n- Most recent photo\nTip: To search for shared albums, tap Search or find them in the \"All\" albums view.\nFind albums you’ve shared\n1. On your mobile device, open the Google Photos app Photos .\n2. At the bottom, tap Collections and then Albums.\n- To find the albums you want, switch between “All,” “Shared with me,” and “My albums.”\nLeave an album\nWhen you leave a shared album, all of the photos, videos, comments, and likes you have added will be removed.\nTo leave an album:\n1. Tap the album.\n2. At the top right, tap More More and then Leave album.\nLeave a conversation\nWhen you leave a shared conversation, all of the photos, videos, comments, and likes you have added will be removed.\nTo leave a conversation:\n1. Tap the conversation.\n2. At the top, tap More More and then Options.\n3. Next to your name, tap Leave.\nReact to shared albums\nAdd a reaction:\n1. On your Android device, open the Google Photos app Photos .\n2. Open a shared album.\n3. Tap a photo.\n4. At the bottom left, tap Add reaction Add Reaction .\n5. Select a reaction.\n- To find more options: Tap More reactions Add Reaction .\n- To change your reaction: Tap a different reaction.\n- You can change your reaction at any time.\nFind reactions and comments from others:\n1. On your Android device, open the Google Photos app Photos .\n2. Open a shared album.\n3. Tap a photo.\n4. At the bottom left, next to \"Add reaction Add Reaction ,\" tap the reactions.\n5. Tap the photo to close.\n### Remove people or items from albums & conversations\nRemove someone from an album\n### Remove a collaborator\nImportant: You must be the owner of the album to remove someone.\n#### On web:\n1. Open the desired album.\n2. Click More More and then Options.\n3. Scroll to find the contact you’d like to have removed.\n4. Click More More and then Remove person.\n#### On the Google Photos mobile app:\n1. Open the desired album.\n2. Tap More More and then Sharing.\n3. Scroll to find the contact you’d like to have removed.\n4. Tap More More and then Remove person.\nRemove photos & videos\nYou can remove photos and videos you have added to conversations and shared albums.\nTo remove photos and videos:\n1. In a shared album or conversation thread, tap the photo or video.\n2. At the top right, tap More More and then Remove.\nTip: If you remove a photo or video from an album, it isn't deleted from your Google Photos library.\nRemove comments & likes\nTo remove comments and likes:\n1. In a shared album or conversation thread, tap the comment or like.\n2. Tap Delete.\n## Related resources\n- Create & edit photo albums\n- Delete photos & videos\n- Back up your photos & videos\n- Stop sharing an album & manage settings\n- How shared album controls give your photos more privacy\n- Get updates when people share with you\n## Was this helpful?\nHow can we improve it?\nYesNo\nSubmit\nAndroid phone & tablet ComputeriPhone & iPad\nMore\n## Need more help?\n### Try these next steps:\nPost to the help community Get answers from community members\ntrue\n## Help\n- 1 of 8Share photos & videos\n- 2 of 8Stop sharing an album & manage settings\n- 3 of 8Show photos on a TV with Chromecast\n- 4 of 8Label your face group\n- 5 of 8Face Groups retention policy\n- 6 of 8Set up partner sharing\n- 7 of 8Get suggestions to share with your contacts\n- 8 of 8Choose albums to display on your photo frames\n©2026 Google\n- Privacy Policy\n- Terms of Service\nLanguage català‎dansk‎Deutsch‎eesti‎English (United Kingdom)‎español‎español (Latinoamérica)‎Filipino‎français‎hrvatski‎Indonesia‎italiano‎latviešu‎lietuvių‎magyar‎Melayu‎Nederlands‎norsk‎polski‎português‎português (Brasil)‎română‎slovenčina‎slovenščina‎suomi‎svenska‎Tiếng Việt‎Türkçe‎íslenska‎čeština‎Ελληνικά‎български‎русский‎српски‎українська‎‏עברית‏العربية‏فارسیमराठी‎हिन्दी‎తెలుగు‎ไทย‎中文（简体）‎中文（繁體）‎日本語‎한국어‎ English‎\nEnable Dark Mode\nSend feedback on...\nThis help content & information General Help Center experience\nSearch\nClear search\nClose search\nGoogle apps\nMain menu\n10330992473482108651\ntrue\nSearch Help Center\nfalse\ntrue\ntrue\ntrue\ntrue\ntrue\n105394\nfalse\nfalse\nfalse\nfalse\nfalse",
+          "retrieved_at": "2026-10-17T13:36:20.349437Z",
+          "created_at": "2026-10-17T13:36:20.352932Z"
+        },
+        {
+          "id": "a8d8aa04-1244-4e11-abce-80de8b407502",
+          "run_id": "4b32e6ba-3f01-4c86-b933-a82a0f542ca1",
+          "provider": "tavily",
+          "provider_source_id": "8d658a-00",
+          "url": "https://help.dropbox.com/create-upload/upload-mobile",
+          "title": "Upload files to Dropbox on a mobile device - Dropbox Help",
+          "domain": "help.dropbox.com",
+          "snippet": "# How to upload files to Dropbox on a mobile device\nUpdated Feb 14, 2025\n## In this article\nThe information in this article applies to all Dropbox users.\nThe Dropbox mobile app allows you to create and upload files directly to your Dropbox account from your phone or tablet. Uploaded files sync everywhere you access your files in Dropbox.\nNot using Dropbox yet? See how Dropbox makes syncing files easy.\n## How to upload content from other mobile apps\nYou can upload content from other mobile apps (Photos, Messages, etc.) to your Dropbox account. To do so:\n1. Open the app where the content is currently saved.\n2. Select what you’d like to upload to your Dropbox account.\n3. Click the app’s Share button or icon.\n4. Select the Dropbox mobile app.\nNote: You must be logged into your Dropbox account on the Dropbox mobile app.\n1. Select the Dropbox save location, and save your content.\n## How to upload photos and videos\nIf you don't have camera uploads enabled, you can manually add photos to your Dropbox account. To do so:\n1. Open the Dropbox mobile app.\n2. Open the Dropbox folder where you'd like to store your photos.\n3. Tap the \"+\" (plus sign) at the bottom of your screen.\n4. Choose Upload Photos.\n5. Tap the photos you would like to upload.\n6. Tap the folder icon (Android) or Next (iOS), and select where you'd like the files to be added.\n7. Tap Set location.\n8. Tap Upload.\nNote: The Dropbox app for Windows devices does not currently support video uploads. This is due to operating system limitations.\n## How to upload photos overnight in iOS\nIf you have to upload a large amount of photos or videos from your camera app, you can use the overnight uploads feature. Overnight uploads allows you to upload your photos and videos continuously through the night, keeping the Dropbox mobile app open and dimming your device’s brightness.\nLearn more about overnight uploads.\n## How to upload audio files\niOS users can record audio using the Dropbox mobile app and save directly to their Dropbox account. To do so:\n1. Open the Dropbox app.\n2. Tap the + (plus) icon at the bottom of your screen.\n3. Tap Record Audio.\n4. Tap the red circle to begin recording and the red square to stop recording.\n5. Select the Dropbox folder where you'd like to store your audio file.\n6. Tap Upload.\nNote: The Dropbox mobile app for Windows in S mode (Dropbox Lite) and Android devices do not currently support audio capture.\n## How to upload other types of files\n1. Open the Dropbox mobile app.\n2. Open the Dropbox folder where you'd like to store your files.\n3. Tap the \"+\" (plus sign) at the bottom of your screen.\n4. Tap Upload files (Android) or Create or Upload File (iPhone/iPad).\n5. Tap Upload (Android) or Upload File (iPhone/iPad).\nYou can also choose to create content using Microsoft Office applications.\nLearn more about creating content with Microsoft Office applications.\nIf your device has an SD card, you can upload files to Dropbox from there. To do so:\n1. Open the Dropbox mobile app.\n2. Open the Dropbox folder where you'd like to store your photos.\n3. Tap the \"+\" (plus sign) at the bottom of your screen.\n4. Select Upload files.\n5. Navigate to your SD card, and tap the files you'd like to upload.\n6. Tap Upload (or Open on some devices).\nNote: If you can't view your SD card when browsing for files to upload, verify that Show advanced devices is checked by tapping the menu button at the top of the screen and looking under Settings.\niPhone/iPad users can also upload other types of files using either of the following:\n- The iPhone/iPad Open In menu wherever it appears in other apps\n- App Extensions on iOS 8 and later\nWas this article helpful?\nYes, thanks!\nNot really\nLet us know how why it didn't help:\nThanks for letting us know!\nThe article didn't answer my question The steps in the article didn't work for me I found this article confusing and difficult to read Other\nPlease enter feedback before submitting.\nSubmit feedback\nThanks for your feedback!\n### Related Articles\n#### Dropbox Replay FAQs\n#### How can I export to an SD card from my Android phone?\n#### How to manage files and projects in Dropbox Replay\n#### How to save screenshots to Dropbox\n### Community answers\n- I can't upload files from my Dropbox account to my Android to device Posted by: mdcowby 377 days ago 260 4\n- How can I edit my Dropbox Excel files on a mobile device? Posted by: Paola024 760 days ago 1646 9\n- Seeking Help: Adding Dropbox File Upload Functionality to Bubble.io Mobile App Posted by: tenzin 953 days ago 753 1\n- The Dropbox mobile app on my iOS device is stuck on \"Waiting to upload\" Posted by: Mie I. 3523 days ago 39985 37\n- The Dropbox mobile app doesn't see all of my photos when I try to upload from my iOS device Posted by: Shirley N. 3627 days ago 16167 18\n## Other ways to get help\nIcon depicting a speech bubble\nContact support\nIcon depicting two people\nCommunity\nTwitter Icon\nSocial media support\nFooter-Help\n- Dropbox\n- Desktop app\n- Mobile app\n- Integrations\n- Features\n- Solutions\n- Security\n- Early access\n-\n- Templates\n- Free tools\n- Products\n- Plus\n- Professional\n- Business\n- Enterprise\n- Dash\n- DocSend\n- Dropbox Sign\n- Reclaim.ai\n- Plans\n- Product updates\n- Features\n- Send large files\n- Send long videos\n- Cloud photo storage\n- Secure file transfer\n- Cloud backup\n- Edit PDFs\n- Electronic signatures\n- Convert to PDF\n- Support\n- Help center\n- Contact us\n- Privacy & terms\n- Cookie policy\n- Cookies & CCPA preferences\n- AI principles\n- Sitemap\n- Learning resources\n- Resources\n- Blog\n- Events\n- Customer stories\n- Resources library\n- Developers\n- Community forums\n- Referrals\n- Reseller partners\n- Integration partners\n- Find a partner\n- Company\n- About us\n- Jobs\n- Investor relations\n- Corporate responsibility\n##\nChoose a language\n- Bahasa Indonesia\n- Bahasa Malaysia\n- Dansk\n- Deutsch\n- English (Australia)\n- English (United Kingdom)\n- English (United States)\n- Español (España)\n- Español (Latinoamérica)\n- Français (France)\n- Italiano\n- Nederlands\n- Norsk (bokmål)\n- Polski\n- Português (Brasil)\n- Pусский\n- Svenska\n- Українська\n- ไทย\n- 中文（简体）\n- 中文（繁體）\n- 日本語\n- 한국어\nEnglish (United States)",
+          "retrieved_at": "2026-10-17T13:36:25.363054Z",
+          "created_at": "2026-10-17T13:36:25.367158Z"
+        },
+        {
+          "id": "b0533bfa-c566-46ee-879e-4422c4828ba7",
+          "run_id": "4b32e6ba-3f01-4c86-b933-a82a0f542ca1",
+          "provider": "tavily",
+          "provider_source_id": "a72759-02",
+          "url": "https://help.dropbox.com/create-upload/camera-uploads-overview",
+          "title": "How to use camera uploads - Dropbox Help",
+          "domain": "help.dropbox.com",
+          "snippet": "# How to use camera and mobile device uploads\nUpdated Sep 17, 2026\n## In this article\nThis article describes a feature available to all Dropbox users, except:\n- Dropbox users on Linux\n- Dropbox teams who use Dropbox Enterprise Mobility Management (EMM) for Android\nYou can upload photos and videos from your phone or other devices to Dropbox by connecting them to your computer and using the camera uploads feature. Uploading your photos and videos to Dropbox ensures your files are securely backed up, accessible from any device, while freeing space on your phone.\nDropbox team admins: Learn how to turn camera uploads on or off for your team.\n## Turn photo and video uploads on or off on the Dropbox mobile app\nAndroid iOS\nTo turn photo uploads on or off on the Dropbox mobile app for Android:\n1. Open the Dropbox mobile app.\n2. Tap Account.\n3. Tap Settings.\n4. Under Features, tap Camera uploads.\n5. Tap Back up my photos.\n6. If prompted, tap Allow.\nTo turn photo uploads on or off on the Dropbox mobile app for iOS:\n1. Open the Dropbox mobile app.\n2. Tap ☑ (account).\n3. Tap Camera uploads.\n4. Tap Upload from, then Settings to give Dropbox access to your photos and videos.\n5. In the Dropbox app, choose what you’d like to back up and whether you’d like to use cell data.\n6. Tap Turn on camera uploads.\n## How to upload photos and videos overnight on the Dropbox mobile app\nNote: This feature is available on iOS devices only.\nIf you have to upload a large amount of photos or videos from your camera app, you can use the overnight uploads feature. Overnight uploads allows you to upload your photos and videos continuously through the night, keeping the Dropbox mobile app open and dimming your device’s brightness.\nTo turn overnight uploads on or off:\n1. Open the Dropbox mobile app.\n2. Tap the camera icon in the top-right corner.\n3. Tap Start overnight uploads to start uploading content or tap Exit overnight uploads to stop uploading content.\n- The Dropbox app will dim your phone’s screen while your photos are uploading throughout the night.\nNote: To successfully upload your photos and videos overnight, you must:\n1. Keep your Dropbox app open.\n2. Make sure your phone is connected to Wi-Fi.\n3. Keep your phone plugged into a charger to prevent your phone from powering off.\n## Turn photo and video uploads on or off in the Dropbox desktop app\nWhen you plug a camera or mobile device into a computer with the Dropbox desktop app installed, you’ll see a prompt asking if you’d like to enable uploads for that device. Once you accept, that device will automatically upload your camera roll each time the device is plugged in to that computer.\nTo turn uploads on or off at any time:\nOn Windows On macOS\nTo turn photo or video uploads on or off in the Dropbox desktop app (Windows):\n1. Click ☑ (Dropbox) in your taskbar.\n2. Click the round account menu. Depending on your account, this may appear as your profile photo, your initials, or a person icon.\n3. Click Preferences.\n4. Click Backups.\n- Note: Click the dropdown next to Enable camera uploads for to switch between Photos only or Photos and videos.\n5. Click Change AutoPlay Settings next to Import photos and videos to Dropbox.\n6. Click the dropdown under Removable drive.\n- To turn on camera uploads, select Import photos and videos (Dropbox).\n- To turn off camera uploads, select any other option.\n7. Repeat step 4 for Memory card.\nLearn what to do if you don’t see the Dropbox icon.\nCan't find Preferences on the Dropbox desktop app?\nWhen you open the Dropbox desktop app, click the round account menu to access Preferences. Depending on your account, this may appear as your profile photo, your initials, or a person icon.\nTo turn photo or video uploads on or off in the Dropbox desktop app (Mac):\n1. Click ☑ (Dropbox) in your menu bar in the top-right corner of your screen.\n- Learn what to do if you don’t see the Dropbox icon.\n2. Click your avatar (profile picture or initials) in the bottom-left corner.\n3. Click Preferences.\n4. Click Backups.\n5. Toggle Camera Uploads on to upload photos and videos from your connected devices.\n6. Choose Photos only or Photos and videos only from the dropdown menu.\nLearn what to do if you don’t see the Dropbox icon.\nCan't find Preferences on the Dropbox desktop app?\nWhen you open the Dropbox desktop app, click the round account menu to access Preferences. Depending on your account, this may appear as your profile photo, your initials, or a person icon.\nNote: If you’re using macOS 10.15 (Catalina) or higher, you’ll see a notification that says “Dropbox would like to access files on a removable volume.” Clicking OK will allow camera uploads to work.\nYou can change this preference any time:\n1. Open System Preferences.\n2. Click Security and Privacy.\n3. Click the Privacy tab.\n4. Click Files and Folders.\n5. Check or uncheck the box next to Removable Volumes under Dropbox.\n## How to connect or forget mobile devices in the Dropbox desktop app\nWhen you plug a camera, or mobile device into a computer with the Dropbox desktop app installed, you’ll be asked to turn on photo uploads for that device.\nIf you accept, the device will be registered as a connected device under Preferences.\nTo forget a connected device:\n1. Click ☑ (Dropbox) in your taskbar (Windows), or menu bar (Mac).\n2. Click the round account menu. Depending on your account, this may appear as your profile photo, your initials, or a person icon.\n3. Click Preferences.\n4. Click the Backups tab.\n5. Click Forget next to the device you’d like to disconnect.\n## FAQs about camera and device uploads\n#### Can I choose which folder my photos upload to?\nBy default, your photos will be uploaded to a folder in your Dropbox account named Camera Uploads. You can’t change this; however, you can move your photos to a different folder in your Dropbox account after they’ve been uploaded.\n#### Why did camera uploads use all of my battery power?\nCamera uploads can use a large amount of battery power the first time your photos are uploaded. After the photos are uploaded, battery usage should return to normal. By default, the Dropbox app stops auto-uploading when your battery is low to save battery life.\n#### Why did camera uploads use all of my cellular data?\nBy default, camera uploads use cellular data when WiFi isn’t available. You can change this setting by following the instructions for your device below.\nAndroid:\n1. Open the Dropbox mobile app.\n2. Tap Account.\n3. Tap Settings.\n4. Tap Camera uploads.\n5. Toggle Use data when offline to off.\niOS:\n1. Open the Dropbox mobile app.\n2. Tap a (account).\n3. Tap Camera uploads.\n4. Toggle Use cell data to back up to off.\n#### Can I upload iOS Live Photos?\nYou can upload Live Photos on the Dropbox app. Learn how to upload iOS Live photos.\nNote: Live Photos uploaded to Dropbox from other apps will be saved as normal photos.\n#### What should I do if camera uploads aren't working?\nIf camera uploads aren't working, follow the steps in our troubleshooting guide.\n#### Why don’t I see the option to turn on camera uploads?\nIf you’re on a Dropbox team and you don’t see a camera uploads option, your admin may have turned the feature off for your team.\n#### Can I use camera uploads on my personal and work account?\nIf you’ve linked two Dropbox accounts, you can only have camera uploads turned on for one account at a time.\n#### Why do I see someone else’s photos in my Camera Uploads folder?\nWhen you plug a camera or mobile device into a computer with the Dropbox desktop app installed, you’ll see a prompt asking if you’d like to enable camera uploads for that device. This means that if someone used your computer to charge their phone, they may have clicked OK to that pop-up without realizing it.\nTo find out who uploaded photos to your account:\n1. Log in to dropbox.com.\n2. Hover over the photo you don’t recognize, and click a (more options).\n3. Click Version history.\n4. Look for a name next to Added by.\nIf you don’t recognize the name, you can remotely sign out of any devices you’re currently signed in to.\n#### Why aren’t my photos uploading in the background?\nSometimes the settings on your device prevent you from uploading photos in the background.\nRead more\nWas this article helpful?\nYes, thanks!\nNot really\nLet us know how why it didn't help:\nThanks for letting us know!\nThe article didn't answer my question The steps in the article didn't work for me I found this article confusing and difficult to read Other\nPlease enter feedback before submitting.\nSubmit feedback\nThanks for your feedback!\n### Community answers\n- I can't delete files from the camera uploads folder when using XnView Posted by: denniscmerritt 7 days ago 230 14\n- Photos vs Camera Uploads Posted by: pictureSaver 610 days ago 984 3\n- How to turn on Mobile Camera Uploads Posted by: Theresa 670 days ago 423 0\n- How to Upload Photos using USB 2.0 from Nikon camera to Dropbox? Posted by: CatWoman1 2046 days ago 2763 5\n## Other ways to get help\nIcon depicting a speech bubble\nContact support\nIcon depicting two people\nCommunity\nTwitter Icon\nSocial media support\nFooter-Help\n- Dropbox\n- Desktop app\n- Mobile app\n- Integrations\n- Features\n- Solutions\n- Security\n- Early access\n-\n- Templates\n- Free tools\n- Products\n- Plus\n- Professional\n- Business\n- Enterprise\n- Dash\n- DocSend\n- Dropbox Sign\n- Reclaim.ai\n- Plans\n- Product updates\n- Features\n- Send large files\n- Send long videos\n- Cloud photo storage\n- Secure file transfer\n- Cloud backup\n- Edit PDFs\n- Electronic signatures\n- Convert to PDF\n- Support\n- Help center\n- Contact us\n- Privacy & terms\n- Cookie policy\n- Cookies & CCPA preferences\n- AI principles\n- Sitemap\n- Learning resources\n- Resources\n- Blog\n- Events\n- Customer stories\n- Resources library\n- Developers\n- Community forums\n- Referrals\n- Reseller partners\n- Integration partners\n- Find a partner\n- Company\n- About us\n- Jobs\n- Investor relations\n- Corporate responsibility\n##\nChoose a language\n- Bahasa Indonesia\n- Bahasa Malaysia\n- Dansk\n- Deutsch\n- English (Australia)\n- English (United Kingdom)\n- English (United States)\n- Español (España)\n- Español (Latinoamérica)\n- Français (France)\n- Italiano\n- Nederlands\n- Norsk (bokmål)\n- Polski\n- Português (Brasil)\n- Pусский\n- Svenska\n- Українська\n- ไทย\n- 中文（简体）\n- 中文（繁體）\n- 日本語\n- 한국어\nEnglish (United States)",
+          "retrieved_at": "2026-10-17T13:36:25.363210Z",
+          "created_at": "2026-10-17T13:36:25.367175Z"
+        },
+        {
+          "id": "c35e996b-e71a-46eb-829a-8a9369b3963c",
+          "run_id": "4b32e6ba-3f01-4c86-b933-a82a0f542ca1",
+          "provider": "tavily",
+          "provider_source_id": "12525a-04",
+          "url": "https://help.dropbox.com/create-upload/camera-uploads-fix",
+          "title": "Troubleshoot issues with camera uploads - Dropbox Help",
+          "domain": "help.dropbox.com",
+          "snippet": "# Troubleshoot issues with camera uploads\nUpdated Jan 24, 2025\n## In this article\nThe information in this article applies to all Dropbox users.\nMany issues with camera uploads, no matter what device you’re using or what the specific issue is, can be solved with the following solutions.\n### Restart the Dropbox app\n- Learn how to restart an app on Android\n- Learn how to restart an app on iOS\n- To restart the Dropbox desktop app:\n1. Click the Dropbox icon in your taskbar (Windows) or menu bar (Mac), and then click your profile picture or initials.\n2. Click Quit Dropbox.\n3. Open your applications menu, re-launch Dropbox, and then sign in again (if necessary).\n### Check your internet connection\n- Camera uploads might be slower if your internet connection is weak. Try connecting to a different Wi-Fi network or turning off cellular data.\n### Make sure your battery is charged\n- Camera uploads might be slower if your battery is low. Try plugging in your computer, phone, or tablet.\n### Make sure you have enough storage space\n- Check how much storage space you have left in your Dropbox account. If you're out of storage space, you can delete files and folders, leave shared folders, or upgrade your account.\n### Make sure your Dropbox app is up to date\n- Your device settings determine whether you have to update the apps on your device manually or if they’re updated automatically. Check if the Dropbox app is up to date on your device:\n- Learn how to update apps on Windows\n- Learn how to update apps on Mac\n- Learn how to update apps on Android\n- Learn how to update apps on iPhone and iPad\nNote: If you’re on a Dropbox Basic plan, you must have the Dropbox desktop app installed to use camera uploads.\n- If you’ve tried the solutions above and you’re still experiencing issues, there are a few other reasons your photos may not be appearing in the mobile app.\n### Make sure your operating system is up to date\n- Check to see if the operating system on your device is supported by Dropbox. If it's not, upgrade to the latest version.\n### Check the upload settings on your phone\n- Sometimes the settings on your device prevent you from uploading photos in the background. Learn how to adjust your upload settings.\nWas this article helpful?\nYes, thanks!\nNot really\nLet us know how why it didn't help:\nThanks for letting us know!\nThe article didn't answer my question The steps in the article didn't work for me I found this article confusing and difficult to read Other\nPlease enter feedback before submitting.\nSubmit feedback\nThanks for your feedback!\n### Related Articles\n#### Dropbox Replay FAQs\n#### How can I export to an SD card from my Android phone?\n#### How to manage files and projects in Dropbox Replay\n#### How to save screenshots to Dropbox\n### Community answers\n- Sync issues after renaming the Camera Uploads folder to 'Camera_Uploads' Posted by: njet01 854 days ago 375 1\n- Issue uploading photos with Camera Uploads from Android via WiFi Posted by: Anders W. 865 days ago 1828 10\n- Camera uploads only works once and then if the file is deleted, it won't work. Posted by: Tingle Cowboy 1022 days ago 1037 3\n- Dropbox iPhone consistently does not see or upload all photos Posted by: daveah 1296 days ago 5428 6\n- Issues with Camera Upload Posted by: Pc2fire 1580 days ago 8845 45\n## Other ways to get help\nIcon depicting a speech bubble\nContact support\nIcon depicting two people\nCommunity\nTwitter Icon\nSocial media support\nFooter-Help\n- Dropbox\n- Desktop app\n- Mobile app\n- Integrations\n- Features\n- Solutions\n- Security\n- Early access\n-\n- Templates\n- Free tools\n- Products\n- Plus\n- Professional\n- Business\n- Enterprise\n- Dash\n- DocSend\n- Dropbox Sign\n- Reclaim.ai\n- Plans\n- Product updates\n- Features\n- Send large files\n- Send long videos\n- Cloud photo storage\n- Secure file transfer\n- Cloud backup\n- Edit PDFs\n- Electronic signatures\n- Convert to PDF\n- Support\n- Help center\n- Contact us\n- Privacy & terms\n- Cookie policy\n- Cookies & CCPA preferences\n- AI principles\n- Sitemap\n- Learning resources\n- Resources\n- Blog\n- Events\n- Customer stories\n- Resources library\n- Developers\n- Community forums\n- Referrals\n- Reseller partners\n- Integration partners\n- Find a partner\n- Company\n- About us\n- Jobs\n- Investor relations\n- Corporate responsibility\n##\nChoose a language\n- Bahasa Indonesia\n- Bahasa Malaysia\n- Dansk\n- Deutsch\n- English (Australia)\n- English (United Kingdom)\n- English (United States)\n- Español (España)\n- Español (Latinoamérica)\n- Français (France)\n- Italiano\n- Nederlands\n- Norsk (bokmål)\n- Polski\n- Português (Brasil)\n- Pусский\n- Svenska\n- Українська\n- ไทย\n- 中文（简体）\n- 中文（繁體）\n- 日本語\n- 한국어\nEnglish (United States)",
+          "retrieved_at": "2026-10-17T13:36:25.363248Z",
+          "created_at": "2026-10-17T13:36:25.367181Z"
+        }
+      ],
+      "findings": [
+        {
+          "id": "179a630c-9c50-4a58-8855-1d2243743aa0",
+          "run_id": "4b32e6ba-3f01-4c86-b933-a82a0f542ca1",
+          "category": "competitor",
+          "title": "Back up photos & videos - Android - Google Photos Help",
+          "description": "1. On your Android device, open the Google Photos app Photos .",
+          "confidence": null,
+          "status": "confirmed",
+          "source_refs": [
+            {
+              "provider_source_id": "a67208-01",
+              "url": "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid",
+              "title": "Back up photos & videos - Android - Google Photos Help"
+            }
+          ],
+          "claim_kind": "fact",
+          "supporting_finding_ids": null,
+          "evidence_location": {
+            "provider_source_id": "a67208-01",
+            "offset": 4934,
+            "length": 62,
+            "text": "1. On your Android device, open the Google Photos app Photos .",
+            "sha256": "d85e30a97ada5669e47985a6037a38a73854e390ccfbdf528c45408e4a298216",
+            "section": "Manually back up photos & videos",
+            "context": "Back up photos & videos / Manually back up photos & videos",
+            "step_index": 1,
+            "step_total": 4,
+            "product_key": "support.google.com::google_photos"
+          },
+          "created_at": "2026-10-17T13:38:14.102015Z"
+        },
+        {
+          "id": "2de2c20c-82f2-4946-882e-fca061131049",
+          "run_id": "4b32e6ba-3f01-4c86-b933-a82a0f542ca1",
+          "category": "competitor",
+          "title": "Back up photos & videos - Android - Google Photos Help",
+          "description": "2. Sign in to your Google Account.",
+          "confidence": null,
+          "status": "confirmed",
+          "source_refs": [
+            {
+              "provider_source_id": "a67208-01",
+              "url": "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid",
+              "title": "Back up photos & videos - Android - Google Photos Help"
+            }
+          ],
+          "claim_kind": "fact",
+          "supporting_finding_ids": null,
+          "evidence_location": {
+            "provider_source_id": "a67208-01",
+            "offset": 4997,
+            "length": 34,
+            "text": "2. Sign in to your Google Account.",
+            "sha256": "d85e30a97ada5669e47985a6037a38a73854e390ccfbdf528c45408e4a298216",
+            "section": "Manually back up photos & videos",
+            "context": "Back up photos & videos / Manually back up photos & videos",
+            "step_index": 2,
+            "step_total": 4,
+            "product_key": "support.google.com::google_photos"
+          },
+          "created_at": "2026-10-17T13:38:14.102022Z"
+        },
+        {
+          "id": "cb1e5983-ceb7-43e5-9757-043050b84be2",
+          "run_id": "4b32e6ba-3f01-4c86-b933-a82a0f542ca1",
+          "category": "competitor",
+          "title": "Back up photos & videos - Android - Google Photos Help",
+          "description": "3. Open the photo or video.",
+          "confidence": null,
+          "status": "confirmed",
+          "source_refs": [
+            {
+              "provider_source_id": "a67208-01",
+              "url": "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid",
+              "title": "Back up photos & videos - Android - Google Photos Help"
+            }
+          ],
+          "claim_kind": "fact",
+          "supporting_finding_ids": null,
+          "evidence_location": {
+            "provider_source_id": "a67208-01",
+            "offset": 5032,
+            "length": 27,
+            "text": "3. Open the photo or video.",
+            "sha256": "d85e30a97ada5669e47985a6037a38a73854e390ccfbdf528c45408e4a298216",
+            "section": "Manually back up photos & videos",
+            "context": "Back up photos & videos / Manually back up photos & videos",
+            "step_index": 3,
+            "step_total": 4,
+            "product_key": "support.google.com::google_photos"
+          },
+          "created_at": "2026-10-17T13:38:14.102023Z"
+        },
+        {
+          "id": "49f8e554-4804-4328-bad3-cc395fe0bba4",
+          "run_id": "4b32e6ba-3f01-4c86-b933-a82a0f542ca1",
+          "category": "competitor",
+          "title": "Back up photos & videos - Android - Google Photos Help",
+          "description": "4. Tap Back up now.",
+          "confidence": null,
+          "status": "confirmed",
+          "source_refs": [
+            {
+              "provider_source_id": "a67208-01",
+              "url": "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid",
+              "title": "Back up photos & videos - Android - Google Photos Help"
+            }
+          ],
+          "claim_kind": "fact",
+          "supporting_finding_ids": null,
+          "evidence_location": {
+            "provider_source_id": "a67208-01",
+            "offset": 5060,
+            "length": 19,
+            "text": "4. Tap Back up now.",
+            "sha256": "d85e30a97ada5669e47985a6037a38a73854e390ccfbdf528c45408e4a298216",
+            "section": "Manually back up photos & videos",
+            "context": "Back up photos & videos / Manually back up photos & videos",
+            "step_index": 4,
+            "step_total": 4,
+            "product_key": "support.google.com::google_photos"
+          },
+          "created_at": "2026-10-17T13:38:14.102024Z"
+        },
+        {
+          "id": "7c06d5f1-a2a7-4489-9137-c5adc1f3a1ad",
+          "run_id": "4b32e6ba-3f01-4c86-b933-a82a0f542ca1",
+          "category": "competitor",
+          "title": "Back up photos & videos - Android - Google Photos Help",
+          "description": "- Alternatively, you can tap the Back up button or scroll to the bottom, then tap Back up now.",
+          "confidence": null,
+          "status": "confirmed",
+          "source_refs": [
+            {
+              "provider_source_id": "a67208-01",
+              "url": "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid",
+              "title": "Back up photos & videos - Android - Google Photos Help"
+            }
+          ],
+          "claim_kind": "fact",
+          "supporting_finding_ids": null,
+          "evidence_location": {
+            "provider_source_id": "a67208-01",
+            "offset": 5080,
+            "length": 94,
+            "text": "- Alternatively, you can tap the Back up button or scroll to the bottom, then tap Back up now.",
+            "sha256": "d85e30a97ada5669e47985a6037a38a73854e390ccfbdf528c45408e4a298216",
+            "section": "Manually back up photos & videos",
+            "context": "Back up photos & videos / Manually back up photos & videos",
+            "step_index": 0,
+            "step_total": 0,
+            "product_key": "support.google.com::google_photos"
+          },
+          "created_at": "2026-10-17T13:38:14.102024Z"
+        },
+        {
+          "id": "9a53db22-915a-43c6-a365-4b3c2a0fa582",
+          "run_id": "4b32e6ba-3f01-4c86-b933-a82a0f542ca1",
+          "category": "competitor",
+          "title": "Back up photos & videos - Android - Google Photos Help",
+          "description": "- If you want to back up multiple photos or videos: Touch and hold the photos or videos you want to back up, and then tap Back up.",
+          "confidence": null,
+          "status": "confirmed",
+          "source_refs": [
+            {
+              "provider_source_id": "a67208-01",
+              "url": "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid",
+              "title": "Back up photos & videos - Android - Google Photos Help"
+            }
+          ],
+          "claim_kind": "fact",
+          "supporting_finding_ids": null,
+          "evidence_location": {
+            "provider_source_id": "a67208-01",
+            "offset": 5296,
+            "length": 130,
+            "text": "- If you want to back up multiple photos or videos: Touch and hold the photos or videos you want to back up, and then tap Back up.",
+            "sha256": "d85e30a97ada5669e47985a6037a38a73854e390ccfbdf528c45408e4a298216",
+            "section": "Manually back up photos & videos",
+            "context": "Back up photos & videos / Manually back up photos & videos",
+            "step_index": 0,
+            "step_total": 0,
+            "product_key": "support.google.com::google_photos"
+          },
+          "created_at": "2026-10-17T13:38:14.102025Z"
+        },
+        {
+          "id": "e2b59fa5-e0c8-44a8-8ffa-621c79d716cb",
+          "run_id": "4b32e6ba-3f01-4c86-b933-a82a0f542ca1",
+          "category": "competitor",
+          "title": "Back up photos & videos - Android - Google Photos Help",
+          "description": "- When you open a single photo and you don't have enough storage: The badge shows \"Not enough storage to back up.\"",
+          "confidence": null,
+          "status": "confirmed",
+          "source_refs": [
+            {
+              "provider_source_id": "a67208-01",
+              "url": "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid",
+              "title": "Back up photos & videos - Android - Google Photos Help"
+            }
+          ],
+          "claim_kind": "fact",
+          "supporting_finding_ids": null,
+          "evidence_location": {
+            "provider_source_id": "a67208-01",
+            "offset": 5181,
+            "length": 114,
+            "text": "- When you open a single photo and you don't have enough storage: The badge shows \"Not enough storage to back up.\"",
+            "sha256": "d85e30a97ada5669e47985a6037a38a73854e390ccfbdf528c45408e4a298216",
+            "section": "Manually back up photos & videos",
+            "context": "Back up photos & videos / Manually back up photos & videos",
+            "step_index": 0,
+            "step_total": 0,
+            "product_key": "support.google.com::google_photos"
+          },
+          "created_at": "2026-10-17T13:38:14.102026Z"
+        },
+        {
+          "id": "b062a3bc-e168-4527-a5db-64c0ceea6340",
+          "run_id": "4b32e6ba-3f01-4c86-b933-a82a0f542ca1",
+          "category": "competitor",
+          "title": "Back up photos & videos - Android - Google Photos Help",
+          "description": "Tips:",
+          "confidence": null,
+          "status": "confirmed",
+          "source_refs": [
+            {
+              "provider_source_id": "a67208-01",
+              "url": "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid",
+              "title": "Back up photos & videos - Android - Google Photos Help"
+            }
+          ],
+          "claim_kind": "fact",
+          "supporting_finding_ids": null,
+          "evidence_location": {
+            "provider_source_id": "a67208-01",
+            "offset": 5175,
+            "length": 5,
+            "text": "Tips:",
+            "sha256": "d85e30a97ada5669e47985a6037a38a73854e390ccfbdf528c45408e4a298216",
+            "section": "Manually back up photos & videos",
+            "context": "Back up photos & videos / Manually back up photos & videos",
+            "step_index": 0,
+            "step_total": 0,
+            "product_key": "support.google.com::google_photos"
+          },
+          "created_at": "2026-10-17T13:38:14.102027Z"
+        },
+        {
+          "id": "bda329ca-0c73-4270-ae17-4f142dbb8f4b",
+          "run_id": "4b32e6ba-3f01-4c86-b933-a82a0f542ca1",
+          "category": "competitor",
+          "title": "Back up photos & videos - Android - Google Photos Help",
+          "description": "If you try to back up a file type not listed here, it may not work with Google Photos.",
+          "confidence": null,
+          "status": "confirmed",
+          "source_refs": [
+            {
+              "provider_source_id": "a67208-01",
+              "url": "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid",
+              "title": "Back up photos & videos - Android - Google Photos Help"
+            }
+          ],
+          "claim_kind": "fact",
+          "supporting_finding_ids": null,
+          "evidence_location": {
+            "provider_source_id": "a67208-01",
+            "offset": 1300,
+            "length": 86,
+            "text": "If you try to back up a file type not listed here, it may not work with Google Photos.",
+            "sha256": "d85e30a97ada5669e47985a6037a38a73854e390ccfbdf528c45408e4a298216",
+            "section": "Before you get started",
+            "context": "Back up photos & videos / Before you get started",
+            "step_index": 0,
+            "step_total": 0,
+            "product_key": "support.google.com::google_photos"
+          },
+          "created_at": "2026-10-17T13:38:14.102027Z"
+        },
+        {
+          "id": "8bc9a887-6f48-4446-a707-637d24cd8b8f",
+          "run_id": "4b32e6ba-3f01-4c86-b933-a82a0f542ca1",
+          "category": "competitor",
+          "title": "Upload files to Dropbox on a mobile device - Dropbox Help",
+          "description": "1. Open the Dropbox mobile app.",
+          "confidence": null,
+          "status": "confirmed",
+          "source_refs": [
+            {
+              "provider_source_id": "8d658a-00",
+              "url": "https://help.dropbox.com/create-upload/upload-mobile",
+              "title": "Upload files to Dropbox on a mobile device - Dropbox Help"
+            }
+          ],
+          "claim_kind": "fact",
+          "supporting_finding_ids": null,
+          "evidence_location": {
+            "provider_source_id": "8d658a-00",
+            "offset": 1027,
+            "length": 31,
+            "text": "1. Open the Dropbox mobile app.",
+            "sha256": "5e686ea99b09dc875b95347105aad601c681dee4ee3898379bdb5f77e21feb8e",
+            "section": "How to upload photos and videos",
+            "context": "How to upload files to Dropbox on a mobile device / How to upload photos and videos",
+            "step_index": 1,
+            "step_total": 8,
+            "product_key": "help.dropbox.com::dropbox"
+          },
+          "created_at": "2026-10-17T13:38:14.102028Z"
+        },
+        {
+          "id": "f59f0052-586c-448e-9b3e-cec51e39f0a7",
+          "run_id": "4b32e6ba-3f01-4c86-b933-a82a0f542ca1",
+          "category": "competitor",
+          "title": "Upload files to Dropbox on a mobile device - Dropbox Help",
+          "description": "If you don't have camera uploads enabled, you can manually add photos to your Dropbox account.",
+          "confidence": null,
+          "status": "confirmed",
+          "source_refs": [
+            {
+              "provider_source_id": "8d658a-00",
+              "url": "https://help.dropbox.com/create-upload/upload-mobile",
+              "title": "Upload files to Dropbox on a mobile device - Dropbox Help"
+            }
+          ],
+          "claim_kind": "fact",
+          "supporting_finding_ids": null,
+          "evidence_location": {
+            "provider_source_id": "8d658a-00",
+            "offset": 922,
+            "length": 94,
+            "text": "If you don't have camera uploads enabled, you can manually add photos to your Dropbox account.",
+            "sha256": "5e686ea99b09dc875b95347105aad601c681dee4ee3898379bdb5f77e21feb8e",
+            "section": "How to upload photos and videos",
+            "context": "How to upload files to Dropbox on a mobile device / How to upload photos and videos",
+            "step_index": 0,
+            "step_total": 0,
+            "product_key": "help.dropbox.com::dropbox"
+          },
+          "created_at": "2026-10-17T13:38:14.102028Z"
+        },
+        {
+          "id": "309c7832-4e55-439b-a2c7-c307e933f4e3",
+          "run_id": "4b32e6ba-3f01-4c86-b933-a82a0f542ca1",
+          "category": "competitor",
+          "title": "Upload files to Dropbox on a mobile device - Dropbox Help",
+          "description": "3. Tap the \"+\" (plus sign) at the bottom of your screen.",
+          "confidence": null,
+          "status": "confirmed",
+          "source_refs": [
+            {
+              "provider_source_id": "8d658a-00",
+              "url": "https://help.dropbox.com/create-upload/upload-mobile",
+              "title": "Upload files to Dropbox on a mobile device - Dropbox Help"
+            }
+          ],
+          "claim_kind": "fact",
+          "supporting_finding_ids": null,
+          "evidence_location": {
+            "provider_source_id": "8d658a-00",
+            "offset": 1125,
+            "length": 56,
+            "text": "3. Tap the \"+\" (plus sign) at the bottom of your screen.",
+            "sha256": "5e686ea99b09dc875b95347105aad601c681dee4ee3898379bdb5f77e21feb8e",
+            "section": "How to upload photos and videos",
+            "context": "How to upload files to Dropbox on a mobile device / How to upload photos and videos",
+            "step_index": 3,
+            "step_total": 8,
+            "product_key": "help.dropbox.com::dropbox"
+          },
+          "created_at": "2026-10-17T13:38:14.102029Z"
+        },
+        {
+          "id": "baad6686-e838-496f-aebb-e8130b83fef8",
+          "run_id": "4b32e6ba-3f01-4c86-b933-a82a0f542ca1",
+          "category": "competitor",
+          "title": "Upload files to Dropbox on a mobile device - Dropbox Help",
+          "description": "2. Open the Dropbox folder where you'd like to store your photos.",
+          "confidence": null,
+          "status": "confirmed",
+          "source_refs": [
+            {
+              "provider_source_id": "8d658a-00",
+              "url": "https://help.dropbox.com/create-upload/upload-mobile",
+              "title": "Upload files to Dropbox on a mobile device - Dropbox Help"
+            }
+          ],
+          "claim_kind": "fact",
+          "supporting_finding_ids": null,
+          "evidence_location": {
+            "provider_source_id": "8d658a-00",
+            "offset": 1059,
+            "length": 65,
+            "text": "2. Open the Dropbox folder where you'd like to store your photos.",
+            "sha256": "5e686ea99b09dc875b95347105aad601c681dee4ee3898379bdb5f77e21feb8e",
+            "section": "How to upload photos and videos",
+            "context": "How to upload files to Dropbox on a mobile device / How to upload photos and videos",
+            "step_index": 2,
+            "step_total": 8,
+            "product_key": "help.dropbox.com::dropbox"
+          },
+          "created_at": "2026-10-17T13:38:14.102029Z"
+        },
+        {
+          "id": "578c19de-8234-4f35-96ce-27d18fb7bbb1",
+          "run_id": "4b32e6ba-3f01-4c86-b933-a82a0f542ca1",
+          "category": "competitor",
+          "title": "Upload files to Dropbox on a mobile device - Dropbox Help",
+          "description": "4. Choose Upload Photos.",
+          "confidence": null,
+          "status": "confirmed",
+          "source_refs": [
+            {
+              "provider_source_id": "8d658a-00",
+              "url": "https://help.dropbox.com/create-upload/upload-mobile",
+              "title": "Upload files to Dropbox on a mobile device - Dropbox Help"
+            }
+          ],
+          "claim_kind": "fact",
+          "supporting_finding_ids": null,
+          "evidence_location": {
+            "provider_source_id": "8d658a-00",
+            "offset": 1182,
+            "length": 24,
+            "text": "4. Choose Upload Photos.",
+            "sha256": "5e686ea99b09dc875b95347105aad601c681dee4ee3898379bdb5f77e21feb8e",
+            "section": "How to upload photos and videos",
+            "context": "How to upload files to Dropbox on a mobile device / How to upload photos and videos",
+            "step_index": 4,
+            "step_total": 8,
+            "product_key": "help.dropbox.com::dropbox"
+          },
+          "created_at": "2026-10-17T13:38:14.102030Z"
+        },
+        {
+          "id": "9835ab9f-04a3-4f59-b546-9dbc2e4a64a7",
+          "run_id": "4b32e6ba-3f01-4c86-b933-a82a0f542ca1",
+          "category": "competitor",
+          "title": "Upload files to Dropbox on a mobile device - Dropbox Help",
+          "description": "5. Tap the photos you would like to upload.",
+          "confidence": null,
+          "status": "confirmed",
+          "source_refs": [
+            {
+              "provider_source_id": "8d658a-00",
+              "url": "https://help.dropbox.com/create-upload/upload-mobile",
+              "title": "Upload files to Dropbox on a mobile device - Dropbox Help"
+            }
+          ],
+          "claim_kind": "fact",
+          "supporting_finding_ids": null,
+          "evidence_location": {
+            "provider_source_id": "8d658a-00",
+            "offset": 1207,
+            "length": 43,
+            "text": "5. Tap the photos you would like to upload.",
+            "sha256": "5e686ea99b09dc875b95347105aad601c681dee4ee3898379bdb5f77e21feb8e",
+            "section": "How to upload photos and videos",
+            "context": "How to upload files to Dropbox on a mobile device / How to upload photos and videos",
+            "step_index": 5,
+            "step_total": 8,
+            "product_key": "help.dropbox.com::dropbox"
+          },
+          "created_at": "2026-10-17T13:38:14.102031Z"
+        },
+        {
+          "id": "f57528a9-fa7e-45ec-90d6-28d7ef65ef11",
+          "run_id": "4b32e6ba-3f01-4c86-b933-a82a0f542ca1",
+          "category": "competitor",
+          "title": "Upload files to Dropbox on a mobile device - Dropbox Help",
+          "description": "6. Tap the folder icon (Android) or Next (iOS), and select where you'd like the files to be added.",
+          "confidence": null,
+          "status": "confirmed",
+          "source_refs": [
+            {
+              "provider_source_id": "8d658a-00",
+              "url": "https://help.dropbox.com/create-upload/upload-mobile",
+              "title": "Upload files to Dropbox on a mobile device - Dropbox Help"
+            }
+          ],
+          "claim_kind": "fact",
+          "supporting_finding_ids": null,
+          "evidence_location": {
+            "provider_source_id": "8d658a-00",
+            "offset": 1251,
+            "length": 98,
+            "text": "6. Tap the folder icon (Android) or Next (iOS), and select where you'd like the files to be added.",
+            "sha256": "5e686ea99b09dc875b95347105aad601c681dee4ee3898379bdb5f77e21feb8e",
+            "section": "How to upload photos and videos",
+            "context": "How to upload files to Dropbox on a mobile device / How to upload photos and videos",
+            "step_index": 6,
+            "step_total": 8,
+            "product_key": "help.dropbox.com::dropbox"
+          },
+          "created_at": "2026-10-17T13:38:14.102031Z"
+        },
+        {
+          "id": "bd4b4c6a-375c-4298-bf69-aebc081297a5",
+          "run_id": "4b32e6ba-3f01-4c86-b933-a82a0f542ca1",
+          "category": "competitor",
+          "title": "Upload files to Dropbox on a mobile device - Dropbox Help",
+          "description": "7. Tap Set location.",
+          "confidence": null,
+          "status": "confirmed",
+          "source_refs": [
+            {
+              "provider_source_id": "8d658a-00",
+              "url": "https://help.dropbox.com/create-upload/upload-mobile",
+              "title": "Upload files to Dropbox on a mobile device - Dropbox Help"
+            }
+          ],
+          "claim_kind": "fact",
+          "supporting_finding_ids": null,
+          "evidence_location": {
+            "provider_source_id": "8d658a-00",
+            "offset": 1350,
+            "length": 20,
+            "text": "7. Tap Set location.",
+            "sha256": "5e686ea99b09dc875b95347105aad601c681dee4ee3898379bdb5f77e21feb8e",
+            "section": "How to upload photos and videos",
+            "context": "How to upload files to Dropbox on a mobile device / How to upload photos and videos",
+            "step_index": 7,
+            "step_total": 8,
+            "product_key": "help.dropbox.com::dropbox"
+          },
+          "created_at": "2026-10-17T13:38:14.102032Z"
+        },
+        {
+          "id": "f4dc6379-a778-48c7-9204-1899782e09b8",
+          "run_id": "4b32e6ba-3f01-4c86-b933-a82a0f542ca1",
+          "category": "competitor",
+          "title": "Upload files to Dropbox on a mobile device - Dropbox Help",
+          "description": "8. Tap Upload.",
+          "confidence": null,
+          "status": "confirmed",
+          "source_refs": [
+            {
+              "provider_source_id": "8d658a-00",
+              "url": "https://help.dropbox.com/create-upload/upload-mobile",
+              "title": "Upload files to Dropbox on a mobile device - Dropbox Help"
+            }
+          ],
+          "claim_kind": "fact",
+          "supporting_finding_ids": null,
+          "evidence_location": {
+            "provider_source_id": "8d658a-00",
+            "offset": 1371,
+            "length": 14,
+            "text": "8. Tap Upload.",
+            "sha256": "5e686ea99b09dc875b95347105aad601c681dee4ee3898379bdb5f77e21feb8e",
+            "section": "How to upload photos and videos",
+            "context": "How to upload files to Dropbox on a mobile device / How to upload photos and videos",
+            "step_index": 8,
+            "step_total": 8,
+            "product_key": "help.dropbox.com::dropbox"
+          },
+          "created_at": "2026-10-17T13:38:14.102032Z"
+        },
+        {
+          "id": "90c01c4f-a44a-4ef2-9579-b91b9bb284e3",
+          "run_id": "4b32e6ba-3f01-4c86-b933-a82a0f542ca1",
+          "category": "competitor",
+          "title": "Upload files to Dropbox on a mobile device - Dropbox Help",
+          "description": "Note: The Dropbox app for Windows devices does not currently support video uploads.",
+          "confidence": null,
+          "status": "confirmed",
+          "source_refs": [
+            {
+              "provider_source_id": "8d658a-00",
+              "url": "https://help.dropbox.com/create-upload/upload-mobile",
+              "title": "Upload files to Dropbox on a mobile device - Dropbox Help"
+            }
+          ],
+          "claim_kind": "fact",
+          "supporting_finding_ids": null,
+          "evidence_location": {
+            "provider_source_id": "8d658a-00",
+            "offset": 1386,
+            "length": 83,
+            "text": "Note: The Dropbox app for Windows devices does not currently support video uploads.",
+            "sha256": "5e686ea99b09dc875b95347105aad601c681dee4ee3898379bdb5f77e21feb8e",
+            "section": "How to upload photos and videos",
+            "context": "How to upload files to Dropbox on a mobile device / How to upload photos and videos",
+            "step_index": 0,
+            "step_total": 0,
+            "product_key": "help.dropbox.com::dropbox"
+          },
+          "created_at": "2026-10-17T13:38:14.102033Z"
+        },
+        {
+          "id": "46ca2b79-535d-49fe-ad66-69496a56e6cc",
+          "run_id": "4b32e6ba-3f01-4c86-b933-a82a0f542ca1",
+          "category": "competitor",
+          "title": "Upload files to Dropbox on a mobile device - Dropbox Help",
+          "description": "Note: You must be logged into your Dropbox account on the Dropbox mobile app.",
+          "confidence": null,
+          "status": "confirmed",
+          "source_refs": [
+            {
+              "provider_source_id": "8d658a-00",
+              "url": "https://help.dropbox.com/create-upload/upload-mobile",
+              "title": "Upload files to Dropbox on a mobile device - Dropbox Help"
+            }
+          ],
+          "claim_kind": "fact",
+          "supporting_finding_ids": null,
+          "evidence_location": {
+            "provider_source_id": "8d658a-00",
+            "offset": 749,
+            "length": 77,
+            "text": "Note: You must be logged into your Dropbox account on the Dropbox mobile app.",
+            "sha256": "5e686ea99b09dc875b95347105aad601c681dee4ee3898379bdb5f77e21feb8e",
+            "section": "How to upload content from other mobile apps",
+            "context": "How to upload files to Dropbox on a mobile device / How to upload content from other mobile apps",
+            "step_index": 0,
+            "step_total": 0,
+            "product_key": "help.dropbox.com::dropbox"
+          },
+          "created_at": "2026-10-17T13:38:14.102034Z"
+        },
+        {
+          "id": "efeda4bd-821c-4c86-8416-a3b5dd4586ef",
+          "run_id": "4b32e6ba-3f01-4c86-b933-a82a0f542ca1",
+          "category": "competitor",
+          "title": "Upload files to Dropbox on a mobile device - Dropbox Help",
+          "description": "If you have to upload a large amount of photos or videos from your camera app, you can use the overnight uploads feature.",
+          "confidence": null,
+          "status": "confirmed",
+          "source_refs": [
+            {
+              "provider_source_id": "8d658a-00",
+              "url": "https://help.dropbox.com/create-upload/upload-mobile",
+              "title": "Upload files to Dropbox on a mobile device - Dropbox Help"
+            }
+          ],
+          "claim_kind": "fact",
+          "supporting_finding_ids": null,
+          "evidence_location": {
+            "provider_source_id": "8d658a-00",
+            "offset": 1556,
+            "length": 121,
+            "text": "If you have to upload a large amount of photos or videos from your camera app, you can use the overnight uploads feature.",
+            "sha256": "5e686ea99b09dc875b95347105aad601c681dee4ee3898379bdb5f77e21feb8e",
+            "section": "How to upload photos overnight in iOS",
+            "context": "How to upload files to Dropbox on a mobile device / How to upload photos overnight in iOS",
+            "step_index": 0,
+            "step_total": 0,
+            "product_key": "help.dropbox.com::dropbox"
+          },
+          "created_at": "2026-10-17T13:38:14.102034Z"
+        },
+        {
+          "id": "eeac00cf-b432-412b-903e-3a49aa7ae6de",
+          "run_id": "4b32e6ba-3f01-4c86-b933-a82a0f542ca1",
+          "category": "competitor",
+          "title": "Upload files to Dropbox on a mobile device - Dropbox Help",
+          "description": "If your device has an SD card, you can upload files to Dropbox from there.",
+          "confidence": null,
+          "status": "confirmed",
+          "source_refs": [
+            {
+              "provider_source_id": "8d658a-00",
+              "url": "https://help.dropbox.com/create-upload/upload-mobile",
+              "title": "Upload files to Dropbox on a mobile device - Dropbox Help"
+            }
+          ],
+          "claim_kind": "fact",
+          "supporting_finding_ids": null,
+          "evidence_location": {
+            "provider_source_id": "8d658a-00",
+            "offset": 2875,
+            "length": 74,
+            "text": "If your device has an SD card, you can upload files to Dropbox from there.",
+            "sha256": "5e686ea99b09dc875b95347105aad601c681dee4ee3898379bdb5f77e21feb8e",
+            "section": "How to upload other types of files",
+            "context": "How to upload files to Dropbox on a mobile device / How to upload other types of files",
+            "step_index": 0,
+            "step_total": 0,
+            "product_key": "help.dropbox.com::dropbox"
+          },
+          "created_at": "2026-10-17T13:38:14.102035Z"
+        },
+        {
+          "id": "6e335c3f-61f3-4da4-8023-581db2f29131",
+          "run_id": "4b32e6ba-3f01-4c86-b933-a82a0f542ca1",
+          "category": "competitor",
+          "title": "How to use camera uploads - Dropbox Help",
+          "description": "5. Tap Back up my photos.",
+          "confidence": null,
+          "status": "confirmed",
+          "source_refs": [
+            {
+              "provider_source_id": "a72759-02",
+              "url": "https://help.dropbox.com/create-upload/camera-uploads-overview",
+              "title": "How to use camera uploads - Dropbox Help"
+            }
+          ],
+          "claim_kind": "fact",
+          "supporting_finding_ids": null,
+          "evidence_location": {
+            "provider_source_id": "a72759-02",
+            "offset": 900,
+            "length": 25,
+            "text": "5. Tap Back up my photos.",
+            "sha256": "ffba05016a8c1c66ef4f148129b78565a7912fbfbc0dcf20a08ff13af07c0d9e",
+            "section": "Turn photo and video uploads on or off on the Dropbox mobile app",
+            "context": "How to use camera and mobile device uploads / Turn photo and video uploads on or off on the Dropbox mobile app",
+            "step_index": 5,
+            "step_total": 6,
+            "product_key": "help.dropbox.com::dropbox"
+          },
+          "created_at": "2026-10-17T13:38:14.102036Z"
+        },
+        {
+          "id": "88466ccb-47e7-47df-a928-af41d614d5b8",
+          "run_id": "4b32e6ba-3f01-4c86-b933-a82a0f542ca1",
+          "category": "competitor",
+          "title": "How to use camera uploads - Dropbox Help",
+          "description": "4. Tap Upload from, then Settings to give Dropbox access to your photos and videos.",
+          "confidence": null,
+          "status": "confirmed",
+          "source_refs": [
+            {
+              "provider_source_id": "a72759-02",
+              "url": "https://help.dropbox.com/create-upload/camera-uploads-overview",
+              "title": "How to use camera uploads - Dropbox Help"
+            }
+          ],
+          "claim_kind": "fact",
+          "supporting_finding_ids": null,
+          "evidence_location": {
+            "provider_source_id": "a72759-02",
+            "offset": 1095,
+            "length": 83,
+            "text": "4. Tap Upload from, then Settings to give Dropbox access to your photos and videos.",
+            "sha256": "ffba05016a8c1c66ef4f148129b78565a7912fbfbc0dcf20a08ff13af07c0d9e",
+            "section": "Turn photo and video uploads on or off on the Dropbox mobile app",
+            "context": "How to use camera and mobile device uploads / Turn photo and video uploads on or off on the Dropbox mobile app",
+            "step_index": 4,
+            "step_total": 6,
+            "product_key": "help.dropbox.com::dropbox"
+          },
+          "created_at": "2026-10-17T13:38:14.102036Z"
+        },
+        {
+          "id": "0b15e8c4-e013-4531-891d-ce0d13b31775",
+          "run_id": "4b32e6ba-3f01-4c86-b933-a82a0f542ca1",
+          "category": "competitor",
+          "title": "How to use camera uploads - Dropbox Help",
+          "description": "1. Open the Dropbox mobile app.",
+          "confidence": null,
+          "status": "confirmed",
+          "source_refs": [
+            {
+              "provider_source_id": "a72759-02",
+              "url": "https://help.dropbox.com/create-upload/camera-uploads-overview",
+              "title": "How to use camera uploads - Dropbox Help"
+            }
+          ],
+          "claim_kind": "fact",
+          "supporting_finding_ids": null,
+          "evidence_location": {
+            "provider_source_id": "a72759-02",
+            "offset": 1759,
+            "length": 31,
+            "text": "1. Open the Dropbox mobile app.",
+            "sha256": "ffba05016a8c1c66ef4f148129b78565a7912fbfbc0dcf20a08ff13af07c0d9e",
+            "section": "How to upload photos and videos overnight on the Dropbox mobile app",
+            "context": "How to use camera and mobile device uploads / How to upload photos and videos overnight on the Dropbox mobile app",
+            "step_index": 1,
+            "step_total": 3,
+            "product_key": "help.dropbox.com::dropbox"
+          },
+          "created_at": "2026-10-17T13:38:14.102037Z"
+        },
+        {
+          "id": "9178fe48-02e3-4ba0-a3ea-8087cc5e90d6",
+          "run_id": "4b32e6ba-3f01-4c86-b933-a82a0f542ca1",
+          "category": "competitor",
+          "title": "How to use camera uploads - Dropbox Help",
+          "description": "5. In the Dropbox app, choose what you’d like to back up and whether you’d like to use cell data.",
+          "confidence": null,
+          "status": "confirmed",
+          "source_refs": [
+            {
+              "provider_source_id": "a72759-02",
+              "url": "https://help.dropbox.com/create-upload/camera-uploads-overview",
+              "title": "How to use camera uploads - Dropbox Help"
+            }
+          ],
+          "claim_kind": "fact",
+          "supporting_finding_ids": null,
+          "evidence_location": {
+            "provider_source_id": "a72759-02",
+            "offset": 1179,
+            "length": 97,
+            "text": "5. In the Dropbox app, choose what you’d like to back up and whether you’d like to use cell data.",
+            "sha256": "ffba05016a8c1c66ef4f148129b78565a7912fbfbc0dcf20a08ff13af07c0d9e",
+            "section": "Turn photo and video uploads on or off on the Dropbox mobile app",
+            "context": "How to use camera and mobile device uploads / Turn photo and video uploads on or off on the Dropbox mobile app",
+            "step_index": 5,
+            "step_total": 6,
+            "product_key": "help.dropbox.com::dropbox"
+          },
+          "created_at": "2026-10-17T13:38:14.102037Z"
+        },
+        {
+          "id": "5e44cf24-d3da-4e97-9e3f-9fdacf1c10d2",
+          "run_id": "4b32e6ba-3f01-4c86-b933-a82a0f542ca1",
+          "category": "competitor",
+          "title": "How to use camera uploads - Dropbox Help",
+          "description": "2. Tap the camera icon in the top-right corner.",
+          "confidence": null,
+          "status": "confirmed",
+          "source_refs": [
+            {
+              "provider_source_id": "a72759-02",
+              "url": "https://help.dropbox.com/create-upload/camera-uploads-overview",
+              "title": "How to use camera uploads - Dropbox Help"
+            }
+          ],
+          "claim_kind": "fact",
+          "supporting_finding_ids": null,
+          "evidence_location": {
+            "provider_source_id": "a72759-02",
+            "offset": 1791,
+            "length": 47,
+            "text": "2. Tap the camera icon in the top-right corner.",
+            "sha256": "ffba05016a8c1c66ef4f148129b78565a7912fbfbc0dcf20a08ff13af07c0d9e",
+            "section": "How to upload photos and videos overnight on the Dropbox mobile app",
+            "context": "How to use camera and mobile device uploads / How to upload photos and videos overnight on the Dropbox mobile app",
+            "step_index": 2,
+            "step_total": 3,
+            "product_key": "help.dropbox.com::dropbox"
+          },
+          "created_at": "2026-10-17T13:38:14.102038Z"
+        },
+        {
+          "id": "c989a70f-9c8a-46c5-b191-b54eb909d94f",
+          "run_id": "4b32e6ba-3f01-4c86-b933-a82a0f542ca1",
+          "category": "competitor",
+          "title": "How to use camera uploads - Dropbox Help",
+          "description": "3. Tap Start overnight uploads to start uploading content or tap Exit overnight uploads to stop uploading content.",
+          "confidence": null,
+          "status": "confirmed",
+          "source_refs": [
+            {
+              "provider_source_id": "a72759-02",
+              "url": "https://help.dropbox.com/create-upload/camera-uploads-overview",
+              "title": "How to use camera uploads - Dropbox Help"
+            }
+          ],
+          "claim_kind": "fact",
+          "supporting_finding_ids": null,
+          "evidence_location": {
+            "provider_source_id": "a72759-02",
+            "offset": 1839,
+            "length": 114,
+            "text": "3. Tap Start overnight uploads to start uploading content or tap Exit overnight uploads to stop uploading content.",
+            "sha256": "ffba05016a8c1c66ef4f148129b78565a7912fbfbc0dcf20a08ff13af07c0d9e",
+            "section": "How to upload photos and videos overnight on the Dropbox mobile app",
+            "context": "How to use camera and mobile device uploads / How to upload photos and videos overnight on the Dropbox mobile app",
+            "step_index": 3,
+            "step_total": 3,
+            "product_key": "help.dropbox.com::dropbox"
+          },
+          "created_at": "2026-10-17T13:38:14.102038Z"
+        },
+        {
+          "id": "1afe042c-2fb0-4896-934b-922c0d435a5b",
+          "run_id": "4b32e6ba-3f01-4c86-b933-a82a0f542ca1",
+          "category": "competitor",
+          "title": "How to use camera uploads - Dropbox Help",
+          "description": "1. Keep your Dropbox app open.",
+          "confidence": null,
+          "status": "confirmed",
+          "source_refs": [
+            {
+              "provider_source_id": "a72759-02",
+              "url": "https://help.dropbox.com/create-upload/camera-uploads-overview",
+              "title": "How to use camera uploads - Dropbox Help"
+            }
+          ],
+          "claim_kind": "fact",
+          "supporting_finding_ids": null,
+          "evidence_location": {
+            "provider_source_id": "a72759-02",
+            "offset": 2128,
+            "length": 30,
+            "text": "1. Keep your Dropbox app open.",
+            "sha256": "ffba05016a8c1c66ef4f148129b78565a7912fbfbc0dcf20a08ff13af07c0d9e",
+            "section": "How to upload photos and videos overnight on the Dropbox mobile app",
+            "context": "How to use camera and mobile device uploads / How to upload photos and videos overnight on the Dropbox mobile app",
+            "step_index": 1,
+            "step_total": 3,
+            "product_key": "help.dropbox.com::dropbox"
+          },
+          "created_at": "2026-10-17T13:38:14.102039Z"
+        },
+        {
+          "id": "1f90c5c0-f9c3-4835-98ca-83ff738534b7",
+          "run_id": "4b32e6ba-3f01-4c86-b933-a82a0f542ca1",
+          "category": "competitor",
+          "title": "How to use camera uploads - Dropbox Help",
+          "description": "2. Make sure your phone is connected to Wi-Fi.",
+          "confidence": null,
+          "status": "confirmed",
+          "source_refs": [
+            {
+              "provider_source_id": "a72759-02",
+              "url": "https://help.dropbox.com/create-upload/camera-uploads-overview",
+              "title": "How to use camera uploads - Dropbox Help"
+            }
+          ],
+          "claim_kind": "fact",
+          "supporting_finding_ids": null,
+          "evidence_location": {
+            "provider_source_id": "a72759-02",
+            "offset": 2159,
+            "length": 46,
+            "text": "2. Make sure your phone is connected to Wi-Fi.",
+            "sha256": "ffba05016a8c1c66ef4f148129b78565a7912fbfbc0dcf20a08ff13af07c0d9e",
+            "section": "How to upload photos and videos overnight on the Dropbox mobile app",
+            "context": "How to use camera and mobile device uploads / How to upload photos and videos overnight on the Dropbox mobile app",
+            "step_index": 2,
+            "step_total": 3,
+            "product_key": "help.dropbox.com::dropbox"
+          },
+          "created_at": "2026-10-17T13:38:14.102039Z"
+        },
+        {
+          "id": "11a382cd-9fbc-44cc-b483-273c591e3761",
+          "run_id": "4b32e6ba-3f01-4c86-b933-a82a0f542ca1",
+          "category": "competitor",
+          "title": "How to use camera uploads - Dropbox Help",
+          "description": "3. Keep your phone plugged into a charger to prevent your phone from powering off.",
+          "confidence": null,
+          "status": "confirmed",
+          "source_refs": [
+            {
+              "provider_source_id": "a72759-02",
+              "url": "https://help.dropbox.com/create-upload/camera-uploads-overview",
+              "title": "How to use camera uploads - Dropbox Help"
+            }
+          ],
+          "claim_kind": "fact",
+          "supporting_finding_ids": null,
+          "evidence_location": {
+            "provider_source_id": "a72759-02",
+            "offset": 2206,
+            "length": 82,
+            "text": "3. Keep your phone plugged into a charger to prevent your phone from powering off.",
+            "sha256": "ffba05016a8c1c66ef4f148129b78565a7912fbfbc0dcf20a08ff13af07c0d9e",
+            "section": "How to upload photos and videos overnight on the Dropbox mobile app",
+            "context": "How to use camera and mobile device uploads / How to upload photos and videos overnight on the Dropbox mobile app",
+            "step_index": 3,
+            "step_total": 3,
+            "product_key": "help.dropbox.com::dropbox"
+          },
+          "created_at": "2026-10-17T13:38:14.102040Z"
+        },
+        {
+          "id": "da9c95f3-fa34-41de-a521-b1fa9417d93c",
+          "run_id": "4b32e6ba-3f01-4c86-b933-a82a0f542ca1",
+          "category": "competitor",
+          "title": "How to use camera uploads - Dropbox Help",
+          "description": "If you have to upload a large amount of photos or videos from your camera app, you can use the overnight uploads feature.",
+          "confidence": null,
+          "status": "confirmed",
+          "source_refs": [
+            {
+              "provider_source_id": "a72759-02",
+              "url": "https://help.dropbox.com/create-upload/camera-uploads-overview",
+              "title": "How to use camera uploads - Dropbox Help"
+            }
+          ],
+          "claim_kind": "fact",
+          "supporting_finding_ids": null,
+          "evidence_location": {
+            "provider_source_id": "a72759-02",
+            "offset": 1432,
+            "length": 121,
+            "text": "If you have to upload a large amount of photos or videos from your camera app, you can use the overnight uploads feature.",
+            "sha256": "ffba05016a8c1c66ef4f148129b78565a7912fbfbc0dcf20a08ff13af07c0d9e",
+            "section": "How to upload photos and videos overnight on the Dropbox mobile app",
+            "context": "How to use camera and mobile device uploads / How to upload photos and videos overnight on the Dropbox mobile app",
+            "step_index": 0,
+            "step_total": 0,
+            "product_key": "help.dropbox.com::dropbox"
+          },
+          "created_at": "2026-10-17T13:38:14.102041Z"
+        },
+        {
+          "id": "e2c58928-34ed-4f1c-8aae-473d7b17b4f6",
+          "run_id": "4b32e6ba-3f01-4c86-b933-a82a0f542ca1",
+          "category": "competitor",
+          "title": "How to use camera uploads - Dropbox Help",
+          "description": "Note: This feature is available on iOS devices only.",
+          "confidence": null,
+          "status": "confirmed",
+          "source_refs": [
+            {
+              "provider_source_id": "a72759-02",
+              "url": "https://help.dropbox.com/create-upload/camera-uploads-overview",
+              "title": "How to use camera uploads - Dropbox Help"
+            }
+          ],
+          "claim_kind": "fact",
+          "supporting_finding_ids": null,
+          "evidence_location": {
+            "provider_source_id": "a72759-02",
+            "offset": 1379,
+            "length": 52,
+            "text": "Note: This feature is available on iOS devices only.",
+            "sha256": "ffba05016a8c1c66ef4f148129b78565a7912fbfbc0dcf20a08ff13af07c0d9e",
+            "section": "How to upload photos and videos overnight on the Dropbox mobile app",
+            "context": "How to use camera and mobile device uploads / How to upload photos and videos overnight on the Dropbox mobile app",
+            "step_index": 0,
+            "step_total": 0,
+            "product_key": "help.dropbox.com::dropbox"
+          },
+          "created_at": "2026-10-17T13:38:14.102041Z"
+        },
+        {
+          "id": "19090a74-fea3-4919-9cf3-8991488db43b",
+          "run_id": "4b32e6ba-3f01-4c86-b933-a82a0f542ca1",
+          "category": "competitor",
+          "title": "Dropbox supports batch multi-select in manual upload picker; Google Photos manual backup is per-item via touch-and-hold",
+          "description": "In the manual upload entry points documented on official help pages, Dropbox mobile instructs users to 'Tap the photos you would like to upload' after choosing Upload Photos, implying multi-select on Android; Google Photos Android manual backup requires opening a single photo and tapping 'Back up now,' with a tip noting that to back up multiple items users should 'Touch and hold the photos or videos you want to back up, and then tap Back up.' Subject to human review.\n【推断】场景：Manual photo upload entry points on Google Photos Android vs Dropbox mobile (official help pages)",
+          "confidence": null,
+          "status": "not_verified",
+          "source_refs": null,
+          "claim_kind": "inference",
+          "supporting_finding_ids": [
+            "179a630c-9c50-4a58-8855-1d2243743aa0",
+            "2de2c20c-82f2-4946-882e-fca061131049",
+            "cb1e5983-ceb7-43e5-9757-043050b84be2",
+            "49f8e554-4804-4328-bad3-cc395fe0bba4",
+            "9a53db22-915a-43c6-a365-4b3c2a0fa582",
+            "8bc9a887-6f48-4446-a707-637d24cd8b8f",
+            "578c19de-8234-4f35-96ce-27d18fb7bbb1",
+            "9835ab9f-04a3-4f59-b546-9dbc2e4a64a7"
+          ],
+          "evidence_location": null,
+          "created_at": "2026-10-17T13:38:14.102042Z"
+        },
+        {
+          "id": "bd47d8ef-02a1-4043-a640-29eed5bdf502",
+          "run_id": "4b32e6ba-3f01-4c86-b933-a82a0f542ca1",
+          "category": "competitor",
+          "title": "How to use camera uploads - Dropbox Help",
+          "description": "Note: To successfully upload your photos and videos overnight, you must:",
+          "confidence": null,
+          "status": "confirmed",
+          "source_refs": [
+            {
+              "provider_source_id": "a72759-02",
+              "url": "https://help.dropbox.com/create-upload/camera-uploads-overview",
+              "title": "How to use camera uploads - Dropbox Help"
+            }
+          ],
+          "claim_kind": "fact",
+          "supporting_finding_ids": null,
+          "evidence_location": {
+            "provider_source_id": "a72759-02",
+            "offset": 2055,
+            "length": 72,
+            "text": "Note: To successfully upload your photos and videos overnight, you must:",
+            "sha256": "ffba05016a8c1c66ef4f148129b78565a7912fbfbc0dcf20a08ff13af07c0d9e",
+            "section": "How to upload photos and videos overnight on the Dropbox mobile app",
+            "context": "How to use camera and mobile device uploads / How to upload photos and videos overnight on the Dropbox mobile app",
+            "step_index": 0,
+            "step_total": 0,
+            "product_key": "help.dropbox.com::dropbox"
+          },
+          "created_at": "2026-10-17T13:38:14.102042Z"
+        },
+        {
+          "id": "0507dffa-bf5b-48f8-8819-6f133821f28a",
+          "run_id": "4b32e6ba-3f01-4c86-b933-a82a0f542ca1",
+          "category": "competitor",
+          "title": "Scenario-relative strengths and weaknesses of each app's manual upload entry point",
+          "description": "In the manual upload scenario, Google Photos Android's strength is unified backup semantics (single 'Back up now' action tied to the existing backup pipeline, with status cues such as 'Not enough storage to back up'); its weakness is the open-one-item-then-back-up flow, which, per official help, requires touch-and-hold to back up multiple items. Dropbox mobile's strength is a deliberate multi-step flow with explicit folder/destination selection ('Tap the folder icon (Android) or Next (iOS)') and a Set location step; its weakness, per official help, is the Windows-app restriction ('The Dropbox app for Windows devices does not currently support video uploads') and reliance on being logged in to Dropbox. Subject to human review.\n【推断】场景：Manual photo upload entry points on Google Photos Android vs Dropbox mobile (official help pages)",
+          "confidence": null,
+          "status": "not_verified",
+          "source_refs": null,
+          "claim_kind": "inference",
+          "supporting_finding_ids": [
+            "179a630c-9c50-4a58-8855-1d2243743aa0",
+            "2de2c20c-82f2-4946-882e-fca061131049",
+            "cb1e5983-ceb7-43e5-9757-043050b84be2",
+            "49f8e554-4804-4328-bad3-cc395fe0bba4",
+            "e2b59fa5-e0c8-44a8-8ffa-621c79d716cb",
+            "8bc9a887-6f48-4446-a707-637d24cd8b8f",
+            "309c7832-4e55-439b-a2c7-c307e933f4e3",
+            "578c19de-8234-4f35-96ce-27d18fb7bbb1",
+            "f57528a9-fa7e-45ec-90d6-28d7ef65ef11",
+            "bd4b4c6a-375c-4298-bf69-aebc081297a5",
+            "90c01c4f-a44a-4ef2-9579-b91b9bb284e3",
+            "46ca2b79-535d-49fe-ad66-69496a56e6cc"
+          ],
+          "evidence_location": null,
+          "created_at": "2026-10-17T13:38:14.102043Z"
+        },
+        {
+          "id": "69fc4b10-70a8-4817-9125-7b38b2d4b0f6",
+          "run_id": "4b32e6ba-3f01-4c86-b933-a82a0f542ca1",
+          "category": "market_pattern",
+          "title": "Both apps pair an automatic backup feature with a manual entry point on Android",
+          "description": "Across the two sampled products, both Google Photos Android and Dropbox mobile document a manual upload/backup entry point that coexists with an automatic backup feature: Google Photos' automatic backup is set up via 'turn on backup,' while Dropbox documents 'Camera uploads' as the automatic counterpart and a '+ → Upload Photos' flow as the manual counterpart. This pattern of pairing automatic + manual upload entry points is observed in both samples. Subject to human review.\n【推断】场景：Manual photo upload entry points on Google Photos Android vs Dropbox mobile (official help pages)",
+          "confidence": null,
+          "status": "not_verified",
+          "source_refs": null,
+          "claim_kind": "inference",
+          "supporting_finding_ids": [
+            "179a630c-9c50-4a58-8855-1d2243743aa0",
+            "49f8e554-4804-4328-bad3-cc395fe0bba4",
+            "f59f0052-586c-448e-9b3e-cec51e39f0a7",
+            "309c7832-4e55-439b-a2c7-c307e933f4e3",
+            "578c19de-8234-4f35-96ce-27d18fb7bbb1",
+            "6e335c3f-61f3-4da4-8023-581db2f29131"
+          ],
+          "evidence_location": null,
+          "created_at": "2026-10-17T13:38:14.102043Z"
+        },
+        {
+          "id": "39ff3260-7293-4535-ab87-3029d0399fb9",
+          "run_id": "4b32e6ba-3f01-4c86-b933-a82a0f542ca1",
+          "category": "risk",
+          "title": "Risk of documentation ambiguity when users expect multi-select but the default flow is single-item",
+          "description": "Per Google Photos official help, the default manual backup flow is to open a single photo and tap 'Back up now,' with multi-item back up described only as a tip ('Touch and hold the photos or videos you want to back up'). Inferred risk: users expecting multi-select as the default may not discover this tip, leading to repeated single-item taps. Dropbox documents 'Tap the photos you would like to upload' as part of the main procedure, suggesting multi-select is the main path. Subject to human review.\n【推断】场景：Manual photo upload entry points on Google Photos Android vs Dropbox mobile (official help pages)",
+          "confidence": null,
+          "status": "not_verified",
+          "source_refs": null,
+          "claim_kind": "inference",
+          "supporting_finding_ids": [
+            "cb1e5983-ceb7-43e5-9757-043050b84be2",
+            "49f8e554-4804-4328-bad3-cc395fe0bba4",
+            "9a53db22-915a-43c6-a365-4b3c2a0fa582",
+            "578c19de-8234-4f35-96ce-27d18fb7bbb1",
+            "9835ab9f-04a3-4f59-b546-9dbc2e4a64a7"
+          ],
+          "evidence_location": null,
+          "created_at": "2026-10-17T13:38:14.102044Z"
+        },
+        {
+          "id": "4de929cc-67b4-4f21-9c05-868aab7608e7",
+          "run_id": "4b32e6ba-3f01-4c86-b933-a82a0f542ca1",
+          "category": "opportunity",
+          "title": "Recommendation: clarify Google Photos multi-item back-up path in the main manual-backup steps",
+          "description": "Recommendation for human review: promote the multi-item back-up tip ('Touch and hold the photos or videos you want to back up, and then tap Back up') from a tips subsection into the numbered manual-back-up procedure, so users do not need to discover batch selection via secondary text. This is a documentation-level proposal only and does not modify product decisions or claim behavioral outcomes.\n【建议】场景：Manual photo upload entry points on Google Photos Android vs Dropbox mobile (official help pages)",
+          "confidence": null,
+          "status": "not_verified",
+          "source_refs": null,
+          "claim_kind": "recommendation",
+          "supporting_finding_ids": [
+            "179a630c-9c50-4a58-8855-1d2243743aa0",
+            "2de2c20c-82f2-4946-882e-fca061131049",
+            "cb1e5983-ceb7-43e5-9757-043050b84be2",
+            "49f8e554-4804-4328-bad3-cc395fe0bba4",
+            "9a53db22-915a-43c6-a365-4b3c2a0fa582",
+            "b062a3bc-e168-4527-a5db-64c0ceea6340"
+          ],
+          "evidence_location": null,
+          "created_at": "2026-10-17T13:38:14.102045Z"
+        },
+        {
+          "id": "d11a4614-d6e3-4c34-bbe5-8764e31ca02f",
+          "run_id": "4b32e6ba-3f01-4c86-b933-a82a0f542ca1",
+          "category": "summary",
+          "title": "内部上下文",
+          "description": "内部上下文：图片上传仅支持单张选择，复发性操作负担突出",
+          "confidence": null,
+          "status": "not_verified",
+          "source_refs": null,
+          "claim_kind": null,
+          "supporting_finding_ids": null,
+          "evidence_location": null,
+          "created_at": "2026-10-17T13:38:14.112538Z"
+        }
+      ]
+    }
+  ]
+}

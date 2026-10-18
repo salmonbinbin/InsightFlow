@@ -1,0 +1,13 @@
+{
+  "kind": "offline diagnostics; source metadata only; no keys or Raw Feedback",
+  "source_evidence": "docs/evaluations/phase8-v4-live-evidence.json",
+  "source_evidence_sha256": "c38693d91266f7105a2d15c02f6c88055d9d2c23c2c6adcafca2b581db560f77",
+  "files": {
+    "apple-paths.json": "512ae859610963e1f87d3f0ecd1081ca8db7fc8262a99e2ac5373f66140bd873",
+    "controls.json": "f96e51e9cdf9cde320cf46382c68472b0f7642a79273e4a175072e65623d7261",
+    "controls.py": "93792fd13e57bbd37473d8dd965849b274b7b8f7717f6e22359993ae45c28c06",
+    "official-pages.json": "d9c75b9e974b49b09212d1ccf7feb1b396f85c51a572d161708170a98492573b",
+    "replay.json": "a593194abe3b37a18b8d8ab117b079adf61b7bcc4b21336fd201d64ece3b88fc",
+    "replay.py": "f01612c625b1593ca199ab45c1149a766f43ed481810f7159fd6e05c7b5f21d8"
+  }
+}

@@ -85,6 +85,8 @@
  */
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { TechnicalDetails } from '../../components/TechnicalDetails';
+import { displayLabel, metricLabel } from '../../lib/presentation';
 import { useProjectContext } from '../../contexts/ProjectContext';
 import { getApiClient } from '../../lib/api/client';
 import { useProjectScopedFetch } from '../../lib/useProjectScopedFetch';
@@ -124,8 +126,8 @@ const DETAIL_PAGE_LIMIT = 25;
  * "尚未设定" so the page never shows a target the doc didn't
  * authorise. */
 const TARGETS: Record<string, { label: string; threshold: number }> = {
-  feedback_type_accuracy: { label: 'Feedback Type Accuracy', threshold: 0.9 },
-  intent_exact_match: { label: 'Intent Accuracy', threshold: 0.85 },
+  feedback_type_accuracy: { label: '反馈类型准确率', threshold: 0.9 },
+  intent_exact_match: { label: '意图匹配率', threshold: 0.85 },
 };
 
 const UNREVIEWED_LABEL =
@@ -505,7 +507,7 @@ export default function EvaluationPage() {
      * The UI MUST branch on ``value === null`` (NOT on falsiness)
      * so a real zero is never collapsed to "Not Measured". */
     if (metric.value === null) {
-      return metric.value_display || 'NOT MEASURED';
+      return '未测量';
     }
     return metric.value_display || String(metric.value);
   }
@@ -543,15 +545,11 @@ export default function EvaluationPage() {
   return (
     <div className="page page-evaluation">
       <header className="page-header">
-        <span className="eyebrow">Evaluation · D2b</span>
+        <span className="eyebrow">质量评测</span>
         <h1 className="page-title" data-testid="evaluation-page-title">
-          评测 · {activeProjectId.slice(0, 8)}…
+          质量评测
         </h1>
-        <p className="page-subtitle">
-          当前项目下的 EvaluationRun 历史（按 <code className="mono">created_at DESC</code> 稳定排序）。
-          选择一次运行以查看 Dataset 信息、指标（Actual / Target）与失败案例。
-          列表与每次 per-run 请求均带 <code className="mono">project_id</code>，跨项目数据被拒绝。
-        </p>
+        <p className="page-subtitle">查看分析质量、参考目标与失败案例。</p>
       </header>
 
       {/* ---- Runs list ---- */}
@@ -560,7 +558,7 @@ export default function EvaluationPage() {
         {listEmpty ? (
           <EmptyState
             title="该项目下尚无评测"
-            description="评测由 Phase 1 / Phase 2 详情页触发；当前项目暂未运行过。"
+            description="当前项目还没有评测记录。"
           />
         ) : listItems.length > 0 ? (
           <>
@@ -583,11 +581,11 @@ export default function EvaluationPage() {
                       onClick={() => selectRun(r.id)}
                     >
                       <div className="eval-row-head">
-                        <span className="eval-row-id mono">{r.id.slice(0, 8)}</span>
-                        <span className="badge badge-outline">{r.evaluation_type}</span>
+                        <span className="eval-row-id">{displayLabel(r.stage, "质量评测")}</span>
+                        <span className="badge badge-outline">{displayLabel(r.evaluation_type, "质量评测")}</span>
                       </div>
                       <p className="eval-row-meta">
-                        stage {r.stage} · status {r.status} ·{' '}
+                        {displayLabel(r.stage)} · {displayLabel(r.status)} ·{' '}
                         {formatRelative(r.created_at)}
                       </p>
                     </button>
@@ -645,7 +643,7 @@ export default function EvaluationPage() {
         {!selectedRunId ? (
           <EmptyState
             title="选择左侧任一评测运行"
-            description="右侧展示 Dataset 信息、指标表（含 Actual / Target）与失败案例。"
+            description="查看样本、实测指标和失败案例。"
           />
         ) : runLoading ? (
           <LoadingState />
@@ -665,30 +663,22 @@ export default function EvaluationPage() {
               className="eval-detail-header"
               data-testid="eval-detail-header"
             >
-              <span className="eyebrow">{run.evaluation_type}</span>
+              <span className="eyebrow">{displayLabel(run.evaluation_type, "质量评测")}</span>
               <h3 className="section-title" data-testid="eval-detail-title">
-                {run.id.slice(0, 8)}… · {run.stage}
+                {displayLabel(run.stage, "评测结果")}
               </h3>
               <dl className="meta-grid">
-                <dt>Dataset</dt>
+                <dt>评测数据</dt>
                 <dd data-testid="eval-dataset-name">{run.dataset_name}</dd>
-                <dt>Version</dt>
+                <dt>版本</dt>
                 <dd data-testid="eval-dataset-version">{run.dataset_version}</dd>
-                <dt>Split</dt>
-                <dd>{run.dataset_split}</dd>
-                <dt>Sample Count</dt>
+                <dt>样本分组</dt>
+                <dd>{displayLabel(run.dataset_split)}</dd>
+                <dt>样本数</dt>
                 <dd data-testid="eval-sample-count">{run.input_count}</dd>
-                <dt>Model</dt>
+                <dt>模型</dt>
                 <dd data-testid="eval-model">{run.model ?? '—'}</dd>
-                <dt>Prompt</dt>
-                <dd data-testid="eval-prompt-version">
-                  {run.prompt_version ?? '—'}
-                </dd>
-                <dt>Pipeline</dt>
-                <dd>{run.pipeline_version ?? '—'}</dd>
-                <dt>Calculation</dt>
-                <dd>{run.calculation_version}</dd>
-                <dt>Label Status</dt>
+                <dt>样本复核状态</dt>
                 <dd data-testid="eval-label-status">
                   {run.dataset_label_status === UNREVIEWED_LABEL ? (
                     <span
@@ -698,10 +688,19 @@ export default function EvaluationPage() {
                       未经人工复核
                     </span>
                   ) : (
-                    <code className="mono">{run.dataset_label_status}</code>
+                    <span>{displayLabel(run.dataset_label_status, "待人工复核")}</span>
                   )}
                 </dd>
               </dl>
+              <TechnicalDetails label="查看评测配置"><dl className="meta-grid">                <dt>提示词版本</dt>
+                <dd data-testid="eval-prompt-version">
+                  {run.prompt_version ?? '—'}
+                </dd>
+                <dt>流程版本</dt>
+                <dd>{run.pipeline_version ?? '—'}</dd>
+                <dt>评分规则</dt>
+                <dd>{run.calculation_version}</dd>
+</dl></TechnicalDetails>
             </header>
 
             {/* Metrics */}
@@ -733,11 +732,11 @@ export default function EvaluationPage() {
                   >
                     <thead>
                       <tr>
-                        <th>Metric</th>
-                        <th>Stage</th>
-                        <th>Sample</th>
-                        <th>Actual</th>
-                        <th>Target</th>
+                        <th>指标</th>
+                        <th>环节</th>
+                        <th>样本数</th>
+                        <th>实测结果</th>
+                        <th>参考目标</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -749,8 +748,8 @@ export default function EvaluationPage() {
                             data-testid="eval-metric-row"
                             data-metric-name={m.metric_name}
                           >
-                            <td className="mono">{m.metric_name}</td>
-                            <td>{m.stage}</td>
+                            <td title={m.metric_name}>{metricLabel(m.metric_name)}</td>
+                            <td>{displayLabel(m.stage)}</td>
                             <td>{m.sample_count}</td>
                             <td data-testid="eval-metric-actual">
                               {renderActual(m)}
@@ -858,11 +857,11 @@ export default function EvaluationPage() {
                     >
                       <thead>
                         <tr>
-                          <th>Case</th>
-                          <th>Stage</th>
-                          <th>Passed</th>
-                          <th>Error</th>
-                          <th>Failed Stage</th>
+                          <th>案例编号</th>
+                          <th>环节</th>
+                          <th>是否通过</th>
+                          <th>失败原因</th>
+                          <th>失败环节</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -873,10 +872,10 @@ export default function EvaluationPage() {
                             data-case-id={c.case_id}
                           >
                             <td className="mono">{c.case_id}</td>
-                            <td>{c.stage}</td>
+                            <td>{displayLabel(c.stage)}</td>
                             <td>{c.passed === false ? '失败' : '未知'}</td>
-                            <td>{c.error_type ?? '—'}</td>
-                            <td>{c.failed_stage ?? '—'}</td>
+                            <td>{displayLabel(c.error_type, "处理失败")}</td>
+                            <td>{displayLabel(c.failed_stage, "处理失败")}</td>
                           </tr>
                         ))}
                       </tbody>

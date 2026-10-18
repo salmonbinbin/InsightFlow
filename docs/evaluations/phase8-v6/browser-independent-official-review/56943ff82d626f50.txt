@@ -1,0 +1,229 @@
+Upload files to Dropbox on a mobile device - Dropbox Help
+Dropbox
+Main navigation
+Help center
+Community
+Dropbox learn
+Contact support
+Help center
+Community
+Dropbox learn
+Contact support
+Open/close search
+Help center
+Account
+Account access
+Billing
+Account settings
+Plans
+Storage space
+Security
+Using Dropbox
+Sync
+Delete and restore
+Share
+View and edit
+Installs
+Create and upload
+Organize
+Integrations
+AI integrations
+Products
+Dropbox Dash
+Dropbox Protect
+Dropbox Sign
+Dropbox DocSend
+Dropbox Backup
+Dropbox Replay
+Dropbox Transfer
+Get started
+Dropbox Help Center - How to use Dropbox
+Create and upload
+Upload files on mobile
+How to upload files to Dropbox on a mobile device
+Updated Feb 14, 2025
+In this article
+The information in this article applies to all Dropbox users.
+The Dropbox mobile app allows you to create and upload files directly to your Dropbox account from your phone or tablet. Uploaded files sync everywhere you access your files in Dropbox.
+Not using Dropbox yet? See how Dropbox makes syncing files easy.
+How to upload content from other mobile apps
+You can upload content from other mobile apps (Photos, Messages, etc.) to your Dropbox account. To do so:
+Open the app where the content is currently saved.
+Select what you’d like to upload to your Dropbox account.
+Click the app’s Share button or icon.
+Select the Dropbox mobile app.
+Note: You must be logged into your Dropbox account on the Dropbox mobile app.
+Select the Dropbox save location, and save your content.
+How to upload photos and videos
+If you don't have camera uploads enabled, you can manually add photos to your Dropbox account. To do so:
+Open the Dropbox mobile app.
+Open the Dropbox folder where you'd like to store your photos.
+Tap the "+" (plus sign) at the bottom of your screen.
+Choose Upload Photos.
+Tap the photos you would like to upload.
+Tap the folder icon (Android) or Next (iOS), and select where you'd like the files to be added.
+Tap Set location.
+Tap Upload.
+Note: The Dropbox app for Windows devices does not currently support video uploads. This is due to operating system limitations.
+How to upload photos overnight in iOS
+If you have to upload a large amount of photos or videos from your camera app, you can use the overnight uploads feature. Overnight uploads allows you to upload your photos and videos continuously through the night, keeping the Dropbox mobile app open and dimming your device’s brightness.
+Learn more about overnight uploads.
+How to upload audio files
+iOS users can record audio using the Dropbox mobile app and save directly to their Dropbox account. To do so:
+Open the Dropbox app.
+Tap the + (plus) icon at the bottom of your screen.
+Tap Record Audio.
+Tap the red circle to begin recording and the red square to stop recording.
+Select the Dropbox folder where you'd like to store your audio file.
+Tap Upload.
+Note: The Dropbox mobile app for Windows in S mode (Dropbox Lite) and Android devices do not currently support audio capture.
+How to upload other types of files
+Open the Dropbox mobile app.
+Open the Dropbox folder where you'd like to store your files.
+Tap the "+" (plus sign) at the bottom of your screen.
+Tap Upload files (Android) or Create or Upload File (iPhone/iPad).
+Tap Upload (Android) or Upload File (iPhone/iPad).
+You can also choose to create content using Microsoft Office applications.
+Learn more about creating content with Microsoft Office applications.
+If your device has an SD card, you can upload files to Dropbox from there. To do so:
+Open the Dropbox mobile app.
+Open the Dropbox folder where you'd like to store your photos.
+Tap the "+" (plus sign) at the bottom of your screen.
+Select Upload files.
+Navigate to your SD card, and tap the files you'd like to upload.
+Tap Upload (or Open on some devices).
+Note: If you can't view your SD card when browsing for files to upload, verify that Show advanced devices is checked by tapping the menu button at the top of the screen and looking under Settings.
+iPhone/iPad users can also upload other types of files using either of the following:
+The iPhone/iPad Open In menu wherever it appears in other apps
+App Extensions on iOS 8 and later
+Was this article helpful?
+Yes, thanks!
+Not really
+Let us know how why it didn't help:
+Thanks for letting us know!
+The article didn't answer my question
+The steps in the article didn't work for me
+I found this article confusing and difficult to read
+Other
+Please enter feedback before submitting.
+Submit feedback
+Thanks for your feedback!
+Related Articles
+Dropbox Replay FAQs
+How can I export to an SD card from my Android phone?
+How to manage files and projects in Dropbox Replay
+How to save screenshots to Dropbox
+Community answers
+I can't upload files from my Dropbox account to my Android to device
+Posted by: mdcowby
+377 days ago
+260
+4
+How can I edit my Dropbox Excel files on a mobile device?
+Posted by: Paola024
+760 days ago
+1646
+9
+Seeking Help: Adding Dropbox File Upload Functionality to Bubble.io Mobile App
+Posted by: tenzin
+953 days ago
+753
+1
+The Dropbox mobile app on my iOS device is stuck on "Waiting to upload"
+Posted by: Mie I.
+3523 days ago
+39985
+37
+The Dropbox mobile app doesn't see all of my photos when I try to upload from my iOS device
+Posted by: Shirley N.
+3627 days ago
+16167
+18
+Other ways to get help
+Icon depicting a speech bubble
+Contact support
+Icon depicting two people
+Community
+Twitter Icon
+Social media support
+Footer-Help
+Dropbox
+Desktop app
+Mobile app
+Integrations
+Features
+Solutions
+Security
+Early access
+Templates
+Free tools
+Products
+Plus
+Professional
+Business
+Enterprise
+Dash
+DocSend
+Dropbox Sign
+Reclaim.ai
+Plans
+Product updates
+Features
+Send large files
+Send long videos
+Cloud photo storage
+Secure file transfer
+Cloud backup
+Edit PDFs
+Electronic signatures
+Convert to PDF
+Support
+Help center
+Contact us
+Privacy & terms
+Cookie policy
+Cookies & CCPA preferences
+AI principles
+Sitemap
+Learning resources
+Resources
+Blog
+Events
+Customer stories
+Resources library
+Developers
+Community forums
+Referrals
+Reseller partners
+Integration partners
+Find a partner
+Company
+About us
+Jobs
+Investor relations
+Corporate responsibility
+Choose a language
+Bahasa Indonesia
+Bahasa Malaysia
+Dansk
+Deutsch
+English (Australia)
+English (United Kingdom)
+English (United States)
+Español (España)
+Español (Latinoamérica)
+Français (France)
+Italiano
+Nederlands
+Norsk (bokmål)
+Polski
+Português (Brasil)
+Pусский
+Svenska
+Українська
+ไทย
+中文（简体）
+中文（繁體）
+日本語
+한국어
+English (United States)

@@ -1,0 +1,1587 @@
+{
+  "kind": "offline frozen evidence replay; no DB/network calls; all production guards enabled",
+  "samples": [
+    {
+      "n": 1,
+      "run_id": "a8ae9457-180b-4c2a-8c19-cdfb263efdbf",
+      "question": "In the Google Photos Android app, can a user manually select several photos and start backup in one action? Cite only official Google Help; separate manual upload from automatic backup.",
+      "query": "Google Photos Android photos manual select backup upload site:support.google.com/photos/answer",
+      "attempts": [
+        {
+          "replay": {
+            "error_code": "source_refs_invalid",
+            "actual_error": "risk[0] status='not_verified' forbids source_refs"
+          },
+          "entries": [
+            {
+              "field": "competitors",
+              "idx": 0,
+              "name": "Google Photos",
+              "description": "From the cited source. Evidence: \"1. On your Android device, open the Google Photos app Photos.\\n2. Sign in to your Google Account.\\n3. Open the photo or video.\\n4. Tap Back up now.\"",
+              "first_failed_guard": "quote",
+              "checks": {
+                "name": true,
+                "quote": false,
+                "description": true,
+                "quantifier": false
+              },
+              "quote_diag": [
+                "literal_backslash_n"
+              ],
+              "full_quote_length": 147,
+              "extracted_quote": "1. On your Android device, open the Google Photos app Photos.\\n2. Sign in to your Google Account.\\n3. Open the photo or video.\\n4. Tap Back up now.",
+              "source_ref_error": null
+            },
+            {
+              "field": "competitors",
+              "idx": 1,
+              "name": "Google Photos",
+              "description": "From the cited source. Evidence: \"when Google Photos backup is on, it backs up the photos from your gallery app. The Google Account connected to your device's default gallery app is the account used for backing up photos.\"",
+              "first_failed_guard": "quantifier",
+              "checks": {
+                "name": true,
+                "quote": true,
+                "description": true,
+                "quantifier": false
+              },
+              "quote_diag": [
+                "full_quote_exists_in_sources"
+              ],
+              "full_quote_length": 187,
+              "extracted_quote": "when Google Photos backup is on, it backs up the photos from your gallery app. The Google Account connected to your device's default gallery app is the account used for backing up photos.",
+              "source_ref_error": null
+            }
+          ],
+          "retry_hint": null
+        },
+        {
+          "replay": {
+            "complete_gate": false,
+            "findings": [
+              {
+                "category": "summary",
+                "title": "Internal context flags accidental multi-select entry on the mobile upload page; research question investigates Google Photos Android multi-item manual backup flow.",
+                "description": "Internal context flags accidental multi-select entry on the mobile upload page; research question investigates Google Photos Android multi-item manual backup flow.",
+                "confidence": 0.45,
+                "status": "not_verified",
+                "source_refs": []
+              },
+              {
+                "category": "competitor",
+                "title": "Google Photos",
+                "description": "From the official help page. Evidence: \"Manually back up photos & videos\\n1. On your Android device, open the Google Photos app Photos.\\n2. Sign in to your Google Account.\\n3. Open the photo or video.\\n4. Tap Back up now.\"",
+                "confidence": 0.6,
+                "status": "not_verified",
+                "source_refs": []
+              },
+              {
+                "category": "opportunity",
+                "title": "Multi-select manual backup flow on Google Photos Android",
+                "description": "No cited official snippet confirms a one-action, multiple-photo manual backup on Google Photos Android; the cited page documents only single-item manual backup.",
+                "confidence": 0.2,
+                "status": "not_verified",
+                "source_refs": []
+              },
+              {
+                "category": "risk",
+                "title": "Mis-tap may redirect to single-item manual backup path",
+                "description": "If users interpret repetitive taps as enabling multi-select, the official single-item manual backup flow may not match the multi-item intent, creating friction for new mobile users.",
+                "confidence": 0.3,
+                "status": "not_verified",
+                "source_refs": []
+              }
+            ]
+          },
+          "entries": [
+            {
+              "field": "competitors",
+              "idx": 0,
+              "name": "Google Photos",
+              "description": "From the official help page. Evidence: \"Manually back up photos & videos\\n1. On your Android device, open the Google Photos app Photos.\\n2. Sign in to your Google Account.\\n3. Open the photo or video.\\n4. Tap Back up now.\"",
+              "first_failed_guard": "quote",
+              "checks": {
+                "name": true,
+                "quote": false,
+                "description": true,
+                "quantifier": false
+              },
+              "quote_diag": [
+                "literal_backslash_n"
+              ],
+              "full_quote_length": 181,
+              "extracted_quote": "Manually back up photos & videos\\n1. On your Android device, open the Google Photos app Photos.\\n2. Sign in to your Google Account.\\n3. Open the photo or video.\\n4. Tap Back up now.",
+              "source_ref_error": null
+            }
+          ],
+          "retry_hint": "[validation code=source_refs_invalid] Every source_refs entry must carry provider_source_id, url and title; drop any provider_source_id that is not in the list returned by THIS run."
+        }
+      ],
+      "final_gate_matches_saved_status": true
+    },
+    {
+      "n": 2,
+      "run_id": "4d909d70-7542-4585-8b7e-4de5277afc3d",
+      "question": "In the Dropbox iPhone app, can a user select and upload multiple photos at once? Cite only official Dropbox Help and state any limits actually documented.",
+      "query": "Dropbox iPhone select upload multiple photos site:help.dropbox.com/create-upload",
+      "attempts": [
+        {
+          "replay": {
+            "complete_gate": false,
+            "findings": [
+              {
+                "category": "summary",
+                "title": "Researching whether the Dropbox iPhone app supports selecting and uploading multiple photos at once, per official Dropbox Help documentation.",
+                "description": "Researching whether the Dropbox iPhone app supports selecting and uploading multiple photos at once, per official Dropbox Help documentation.",
+                "confidence": 0.45,
+                "status": "not_verified",
+                "source_refs": []
+              },
+              {
+                "category": "competitor",
+                "title": "Dropbox mobile app",
+                "description": "From the official help page. Evidence: \"If you don't have camera uploads enabled, you can manually add photos to your Dropbox account. To do so:\"",
+                "confidence": 0.5,
+                "status": "not_verified",
+                "source_refs": []
+              },
+              {
+                "category": "competitor",
+                "title": "Dropbox mobile app",
+                "description": "From the official help page. Evidence: \"If you have to upload a large amount of photos or videos from your camera app, you can use the overnight uploads feature.\"",
+                "confidence": 0.5,
+                "status": "not_verified",
+                "source_refs": []
+              },
+              {
+                "category": "competitor",
+                "title": "Dropbox mobile app",
+                "description": "From the official help page. Evidence: \"Dropbox supports photo and video files stored in HEIF (.heic) and HEVC-encoded MOV (.mov) formats.\"",
+                "confidence": 0.4,
+                "status": "not_verified",
+                "source_refs": []
+              },
+              {
+                "category": "opportunity",
+                "title": "Multi-select manual upload behavior unverified in cited Dropbox Help pages",
+                "description": "The cited official Dropbox Help pages describe manual addition of photos and batch \"overnight uploads,\" but do not explicitly contain a quantifier (e.g., \"multiple\" / \"several\" / explicit count) describing the user-facing selection step for multiple photos in one manual upload action.",
+                "confidence": 0.3,
+                "status": "not_verified",
+                "source_refs": []
+              },
+              {
+                "category": "risk",
+                "title": "Risk that the existing P1 multi-select entry-point lacks documentation on multi-photo limits",
+                "description": "The cited help.dropbox.com excerpts discuss manual photo addition and overnight batch uploads but do not document a specific per-action multiple-photo selection limit for iPhone manual upload; designing a tooltip without confirming the documented limit may mismatch user expectations.",
+                "confidence": 0.4,
+                "status": "not_verified",
+                "source_refs": []
+              }
+            ]
+          },
+          "entries": [
+            {
+              "field": "competitors",
+              "idx": 0,
+              "name": "Dropbox mobile app",
+              "description": "From the official help page. Evidence: \"If you don't have camera uploads enabled, you can manually add photos to your Dropbox account. To do so:\"",
+              "first_failed_guard": "quantifier",
+              "checks": {
+                "name": true,
+                "quote": true,
+                "description": true,
+                "quantifier": false
+              },
+              "quote_diag": [
+                "full_quote_exists_in_sources"
+              ],
+              "full_quote_length": 104,
+              "extracted_quote": "If you don't have camera uploads enabled, you can manually add photos to your Dropbox account. To do so:",
+              "source_ref_error": null
+            },
+            {
+              "field": "competitors",
+              "idx": 1,
+              "name": "Dropbox mobile app",
+              "description": "From the official help page. Evidence: \"If you have to upload a large amount of photos or videos from your camera app, you can use the overnight uploads feature.\"",
+              "first_failed_guard": "quantifier",
+              "checks": {
+                "name": true,
+                "quote": true,
+                "description": true,
+                "quantifier": false
+              },
+              "quote_diag": [
+                "full_quote_exists_in_sources"
+              ],
+              "full_quote_length": 121,
+              "extracted_quote": "If you have to upload a large amount of photos or videos from your camera app, you can use the overnight uploads feature.",
+              "source_ref_error": null
+            },
+            {
+              "field": "competitors",
+              "idx": 2,
+              "name": "Dropbox mobile app",
+              "description": "From the official help page. Evidence: \"Dropbox supports photo and video files stored in HEIF (.heic) and HEVC-encoded MOV (.mov) formats.\"",
+              "first_failed_guard": "name",
+              "checks": {
+                "name": false,
+                "quote": true,
+                "description": true,
+                "quantifier": false
+              },
+              "quote_diag": [
+                "full_quote_exists_in_sources"
+              ],
+              "full_quote_length": 98,
+              "extracted_quote": "Dropbox supports photo and video files stored in HEIF (.heic) and HEVC-encoded MOV (.mov) formats.",
+              "source_ref_error": null
+            }
+          ],
+          "retry_hint": null
+        }
+      ],
+      "final_gate_matches_saved_status": true
+    },
+    {
+      "n": 3,
+      "run_id": "85216389-f1a1-489d-9d13-1260d8ac01d6",
+      "question": "In the OneDrive iPhone app, can a user manually select multiple photos for one upload? Cite only official Microsoft Support; separate manual upload from camera upload.",
+      "query": "OneDrive iPhone manual select multiple photos upload site:support.microsoft.com/en-us/onedrive",
+      "attempts": [
+        {
+          "replay": {
+            "complete_gate": true,
+            "findings": [
+              {
+                "category": "summary",
+                "title": "Users on the OneDrive iPhone app enter the multi-select grid during the manual upload flow, and repeated taps on the multi-select entry can inadvertently select wrong photos for new mobile users.",
+                "description": "Users on the OneDrive iPhone app enter the multi-select grid during the manual upload flow, and repeated taps on the multi-select entry can inadvertently select wrong photos for new mobile users.",
+                "confidence": 0.88,
+                "status": "not_verified",
+                "source_refs": []
+              },
+              {
+                "category": "competitor",
+                "title": "OneDrive iOS",
+                "description": "From the official help page. Evidence: \"If you tap Choose Existing, links appear to the Photos app on your device. Browse to the pictures you want to upload, select them, then on the top bar, tap Done.\"",
+                "confidence": 0.9,
+                "status": "not_verified",
+                "source_refs": []
+              },
+              {
+                "category": "competitor",
+                "title": "OneDrive iOS",
+                "description": "From the official help page. Evidence: \"In the OneDrive app, tap  OneDrive add icon  at the top of the screen.\"",
+                "confidence": 0.9,
+                "status": "not_verified",
+                "source_refs": []
+              },
+              {
+                "category": "competitor",
+                "title": "OneDrive iOS",
+                "description": "From the official help page. Evidence: \"Users of iOS 16 may not be able to use the two-fingered pan gesture to select multiple files in OneDrive.\"",
+                "confidence": 0.85,
+                "status": "confirmed",
+                "source_refs": [
+                  [
+                    "9925c7-01",
+                    "https://support.microsoft.com/en-us/onedrive/troubleshoot-onedrive-for-ios-app-problems"
+                  ]
+                ]
+              },
+              {
+                "category": "competitor",
+                "title": "OneDrive iOS",
+                "description": "From the official help page. Evidence: \"Workaround\\n\\nSelect one photo first, then use two fingers to slide to select multiple files or photos.\"",
+                "confidence": 0.85,
+                "status": "not_verified",
+                "source_refs": []
+              },
+              {
+                "category": "market_pattern",
+                "title": "Manual multi-file upload flows on OneDrive mobile use an in-app grid multi-select step",
+                "description": "From the cited source. Evidence: \"Choose the files you want to upload from your device.\"",
+                "confidence": 0.8,
+                "status": "not_verified",
+                "source_refs": []
+              },
+              {
+                "category": "opportunity",
+                "title": "Add a tooltip at the multi-select entry on the OneDrive iOS upload flow",
+                "description": "A coaching hint on the multi-select entry in the OneDrive iOS app could reduce mis-tap for new mobile users.",
+                "confidence": 0.5,
+                "status": "not_verified",
+                "source_refs": []
+              },
+              {
+                "category": "risk",
+                "title": "Multi-select pan gesture breakage on iOS 16 in OneDrive iOS app",
+                "description": "From the official help page. Evidence: \"Users of iOS 16 may not be able to use the two-fingered pan gesture to select multiple files in OneDrive.\"",
+                "confidence": 0.85,
+                "status": "not_verified",
+                "source_refs": []
+              }
+            ]
+          },
+          "entries": [
+            {
+              "field": "competitors",
+              "idx": 0,
+              "name": "OneDrive iOS",
+              "description": "From the official help page. Evidence: \"If you tap Choose Existing, links appear to the Photos app on your device. Browse to the pictures you want to upload, select them, then on the top bar, tap Done.\"",
+              "first_failed_guard": "quantifier",
+              "checks": {
+                "name": true,
+                "quote": true,
+                "description": true,
+                "quantifier": false
+              },
+              "quote_diag": [
+                "full_quote_exists_in_sources"
+              ],
+              "full_quote_length": 161,
+              "extracted_quote": "If you tap Choose Existing, links appear to the Photos app on your device. Browse to the pictures you want to upload, select them, then on the top bar, tap Done.",
+              "source_ref_error": null
+            },
+            {
+              "field": "competitors",
+              "idx": 1,
+              "name": "OneDrive iOS",
+              "description": "From the official help page. Evidence: \"In the OneDrive app, tap  OneDrive add icon  at the top of the screen.\"",
+              "first_failed_guard": "quantifier",
+              "checks": {
+                "name": true,
+                "quote": true,
+                "description": true,
+                "quantifier": false
+              },
+              "quote_diag": [
+                "full_quote_exists_in_sources"
+              ],
+              "full_quote_length": 70,
+              "extracted_quote": "In the OneDrive app, tap  OneDrive add icon  at the top of the screen.",
+              "source_ref_error": null
+            },
+            {
+              "field": "competitors",
+              "idx": 2,
+              "name": "OneDrive iOS",
+              "description": "From the official help page. Evidence: \"Users of iOS 16 may not be able to use the two-fingered pan gesture to select multiple files in OneDrive.\"",
+              "first_failed_guard": "PASS",
+              "checks": {
+                "name": true,
+                "quote": true,
+                "description": true,
+                "quantifier": true
+              },
+              "quote_diag": [
+                "full_quote_exists_in_sources"
+              ],
+              "full_quote_length": 105,
+              "extracted_quote": "Users of iOS 16 may not be able to use the two-fingered pan gesture to select multiple files in OneDrive.",
+              "source_ref_error": null
+            },
+            {
+              "field": "competitors",
+              "idx": 3,
+              "name": "OneDrive iOS",
+              "description": "From the official help page. Evidence: \"Workaround\\n\\nSelect one photo first, then use two fingers to slide to select multiple files or photos.\"",
+              "first_failed_guard": "quote",
+              "checks": {
+                "name": true,
+                "quote": false,
+                "description": true,
+                "quantifier": true
+              },
+              "quote_diag": [
+                "literal_backslash_n"
+              ],
+              "full_quote_length": 103,
+              "extracted_quote": "Workaround\\n\\nSelect one photo first, then use two fingers to slide to select multiple files or photos.",
+              "source_ref_error": null
+            },
+            {
+              "field": "market_patterns",
+              "idx": 0,
+              "name": "Manual multi-file upload flows on OneDrive mobile use an in-app grid multi-select step",
+              "description": "From the cited source. Evidence: \"Choose the files you want to upload from your device.\"",
+              "first_failed_guard": "name",
+              "checks": {
+                "name": false,
+                "quote": true,
+                "description": true,
+                "quantifier": false
+              },
+              "quote_diag": [
+                "full_quote_exists_in_sources"
+              ],
+              "full_quote_length": 53,
+              "extracted_quote": "Choose the files you want to upload from your device.",
+              "source_ref_error": null
+            }
+          ],
+          "retry_hint": null
+        }
+      ],
+      "final_gate_matches_saved_status": true
+    },
+    {
+      "n": 4,
+      "run_id": "2579bee6-7d90-4cd2-9528-4e4bffb7d8e0",
+      "question": "On iPhone, distinguish the Photos app iCloud sync, iCloud.com upload, and Shared Photo Library. Which of these supports selecting multiple photos for a manual upload? Cite only official Apple Support.",
+      "query": "iCloud iCloud.com Shared Photo Library iPhone photos sync upload share select site:support.apple.com/en-us",
+      "attempts": [
+        {
+          "replay": {
+            "error_code": "unknown_top_level_field",
+            "actual_error": "unexpected top-level fields: []"
+          },
+          "entries": [
+            {
+              "field": "competitors",
+              "idx": 0,
+              "name": "iCloud Shared Photo Library",
+              "description": "From the official help page. Evidence: \"choose past photos and videos that you want to move to your Shared Library, or choose to move photos later.\"",
+              "first_failed_guard": "quantifier",
+              "checks": {
+                "name": true,
+                "quote": true,
+                "description": true,
+                "quantifier": false
+              },
+              "quote_diag": [
+                "full_quote_exists_in_sources"
+              ],
+              "full_quote_length": 107,
+              "extracted_quote": "choose past photos and videos that you want to move to your Shared Library, or choose to move photos later.",
+              "source_ref_error": null
+            },
+            {
+              "field": "competitors",
+              "idx": 1,
+              "name": "iCloud Photos",
+              "description": "From the official help page. Evidence: \"If you use iCloud Photos, your photos and videos automatically upload to iCloud at full resolution.\"",
+              "first_failed_guard": "quantifier",
+              "checks": {
+                "name": true,
+                "quote": true,
+                "description": true,
+                "quantifier": false
+              },
+              "quote_diag": [
+                "full_quote_exists_in_sources"
+              ],
+              "full_quote_length": 99,
+              "extracted_quote": "If you use iCloud Photos, your photos and videos automatically upload to iCloud at full resolution.",
+              "source_ref_error": null
+            }
+          ],
+          "retry_hint": null
+        },
+        {
+          "replay": {
+            "complete_gate": false,
+            "findings": [
+              {
+                "category": "summary",
+                "title": "Internal context indicates mobile new users on the upload page accidentally trigger multi-select mode by repeated tapping, prompting a tooltip at the multi-select entry to be validated for reducing mi",
+                "description": "Internal context indicates mobile new users on the upload page accidentally trigger multi-select mode by repeated tapping, prompting a tooltip at the multi-select entry to be validated for reducing mis-tap rate.",
+                "confidence": 0.42,
+                "status": "not_verified",
+                "source_refs": []
+              },
+              {
+                "category": "competitor",
+                "title": "iCloud Shared Photo Library",
+                "description": "From the official help page. Evidence: \"Follow the onscreen steps to choose photos and videos you want to move to your Shared Library, or choose to move photos later.\"",
+                "confidence": 0.6,
+                "status": "not_verified",
+                "source_refs": []
+              },
+              {
+                "category": "competitor",
+                "title": "iCloud Photos",
+                "description": "From the official help page. Evidence: \"If you use iCloud Photos, your photos and videos automatically upload to iCloud at full resolution.\"",
+                "confidence": 0.55,
+                "status": "not_verified",
+                "source_refs": []
+              },
+              {
+                "category": "competitor",
+                "title": "iCloud.com",
+                "description": "From the official help page. Evidence: \"Go to iCloud.com, tap Photos, then tap Select.\"",
+                "confidence": 0.7,
+                "status": "not_verified",
+                "source_refs": []
+              },
+              {
+                "category": "market_pattern",
+                "title": "iCloud surfaces offer distinct multi-select entry points for photo operations",
+                "description": "From the cited source. Evidence: \"Follow the onscreen steps to choose photos and videos you want to move to your Shared Library, or choose to move photos later.\"",
+                "confidence": 0.55,
+                "status": "not_verified",
+                "source_refs": []
+              },
+              {
+                "category": "risk",
+                "title": "iCloud Photos sync is automatic, not a manual multi-select upload flow",
+                "description": "From the official help page. Evidence: \"If you use iCloud Photos, your photos and videos automatically upload to iCloud at full resolution.\"",
+                "confidence": 0.5,
+                "status": "not_verified",
+                "source_refs": []
+              }
+            ]
+          },
+          "entries": [
+            {
+              "field": "competitors",
+              "idx": 0,
+              "name": "iCloud Shared Photo Library",
+              "description": "From the official help page. Evidence: \"Follow the onscreen steps to choose photos and videos you want to move to your Shared Library, or choose to move photos later.\"",
+              "first_failed_guard": "quantifier",
+              "checks": {
+                "name": true,
+                "quote": true,
+                "description": true,
+                "quantifier": false
+              },
+              "quote_diag": [
+                "full_quote_exists_in_sources"
+              ],
+              "full_quote_length": 126,
+              "extracted_quote": "Follow the onscreen steps to choose photos and videos you want to move to your Shared Library, or choose to move photos later.",
+              "source_ref_error": null
+            },
+            {
+              "field": "competitors",
+              "idx": 1,
+              "name": "iCloud Photos",
+              "description": "From the official help page. Evidence: \"If you use iCloud Photos, your photos and videos automatically upload to iCloud at full resolution.\"",
+              "first_failed_guard": "quantifier",
+              "checks": {
+                "name": true,
+                "quote": true,
+                "description": true,
+                "quantifier": false
+              },
+              "quote_diag": [
+                "full_quote_exists_in_sources"
+              ],
+              "full_quote_length": 99,
+              "extracted_quote": "If you use iCloud Photos, your photos and videos automatically upload to iCloud at full resolution.",
+              "source_ref_error": null
+            },
+            {
+              "field": "competitors",
+              "idx": 2,
+              "name": "iCloud.com",
+              "description": "From the official help page. Evidence: \"Go to iCloud.com, tap Photos, then tap Select.\"",
+              "first_failed_guard": "quantifier",
+              "checks": {
+                "name": true,
+                "quote": true,
+                "description": true,
+                "quantifier": false
+              },
+              "quote_diag": [
+                "full_quote_exists_in_sources"
+              ],
+              "full_quote_length": 46,
+              "extracted_quote": "Go to iCloud.com, tap Photos, then tap Select.",
+              "source_ref_error": null
+            },
+            {
+              "field": "market_patterns",
+              "idx": 0,
+              "name": "iCloud surfaces offer distinct multi-select entry points for photo operations",
+              "description": "From the cited source. Evidence: \"Follow the onscreen steps to choose photos and videos you want to move to your Shared Library, or choose to move photos later.\"",
+              "first_failed_guard": "name",
+              "checks": {
+                "name": false,
+                "quote": true,
+                "description": true,
+                "quantifier": false
+              },
+              "quote_diag": [
+                "full_quote_exists_in_sources"
+              ],
+              "full_quote_length": 126,
+              "extracted_quote": "Follow the onscreen steps to choose photos and videos you want to move to your Shared Library, or choose to move photos later.",
+              "source_ref_error": null
+            }
+          ],
+          "retry_hint": "[validation code=unknown_top_level_field] Emit ONLY these six top-level keys: summary, confidence, competitors, market_patterns, opportunities, risks. Do NOT lift finding-level fields (description, source_refs, status, title, item, category) to the top level — they belong INSIDE the four arrays. Drop any wrapper key (metadata, tags, trace, citations, references, notes, debug, source, links) — every extra key is rejected."
+        }
+      ],
+      "final_gate_matches_saved_status": true
+    },
+    {
+      "n": 5,
+      "run_id": "d55a6d3c-662b-4123-911e-89cb5375d510",
+      "question": "In the Google Drive Android app, can a user select multiple device photos and upload them in one action? Cite only official Google Drive Help; if official documentation is absent, mark not verified.",
+      "query": "Google Drive Android select multiple photos upload site:support.google.com/drive/answer",
+      "attempts": [
+        {
+          "replay": {
+            "complete_gate": false,
+            "findings": [
+              {
+                "category": "summary",
+                "title": "New mobile users repeatedly tap into multi-select mode on the upload screen and end up checking the wrong device photos, suggesting a hint at the multi-select entry point.",
+                "description": "New mobile users repeatedly tap into multi-select mode on the upload screen and end up checking the wrong device photos, suggesting a hint at the multi-select entry point.",
+                "confidence": 0.62,
+                "status": "not_verified",
+                "source_refs": []
+              },
+              {
+                "category": "competitor",
+                "title": "Google Drive",
+                "description": "From the official help page. Evidence: \"1. On your Android phone or tablet, open the Google Drive app.\\n2. Tap New Add question and then Upload.\\n3. Find and tap the files you want to upload.\"",
+                "confidence": 0.6,
+                "status": "not_verified",
+                "source_refs": []
+              },
+              {
+                "category": "competitor",
+                "title": "Google Drive",
+                "description": "From the official help page. Evidence: \"Documents\\n Images\\n Audio\\n Video\\n\\n## Upload & find files\"",
+                "confidence": 0.5,
+                "status": "not_verified",
+                "source_refs": []
+              }
+            ]
+          },
+          "entries": [
+            {
+              "field": "competitors",
+              "idx": 0,
+              "name": "Google Drive",
+              "description": "From the official help page. Evidence: \"1. On your Android phone or tablet, open the Google Drive app.\\n2. Tap New Add question and then Upload.\\n3. Find and tap the files you want to upload.\"",
+              "first_failed_guard": "quote",
+              "checks": {
+                "name": true,
+                "quote": false,
+                "description": true,
+                "quantifier": false
+              },
+              "quote_diag": [
+                "literal_backslash_n"
+              ],
+              "full_quote_length": 151,
+              "extracted_quote": "1. On your Android phone or tablet, open the Google Drive app.\\n2. Tap New Add question and then Upload.\\n3. Find and tap the files you want to upload.",
+              "source_ref_error": null
+            },
+            {
+              "field": "competitors",
+              "idx": 1,
+              "name": "Google Drive",
+              "description": "From the official help page. Evidence: \"Documents\\n Images\\n Audio\\n Video\\n\\n## Upload & find files\"",
+              "first_failed_guard": "quote",
+              "checks": {
+                "name": true,
+                "quote": false,
+                "description": true,
+                "quantifier": false
+              },
+              "quote_diag": [
+                "literal_backslash_n"
+              ],
+              "full_quote_length": 60,
+              "extracted_quote": "Documents\\n Images\\n Audio\\n Video\\n\\n## Upload & find files",
+              "source_ref_error": null
+            }
+          ],
+          "retry_hint": null
+        }
+      ],
+      "final_gate_matches_saved_status": true
+    },
+    {
+      "n": 6,
+      "run_id": "72fd1637-e6d6-4e51-bcdc-97662fcd6c0f",
+      "question": "According to official Google Photos Help, what are the steps to manually back up one photo or video in the Android app? Cite only official Google Help; distinguish automatic backup.",
+      "query": "Google Photos Android photos manual backup site:support.google.com/photos/answer",
+      "attempts": [
+        {
+          "replay": {
+            "complete_gate": true,
+            "findings": [
+              {
+                "category": "summary",
+                "title": "Internal Phase8 insight indicates mobile new users on the upload page repeatedly tap into multi-select mode and tick wrong files, recommending a tooltip at the multi-select entry to reduce mis-tap rat",
+                "description": "Internal Phase8 insight indicates mobile new users on the upload page repeatedly tap into multi-select mode and tick wrong files, recommending a tooltip at the multi-select entry to reduce mis-tap rate.",
+                "confidence": 0.75,
+                "status": "not_verified",
+                "source_refs": []
+              },
+              {
+                "category": "competitor",
+                "title": "Google Photos",
+                "description": "From the official help page. Evidence: \"## Manually back up photos & videos\\n\\n1. On your Android device, open the Google Photos app Photos.\\n2. Sign in to your Google Account.\\n3. Open the photo or video.\\n4. Tap Back up now.\\n    Alternatively, you can tap the Back up button or scroll to the bottom, then tap Back up now.\"",
+                "confidence": 0.95,
+                "status": "not_verified",
+                "source_refs": []
+              },
+              {
+                "category": "competitor",
+                "title": "Google Photos",
+                "description": "From the official help page. Evidence: \"4. The progress of your backup is measured by how many items remain to upload.\\n    When your items finish backing up, your status reads \\\"Backup complete.\\\"\\n    If your backup status is off, your status reads \\\"Backup is off.\\\"\"",
+                "confidence": 0.9,
+                "status": "not_verified",
+                "source_refs": []
+              },
+              {
+                "category": "competitor",
+                "title": "Google Photos",
+                "description": "From the official help page. Evidence: \"Turn on Backup while roaming.\"",
+                "confidence": 0.85,
+                "status": "confirmed",
+                "source_refs": [
+                  [
+                    "199bef-00",
+                    "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid"
+                  ]
+                ]
+              },
+              {
+                "category": "competitor",
+                "title": "Google Photos",
+                "description": "From the cited source. Evidence: \"Choose a daily limit for how much data Google Photos can use when automatically backing up photos and videos.\"",
+                "confidence": 0.85,
+                "status": "confirmed",
+                "source_refs": [
+                  [
+                    "199bef-00",
+                    "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid"
+                  ]
+                ]
+              },
+              {
+                "category": "market_pattern",
+                "title": "Automatic device folder backup toggle",
+                "description": "From the cited source. Evidence: \"When you turn \\\"Backup\\\" on, your chosen device folders are automatically backed up too, not only your camera. You can choose to automatically backup all folders, or turn \\\"Backup\\\" on or off for individual device folders.\"",
+                "confidence": 0.9,
+                "status": "not_verified",
+                "source_refs": []
+              }
+            ]
+          },
+          "entries": [
+            {
+              "field": "competitors",
+              "idx": 0,
+              "name": "Google Photos",
+              "description": "From the official help page. Evidence: \"## Manually back up photos & videos\\n\\n1. On your Android device, open the Google Photos app Photos.\\n2. Sign in to your Google Account.\\n3. Open the photo or video.\\n4. Tap Back up now.\\n    Alternatively, you can tap the Back up button or scroll to the bottom, then tap Back up now.\"",
+              "first_failed_guard": "quote",
+              "checks": {
+                "name": true,
+                "quote": false,
+                "description": false,
+                "quantifier": true
+              },
+              "quote_diag": [
+                "quote_length_over_200",
+                "literal_backslash_n"
+              ],
+              "full_quote_length": 284,
+              "extracted_quote": null,
+              "source_ref_error": null
+            },
+            {
+              "field": "competitors",
+              "idx": 1,
+              "name": "Google Photos",
+              "description": "From the official help page. Evidence: \"4. The progress of your backup is measured by how many items remain to upload.\\n    When your items finish backing up, your status reads \\\"Backup complete.\\\"\\n    If your backup status is off, your status reads \\\"Backup is off.\\\"\"",
+              "first_failed_guard": "quote",
+              "checks": {
+                "name": true,
+                "quote": false,
+                "description": false,
+                "quantifier": true
+              },
+              "quote_diag": [
+                "literal_backslash_n",
+                "internal_double_quote"
+              ],
+              "full_quote_length": 229,
+              "extracted_quote": "4. The progress of your backup is measured by how many items remain to upload.\\n    When your items finish backing up, your status reads \\",
+              "source_ref_error": null
+            },
+            {
+              "field": "competitors",
+              "idx": 2,
+              "name": "Google Photos",
+              "description": "From the official help page. Evidence: \"Turn on Backup while roaming.\"",
+              "first_failed_guard": "PASS",
+              "checks": {
+                "name": true,
+                "quote": true,
+                "description": true,
+                "quantifier": true
+              },
+              "quote_diag": [
+                "full_quote_exists_in_sources"
+              ],
+              "full_quote_length": 29,
+              "extracted_quote": "Turn on Backup while roaming.",
+              "source_ref_error": null
+            },
+            {
+              "field": "competitors",
+              "idx": 3,
+              "name": "Google Photos",
+              "description": "From the cited source. Evidence: \"Choose a daily limit for how much data Google Photos can use when automatically backing up photos and videos.\"",
+              "first_failed_guard": "PASS",
+              "checks": {
+                "name": true,
+                "quote": true,
+                "description": true,
+                "quantifier": true
+              },
+              "quote_diag": [
+                "full_quote_exists_in_sources"
+              ],
+              "full_quote_length": 109,
+              "extracted_quote": "Choose a daily limit for how much data Google Photos can use when automatically backing up photos and videos.",
+              "source_ref_error": null
+            },
+            {
+              "field": "market_patterns",
+              "idx": 0,
+              "name": "Automatic device folder backup toggle",
+              "description": "From the cited source. Evidence: \"When you turn \\\"Backup\\\" on, your chosen device folders are automatically backed up too, not only your camera. You can choose to automatically backup all folders, or turn \\\"Backup\\\" on or off for individual device folders.\"",
+              "first_failed_guard": "name",
+              "checks": {
+                "name": false,
+                "quote": false,
+                "description": false,
+                "quantifier": true
+              },
+              "quote_diag": [
+                "internal_double_quote"
+              ],
+              "full_quote_length": 222,
+              "extracted_quote": "When you turn \\",
+              "source_ref_error": null
+            }
+          ],
+          "retry_hint": null
+        }
+      ],
+      "final_gate_matches_saved_status": true
+    },
+    {
+      "n": 7,
+      "run_id": "1e0f9410-3df3-4ebd-8f14-f787d3ec2d52",
+      "question": "According to official Dropbox Help, can mobile users manually add photos when camera uploads are disabled? Cite only official Dropbox Help.",
+      "query": "Dropbox Mobile manual add photos upload site:help.dropbox.com/create-upload",
+      "attempts": [
+        {
+          "replay": {
+            "complete_gate": true,
+            "findings": [
+              {
+                "category": "summary",
+                "title": "Mobile new users on Dropbox enter an upload page and accidentally trigger multi-select mode by repeated taps, leading to mis-selected files; an entry-point hint bubble is proposed to reduce mis-taps.",
+                "description": "Mobile new users on Dropbox enter an upload page and accidentally trigger multi-select mode by repeated taps, leading to mis-selected files; an entry-point hint bubble is proposed to reduce mis-taps.",
+                "confidence": 0.7,
+                "status": "not_verified",
+                "source_refs": []
+              },
+              {
+                "category": "competitor",
+                "title": "Dropbox",
+                "description": "From the official help page. Evidence: \"If you don't have camera uploads enabled, you can manually add photos to your Dropbox account. To do so:\"",
+                "confidence": 0.95,
+                "status": "confirmed",
+                "source_refs": [
+                  [
+                    "f0e898-00",
+                    "https://help.dropbox.com/create-upload/upload-mobile"
+                  ]
+                ]
+              },
+              {
+                "category": "opportunity",
+                "title": "Add a contextual hint bubble at the multi-select entry point in the mobile upload page",
+                "description": "The proposed hint bubble at the multi-select entry point is not directly supported by any cited Dropbox Help snippet; the cited sources address manual photo add and camera uploads, not multi-select entry UX.",
+                "confidence": 0.3,
+                "status": "not_verified",
+                "source_refs": []
+              },
+              {
+                "category": "risk",
+                "title": "Risk that the multi-select hint bubble affects the manual-add flow when camera uploads are off",
+                "description": "The cited Dropbox Help sources do not describe a multi-select entry hint or its interaction with the manual-add flow, so this risk is not directly verified.",
+                "confidence": 0.2,
+                "status": "not_verified",
+                "source_refs": []
+              }
+            ]
+          },
+          "entries": [
+            {
+              "field": "competitors",
+              "idx": 0,
+              "name": "Dropbox",
+              "description": "From the official help page. Evidence: \"If you don't have camera uploads enabled, you can manually add photos to your Dropbox account. To do so:\"",
+              "first_failed_guard": "PASS",
+              "checks": {
+                "name": true,
+                "quote": true,
+                "description": true,
+                "quantifier": true
+              },
+              "quote_diag": [
+                "full_quote_exists_in_sources"
+              ],
+              "full_quote_length": 104,
+              "extracted_quote": "If you don't have camera uploads enabled, you can manually add photos to your Dropbox account. To do so:",
+              "source_ref_error": null
+            }
+          ],
+          "retry_hint": null
+        }
+      ],
+      "final_gate_matches_saved_status": true
+    },
+    {
+      "n": 8,
+      "run_id": "551a53d9-b13f-4fe4-b9cb-b2f1fd1e1142",
+      "question": "According to official Microsoft Support, how does an iPhone user select existing pictures for a manual upload in OneDrive? Cite only official Microsoft Support.",
+      "query": "OneDrive iPhone select manual upload site:support.microsoft.com/en-us/onedrive",
+      "attempts": [
+        {
+          "replay": {
+            "complete_gate": true,
+            "findings": [
+              {
+                "category": "summary",
+                "title": "Mobile new users accidentally trigger multi-select mode on the OneDrive iOS upload page by tapping repeatedly, suggesting a prompt hint at the multi-select entry could reduce mis-taps.",
+                "description": "Mobile new users accidentally trigger multi-select mode on the OneDrive iOS upload page by tapping repeatedly, suggesting a prompt hint at the multi-select entry could reduce mis-taps.",
+                "confidence": 0.85,
+                "status": "not_verified",
+                "source_refs": []
+              },
+              {
+                "category": "competitor",
+                "title": "OneDrive",
+                "description": "From the official help page. Evidence: \"If you tap Choose Existing, links appear to the Photos app on your device. Browse to the pictures you want to upload, select them, then on the top bar, tap Done.\"",
+                "confidence": 0.9,
+                "status": "confirmed",
+                "source_refs": [
+                  [
+                    "8bdf18-00",
+                    "https://support.microsoft.com/en-us/onedrive/manually-upload-files-or-photos-to-onedrive-in-ios"
+                  ]
+                ]
+              },
+              {
+                "category": "competitor",
+                "title": "OneDrive",
+                "description": "From the official help page. Evidence: \"In the OneDrive app, tap  OneDrive add icon  at the top of the screen. Then tap to Take a photo, Scan a document, Create a folder or Upload a file or photo.\"",
+                "confidence": 0.9,
+                "status": "not_verified",
+                "source_refs": []
+              },
+              {
+                "category": "competitor",
+                "title": "OneDrive",
+                "description": "From the official help page. Evidence: \"Users of iOS 16 may not be able to use the two-fingered pan gesture to select multiple files in OneDrive. We are aware of the issue and working on a solution.\"",
+                "confidence": 0.85,
+                "status": "confirmed",
+                "source_refs": [
+                  [
+                    "d01218-03",
+                    "https://support.microsoft.com/en-us/onedrive/troubleshoot-onedrive-for-ios-app-problems"
+                  ]
+                ]
+              },
+              {
+                "category": "competitor",
+                "title": "OneDrive",
+                "description": "From the official help page. Evidence: \"Workaround Select one photo first, then use two fingers to slide to select multiple files or photos.\"",
+                "confidence": 0.85,
+                "status": "not_verified",
+                "source_refs": []
+              },
+              {
+                "category": "market_pattern",
+                "title": "Manual photo upload flow: tap \"+\", choose Upload/Choose Existing, then browse and pick existing pictures from the device Photos app",
+                "description": "From the cited source. Evidence: \"If you tap Choose Existing, links appear to the Photos app on your device. Browse to the pictures you want to upload, select them, then on the top bar, tap Done.\"",
+                "confidence": 0.85,
+                "status": "not_verified",
+                "source_refs": []
+              },
+              {
+                "category": "opportunity",
+                "title": "Add a tooltip at the multi-select entry point on the OneDrive iOS upload page to guide first-time users",
+                "description": "Evidence: \"Users of iOS 16 may not be able to use the two-fingered pan gesture to select multiple files in OneDrive. We are aware of the issue and working on a solution.\"",
+                "confidence": 0.7,
+                "status": "not_verified",
+                "source_refs": []
+              },
+              {
+                "category": "risk",
+                "title": "iOS 16 slide-to-select bug may amplify mis-tap complaints on OneDrive manual upload flow",
+                "description": "Evidence: \"Users of iOS 16 may not be able to use the two-fingered pan gesture to select multiple files in OneDrive. We are aware of the issue and working on a solution.\"",
+                "confidence": 0.75,
+                "status": "not_verified",
+                "source_refs": []
+              }
+            ]
+          },
+          "entries": [
+            {
+              "field": "competitors",
+              "idx": 0,
+              "name": "OneDrive",
+              "description": "From the official help page. Evidence: \"If you tap Choose Existing, links appear to the Photos app on your device. Browse to the pictures you want to upload, select them, then on the top bar, tap Done.\"",
+              "first_failed_guard": "PASS",
+              "checks": {
+                "name": true,
+                "quote": true,
+                "description": true,
+                "quantifier": true
+              },
+              "quote_diag": [
+                "full_quote_exists_in_sources"
+              ],
+              "full_quote_length": 161,
+              "extracted_quote": "If you tap Choose Existing, links appear to the Photos app on your device. Browse to the pictures you want to upload, select them, then on the top bar, tap Done.",
+              "source_ref_error": null
+            },
+            {
+              "field": "competitors",
+              "idx": 1,
+              "name": "OneDrive",
+              "description": "From the official help page. Evidence: \"In the OneDrive app, tap  OneDrive add icon  at the top of the screen. Then tap to Take a photo, Scan a document, Create a folder or Upload a file or photo.\"",
+              "first_failed_guard": "quote",
+              "checks": {
+                "name": true,
+                "quote": false,
+                "description": true,
+                "quantifier": true
+              },
+              "quote_diag": [],
+              "full_quote_length": 156,
+              "extracted_quote": "In the OneDrive app, tap  OneDrive add icon  at the top of the screen. Then tap to Take a photo, Scan a document, Create a folder or Upload a file or photo.",
+              "source_ref_error": null
+            },
+            {
+              "field": "competitors",
+              "idx": 2,
+              "name": "OneDrive",
+              "description": "From the official help page. Evidence: \"Users of iOS 16 may not be able to use the two-fingered pan gesture to select multiple files in OneDrive. We are aware of the issue and working on a solution.\"",
+              "first_failed_guard": "PASS",
+              "checks": {
+                "name": true,
+                "quote": true,
+                "description": true,
+                "quantifier": true
+              },
+              "quote_diag": [
+                "full_quote_exists_in_sources"
+              ],
+              "full_quote_length": 158,
+              "extracted_quote": "Users of iOS 16 may not be able to use the two-fingered pan gesture to select multiple files in OneDrive. We are aware of the issue and working on a solution.",
+              "source_ref_error": null
+            },
+            {
+              "field": "competitors",
+              "idx": 3,
+              "name": "OneDrive",
+              "description": "From the official help page. Evidence: \"Workaround Select one photo first, then use two fingers to slide to select multiple files or photos.\"",
+              "first_failed_guard": "quote",
+              "checks": {
+                "name": true,
+                "quote": false,
+                "description": true,
+                "quantifier": true
+              },
+              "quote_diag": [],
+              "full_quote_length": 100,
+              "extracted_quote": "Workaround Select one photo first, then use two fingers to slide to select multiple files or photos.",
+              "source_ref_error": null
+            },
+            {
+              "field": "market_patterns",
+              "idx": 0,
+              "name": "Manual photo upload flow: tap \"+\", choose Upload/Choose Existing, then browse and pick existing pictures from the device Photos app",
+              "description": "From the cited source. Evidence: \"If you tap Choose Existing, links appear to the Photos app on your device. Browse to the pictures you want to upload, select them, then on the top bar, tap Done.\"",
+              "first_failed_guard": "name",
+              "checks": {
+                "name": false,
+                "quote": true,
+                "description": true,
+                "quantifier": true
+              },
+              "quote_diag": [
+                "full_quote_exists_in_sources"
+              ],
+              "full_quote_length": 161,
+              "extracted_quote": "If you tap Choose Existing, links appear to the Photos app on your device. Browse to the pictures you want to upload, select them, then on the top bar, tap Done.",
+              "source_ref_error": null
+            }
+          ],
+          "retry_hint": null
+        }
+      ],
+      "final_gate_matches_saved_status": true
+    },
+    {
+      "n": 9,
+      "run_id": "f34d4fc4-fc99-45c7-8b67-2bd285bbdf52",
+      "question": "According to official Apple Support, which upload choices does iCloud.com show on a phone or tablet, and where should users upload to a Shared Photo Library? Cite only official Apple Support.",
+      "query": "iCloud.com Shared Photo Library upload share photos site:support.apple.com/en-us",
+      "attempts": [
+        {
+          "replay": {
+            "error_code": "source_refs_invalid",
+            "actual_error": "opportunity[1] status='not_verified' forbids source_refs"
+          },
+          "entries": [
+            {
+              "field": "competitors",
+              "idx": 0,
+              "name": "iCloud Shared Photo Library",
+              "description": "Evidence: \"When you contribute photos and videos to iCloud Shared Photo Library, they move out of your Personal Library and into the Shared Library.\"",
+              "first_failed_guard": "PASS",
+              "checks": {
+                "name": true,
+                "quote": true,
+                "description": true,
+                "quantifier": true
+              },
+              "quote_diag": [
+                "full_quote_exists_in_sources"
+              ],
+              "full_quote_length": 137,
+              "extracted_quote": "When you contribute photos and videos to iCloud Shared Photo Library, they move out of your Personal Library and into the Shared Library.",
+              "source_ref_error": null
+            },
+            {
+              "field": "competitors",
+              "idx": 1,
+              "name": "iCloud Shared Photo Library",
+              "description": "Evidence: \"automatically share content from the camera.\"",
+              "first_failed_guard": "PASS",
+              "checks": {
+                "name": true,
+                "quote": true,
+                "description": true,
+                "quantifier": true
+              },
+              "quote_diag": [
+                "full_quote_exists_in_sources"
+              ],
+              "full_quote_length": 44,
+              "extracted_quote": "automatically share content from the camera.",
+              "source_ref_error": null
+            },
+            {
+              "field": "competitors",
+              "idx": 2,
+              "name": "iCloud Shared Photo Library",
+              "description": "Evidence: \"iCloud Shared Photo Library lets you share photos and videos seamlessly with up to five other people\"",
+              "first_failed_guard": "PASS",
+              "checks": {
+                "name": true,
+                "quote": true,
+                "description": true,
+                "quantifier": true
+              },
+              "quote_diag": [
+                "full_quote_exists_in_sources"
+              ],
+              "full_quote_length": 100,
+              "extracted_quote": "iCloud Shared Photo Library lets you share photos and videos seamlessly with up to five other people",
+              "source_ref_error": null
+            }
+          ],
+          "retry_hint": null
+        },
+        {
+          "replay": {
+            "complete_gate": true,
+            "findings": [
+              {
+                "category": "summary",
+                "title": "Mobile users on the upload page sometimes enter multi-select mode by accident and tick the wrong files; adding a hint bubble at the multi-select entry point should be validated to reduce mis-tap rate.",
+                "description": "Mobile users on the upload page sometimes enter multi-select mode by accident and tick the wrong files; adding a hint bubble at the multi-select entry point should be validated to reduce mis-tap rate.",
+                "confidence": 0.35,
+                "status": "not_verified",
+                "source_refs": []
+              },
+              {
+                "category": "competitor",
+                "title": "iCloud Photos",
+                "description": "From the official help page. Evidence: \"Open the Photos app.\"",
+                "confidence": 0.35,
+                "status": "confirmed",
+                "source_refs": [
+                  [
+                    "566be1-04",
+                    "https://support.apple.com/en-us/118447"
+                  ]
+                ]
+              },
+              {
+                "category": "competitor",
+                "title": "iCloud Shared Photo Library",
+                "description": "From the official help page. Evidence: \"On your iPhone or iPad, open the invitation from the library creator or go to Settings, tap Apps, then select Photos.\"",
+                "confidence": 0.4,
+                "status": "confirmed",
+                "source_refs": [
+                  [
+                    "f691fa-01",
+                    "https://support.apple.com/en-us/118229"
+                  ]
+                ]
+              },
+              {
+                "category": "competitor",
+                "title": "iCloud Shared Photo Library",
+                "description": "From the official help page. Evidence: \"Share photos straight from the camera\"",
+                "confidence": 0.35,
+                "status": "confirmed",
+                "source_refs": [
+                  [
+                    "f691fa-01",
+                    "https://support.apple.com/en-us/118229"
+                  ]
+                ]
+              },
+              {
+                "category": "competitor",
+                "title": "iCloud Shared Photo Library",
+                "description": "From the official help page. Evidence: \"choose what to share, or automatically share content from the camera.\"",
+                "confidence": 0.35,
+                "status": "confirmed",
+                "source_refs": [
+                  [
+                    "f691fa-01",
+                    "https://support.apple.com/en-us/118229"
+                  ]
+                ]
+              },
+              {
+                "category": "risk",
+                "title": "Insufficient cited evidence for iCloud.com mobile/tablet upload choices",
+                "description": "The research question asks about iCloud.com upload choices on phone/tablet and where to upload to a Shared Photo Library, but none of the cited official Apple Support snippets enumerate iCloud.com upload options on a phone or tablet; the Shared Library coverage is for the iPhone/iPad Photos app and Mac, not iCloud.com.",
+                "confidence": 0.4,
+                "status": "not_verified",
+                "source_refs": []
+              }
+            ]
+          },
+          "entries": [
+            {
+              "field": "competitors",
+              "idx": 0,
+              "name": "iCloud Photos",
+              "description": "From the official help page. Evidence: \"Open the Photos app.\"",
+              "first_failed_guard": "PASS",
+              "checks": {
+                "name": true,
+                "quote": true,
+                "description": true,
+                "quantifier": true
+              },
+              "quote_diag": [
+                "full_quote_exists_in_sources"
+              ],
+              "full_quote_length": 20,
+              "extracted_quote": "Open the Photos app.",
+              "source_ref_error": null
+            },
+            {
+              "field": "competitors",
+              "idx": 1,
+              "name": "iCloud Shared Photo Library",
+              "description": "From the official help page. Evidence: \"On your iPhone or iPad, open the invitation from the library creator or go to Settings, tap Apps, then select Photos.\"",
+              "first_failed_guard": "PASS",
+              "checks": {
+                "name": true,
+                "quote": true,
+                "description": true,
+                "quantifier": true
+              },
+              "quote_diag": [
+                "full_quote_exists_in_sources"
+              ],
+              "full_quote_length": 117,
+              "extracted_quote": "On your iPhone or iPad, open the invitation from the library creator or go to Settings, tap Apps, then select Photos.",
+              "source_ref_error": null
+            },
+            {
+              "field": "competitors",
+              "idx": 2,
+              "name": "iCloud Shared Photo Library",
+              "description": "From the official help page. Evidence: \"Share photos straight from the camera\"",
+              "first_failed_guard": "PASS",
+              "checks": {
+                "name": true,
+                "quote": true,
+                "description": true,
+                "quantifier": true
+              },
+              "quote_diag": [
+                "full_quote_exists_in_sources"
+              ],
+              "full_quote_length": 37,
+              "extracted_quote": "Share photos straight from the camera",
+              "source_ref_error": null
+            },
+            {
+              "field": "competitors",
+              "idx": 3,
+              "name": "iCloud Shared Photo Library",
+              "description": "From the official help page. Evidence: \"choose what to share, or automatically share content from the camera.\"",
+              "first_failed_guard": "PASS",
+              "checks": {
+                "name": true,
+                "quote": true,
+                "description": true,
+                "quantifier": true
+              },
+              "quote_diag": [
+                "full_quote_exists_in_sources"
+              ],
+              "full_quote_length": 69,
+              "extracted_quote": "choose what to share, or automatically share content from the camera.",
+              "source_ref_error": null
+            }
+          ],
+          "retry_hint": "[validation code=source_refs_invalid] Every source_refs entry must carry provider_source_id, url and title; drop any provider_source_id that is not in the list returned by THIS run."
+        }
+      ],
+      "final_gate_matches_saved_status": true
+    },
+    {
+      "n": 10,
+      "run_id": "8f1e4a00-45bd-45dc-9c9e-a1f05d2063d0",
+      "question": "According to official Google Drive Help, what are the Android app steps to upload files? Cite only official Google Drive Help.",
+      "query": "Google Drive Android upload files site:support.google.com/drive/answer",
+      "attempts": [
+        {
+          "protocol_error": "ResearchLLMProtocolError"
+        },
+        {
+          "protocol_error": "ResearchLLMProtocolError"
+        },
+        {
+          "protocol_error": "ResearchLLMProtocolError"
+        }
+      ]
+    }
+  ],
+  "final_first_failed_counts": {
+    "quote": 8,
+    "quantifier": 7,
+    "name": 5,
+    "PASS": 10
+  },
+  "counterfactuals": {
+    "atomic_correct_step_same_question": {
+      "complete_gate": true,
+      "findings": [
+        {
+          "category": "summary",
+          "title": "Internal context only.",
+          "description": "Internal context only.",
+          "confidence": 0.5,
+          "status": "not_verified",
+          "source_refs": []
+        },
+        {
+          "category": "competitor",
+          "title": "Google Photos",
+          "description": "Evidence: \"4. Tap Back up now.\"",
+          "confidence": 0.5,
+          "status": "confirmed",
+          "source_refs": [
+            [
+              "199bef-00",
+              "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid"
+            ]
+          ]
+        }
+      ]
+    },
+    "identical_step_multiselect_question": {
+      "complete_gate": false,
+      "findings": [
+        {
+          "category": "summary",
+          "title": "Internal context only.",
+          "description": "Internal context only.",
+          "confidence": 0.5,
+          "status": "not_verified",
+          "source_refs": []
+        },
+        {
+          "category": "competitor",
+          "title": "Google Photos",
+          "description": "Evidence: \"4. Tap Back up now.\"",
+          "confidence": 0.5,
+          "status": "not_verified",
+          "source_refs": []
+        }
+      ]
+    },
+    "same_quote_unsupported_negation": {
+      "complete_gate": false,
+      "findings": [
+        {
+          "category": "summary",
+          "title": "Internal context only.",
+          "description": "Internal context only.",
+          "confidence": 0.5,
+          "status": "not_verified",
+          "source_refs": []
+        },
+        {
+          "category": "competitor",
+          "title": "Google Photos",
+          "description": "No support. Evidence: \"4. Tap Back up now.\"",
+          "confidence": 0.5,
+          "status": "not_verified",
+          "source_refs": []
+        }
+      ]
+    },
+    "automatic_quote_against_manual_question": {
+      "complete_gate": true,
+      "findings": [
+        {
+          "category": "summary",
+          "title": "Internal context only.",
+          "description": "Internal context only.",
+          "confidence": 0.5,
+          "status": "not_verified",
+          "source_refs": []
+        },
+        {
+          "category": "competitor",
+          "title": "Google Photos",
+          "description": "Evidence: \"Turn on Backup while roaming.\"",
+          "confidence": 0.5,
+          "status": "confirmed",
+          "source_refs": [
+            [
+              "199bef-00",
+              "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid"
+            ]
+          ]
+        }
+      ]
+    },
+    "google_photos_exact_multiline": {
+      "quote_length": 242,
+      "result": {
+        "complete_gate": false,
+        "findings": [
+          {
+            "category": "summary",
+            "title": "Internal context only.",
+            "description": "Internal context only.",
+            "confidence": 0.5,
+            "status": "not_verified",
+            "source_refs": []
+          },
+          {
+            "category": "competitor",
+            "title": "Google Photos",
+            "description": "Evidence: \"1. On your Android phone or tablet, open the Google Photos app Photos.\n2. Sign in to your Google Account.\n3. At the top right, tap your Profile picture or Initial.\n4. The progress of your backup is measured by how many items remain to upload.\"",
+            "confidence": 0.5,
+            "status": "not_verified",
+            "source_refs": []
+          }
+        ]
+      }
+    },
+    "google_photos_atomic_first_step": {
+      "quote_length": 70,
+      "result": {
+        "complete_gate": true,
+        "findings": [
+          {
+            "category": "summary",
+            "title": "Internal context only.",
+            "description": "Internal context only.",
+            "confidence": 0.5,
+            "status": "not_verified",
+            "source_refs": []
+          },
+          {
+            "category": "competitor",
+            "title": "Google Photos",
+            "description": "Evidence: \"1. On your Android phone or tablet, open the Google Photos app Photos.\"",
+            "confidence": 0.5,
+            "status": "confirmed",
+            "source_refs": [
+              [
+                "dc43b9-00",
+                "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid"
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    "google_drive_exact_multiline": {
+      "quote_length": 205,
+      "result": {
+        "complete_gate": false,
+        "findings": [
+          {
+            "category": "summary",
+            "title": "Internal context only.",
+            "description": "Internal context only.",
+            "confidence": 0.5,
+            "status": "not_verified",
+            "source_refs": []
+          },
+          {
+            "category": "competitor",
+            "title": "Google Drive",
+            "description": "Evidence: \"1. On your Android phone or tablet, open the Google Drive app.\n2. Tap New Add question and then Upload.\n3. Find and tap the files you want to upload.\n4. Find uploaded files in My Drive until you move them.\"",
+            "confidence": 0.5,
+            "status": "not_verified",
+            "source_refs": []
+          }
+        ]
+      }
+    },
+    "google_drive_atomic_first_step": {
+      "quote_length": 62,
+      "result": {
+        "complete_gate": true,
+        "findings": [
+          {
+            "category": "summary",
+            "title": "Internal context only.",
+            "description": "Internal context only.",
+            "confidence": 0.5,
+            "status": "not_verified",
+            "source_refs": []
+          },
+          {
+            "category": "competitor",
+            "title": "Google Drive",
+            "description": "Evidence: \"1. On your Android phone or tablet, open the Google Drive app.\"",
+            "confidence": 0.5,
+            "status": "confirmed",
+            "source_refs": [
+              [
+                "edda02-01",
+                "https://support.google.com/drive/answer/2424368?hl=en&co=GENIE.Platform%3DAndroid"
+              ]
+            ]
+          }
+        ]
+      }
+    }
+  }
+}

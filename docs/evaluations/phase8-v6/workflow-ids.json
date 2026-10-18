@@ -1,0 +1,14 @@
+{
+  "project_a": "71e46ed7-717f-4f50-94f3-c53874429b21",
+  "project_b": "531f961e-cb55-44c0-9756-0c0be08dd315",
+  "classification_run": "d8444f00-e710-41a7-85b4-28e49107541e",
+  "clustering_run": "56772384-6164-43fd-a52d-34437cca39ab",
+  "insight_run": "8e998fb4-8f9f-4a30-8423-dfab42baa8f7",
+  "research_insight": "0f737652-21fd-45eb-82d5-a5af4e05669e",
+  "requirement": "caef3eff-48db-4560-adf1-0f09a97d4ec6",
+  "prd": "1c4d4848-3b14-4dc7-a460-7766743778e7",
+  "sim_cancelled": "9c950f80-c04d-4412-908f-aa4510e7b36d",
+  "sim_completed": "d9eda418-e49a-48a8-ba51-174aa48c2ac2",
+  "sim_archived_rejected": "e0361461-a006-4ce7-a7c7-83d84dad3e22",
+  "sim_external_id": "SIM-2c73ae12063e438da65b406f"
+}

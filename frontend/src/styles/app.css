@@ -2017,8 +2017,22 @@ table.data-table {
 .col-id { font-family: var(--font-mono); font-size: var(--t-caption); color: var(--muted); white-space: nowrap; }
 .col-content {
   max-width: 360px; color: var(--fg); line-height: 1.45;
+}
+.feedback-content-preview {
   display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
   overflow: hidden;
+}
+.page-feedback .data-table th:nth-child(3),
+.page-feedback .data-table td:nth-child(3) { white-space: nowrap; }
+@media (max-width: 640px) {
+  .page-feedback table.data-table { table-layout: fixed; }
+  .page-feedback .data-table th:first-child,
+  .page-feedback .data-table td:first-child { width: 74px; padding-inline: 12px; }
+  .page-feedback .data-table th:nth-child(3),
+  .page-feedback .data-table td:nth-child(3) { width: 96px; padding-inline: 12px; }
+  .page-feedback .data-table th:nth-child(n+4),
+  .page-feedback .data-table td:nth-child(n+4) { display: none; }
+  .page-feedback .data-table .col-content { max-width: none; padding-inline: 8px; }
 }
 .col-time { font-size: var(--t-caption); color: var(--fg-2); white-space: nowrap; }
 .data-table-row { cursor: pointer; }
@@ -3503,3 +3517,745 @@ table.case-table td:nth-child(3) { color: var(--danger); font-weight: 600; }
     white-space: nowrap;
   }
 }
+
+/* =============================================================
+   Phase 8 — External Research surface
+
+   A second, fully-separated section on the Insight Detail page
+   that renders the Research Agent output (Tavily + LLM). The
+   visual language is intentionally distinct from Internal
+   Evidence:
+
+   - Internal Evidence surfaces raw feedback excerpts with a
+     left-accent quote and per-feedback AI analysis chips.
+   - External Research surfaces a "question + scope" launcher
+     on top, then a history list of completed runs, then per-run
+     findings grouped by competitor / market_pattern / opportunity
+     / risk with collapsible citations, and a final "Sources"
+     inventory showing title / domain / retrieved_at and a safe
+     external link.
+
+   The runner synchronously POSTs the run; the page uses a
+   ``--research-accent`` colour set so the two zones read as
+   different products at a glance.
+   ============================================================= */
+
+:root {
+  /* A second accent palette so the External Research section
+     reads clearly as a different surface from the Internal
+     Evidence / Decision/Requirement flow. The hue is rotated
+     ~220° from the primary accent so colour-blind viewers can
+     still separate the two zones via position + label. */
+  --research-accent: oklch(58% 0.14 245);
+  --research-accent-soft: oklch(94% 0.06 245);
+  --research-accent-tint: oklch(97% 0.03 245);
+  --research-accent-strong: oklch(38% 0.16 245);
+  --research-accent-ring: oklch(58% 0.14 245 / 0.25);
+}
+
+.research-section {
+  background: var(--surface);
+  border: 1px solid var(--research-accent-soft);
+  border-radius: var(--r-lg);
+  padding: 24px 28px;
+  margin-top: 16px;
+  position: relative;
+}
+.research-section::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 4px;
+  background: var(--research-accent);
+  border-top-left-radius: var(--r-lg);
+  border-bottom-left-radius: var(--r-lg);
+}
+.research-section-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+.research-section-header h3 {
+  font-family: var(--font-display);
+  font-size: var(--t-h2);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  color: var(--fg);
+}
+.research-section-header .research-section-hint {
+  color: var(--muted);
+  font-size: var(--t-small);
+  max-width: 60ch;
+}
+.research-section-divider {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 14px 0 10px;
+  color: var(--muted);
+  font-size: var(--t-micro);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+.research-section-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--research-accent-soft);
+}
+
+/* --- Form launcher --- */
+.research-launcher {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 12px;
+  padding: 16px;
+  background: var(--research-accent-tint);
+  border: 1px solid var(--research-accent-soft);
+  border-radius: var(--r-md);
+}
+.research-launcher-cta {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+}
+.research-launcher-error {
+  color: var(--danger);
+  font-size: var(--t-small);
+  margin-top: 6px;
+}
+.research-launcher-running {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--research-accent-strong);
+  font-size: var(--t-small);
+  font-weight: 550;
+}
+.research-launcher-progress {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--research-accent);
+  box-shadow: 0 0 0 4px var(--research-accent-soft);
+  animation: researchPulse 1.4s var(--ease-in-out) infinite;
+}
+@keyframes researchPulse {
+  0%, 100% { box-shadow: 0 0 0 4px var(--research-accent-soft); }
+  50% { box-shadow: 0 0 0 7px var(--research-accent-tint); }
+}
+
+/* --- History list --- */
+.research-history {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.research-history-empty {
+  color: var(--muted);
+  font-size: var(--t-small);
+  padding: 10px 12px;
+  background: var(--surface-1);
+  border: 1px dashed var(--border);
+  border-radius: var(--r-md);
+}
+.research-history-item {
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 12px 14px;
+}
+.research-history-item.is-active {
+  border-color: var(--research-accent);
+  background: var(--research-accent-tint);
+}
+.research-history-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.research-history-row .research-history-id {
+  font-family: var(--font-mono);
+  font-size: var(--t-caption);
+  color: var(--muted);
+}
+.research-history-row .research-history-spacer {
+  flex: 1;
+}
+.research-history-question {
+  margin: 6px 0 0;
+  color: var(--fg-2);
+  font-size: var(--t-small);
+  line-height: 1.5;
+}
+
+/* --- Status pills (mirror Prototype BEM) --- */
+.research-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 10px;
+  border-radius: var(--r-pill);
+  font-family: var(--font-mono);
+  font-size: var(--t-micro);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.research-status-pill::before {
+  content: '';
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+.research-status-pill--pending { background: var(--surface-2); color: var(--muted); }
+.research-status-pill--running {
+  background: var(--research-accent-soft);
+  color: var(--research-accent-strong);
+}
+.research-status-pill--completed { background: var(--success-soft); color: var(--success); }
+.research-status-pill--partial_failed { background: var(--warn-soft); color: var(--warn); }
+.research-status-pill--failed { background: var(--danger-soft); color: var(--danger); }
+
+/* --- Detail panel --- */
+.research-detail {
+  margin-top: 14px;
+  padding: 16px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+}
+.research-detail-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+}
+.research-detail-question {
+  flex: 1; min-width: 0;
+  font-family: var(--font-display);
+  font-size: var(--t-h3);
+  font-weight: 600;
+  color: var(--fg);
+}
+.research-detail-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: var(--t-caption);
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+.research-detail-meta .item {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.research-detail-meta .item .k {
+  color: var(--muted-2);
+}
+.research-detail-meta .item .v {
+  color: var(--fg-2);
+  font-family: var(--font-mono);
+}
+.research-detail-error {
+  margin-top: 10px;
+  padding: 10px 12px;
+  background: var(--danger-tint);
+  border: 1px solid var(--danger-soft);
+  border-radius: var(--r-sm);
+  font-size: var(--t-caption);
+  color: var(--danger);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+/* --- Finding groups --- */
+.research-findings {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+.research-findings-group {
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  padding: 12px 14px;
+}
+.research-findings-group-label {
+  font-family: var(--font-display);
+  font-size: var(--t-caption);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.research-finding {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  padding: 10px 12px;
+  margin-bottom: 8px;
+}
+.research-finding:last-child { margin-bottom: 0; }
+.research-finding-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.research-finding-title {
+  font-weight: 600;
+  color: var(--fg);
+  font-size: var(--t-small);
+  flex: 1; min-width: 0;
+}
+.research-finding-confidence {
+  font-family: var(--font-mono);
+  font-size: var(--t-caption);
+  color: var(--muted);
+}
+.research-finding-description {
+  margin: 6px 0 0;
+  color: var(--fg-2);
+  font-size: var(--t-small);
+  line-height: 1.55;
+}
+.research-finding-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border-radius: var(--r-pill);
+  font-family: var(--font-mono);
+  font-size: var(--t-micro);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+.research-finding-tag--confirmed {
+  background: var(--success-soft);
+  color: var(--success);
+}
+.research-finding-tag--not_verified {
+  background: var(--warn-soft);
+  color: var(--warn);
+}
+.research-finding-tag--insufficient_evidence {
+  background: var(--danger-tint);
+  color: var(--danger);
+}
+.research-finding-toggle {
+  margin-top: 8px;
+  font-size: var(--t-caption);
+  color: var(--research-accent-strong);
+  background: transparent;
+  border: 1px solid var(--research-accent-soft);
+  border-radius: var(--r-sm);
+  padding: 4px 10px;
+  cursor: pointer;
+}
+.research-finding-toggle:hover {
+  background: var(--research-accent-tint);
+}
+.research-finding-citations {
+  margin-top: 8px;
+  padding: 8px 10px;
+  background: var(--surface-1);
+  border: 1px dashed var(--border);
+  border-radius: var(--r-sm);
+}
+.research-finding-citations ul {
+  margin: 0; padding: 0; list-style: none;
+}
+.research-finding-citations li {
+  font-size: var(--t-caption);
+  color: var(--fg-2);
+  margin: 4px 0;
+  display: flex; align-items: baseline; gap: 6px; flex-wrap: wrap;
+}
+.research-finding-citations a {
+  color: var(--research-accent-strong);
+  text-decoration: underline;
+  word-break: break-word;
+}
+.research-finding-citations .ref-domain {
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: var(--t-micro);
+}
+
+/* --- Sources inventory --- */
+.research-sources {
+  margin-top: 12px;
+}
+.research-sources ul {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; flex-direction: column;
+  gap: 6px;
+}
+.research-source-card {
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  padding: 8px 10px;
+}
+.research-source-title {
+  font-size: var(--t-small);
+  color: var(--fg);
+  font-weight: 550;
+}
+.research-source-title a {
+  color: var(--research-accent-strong);
+  text-decoration: underline;
+  word-break: break-word;
+}
+.research-source-meta {
+  display: flex; flex-wrap: wrap; gap: 8px;
+  margin-top: 4px;
+  font-size: var(--t-micro);
+  color: var(--muted);
+  font-family: var(--font-mono);
+}
+
+/* --- Empty / error states --- */
+.research-unavailable {
+  margin-top: 10px;
+  padding: 12px 14px;
+  background: var(--danger-tint);
+  border: 1px solid var(--danger-soft);
+  border-radius: var(--r-md);
+  color: var(--danger);
+  font-size: var(--t-small);
+}
+.research-unavailable .research-unavailable-title {
+  font-weight: 600;
+  color: var(--fg);
+  margin-bottom: 2px;
+  display: block;
+}
+
+/* --- Responsive --- */
+@media (max-width: 600px) {
+  .research-section { padding: 16px; }
+  .research-launcher {
+    grid-template-columns: 1fr;
+  }
+  .research-launcher-cta {
+    justify-content: flex-start;
+  }
+  .research-detail-question {
+    font-size: 16px;
+  }
+}
+
+/* --- Phase 8 v7: ResearchAnswer (extractive answer) ---
+ *
+ * Distinct from the v5 evidence-coverage section so the
+ * new extractive surface never inherits the v5 audit
+ * layout. Every quote surfaces the original saved span
+ * text; the source URL / provider_source_id are echoed
+ * verbatim; the analysis row distinguishes
+ * inference / recommendation so the user can audit the
+ * LLM's own synthesis versus the cited fact premises. */
+
+.research-answer-v7 {
+  margin-top: 12px;
+  padding: 12px 14px;
+  background: var(--research-accent-tint, rgba(0, 0, 0, 0.02));
+  border: 1px solid var(--research-accent-soft, rgba(0, 0, 0, 0.08));
+  border-radius: var(--r-sm, 6px);
+}
+.research-answer-v7-head {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.research-answer-v7-title {
+  font-weight: 600;
+  font-size: var(--t-body, 14px);
+}
+.research-answer-v7-meta {
+  font-size: var(--t-caption, 12px);
+}
+.research-answer-v7-original-question {
+  margin: 8px 0 4px;
+  font-size: var(--t-body, 14px);
+}
+.research-answer-v7-original-label {
+  color: var(--text-muted, #6b7280);
+  margin-right: 4px;
+}
+.research-answer-v7-unresolved {
+  margin: 6px 0 8px;
+  padding-left: 18px;
+  font-size: var(--t-caption, 12px);
+  color: var(--text-warn, #92400e);
+}
+.research-answer-v7-unresolved-item {
+  margin: 2px 0;
+}
+.research-answer-v7-items {
+  margin: 8px 0;
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.research-answer-v7-item {
+  padding: 8px 10px;
+  border: 1px solid var(--research-accent-soft, rgba(0, 0, 0, 0.08));
+  border-radius: var(--r-sm, 6px);
+  background: var(--surface-card, #fff);
+}
+.research-answer-v7-item-head {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.research-answer-v7-item-question {
+  font-weight: 500;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.research-answer-v7-item-polarity {
+  font-size: var(--t-caption, 12px);
+  padding: 2px 6px;
+  border-radius: var(--r-sm, 4px);
+  background: var(--research-accent-soft, rgba(0, 0, 0, 0.06));
+}
+.research-answer-v7-item-polarity--negative {
+  background: rgba(220, 38, 38, 0.12);
+  color: #991b1b;
+}
+.research-answer-v7-item-polarity--conflicting {
+  background: rgba(217, 119, 6, 0.14);
+  color: #92400e;
+}
+.research-answer-v7-item-polarity--positive {
+  background: rgba(22, 163, 74, 0.12);
+  color: #166534;
+}
+.research-answer-v7-item-polarity--unknown {
+  background: rgba(107, 114, 128, 0.14);
+  color: #374151;
+}
+.research-answer-v7-item-status {
+  font-size: var(--t-caption, 12px);
+  color: var(--text-muted, #6b7280);
+}
+.research-answer-v7-item-attempt {
+  font-size: var(--t-caption, 12px);
+}
+.research-answer-v7-quotes {
+  margin: 6px 0 0;
+  padding-left: 18px;
+  font-size: var(--t-body, 14px);
+}
+.research-answer-v7-quote {
+  margin: 4px 0;
+}
+.research-answer-v7-quote-text {
+  margin: 0;
+}
+.research-answer-v7-quote-meta {
+  margin: 2px 0 0;
+  font-size: var(--t-caption, 12px);
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.research-answer-v7-quote-link {
+  color: var(--research-accent-strong, #1d4ed8);
+}
+.research-answer-v7-gap {
+  margin: 4px 0 0;
+  font-size: var(--t-caption, 12px);
+}
+.research-answer-v7-analyses {
+  margin-top: 12px;
+  padding-top: 8px;
+  border-top: 1px dashed var(--research-accent-soft, rgba(0, 0, 0, 0.16));
+}
+.research-answer-v7-analyses-head {
+  font-weight: 500;
+  font-size: var(--t-body, 14px);
+  margin-bottom: 4px;
+}
+.research-answer-v7-analysis-list {
+  margin: 4px 0 0;
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.research-answer-v7-analysis {
+  padding: 6px 8px;
+  border: 1px solid var(--research-accent-soft, rgba(0, 0, 0, 0.08));
+  border-radius: var(--r-sm, 6px);
+  background: var(--surface-card, #fff);
+}
+.research-answer-v7-analysis-head {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.research-answer-v7-analysis-claim-kind {
+  font-size: var(--t-caption, 12px);
+  padding: 2px 6px;
+  border-radius: var(--r-sm, 4px);
+  background: rgba(37, 99, 235, 0.12);
+  color: #1e3a8a;
+}
+.research-answer-v7-analysis-title {
+  font-weight: 500;
+}
+.research-answer-v7-analysis-description {
+  margin: 4px 0 0;
+  white-space: pre-wrap;
+  font-family: inherit;
+  font-size: var(--t-body, 14px);
+}
+.research-answer-v7-analysis-toggle {
+  margin-top: 4px;
+  font-size: var(--t-caption, 12px);
+  color: var(--research-accent-strong, #1d4ed8);
+  background: transparent;
+  border: 1px solid var(--research-accent-soft, rgba(0, 0, 0, 0.08));
+  border-radius: var(--r-sm, 4px);
+  padding: 4px 10px;
+  cursor: pointer;
+}
+.research-answer-v7-analysis-supports {
+  margin: 6px 0 0;
+  padding-left: 18px;
+}
+.research-answer-v7-analysis-support {
+  margin: 4px 0;
+}
+.research-answer-v7-analysis-support-description {
+  margin: 0;
+  font-size: var(--t-body, 14px);
+}
+.research-answer-v7-analysis-support-sources {
+  margin: 2px 0 0;
+  padding-left: 18px;
+  font-size: var(--t-caption, 12px);
+}
+.research-answer-v7-semantic {
+  margin: 10px 0 0;
+  font-size: var(--t-caption, 12px);
+}
+
+/* --- Phase 8 C: Tool Action Preview (Simulator) ---
+ *
+ * The section reuses the global ``.section`` + ``.alert`` +
+ * ``.badge`` + ``.btn`` tokens. Only the layout of the four
+ * frozen-snapshot fields (Title / Description / Priority /
+ * Source Insight) needs dedicated rules so the preview reads as
+ * a static audit block, not as another form. */
+.tool-action-preview .alert {
+  margin-top: 12px;
+}
+.tool-preview-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 18px;
+  margin: 12px 0 8px;
+  padding: 12px 14px;
+  background: var(--surface-1);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+}
+.tool-preview-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+.tool-preview-label {
+  font-size: var(--t-caption);
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.tool-preview-value {
+  font-size: var(--t-small);
+  color: var(--fg);
+  word-break: break-word;
+}
+.tool-preview-description {
+  white-space: pre-wrap;
+  max-height: 180px;
+  overflow: auto;
+}
+.tool-preview-source {
+  font-style: italic;
+  color: var(--fg-2);
+}
+.tool-completed-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin: 10px 0 6px;
+}
+.tool-completed-row .tool-preview-label {
+  margin: 0;
+}
+.tool-action-controls {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+@media (max-width: 600px) {
+  .tool-preview-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* Supporting diagnostics are available on demand, away from the main workflow. */
+.technical-details {
+  min-width: 0;
+  margin: 8px 0 16px;
+  color: var(--fg-2);
+  font-size: 13px;
+  line-height: 1.6;
+}
+.technical-details > summary {
+  cursor: pointer;
+  color: var(--accent-strong);
+  width: fit-content;
+  padding: 6px 0;
+}
+.technical-details > summary:focus-visible {
+  outline: 2px solid var(--accent-ring);
+  outline-offset: 4px;
+  border-radius: 3px;
+}
+.technical-details-body {
+  margin-top: 8px;
+  padding: 12px 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  background: var(--surface-1);
+  overflow-wrap: anywhere;
+}
+.meta-grid > .technical-details { grid-column: 1 / -1; }
+.technical-details code { overflow-wrap: anywhere; }
+.prd-row-snippet { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }

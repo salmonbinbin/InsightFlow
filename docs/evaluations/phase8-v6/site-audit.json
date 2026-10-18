@@ -1,0 +1,27 @@
+{
+  "phase": "8",
+  "head": "449e879",
+  "branch": "codex/phase6-evaluation",
+  "index_empty": true,
+  "prior_product_manifest_matches": true,
+  "baseline": {
+    "scoped": "120 passed",
+    "sqlite": "1092 passed / 11 skipped",
+    "postgres": "1103 passed / full migration roundtrip",
+    "ruff": "PASS",
+    "frontend_test": "154 passed",
+    "frontend_lint": "PASS",
+    "frontend_build": "PASS"
+  },
+  "user_databases": "read-only attempts Operation not permitted; revision/counts NOT MEASURED; no mutations",
+  "port_8000_owner": "/Users/salmon/Desktop/Xunfei project/AI小商/backend",
+  "configuration": "CONFIG_PRESENT_NOT_CALL_TESTED",
+  "task_c_root_cause": "sentence regex loses pre-decimal/pre-hostname text; exact Apple Shared Library destination is absent from catalog",
+  "scope": [
+    "B anchored task contract",
+    "C evidence/protocol/retrieval fixes",
+    "D fact and analysis support persistence",
+    "E frontend and full workflow",
+    "F independent final gates"
+  ]
+}

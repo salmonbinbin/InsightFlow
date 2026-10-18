@@ -49,11 +49,13 @@
  */
 
 import Link from 'next/link';
+import { displayLabel, metricNote, documentText } from '../../../lib/presentation';
 import { useParams, useRouter } from 'next/navigation';
 import {
   useCallback,
   useEffect,
   useMemo,
+  useRef,
   useState,
 } from 'react';
 import { useProjectContext } from '../../../contexts/ProjectContext';
@@ -75,6 +77,9 @@ import type {
   RequirementPatchRequest,
   RequirementStatus,
   RiskCategory,
+  ToolRunPage,
+  ToolRunRead,
+  ToolRunSnapshot,
 } from '../../../lib/api/types';
 
 const STATUS_OPTIONS: ReadonlyArray<{ value: RequirementStatus; label: string }> = [
@@ -255,6 +260,10 @@ export default function RequirementDetailPage() {
   const { signal } = useProjectScopedFetch();
   const client = getApiClient();
   const requirementId = params?.id ?? '';
+  const requestScopeRef = useRef({ projectId: activeProjectId, id: requirementId });
+  if (requestScopeRef.current.projectId !== activeProjectId || requestScopeRef.current.id !== requirementId) {
+    requestScopeRef.current = { projectId: activeProjectId, id: requirementId };
+  }
 
   const [requirement, setRequirement] = useState<Requirement | null>(null);
   const [loadError, setLoadError] = useState<string | null>(null);
@@ -280,6 +289,47 @@ export default function RequirementDetailPage() {
   const [generatingPrd, setGeneratingPrd] = useState(false);
   const [generatePrdError, setGeneratePrdError] = useState<string | null>(null);
   const [generatePrdSuccess, setGeneratePrdSuccess] = useState<{ id: string; version: number } | null>(null);
+
+  /* Phase 8 C: Tool Action Preview (Simulator).
+   *
+   * The section is rendered ONLY when the current Requirement is
+   * in ``status='approved'`` AND belongs to the active project
+   * (the load gate above already enforces the project check).
+   *
+   * The three in-flight flags are mutually exclusive — a single
+   * tool action runs at a time, and the buttons stay disabled
+   * while the corresponding flag is set so a rapid second click
+   * cannot double-POST (the backend would dedupe on
+   * ``request_id``, but the UI must not depend on that). */
+  const [toolHistory, setToolHistory] = useState<ToolRunPage | null>(null);
+  const [toolHistoryError, setToolHistoryError] = useState<string | null>(null);
+  const [toolHistoryLoading, setToolHistoryLoading] = useState(false);
+  const [preparingToolRun, setPreparingToolRun] = useState(false);
+  const [cancellingToolRun, setCancellingToolRun] = useState(false);
+  const [approvingToolRun, setApprovingToolRun] = useState(false);
+  const [toolActionError, setToolActionError] = useState<string | null>(null);
+  /* ``failedToolAction`` remembers WHICH action the current
+   * ``toolActionError`` came from so the ErrorState's Retry
+   * button can re-invoke the SAME handler (Cancel error →
+   * retry Cancel, not Prepare). Cleared together with the
+   * error so a fresh error path starts from an empty slate. */
+  const [failedToolAction, setFailedToolAction] = useState<'prepare' | 'cancel' | 'approve' | null>(null);
+  /* The last successfully prepared ``request_id`` is kept around
+   * so the Cancel / Approve buttons can target it without
+   * re-deriving it from the history. The list endpoint's
+   * ``active_run_id`` pointer is the source of truth though —
+   * the page falls back to it whenever the locally-issued UUID
+   * does not match a returned row. */
+  const [lastPreparedRequestId, setLastPreparedRequestId] = useState<string | null>(null);
+  /* ``inFlightRef`` is a synchronous guard against the
+   * double-POST that would otherwise be possible when two
+   * clicks fire inside the same React batch — the React-state
+   * ``preparingToolRun`` flag is not yet ``true`` when the
+   * second click's closure runs. A ref updates synchronously
+   * and so is the single source of truth for "another action
+   * is already in flight". The state flag is still used to
+   * drive the disabled UI. */
+  const inFlightRef = useRef(false);
   /* Indices + raw strings of read-side enum values that the frontend
    * does not know how to round-trip. While this is non-empty the page
    * blocks the Save button — see ``unknownBlockReason`` below. The
@@ -307,6 +357,16 @@ export default function RequirementDetailPage() {
     setGeneratingPrd(false);
     setGeneratePrdError(null);
     setGeneratePrdSuccess(null);
+    setToolHistory(null);
+    setToolHistoryError(null);
+    setToolHistoryLoading(false);
+    setPreparingToolRun(false);
+    setCancellingToolRun(false);
+    setApprovingToolRun(false);
+    setToolActionError(null);
+    setFailedToolAction(null);
+    setLastPreparedRequestId(null);
+    inFlightRef.current = false;
   }, [activeProjectId]);
 
   /* ---------- Reset on URL id change ----------
@@ -334,6 +394,16 @@ export default function RequirementDetailPage() {
     setGeneratingPrd(false);
     setGeneratePrdError(null);
     setGeneratePrdSuccess(null);
+    setToolHistory(null);
+    setToolHistoryError(null);
+    setToolHistoryLoading(false);
+    setPreparingToolRun(false);
+    setCancellingToolRun(false);
+    setApprovingToolRun(false);
+    setToolActionError(null);
+    setFailedToolAction(null);
+    setLastPreparedRequestId(null);
+    inFlightRef.current = false;
   }, [requirementId]);
 
   /* ---------- Load ---------- */
@@ -351,7 +421,9 @@ export default function RequirementDetailPage() {
     setLoading(true);
     setLoadError(null);
     setNotFound(false);
-    const res = await client.getRequirement(requirementId, mySignal);
+    const requestScope = requestScopeRef.current;
+    const res = await client.getRequirement(requirementId, mySignal, requestScope.projectId ?? undefined);
+    if (requestScopeRef.current !== requestScope) return;
     if (mySignal.aborted) return;
     if (myId !== requirementId) return; // route moved on while we awaited
     if (res.error) {
@@ -425,17 +497,17 @@ export default function RequirementDetailPage() {
     const parts: string[] = [];
     if (unknownEnums.metrics.length > 0) {
       const items = unknownEnums.metrics
-        .map((u) => `Success Metric #${u.index + 1} 类型 '${u.raw}'`)
+        .map((u) => `第${u.index + 1}项指标`)
         .join('；');
       parts.push(items);
     }
     if (unknownEnums.risks.length > 0) {
       const items = unknownEnums.risks
-        .map((u) => `Risk #${u.index + 1} 分类 '${u.raw}'`)
+        .map((u) => `第${u.index + 1}项风险`)
         .join('；');
       parts.push(items);
     }
-    return `保存被阻止：${parts.join('；')} 是后端未知枚举值，无法安全保存。请联系管理员修正后再保存。`;
+    return `${parts.join('；')}的分类暂不支持编辑，请联系维护人员修正后保存。`;
   }, [unknownEnums]);
 
   /* Per-index lookups for inline rendering. The type select is
@@ -472,7 +544,10 @@ export default function RequirementDetailPage() {
     setValidationMessage(null);
     const body: RequirementPatchRequest = { content: draft };
     if (status !== originalStatus) body.status = status;
-    const res = await client.patchRequirement(requirement.id, body, mySignal ?? undefined);
+    const requestScope = requestScopeRef.current;
+    if (requirement.project_id !== requestScope.projectId) return;
+    const res = await client.patchRequirement(requirement.id, body, mySignal ?? undefined, requestScope.projectId ?? undefined);
+    if (requestScopeRef.current !== requestScope) return;
     if (mySignal?.aborted) {
       setSaving(false);
       return;
@@ -522,7 +597,19 @@ export default function RequirementDetailPage() {
     setGeneratingPrd(true);
     setGeneratePrdError(null);
     setGeneratePrdSuccess(null);
-    const res = await client.createPrd(requirement.id, {}, mySignal ?? undefined);
+    const requestScope = requestScopeRef.current;
+    if (requirement.project_id !== requestScope.projectId) return;
+    const res = await client.createPrd(
+      requirement.id,
+      // Phase 8 v7 — opt into the revised PRD prompt.
+      // The backend accepts an empty body (AI client
+      // generates the PRD) and an unset ``prompt_version``;
+      // the explicit pin documents which prompt authored
+      // the row and keeps PM edit / approval flow
+      // unchanged.
+      { prompt_version: 'prd-generation-v4' },
+      mySignal ?? undefined, requestScope.projectId ?? undefined);
+    if (requestScopeRef.current !== requestScope) return;
     if (mySignal?.aborted) {
       setGeneratingPrd(false);
       return;
@@ -530,13 +617,196 @@ export default function RequirementDetailPage() {
     setGeneratingPrd(false);
     if (res.error || !res.data) {
       setGeneratePrdError(
-        res.error ? classifyError(res.error) : '生成 PRD 失败。',
+        res.error ? classifyError(res.error) : '生成需求文档失败。',
       );
       return;
     }
     setGeneratePrdSuccess({ id: res.data.id, version: res.data.version });
     router.push(`/prds/${res.data.id}`);
   }, [client, generatingPrd, requirement, router, signal]);
+
+  /* ---------- Tool Action Preview (Phase 8 C) ----------
+   *
+   * Three handlers (Prepare / Cancel / Approve) plus a refetch
+   * helper. Every handler captures ``mySignal = signal`` at entry
+   * and bails out when the project-scope AbortController fires
+   * (i.e. a project switch aborted the in-flight POST); this is
+   * the same race-protection pattern as ``load`` /
+   * ``onGeneratePrd`` above.
+   *
+   * Idempotency: each Prepare click mints a fresh
+   * ``crypto.randomUUID()`` so a real backend would create a
+   * fresh awaiting_approval row. The page never re-uses a
+   * request_id across clicks; the brief says "重复点击防重" —
+   * we rely on the in-flight flag (a second click is a no-op
+   * because the button is disabled) AND on the unique
+   * request_id so a double-click that races past the disabled
+   * gate still cannot create two equivalent rows.
+   *
+   * Cross-project safety: ``requirement.project_id ===
+   * activeProjectId`` is already enforced by the load gate
+   * above, so the ``project_id`` query we send to every tool
+   * endpoint is always the active project's id.
+   */
+
+  const refetchToolHistory = useCallback(async () => {
+    if (!requirement || !activeProjectId) return;
+    const mySignal = signal;
+    const myId = requirement.id;
+    setToolHistoryLoading(true);
+    setToolHistoryError(null);
+    const res = await client.listToolRuns(
+      requirement.id,
+      { project_id: activeProjectId, limit: 50, offset: 0 },
+      mySignal ?? undefined,
+    );
+    if (mySignal?.aborted) {
+      setToolHistoryLoading(false);
+      return;
+    }
+    // URL-id race: navigating between two Requirements while a
+    // listToolRuns is in flight could otherwise overwrite the
+    // new requirement's history with the old requirement's rows.
+    if (myId !== requirementId) {
+      setToolHistoryLoading(false);
+      return;
+    }
+    setToolHistoryLoading(false);
+    if (res.error || !res.data) {
+      setToolHistoryError(
+        res.error ? classifyError(res.error) : '加载工具运行历史失败。',
+      );
+      return;
+    }
+    setToolHistory(res.data);
+  }, [activeProjectId, client, requirement, requirementId, signal]);
+
+  // Refetch whenever a fresh Requirement lands. The dependency on
+  // ``requirement?.id`` + ``activeProjectId`` keeps the network
+  // round-trips bounded to the project / id transitions the user
+  // actually makes (i.e. a project switch + the matching load
+  // clears history BEFORE this effect runs because the
+  // activeProjectId effect above zeros the state first).
+  useEffect(() => {
+    if (!requirement || !activeProjectId) return;
+    if (requirement.status !== 'approved') return;
+    void refetchToolHistory();
+  }, [activeProjectId, refetchToolHistory, requirement]);
+
+  const onPrepareToolRun = useCallback(async () => {
+    if (!requirement || !activeProjectId) return;
+    if (preparingToolRun) return;
+    if (inFlightRef.current) return;
+    if (requirement.status !== 'approved') {
+      setToolActionError('请先批准需求，再预览模拟任务。');
+      return;
+    }
+    inFlightRef.current = true;
+    const mySignal = signal;
+    const requestId = crypto.randomUUID();
+    setPreparingToolRun(true);
+    setToolActionError(null);
+    setFailedToolAction(null);
+    const res = await client.prepareToolRun(
+      requirement.id,
+      { project_id: activeProjectId },
+      {
+        tool_name: 'simulated_issue_tracker',
+        tool_action: 'create_issue',
+        request_id: requestId,
+        payload: {},
+      },
+      mySignal ?? undefined,
+    );
+    if (mySignal?.aborted) {
+      setPreparingToolRun(false);
+      inFlightRef.current = false;
+      return;
+    }
+    setPreparingToolRun(false);
+    inFlightRef.current = false;
+    if (res.error || !res.data) {
+      setToolActionError(
+        res.error ? classifyError(res.error) : '准备工具运行失败。',
+      );
+      setFailedToolAction('prepare');
+      return;
+    }
+    setLastPreparedRequestId(requestId);
+    await refetchToolHistory();
+  }, [activeProjectId, client, preparingToolRun, refetchToolHistory, requirement, signal]);
+
+  const onCancelToolRun = useCallback(async () => {
+    if (!requirement || !activeProjectId) return;
+    if (cancellingToolRun || approvingToolRun) return;
+    if (inFlightRef.current) return;
+    const targetRunId = toolHistory?.active_run_id;
+    if (!targetRunId) {
+      setToolActionError('当前没有可取消的待批准工具运行。');
+      return;
+    }
+    inFlightRef.current = true;
+    const mySignal = signal;
+    setCancellingToolRun(true);
+    setToolActionError(null);
+    setFailedToolAction(null);
+    const res = await client.cancelToolRun(
+      targetRunId,
+      { project_id: activeProjectId },
+      mySignal ?? undefined,
+    );
+    if (mySignal?.aborted) {
+      setCancellingToolRun(false);
+      inFlightRef.current = false;
+      return;
+    }
+    setCancellingToolRun(false);
+    inFlightRef.current = false;
+    if (res.error || !res.data) {
+      setToolActionError(
+        res.error ? classifyError(res.error) : '取消失败。',
+      );
+      setFailedToolAction('cancel');
+      return;
+    }
+    await refetchToolHistory();
+  }, [activeProjectId, approvingToolRun, cancellingToolRun, client, refetchToolHistory, requirement, signal, toolHistory]);
+
+  const onApproveToolRun = useCallback(async () => {
+    if (!requirement || !activeProjectId) return;
+    if (cancellingToolRun || approvingToolRun) return;
+    if (inFlightRef.current) return;
+    const targetRunId = toolHistory?.active_run_id;
+    if (!targetRunId) {
+      setToolActionError('当前没有可批准的待批准工具运行。');
+      return;
+    }
+    inFlightRef.current = true;
+    const mySignal = signal;
+    setApprovingToolRun(true);
+    setToolActionError(null);
+    setFailedToolAction(null);
+    const res = await client.approveToolRun(
+      targetRunId,
+      { project_id: activeProjectId },
+      mySignal ?? undefined,
+    );
+    if (mySignal?.aborted) {
+      setApprovingToolRun(false);
+      inFlightRef.current = false;
+      return;
+    }
+    setApprovingToolRun(false);
+    inFlightRef.current = false;
+    if (res.error || !res.data) {
+      setToolActionError(
+        res.error ? classifyError(res.error) : '批准失败。',
+      );
+      setFailedToolAction('approve');
+      return;
+    }
+    await refetchToolHistory();
+  }, [activeProjectId, approvingToolRun, cancellingToolRun, client, refetchToolHistory, requirement, signal, toolHistory]);
 
   /* ---------- Mutators ---------- */
 
@@ -619,7 +889,7 @@ export default function RequirementDetailPage() {
     return (
       <EmptyState
         title="请先选择项目"
-        description="在右上角选择或创建一个项目，以查看 Requirement 详情。"
+        description="在右上角选择或创建一个项目，以查看需求详情。"
       />
     );
   }
@@ -628,8 +898,8 @@ export default function RequirementDetailPage() {
   if (notFound) {
     return (
       <EmptyState
-        title="Requirement 不存在"
-        description={`该 Requirement（${requirementId.slice(0, 8)}…）在当前项目下不存在，可能属于其它项目或已被删除。`}
+        title="需求不存在"
+        description={'当前项目中没有这条需求，请检查所选项目。'}
         action={<Link className="btn btn-ghost btn-sm" href="/requirements">返回列表</Link>}
       />
     );
@@ -647,36 +917,35 @@ export default function RequirementDetailPage() {
   return (
     <div className="page page-requirement-detail">
       <header className="page-header">
-        <span className="eyebrow">Requirement · B2</span>
-        <h1 className="page-title">{requirement.name || '未命名 Requirement'}</h1>
+        <span className="eyebrow">需求详情</span>
+        <h1 className="page-title">{requirement.name || '未命名需求'}</h1>
         <p className="page-subtitle">
-          来自 Insight <code className="mono">{requirement.insight_id.slice(0, 8)}</code> ·
-          {' '}Decision <code className="mono">{requirement.decision_id.slice(0, 8)}</code> ·
-          {' '}更新 <b className="mono">{formatRelative(requirement.updated_at ?? null)}</b>
+          <Link href={`/insights/${requirement.insight_id}`}>查看来源洞察</Link>
+          {' · 更新于 '}{formatRelative(requirement.updated_at ?? null)}
         </p>
       </header>
 
       <section className="section" data-od-id="requirement-meta">
         <div className="meta-grid">
           <div className="meta-item">
-            <div className="meta-k">PM Priority</div>
+            <div className="meta-k">需求优先级</div>
             <div className="meta-v">
               <span className="badge badge-accent mono">{requirement.pm_priority}</span>
               <span className="muted" style={{ marginLeft: 8, fontSize: 'var(--t-caption)' }}>
-                由上游 Decision 设定，本页只读。
+                来自产品决策
               </span>
             </div>
           </div>
           <div className="meta-item">
-            <div className="meta-k">Insight Status Snapshot</div>
-            <div className="meta-v mono">{requirement.insight_status_snapshot}</div>
+            <div className="meta-k">来源洞察状态</div>
+            <div className="meta-v mono">{displayLabel(requirement.insight_status_snapshot)}</div>
           </div>
           <div className="meta-item">
-            <div className="meta-k">Decision Status Snapshot</div>
-            <div className="meta-v mono">{requirement.decision_status_snapshot}</div>
+            <div className="meta-k">来源决策状态</div>
+            <div className="meta-v mono">{displayLabel(requirement.decision_status_snapshot)}</div>
           </div>
           <div className="meta-item">
-            <div className="meta-k">AI Priority Snapshot</div>
+            <div className="meta-k">AI 建议优先级</div>
             <div className="meta-v mono">{requirement.ai_priority_snapshot ?? '—'}</div>
           </div>
         </div>
@@ -685,13 +954,14 @@ export default function RequirementDetailPage() {
       <section className="section" data-od-id="requirement-status">
         {unknownBlockReason ? (
           <ErrorState
-            title="检测到后端未知枚举值"
-            message={unknownBlockReason}
+            title="部分内容需要修正"
+            message="部分指标或风险的分类暂不支持编辑，请联系维护人员处理。"
+            details={unknownBlockReason}
           />
         ) : null}
         <h3>状态</h3>
         <label className="form-field">
-          <span className="form-label">Requirement Status</span>
+          <span className="form-label">需求状态</span>
           <select
             className="form-select"
             value={status}
@@ -707,18 +977,18 @@ export default function RequirementDetailPage() {
         </label>
         {status !== originalStatus ? (
           <p className="muted" style={{ fontSize: 'var(--t-caption)' }}>
-            状态将由 <code className="mono">{originalStatus}</code> 改为 <code className="mono">{status}</code>。
+            状态将由 <code className="mono">{displayLabel(originalStatus)}</code> 改为 <code className="mono">{displayLabel(status)}</code>。
           </p>
         ) : null}
       </section>
 
       <section className="section" data-od-id="requirement-name">
         <label className="form-field">
-          <span className="form-label">Name</span>
+          <span className="form-label">需求名称</span>
           <input
             type="text"
             className="form-input"
-            value={draft.name}
+            value={documentText(draft.name)}
             onChange={(e) => setName(e.target.value)}
             data-testid="field-name"
           />
@@ -727,11 +997,11 @@ export default function RequirementDetailPage() {
 
       <section className="section" data-od-id="requirement-problem">
         <label className="form-field">
-          <span className="form-label">Problem</span>
+          <span className="form-label">用户问题</span>
           <textarea
             className="form-input"
             rows={3}
-            value={draft.problem}
+            value={documentText(draft.problem)}
             onChange={(e) => setProblem(e.target.value)}
             data-testid="field-problem"
           />
@@ -740,11 +1010,11 @@ export default function RequirementDetailPage() {
 
       <section className="section" data-od-id="requirement-target-user">
         <label className="form-field">
-          <span className="form-label">Target User</span>
+          <span className="form-label">目标用户</span>
           <input
             type="text"
             className="form-input"
-            value={draft.target_user}
+            value={documentText(draft.target_user)}
             onChange={(e) => setTargetUser(e.target.value)}
             data-testid="field-target-user"
           />
@@ -753,11 +1023,11 @@ export default function RequirementDetailPage() {
 
       <section className="section" data-od-id="requirement-user-story">
         <label className="form-field">
-          <span className="form-label">User Story</span>
+          <span className="form-label">用户故事</span>
           <textarea
             className="form-input"
             rows={3}
-            value={draft.user_story}
+            value={documentText(draft.user_story)}
             onChange={(e) => setUserStory(e.target.value)}
             data-testid="field-user-story"
           />
@@ -766,11 +1036,11 @@ export default function RequirementDetailPage() {
 
       <section className="section" data-od-id="requirement-solution">
         <label className="form-field">
-          <span className="form-label">Solution Hypothesis</span>
+          <span className="form-label">方案假设</span>
           <textarea
             className="form-input"
             rows={3}
-            value={draft.solution_hypothesis}
+            value={documentText(draft.solution_hypothesis)}
             onChange={(e) => setSolution(e.target.value)}
             data-testid="field-solution"
           />
@@ -779,10 +1049,10 @@ export default function RequirementDetailPage() {
 
       <section className="section" data-od-id="requirement-success-metrics">
         <h3>
-          Success Metrics · <span className="muted">{draft.success_metrics.length}</span>
+          成功指标 · <span className="muted">{draft.success_metrics.length}</span>
         </h3>
         <p className="muted" style={{ fontSize: 'var(--t-caption)' }}>
-          可为空数组；每项须含非空 name（note 与 sources 为可选），否则保存被拒。
+          填写希望观察的指标，暂时没有可留空。
         </p>
         {draft.success_metrics.map((m, idx) => {
           const unknownType = unknownMetricTypeByIdx.get(idx);
@@ -790,7 +1060,7 @@ export default function RequirementDetailPage() {
           <div key={idx} className="metric-row" data-testid="success-metric-row">
             {unknownType !== undefined ? (
               <div className="alert alert-warning" data-testid="metric-unknown-type-warning">
-                ⚠ 后端返回未知类型 &quot;{unknownType}&quot;，无法安全保存。请联系管理员修正后再编辑本行。
+                此指标类型暂不支持编辑，请联系维护人员处理。
               </div>
             ) : null}
             <label className="form-field">
@@ -798,7 +1068,7 @@ export default function RequirementDetailPage() {
               <input
                 type="text"
                 className="form-input"
-                value={m.name}
+                value={documentText(m.name)}
                 onChange={(e) => setMetric(idx, { name: e.target.value })}
                 data-testid="metric-name"
               />
@@ -810,7 +1080,7 @@ export default function RequirementDetailPage() {
                   className="badge badge-warning mono"
                   data-testid="metric-unknown-type-badge"
                 >
-                  未知：{unknownType}
+                  暂不支持的指标类型
                 </span>
               ) : (
                 <select
@@ -848,7 +1118,7 @@ export default function RequirementDetailPage() {
               <textarea
                 className="form-input"
                 rows={2}
-                value={m.note ?? ''}
+                value={metricNote(m.note ?? '')}
                 onChange={(e) => setMetric(idx, { note: e.target.value })}
                 data-testid="metric-note"
               />
@@ -879,18 +1149,23 @@ export default function RequirementDetailPage() {
 
       <section className="section" data-od-id="requirement-risks">
         <h3>
-          Risks · <span className="muted">{draft.risks.length}</span>
+          风险 · <span className="muted">{draft.risks.length}</span>
         </h3>
         <p className="muted" style={{ fontSize: 'var(--t-caption)' }}>
-          可为空数组；每项须含非空 description，否则保存被拒。
+          记录可能影响需求落地的风险。
         </p>
+        {draft.risks.some((risk) => risk.category === 'known') ? (
+          <p className="muted" data-testid="known-risk-review-boundary">
+            请对照原始反馈核实已知风险。
+          </p>
+        ) : null}
         {draft.risks.map((r, idx) => {
           const unknownCategory = unknownRiskCategoryByIdx.get(idx);
           return (
           <div key={idx} className="risk-row" data-testid="risk-row">
             {unknownCategory !== undefined ? (
               <div className="alert alert-warning" data-testid="risk-unknown-category-warning">
-                ⚠ 后端返回未知分类 &quot;{unknownCategory}&quot;，无法安全保存。请联系管理员修正后再编辑本行。
+                此风险分类暂不支持编辑，请联系维护人员处理。
               </div>
             ) : null}
             <label className="form-field">
@@ -900,7 +1175,7 @@ export default function RequirementDetailPage() {
                   className="badge badge-warning mono"
                   data-testid="risk-unknown-category-badge"
                 >
-                  未知：{unknownCategory}
+                  暂不支持的风险分类
                 </span>
               ) : (
                 <select
@@ -922,7 +1197,7 @@ export default function RequirementDetailPage() {
               <textarea
                 className="form-input"
                 rows={3}
-                value={r.description}
+                value={documentText(r.description)}
                 onChange={(e) => setRisk(idx, { description: e.target.value })}
                 data-testid="risk-description"
               />
@@ -932,12 +1207,12 @@ export default function RequirementDetailPage() {
               <textarea
                 className="form-input"
                 rows={2}
-                value={r.mitigation ?? ''}
+                value={documentText(r.mitigation ?? '')}
                 onChange={(e) => setRisk(idx, { mitigation: e.target.value })}
               />
             </label>
             <label className="form-field">
-              <span className="form-label">Evidence IDs（每行一条）</span>
+              <span className="form-label">反馈编号（每行一条）</span>
               <textarea
                 className="form-input"
                 rows={2}
@@ -978,15 +1253,15 @@ export default function RequirementDetailPage() {
 
       <section className="section" data-od-id="requirement-evidence">
         <h3>
-          Evidence References · <span className="muted">{draft.evidence_references.length}</span>
+          引用反馈 · <span className="muted">{draft.evidence_references.length}</span>
         </h3>
         <p className="muted" style={{ fontSize: 'var(--t-caption)' }}>
-          至少 1 条；每项须含非空 external_id 与 usage，否则保存被拒。
+          至少引用一条反馈，并说明它支持什么。
         </p>
         {draft.evidence_references.map((e, idx) => (
           <div key={idx} className="evidence-row-ref" data-testid="evidence-ref-row">
             <label className="form-field">
-              <span className="form-label">External ID</span>
+              <span className="form-label">反馈编号</span>
               <input
                 type="text"
                 className="form-input mono"
@@ -996,11 +1271,11 @@ export default function RequirementDetailPage() {
               />
             </label>
             <label className="form-field">
-              <span className="form-label">Usage</span>
+              <span className="form-label">引用用途</span>
               <input
                 type="text"
                 className="form-input"
-                value={e.usage}
+                value={documentText(e.usage)}
                 onChange={(ev) => setEvidence(idx, { usage: ev.target.value })}
                 data-testid="evidence-usage"
               />
@@ -1024,17 +1299,60 @@ export default function RequirementDetailPage() {
           onClick={addEvidence}
           data-testid="evidence-add"
         >
-          + 添加 Evidence Reference
+          + 添加引用反馈
         </button>
       </section>
+
+      {/* ---------- Phase 8 C: Tool Action Preview (Simulator) ----------
+       *
+       * Renders ONLY when the current Requirement is in
+       * ``status='approved'`` AND belongs to the active project
+       * (the load gate above enforces the project check; the
+       * status check is here). The section is deliberately
+       * placed BELOW the editable form so a PM can still edit
+       * the Requirement content / status / Save / Generate PRD
+       * without interference from the simulator controls.
+       *
+       * The brief mandates this is a SIMULATOR — the user must
+       * never believe a real Jira / external ticket was created.
+       * The "仅模拟" notice is the first thing rendered, and
+       * the "simulated" badge next to the SIM-… id is the
+       * audit-visible marker. No real external link is ever
+       * constructed; the id is shown as plain monospace text. */}
+      {requirement.status === 'approved' ? (
+        <section className="section tool-action-preview" data-od-id="tool-action-preview" data-testid="tool-action-preview">
+          <h3>
+            外部任务预览（模拟）
+            <span className="muted" style={{ marginLeft: 8, fontSize: 'var(--t-caption)' }}>
+              仅供预览
+            </span>
+          </h3>
+          <p className="muted" style={{ fontSize: 'var(--t-caption)' }}>
+            此操作为模拟，不会创建真实外部任务。
+          </p>
+          {renderToolPreview(
+            toolHistory,
+            toolHistoryLoading,
+            toolHistoryError,
+            preparingToolRun,
+            cancellingToolRun,
+            approvingToolRun,
+            toolActionError,
+            failedToolAction,
+            onPrepareToolRun,
+            onCancelToolRun,
+            onApproveToolRun,
+          )}
+        </section>
+      ) : null}
 
       <footer className="cta-bar">
         <div>
           <h4>
             {generatingPrd
-              ? '正在生成 PRD…'
+              ? '正在生成需求文档…'
               : generatePrdSuccess
-                ? `已生成 PRD v${generatePrdSuccess.version}`
+                ? `已生成需求文档 v${generatePrdSuccess.version}`
                 : saving
                   ? '正在保存…'
                   : dirty
@@ -1045,13 +1363,13 @@ export default function RequirementDetailPage() {
           </h4>
           <p>
             {generatingPrd
-              ? '请求 POST /api/requirements/{id}/prds，请稍候。'
+              ? '正在整理需求并生成文档，请稍候。'
               : generatePrdSuccess
-                ? `新 PRD id ${generatePrdSuccess.id.slice(0, 8)}…，已跳转详情。`
+                ? '文档已生成，正在打开详情。'
                 : saving
-                  ? '请求 PATCH /api/requirements/{id}，请稍候。'
+                  ? '正在保存修改，请稍候。'
                   : dirty
-                    ? unknownBlockReason ?? validationResult ?? '编辑不会自动保存。点击保存以发送 PATCH。'
+                    ? (unknownBlockReason ? '请先处理需要修正的内容。' : validationResult ?? '修改尚未保存。')
                     : savedTick
                       ? `最近一次保存于 ${formatRelative(new Date(savedTick).toISOString())}。`
                       : '当前未对内容做修改。'}
@@ -1066,7 +1384,7 @@ export default function RequirementDetailPage() {
             onClick={() => { void onGeneratePrd(); }}
             data-testid="generate-prd"
           >
-            {generatingPrd ? '生成 PRD 中…' : '生成 PRD'}
+            {generatingPrd ? '正在生成文档…' : '生成需求文档'}
           </button>
           <button
             type="button"
@@ -1089,12 +1407,12 @@ export default function RequirementDetailPage() {
 
       {generatePrdSuccess ? (
         <div className="alert alert-success" role="status" data-testid="generate-prd-success">
-          已生成 PRD v{generatePrdSuccess.version}，正在跳转…
+          已生成需求文档 v{generatePrdSuccess.version}，正在跳转…
         </div>
       ) : null}
       {generatePrdError ? (
         <ErrorState
-          title="生成 PRD 失败"
+          title="生成需求文档失败"
           message={generatePrdError}
           onRetry={() => { setGeneratePrdError(null); void onGeneratePrd(); }}
         />
@@ -1137,4 +1455,287 @@ function shallowEqualContent(a: RequirementContent, b: RequirementContent): bool
   const aRefs = JSON.stringify(a.evidence_references);
   const bRefs = JSON.stringify(b.evidence_references);
   return aRefs === bRefs;
+}
+
+/* ---------- Tool Action Preview renderer ----------
+ *
+ * Pure render helper that takes a snapshot of the page's tool
+ * state plus the three handler references and returns the
+ * appropriate section body. Split out so the page's JSX stays
+ * readable and so the interaction tests can assert on a stable
+ * ``data-testid`` set without spelunking through conditional
+ * ternaries.
+ *
+ * State precedence:
+ *   1. ``toolActionError`` — surfaces 404 / 409 / 503 / network
+ *      errors with a Retry that re-runs the same action by
+ *      re-invoking the supplied handler.
+ *   2. ``toolHistoryError`` — surfaces history-list failures
+ *      (does not block a fresh Prepare).
+ *   3. Active awaiting_approval run → Cancel + Approve + preview.
+ *   4. Active completed run → SIM-… + simulated badge (no real
+ *      link fabricated).
+ *   5. Active cancelled run → "已取消，无模拟结果" + Prepare
+ *      re-try. We deliberately do NOT auto-Prepare here — the
+ *      brief says "可重试" and a fresh Prepare must be a
+ *      deliberate click.
+ *   6. No history yet → Prepare button only.
+ */
+function renderToolPreview(
+  history: ToolRunPage | null,
+  loading: boolean,
+  historyError: string | null,
+  preparing: boolean,
+  cancelling: boolean,
+  approving: boolean,
+  actionError: string | null,
+  failedAction: 'prepare' | 'cancel' | 'approve' | null,
+  onPrepare: () => void,
+  onCancel: () => void,
+  onApprove: () => void,
+) {
+  // ``active_run_id`` is the awaiting_approval run when one
+  // exists (the row Cancel / Approve target). After Cancel /
+  // Approve the backend nulls the pointer; in that case we
+  // must still render the most recent row so the user can see
+  // the resulting state (``cancelled`` / ``completed``) and the
+  // re-Prepare path. ``items`` is pre-sorted ``created_at DESC,
+  // id DESC`` by both the backend and the mock, so
+  // ``items[0]`` is the most recent run.
+  const activeRun =
+    history?.active_run_id !== null && history?.active_run_id !== undefined
+      ? (history?.items.find((r) => r.id === history?.active_run_id) ?? null)
+      : (history?.items[0] ?? null);
+  // ``actionError`` is the per-action failure (Cancel / Approve
+  // / Prepare). It MUST take priority over the "active run"
+  // view so a 409 "state machine violation" surfaces even when
+  // a fresh refetch already moved the row to cancelled.
+  if (actionError) {
+    // Re-issue the EXACT action that failed. The brief says
+    // "失败可重试" — a Cancel error retrying as Prepare would
+    // be a contract violation (a fresh audit row would land
+    // while the user expected a state-machine re-attempt).
+    const retry = () => {
+      if (failedAction === 'cancel') onCancel();
+      else if (failedAction === 'approve') onApprove();
+      else onPrepare();
+    };
+    return (
+      <ErrorState
+        title="工具操作失败"
+        message={actionError}
+        onRetry={retry}
+      />
+    );
+  }
+  if (loading && !history) {
+    return <LoadingState />;
+  }
+  if (historyError && !history) {
+    return (
+      <ErrorState
+        title="加载工具运行历史失败"
+        message={historyError}
+        onRetry={onPrepare}
+      />
+    );
+  }
+  if (activeRun && activeRun.status === 'awaiting_approval') {
+    return (
+      <ToolAwaitingApproval
+        snapshot={activeRun.request_payload}
+        preparing={preparing}
+        cancelling={cancelling}
+        approving={approving}
+        onCancel={onCancel}
+        onApprove={onApprove}
+      />
+    );
+  }
+  if (activeRun && activeRun.status === 'completed') {
+    return (
+      <ToolCompleted
+        externalId={activeRun.external_id}
+        responseSummary={activeRun.response_summary}
+        onPrepare={onPrepare}
+        preparing={preparing}
+      />
+    );
+  }
+  if (activeRun && activeRun.status === 'cancelled') {
+    return (
+      <ToolCancelled
+        onPrepare={onPrepare}
+        preparing={preparing}
+      />
+    );
+  }
+  return (
+    <ToolIdle
+      preparing={preparing}
+      onPrepare={onPrepare}
+    />
+  );
+}
+
+function ToolSnapshotFields({ snapshot }: { snapshot: ToolRunSnapshot }) {
+  return (
+    <div className="tool-preview-grid" data-testid="tool-preview-fields">
+      <div className="tool-preview-field">
+        <div className="tool-preview-label">任务标题</div>
+        <div className="tool-preview-value mono" data-testid="tool-preview-title">
+          {snapshot.title || '—'}
+        </div>
+      </div>
+      <div className="tool-preview-field">
+        <div className="tool-preview-label">任务描述</div>
+        <div className="tool-preview-value tool-preview-description" data-testid="tool-preview-description">
+          {snapshot.description || '—'}
+        </div>
+      </div>
+      <div className="tool-preview-field">
+        <div className="tool-preview-label">优先级</div>
+        <div className="tool-preview-value mono" data-testid="tool-preview-priority">
+          {snapshot.priority ?? '—'}
+        </div>
+      </div>
+      <div className="tool-preview-field">
+        <div className="tool-preview-label">来源洞察</div>
+        <div className="tool-preview-value tool-preview-source" data-testid="tool-preview-source">
+          {snapshot.source_insight_preview || '—'}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ToolIdle({ preparing, onPrepare }: { preparing: boolean; onPrepare: () => void }) {
+  return (
+    <div className="tool-action-controls" data-testid="tool-action-idle">
+      <button
+        type="button"
+        className="btn btn-secondary btn-sm"
+        onClick={onPrepare}
+        disabled={preparing}
+        data-testid="tool-prepare"
+      >
+        {preparing ? '准备中…' : '预览模拟任务'}
+      </button>
+    </div>
+  );
+}
+
+function ToolAwaitingApproval({
+  snapshot,
+  preparing,
+  cancelling,
+  approving,
+  onCancel,
+  onApprove,
+}: {
+  snapshot: ToolRunSnapshot;
+  preparing: boolean;
+  cancelling: boolean;
+  approving: boolean;
+  onCancel: () => void;
+  onApprove: () => void;
+}) {
+  return (
+    <div data-testid="tool-action-awaiting-approval">
+      <ToolSnapshotFields snapshot={snapshot} />
+      <div className="alert alert-info" role="status" data-testid="tool-awaiting-notice">
+        请确认预览内容后批准模拟运行。
+      </div>
+      <div className="tool-action-controls" data-testid="tool-action-controls">
+        <button
+          type="button"
+          className="btn btn-ghost btn-sm"
+          onClick={onCancel}
+          disabled={cancelling || approving || preparing}
+          data-testid="tool-cancel"
+        >
+          {cancelling ? '取消中…' : '取消运行'}
+        </button>
+        <button
+          type="button"
+          className="btn btn-primary btn-sm"
+          onClick={onApprove}
+          disabled={cancelling || approving || preparing}
+          data-testid="tool-approve"
+        >
+          {approving ? '批准中…' : '批准模拟运行'}
+        </button>
+      </div>
+    </div>
+  );
+}
+
+function ToolCompleted({
+  externalId,
+  responseSummary,
+  onPrepare,
+  preparing,
+}: {
+  externalId: string | null;
+  responseSummary: string | null;
+  onPrepare: () => void;
+  preparing: boolean;
+}) {
+  return (
+    <div data-testid="tool-action-completed">
+      <div className="tool-completed-row" data-testid="tool-completed-row">
+        <span className="tool-preview-label">模拟任务编号</span>
+        <span className="badge badge-accent mono" data-testid="tool-external-id">
+          {externalId ?? '—'}
+        </span>
+        <span
+          className="badge badge-warning mono"
+          data-testid="tool-simulated-tag"
+          title="此编号对应模拟任务"
+        >
+          模拟
+        </span>
+      </div>
+      {responseSummary ? (
+        <details className="technical-details"><summary>查看运行详情</summary><p className="muted" data-testid="tool-response-summary">
+          模拟运行已完成，可核对任务内容。
+        </p></details>
+      ) : null}
+      <div className="alert alert-success" role="status" data-testid="tool-completed-notice">
+        模拟任务已生成，未写入外部系统。
+      </div>
+      <div className="tool-action-controls">
+        <button
+          type="button"
+          className="btn btn-ghost btn-sm"
+          onClick={onPrepare}
+          disabled={preparing}
+          data-testid="tool-reprepare"
+        >
+          {preparing ? '准备中…' : '重新预览'}
+        </button>
+      </div>
+    </div>
+  );
+}
+
+function ToolCancelled({ onPrepare, preparing }: { onPrepare: () => void; preparing: boolean }) {
+  return (
+    <div data-testid="tool-action-cancelled">
+      <div className="alert alert-warn" role="status" data-testid="tool-cancelled-notice">
+        已取消；无模拟结果。
+      </div>
+      <div className="tool-action-controls">
+        <button
+          type="button"
+          className="btn btn-secondary btn-sm"
+          onClick={onPrepare}
+          disabled={preparing}
+          data-testid="tool-reprepare"
+        >
+          {preparing ? '准备中…' : '重新预览'}
+        </button>
+      </div>
+    </div>
+  );
 }

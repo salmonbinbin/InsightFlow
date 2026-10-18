@@ -93,7 +93,7 @@ describe('PrdsListPage — Phase 7 C1', () => {
   it('shows an empty state when the project has no PRDs', async () => {
     renderList({ missing: true });
     await waitFor(() => {
-      expect(screen.getByText(/该项目下尚无 PRD/)).toBeTruthy();
+      expect(screen.getByText(/还没有需求文档/)).toBeTruthy();
     });
     expect(screen.queryByTestId('prd-list')).toBeNull();
   });

@@ -1,0 +1,163 @@
+Edit your photos & videos with the Google Photos Android app on your Chromebook - Google Photos Help Skip to main content
+Google Photos Help
+Sign in
+Google Help
+Help Center
+Community
+Google Photos
+Privacy Policy
+Terms of Service
+Submit feedback
+Send feedback on...
+This help content & information
+General Help Center experience
+CloseNext
+Help Center
+Community
+Can't find your photos?
+Google Photos
+Edit your photos & videos with the Google Photos Android app on your Chromebook
+You can use the Google Photos Android app on your Chromebook to edit your photos and videos, and make highlight videos.
+Important:
+These features are available in the Google Photos app on your Chromebook. If your Chromebook doesn't have the Google Photos app, you can download it.
+If you’re using photos.google.com on your Chromebook, learn how to edit your photos on the web.
+Edit & enhance a photo or video
+On your Chromebook, open the Google Photos app Photos.
+Select the photo or video that you want to edit.
+Select Edit .
+Choose an editing tool to use on your photo or video:
+Actions: Choose from tools like Magic Eraser and Unblur.
+Color: Manually adjust color temperature or intensity.
+Lighting : Manually apply more detailed edits like Brightness, Contrast, and Shadows.
+Filters Filter: Apply preset filters to liven up your photos or videos.
+Markup : Manually draw or highlight, redact sensitive information, or add text to your photos.
+To save your edits, choose an option:
+Save: Updates the original photo with your edits.
+Save as copy: Saves a new photo with your edits and keeps the original untouched.
+Tip: If you can't find extra editing tools like Magic Eraser :
+Make sure you're connected to Wi-Fi and have available device storage.
+In Google Photos, select an image and select Edit . You may get an update notification.
+After a few minutes, close and reopen the app.
+To check your editing tools again, select an image and select Edit .
+To check your editing tools again, select an image and select Edit .
+Available editing features
+Some editing features in Google Photos include:
+To adjust the position and brightness of portraits of a person, select Portrait light .
+To adjust background blur, select Blur .
+To adjust what ranges of your photo are blurred instead of in focus, you can also use Depth .
+To select from several palettes and adjust the color and contrast in the sky, select Sky .
+To desaturate the background, but keep the foreground in color, select Color focus .
+To enhance brightness and contrast across the image for a more balanced photo, select HDR .
+Tip: You can use even more editing features. Learn more about editing your photos & videos.
+Create a cinematic photo
+On your Chromebook Plus, open the Google Photos app Photos.
+Select Creations .
+Select Create new Add and then Cinematic photo.
+Select a photo.
+At the bottom, select Save.
+Make & edit collages in Google Photos
+You can make and edit collages with photos in your library on the Google Photos app or on the web. To edit your collages on your mobile device, use the Google Photos app. Some features aren't available on the web.
+Step 1: Choose your photos
+On your Chromebook, open the Google Photos app Photos.
+Select up to 6 photos.
+At the bottom, select Add to Create and then Collage.
+Step 2: Choose a design & edit your photos
+Before you save, you can replace, edit, rotate, resize, and change the order of the photos in your collage.
+Select a collage design.
+Edit your photos.
+To replace a photo:
+Select the photo you want to replace and then Replace.
+Select a new photo.
+Select Done.
+To edit a photo, select the photo you want to edit and then Edit.
+To rotate a photo:
+Touch and hold the photo.
+Turn until the photo reaches the position you want it in.
+To zoom in or out of a photo frame, pinch closed to zoom out and pinch open to zoom in.
+To change the order of the photos, touch and hold, then drag the photo to the position where you want it.
+Step 3: Review & save your collage
+Once you choose a collage layout and make any edits to your photos, to save your collage, select Save.
+Step 4: Find your collages
+On your Chromebook, open Google Photos Photos.
+At the bottom, select Search .
+Under “Creations,” select Saved creations.
+Create a highlight video
+On your Chromebook, open the Google Photos app Photos.
+Select Creations .
+Select Create new Add and then Movie .
+For a suggested highlight video, select an optional preset theme.
+Or click New movie and select the photos and videos you would like to include.
+Tip: To create highlight videos, you can also open the Launcher and search for “movie.”
+Add photos or videos to your highlight video
+At the bottom of your screen, you’ll find the storyboard of your highlight video. In the storyboard, you can add photos or video clips, and drag and drop to rearrange them.
+Select Add Add.
+Choose a new photo or video .
+Edit photos & video in your highlight video
+Tap on a clip to select the photo or video.
+Select the tool you want to use in the Editing panel. Changes apply as you go.
+To close the editing panel, press Close .
+Add music to your highlight video
+Select Add Add.
+At the top, select Add soundtrack.
+Choose My music or Theme music.
+To add music from your personal library, choose My music.
+To add music available in the app’s Soundtrack library, choose Theme music.
+Choose the music that you want to add.
+Was this helpful?
+How can we improve it?
+YesNo
+Submit
+Need more help?
+Try these next steps:
+Post to the help community Get answers from community members
+true
+Help
+1 of 11
+Add photos & videos from Google Drive to Google Photos
+2 of 11
+Sync your favorite photos with Apple Photos
+3 of 11
+Transfer photos from Canon camera to Google Photos
+4 of 11
+Edit your photos & videos with the Google Photos Android app on your Chromebook
+5 of 11
+Copy your photos & videos to a service outside of Google
+6 of 11
+Use photo picker to share photos in other apps
+7 of 11
+Use Google Photos on your Android XR device
+8 of 11
+Use Google Photos on your TV
+9 of 11
+Search for your photos, videos, & more with Google Photos in Gemini Apps
+10 of 11
+Sync your Samsung Gallery with your Google Account
+11 of 11
+Streamline your Google Photos workflows in Gemini Apps
+©2026 Google
+Privacy Policy
+Terms of Service
+Language català‎dansk‎Deutsch‎eesti‎English (United Kingdom)‎español‎español (Latinoamérica)‎Filipino‎français‎hrvatski‎Indonesia‎italiano‎latviešu‎lietuvių‎magyar‎Melayu‎Nederlands‎norsk‎polski‎português‎português (Brasil)‎română‎slovenčina‎slovenščina‎suomi‎svenska‎Tiếng Việt‎Türkçe‎íslenska‎čeština‎Ελληνικά‎български‎русский‎српски‎українська‎‏עברית‏العربية‏فارسیमराठी‎हिन्दी‎తెలుగు‎ไทย‎中文（简体）‎中文（繁體）‎日本語‎한국어‎ English‎
+Enable Dark Mode
+Send feedback on...
+This help content & information General Help Center experience
+Search
+Clear search
+Close search
+Google apps
+Main menu
+6125925973353424614
+true
+Search Help Center
+false
+true
+true
+true
+true
+true
+105394
+false
+false
+false
+false
+false

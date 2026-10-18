@@ -1,0 +1,33 @@
+{
+  "run_id": "4b32e6ba-3f01-4c86-b933-a82a0f542ca1",
+  "program_status": "partial_failed",
+  "confirmed_facts": 34,
+  "analysis_count": 5,
+  "categories": [
+    "competitor",
+    "market_pattern",
+    "opportunity",
+    "risk"
+  ],
+  "all_analyses_not_verified": true,
+  "support_links_same_run_confirmed_facts": true,
+  "source_links_clicked": true,
+  "quality": "FAIL",
+  "semantic_findings": [
+    {
+      "finding_id": "0507dffa-bf5b-48f8-8819-6f133821f28a",
+      "kind": "scope_mismatch",
+      "description": "Windows视频限制被用作移动端照片流程的缺点，来源真实但结论范围错误。"
+    },
+    {
+      "finding_id": "19090a74-fea3-4919-9cf3-8991488db43b",
+      "kind": "misleading_title",
+      "description": "标题将Google手动备份写为per-item via touch-and-hold，与正文多项touch-and-hold分支混淆。"
+    },
+    {
+      "finding_id": "69fc4b10-70a8-4817-9125-7b38b2d4b0f6",
+      "kind": "support_incomplete",
+      "description": "Google自动备份陈述官方存在，但此分析绑定的六条支持事实未包含该陈述；同Run/项目支持ID合法不等于语义支持充分。"
+    }
+  ]
+}

@@ -1,0 +1,199 @@
+What is the Dropbox file size limit? - Dropbox Help
+Dropbox
+Main navigation
+Help center
+Community
+Dropbox learn
+Contact support
+Help center
+Community
+Dropbox learn
+Contact support
+Open/close search
+Help center
+Account
+Account access
+Billing
+Account settings
+Plans
+Storage space
+Security
+Using Dropbox
+Sync
+Delete and restore
+Share
+View and edit
+Installs
+Create and upload
+Organize
+Integrations
+AI integrations
+Products
+Dropbox Dash
+Dropbox Protect
+Dropbox Sign
+Dropbox DocSend
+Dropbox Backup
+Dropbox Replay
+Dropbox Transfer
+Get started
+Dropbox Help Center - How to use Dropbox
+Sync
+What is the Dropbox file size limit?
+What is the Dropbox file size limit?
+Updated Jun 17, 2026
+In this article
+The information in this article applies to all Dropbox customers.
+The maximum file size you can upload to Dropbox is 2 TB (2,199,019,061,248 bytes).
+Uploading files larger than 375 GB in a web browser may cause timeouts or interrupted uploads. Large file uploads may also be unreliable on mobile devices due to operating system limitations. For the best results, use the Dropbox desktop app or the Dropbox API.
+See the FAQs below for best practices when uploading large files on dropbox.com.
+Notes:
+All files uploaded to your Dropbox account must be smaller than your storage space. For example, if your account has 2 GB of storage, you can upload one 2 GB file or mutliple smaller files that total 2 GB.
+If you're over your storage limit, Dropbox will stop syncing.
+Not using Dropbox yet? See how Dropbox makes syncing files easy.
+FAQs about upload limitations
+Which file types can I upload to Dropbox?
+You can upload most file types, but there are some exceptions, like certain types of symlinks, .lnk files, and web-based files.
+How do I upload large files on dropbox.com?
+If the file you want to upload is larger than 375 GB, download the Dropbox desktop app on your computer and upload it from there. You can also compress the file to reduce the size to less than 375 GB and then upload it on dropbox.com.
+Note: For the best results, use the Dropbox desktop app or the Dropbox API when uploading large files.
+How do I upload files to Dropbox?
+You can upload files and folders to Dropbox on dropbox.com or through the desktop app. You can also upload photos and videos from your mobile device using the Dropbox mobile app.
+Are there any restrictions on file or folder names?
+Yes, there are guidelines for naming files and folders:
+Don’t use special characters in file names.
+Don’t add a space at the end of a file or folder name.
+It’s also recommended to keep file and folder paths under 260 characters.
+Read more
+Learn more about recommended file and folder naming practices.
+Was this article helpful?
+Yes, thanks!
+Not really
+Let us know how why it didn't help:
+Thanks for letting us know!
+The article didn't answer my question
+The steps in the article didn't work for me
+I found this article confusing and difficult to read
+Other
+Please enter feedback before submitting.
+Submit feedback
+Thanks for your feedback!
+Related Articles
+Dropbox stopped syncing: how to fix Dropbox not syncing and other issues
+How to open online-only files on macOS
+How to resolve a selective sync conflict
+How to resolve an encrypted file or folder sync conflict
+Community answers
+increase and upgrade Dropbox file size limit throgh API
+Posted by: KhaledSardini
+295 days ago
+1243
+4
+What is the file limit per file on Dropbox file requests in October 2025?
+Posted by: zoelarkin
+348 days ago
+421
+3
+What are the bandwidth limits for sharing high-traffic files of large size?
+Posted by: sphereofnoform
+440 days ago
+1462
+6
+Is there a workaround to download large files online?
+Posted by: Levi11
+552 days ago
+33384
+9
+File size limitation when sharing using a Dropbox Plus plan?
+Posted by: Bastizor
+672 days ago
+545
+4
+Other ways to get help
+Icon depicting a speech bubble
+Contact support
+Icon depicting two people
+Community
+Twitter Icon
+Social media support
+Footer-Help
+Dropbox
+Desktop app
+Mobile app
+Integrations
+Features
+Solutions
+Security
+Early access
+Templates
+Free tools
+Products
+Plus
+Professional
+Business
+Enterprise
+Dash
+DocSend
+Dropbox Sign
+Reclaim.ai
+Plans
+Product updates
+Features
+Send large files
+Send long videos
+Cloud photo storage
+Secure file transfer
+Cloud backup
+Edit PDFs
+Electronic signatures
+Convert to PDF
+Support
+Help center
+Contact us
+Privacy & terms
+Cookie policy
+Cookies & CCPA preferences
+AI principles
+Sitemap
+Learning resources
+Resources
+Blog
+Events
+Customer stories
+Resources library
+Developers
+Community forums
+Referrals
+Reseller partners
+Integration partners
+Find a partner
+Company
+About us
+Jobs
+Investor relations
+Corporate responsibility
+Choose a language
+Bahasa Indonesia
+Bahasa Malaysia
+Dansk
+Deutsch
+English (Australia)
+English (United Kingdom)
+English (United States)
+Español (España)
+Español (Latinoamérica)
+Français (France)
+Italiano
+Nederlands
+Norsk (bokmål)
+Polski
+Português (Brasil)
+Pусский
+Svenska
+Українська
+ไทย
+中文（简体）
+中文（繁體）
+日本語
+한국어
+English (United States)

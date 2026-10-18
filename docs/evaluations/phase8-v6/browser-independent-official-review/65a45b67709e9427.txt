@@ -1,0 +1,284 @@
+How to use camera uploads - Dropbox Help
+Dropbox
+Main navigation
+Help center
+Community
+Dropbox learn
+Contact support
+Help center
+Community
+Dropbox learn
+Contact support
+Open/close search
+Help center
+Account
+Account access
+Billing
+Account settings
+Plans
+Storage space
+Security
+Using Dropbox
+Sync
+Delete and restore
+Share
+View and edit
+Installs
+Create and upload
+Organize
+Integrations
+AI integrations
+Products
+Dropbox Dash
+Dropbox Protect
+Dropbox Sign
+Dropbox DocSend
+Dropbox Backup
+Dropbox Replay
+Dropbox Transfer
+Get started
+Dropbox Help Center - How to use Dropbox
+Create and upload
+Using camera uploads
+How to use camera and mobile device uploads
+Updated Sep 17, 2026
+In this article
+This article describes a feature available to all Dropbox users, except:
+Dropbox users on Linux
+Dropbox teams who use Dropbox Enterprise Mobility Management (EMM) for Android
+You can upload photos and videos from your phone or other devices to Dropbox by connecting them to your computer and using the camera uploads feature. Uploading your photos and videos to Dropbox ensures your files are securely backed up, accessible from any device, while freeing space on your phone.
+Dropbox team admins: Learn how to turn camera uploads on or off for your team.
+Turn photo and video uploads on or off on the Dropbox mobile app
+Android
+iOS
+To turn photo uploads on or off on the Dropbox mobile app for Android:
+Open the Dropbox mobile app.
+Tap Account.
+Tap Settings.
+Under Features, tap Camera uploads.
+Tap Back up my photos.
+If prompted, tap Allow.
+To turn photo uploads on or off on the Dropbox mobile app for iOS:
+Open the Dropbox mobile app.
+Tap ☑ (account).
+Tap Camera uploads.
+Tap Upload from, then Settings to give Dropbox access to your photos and videos.
+In the Dropbox app, choose what you’d like to back up and whether you’d like to use cell data.
+Tap Turn on camera uploads.
+How to upload photos and videos overnight on the Dropbox mobile app
+Note: This feature is available on iOS devices only.
+If you have to upload a large amount of photos or videos from your camera app, you can use the overnight uploads feature. Overnight uploads allows you to upload your photos and videos continuously through the night, keeping the Dropbox mobile app open and dimming your device’s brightness.
+To turn overnight uploads on or off:
+Open the Dropbox mobile app.
+Tap the camera icon in the top-right corner.
+Tap Start overnight uploads to start uploading content or tap Exit overnight uploads to stop uploading content.
+The Dropbox app will dim your phone’s screen while your photos are uploading throughout the night.
+Note: To successfully upload your photos and videos overnight, you must:
+Keep your Dropbox app open.
+Make sure your phone is connected to Wi-Fi.
+Keep your phone plugged into a charger to prevent your phone from powering off.
+Turn photo and video uploads on or off in the Dropbox desktop app
+When you plug a camera or mobile device into a computer with the Dropbox desktop app installed, you’ll see a prompt asking if you’d like to enable uploads for that device. Once you accept, that device will automatically upload your camera roll each time the device is plugged in to that computer.
+To turn uploads on or off at any time:
+On Windows
+On macOS
+To turn photo or video uploads on or off in the Dropbox desktop app (Windows):
+Click ☑ (Dropbox) in your taskbar.
+Click the round account menu. Depending on your account, this may appear as your profile photo, your initials, or a person icon.
+Click Preferences.
+Click Backups.
+Note: Click the dropdown next to Enable camera uploads for to switch between Photos only or Photos and videos.
+Click Change AutoPlay Settings next to Import photos and videos to Dropbox.
+Click the dropdown under Removable drive.
+To turn on camera uploads, select Import photos and videos (Dropbox).
+To turn off camera uploads, select any other option.
+Repeat step 4 for Memory card.
+Learn what to do if you don’t see the Dropbox icon.
+Can't find Preferences on the Dropbox desktop app?
+When you open the Dropbox desktop app, click the round account menu to access Preferences. Depending on your account, this may appear as your profile photo, your initials, or a person icon.
+To turn photo or video uploads on or off in the Dropbox desktop app (Mac):
+Click ☑ (Dropbox) in your menu bar in the top-right corner of your screen.
+Learn what to do if you don’t see the Dropbox icon.
+Click your avatar (profile picture or initials) in the bottom-left corner.
+Click Preferences.
+Click Backups.
+Toggle Camera Uploads on to upload photos and videos from your connected devices.
+Choose Photos only or Photos and videos only from the dropdown menu.
+Learn what to do if you don’t see the Dropbox icon.
+Can't find Preferences on the Dropbox desktop app?
+When you open the Dropbox desktop app, click the round account menu to access Preferences. Depending on your account, this may appear as your profile photo, your initials, or a person icon.
+Note: If you’re using macOS 10.15 (Catalina) or higher, you’ll see a notification that says “Dropbox would like to access files on a removable volume.” Clicking OK will allow camera uploads to work.
+You can change this preference any time:
+Open System Preferences.
+Click Security and Privacy.
+Click the Privacy tab.
+Click Files and Folders.
+Check or uncheck the box next to Removable Volumes under Dropbox.
+How to connect or forget mobile devices in the Dropbox desktop app
+When you plug a camera, or mobile device into a computer with the Dropbox desktop app installed, you’ll be asked to turn on photo uploads for that device.
+If you accept, the device will be registered as a connected device under Preferences.
+To forget a connected device:
+Click ☑ (Dropbox) in your taskbar (Windows), or menu bar (Mac).
+Click the round account menu. Depending on your account, this may appear as your profile photo, your initials, or a person icon.
+Click Preferences.
+Click the Backups tab.
+Click Forget next to the device you’d like to disconnect.
+FAQs about camera and device uploads
+Can I choose which folder my photos upload to?
+By default, your photos will be uploaded to a folder in your Dropbox account named Camera Uploads. You can’t change this; however, you can move your photos to a different folder in your Dropbox account after they’ve been uploaded.
+Why did camera uploads use all of my battery power?
+Camera uploads can use a large amount of battery power the first time your photos are uploaded. After the photos are uploaded, battery usage should return to normal. By default, the Dropbox app stops auto-uploading when your battery is low to save battery life.
+Why did camera uploads use all of my cellular data?
+By default, camera uploads use cellular data when WiFi isn’t available. You can change this setting by following the instructions for your device below.
+Android:
+Open the Dropbox mobile app.
+Tap Account.
+Tap Settings.
+Tap Camera uploads.
+Toggle Use data when offline to off.
+iOS:
+Open the Dropbox mobile app.
+Tap a (account).
+Tap Camera uploads.
+Toggle Use cell data to back up to off.
+Can I upload iOS Live Photos?
+You can upload Live Photos on the Dropbox app. Learn how to upload iOS Live photos.
+Note: Live Photos uploaded to Dropbox from other apps will be saved as normal photos.
+What should I do if camera uploads aren't working?
+If camera uploads aren't working, follow the steps in our troubleshooting guide.
+Why don’t I see the option to turn on camera uploads?
+If you’re on a Dropbox team and you don’t see a camera uploads option, your admin may have turned the feature off for your team.
+Can I use camera uploads on my personal and work account?
+If you’ve linked two Dropbox accounts, you can only have camera uploads turned on for one account at a time.
+Why do I see someone else’s photos in my Camera Uploads folder?
+When you plug a camera or mobile device into a computer with the Dropbox desktop app installed, you’ll see a prompt asking if you’d like to enable camera uploads for that device. This means that if someone used your computer to charge their phone, they may have clicked OK to that pop-up without realizing it.
+To find out who uploaded photos to your account:
+Log in to dropbox.com.
+Hover over the photo you don’t recognize, and click a (more options).
+Click Version history.
+Look for a name next to Added by.
+If you don’t recognize the name, you can remotely sign out of any devices you’re currently signed in to.
+Why aren’t my photos uploading in the background?
+Sometimes the settings on your device prevent you from uploading photos in the background.
+Read more
+Was this article helpful?
+Yes, thanks!
+Not really
+Let us know how why it didn't help:
+Thanks for letting us know!
+The article didn't answer my question
+The steps in the article didn't work for me
+I found this article confusing and difficult to read
+Other
+Please enter feedback before submitting.
+Submit feedback
+Thanks for your feedback!
+Community answers
+I can't delete files from the camera uploads folder when using XnView
+Posted by: denniscmerritt
+7 days ago
+230
+14
+Photos vs Camera Uploads
+Posted by: pictureSaver
+610 days ago
+984
+3
+How to turn on Mobile Camera Uploads
+Posted by: Theresa
+670 days ago
+423
+0
+How to Upload Photos using USB 2.0 from Nikon camera to Dropbox?
+Posted by: CatWoman1
+2046 days ago
+2763
+5
+Other ways to get help
+Icon depicting a speech bubble
+Contact support
+Icon depicting two people
+Community
+Twitter Icon
+Social media support
+Footer-Help
+Dropbox
+Desktop app
+Mobile app
+Integrations
+Features
+Solutions
+Security
+Early access
+Templates
+Free tools
+Products
+Plus
+Professional
+Business
+Enterprise
+Dash
+DocSend
+Dropbox Sign
+Reclaim.ai
+Plans
+Product updates
+Features
+Send large files
+Send long videos
+Cloud photo storage
+Secure file transfer
+Cloud backup
+Edit PDFs
+Electronic signatures
+Convert to PDF
+Support
+Help center
+Contact us
+Privacy & terms
+Cookie policy
+Cookies & CCPA preferences
+AI principles
+Sitemap
+Learning resources
+Resources
+Blog
+Events
+Customer stories
+Resources library
+Developers
+Community forums
+Referrals
+Reseller partners
+Integration partners
+Find a partner
+Company
+About us
+Jobs
+Investor relations
+Corporate responsibility
+Choose a language
+Bahasa Indonesia
+Bahasa Malaysia
+Dansk
+Deutsch
+English (Australia)
+English (United Kingdom)
+English (United States)
+Español (España)
+Español (Latinoamérica)
+Français (France)
+Italiano
+Nederlands
+Norsk (bokmål)
+Polski
+Português (Brasil)
+Pусский
+Svenska
+Українська
+ไทย
+中文（简体）
+中文（繁體）
+日本語
+한국어
+English (United States)

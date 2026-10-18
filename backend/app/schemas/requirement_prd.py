@@ -206,6 +206,7 @@ class RequirementCreateRequest(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     content: "PMRequirementContent | None" = None
+    prompt_version: Literal["requirement-generation-v1", "requirement-generation-v2"] | None = None
 
 
 class PMRequirementContent(BaseModel):
@@ -252,6 +253,7 @@ class PRDCreateRequest(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
     content: PRDContent | None = None
+    prompt_version: Literal["prd-generation-v3", "prd-generation-v4"] | None = None
 
 
 class PRDPatchRequest(BaseModel):

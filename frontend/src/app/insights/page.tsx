@@ -21,6 +21,7 @@
  */
 
 import Link from 'next/link';
+import { displayLabel } from '../../lib/presentation';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useProjectContext } from '../../contexts/ProjectContext';
 import { getApiClient } from '../../lib/api/client';
@@ -118,12 +119,8 @@ export default function InsightsListPage() {
     <div className="page page-insights">
       <header className="page-header">
         <span className="eyebrow">洞察列表</span>
-        <h1 className="page-title">Product Insights</h1>
-        <p className="page-subtitle">
-          AI 生成的洞察。来自
-          <code className="mono">GET /projects/&#123;id&#125;/insights</code> 的真实分页数据；
-          每条都附原始证据，可在详情页追溯。
-        </p>
+        <h1 className="page-title">产品洞察</h1>
+
       </header>
 
       <section className="toolbar">
@@ -150,8 +147,8 @@ export default function InsightsListPage() {
             }
           >
             <option value="">全部</option>
-            <option value="draft">Draft</option>
-            <option value="needs_validation">Needs Validation</option>
+            <option value="draft">草稿</option>
+            <option value="needs_validation">待核实</option>
           </select>
         </label>
         <label className="form-field form-field--inline">
@@ -178,11 +175,7 @@ export default function InsightsListPage() {
         </button>
       </section>
 
-      <div className="alert alert-info" role="status">
-        后端的 Insights 列表端点不接受 status / sort / priority 等筛选参数；
-        上方筛选仅作用于当前页（与 Feedback 页同理）。Opportunity Score / PM Decision
-        详情请到「详情页」查看。
-      </div>
+
 
       {loading && !data ? (
         <LoadingState />
@@ -196,8 +189,8 @@ export default function InsightsListPage() {
         />
       ) : data && data.items.length === 0 ? (
         <EmptyState
-          title="该项目暂无 Insight"
-          description="先到「分析」页签完成 Classification → Clustering → Insight Generate 三阶段。"
+          title="还没有洞察"
+          description="先完成反馈分类与聚类，再生成洞察。"
           action={
             <Link className="btn btn-primary btn-sm" href="/analysis">
               前往分析
@@ -211,8 +204,8 @@ export default function InsightsListPage() {
               <EmptyState
                 title="当前页内无匹配"
                 description={
-                  view.search ? `搜索 “${view.search}” / ${view.statusFilter || '全部状态'} 未命中`
-                    : `状态 = ${view.statusFilter || '全部'} 当前页内无匹配`
+                  view.search ? `搜索 “${view.search}” / ${view.statusFilter ? displayLabel(view.statusFilter) : '全部状态'} 未命中`
+                    : `状态 = ${view.statusFilter ? displayLabel(view.statusFilter) : '全部'} 当前页内无匹配`
                 }
               />
             ) : (
@@ -271,19 +264,13 @@ function InsightCardItem({ insight }: InsightCardProps) {
               insight.status === 'needs_validation' ? 'warn' : 'outline'
             }`}
           >
-            {insight.status === 'needs_validation' ? 'Needs Validation' : 'Draft'}
+            {displayLabel(insight.status)}
           </span>
-          <span className="muted mono" style={{ fontSize: 'var(--t-caption)' }}>
-            {insight.id.slice(0, 8)}
-          </span>
-          <span className="badge badge-outline mono">
-            cluster {insight.source_cluster_external_id.slice(0, 8)}
-          </span>
-          <span className="badge badge-ai">AI-generated</span>
+          <span className="badge badge-ai">AI 生成</span>
         </div>
         <h3>{insight.title ?? '尚无标题'}</h3>
         <p className="summary">
-          {insight.pain_point ?? '痛点尚未生成（needs_validation）。请等待重试或扩充证据。'}
+          {insight.pain_point ?? '尚未识别出明确痛点，可补充反馈后重试。'}
         </p>
         <div className="stats">
           <span>
@@ -296,7 +283,7 @@ function InsightCardItem({ insight }: InsightCardProps) {
             置信度 <b>{insight.confidence !== null ? formatNumber(insight.confidence) : '—'}</b>
           </span>
           <span>
-            状态 <b>{insight.status}</b>
+            状态 <b>{displayLabel(insight.status)}</b>
           </span>
         </div>
         <div className="actions">

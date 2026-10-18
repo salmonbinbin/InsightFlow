@@ -1,6 +1,8 @@
 'use client';
 
 import type { CSSProperties, ReactNode } from 'react';
+import { userMessage } from '../lib/presentation';
+import { TechnicalDetails } from './TechnicalDetails';
 
 export interface StateViewsProps {
   className?: string;
@@ -65,8 +67,8 @@ export function ErrorState({
   return (
     <div className={`state-error alert alert-danger${className ? ` ${className}` : ''}`} role="alert">
       <div className="state-error-title">{title}</div>
-      <div className="state-error-message">{message}</div>
-      {details ? <div className="state-error-details">{details}</div> : null}
+      <div className="state-error-message">{userMessage(message)}</div>
+      {details ? <TechnicalDetails label="查看错误详情"><div className="state-error-details">{userMessage(details)}</div></TechnicalDetails> : null}
       {onRetry ? (
         <button type="button" className="btn btn-secondary btn-sm" onClick={onRetry}>
           重试

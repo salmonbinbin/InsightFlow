@@ -1,0 +1,307 @@
+Troubleshoot OneDrive for iOS app problems | Microsoft Support
+Skip to main content
+Microsoft
+Support
+Support
+Support
+Home
+Microsoft 365
+Office
+Products
+Microsoft 365
+Outlook
+Microsoft Teams
+OneDrive
+Microsoft Copilot
+OneNote
+Windows
+more ...
+Devices
+Surface
+PC Accessories
+Xbox
+PC Gaming
+HoloLens
+Surface Hub
+Hardware warranties
+Account & billing
+Resources
+Community forums
+Microsoft 365 Admins
+Developer
+Education
+Report a support scam
+Product safety
+More
+Buy Microsoft 365
+All Microsoft
+Global
+Microsoft 365
+Azure
+Copilot
+Windows
+Surface
+XBOX
+Deals
+Small Business
+Support
+Software
+Software
+Windows Apps
+Outlook
+OneDrive
+Microsoft Teams
+OneNote
+Microsoft Edge
+Moving from Skype to Teams
+PCs & Devices
+PCs & Devices
+Computers
+Shop XBOX
+Accessories
+VR & mixed reality
+Certified Refurbished
+Trade-in for cash
+Entertainment
+Entertainment
+XBOX Game Pass Ultimate
+PC Game Pass
+XBOX games
+PC games
+Business
+Business
+Microsoft AI
+Microsoft Security
+Dynamics 365
+Microsoft 365 for business
+Microsoft Power Platform
+Windows 365
+Small Business
+Digital Sovereignty
+Developer & IT
+Developer & IT
+Azure
+Microsoft Developer
+Microsoft Learn
+Support for AI marketplace apps
+Microsoft Tech Community
+Microsoft Marketplace
+Software companies
+Visual Studio
+Other
+Other
+Microsoft Rewards
+Free downloads & security
+Education
+Gift cards
+Licensing
+Unlocked stories
+View Sitemap
+Search
+Search for help
+No results
+Cancel
+Sign in
+Sign in with Microsoft
+Sign in or create an account.
+Hello,
+Select a different account.
+You have multiple accounts
+Choose the account you want to sign in with.
+Troubleshoot OneDrive for iOS app problems
+We're sorry you're having trouble with your OneDrive for iOS mobile app. Let's get the issue sorted out as quickly as possible.
+Note
+Some apps and features may only work with Wi-Fi, depending on your device settings or your mobile data plan.
+Cannot play videos when using mobile network
+If your OneDrive videos won't play, only have sound, or buffer a lot when you're connected to a mobile phone network, you may need to choose one of these alternatives.
+Connect to Wi-Fi. Some devices and networks can have limited bandwidth at certain times.
+Download the video. Select the video, then choose
+to download.
+Make the video offline. Select the video, then
+then Make available offline.
+Slide to select not working in OneDrive for iOS
+Users of iOS 16 may not be able to use the two-fingered pan gesture to select multiple files in OneDrive. We are aware of the issue and working on a solution.
+Workaround
+Select one photo first, then use two fingers to slide to select multiple files or photos.
+Whiteboard sharing not working in OneDrive for work or school
+As of 7/30/21, to use the Whiteboard sharing feature, iOS users must be on app version 12.2.6 or greater. Update to the latest version to use the Whiteboard sharing feature. Note that this feature is only available for OneDrive for work or school accounts and not for home and personal plans.
+OneDrive camera upload has stopped or isn't working
+If you have issues with the app syncing your files or camera roll to OneDrive, you can reset it.
+Go to Profile > Settings > Account (and if you have more than one set up, select the account to reset).
+Select Reset.
+If you still have issues, uninstall and reinstall the app.
+Uninstall the OneDrive app by pressing and holding the OneDrive app icon. Tap the 'X' in the corner and then accept the confirmation message to delete it.
+Perform a "soft reset" by pressing and holding both the Sleep/Wake and Home buttons simultaneously for at least 10 seconds until you see the Apple logo. You can let go of both buttons after the Apple logo appears.
+Reinstall the OneDrive app from the App Store.
+OneDrive for iOS sync problems
+If you have issues with the app syncing your files or camera roll to OneDrive, you can reset it.
+Go to Profile > Settings > Account (and if you have more than one set up, select the account to reset).
+Select Reset.
+If you still have issues, uninstall and reinstall the app.
+Uninstall the OneDrive app by pressing and holding the OneDrive app icon. Tap the 'X' in the corner and then accept the confirmation message to delete it.
+Perform a "soft reset" by pressing and holding both the Sleep/Wake and Home buttons simultaneously for at least 10 seconds until you see the Apple logo. You can let go of both buttons after the Apple logo appears.
+Reinstall the OneDrive app from the App Store.
+Can't sign into OneDrive
+If you cannot sign in to your OneDrive sync app, or the sync app says OneDrive is not connected, follow these steps to get signed in again.
+OneDrive not runnning icon
+If you see a gray OneDrive icon with a line through it, this means you are not signed in.
+Select the OneDrive icon that is grayed out or has a line through it.
+At the "Set up OneDrive" screen, enter your email address and password.
+Note
+If you've forgotten your username or password or can't sign in to your Microsoft personal account, use the Microsoft account sign-in helper.
+Sign-in helper
+You can only add one Microsoft personal account.
+If you can't sign in to your OneDrive work or school account, try to reset your password, or contact your organization's IT admin.
+If you can sign in but still cannot connect to OneDrive, check that your internet provider's firewall is not blocking OneDrive. You may be able to do this by using your mobile device as a hotspot. Alternatively, contact your internet service provider and check they support access to Microsoft 365 products and services.
+Cannot see video or image thumbnails in OneDrive for iOS
+With iOS 11, Apple introduced new image and video formats that are not compatible with many devices and services. Make sure that OneDrive is kept up-to-date by enabling it in your device's Settings > General > Background App Refresh.
+To return your videos back to the standard format, do the following:
+Go to iOS Settings
+Tap Camera
+Tap Formats
+Select "Most Compatible"
+This will make it so every video you take going forward will play properly everywhere. We understand that you have videos already in the new format, so while we work to update OneDrive, you can do the following to play these videos:
+Navigate to the video in OneDrive
+Tap on the video
+Tap the Offline command in the top right (cloud with the download icon)
+Once the video is available offline, you will be able to play it.
+Unable to edit images or photos in OneDrive for iOS app
+You cannot edit images in-app if the image is too large or is an unsupported format:
+Size: ≥ 4080 × 3072 pixels (12.5 megapixels)
+Format: JPEG, PNG, TIFF, HEIF only
+GIF playback: ≥15 MB
+Other: Must be owner, online, not in album, photo-type media
+OneDrive for iOS app crashing
+If the OneDrive app doesn't launch or keeps crashing, reinstall the app:
+Uninstall the OneDrive app by pressing and holding the OneDrive app icon. Tap the 'X' in the corner and then accept the confirmation message to delete it.
+Force a restart of your device. Read the Apple Support restart instructions for your device/iOS version.
+Reinstall the OneDrive app from the App Store.
+Make sure that OneDrive is kept up-to-date by enabling it in your device's Settings > General > Background App Refresh.
+Can't access a file in OneDrive for iOS
+The file might be open in another app. Save any changes to the file, close the app, and then try to upload the file again.
+OneDrive for iOS can't upload a file
+There are restrictions to filenames that can be uploaded to OneDrive. Read the full list of Invalid file names and file types in OneDrive.
+A file won't upload if it doesn't fit in your available OneDrive storage space. To see how much space you have remaining or get more storage, go to your Storage page online.
+OneDrive for iOS can't find this file
+If you have issues with the app syncing your files or camera roll to OneDrive, you can reset it.
+Go to Profile > Settings > Account (and if you have more than one set up, select the account to reset)
+Select Reset.
+If you still have issues, uninstall and reinstall the app.
+Uninstall the OneDrive app by pressing and holding the OneDrive app icon. Tap the 'X' in the corner and then accept the confirmation message to delete it.
+Perform a "soft reset" by pressing and holding both the Sleep/Wake and Home buttons simultaneously for at least 10 seconds until you see the Apple logo. You can let go of both buttons after the Apple logo appears.
+Reinstall the OneDrive app from the App Store.
+The app is taking up a lot of space on the device
+If the app and its files are taking up a lot of storage on your mobile device, follow these steps.
+Open the iOS Settings app and select General then iPhone storage.
+Select Offload Unused Apps.
+Scroll down and select OneDrive.
+Select Offload App.
+You'll get a message informing you that the app will be deleted, but its documents and data will remain. Tap Offload App.
+Tip
+You won't need to sign in, but you may have to set up your Camera Upload and Organize new uploads.
+Learn more
+Use OneDrive on iOS
+Find lost or missing files in OneDrive
+Fix problems uploading files on the OneDrive website
+More fixes for recent OneDrive issues
+Need more help?
+Personal accounts
+Work/school accounts
+Account support. For help with your Microsoft account and subscriptions, visit Account & Billing Help.
+Technical support. For technical support, select Contact Microsoft Support below, enter your problem and select Get Help.
+Contact Microsoft Support
+Mobile users can contact Support by opening the OneDrive app and gently shaking your device.
+Community support. Communities help you ask questions, give feedback, and hear from experts with rich knowledge. Ask the Microsoft Community. Do not disclose personal or sensitive information in public forums.
+Technical support. For technical support, contact your organization's IT helpdesk, service desk, or admin.
+IT Admins. IT Admins should view Help for OneDrive Admins, the OneDrive Tech Community or contact Microsoft 365 for business support.
+Was this information helpful?
+Yes
+No
+Thank you! Any more feedback for Microsoft?
+Can you help us improve? (Send feedback to Microsoft so we can help.)
+What affected your experience?
+Resolved my issue
+Clear instructions
+Easy to follow
+No jargon
+Pictures helped
+Other
+Didn't match my screen
+Incorrect instructions
+Too technical
+Not enough information
+Not enough pictures
+Other
+Any additional feedback? (Optional)
+Submit feedback
+By pressing submit, your feedback will be used to improve Microsoft products and services.
+Your IT admin will be able to collect this data.
+Privacy Statement.
+Thank you for your feedback!
+×
+What's new
+Surface Laptop Ultra
+Surface Pro
+Surface Laptop
+Surface RTX Spark Dev Box
+Explore Copilot
+Explore Microsoft products
+Windows 11 apps
+Microsoft Store
+Account profile
+Download Center
+Microsoft Store support
+Returns
+Order tracking
+Certified Refurbished
+Why buy from Microsoft Store
+Flexible Payments
+Education
+Microsoft in education
+Devices for education
+Microsoft Teams for Education
+Microsoft 365 Education
+How to buy for your school
+Educator training and development
+Deals for students and parents
+AI for education
+Business
+Microsoft AI
+Microsoft Security
+Dynamics 365
+Microsoft 365
+Microsoft Power Platform
+Microsoft Teams
+Microsoft Copilot
+Small Business
+Developer & IT
+Azure
+Microsoft Developer
+Microsoft Learn
+Support for AI marketplace apps
+Microsoft Tech Community
+Microsoft Marketplace
+Software companies
+Visual Studio
+Company
+Careers
+About Microsoft
+Company news
+Privacy at Microsoft
+Investors
+Diversity and inclusion
+Accessibility
+Sustainability
+English (United States)
+Your Privacy Choices
+Consumer Health Privacy
+Sitemap
+Contact Microsoft
+Privacy
+Manage cookies
+Terms of use
+Trademarks
+Safety & eco
+Recycling
+About our ads
+© Microsoft 2026

@@ -1,0 +1,35 @@
+
+> insightflow-frontend@0.1.0 test
+> vitest run
+
+[33mThe CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.[39m
+
+ RUN  v2.1.4 /Users/salmon/Desktop/InsightFlow/frontend
+
+ ✓ src/lib/api/phase8-v7.test.ts  (8 tests) 12ms
+ ✓ src/lib/api/client.test.ts  (57 tests) 26ms
+ ✓ src/components/ResearchAnswer.test.tsx  (9 tests) 50ms
+ ✓ src/app/prds/[id]/phase8-project.test.tsx  (4 tests) 147ms
+ ✓ src/app/prds/page.test.tsx  (5 tests) 160ms
+ ✓ src/app/insights/[id]/phase8-v7.test.tsx  (3 tests) 214ms
+ ✓ src/app/requirements/[id]/page.test.tsx  (16 tests) 495ms
+ ✓ src/app/prds/[id]/page.test.tsx  (18 tests) 731ms
+ ✓ src/lib/presentation.test.tsx  (9 tests) 37ms
+ ✓ src/lib/useProjectScopedFetch.test.tsx  (4 tests) 36ms
+ ✓ src/app/evaluation/page.test.tsx  (3 tests) 206ms
+ ✓ src/app/insights/[id]/page.test.tsx  (29 tests) 1097ms
+ ✓ src/app/requirements/page.test.tsx  (2 tests) 69ms
+ ✓ src/app/page.test.tsx  (1 test) 132ms
+ ✓ src/app/feedback/page.test.tsx  (2 tests) 303ms
+ ✓ src/app/analysis/page.test.tsx  (2 tests) 103ms
+ ✓ src/lib/csv/parser.test.ts  (9 tests) 7ms
+ ✓ src/components/StateViews.test.tsx  (5 tests) 71ms
+ ✓ src/contexts/ProjectContext.test.tsx  (3 tests) 50ms
+ ✓ src/components/RunCard.test.tsx  (3 tests) 47ms
+ ✓ src/lib/api/phase8-artifact-project.test.ts  (1 test) 7ms
+
+ Test Files  21 passed (21)
+      Tests  193 passed (193)
+   Start at  00:10:10
+   Duration  3.46s (transform 1.26s, setup 1.82s, collect 4.41s, tests 4.00s, environment 12.83s, prepare 1.68s)
+

@@ -1,0 +1,32 @@
+
+> insightflow-frontend@0.1.0 test
+> vitest run --reporter=dot
+
+[33mThe CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.[39m
+
+ RUN  v2.1.4 /Users/salmon/Desktop/InsightFlow/frontend
+
+ ✓ src/lib/api/client.test.ts  (57 tests) 52ms
+ ✓ src/lib/useProjectScopedFetch.test.tsx  (4 tests) 50ms
+ ✓ src/app/page.test.tsx  (1 test) 335ms
+   ✓ 概览真实指标与项目隔离 > uses paginated totals and newest classification run, then hides A data on switch to B 333ms
+ ✓ src/app/requirements/page.test.tsx  (2 tests) 156ms
+ ✓ src/app/evaluation/page.test.tsx  (3 tests) 480ms
+ ✓ src/app/prds/page.test.tsx  (5 tests) 603ms
+ ✓ src/app/analysis/page.test.tsx  (2 tests) 350ms
+ ✓ src/app/feedback/page.test.tsx  (2 tests) 623ms
+   ✓ Feedback detail AI analysis > loads full AI fields while preserving raw text and supports keyboard close 487ms
+ ✓ src/app/requirements/[id]/page.test.tsx  (15 tests) 972ms
+ ✓ src/lib/csv/parser.test.ts  (9 tests) 5ms
+ ✓ src/app/prds/[id]/page.test.tsx  (18 tests) 1312ms
+ ✓ src/components/StateViews.test.tsx  (5 tests) 67ms
+ ✓ src/contexts/ProjectContext.test.tsx  (3 tests) 102ms
+ ✓ src/components/RunCard.test.tsx  (3 tests) 47ms
+ ✓ src/app/insights/[id]/page.test.tsx  (28 tests) 1542ms
+   ✓ InsightDetailPage — Phase 7 B1 surface > renders backend opportunity score without recomputing totals 366ms
+
+ Test Files  15 passed (15)
+      Tests  157 passed (157)
+   Start at  21:35:02
+   Duration  4.25s (transform 1.59s, setup 1.88s, collect 10.52s, tests 6.70s, environment 10.68s, prepare 1.65s)
+

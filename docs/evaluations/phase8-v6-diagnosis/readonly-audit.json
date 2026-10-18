@@ -1,0 +1,18 @@
+{
+  "checked_at": "2026-10-17T14:15:31.267085+00:00",
+  "mode": "documentation and read-only offline diagnosis",
+  "protected_product_and_test_file_count": 233,
+  "product_or_test_or_protected_changes": [],
+  "prior_v6_evidence_118_hashes_match": true,
+  "head": "449e8790b8da8b9f04f4e3739cd9740606241cc4",
+  "branch": "codex/phase6-evaluation",
+  "index_empty": true,
+  "fresh_full_tests_run": false,
+  "fresh_real_ai_or_search_calls": false,
+  "database_connections_or_mutations_in_diagnostic_script": false,
+  "own_test_ports_closed": {
+    "13080": true,
+    "18080": true
+  },
+  "offline_controls": "READ_ONLY_OFFLINE_CONTROLS_PASSED"
+}

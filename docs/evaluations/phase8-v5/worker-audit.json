@@ -1,0 +1,203 @@
+[
+  {
+    "jobId": "d6b40becc84e48fbbcc6128cfe7907d1",
+    "batch": "A",
+    "status": "completed",
+    "tool_counts": {
+      "Bash": 1,
+      "Glob": 1,
+      "Read": 15,
+      "Write": 2,
+      "Edit": 3
+    },
+    "written_paths": [
+      "/Users/salmon/Desktop/InsightFlow/backend/app/services/research_contract.py",
+      "/Users/salmon/Desktop/InsightFlow/backend/tests/test_phase8_research_contract.py"
+    ],
+    "shell_requests": [
+      {
+        "command_kind": "requested_shell_command",
+        "git_mentioned": false,
+        "execution": "denied: Bash exists but is not enabled in this context"
+      }
+    ]
+  },
+  {
+    "jobId": "7c5a609d02954c77a2400a8e52fcb89e",
+    "batch": "A repair",
+    "status": "failed",
+    "tool_counts": {
+      "Write": 3,
+      "Bash": 1,
+      "Read": 23,
+      "Edit": 15,
+      "Grep": 4
+    },
+    "written_paths": [
+      "/Users/salmon/Desktop/InsightFlow/backend/app/services/research_contract.py",
+      "/Users/salmon/Desktop/InsightFlow/backend/tests/test_phase8_research_contract.py"
+    ],
+    "shell_requests": [
+      {
+        "command_kind": "requested_shell_command",
+        "git_mentioned": false,
+        "execution": "denied: Bash exists but is not enabled in this context"
+      }
+    ]
+  },
+  {
+    "jobId": "9b299a01bdf9459dbd9d7735e4e55284",
+    "batch": "A repair2",
+    "status": "failed",
+    "tool_counts": {
+      "Read": 16,
+      "Edit": 16
+    },
+    "written_paths": [
+      "/Users/salmon/Desktop/InsightFlow/backend/app/services/research_contract.py",
+      "/Users/salmon/Desktop/InsightFlow/backend/tests/test_phase8_research_contract.py"
+    ],
+    "shell_requests": []
+  },
+  {
+    "jobId": "98ab51bbb5be47cd809e37d69be6ee76",
+    "batch": "B official reader",
+    "status": "failed",
+    "tool_counts": {
+      "Bash": 1,
+      "Grep": 12,
+      "Read": 26,
+      "Glob": 9,
+      "Write": 2,
+      "Edit": 13
+    },
+    "written_paths": [
+      "/Users/salmon/Desktop/InsightFlow/backend/app/services/research_reader.py",
+      "/Users/salmon/Desktop/InsightFlow/backend/tests/test_phase8_research_reader.py"
+    ],
+    "shell_requests": [
+      {
+        "command_kind": "requested_shell_command",
+        "git_mentioned": false,
+        "execution": "denied: Bash exists but is not enabled in this context"
+      }
+    ]
+  },
+  {
+    "jobId": "8daf3ee3ea3a4735b1b2948723318ad4",
+    "batch": "C reader failures and safe metadata",
+    "status": "completed",
+    "tool_counts": {
+      "Read": 7,
+      "Edit": 6,
+      "Write": 2,
+      "Grep": 7
+    },
+    "written_paths": [
+      "/Users/salmon/Desktop/InsightFlow/backend/app/services/research_client.py",
+      "/Users/salmon/Desktop/InsightFlow/backend/app/services/research_reader.py",
+      "/Users/salmon/Desktop/InsightFlow/backend/tests/test_phase8_research_metadata.py",
+      "/Users/salmon/Desktop/InsightFlow/backend/tests/test_phase8_research_reader.py"
+    ],
+    "shell_requests": []
+  },
+  {
+    "jobId": "40a9c7a2b8e84fdab69111d226d87ccb",
+    "batch": "C metadata repair",
+    "status": "completed",
+    "tool_counts": {
+      "Read": 6,
+      "Edit": 5,
+      "Grep": 5
+    },
+    "written_paths": [
+      "/Users/salmon/Desktop/InsightFlow/backend/app/services/research_client.py",
+      "/Users/salmon/Desktop/InsightFlow/backend/tests/test_phase8_research_metadata.py"
+    ],
+    "shell_requests": []
+  },
+  {
+    "jobId": "e2b4131921f44bdd95e64c0ab9d9cde8",
+    "batch": "D frontend coverage",
+    "status": "completed",
+    "tool_counts": {
+      "Read": 15,
+      "Glob": 2,
+      "Grep": 5,
+      "Bash": 1,
+      "Edit": 7
+    },
+    "written_paths": [
+      "/Users/salmon/Desktop/InsightFlow/frontend/src/app/insights/[id]/page.test.tsx",
+      "/Users/salmon/Desktop/InsightFlow/frontend/src/app/insights/[id]/page.tsx",
+      "/Users/salmon/Desktop/InsightFlow/frontend/src/lib/api/types.ts"
+    ],
+    "shell_requests": [
+      {
+        "command_kind": "requested_shell_command",
+        "git_mentioned": false,
+        "execution": "denied: Bash exists but is not enabled in this context"
+      }
+    ]
+  },
+  {
+    "jobId": "6365818f8ba34188a1e063539ee3d577",
+    "batch": "D frontend repair",
+    "status": "completed",
+    "tool_counts": {
+      "Read": 3,
+      "Edit": 8,
+      "Grep": 4
+    },
+    "written_paths": [
+      "/Users/salmon/Desktop/InsightFlow/frontend/src/app/insights/[id]/page.test.tsx",
+      "/Users/salmon/Desktop/InsightFlow/frontend/src/app/insights/[id]/page.tsx",
+      "/Users/salmon/Desktop/InsightFlow/frontend/src/lib/api/types.ts"
+    ],
+    "shell_requests": []
+  },
+  {
+    "jobId": "5d5a8c0d199d4c08a58e9460f85ea64a",
+    "batch": "D frontend repair2",
+    "status": "completed",
+    "tool_counts": {
+      "Read": 4,
+      "Edit": 7,
+      "Grep": 4
+    },
+    "written_paths": [
+      "/Users/salmon/Desktop/InsightFlow/frontend/src/app/insights/[id]/page.test.tsx",
+      "/Users/salmon/Desktop/InsightFlow/frontend/src/app/insights/[id]/page.tsx"
+    ],
+    "shell_requests": []
+  },
+  {
+    "jobId": "278035560bc14a82a46a51e9e0eeba05",
+    "batch": "D browser diagnostic UI repair",
+    "status": "completed",
+    "tool_counts": {
+      "Read": 4,
+      "Edit": 5,
+      "Grep": 3
+    },
+    "written_paths": [
+      "/Users/salmon/Desktop/InsightFlow/frontend/src/app/insights/[id]/page.test.tsx",
+      "/Users/salmon/Desktop/InsightFlow/frontend/src/app/insights/[id]/page.tsx"
+    ],
+    "shell_requests": []
+  },
+  {
+    "jobId": "5b3704fcd9f849e89cd4f16318c17270",
+    "batch": "D real contract value repair",
+    "status": "completed",
+    "tool_counts": {
+      "Read": 11,
+      "Edit": 6
+    },
+    "written_paths": [
+      "/Users/salmon/Desktop/InsightFlow/frontend/src/app/insights/[id]/page.test.tsx",
+      "/Users/salmon/Desktop/InsightFlow/frontend/src/app/insights/[id]/page.tsx"
+    ],
+    "shell_requests": []
+  }
+]

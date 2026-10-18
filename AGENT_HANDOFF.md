@@ -1,3 +1,27 @@
+> **2026-10-19阶段8检查点归档授权：[52号](docs/52-Phase8阶段归档与后续修复计划.md)。** 三文鱼明确要求提交并推送第8阶段，授权新建公开仓库；允许按PARTIAL归档，覆盖此前本轮“禁止提交/push”的操作限制，但不改变Research质量FAIL和正式用户验收NOT MEASURED，不启动Phase9。代码、已知失败、文献与后续修复方案均有记录；新回归SQLite1509/11skip、新PG1520及迁移往返、前端193/lint/build、Ruff通过。远端实际状态以Git和后续操作回执为准，不将本地提交当作推送成功。下方旧禁止推送记录保留历史语境。
+
+> **2026-10-18动态展示补充：[51号清理与复验](docs/51-动态数据展示清理与复验.md)。** 修复评分依据/AI建议审计串、状态及生成正文/编辑框内部主题标记；前端193项、生产构建和18页74项实页检查通过，用户页面已刷新。50号原检查覆盖范围已更正；评分/决策对象、90项保护文件及191项后端指纹未变。未提交/push，Phase8 PARTIAL及Research主要限制保留。
+
+> **2026-10-18页面整理补充：[50号页面文案与信息层级](docs/50-页面文案与信息层级整理.md)。** 按三文鱼要求清理各页接口/开发说明、统一中文业务名称并折叠技术详情；前端186项及生产构建通过，11页×桌面/390px检查完成，已刷新运行中的反馈页。后端与业务数据未改，49号Research主要限制和Phase8 PARTIAL继续有效；未暂存/提交/push，不进入Phase9。
+
+> **2026-10-18本轮最终记录：[49号搜索适配与复验](docs/49-Phase8搜索适配与本轮复验.md)。** Codex亲手接通后端MiniMax独立HTTP搜索、安全错误分类和同Run共享预算；旧Tavily默认保留。最终SQLite1509/11skip、全新PG1520及迁移往返、前端182/lint/build、Ruff通过；真实PM→Requirement v2→PRD v4及新目标SIM审批/项目隔离/Raw审计已完成。原10两轮各1completed/9partial、另8两轮全partial；正常规划、场景/条件支持及分析仍有主要限制，**Phase8 PARTIAL/Research质量FAIL**。小文案不再阻断；正式用户验收NOT MEASURED，未暂存/提交/push，STOP Phase8。下方“搜索未接入/格式红/新链未完成”均为历史交接快照，不能当当前状态。
+
+> **2026-10-18最新交接：Phase8仍PARTIAL、Research质量未过，未暂存/提交/push。** [47号当前进展、痛点与方案](docs/47-Phase8当前进展痛点与新对话交接.md)及[48号续接Prompt](docs/48-Phase8新对话续接与搜索替代方案Prompt.md)为新入口。v7已实施；用户最新授权Codex亲手修改，**不再让Claude写代码**，覆盖下方旧执行方式。最新八核心230通过，较早SQLite1464/11skip、隔离PG1475/迁移往返、前端182/lint/build不是最终同代码成绩；2个文件format仍红。两轮原10/另8真实证据含搜索、协议与选证失败，搜索替代尚未接入后端。临时环境/备份与当前PDF失败Run详见47号；正式验收未签，不进入Phase9。
+
+> **2026-10-17 Phase8第一批设计核对：** [45号统一证据契约设计与实施计划](docs/45-Phase8统一证据契约设计与实施计划.md)已落盘，现场和冻结证据重新核对、关键缺陷纯函数回放成功，既有专项80通过。尚未实施v7、无新Worker或真实调用；Phase8仍PARTIAL/Research质量FAIL，未暂存未提交未push。下一批按45号精确文件和原Claude线程实施，保护旧数据与历史契约，STOP于Phase8。
+
+> **最新只读深度复盘与交接（2026-10-17）：Phase8仍PARTIAL、Research质量FAIL，未验收未提交未推送。** 本轮未改产品代码、未重跑全量或真实AI。已证明原#9第三轮关键答案被按摘录数量选回旧轮、多选事实/覆盖相互阻断、来源政策误判业务条件、分析/版本契约缺口等根因。先读[43号深度交接](docs/43-Phase8深度根因复盘与新对话交接.md)及[44号先设计后实施Prompt](docs/44-Phase8新对话先设计后实施Prompt.md)，42号实测成绩保持不变。新对话先现场核对、需求映射和架构/预算/测试方案，再实施；禁止直接叠加补丁。当前STOP于Phase8，不进入Phase9。
+
+> **最新执行与独立验收（2026-10-17，v6）：Phase8 PARTIAL，Research质量FAIL，未验收、未提交、未推送。** v6任务锚点、结构化引用、事实/推断/建议、0015支持关系及前端已实施；不再是仅待执行计划。最终SQLite1194/11skip、全新PG1205及迁移往返、Ruff、前端157及lint/build通过。原十题程序4 completed/6 partial_failed，独立4完整/3局部/3未验证；新增8题另列，分析仍有范围与支持缺口。当前以[42号报告](docs/42-Phase8业务补齐实施与独立验收报告.md)和[任务账本](docs/evaluations/phase8-v6/task-ledger.json)为准，下方v5及待执行描述是历史快照。36号更正继续有效。禁止push，Phase8失败交付后STOP，不进入Phase9。
+
+> **最新交接（2026-10-17，业务能力补齐）：Phase8仍为PARTIAL，Research质量FAIL，未验收、未提交、未推送。** 下一轮先读[40号业务缺口与交接](docs/40-Phase8业务缺口与新对话交接.md)、[待执行处理计划](docs/superpowers/plans/2026-10-17-phase8-research-prd-completion.md)和[41号启动Prompt](docs/41-Phase8业务补齐新对话启动Prompt.md)。除复杂问题覆盖/协议稳定性外，当前v5固定将市场模式、机会、风险数组置空，业务功能未完整实现。本次只更新交接文档，不是新代码修复或新测试结果；39号历史实测及36号根因更正保留。禁止push，Phase8后STOP，不进入Phase9。
+
+> **最新修复与复验（2026-10-17，v5）：Phase8 PARTIAL，Research质量FAIL，未验收、未提交、未推送。** 已实现保守任务/证据覆盖、官方正文、证据ID引用及安全诊断；最终SQLite1092/11skip、隔离PG1103与迁移往返、Ruff、前端154及lint/build通过。原十题为2完整/6局部/2未验证，复杂问题仍未闭合。详见[39号修复与独立验收报告](docs/39-Phase8任务覆盖修复与独立验收报告.md)。以下保留旧阶段快照；36号根因更正仍有效。STOP，不进入Phase9。
+
+> **最新交接（2026-10-17，深度根因分析）：Phase 8 PARTIAL，Research质量FAIL，未验收、未提交、未推送。** 现有完成门槛不验证整题覆盖，检索/引文表示/软降级纠错另有断点；本轮只做分析与交接，没有新产品修复或真实模型验收。请先读[36号根因与新对话交接报告](docs/36-Phase8Research根因与新对话交接报告.md)及[37号启动Prompt](docs/37-Phase8新对话启动Prompt.md)。36号报告已更正旧Dropbox overnight归因、iCloud缺risks分类和跨行引文的笼统解释；以下为历史记录。Phase8后STOP，不进入Phase9。
+
+> **最新（2026-10-17，v4）：Phase 8 PARTIAL / 未验收 / 未提交 / 未推送。** 最终SQLite972/11skip、隔离PostgreSQL983与迁移往返、Ruff、前端147及lint/build通过；真实十条为5completed/5partial_failed，官方全文核对仅2完整回答、3局部事实、5未验证，Research质量FAIL。详见[本轮分层定位与复验](docs/35-Phase8Research分层定位与本轮复验.md)。STOP，不进入Phase9。下文旧状态为历史记录。
+
 > **当前状态（2026-10-14）：Phase 6 Evaluation System 工程回归通过，阶段交付 PARTIAL，STOP。** 分类/聚类/Insight Evidence 评测、逐例追踪和真实 Baseline 已完成；SQLite 582通过/5跳过，隔离PostgreSQL 587通过。人工标签与语义复核、Phase 4/5 Artifact Evaluation、完整 Feedback→PRD 质量仍未测得；Phase2/3/4/5历史限制保留。详见 [Phase6报告](docs/24-Phase6监督验收与交付报告.md) 与 [Baseline](docs/evaluations/phase6-baseline-evaluation.md)。等待三文鱼人工验收，不进入Phase7。下方为历史状态。
 
 > **当前状态（2026-10-14）：Phase 5 工程验收通过，阶段交付 PARTIAL，STOP。** 已实现 Requirement + versioned PRD Draft + Human Review；SQLite 417通过/5跳过、隔离PostgreSQL 422通过，0010迁移及无模型真实TCP HTTP闭环通过。真实AI生成、CSV起点完整AI链路、3～5份人工语义抽查因本地模型配置缺失仍为 NOT MEASURED；Phase2/3/4业务质量限制保留。以[Phase5报告](docs/23-Phase5监督验收与交付报告.md)为当前结论，不推进Phase6。下方状态与数字为历史记录。

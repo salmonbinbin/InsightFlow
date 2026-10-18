@@ -1,0 +1,123 @@
+{
+  "accepted_payload_replays_exact_match": {
+    "matched": 9,
+    "total": 9
+  },
+  "literal_backslash_n": {
+    "length": 147,
+    "result": {
+      "complete_gate": false,
+      "findings": [
+        {
+          "category": "summary",
+          "title": "Internal context only.",
+          "description": "Internal context only.",
+          "confidence": 0.5,
+          "status": "not_verified",
+          "source_refs": []
+        },
+        {
+          "category": "competitor",
+          "title": "Google Photos",
+          "description": "Evidence: \"1. On your Android device, open the Google Photos app Photos.\\n2. Sign in to your Google Account.\\n3. Open the photo or video.\\n4. Tap Back up now.\"",
+          "confidence": 0.95,
+          "status": "not_verified",
+          "source_refs": []
+        }
+      ]
+    }
+  },
+  "actual_newline": {
+    "length": 144,
+    "result": {
+      "complete_gate": true,
+      "findings": [
+        {
+          "category": "summary",
+          "title": "Internal context only.",
+          "description": "Internal context only.",
+          "confidence": 0.5,
+          "status": "not_verified",
+          "source_refs": []
+        },
+        {
+          "category": "competitor",
+          "title": "Google Photos",
+          "description": "Evidence: \"1. On your Android device, open the Google Photos app Photos.\n2. Sign in to your Google Account.\n3. Open the photo or video.\n4. Tap Back up now.\"",
+          "confidence": 0.95,
+          "status": "confirmed",
+          "source_refs": [
+            [
+              "199bef-00",
+              "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid"
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "atomic_single_step": {
+    "length": 19,
+    "result": {
+      "complete_gate": true,
+      "findings": [
+        {
+          "category": "summary",
+          "title": "Internal context only.",
+          "description": "Internal context only.",
+          "confidence": 0.5,
+          "status": "not_verified",
+          "source_refs": []
+        },
+        {
+          "category": "competitor",
+          "title": "Google Photos",
+          "description": "Evidence: \"4. Tap Back up now.\"",
+          "confidence": 0.95,
+          "status": "confirmed",
+          "source_refs": [
+            [
+              "199bef-00",
+              "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid"
+            ]
+          ]
+        }
+      ]
+    }
+  },
+  "dropbox_overnight": {
+    "quote_in_cited_sources": true,
+    "cited_ids": [
+      "97645b-00"
+    ],
+    "first_failed_guard": "quantifier"
+  },
+  "protocol_error_indistinguishability": [
+    {
+      "supplied_stop_reason": "end_turn",
+      "exception_type": "ResearchLLMProtocolError",
+      "exception_message": "research response missing submit_research tool_use block"
+    },
+    {
+      "supplied_stop_reason": "max_tokens",
+      "exception_type": "ResearchLLMProtocolError",
+      "exception_message": "research response missing submit_research tool_use block"
+    },
+    {
+      "supplied_stop_reason": "tool_use",
+      "exception_type": "ResearchLLMProtocolError",
+      "exception_message": "research response missing submit_research tool_use block"
+    }
+  ],
+  "quote_quantifier_contract": {
+    "select multiple photos": true,
+    "select several photos": true,
+    "select two photos": false,
+    "select 3 photos": false
+  },
+  "apple_namespace_mismatch": {
+    "actual_query": "iCloud.com Shared Photo Library upload share photos site:support.apple.com/en-us",
+    "guide_allowed_by_strict_validator": true,
+    "guide_url_under_search_path": false
+  }
+}

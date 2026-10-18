@@ -210,7 +210,8 @@ describe('PrdDetailPage — Phase 7 C2', () => {
       expect(screen.getByTestId(id)).toBeTruthy();
     }
     // Grounding warnings render at the page level, not inside PrdBody.
-    expect(screen.getByTestId('grounding-warning-list').textContent).toContain('MISSING_EVIDENCE');
+    expect(screen.getByTestId('grounding-warning-list').textContent).toContain('缺少可核对的来源');
+    expect(screen.getByTestId('grounding-warning-list').textContent).not.toContain('MISSING_EVIDENCE');
   });
 
   it('loads the PRD via GET /prds/{id} (no rebuild, no derivation)', async () => {
@@ -385,7 +386,7 @@ describe('PrdDetailPage — Phase 7 C2', () => {
     await waitFor(() => {
       // The empty state surfaces the PRD id in the description so the
       // PM can confirm which id they tried to load.
-      expect(screen.getByText(/PRD 不存在/)).toBeTruthy();
+      expect(screen.getByText(/文档不存在/)).toBeTruthy();
     });
     // No action buttons reach the wire in this branch.
     expect(screen.queryByTestId('regenerate-prd')).toBeNull();
@@ -574,7 +575,7 @@ describe('PrdDetailPage — Phase 7 C2', () => {
       // ``getByText(/.../)`` could multi-match once multiple
       // alerts stack during a follow-up Accept attempt.
       const errorBanner = screen.getByTestId('regenerate-error');
-      expect(errorBanner.textContent).toContain('生成 PRD 失败');
+      expect(errorBanner.textContent).toContain('生成文档失败');
       expect(errorBanner.textContent).toContain('服务暂不可用');
       // role="alert" must surface the error to assistive tech —
       // PMs depending on screen readers MUST hear the failure
@@ -746,8 +747,8 @@ describe('PrdDetailPage — Phase 7 C2', () => {
       // The save error wrapper is the same pattern we use for the
       // regenerate error so screen-reader users hear the failure.
       const errorBanner = screen.getByTestId('prd-save-error');
-      expect(errorBanner.textContent).toContain('保存 PRD 失败');
-      expect(errorBanner.textContent).toContain('evidence_ids');
+      expect(errorBanner.textContent).toContain('保存文档失败');
+      expect(errorBanner.textContent).toContain('反馈编号');
       expect(errorBanner.querySelector('[role="alert"]')).toBeTruthy();
       // CRITICAL: success banner must NOT also be in the DOM — a
       // false-positive success would silently drop the PM's edits.

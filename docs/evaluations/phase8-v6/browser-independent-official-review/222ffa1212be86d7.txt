@@ -1,0 +1,276 @@
+Share photos & videos - Android phone & tablet - Google Photos Help Skip to main content
+Google Photos Help
+Sign in
+Google Help
+Help Center
+Community
+Google Photos
+Privacy Policy
+Terms of Service
+Submit feedback
+Send feedback on...
+This help content & information
+General Help Center experience
+CloseNext
+Help Center
+Community
+Can't find your photos?
+Google Photos
+Share photos & videos
+You can share photos, videos, albums, and highlight videos with any of your contacts, even if they don't use the Google Photos app.
+Before you get started
+Download and install the Google Photos app.
+Learn about what happens when you share photos & videos
+What happens when you share
+When you send to a contact in Google Photos:
+Contacts you’ve shared with get an in-app notification and a push notification from the app. The shared item or items appear in their Updates page.
+When you share a new album or conversation with them, they’ll also receive an email notification.
+Their account "Profile picture" or "Initial" is added to the album or conversation and will appear faded until they view the album or conversation.
+When they view the album or conversation, their account "Profile picture" or "Initial" will appear in the activity view next to the latest photos, comments, or likes they have viewed.
+If they join a shared album or like, comment, or add photos in a shared album or conversation, their profile image changes to their account "Profile picture" or "Initial."
+When you add photos or videos to albums or conversations, your account "Profile picture" or "Initial" will appear next to the latest photos you added.
+If you share a video captured fully or partially in slow motion, others may be able to view any part of the video at a slower speed in their own player.
+If you edit a photo that you previously shared via link sharing, people may be able to temporarily view the unedited version through the original link.
+What happens when someone shares with you
+Important: If you think someone is spamming you, or violating other abuse policies, you can block or report them. Learn more about our abuse policies.
+If your contact can’t share their media, you can help them find and connect with you.
+When someone shares an album or conversation with you, you will receive an email.
+If you already use Google Photos, you’ll also receive an in-app notification and a push notification and the share appears in your Updates page.
+If you join an album, the photos and videos shared with you may appear on your search results. You'll see a shared content badge at the bottom left of the shared item.
+To exclude shared items in your search results: At the top right of the search results page, tap More More and then Include shared with me.
+An ownership tag shows on the shared item.
+To check which album or conversation an item is from: At the top left, tap the owner’s Profile picture or Initial.
+When you view the album or conversation, your account "Profile picture" or "Initial" in the album will light up and appear next to the latest photos, comments, or likes you have viewed.
+If you join a shared album or like, comment, or add photos in a shared album or conversation, your account "Profile picture" or "Initial" will appear next to the action you took.
+If someone edits a photo after they've shared the link with you, the original link sharing may not immediately update to the new version of the photo.
+Learn how to leave albums and conversations.
+Save photos & videos shared with you
+When you save a photo or video that has been shared with you, you receive a copy of it in your library. Any edits to the original shared photo after it has been saved will not apply to your saved copy. Saved photos and videos count toward your quota except for certain partner sharing instances. Learn more about partner sharing.
+To find photos or videos in your device gallery app, you must download them. Learn how to download photos or videos.
+To save photos and videos shared with you in a conversation:
+In the conversation, scroll to the photo or video that you want to save.
+Below the photo or video, tap Save .
+Share photos & videos in a Conversation
+Important: To share an item from a locked folder, remove it first from the locked folder. Learn more about Locked Folder.
+You can share directly with anyone with a Google Account if they're in your contacts or by searching their email address or phone number. You can also use apps outside of Google Photos through link shares or directly share your photos and videos.
+If your contact’s phone number isn’t associated with their Google Account, you can help them find and connect with you. If your contact doesn’t have a Google Account, you can send them a link or share using another app instead.
+To share with other people in a Conversation:
+On your Android device, open the Google Photos app Photos.
+Sign in to your Google Account.
+Select a photo, album, or video.
+If Quick Edits is turned on, you can crop or enhance your photo before sharing. Learn more about Quick Edits.
+Tap Share Share.
+Under "Send in Photos," select people to share with.
+To share with one person, tap their name.
+To find someone specific:
+Tap Search .
+Enter their name, phone number, or email address.
+To share with more than one person, select multiple people.
+Optional: Add a message to go with your shared media.
+Based on your interactions, Google makes suggestions. Learn more about suggestions.
+Tap Send.
+Tips:
+There is a 20,000 photo limit on Conversations.
+To hide a suggested sharing contact, press and hold their profile photo and tap Hide suggestion. To find them again to share something with them later, tap Search , enter their name, and tap Show hidden suggestions.
+You can also automatically share your entire library with someone.
+Use & manage Quick Edits
+Quick Edits is an optional feature that lets you quickly crop and enhance a photo before you share it. With one tap, enhance will automatically straighten your photo, apply high dynamic range (HDR), and add other basic filters.
+Important:
+This feature is only available on Android 14 and up.
+The Quick Edits screen is available for your original photos or images you haven't edited yet. It typically doesn't appear for photos that have been edited and sorted into document albums such as receipts and screenshots. Learn more about how to manage your screenshots, screen recordings, and documents.
+How to use Quick Edits
+On your mobile device, open the Google Photos app Photos.
+Select the photo you want to share.
+On the Quick Edits screen, you can crop your photo, enhance it, and compare the enhanced version to the original.
+If you don't want to use any edits, tap Original.
+Tap Share Share.
+Choose your sharing options
+If you share through an app like Messages or WhatsApp, the edited photo won’t be saved to your library.
+If you send in Photos, create a share link, or add to a shared album, the edited version will be saved to your library.
+Tip: If you don't want to use Quick Edits, on the Quick Edits screen, at the top right, tap the Gear icon and then Turn off.
+Turn Quick Edits on or off
+You can turn Quick Edits on or off at any time.
+On the Quick Edits screen
+At the top right, tap the Gear icon and then Turn off.
+In the app settings
+On your mobile device, open the Google Photos app Photos.
+At the top, tap your account Profile picture or Initial and then the Gear icon .
+Tap Sharing and then Manage sharing activity.
+Turn "Quick edit before sharing" on or off.
+Create a shared album
+On your mobile device, open the Google Photos app Photos.
+Sign in to your Google Account.
+At the bottom, tap Photos.
+Select photos or videos for the new album.
+To select one photo or video for the new album:
+Open the photo you want.
+At the bottom, tap Add Add and then Album and then New Album
+To select multiple photos or videos for the new album:
+Touch and hold the photos or videos you want.
+At the bottom, tap Create Add and then Album
+Enter an album title.
+Tap Done Done.
+When the album is complete, at the bottom, tap Share Share.
+Select who to share your album with.
+Important:
+You can share directly to anyone with a Google Account if they're in your contacts or by search with their email address or phone number. For everyone else, you can create a link to share.
+When you share a link to your album, anyone with the link can view the photos and add to the album. Learn how shared album controls give your photos more privacy.
+If you share an album that automatically adds photos of face groups, anyone with access to the album can view photos as they're added.
+You can generate QR codes for albums and share them physically or digitally. When scanned, these QR codes direct recipients to the shared album in Google Photos.
+You can only add the selected items to the album or turn it into a photo stack. Learn more about taking actions on photo stacks.
+Copy the photo for use in other apps
+You can copy your photos and videos directly from Google Photos to your phone's clipboard and paste them into other apps.
+On your Android device, open the Google Photos app Photos.
+Sign in to your Google Account.
+Select a photo, album, or video.
+Tap Share Share.
+Scroll through the sharing options.
+Tap Copy .
+Paste the photo into the desired location.
+Send a link or share to other apps
+On your mobile device, open the Google Photos app Photos.
+Sign in to your Google Account.
+Select a photo, album, or video.
+Tap Share Share.
+To select another app to share, swipe left.
+To create and share a link, tap Create link.
+Anyone that has the shared link will be able to view the album. Learn how to change your sharing options.
+Create QR code to share albums
+On your Android device, open the Google Photos app Photos.
+Sign in to your Google Account.
+Select an album.
+Tap Share Share and then Show QR Code.
+Scan the QR code to share with other devices.
+Tip: To share offline or print the QR code, you can take a screenshot of the QR code for your album.
+Anyone who scans the QR code can access the shared album in Google Photos.
+Manage, review, or leave your conversations & albums
+Find links, memories & conversations you’ve shared
+On your mobile device, open the Google Photos app Photos.
+At the top, tap your account Profile picture or Initial and then Photos settings.
+Tap Sharing and then Manage sharing activity.
+Check your shared links, shared memories, and conversations.
+Find albums shared with you
+On your Android device, open the Google Photos app Photos.
+At the bottom, tap Collections and then Albums.
+At the top, tap Shared with me.
+To sort your albums, tap Sort by . You can sort by:
+Album title
+Last modified
+Most recent photo
+Tip: To search for shared albums, tap Search or find them in the "All" albums view.
+Find albums you’ve shared
+On your mobile device, open the Google Photos app Photos.
+At the bottom, tap Collections and then Albums.
+To find the albums you want, switch between “All,” “Shared with me,” and “My albums.”
+Leave an album
+When you leave a shared album, all of the photos, videos, comments, and likes you have added will be removed.
+To leave an album:
+Tap the album.
+At the top right, tap More More and thenLeave album.
+Leave a conversation
+When you leave a shared conversation, all of the photos, videos, comments, and likes you have added will be removed.
+To leave a conversation:
+Tap the conversation.
+At the top, tap MoreMore and then Options.
+Next to your name, tap Leave.
+React to shared albums
+Add a reaction:
+On your Android device, open the Google Photos app Photos.
+Open a shared album.
+Tap a photo.
+At the bottom left, tap Add reaction Add Reaction.
+Select a reaction.
+To find more options: Tap More reactions Add Reaction.
+To change your reaction: Tap a different reaction.
+You can change your reaction at any time.
+Find reactions and comments from others:
+On your Android device, open the Google Photos app Photos.
+Open a shared album.
+Tap a photo.
+At the bottom left, next to "Add reaction Add Reaction," tap the reactions.
+Tap the photo to close.
+Remove people or items from albums & conversations
+Remove someone from an album
+Remove a collaborator
+Important: You must be the owner of the album to remove someone.
+On web:
+Open the desired album.
+Click More More and then Options.
+Scroll to find the contact you’d like to have removed.
+Click More More and then Remove person.
+On the Google Photos mobile app:
+Open the desired album.
+Tap More More and then Sharing.
+Scroll to find the contact you’d like to have removed.
+Tap More More and then Remove person.
+Remove photos & videos
+You can remove photos and videos you have added to conversations and shared albums.
+To remove photos and videos:
+In a shared album or conversation thread, tap the photo or video.
+At the top right, tap More More and then Remove.
+Tip: If you remove a photo or video from an album, it isn't deleted from your Google Photos library.
+Remove comments & likes
+To remove comments and likes:
+In a shared album or conversation thread, tap the comment or like.
+Tap Delete.
+Related resources
+Create & edit photo albums
+Delete photos & videos
+Back up your photos & videos
+Stop sharing an album & manage settings
+How shared album controls give your photos more privacy
+Get updates when people share with you
+Was this helpful?
+How can we improve it?
+YesNo
+Submit
+Android phone & tablet ComputeriPhone & iPad
+More
+Need more help?
+Try these next steps:
+Post to the help community Get answers from community members
+true
+Help
+1 of 8
+Share photos & videos
+2 of 8
+Stop sharing an album & manage settings
+3 of 8
+Show photos on a TV with Chromecast
+4 of 8
+Label your face group
+5 of 8
+Face Groups retention policy
+6 of 8
+Set up partner sharing
+7 of 8
+Get suggestions to share with your contacts
+8 of 8
+Choose albums to display on your photo frames
+©2026 Google
+Privacy Policy
+Terms of Service
+Language català‎dansk‎Deutsch‎eesti‎English (United Kingdom)‎español‎español (Latinoamérica)‎Filipino‎français‎hrvatski‎Indonesia‎italiano‎latviešu‎lietuvių‎magyar‎Melayu‎Nederlands‎norsk‎polski‎português‎português (Brasil)‎română‎slovenčina‎slovenščina‎suomi‎svenska‎Tiếng Việt‎Türkçe‎íslenska‎čeština‎Ελληνικά‎български‎русский‎српски‎українська‎‏עברית‏العربية‏فارسیमराठी‎हिन्दी‎తెలుగు‎ไทย‎中文（简体）‎中文（繁體）‎日本語‎한국어‎ English‎
+Enable Dark Mode
+Send feedback on...
+This help content & information General Help Center experience
+Search
+Clear search
+Close search
+Google apps
+Main menu
+7496075962857161481
+true
+Search Help Center
+false
+true
+true
+true
+true
+true
+105394
+false
+false
+false
+false
+false

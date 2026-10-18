@@ -655,10 +655,7 @@ export default function AnalysisPage() {
       <header className="page-header">
         <span className="eyebrow">分析</span>
         <h1 className="page-title">三阶段 AI 分析</h1>
-        <p className="page-subtitle">
-          历史来自后端项目级持久化（按 <code className="mono">created_at DESC, id DESC</code> 稳定排序），不写入 sessionStorage；
-          三个 Run 互相独立，当前 POST 均为同步执行。
-        </p>
+        <p className="page-subtitle">将反馈分类、整理为主题，再生成产品洞察。</p>
       </header>
 
       <div className="analysis-stepper" role="list">
@@ -684,8 +681,7 @@ export default function AnalysisPage() {
       {/* ---- Classification ---- */}
       <section className="panel">
         <header className="panel-header">
-          <h2 className="section-title">1. 分类（Classification）</h2>
-          <span className="panel-hint">POST /projects/&#123;id&#125;/analysis</span>
+          <h2 className="section-title">1. 反馈分类</h2>
         </header>
         {analysis.error ? (
           <ErrorState
@@ -695,7 +691,7 @@ export default function AnalysisPage() {
         ) : null}
         {analysis.data ? (
           <RunCard
-            title={`分类 Run · ${analysis.data.id}`}
+            title="分类结果"
             status={analysis.data.status}
             startedAt={analysis.data.started_at ?? null}
             finishedAt={analysis.data.completed_at ?? null}
@@ -733,14 +729,16 @@ export default function AnalysisPage() {
               onClick={() => void runAnalysis()}
               disabled={analysis.submitting}
             >
-              {analysis.submitting ? '启动中…' : '启动分类 Run'}
+              {analysis.submitting ? '启动中…' : '开始分类'}
             </button>
             <span className="run-launch-hint">将对本项目所有反馈运行一次分类</span>
           </div>
         )}
+        <details className="technical-details">
+        <summary>按记录编号查找</summary>
         <form className="run-by-id" onSubmit={handleAnalysisInput}>
           <label className="form-field form-field--inline">
-            <span className="form-label">按 Run ID 加载</span>
+            <span className="form-label">分析记录编号</span>
             <input
               className="form-input"
               type="text"
@@ -757,6 +755,7 @@ export default function AnalysisPage() {
             加载
           </button>
         </form>
+        </details>
         <RunHistoryList<AnalysisRun>
           kind="analysis"
           testIdPrefix="analysis-history"
@@ -780,8 +779,7 @@ export default function AnalysisPage() {
       {/* ---- Clustering ---- */}
       <section className="panel">
         <header className="panel-header">
-          <h2 className="section-title">2. 聚类（Clustering）</h2>
-          <span className="panel-hint">POST /projects/&#123;id&#125;/clustering</span>
+          <h2 className="section-title">2. 整理反馈主题</h2>
         </header>
         {cluster.error ? (
           <ErrorState
@@ -789,19 +787,22 @@ export default function AnalysisPage() {
             onRetry={() => setCluster((s) => ({ ...s, error: null }))}
           />
         ) : null}
+        <details className="technical-details">
+        <summary>选择其他分类记录</summary>
         <label className="form-field">
-          <span className="form-label">上游分类 Run ID</span>
+          <span className="form-label">分类记录编号</span>
           <input
             className="form-input"
             type="text"
             value={clusteringAnalysisRunId}
             onChange={(e) => setClusteringAnalysisRunId(e.target.value)}
-            placeholder={analysis.data?.id ?? '需要分类 Run ID'}
+            placeholder={analysis.data?.id ?? '请先完成分类或选择历史记录'}
           />
         </label>
+        </details>
         {cluster.data ? (
           <RunCard
-            title={`聚类 Run · ${cluster.data.id}`}
+            title="主题整理结果"
             status={cluster.data.status}
             startedAt={cluster.data.started_at ?? null}
             finishedAt={cluster.data.completed_at ?? null}
@@ -809,9 +810,6 @@ export default function AnalysisPage() {
             inputCount={cluster.data.input_count}
             successCount={cluster.data.success_count}
             failedCount={cluster.data.failed_count}
-            extraCounters={[
-              { label: '提示词版本', value: cluster.data.prompt_version },
-            ]}
             errorMessage={cluster.data.error_message ?? null}
             actions={
               <>
@@ -842,7 +840,7 @@ export default function AnalysisPage() {
               onClick={() => void runClustering()}
               disabled={cluster.submitting || !clusteringAnalysisRunId.trim()}
             >
-              {cluster.submitting ? '启动中…' : '启动聚类 Run'}
+              {cluster.submitting ? '启动中…' : '整理反馈主题'}
             </button>
           </div>
         )}
@@ -865,8 +863,7 @@ export default function AnalysisPage() {
       {/* ---- Insight ---- */}
       <section className="panel">
         <header className="panel-header">
-          <h2 className="section-title">3. 洞察（Insight）</h2>
-          <span className="panel-hint">POST /projects/&#123;id&#125;/insights/generate</span>
+          <h2 className="section-title">3. 生成洞察</h2>
         </header>
         {insight.error ? (
           <ErrorState
@@ -876,7 +873,7 @@ export default function AnalysisPage() {
         ) : null}
         {insight.data ? (
           <RunCard
-            title={`洞察 Run · ${insight.data.id}`}
+            title="洞察生成结果"
             status={normaliseRunStatus(insight.data.status)}
             startedAt={insight.data.started_at ?? null}
             finishedAt={insight.data.completed_at ?? null}
@@ -917,10 +914,10 @@ export default function AnalysisPage() {
               onClick={() => void runInsight()}
               disabled={insight.submitting || !cluster.data}
             >
-              {insight.submitting ? '启动中…' : '基于当前聚类启动洞察 Run'}
+              {insight.submitting ? '启动中…' : '生成产品洞察'}
             </button>
             <span className="run-launch-hint">
-              需要先获得一个聚类 Run；当前未选择时按钮被禁用。
+              请先完成主题整理，或从历史记录中选择一次结果。
             </span>
           </div>
         )}
@@ -1029,7 +1026,7 @@ function RunHistoryList<T extends { id: string; status: string; created_at?: str
         />
       ) : items.length === 0 ? (
         <p className="run-history-empty">
-          该项目下尚无 {labelForRunKind(kind)} Run。
+          还没有{labelForRunKind(kind)}记录。
         </p>
       ) : (
         <>
@@ -1046,7 +1043,7 @@ function RunHistoryList<T extends { id: string; status: string; created_at?: str
                   className="btn btn-ghost btn-sm"
                   onClick={() => onPick(r.id)}
                 >
-                  <code>{r.id}</code>
+                  <span>{labelForRunKind(kind)}记录</span>
                   <StatusPill status={normaliseRunStatus(r.status)} />
                   {r.created_at ? (
                     <span className="run-history-time">

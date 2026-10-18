@@ -1,0 +1,10 @@
+{
+  "README.md": "0dbd2bf8ef559d33144b7fe06f2ff965de6d322c0a685bbf7acb49fb0898e55b",
+  "failure-distribution.json": "2fabb3a82ce242ff71f04a0ebf32c3913bacad4dfaf8c2835e9b21e8cee8688f",
+  "original-phase8-task.txt": "8ee748dba2ca2c03d472a72893fde1f0bb83eab91df1f1c93b873b9ef6ff9102",
+  "readonly-audit.json": "01ce6fe845b7796aa3df88eec6c58bcd0f798ed17512ec272c5729109bf98a4f",
+  "replay-results.json": "44e230ce6acee26f2cf69db2b4cfdc10fcfec7ebe18f00911a0fd17e8f276974",
+  "replay.log": "342208293c86087cfd51ab7613a5775b44eb8a8ca41b6cb7aef5913831108e79",
+  "replay.py": "ed6316143d37ff4e0b2ee2273960b6c7b3e844f08feb1bbb1c032179515277c3",
+  "sanitization.json": "99f632ab18b713c988d33bcaff525d37306cf4228c60b9238b68a96e2bba8a11"
+}

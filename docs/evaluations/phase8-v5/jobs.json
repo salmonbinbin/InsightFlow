@@ -1,0 +1,120 @@
+[
+  {
+    "batch": "A",
+    "jobId": "d6b40becc84e48fbbcc6128cfe7907d1",
+    "threadId": "8d048dd4-fb66-4838-898b-44f10cedd34c",
+    "allowed": [
+      "backend/app/services/research_contract.py",
+      "backend/tests/test_phase8_research_contract.py"
+    ],
+    "status": "completed",
+    "createdAt": "2026-10-17T02:00:13Z",
+    "completedAt": "2026-10-17T02:08:46Z"
+  },
+  {
+    "batch": "A repair",
+    "jobId": "7c5a609d02954c77a2400a8e52fcb89e",
+    "threadId": "8d048dd4-fb66-4838-898b-44f10cedd34c",
+    "evidence": "batch-a-red.log",
+    "status": "failed",
+    "createdAt": "2026-10-17T02:14:46Z",
+    "completedAt": "2026-10-17T02:28:10Z"
+  },
+  {
+    "batch": "A repair2",
+    "jobId": "9b299a01bdf9459dbd9d7735e4e55284",
+    "threadId": "8d048dd4-fb66-4838-898b-44f10cedd34c",
+    "evidence": "batch-a2.log",
+    "status": "failed",
+    "createdAt": "2026-10-17T02:30:32Z",
+    "completedAt": "2026-10-17T02:36:14Z"
+  },
+  {
+    "batch": "B official reader",
+    "jobId": "98ab51bbb5be47cd809e37d69be6ee76",
+    "threadId": "8d048dd4-fb66-4838-898b-44f10cedd34c",
+    "allowed": [
+      "backend/app/services/research_reader.py",
+      "backend/tests/test_phase8_research_reader.py"
+    ],
+    "status": "failed",
+    "createdAt": "2026-10-17T02:39:36Z",
+    "completedAt": "2026-10-17T02:47:39Z"
+  },
+  {
+    "batch": "C reader failures and safe metadata",
+    "jobId": "8daf3ee3ea3a4735b1b2948723318ad4",
+    "threadId": "8d048dd4-fb66-4838-898b-44f10cedd34c",
+    "evidence": [
+      "reader-b.log",
+      "reader-stream-red.log"
+    ],
+    "status": "completed",
+    "createdAt": "2026-10-17T02:48:21Z",
+    "completedAt": "2026-10-17T02:51:23Z"
+  },
+  {
+    "batch": "C metadata repair",
+    "jobId": "40a9c7a2b8e84fdab69111d226d87ccb",
+    "threadId": "8d048dd4-fb66-4838-898b-44f10cedd34c",
+    "evidence": "reader-metadata-initial.log",
+    "status": "completed",
+    "createdAt": "2026-10-17T02:52:08Z",
+    "completedAt": "2026-10-17T02:53:05Z"
+  },
+  {
+    "batch": "D frontend coverage",
+    "jobId": "e2b4131921f44bdd95e64c0ab9d9cde8",
+    "threadId": "42e973e0-5295-496d-a9bd-7c08d6d24ae4",
+    "allowed": [
+      "frontend/src/lib/api/types.ts",
+      "frontend/src/app/insights/[id]/page.tsx",
+      "frontend/src/app/insights/[id]/page.test.tsx"
+    ],
+    "status": "completed",
+    "createdAt": "2026-10-17T03:03:05Z",
+    "completedAt": "2026-10-17T03:05:19Z"
+  },
+  {
+    "batch": "D frontend repair",
+    "jobId": "6365818f8ba34188a1e063539ee3d577",
+    "threadId": "42e973e0-5295-496d-a9bd-7c08d6d24ae4",
+    "evidence": [
+      "final-frontend-test.log",
+      "final-frontend-build.log"
+    ],
+    "status": "completed",
+    "createdAt": "2026-10-17T03:07:24Z",
+    "completedAt": "2026-10-17T03:09:32Z"
+  },
+  {
+    "batch": "D frontend repair2",
+    "jobId": "5d5a8c0d199d4c08a58e9460f85ea64a",
+    "threadId": "42e973e0-5295-496d-a9bd-7c08d6d24ae4",
+    "evidence": [
+      "final2-frontend-test.log",
+      "final2-frontend-build.log"
+    ],
+    "status": "completed",
+    "createdAt": "2026-10-17T03:14:48Z",
+    "completedAt": "2026-10-17T03:16:09Z"
+  },
+  {
+    "batch": "D browser diagnostic UI repair",
+    "jobId": "278035560bc14a82a46a51e9e0eeba05",
+    "threadId": "42e973e0-5295-496d-a9bd-7c08d6d24ae4",
+    "evidence": "browser-research-partial-snapshot.log",
+    "status": "completed",
+    "createdAt": "2026-10-17T03:21:00Z",
+    "completedAt": "2026-10-17T03:22:57Z"
+  },
+  {
+    "batch": "D real contract value repair",
+    "jobId": "5b3704fcd9f849e89cd4f16318c17270",
+    "threadId": "42e973e0-5295-496d-a9bd-7c08d6d24ae4",
+    "evidence": "page.tsx actual label still uses task.value",
+    "status": "completed",
+    "createdAt": "2026-10-17T03:23:43Z",
+    "completedAt": "2026-10-17T03:28:03Z"
+  }
+]

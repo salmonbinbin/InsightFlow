@@ -1,0 +1,25 @@
+{
+  "checked_at": "2026-10-17T14:31:01.454944+00:00",
+  "phase": "A_readonly_replay_and_design",
+  "protected_files_checked": 243,
+  "product_test_data_migration_secret_changes": [],
+  "frozen_evidence_checks": [
+    {
+      "manifest": "docs/evaluations/phase8-v6/final4-code-manifest.json",
+      "checked": 26,
+      "mismatches": []
+    },
+    {
+      "manifest": "docs/evaluations/phase8-v6/manifest.json",
+      "checked": 118,
+      "mismatches": []
+    }
+  ],
+  "broken_links": [],
+  "known_secret_value_matches": [],
+  "new_worker_jobs": 0,
+  "fresh_scoped_tests": "80 passed in 1.29s",
+  "full_engineering_real_ai_browser_gates": "NOT_MEASURED",
+  "user_databases_connected": false,
+  "index_empty": true
+}

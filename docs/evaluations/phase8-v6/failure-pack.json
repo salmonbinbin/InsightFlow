@@ -1,0 +1,3208 @@
+[
+  {
+    "suite": "original",
+    "sample": 1,
+    "run_id": "b62ce4dc-3cce-469f-8d4a-78b154c5cb1c",
+    "question": "In the Google Photos Android app, can a user manually select several photos and start backup in one action? Cite only official Google Help; separate manual upload from automatic backup.",
+    "query": "Google Photos Android photos manual select backup upload site:support.google.com/photos/answer",
+    "error_message": "research task_constraints_invalid: original question remains partly unverified",
+    "assertion_failed": "多选Tips有确认事实，但手动/自动区别及任务约束失败；官方有答案，程序未闭合。",
+    "official_sources": [
+      {
+        "provider_source_id": "63f0c7-00",
+        "url": "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid"
+      },
+      {
+        "provider_source_id": "6115a0-01",
+        "url": "https://support.google.com/photos/answer/6220791?hl=en_HU&co=GENIE.Platform%3DAndroid"
+      }
+    ],
+    "protocol_and_guard_events": [
+      {
+        "stage": "llm",
+        "attempt": 1,
+        "retry_hint": null,
+        "response_metadata": {
+          "stop_reason": "tool_use",
+          "content_block_counts": {
+            "tool_use": 1
+          },
+          "usage": {
+            "input_tokens": 9258,
+            "output_tokens": 907,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 128
+          }
+        },
+        "task_contract_failure": {
+          "code": "task_constraints_invalid",
+          "detail": ""
+        },
+        "guard_failures": [
+          {
+            "candidate_index": 0,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 1,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 2,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 3,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 4,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 6,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 7,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 8,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 9,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 10,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          }
+        ],
+        "analysis_rejections": [],
+        "selected_evidence_ids": [
+          "63f0c7-00@4898#1",
+          "63f0c7-00@4898#2",
+          "63f0c7-00@4898#3",
+          "63f0c7-00@4898#4",
+          "63f0c7-00@5080+94",
+          "63f0c7-00@5296+130",
+          "63f0c7-00@5181+114",
+          "63f0c7-00@5175+5",
+          "63f0c7-00@26+97",
+          "63f0c7-00@12866+113",
+          "63f0c7-00@12806+59"
+        ],
+        "coverage": {
+          "task_question": "In the Google Photos Android app, can a user manually select several photos and start backup in one action? Cite only official Google Help; separate manual upload from automatic backup.",
+          "parse_status": "parsed",
+          "items": [
+            {
+              "requirement_id": "unresolved-1",
+              "role": "core",
+              "kind": "unresolved_clause",
+              "status": "not_verified",
+              "evidence_ids": [],
+              "evidence_source_ids": [],
+              "gap": "证据尚未覆盖这一要求"
+            }
+          ],
+          "procedure_status": "insufficient",
+          "overall_completable": false,
+          "failure_reasons": [
+            "证据尚未覆盖这一要求"
+          ],
+          "semantic_review": "NOT_MEASURED"
+        }
+      },
+      {
+        "stage": "llm",
+        "attempt": 2,
+        "retry_hint": "[validation code=task_constraints_invalid]  Each task must reference an existing question anchor and use a kind from allowed_kinds; one task per anchor, do not self-rate completion; return exactly tasks,evidence_ids,task_bindings,analyses.",
+        "response_metadata": {
+          "stop_reason": "tool_use",
+          "content_block_counts": {
+            "tool_use": 1
+          },
+          "usage": {
+            "input_tokens": 12020,
+            "output_tokens": 1463,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 128
+          }
+        },
+        "task_contract_failure": {
+          "code": "task_kind_not_in_question_anchor",
+          "detail": "tasks[1] kind=procedure. Use a kind allowed by this question anchor; remove redundant tasks for the same anchor. A can/whether question is capability, not an extra procedure."
+        },
+        "guard_failures": [
+          {
+            "candidate_index": 0,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 1,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 2,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 3,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 4,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 5,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 6,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 7,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 8,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 9,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 11,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 12,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 13,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 14,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 15,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 16,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 17,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 18,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 19,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 20,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          }
+        ],
+        "analysis_rejections": [],
+        "selected_evidence_ids": [
+          "63f0c7-00@26+97",
+          "63f0c7-00@4023#1",
+          "63f0c7-00@4023#2",
+          "63f0c7-00@4023#3",
+          "63f0c7-00@4023#4",
+          "63f0c7-00@4898#1",
+          "63f0c7-00@4898#2",
+          "63f0c7-00@4898#3",
+          "63f0c7-00@4898#4",
+          "63f0c7-00@5080+94",
+          "63f0c7-00@5296+130",
+          "63f0c7-00@7893#1",
+          "63f0c7-00@7893#2",
+          "63f0c7-00@7893#3",
+          "63f0c7-00@7893#4",
+          "63f0c7-00@7893#6",
+          "63f0c7-00@8312+119",
+          "63f0c7-00@8432+109",
+          "63f0c7-00@12806+59",
+          "63f0c7-00@12866+113",
+          "6115a0-01@54+97"
+        ],
+        "coverage": {
+          "task_question": "In the Google Photos Android app, can a user manually select several photos and start backup in one action? Cite only official Google Help; separate manual upload from automatic backup.",
+          "parse_status": "parsed",
+          "items": [
+            {
+              "requirement_id": "unresolved-1",
+              "role": "core",
+              "kind": "unresolved_clause",
+              "status": "not_verified",
+              "evidence_ids": [],
+              "evidence_source_ids": [],
+              "gap": "证据尚未覆盖这一要求"
+            }
+          ],
+          "procedure_status": "insufficient",
+          "overall_completable": false,
+          "failure_reasons": [
+            "证据尚未覆盖这一要求"
+          ],
+          "semantic_review": "NOT_MEASURED"
+        }
+      },
+      {
+        "stage": "llm",
+        "attempt": 3,
+        "retry_hint": "[validation code=task_kind_not_in_question_anchor] tasks[1] kind=procedure. Use a kind allowed by this question anchor; remove redundant tasks for the same anchor. A can/whether question is capability, not an extra procedure. Each task must reference an existing question anchor and use a kind from allowed_kinds; one task per anchor, do not self-rate completion; return exactly tasks,evidence_ids,task_bindings,analyses.",
+        "response_metadata": {
+          "stop_reason": "tool_use",
+          "content_block_counts": {
+            "tool_use": 1
+          },
+          "usage": {
+            "input_tokens": 13176,
+            "output_tokens": 1251,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 128
+          }
+        },
+        "task_contract_failure": {
+          "code": "task_constraints_invalid",
+          "detail": ""
+        },
+        "guard_failures": [
+          {
+            "candidate_index": 0,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 1,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 2,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 3,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 4,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 5,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 6,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 7,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 8,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 9,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 10,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 12,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 13,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 14,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 15,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          }
+        ],
+        "analysis_rejections": [
+          {
+            "candidate_index": 0,
+            "category": "risk",
+            "code": "support_unknown"
+          }
+        ],
+        "selected_evidence_ids": [
+          "63f0c7-00@26+97",
+          "63f0c7-00@4023#1",
+          "63f0c7-00@4023#2",
+          "63f0c7-00@4023#3",
+          "63f0c7-00@4023#4",
+          "63f0c7-00@4023#5",
+          "63f0c7-00@4898#1",
+          "63f0c7-00@4898#2",
+          "63f0c7-00@4898#3",
+          "63f0c7-00@4898#4",
+          "63f0c7-00@5080+94",
+          "63f0c7-00@5296+130",
+          "63f0c7-00@12806+59",
+          "63f0c7-00@12866+113",
+          "63f0c7-00@8312+119",
+          "63f0c7-00@8432+109"
+        ],
+        "coverage": {
+          "task_question": "In the Google Photos Android app, can a user manually select several photos and start backup in one action? Cite only official Google Help; separate manual upload from automatic backup.",
+          "parse_status": "parsed",
+          "items": [
+            {
+              "requirement_id": "unresolved-1",
+              "role": "core",
+              "kind": "unresolved_clause",
+              "status": "not_verified",
+              "evidence_ids": [],
+              "evidence_source_ids": [],
+              "gap": "证据尚未覆盖这一要求"
+            }
+          ],
+          "procedure_status": "insufficient",
+          "overall_completable": false,
+          "failure_reasons": [
+            "证据尚未覆盖这一要求"
+          ],
+          "semantic_review": "NOT_MEASURED"
+        }
+      }
+    ],
+    "independent_official_review": "original/independent-official-review/review.json"
+  },
+  {
+    "suite": "original",
+    "sample": 2,
+    "run_id": "233d3fb5-5925-4b4a-ae82-9f6cc5ae3c67",
+    "question": "In the Dropbox iPhone app, can a user select and upload multiple photos at once? Cite only official Dropbox Help and state any limits actually documented.",
+    "query": "Dropbox iPhone select upload multiple photos site:help.dropbox.com/create-upload",
+    "error_message": "research task_action_not_in_anchor: original question remains partly unverified",
+    "assertion_failed": "0条确认事实。完整手动八步已选入但逐句数量门全部降级；限制子题未覆盖。普通复数不自动证明严格多选。",
+    "official_sources": [
+      {
+        "provider_source_id": "06c8ec-00",
+        "url": "https://help.dropbox.com/create-upload/upload-mobile"
+      },
+      {
+        "provider_source_id": "81ed87-01",
+        "url": "https://help.dropbox.com/create-upload/camera-uploads-overview"
+      },
+      {
+        "provider_source_id": "abca35-02",
+        "url": "https://help.dropbox.com/sync/upload-limitations"
+      },
+      {
+        "provider_source_id": "e3cf7b-03",
+        "url": "https://help.dropbox.com/create-upload/add-files"
+      },
+      {
+        "provider_source_id": "a9a533-03",
+        "url": "https://help.dropbox.com/create-upload/upload-live-photos"
+      }
+    ],
+    "protocol_and_guard_events": [
+      {
+        "stage": "llm",
+        "attempt": 1,
+        "retry_hint": null,
+        "response_metadata": {
+          "stop_reason": "tool_use",
+          "content_block_counts": {
+            "tool_use": 1
+          },
+          "usage": {
+            "input_tokens": 8850,
+            "output_tokens": 935,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 128
+          }
+        },
+        "task_contract_failure": {
+          "code": "task_action_not_in_anchor",
+          "detail": ""
+        },
+        "guard_failures": [
+          {
+            "candidate_index": 0,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 1,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 2,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 3,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 4,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 5,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 6,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 7,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 8,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 9,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 10,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 11,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 12,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 13,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 14,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          }
+        ],
+        "analysis_rejections": [],
+        "selected_evidence_ids": [
+          "06c8ec-00@922+94",
+          "06c8ec-00@887#1",
+          "06c8ec-00@887#2",
+          "06c8ec-00@887#3",
+          "06c8ec-00@887#4",
+          "06c8ec-00@887#5",
+          "06c8ec-00@887#6",
+          "06c8ec-00@887#7",
+          "06c8ec-00@887#8",
+          "06c8ec-00@1556+121",
+          "06c8ec-00@405#1",
+          "06c8ec-00@405#3",
+          "06c8ec-00@405#4",
+          "06c8ec-00@749+77",
+          "06c8ec-00@405#5"
+        ],
+        "coverage": {
+          "task_question": "In the Dropbox iPhone app, can a user select and upload multiple photos at once? Cite only official Dropbox Help and state any limits actually documented.",
+          "parse_status": "parsed",
+          "items": [
+            {
+              "requirement_id": "unresolved-1",
+              "role": "core",
+              "kind": "unresolved_clause",
+              "status": "not_verified",
+              "evidence_ids": [],
+              "evidence_source_ids": [],
+              "gap": "证据尚未覆盖这一要求"
+            }
+          ],
+          "procedure_status": "insufficient",
+          "overall_completable": false,
+          "failure_reasons": [
+            "证据尚未覆盖这一要求"
+          ],
+          "semantic_review": "NOT_MEASURED"
+        }
+      },
+      {
+        "stage": "llm",
+        "attempt": 2,
+        "retry_hint": "[validation code=task_action_not_in_anchor]  Each task must reference an existing question anchor and use a kind from allowed_kinds; one task per anchor, do not self-rate completion; return exactly tasks,evidence_ids,task_bindings,analyses.",
+        "response_metadata": {
+          "stop_reason": "tool_use",
+          "content_block_counts": {
+            "tool_use": 1
+          },
+          "usage": {
+            "input_tokens": 14097,
+            "output_tokens": 1395,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 128
+          }
+        },
+        "task_contract_failure": {
+          "code": "task_action_not_in_anchor",
+          "detail": ""
+        },
+        "guard_failures": [
+          {
+            "candidate_index": 0,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 1,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 2,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 3,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 4,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 5,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 6,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 7,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 8,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 9,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 10,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 11,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 12,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 13,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 14,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 15,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 16,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 17,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 18,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 19,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 20,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 21,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 22,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 23,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 24,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 25,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 26,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 27,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          }
+        ],
+        "analysis_rejections": [],
+        "selected_evidence_ids": [
+          "06c8ec-00@922+94",
+          "06c8ec-00@887#1",
+          "06c8ec-00@887#2",
+          "06c8ec-00@887#3",
+          "06c8ec-00@887#4",
+          "06c8ec-00@887#5",
+          "06c8ec-00@887#6",
+          "06c8ec-00@887#7",
+          "06c8ec-00@887#8",
+          "06c8ec-00@1386+83",
+          "06c8ec-00@1556+121",
+          "81ed87-01@645#1",
+          "81ed87-01@645#2",
+          "81ed87-01@645#5",
+          "81ed87-01@645#10",
+          "81ed87-01@645#11",
+          "81ed87-01@1379+52",
+          "81ed87-01@1432+121",
+          "81ed87-01@1308#1",
+          "81ed87-01@1308#2",
+          "81ed87-01@1308#3",
+          "81ed87-01@1308#4",
+          "81ed87-01@1308#5",
+          "81ed87-01@1308#6",
+          "81ed87-01@2055+72",
+          "abca35-02@1172+129",
+          "abca35-02@1407+102",
+          "e3cf7b-03@1268+109"
+        ],
+        "coverage": {
+          "task_question": "In the Dropbox iPhone app, can a user select and upload multiple photos at once? Cite only official Dropbox Help and state any limits actually documented.",
+          "parse_status": "parsed",
+          "items": [
+            {
+              "requirement_id": "unresolved-1",
+              "role": "core",
+              "kind": "unresolved_clause",
+              "status": "not_verified",
+              "evidence_ids": [],
+              "evidence_source_ids": [],
+              "gap": "证据尚未覆盖这一要求"
+            }
+          ],
+          "procedure_status": "insufficient",
+          "overall_completable": false,
+          "failure_reasons": [
+            "证据尚未覆盖这一要求"
+          ],
+          "semantic_review": "NOT_MEASURED"
+        }
+      },
+      {
+        "stage": "llm",
+        "attempt": 3,
+        "retry_hint": "[validation code=task_action_not_in_anchor]  Each task must reference an existing question anchor and use a kind from allowed_kinds; one task per anchor, do not self-rate completion; return exactly tasks,evidence_ids,task_bindings,analyses.",
+        "response_metadata": {
+          "stop_reason": "tool_use",
+          "content_block_counts": {
+            "tool_use": 1
+          },
+          "usage": {
+            "input_tokens": 16408,
+            "output_tokens": 1120,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 128
+          }
+        },
+        "task_contract_failure": {
+          "code": "task_action_not_in_anchor",
+          "detail": ""
+        },
+        "guard_failures": [
+          {
+            "candidate_index": 0,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 1,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 2,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 3,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 4,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 5,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 6,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 7,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 8,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 9,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 10,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 11,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 12,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 13,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 14,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 15,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 16,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 17,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 18,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 19,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 20,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          }
+        ],
+        "analysis_rejections": [],
+        "selected_evidence_ids": [
+          "06c8ec-00@887#1",
+          "06c8ec-00@887#2",
+          "06c8ec-00@887#3",
+          "06c8ec-00@887#4",
+          "06c8ec-00@887#5",
+          "06c8ec-00@887#6",
+          "06c8ec-00@887#7",
+          "06c8ec-00@887#8",
+          "06c8ec-00@922+94",
+          "06c8ec-00@1556+121",
+          "06c8ec-00@1386+83",
+          "a9a533-03@1316#1",
+          "a9a533-03@1316#4",
+          "a9a533-03@1316#5",
+          "a9a533-03@1417+97",
+          "81ed87-01@645#7",
+          "81ed87-01@645#10",
+          "81ed87-01@645#11",
+          "81ed87-01@1379+52",
+          "81ed87-01@1432+121",
+          "abca35-02@1407+102"
+        ],
+        "coverage": {
+          "task_question": "In the Dropbox iPhone app, can a user select and upload multiple photos at once? Cite only official Dropbox Help and state any limits actually documented.",
+          "parse_status": "parsed",
+          "items": [
+            {
+              "requirement_id": "unresolved-1",
+              "role": "core",
+              "kind": "unresolved_clause",
+              "status": "not_verified",
+              "evidence_ids": [],
+              "evidence_source_ids": [],
+              "gap": "证据尚未覆盖这一要求"
+            }
+          ],
+          "procedure_status": "insufficient",
+          "overall_completable": false,
+          "failure_reasons": [
+            "证据尚未覆盖这一要求"
+          ],
+          "semantic_review": "NOT_MEASURED"
+        }
+      }
+    ],
+    "independent_official_review": "original/independent-official-review/review.json"
+  },
+  {
+    "suite": "original",
+    "sample": 3,
+    "run_id": "e5e67351-6073-4656-a314-b6fa61d15329",
+    "question": "In the OneDrive iPhone app, can a user manually select multiple photos for one upload? Cite only official Microsoft Support; separate manual upload from camera upload.",
+    "query": "OneDrive iPhone manual select multiple photos upload site:support.microsoft.com/en-us/onedrive",
+    "error_message": "research unknown_evidence_id: original question remains partly unverified",
+    "assertion_failed": "0条确认事实。已有完整手动/Choose Existing正文，逐句数量门全部降级及unknown_evidence_id；不能说官方无答案。",
+    "official_sources": [
+      {
+        "provider_source_id": "aa158d-00",
+        "url": "https://support.microsoft.com/en-us/onedrive/manually-upload-files-or-photos-to-onedrive-in-ios"
+      },
+      {
+        "provider_source_id": "2c53f2-01",
+        "url": "https://support.microsoft.com/en-us/onedrive/troubleshoot-onedrive-for-ios-app-problems"
+      },
+      {
+        "provider_source_id": "4e2136-01",
+        "url": "https://support.microsoft.com/en-us/onedrive/automatically-save-photos-and-videos-with-onedrive-on-ios"
+      },
+      {
+        "provider_source_id": "ea86aa-03",
+        "url": "https://support.microsoft.com/en-us/onedrive/manually-upload-files-or-photos-with-onedrive-for-android"
+      }
+    ],
+    "protocol_and_guard_events": [
+      {
+        "stage": "llm",
+        "attempt": 1,
+        "retry_hint": null,
+        "response_metadata": {
+          "stop_reason": "tool_use",
+          "content_block_counts": {
+            "tool_use": 1
+          },
+          "usage": {
+            "input_tokens": 6392,
+            "output_tokens": 729,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 2314
+          }
+        },
+        "validation_code": "unknown_evidence_id"
+      },
+      {
+        "stage": "llm",
+        "attempt": 2,
+        "retry_hint": "[validation code=unknown_evidence_id]  Correct the closed schema; use one task per question anchor and a kind from allowed_kinds. Do not self-rate completion. Use only offered IDs; analyses need confirmed facts.",
+        "response_metadata": {
+          "stop_reason": "tool_use",
+          "content_block_counts": {
+            "tool_use": 1
+          },
+          "usage": {
+            "input_tokens": 11184,
+            "output_tokens": 940,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 128
+          }
+        },
+        "guard_failures": [
+          {
+            "candidate_index": 0,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 1,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 2,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 3,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 4,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 5,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 6,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 7,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 8,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 9,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 10,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 11,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          }
+        ],
+        "analysis_rejections": [],
+        "selected_evidence_ids": [
+          "aa158d-00@541#1",
+          "aa158d-00@541#2",
+          "aa158d-00@761+4",
+          "aa158d-00@766+53",
+          "aa158d-00@820+85",
+          "aa158d-00@906+66",
+          "aa158d-00@973+61",
+          "aa158d-00@1035+119",
+          "aa158d-00@1155+76",
+          "aa158d-00@1232+86",
+          "aa158d-00@390+150",
+          "aa158d-00@2096+57"
+        ],
+        "coverage": {
+          "task_question": "In the OneDrive iPhone app, can a user manually select multiple photos for one upload? Cite only official Microsoft Support; separate manual upload from camera upload.",
+          "parse_status": "parsed",
+          "items": [
+            {
+              "requirement_id": "t1",
+              "role": "core",
+              "kind": "capability",
+              "status": "not_verified",
+              "evidence_ids": [],
+              "evidence_source_ids": [],
+              "gap": "证据尚未覆盖这一要求"
+            },
+            {
+              "requirement_id": "t2",
+              "role": "core",
+              "kind": "comparison",
+              "status": "not_verified",
+              "evidence_ids": [],
+              "evidence_source_ids": [],
+              "gap": "证据尚未覆盖这一要求"
+            }
+          ],
+          "procedure_status": "insufficient",
+          "overall_completable": false,
+          "failure_reasons": [
+            "证据尚未覆盖这一要求",
+            "证据尚未覆盖这一要求"
+          ],
+          "semantic_review": "NOT_MEASURED"
+        }
+      },
+      {
+        "stage": "llm",
+        "attempt": 3,
+        "retry_hint": "[validation code=insufficient_external_evidence] Missing task IDs: t1,t2. Keep every original condition. Select all exact steps plus relevant options/conditions; never invent evidence. Return exactly tasks,evidence_ids,task_bindings,analyses.",
+        "response_metadata": {
+          "stop_reason": "tool_use",
+          "content_block_counts": {
+            "tool_use": 1
+          },
+          "usage": {
+            "input_tokens": 14463,
+            "output_tokens": 1453,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 128
+          }
+        },
+        "validation_code": "unknown_evidence_id"
+      }
+    ],
+    "independent_official_review": "original/independent-official-review/review.json"
+  },
+  {
+    "suite": "original",
+    "sample": 4,
+    "run_id": "4cb23f68-2a77-4500-bf18-f2cf364fa5d1",
+    "question": "On iPhone, distinguish the Photos app iCloud sync, iCloud.com upload, and Shared Photo Library. Which of these supports selecting multiple photos for a manual upload? Cite only official Apple Support.",
+    "query": "iCloud iCloud.com Shared Photo Library iPhone photos sync upload share select site:support.apple.com/en-us",
+    "error_message": "research unknown_evidence_id: original question remains partly unverified",
+    "assertion_failed": "确认Shared Library多选局部事实；iCloud同步、网页上传及共享图库三入口比较未完成。",
+    "official_sources": [
+      {
+        "provider_source_id": "9ae91c-00",
+        "url": "https://support.apple.com/en-us/118229"
+      },
+      {
+        "provider_source_id": "5e4c80-01",
+        "url": "https://support.apple.com/guide/iphone/add-content-to-an-icloud-shared-photo-library-iphc6c5d25ce/ios"
+      },
+      {
+        "provider_source_id": "f4bf7b-01",
+        "url": "https://support.apple.com/guide/iphone/use-icloud-shared-photo-library-iph1a6c849ab/ios"
+      },
+      {
+        "provider_source_id": "51a79d-03",
+        "url": "https://support.apple.com/guide/icloud/upload-and-download-photos-mmb5dbaf376f/icloud"
+      }
+    ],
+    "protocol_and_guard_events": [
+      {
+        "stage": "llm",
+        "attempt": 1,
+        "retry_hint": null,
+        "response_metadata": {
+          "stop_reason": "tool_use",
+          "content_block_counts": {
+            "tool_use": 1
+          },
+          "usage": {
+            "input_tokens": 9142,
+            "output_tokens": 1852,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 128
+          }
+        },
+        "guard_failures": [
+          {
+            "candidate_index": 0,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 1,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 2,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 3,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 4,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 5,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 6,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 7,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 8,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 9,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 10,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 11,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 12,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 13,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 14,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 15,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 16,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 17,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 18,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 19,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 20,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 21,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 22,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 24,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 25,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 26,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 27,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 29,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 30,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 31,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 32,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 33,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 34,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 35,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 36,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 37,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 38,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          }
+        ],
+        "analysis_rejections": [],
+        "selected_evidence_ids": [
+          "9ae91c-00@59+181",
+          "9ae91c-00@572+137",
+          "9ae91c-00@1254+108",
+          "9ae91c-00@1420#1",
+          "9ae91c-00@1420#2",
+          "9ae91c-00@1420#3",
+          "9ae91c-00@1420#4",
+          "9ae91c-00@2069#2",
+          "9ae91c-00@2069#3",
+          "9ae91c-00@2069#4",
+          "9ae91c-00@2609#1",
+          "9ae91c-00@2609#2",
+          "9ae91c-00@2609#3",
+          "9ae91c-00@3523#1",
+          "9ae91c-00@3523#2",
+          "9ae91c-00@3523#3",
+          "9ae91c-00@4422+117",
+          "9ae91c-00@4783+128",
+          "9ae91c-00@4912+68",
+          "9ae91c-00@5176+148",
+          "9ae91c-00@5325+131",
+          "9ae91c-00@6311#1",
+          "9ae91c-00@6311#2",
+          "5e4c80-01@58+133",
+          "5e4c80-01@438+119",
+          "5e4c80-01@558+112",
+          "5e4c80-01@739+103",
+          "5e4c80-01@671#1",
+          "5e4c80-01@671#2",
+          "5e4c80-01@1277+145",
+          "5e4c80-01@1423+162",
+          "5e4c80-01@2294#1",
+          "5e4c80-01@2294#2",
+          "5e4c80-01@2294#3",
+          "5e4c80-01@2294#4",
+          "5e4c80-01@2294#5",
+          "5e4c80-01@3073#1",
+          "5e4c80-01@3073#2",
+          "5e4c80-01@3073#3"
+        ],
+        "coverage": {
+          "task_question": "On iPhone, distinguish the Photos app iCloud sync, iCloud.com upload, and Shared Photo Library. Which of these supports selecting multiple photos for a manual upload? Cite only official Apple Support.",
+          "parse_status": "parsed",
+          "items": [
+            {
+              "requirement_id": "t1",
+              "role": "core",
+              "kind": "comparison",
+              "status": "partial",
+              "evidence_ids": [
+                "5e4c80-01@58+133",
+                "5e4c80-01@671#2"
+              ],
+              "evidence_source_ids": [
+                "5e4c80-01"
+              ],
+              "gap": "证据尚未覆盖这一要求"
+            },
+            {
+              "requirement_id": "t2",
+              "role": "core",
+              "kind": "capability",
+              "status": "partial",
+              "evidence_ids": [
+                "5e4c80-01@671#2"
+              ],
+              "evidence_source_ids": [
+                "5e4c80-01"
+              ],
+              "gap": "证据尚未覆盖这一要求"
+            }
+          ],
+          "procedure_status": "insufficient",
+          "overall_completable": false,
+          "failure_reasons": [
+            "证据尚未覆盖这一要求",
+            "证据尚未覆盖这一要求"
+          ],
+          "semantic_review": "NOT_MEASURED"
+        }
+      },
+      {
+        "stage": "llm",
+        "attempt": 2,
+        "retry_hint": "[validation code=coverage_incomplete] Missing task IDs: t1,t2. Keep every original condition. Select all exact steps plus relevant options/conditions; never invent evidence. Return exactly tasks,evidence_ids,task_bindings,analyses.",
+        "response_metadata": {
+          "stop_reason": "tool_use",
+          "content_block_counts": {
+            "text": 1,
+            "tool_use": 1
+          },
+          "usage": {
+            "input_tokens": 11806,
+            "output_tokens": 3370,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 2304
+          }
+        },
+        "validation_code": "evidence_ids_too_many"
+      },
+      {
+        "stage": "llm",
+        "attempt": 3,
+        "retry_hint": "[validation code=evidence_ids_too_many]  Correct the closed schema; use one task per question anchor and a kind from allowed_kinds. Do not self-rate completion. Use only offered IDs; analyses need confirmed facts.",
+        "response_metadata": {
+          "stop_reason": "tool_use",
+          "content_block_counts": {
+            "tool_use": 1
+          },
+          "usage": {
+            "input_tokens": 13218,
+            "output_tokens": 1152,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 2314
+          }
+        },
+        "task_contract_failure": {
+          "code": "task_constraints_invalid",
+          "detail": ""
+        },
+        "validation_code": "unknown_evidence_id"
+      }
+    ],
+    "independent_official_review": "original/independent-official-review/review.json"
+  },
+  {
+    "suite": "original",
+    "sample": 5,
+    "run_id": "68166bbb-152f-4d9f-b2dc-ebb96c2e8f32",
+    "question": "In the Google Drive Android app, can a user select multiple device photos and upload them in one action? Cite only official Google Drive Help; if official documentation is absent, mark not verified.",
+    "query": "Google Drive Android select multiple photos upload site:support.google.com/drive/answer",
+    "error_message": "research task_kind_not_in_question_anchor: original question remains partly unverified",
+    "assertion_failed": "0条确认事实，普通上传四步已取得；不据普通复数推断明确多选，另有任务类型/约束失败。",
+    "official_sources": [
+      {
+        "provider_source_id": "e9822f-00",
+        "url": "https://support.google.com/drive/answer/2424384?hl=en&co=GENIE.Platform%3DAndroid"
+      },
+      {
+        "provider_source_id": "bcde78-01",
+        "url": "https://support.google.com/drive/answer/2424368?hl=en&co=GENIE.Platform%3DAndroid"
+      }
+    ],
+    "protocol_and_guard_events": [
+      {
+        "stage": "llm",
+        "attempt": 1,
+        "retry_hint": null,
+        "response_metadata": {
+          "stop_reason": "tool_use",
+          "content_block_counts": {
+            "text": 1,
+            "tool_use": 1
+          },
+          "usage": {
+            "input_tokens": 6290,
+            "output_tokens": 952,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 2007
+          }
+        },
+        "task_contract_failure": {
+          "code": "task_constraints_invalid",
+          "detail": ""
+        },
+        "guard_failures": [
+          {
+            "candidate_index": 0,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 1,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 2,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 3,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 4,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 5,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 6,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 7,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 8,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 9,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          }
+        ],
+        "analysis_rejections": [],
+        "selected_evidence_ids": [
+          "bcde78-01@377#1",
+          "bcde78-01@377#2",
+          "bcde78-01@377#3",
+          "bcde78-01@377#4",
+          "bcde78-01@647+101",
+          "bcde78-01@822#1",
+          "bcde78-01@822#2",
+          "bcde78-01@822#3",
+          "bcde78-01@1120+107",
+          "e9822f-00@166+132"
+        ],
+        "coverage": {
+          "task_question": "In the Google Drive Android app, can a user select multiple device photos and upload them in one action? Cite only official Google Drive Help; if official documentation is absent, mark not verified.",
+          "parse_status": "parsed",
+          "items": [
+            {
+              "requirement_id": "unresolved-1",
+              "role": "core",
+              "kind": "unresolved_clause",
+              "status": "not_verified",
+              "evidence_ids": [],
+              "evidence_source_ids": [],
+              "gap": "证据尚未覆盖这一要求"
+            }
+          ],
+          "procedure_status": "insufficient",
+          "overall_completable": false,
+          "failure_reasons": [
+            "证据尚未覆盖这一要求"
+          ],
+          "semantic_review": "NOT_MEASURED"
+        }
+      },
+      {
+        "stage": "llm",
+        "attempt": 2,
+        "retry_hint": "[validation code=task_constraints_invalid]  Each task must reference an existing question anchor and use a kind from allowed_kinds; one task per anchor, do not self-rate completion; return exactly tasks,evidence_ids,task_bindings,analyses.",
+        "response_metadata": {
+          "stop_reason": "tool_use",
+          "content_block_counts": {
+            "tool_use": 1
+          },
+          "usage": {
+            "input_tokens": 8609,
+            "output_tokens": 856,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 2316
+          }
+        },
+        "guard_failures": [
+          {
+            "candidate_index": 0,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 1,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 2,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 3,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 4,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 5,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 6,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 7,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 8,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 9,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 10,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 11,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 12,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 13,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 14,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          }
+        ],
+        "analysis_rejections": [],
+        "selected_evidence_ids": [
+          "bcde78-01@377#1",
+          "bcde78-01@377#2",
+          "bcde78-01@377#3",
+          "bcde78-01@377#4",
+          "bcde78-01@128+62",
+          "bcde78-01@191+130",
+          "bcde78-01@858+75",
+          "bcde78-01@822#1",
+          "bcde78-01@822#2",
+          "bcde78-01@822#3",
+          "bcde78-01@1120+107",
+          "bcde78-01@647+101",
+          "bcde78-01@749+72",
+          "e9822f-00@679+37",
+          "e9822f-00@2683+72"
+        ],
+        "coverage": {
+          "task_question": "In the Google Drive Android app, can a user select multiple device photos and upload them in one action? Cite only official Google Drive Help; if official documentation is absent, mark not verified.",
+          "parse_status": "parsed",
+          "items": [
+            {
+              "requirement_id": "t1",
+              "role": "core",
+              "kind": "capability",
+              "status": "not_verified",
+              "evidence_ids": [],
+              "evidence_source_ids": [],
+              "gap": "证据尚未覆盖这一要求"
+            },
+            {
+              "requirement_id": "t2",
+              "role": "core",
+              "kind": "condition",
+              "status": "not_verified",
+              "evidence_ids": [],
+              "evidence_source_ids": [],
+              "gap": "证据尚未覆盖这一要求"
+            },
+            {
+              "requirement_id": "unresolved-1",
+              "role": "core",
+              "kind": "unresolved_clause",
+              "status": "not_verified",
+              "evidence_ids": [],
+              "evidence_source_ids": [],
+              "gap": "原问题中的条件或子问题尚未获得可核对证据"
+            }
+          ],
+          "procedure_status": "insufficient",
+          "overall_completable": false,
+          "failure_reasons": [
+            "证据尚未覆盖这一要求",
+            "证据尚未覆盖这一要求",
+            "原问题中的条件或子问题尚未获得可核对证据"
+          ],
+          "semantic_review": "NOT_MEASURED"
+        }
+      },
+      {
+        "stage": "llm",
+        "attempt": 3,
+        "retry_hint": "[validation code=insufficient_external_evidence] Missing task IDs: t1,t2,unresolved-1. Keep every original condition. Select all exact steps plus relevant options/conditions; never invent evidence. Return exactly tasks,evidence_ids,task_bindings,analyses.",
+        "response_metadata": {
+          "stop_reason": "tool_use",
+          "content_block_counts": {
+            "text": 1,
+            "tool_use": 1
+          },
+          "usage": {
+            "input_tokens": 11919,
+            "output_tokens": 1348,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 128
+          }
+        },
+        "task_contract_failure": {
+          "code": "task_kind_not_in_question_anchor",
+          "detail": "tasks[1] kind=procedure. Use a kind allowed by this question anchor; remove redundant tasks for the same anchor. A can/whether question is capability, not an extra procedure."
+        },
+        "guard_failures": [
+          {
+            "candidate_index": 0,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 1,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 2,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 3,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 4,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 5,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 6,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 7,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 8,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 9,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 10,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 11,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 12,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          },
+          {
+            "candidate_index": 13,
+            "first_failed_guard": "multi_select_quantifier_missing"
+          }
+        ],
+        "analysis_rejections": [],
+        "selected_evidence_ids": [
+          "bcde78-01@377#1",
+          "bcde78-01@377#2",
+          "bcde78-01@377#3",
+          "bcde78-01@377#4",
+          "bcde78-01@128+62",
+          "bcde78-01@191+130",
+          "bcde78-01@858+75",
+          "bcde78-01@822#1",
+          "bcde78-01@822#2",
+          "bcde78-01@822#3",
+          "bcde78-01@1120+107",
+          "bcde78-01@647+101",
+          "bcde78-01@749+72",
+          "e9822f-00@2756+42"
+        ],
+        "coverage": {
+          "task_question": "In the Google Drive Android app, can a user select multiple device photos and upload them in one action? Cite only official Google Drive Help; if official documentation is absent, mark not verified.",
+          "parse_status": "parsed",
+          "items": [
+            {
+              "requirement_id": "unresolved-1",
+              "role": "core",
+              "kind": "unresolved_clause",
+              "status": "not_verified",
+              "evidence_ids": [],
+              "evidence_source_ids": [],
+              "gap": "证据尚未覆盖这一要求"
+            }
+          ],
+          "procedure_status": "insufficient",
+          "overall_completable": false,
+          "failure_reasons": [
+            "证据尚未覆盖这一要求"
+          ],
+          "semantic_review": "NOT_MEASURED"
+        }
+      }
+    ],
+    "independent_official_review": "original/independent-official-review/review.json"
+  },
+  {
+    "suite": "original",
+    "sample": 9,
+    "run_id": "9d68d675-4dcc-4719-ad15-d835a84b6ab3",
+    "question": "According to official Apple Support, which upload choices does iCloud.com show on a phone or tablet, and where should users upload to a Shared Photo Library? Cite only official Apple Support.",
+    "query": "iCloud.com Shared Photo Library upload share photos site:support.apple.com/en-us",
+    "error_message": "research task_subject_not_in_question: original question remains partly unverified",
+    "assertion_failed": "仅确认Shared Library既有内容移动事实；未给出iCloud.com手机三选项及上传共享图库应使用Photos App的关键注释。",
+    "official_sources": [
+      {
+        "provider_source_id": "ea46c3-00",
+        "url": "https://support.apple.com/en-us/118229"
+      },
+      {
+        "provider_source_id": "2f8de6-01",
+        "url": "https://support.apple.com/guide/iphone/add-content-to-an-icloud-shared-photo-library-iphc6c5d25ce/ios"
+      },
+      {
+        "provider_source_id": "d1348e-00",
+        "url": "https://support.apple.com/guide/icloud/upload-and-download-photos-mmb5dbaf376f/icloud"
+      },
+      {
+        "provider_source_id": "c33428-01",
+        "url": "https://support.apple.com/guide/icloud/upload-and-download-files-mmad632d1df2/icloud"
+      }
+    ],
+    "protocol_and_guard_events": [
+      {
+        "stage": "llm",
+        "attempt": 1,
+        "retry_hint": null,
+        "response_metadata": {
+          "stop_reason": "tool_use",
+          "content_block_counts": {
+            "tool_use": 1
+          },
+          "usage": {
+            "input_tokens": 9182,
+            "output_tokens": 1590,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 128
+          }
+        },
+        "task_contract_failure": {
+          "code": "task_subject_not_in_question",
+          "detail": ""
+        },
+        "validation_code": "evidence_ids_too_many"
+      },
+      {
+        "stage": "llm",
+        "attempt": 2,
+        "retry_hint": "[validation code=evidence_ids_too_many]  Correct the closed schema; use one task per question anchor and a kind from allowed_kinds. Do not self-rate completion. Use only offered IDs; analyses need confirmed facts.",
+        "response_metadata": {
+          "stop_reason": "tool_use",
+          "content_block_counts": {
+            "text": 1,
+            "tool_use": 1
+          },
+          "usage": {
+            "input_tokens": 10170,
+            "output_tokens": 686,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 2314
+          }
+        },
+        "task_contract_failure": {
+          "code": "task_subject_not_in_question",
+          "detail": ""
+        },
+        "guard_failures": [],
+        "analysis_rejections": [],
+        "selected_evidence_ids": [
+          "ea46c3-00@5325+131",
+          "2f8de6-01@58+133",
+          "2f8de6-01@739+103",
+          "2f8de6-01@671#1",
+          "2f8de6-01@671#2",
+          "2f8de6-01@1277+145",
+          "2f8de6-01@1423+162"
+        ],
+        "coverage": {
+          "task_question": "According to official Apple Support, which upload choices does iCloud.com show on a phone or tablet, and where should users upload to a Shared Photo Library? Cite only official Apple Support.",
+          "parse_status": "parsed",
+          "items": [
+            {
+              "requirement_id": "unresolved-1",
+              "role": "core",
+              "kind": "unresolved_clause",
+              "status": "not_verified",
+              "evidence_ids": [],
+              "evidence_source_ids": [],
+              "gap": "证据尚未覆盖这一要求"
+            }
+          ],
+          "procedure_status": "insufficient",
+          "overall_completable": false,
+          "failure_reasons": [
+            "证据尚未覆盖这一要求"
+          ],
+          "semantic_review": "NOT_MEASURED"
+        }
+      },
+      {
+        "stage": "llm",
+        "attempt": 3,
+        "retry_hint": "[validation code=task_subject_not_in_question]  Each task must reference an existing question anchor and use a kind from allowed_kinds; one task per anchor, do not self-rate completion; return exactly tasks,evidence_ids,task_bindings,analyses.",
+        "response_metadata": {
+          "stop_reason": "tool_use",
+          "content_block_counts": {
+            "tool_use": 1
+          },
+          "usage": {
+            "input_tokens": 14966,
+            "output_tokens": 636,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 128
+          }
+        },
+        "task_contract_failure": {
+          "code": "task_subject_not_in_question",
+          "detail": ""
+        },
+        "guard_failures": [],
+        "analysis_rejections": [],
+        "selected_evidence_ids": [
+          "d1348e-00@693+122",
+          "d1348e-00@1100+148",
+          "d1348e-00@253#2",
+          "c33428-01@666+151",
+          "ea46c3-00@1116+137",
+          "2f8de6-01@438+119"
+        ],
+        "coverage": {
+          "task_question": "According to official Apple Support, which upload choices does iCloud.com show on a phone or tablet, and where should users upload to a Shared Photo Library? Cite only official Apple Support.",
+          "parse_status": "parsed",
+          "items": [
+            {
+              "requirement_id": "unresolved-1",
+              "role": "core",
+              "kind": "unresolved_clause",
+              "status": "not_verified",
+              "evidence_ids": [],
+              "evidence_source_ids": [],
+              "gap": "证据尚未覆盖这一要求"
+            }
+          ],
+          "procedure_status": "insufficient",
+          "overall_completable": false,
+          "failure_reasons": [
+            "证据尚未覆盖这一要求"
+          ],
+          "semantic_review": "NOT_MEASURED"
+        }
+      }
+    ],
+    "independent_official_review": "original/independent-official-review/review.json"
+  },
+  {
+    "suite": "extended",
+    "sample": 2,
+    "run_id": "2d8a5b32-bbc8-4428-b927-f7401b030885",
+    "question": "仅引用 Dropbox 官方帮助：关闭相机上传（camera uploads）后，移动端还能手动添加照片吗？请保留完整操作步骤和禁用条件。",
+    "query": "Dropbox upload photos site:help.dropbox.com/create-upload",
+    "error_message": "research task_subject_not_in_question: original question remains partly unverified",
+    "assertion_failed": "只取camera uploads启用、overnight等相邻事实，未回答禁用后手动八步；官方已存在完整目标答案。",
+    "official_sources": [
+      {
+        "provider_source_id": "2adc9a-00",
+        "url": "https://help.dropbox.com/create-upload/add-files"
+      },
+      {
+        "provider_source_id": "6413ba-01",
+        "url": "https://help.dropbox.com/create-upload/camera-uploads-overview"
+      },
+      {
+        "provider_source_id": "906000-01",
+        "url": "https://help.dropbox.com/share/received-file-request"
+      },
+      {
+        "provider_source_id": "e5539c-03",
+        "url": "https://help.dropbox.com/create-upload/web-based-files"
+      },
+      {
+        "provider_source_id": "f0ec83-04",
+        "url": "https://help.dropbox.com/create-upload/dropbox-docsend-upload-files"
+      }
+    ],
+    "protocol_and_guard_events": [
+      {
+        "stage": "llm",
+        "attempt": 1,
+        "retry_hint": null,
+        "response_metadata": {
+          "stop_reason": "tool_use",
+          "content_block_counts": {
+            "tool_use": 1
+          },
+          "usage": {
+            "input_tokens": 9011,
+            "output_tokens": 1673,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 128
+          }
+        },
+        "task_contract_failure": {
+          "code": "task_subject_not_in_question",
+          "detail": ""
+        },
+        "guard_failures": [],
+        "analysis_rejections": [],
+        "selected_evidence_ids": [
+          "6413ba-01@645#1",
+          "6413ba-01@645#2",
+          "6413ba-01@645#3",
+          "6413ba-01@645#4",
+          "6413ba-01@645#5",
+          "6413ba-01@645#6",
+          "6413ba-01@645#7",
+          "6413ba-01@645#8",
+          "6413ba-01@645#9",
+          "6413ba-01@645#10",
+          "6413ba-01@645#11",
+          "6413ba-01@645#12",
+          "6413ba-01@1308#1",
+          "6413ba-01@1308#2",
+          "6413ba-01@1308#3",
+          "6413ba-01@1379+52",
+          "6413ba-01@1432+121",
+          "6413ba-01@2055+72",
+          "6413ba-01@1308#4",
+          "6413ba-01@1308#5",
+          "6413ba-01@1308#6",
+          "6413ba-01@7053+128",
+          "6413ba-01@7245+108",
+          "2adc9a-00@1268+109"
+        ],
+        "coverage": {
+          "task_question": "仅引用 Dropbox 官方帮助：关闭相机上传（camera uploads）后，移动端还能手动添加照片吗？请保留完整操作步骤和禁用条件。",
+          "parse_status": "parsed",
+          "items": [
+            {
+              "requirement_id": "unresolved-1",
+              "role": "core",
+              "kind": "unresolved_clause",
+              "status": "not_verified",
+              "evidence_ids": [],
+              "evidence_source_ids": [],
+              "gap": "证据尚未覆盖这一要求"
+            }
+          ],
+          "procedure_status": "insufficient",
+          "overall_completable": false,
+          "failure_reasons": [
+            "证据尚未覆盖这一要求"
+          ],
+          "semantic_review": "NOT_MEASURED"
+        }
+      },
+      {
+        "stage": "llm",
+        "attempt": 2,
+        "retry_hint": "[validation code=task_subject_not_in_question]  Each task must reference an existing question anchor and use a kind from allowed_kinds; one task per anchor, do not self-rate completion; return exactly tasks,evidence_ids,task_bindings,analyses.",
+        "response_metadata": {
+          "stop_reason": "tool_use",
+          "content_block_counts": {
+            "tool_use": 1
+          },
+          "usage": {
+            "input_tokens": 12214,
+            "output_tokens": 1542,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 128
+          }
+        },
+        "task_contract_failure": {
+          "code": "task_subject_not_in_question",
+          "detail": ""
+        },
+        "guard_failures": [],
+        "analysis_rejections": [],
+        "selected_evidence_ids": [
+          "6413ba-01@86+72",
+          "6413ba-01@159+24",
+          "6413ba-01@184+80",
+          "6413ba-01@265+150",
+          "6413ba-01@566+78",
+          "6413ba-01@713+11",
+          "6413ba-01@725+70",
+          "6413ba-01@645#1",
+          "6413ba-01@645#2",
+          "6413ba-01@645#3",
+          "6413ba-01@645#4",
+          "6413ba-01@645#5",
+          "6413ba-01@645#6",
+          "6413ba-01@953+66",
+          "6413ba-01@645#7",
+          "6413ba-01@645#8",
+          "6413ba-01@645#9",
+          "6413ba-01@645#10",
+          "6413ba-01@645#11",
+          "6413ba-01@645#12",
+          "6413ba-01@7053+128",
+          "6413ba-01@7245+108"
+        ],
+        "coverage": {
+          "task_question": "仅引用 Dropbox 官方帮助：关闭相机上传（camera uploads）后，移动端还能手动添加照片吗？请保留完整操作步骤和禁用条件。",
+          "parse_status": "parsed",
+          "items": [
+            {
+              "requirement_id": "unresolved-1",
+              "role": "core",
+              "kind": "unresolved_clause",
+              "status": "not_verified",
+              "evidence_ids": [],
+              "evidence_source_ids": [],
+              "gap": "证据尚未覆盖这一要求"
+            }
+          ],
+          "procedure_status": "insufficient",
+          "overall_completable": false,
+          "failure_reasons": [
+            "证据尚未覆盖这一要求"
+          ],
+          "semantic_review": "NOT_MEASURED"
+        }
+      },
+      {
+        "stage": "llm",
+        "attempt": 3,
+        "retry_hint": "[validation code=task_subject_not_in_question]  Each task must reference an existing question anchor and use a kind from allowed_kinds; one task per anchor, do not self-rate completion; return exactly tasks,evidence_ids,task_bindings,analyses.",
+        "response_metadata": {
+          "stop_reason": "tool_use",
+          "content_block_counts": {
+            "text": 1,
+            "tool_use": 1
+          },
+          "usage": {
+            "input_tokens": 14424,
+            "output_tokens": 1094,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 2432
+          }
+        },
+        "task_contract_failure": {
+          "code": "task_subject_not_in_question",
+          "detail": ""
+        },
+        "guard_failures": [],
+        "analysis_rejections": [],
+        "selected_evidence_ids": [
+          "6413ba-01@645#1",
+          "6413ba-01@645#2",
+          "6413ba-01@645#3",
+          "6413ba-01@645#4",
+          "6413ba-01@645#5",
+          "6413ba-01@645#6",
+          "6413ba-01@953+66",
+          "6413ba-01@645#7",
+          "6413ba-01@645#8",
+          "6413ba-01@645#9",
+          "6413ba-01@645#10",
+          "6413ba-01@645#11",
+          "6413ba-01@645#12",
+          "6413ba-01@86+72",
+          "6413ba-01@159+24",
+          "6413ba-01@184+80",
+          "6413ba-01@265+150",
+          "6413ba-01@566+78",
+          "6413ba-01@7053+128",
+          "6413ba-01@7245+108"
+        ],
+        "coverage": {
+          "task_question": "仅引用 Dropbox 官方帮助：关闭相机上传（camera uploads）后，移动端还能手动添加照片吗？请保留完整操作步骤和禁用条件。",
+          "parse_status": "parsed",
+          "items": [
+            {
+              "requirement_id": "unresolved-1",
+              "role": "core",
+              "kind": "unresolved_clause",
+              "status": "not_verified",
+              "evidence_ids": [],
+              "evidence_source_ids": [],
+              "gap": "证据尚未覆盖这一要求"
+            }
+          ],
+          "procedure_status": "insufficient",
+          "overall_completable": false,
+          "failure_reasons": [
+            "证据尚未覆盖这一要求"
+          ],
+          "semantic_review": "NOT_MEASURED"
+        }
+      }
+    ],
+    "independent_official_review": "extended/independent-official-review/review.json"
+  },
+  {
+    "suite": "extended",
+    "sample": 3,
+    "run_id": "c12e6a8f-7612-4ae8-9b92-3143157b2f28",
+    "question": "仅引用 Apple 官方支持：iCloud.com 在手机或平板上提供哪些上传选项？如果要上传到共享照片图库，应使用哪个入口？请保留版本条件。",
+    "query": "iCloud upload share photos site:support.apple.com/en-us",
+    "error_message": "research task_subject_not_in_question: original question remains partly unverified",
+    "assertion_failed": "确认手机三选项、Photos App入口及该页面iOS16.1/iPadOS16/macOS13版本注释；程序task_subject失败造成漏判。",
+    "official_sources": [
+      {
+        "provider_source_id": "af135c-00",
+        "url": "https://support.apple.com/guide/icloud/what-you-can-do-with-icloud-and-photos-mm8b32f3ae27/icloud"
+      },
+      {
+        "provider_source_id": "61b480-01",
+        "url": "https://support.apple.com/guide/icloud/upload-and-download-photos-mmb5dbaf376f/icloud"
+      },
+      {
+        "provider_source_id": "c94e80-00",
+        "url": "https://support.apple.com/zh-cn/guide/icloud/mmad632d1df2/icloud"
+      },
+      {
+        "provider_source_id": "5cd189-02",
+        "url": "https://support.apple.com/zh-cn/108782"
+      },
+      {
+        "provider_source_id": "e60242-00",
+        "url": "https://support.apple.com/guide/icloud/icloud-drive-on-icloudcom-overview-mmd0b4a7f5e8/icloud"
+      }
+    ],
+    "protocol_and_guard_events": [
+      {
+        "stage": "llm",
+        "attempt": 1,
+        "retry_hint": null,
+        "response_metadata": {
+          "stop_reason": "tool_use",
+          "content_block_counts": {
+            "tool_use": 1
+          },
+          "usage": {
+            "input_tokens": 7778,
+            "output_tokens": 782,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 128
+          }
+        },
+        "task_contract_failure": {
+          "code": "task_subject_not_in_question",
+          "detail": ""
+        },
+        "guard_failures": [],
+        "analysis_rejections": [],
+        "selected_evidence_ids": [
+          "61b480-01@253#1",
+          "61b480-01@253#2",
+          "61b480-01@253#3",
+          "61b480-01@693+122",
+          "61b480-01@1100+148"
+        ],
+        "coverage": {
+          "task_question": "仅引用 Apple 官方支持：iCloud.com 在手机或平板上提供哪些上传选项？如果要上传到共享照片图库，应使用哪个入口？请保留版本条件。",
+          "parse_status": "parsed",
+          "items": [
+            {
+              "requirement_id": "unresolved-1",
+              "role": "core",
+              "kind": "unresolved_clause",
+              "status": "not_verified",
+              "evidence_ids": [],
+              "evidence_source_ids": [],
+              "gap": "证据尚未覆盖这一要求"
+            }
+          ],
+          "procedure_status": "insufficient",
+          "overall_completable": false,
+          "failure_reasons": [
+            "证据尚未覆盖这一要求"
+          ],
+          "semantic_review": "NOT_MEASURED"
+        }
+      },
+      {
+        "stage": "llm",
+        "attempt": 2,
+        "retry_hint": "[validation code=task_subject_not_in_question]  Each task must reference an existing question anchor and use a kind from allowed_kinds; one task per anchor, do not self-rate completion; return exactly tasks,evidence_ids,task_bindings,analyses.",
+        "response_metadata": {
+          "stop_reason": "tool_use",
+          "content_block_counts": {
+            "text": 1,
+            "tool_use": 1
+          },
+          "usage": {
+            "input_tokens": 13333,
+            "output_tokens": 855,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 128
+          }
+        },
+        "task_contract_failure": {
+          "code": "task_subject_not_in_question",
+          "detail": ""
+        },
+        "guard_failures": [],
+        "analysis_rejections": [],
+        "selected_evidence_ids": [
+          "61b480-01@253#1",
+          "61b480-01@253#2",
+          "61b480-01@253#3",
+          "61b480-01@693+122",
+          "61b480-01@1100+148",
+          "af135c-00@1453+155"
+        ],
+        "coverage": {
+          "task_question": "仅引用 Apple 官方支持：iCloud.com 在手机或平板上提供哪些上传选项？如果要上传到共享照片图库，应使用哪个入口？请保留版本条件。",
+          "parse_status": "parsed",
+          "items": [
+            {
+              "requirement_id": "unresolved-1",
+              "role": "core",
+              "kind": "unresolved_clause",
+              "status": "not_verified",
+              "evidence_ids": [],
+              "evidence_source_ids": [],
+              "gap": "证据尚未覆盖这一要求"
+            }
+          ],
+          "procedure_status": "insufficient",
+          "overall_completable": false,
+          "failure_reasons": [
+            "证据尚未覆盖这一要求"
+          ],
+          "semantic_review": "NOT_MEASURED"
+        }
+      },
+      {
+        "stage": "llm",
+        "attempt": 3,
+        "retry_hint": "[validation code=task_subject_not_in_question]  Each task must reference an existing question anchor and use a kind from allowed_kinds; one task per anchor, do not self-rate completion; return exactly tasks,evidence_ids,task_bindings,analyses.",
+        "response_metadata": {
+          "stop_reason": "tool_use",
+          "content_block_counts": {
+            "text": 1,
+            "tool_use": 1
+          },
+          "usage": {
+            "input_tokens": 12660,
+            "output_tokens": 958,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 2316
+          }
+        },
+        "task_contract_failure": {
+          "code": "task_subject_not_in_question",
+          "detail": ""
+        },
+        "guard_failures": [],
+        "analysis_rejections": [],
+        "selected_evidence_ids": [
+          "61b480-01@253#1",
+          "61b480-01@253#2",
+          "61b480-01@253#3",
+          "61b480-01@693+122",
+          "61b480-01@1100+148"
+        ],
+        "coverage": {
+          "task_question": "仅引用 Apple 官方支持：iCloud.com 在手机或平板上提供哪些上传选项？如果要上传到共享照片图库，应使用哪个入口？请保留版本条件。",
+          "parse_status": "parsed",
+          "items": [
+            {
+              "requirement_id": "unresolved-1",
+              "role": "core",
+              "kind": "unresolved_clause",
+              "status": "not_verified",
+              "evidence_ids": [],
+              "evidence_source_ids": [],
+              "gap": "证据尚未覆盖这一要求"
+            }
+          ],
+          "procedure_status": "insufficient",
+          "overall_completable": false,
+          "failure_reasons": [
+            "证据尚未覆盖这一要求"
+          ],
+          "semantic_review": "NOT_MEASURED"
+        }
+      }
+    ],
+    "independent_official_review": "extended/independent-official-review/review.json"
+  },
+  {
+    "suite": "extended",
+    "sample": 4,
+    "run_id": "4025a30f-d4b0-402d-9137-7e2c27ce968e",
+    "question": "Using only official Google Drive Help, explain how an Android user uploads files from the app and locates the uploaded files.",
+    "query": "Google Drive Android upload files site:support.google.com/drive/answer",
+    "error_message": "research coverage_incomplete: original question remains partly unverified",
+    "assertion_failed": "确认Android上传四步及My Drive去向；程序冗余任务/未解析子句造成漏判，附带其他节噪声。",
+    "official_sources": [
+      {
+        "provider_source_id": "5be699-00",
+        "url": "https://support.google.com/drive/answer/2424368?hl=en&co=GENIE.Platform%3DAndroid"
+      },
+      {
+        "provider_source_id": "503cd1-01",
+        "url": "https://support.google.com/drive/answer/2424384?hl=en&co=GENIE.Platform%3DAndroid"
+      }
+    ],
+    "protocol_and_guard_events": [
+      {
+        "stage": "llm",
+        "attempt": 1,
+        "retry_hint": null,
+        "response_metadata": {
+          "stop_reason": "tool_use",
+          "content_block_counts": {
+            "tool_use": 1
+          },
+          "usage": {
+            "input_tokens": 7962,
+            "output_tokens": 497,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 128
+          }
+        },
+        "guard_failures": [],
+        "analysis_rejections": [],
+        "selected_evidence_ids": [
+          "5be699-00@377#1",
+          "5be699-00@377#2",
+          "5be699-00@377#3",
+          "5be699-00@377#4"
+        ],
+        "coverage": {
+          "task_question": "Using only official Google Drive Help, explain how an Android user uploads files from the app and locates the uploaded files.",
+          "parse_status": "parsed",
+          "items": [
+            {
+              "requirement_id": "t1",
+              "role": "core",
+              "kind": "procedure",
+              "status": "partial",
+              "evidence_ids": [
+                "5be699-00@377#1",
+                "5be699-00@377#2",
+                "5be699-00@377#3"
+              ],
+              "evidence_source_ids": [
+                "5be699-00"
+              ],
+              "gap": "证据尚未覆盖这一要求"
+            },
+            {
+              "requirement_id": "t2",
+              "role": "core",
+              "kind": "procedure",
+              "status": "partial",
+              "evidence_ids": [
+                "5be699-00@377#4"
+              ],
+              "evidence_source_ids": [
+                "5be699-00"
+              ],
+              "gap": "证据尚未覆盖这一要求"
+            },
+            {
+              "requirement_id": "unresolved-1",
+              "role": "core",
+              "kind": "unresolved_clause",
+              "status": "not_verified",
+              "evidence_ids": [],
+              "evidence_source_ids": [],
+              "gap": "原问题中的条件或子问题尚未获得可核对证据"
+            }
+          ],
+          "procedure_status": "insufficient",
+          "overall_completable": false,
+          "failure_reasons": [
+            "证据尚未覆盖这一要求",
+            "证据尚未覆盖这一要求",
+            "原问题中的条件或子问题尚未获得可核对证据"
+          ],
+          "semantic_review": "NOT_MEASURED"
+        }
+      },
+      {
+        "stage": "llm",
+        "attempt": 2,
+        "retry_hint": "[validation code=coverage_incomplete] Missing task IDs: t1,t2,unresolved-1. Keep every original condition. Select all exact steps plus relevant options/conditions; never invent evidence. Return exactly tasks,evidence_ids,task_bindings,analyses.",
+        "response_metadata": {
+          "stop_reason": "tool_use",
+          "content_block_counts": {
+            "text": 1,
+            "tool_use": 1
+          },
+          "usage": {
+            "input_tokens": 10617,
+            "output_tokens": 1074,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 128
+          }
+        },
+        "guard_failures": [
+          {
+            "candidate_index": 5,
+            "first_failed_guard": "scope_platform_mismatch"
+          },
+          {
+            "candidate_index": 8,
+            "first_failed_guard": "scope_platform_mismatch"
+          }
+        ],
+        "analysis_rejections": [],
+        "selected_evidence_ids": [
+          "5be699-00@377#1",
+          "5be699-00@377#2",
+          "5be699-00@377#3",
+          "5be699-00@377#4",
+          "503cd1-01@1859+92",
+          "503cd1-01@1952+54",
+          "503cd1-01@2007+34",
+          "503cd1-01@2042+57",
+          "503cd1-01@2100+60",
+          "503cd1-01@892+48",
+          "503cd1-01@941+57",
+          "503cd1-01@1032+49"
+        ],
+        "coverage": {
+          "task_question": "Using only official Google Drive Help, explain how an Android user uploads files from the app and locates the uploaded files.",
+          "parse_status": "parsed",
+          "items": [
+            {
+              "requirement_id": "t1",
+              "role": "core",
+              "kind": "procedure",
+              "status": "partial",
+              "evidence_ids": [
+                "5be699-00@377#1",
+                "5be699-00@377#2",
+                "5be699-00@377#3"
+              ],
+              "evidence_source_ids": [
+                "5be699-00"
+              ],
+              "gap": "证据尚未覆盖这一要求"
+            },
+            {
+              "requirement_id": "t2",
+              "role": "core",
+              "kind": "procedure",
+              "status": "partial",
+              "evidence_ids": [
+                "5be699-00@377#4",
+                "503cd1-01@1859+92",
+                "503cd1-01@2007+34",
+                "503cd1-01@2042+57",
+                "503cd1-01@892+48",
+                "503cd1-01@941+57",
+                "503cd1-01@1032+49"
+              ],
+              "evidence_source_ids": [
+                "5be699-00",
+                "503cd1-01"
+              ],
+              "gap": "证据尚未覆盖这一要求"
+            },
+            {
+              "requirement_id": "unresolved-1",
+              "role": "core",
+              "kind": "unresolved_clause",
+              "status": "not_verified",
+              "evidence_ids": [],
+              "evidence_source_ids": [],
+              "gap": "原问题中的条件或子问题尚未获得可核对证据"
+            }
+          ],
+          "procedure_status": "insufficient",
+          "overall_completable": false,
+          "failure_reasons": [
+            "证据尚未覆盖这一要求",
+            "证据尚未覆盖这一要求",
+            "原问题中的条件或子问题尚未获得可核对证据"
+          ],
+          "semantic_review": "NOT_MEASURED"
+        }
+      },
+      {
+        "stage": "llm",
+        "attempt": 3,
+        "retry_hint": "[validation code=coverage_incomplete] Missing task IDs: t1,t2,unresolved-1. Keep every original condition. Select all exact steps plus relevant options/conditions; never invent evidence. Return exactly tasks,evidence_ids,task_bindings,analyses.",
+        "response_metadata": {
+          "stop_reason": "tool_use",
+          "content_block_counts": {
+            "tool_use": 1
+          },
+          "usage": {
+            "input_tokens": 11587,
+            "output_tokens": 658,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 128
+          }
+        },
+        "guard_failures": [
+          {
+            "candidate_index": 5,
+            "first_failed_guard": "scope_platform_mismatch"
+          }
+        ],
+        "analysis_rejections": [],
+        "selected_evidence_ids": [
+          "5be699-00@377#1",
+          "5be699-00@377#2",
+          "5be699-00@377#3",
+          "5be699-00@377#4",
+          "503cd1-01@1859+92",
+          "503cd1-01@1952+54",
+          "503cd1-01@2042+57"
+        ],
+        "coverage": {
+          "task_question": "Using only official Google Drive Help, explain how an Android user uploads files from the app and locates the uploaded files.",
+          "parse_status": "parsed",
+          "items": [
+            {
+              "requirement_id": "t1",
+              "role": "core",
+              "kind": "procedure",
+              "status": "partial",
+              "evidence_ids": [
+                "5be699-00@377#1",
+                "5be699-00@377#2",
+                "5be699-00@377#3"
+              ],
+              "evidence_source_ids": [
+                "5be699-00"
+              ],
+              "gap": "证据尚未覆盖这一要求"
+            },
+            {
+              "requirement_id": "t2",
+              "role": "core",
+              "kind": "procedure",
+              "status": "partial",
+              "evidence_ids": [
+                "5be699-00@377#4",
+                "503cd1-01@1859+92",
+                "503cd1-01@2042+57"
+              ],
+              "evidence_source_ids": [
+                "5be699-00",
+                "503cd1-01"
+              ],
+              "gap": "证据尚未覆盖这一要求"
+            },
+            {
+              "requirement_id": "unresolved-1",
+              "role": "core",
+              "kind": "unresolved_clause",
+              "status": "not_verified",
+              "evidence_ids": [],
+              "evidence_source_ids": [],
+              "gap": "原问题中的条件或子问题尚未获得可核对证据"
+            }
+          ],
+          "procedure_status": "insufficient",
+          "overall_completable": false,
+          "failure_reasons": [
+            "证据尚未覆盖这一要求",
+            "证据尚未覆盖这一要求",
+            "原问题中的条件或子问题尚未获得可核对证据"
+          ],
+          "semantic_review": "NOT_MEASURED"
+        }
+      }
+    ],
+    "independent_official_review": "extended/independent-official-review/review.json"
+  },
+  {
+    "suite": "extended",
+    "sample": 6,
+    "run_id": "7cb9a706-5a42-46a4-9449-1cb0f633ee47",
+    "question": "Compare manual photo upload entry points in Google Photos Android and Dropbox mobile using only official help pages. Give sample product patterns, scenario-relative strengths and weaknesses, opportunities and risks. Distinguish facts, inferences and recommendations.",
+    "query": "Compare manual photo upload entry points in Google Photos Android and Dropbox mobile using only official help pages. Give sample product patterns, scenario-relative strengths and weaknesses, opportunities and risks. Distinguish facts, inferences and recommendations. Mobile photo upload; prefer official product support pages",
+    "error_message": "research task_subject_not_in_question: original question remains partly unverified",
+    "assertion_failed": "两产品事实、3条分析候选已持久化：竞品推断/样本模式/机会建议；风险缺项，相对优缺点不足，另有协议/任务失败和相关性误收。",
+    "official_sources": [
+      {
+        "provider_source_id": "c963eb-01",
+        "url": "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid"
+      },
+      {
+        "provider_source_id": "d0c6dc-02",
+        "url": "https://support.google.com/photos/answer/6131416?hl=en&co=GENIE.Platform%3DAndroid"
+      },
+      {
+        "provider_source_id": "dbcec9-00",
+        "url": "https://help.dropbox.com/create-upload/upload-mobile"
+      },
+      {
+        "provider_source_id": "438dab-02",
+        "url": "https://help.dropbox.com/create-upload/camera-uploads-overview"
+      },
+      {
+        "provider_source_id": "794347-04",
+        "url": "https://help.dropbox.com/create-upload/camera-uploads-fix"
+      }
+    ],
+    "protocol_and_guard_events": [
+      {
+        "stage": "llm",
+        "attempt": 1,
+        "retry_hint": null,
+        "response_metadata": {
+          "stop_reason": "tool_use",
+          "content_block_counts": {
+            "text": 1
+          },
+          "usage": {
+            "input_tokens": 10336,
+            "output_tokens": 4592,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 2304
+          }
+        },
+        "error_type": "ResearchLLMProtocolError",
+        "failure_category": "protocol_failure:ResearchLLMProtocolError"
+      },
+      {
+        "stage": "llm",
+        "attempt": 2,
+        "retry_hint": "[validation code=protocol_failure:ResearchLLMProtocolError] Invoke submit_research exactly once with tasks,evidence_ids,task_bindings,analyses. No summary, prose answer, or completeness rating.",
+        "response_metadata": {
+          "stop_reason": "tool_use",
+          "content_block_counts": {
+            "tool_use": 1
+          },
+          "usage": {
+            "input_tokens": 15704,
+            "output_tokens": 3984,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 128
+          }
+        },
+        "task_contract_failure": {
+          "code": "task_kind_not_in_question_anchor",
+          "detail": "tasks[2] kind=comparison. Use a kind allowed by this question anchor; remove redundant tasks for the same anchor. A can/whether question is capability, not an extra procedure."
+        },
+        "guard_failures": [],
+        "analysis_rejections": [
+          {
+            "candidate_index": 2,
+            "category": "risk",
+            "code": "analysis_universal_claim"
+          }
+        ],
+        "selected_evidence_ids": [
+          "c963eb-01@4898#1",
+          "c963eb-01@4898#2",
+          "c963eb-01@4898#3",
+          "c963eb-01@4898#4",
+          "c963eb-01@5080+94",
+          "c963eb-01@5175+5",
+          "c963eb-01@5181+114",
+          "c963eb-01@5296+130",
+          "c963eb-01@1300+86",
+          "dbcec9-00@887#1",
+          "dbcec9-00@887#2",
+          "dbcec9-00@887#3",
+          "dbcec9-00@887#4",
+          "dbcec9-00@887#5",
+          "dbcec9-00@887#6",
+          "dbcec9-00@887#7",
+          "dbcec9-00@887#8",
+          "dbcec9-00@922+94",
+          "dbcec9-00@1386+83",
+          "dbcec9-00@749+77",
+          "dbcec9-00@2875+74",
+          "dbcec9-00@3249+196",
+          "438dab-02@645#5",
+          "438dab-02@645#10",
+          "438dab-02@645#11",
+          "438dab-02@1379+52",
+          "438dab-02@1432+121",
+          "438dab-02@1308#1",
+          "438dab-02@1308#2",
+          "438dab-02@1308#3",
+          "438dab-02@2055+72",
+          "438dab-02@1308#4",
+          "438dab-02@1308#5",
+          "438dab-02@1308#6",
+          "438dab-02@7245+108",
+          "438dab-02@7053+128",
+          "438dab-02@6913+80",
+          "438dab-02@6771+85"
+        ],
+        "coverage": {
+          "task_question": "Compare manual photo upload entry points in Google Photos Android and Dropbox mobile using only official help pages. Give sample product patterns, scenario-relative strengths and weaknesses, opportunities and risks. Distinguish facts, inferences and recommendations.",
+          "parse_status": "parsed",
+          "items": [
+            {
+              "requirement_id": "unresolved-1",
+              "role": "core",
+              "kind": "unresolved_clause",
+              "status": "not_verified",
+              "evidence_ids": [],
+              "evidence_source_ids": [],
+              "gap": "证据尚未覆盖这一要求"
+            }
+          ],
+          "procedure_status": "insufficient",
+          "overall_completable": false,
+          "failure_reasons": [
+            "证据尚未覆盖这一要求"
+          ],
+          "semantic_review": "NOT_MEASURED"
+        }
+      },
+      {
+        "stage": "llm",
+        "attempt": 3,
+        "retry_hint": "[validation code=task_kind_not_in_question_anchor] tasks[2] kind=comparison. Use a kind allowed by this question anchor; remove redundant tasks for the same anchor. A can/whether question is capability, not an extra procedure. Each task must reference an existing question anchor and use a kind from allowed_kinds; one task per anchor, do not self-rate completion; return exactly tasks,evidence_ids,task_bindings,analyses.",
+        "response_metadata": {
+          "stop_reason": "tool_use",
+          "content_block_counts": {
+            "tool_use": 1
+          },
+          "usage": {
+            "input_tokens": 17098,
+            "output_tokens": 3010,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 128
+          }
+        },
+        "task_contract_failure": {
+          "code": "task_subject_not_in_question",
+          "detail": ""
+        },
+        "guard_failures": [],
+        "analysis_rejections": [
+          {
+            "candidate_index": 2,
+            "category": "opportunity",
+            "code": "analysis_universal_claim"
+          }
+        ],
+        "selected_evidence_ids": [
+          "c963eb-01@4898#1",
+          "c963eb-01@4898#2",
+          "c963eb-01@4898#3",
+          "c963eb-01@4898#4",
+          "c963eb-01@5080+94",
+          "c963eb-01@5175+5",
+          "c963eb-01@5181+114",
+          "c963eb-01@5296+130",
+          "c963eb-01@1300+86",
+          "dbcec9-00@887#1",
+          "dbcec9-00@887#2",
+          "dbcec9-00@887#3",
+          "dbcec9-00@887#4",
+          "dbcec9-00@887#5",
+          "dbcec9-00@887#6",
+          "dbcec9-00@887#7",
+          "dbcec9-00@887#8",
+          "dbcec9-00@922+94",
+          "dbcec9-00@749+77",
+          "dbcec9-00@1556+121",
+          "dbcec9-00@1386+83",
+          "dbcec9-00@2288+125"
+        ],
+        "coverage": {
+          "task_question": "Compare manual photo upload entry points in Google Photos Android and Dropbox mobile using only official help pages. Give sample product patterns, scenario-relative strengths and weaknesses, opportunities and risks. Distinguish facts, inferences and recommendations.",
+          "parse_status": "parsed",
+          "items": [
+            {
+              "requirement_id": "unresolved-1",
+              "role": "core",
+              "kind": "unresolved_clause",
+              "status": "not_verified",
+              "evidence_ids": [],
+              "evidence_source_ids": [],
+              "gap": "证据尚未覆盖这一要求"
+            }
+          ],
+          "procedure_status": "insufficient",
+          "overall_completable": false,
+          "failure_reasons": [
+            "证据尚未覆盖这一要求"
+          ],
+          "semantic_review": "NOT_MEASURED"
+        }
+      }
+    ],
+    "independent_official_review": "extended/independent-official-review/review.json"
+  },
+  {
+    "suite": "extended",
+    "sample": 7,
+    "run_id": "d4c46f30-ba32-4088-a838-6acb97e13288",
+    "question": "请只依据 Google Photos 和 Dropbox 的官方帮助，比较移动端手动添加照片的流程。给出仅限本次两款产品样本的模式、相对该场景的优缺点、机会和风险；清楚区分事实、推断与建议。",
+    "query": "请只依据 Google Photos 和 Dropbox 的官方帮助，比较移动端手动添加照片的流程。给出仅限本次两款产品样本的模式、相对该场景的优缺点、机会和风险；清楚区分事实、推断与建议。 Mobile photo upload; prefer official product support pages",
+    "error_message": "research protocol_failure:ResearchLLMProtocolError: original question remains partly unverified",
+    "assertion_failed": "Dropbox手动步骤有事实；Google选入动画/创建内容步骤，任务与协议失败，无实际分析。",
+    "official_sources": [
+      {
+        "provider_source_id": "f9e5e8-02",
+        "url": "https://help.dropbox.com/create-upload/upload-mobile"
+      },
+      {
+        "provider_source_id": "e74d26-00",
+        "url": "https://support.google.com/photos/answer/6128862?hl=en&co=GENIE.Platform%3DAndroid"
+      },
+      {
+        "provider_source_id": "b86d31-01",
+        "url": "https://support.google.com/photos/answer/15235862?hl=en&co=GENIE.Platform%3DAndroid"
+      }
+    ],
+    "protocol_and_guard_events": [
+      {
+        "stage": "llm",
+        "attempt": 1,
+        "retry_hint": null,
+        "response_metadata": {
+          "stop_reason": "tool_use",
+          "content_block_counts": {
+            "tool_use": 1
+          },
+          "usage": {
+            "input_tokens": 9313,
+            "output_tokens": 2234,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 128
+          }
+        },
+        "task_contract_failure": {
+          "code": "task_subject_not_in_question",
+          "detail": ""
+        },
+        "guard_failures": [],
+        "analysis_rejections": [],
+        "selected_evidence_ids": [
+          "f9e5e8-02@887#1",
+          "f9e5e8-02@887#2",
+          "f9e5e8-02@887#3",
+          "f9e5e8-02@887#4",
+          "f9e5e8-02@887#5",
+          "f9e5e8-02@887#6",
+          "f9e5e8-02@887#7",
+          "f9e5e8-02@887#8",
+          "f9e5e8-02@922+94",
+          "f9e5e8-02@1386+83",
+          "f9e5e8-02@749+77",
+          "f9e5e8-02@1556+121"
+        ],
+        "coverage": {
+          "task_question": "请只依据 Google Photos 和 Dropbox 的官方帮助，比较移动端手动添加照片的流程。给出仅限本次两款产品样本的模式、相对该场景的优缺点、机会和风险；清楚区分事实、推断与建议。",
+          "parse_status": "parsed",
+          "items": [
+            {
+              "requirement_id": "unresolved-1",
+              "role": "core",
+              "kind": "unresolved_clause",
+              "status": "not_verified",
+              "evidence_ids": [],
+              "evidence_source_ids": [],
+              "gap": "证据尚未覆盖这一要求"
+            }
+          ],
+          "procedure_status": "insufficient",
+          "overall_completable": false,
+          "failure_reasons": [
+            "证据尚未覆盖这一要求"
+          ],
+          "semantic_review": "NOT_MEASURED"
+        }
+      },
+      {
+        "stage": "llm",
+        "attempt": 2,
+        "retry_hint": "[validation code=task_subject_not_in_question]  Each task must reference an existing question anchor and use a kind from allowed_kinds; one task per anchor, do not self-rate completion; return exactly tasks,evidence_ids,task_bindings,analyses.",
+        "response_metadata": {
+          "stop_reason": "tool_use",
+          "content_block_counts": {
+            "text": 1,
+            "tool_use": 1
+          },
+          "usage": {
+            "input_tokens": 11926,
+            "output_tokens": 2962,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 128
+          }
+        },
+        "task_contract_failure": {
+          "code": "task_subject_not_in_question",
+          "detail": ""
+        },
+        "guard_failures": [],
+        "analysis_rejections": [],
+        "selected_evidence_ids": [
+          "f9e5e8-02@922+94",
+          "f9e5e8-02@887#1",
+          "f9e5e8-02@887#2",
+          "f9e5e8-02@887#3",
+          "f9e5e8-02@887#4",
+          "f9e5e8-02@887#5",
+          "f9e5e8-02@887#6",
+          "f9e5e8-02@887#7",
+          "f9e5e8-02@887#8",
+          "f9e5e8-02@749+77",
+          "f9e5e8-02@1556+121",
+          "e74d26-00@3263#3",
+          "e74d26-00@5770#5",
+          "e74d26-00@3070#1",
+          "e74d26-00@3070#2"
+        ],
+        "coverage": {
+          "task_question": "请只依据 Google Photos 和 Dropbox 的官方帮助，比较移动端手动添加照片的流程。给出仅限本次两款产品样本的模式、相对该场景的优缺点、机会和风险；清楚区分事实、推断与建议。",
+          "parse_status": "parsed",
+          "items": [
+            {
+              "requirement_id": "unresolved-1",
+              "role": "core",
+              "kind": "unresolved_clause",
+              "status": "not_verified",
+              "evidence_ids": [],
+              "evidence_source_ids": [],
+              "gap": "证据尚未覆盖这一要求"
+            }
+          ],
+          "procedure_status": "insufficient",
+          "overall_completable": false,
+          "failure_reasons": [
+            "证据尚未覆盖这一要求"
+          ],
+          "semantic_review": "NOT_MEASURED"
+        }
+      },
+      {
+        "stage": "llm",
+        "attempt": 3,
+        "retry_hint": "[validation code=task_subject_not_in_question]  Each task must reference an existing question anchor and use a kind from allowed_kinds; one task per anchor, do not self-rate completion; return exactly tasks,evidence_ids,task_bindings,analyses.",
+        "response_metadata": {
+          "stop_reason": "tool_use",
+          "usage": {
+            "input_tokens": 13094,
+            "output_tokens": 2713,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 128
+          }
+        },
+        "error_type": "ResearchLLMProtocolError",
+        "failure_category": "protocol_failure:ResearchLLMProtocolError"
+      }
+    ],
+    "independent_official_review": "extended/independent-official-review/review.json"
+  },
+  {
+    "suite": "extended",
+    "sample": 8,
+    "run_id": "c98555f6-9877-42d4-980d-f1e1b5694058",
+    "question": "In Google Photos Android, what are the steps to manually back up one photo while offline? Cite only official Google Help. Keep the offline condition; do not infer unsupported capability.",
+    "query": "Google Photos Android photos manual site:support.google.com/photos/answer",
+    "error_message": "research task_action_not_in_anchor: original question remains partly unverified",
+    "assertion_failed": "通用联网备份事实不证明离线条件；整体未验证，未宣称可离线上传。官方正文另有Good internet connection，条件尚未处理。",
+    "official_sources": [
+      {
+        "provider_source_id": "0dda6c-00",
+        "url": "https://support.google.com/photos/answer/12791741?hl=en"
+      },
+      {
+        "provider_source_id": "ec04a5-01",
+        "url": "https://support.google.com/photos/answer/14216276?hl=en-GB"
+      },
+      {
+        "provider_source_id": "49a195-00",
+        "url": "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid"
+      },
+      {
+        "provider_source_id": "fb806a-01",
+        "url": "https://support.google.com/photos/answer/6174018?hl=en&co=GENIE.Platform%3DAndroid"
+      }
+    ],
+    "protocol_and_guard_events": [
+      {
+        "stage": "llm",
+        "attempt": 1,
+        "retry_hint": null,
+        "response_metadata": {
+          "stop_reason": "tool_use",
+          "content_block_counts": {
+            "tool_use": 1
+          },
+          "usage": {
+            "input_tokens": 9077,
+            "output_tokens": 622,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 128
+          }
+        },
+        "task_contract_failure": {
+          "code": "task_action_not_in_anchor",
+          "detail": ""
+        },
+        "guard_failures": [],
+        "analysis_rejections": [],
+        "selected_evidence_ids": [],
+        "coverage": {
+          "task_question": "In Google Photos Android, what are the steps to manually back up one photo while offline? Cite only official Google Help. Keep the offline condition; do not infer unsupported capability.",
+          "parse_status": "parsed",
+          "items": [
+            {
+              "requirement_id": "unresolved-1",
+              "role": "core",
+              "kind": "unresolved_clause",
+              "status": "not_verified",
+              "evidence_ids": [],
+              "evidence_source_ids": [],
+              "gap": "证据尚未覆盖这一要求"
+            }
+          ],
+          "procedure_status": "insufficient",
+          "overall_completable": false,
+          "failure_reasons": [
+            "证据尚未覆盖这一要求"
+          ],
+          "semantic_review": "NOT_MEASURED"
+        }
+      },
+      {
+        "stage": "llm",
+        "attempt": 2,
+        "retry_hint": "[validation code=task_action_not_in_anchor]  Each task must reference an existing question anchor and use a kind from allowed_kinds; one task per anchor, do not self-rate completion; return exactly tasks,evidence_ids,task_bindings,analyses.",
+        "response_metadata": {
+          "stop_reason": "tool_use",
+          "content_block_counts": {
+            "tool_use": 1
+          },
+          "usage": {
+            "input_tokens": 12353,
+            "output_tokens": 1037,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 2314
+          }
+        },
+        "task_contract_failure": {
+          "code": "task_action_not_in_anchor",
+          "detail": ""
+        },
+        "guard_failures": [],
+        "analysis_rejections": [],
+        "selected_evidence_ids": [
+          "49a195-00@4898#1",
+          "49a195-00@4898#2",
+          "49a195-00@4898#3",
+          "49a195-00@4898#4",
+          "49a195-00@5080+94",
+          "49a195-00@5175+5",
+          "49a195-00@5181+114",
+          "49a195-00@5296+130",
+          "49a195-00@1300+86",
+          "49a195-00@6941+131",
+          "49a195-00@7510+123"
+        ],
+        "coverage": {
+          "task_question": "In Google Photos Android, what are the steps to manually back up one photo while offline? Cite only official Google Help. Keep the offline condition; do not infer unsupported capability.",
+          "parse_status": "parsed",
+          "items": [
+            {
+              "requirement_id": "unresolved-1",
+              "role": "core",
+              "kind": "unresolved_clause",
+              "status": "not_verified",
+              "evidence_ids": [],
+              "evidence_source_ids": [],
+              "gap": "证据尚未覆盖这一要求"
+            }
+          ],
+          "procedure_status": "insufficient",
+          "overall_completable": false,
+          "failure_reasons": [
+            "证据尚未覆盖这一要求"
+          ],
+          "semantic_review": "NOT_MEASURED"
+        }
+      },
+      {
+        "stage": "llm",
+        "attempt": 3,
+        "retry_hint": "[validation code=task_action_not_in_anchor]  Each task must reference an existing question anchor and use a kind from allowed_kinds; one task per anchor, do not self-rate completion; return exactly tasks,evidence_ids,task_bindings,analyses.",
+        "response_metadata": {
+          "stop_reason": "tool_use",
+          "content_block_counts": {
+            "tool_use": 1
+          },
+          "usage": {
+            "input_tokens": 15750,
+            "output_tokens": 1386,
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 128
+          }
+        },
+        "task_contract_failure": {
+          "code": "task_action_not_in_anchor",
+          "detail": ""
+        },
+        "guard_failures": [],
+        "analysis_rejections": [],
+        "selected_evidence_ids": [
+          "49a195-00@4898#1",
+          "49a195-00@4898#2",
+          "49a195-00@4898#3",
+          "49a195-00@4898#4",
+          "49a195-00@5080+94",
+          "49a195-00@5175+5",
+          "49a195-00@5181+114",
+          "49a195-00@5296+130",
+          "49a195-00@1300+86"
+        ],
+        "coverage": {
+          "task_question": "In Google Photos Android, what are the steps to manually back up one photo while offline? Cite only official Google Help. Keep the offline condition; do not infer unsupported capability.",
+          "parse_status": "parsed",
+          "items": [
+            {
+              "requirement_id": "unresolved-1",
+              "role": "core",
+              "kind": "unresolved_clause",
+              "status": "not_verified",
+              "evidence_ids": [],
+              "evidence_source_ids": [],
+              "gap": "证据尚未覆盖这一要求"
+            }
+          ],
+          "procedure_status": "insufficient",
+          "overall_completable": false,
+          "failure_reasons": [
+            "证据尚未覆盖这一要求"
+          ],
+          "semantic_review": "NOT_MEASURED"
+        }
+      }
+    ],
+    "independent_official_review": "extended/independent-official-review/review.json"
+  }
+]

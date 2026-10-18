@@ -1,0 +1,53 @@
+{
+  "note": "按事件计数，同一次尝试可同时有任务失败与证据校验失败，不能加总为失败Run数",
+  "task_and_selection_error_events": {
+    "task_constraints_invalid": 6,
+    "task_kind_not_in_question_anchor": 3,
+    "task_action_not_in_anchor": 6,
+    "unknown_evidence_id": 3,
+    "evidence_ids_too_many": 2,
+    "task_subject_not_in_question": 12,
+    "task_quantity_not_in_question": 1
+  },
+  "analysis_rejection_events": {
+    "support_unknown": 1,
+    "analysis_universal_claim": 2
+  },
+  "protocol_events": [
+    {
+      "suite": "extended",
+      "sample": 6,
+      "run_id": "7cb9a706-5a42-46a4-9449-1cb0f633ee47",
+      "attempt": 1,
+      "category": "protocol_failure:ResearchLLMProtocolError",
+      "response_metadata": {
+        "stop_reason": "tool_use",
+        "content_block_counts": {
+          "text": 1
+        },
+        "usage": {
+          "input_tokens": 10336,
+          "output_tokens": 4592,
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 2304
+        }
+      }
+    },
+    {
+      "suite": "extended",
+      "sample": 7,
+      "run_id": "d4c46f30-ba32-4088-a838-6acb97e13288",
+      "attempt": 3,
+      "category": "protocol_failure:ResearchLLMProtocolError",
+      "response_metadata": {
+        "stop_reason": "tool_use",
+        "usage": {
+          "input_tokens": 13094,
+          "output_tokens": 2713,
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 128
+        }
+      }
+    }
+  ]
+}

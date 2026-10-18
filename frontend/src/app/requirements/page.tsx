@@ -14,6 +14,7 @@
  */
 
 import Link from 'next/link';
+import { displayLabel } from '../../lib/presentation';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useProjectContext } from '../../contexts/ProjectContext';
 import { getApiClient } from '../../lib/api/client';
@@ -117,7 +118,7 @@ export default function RequirementsListPage() {
     return (
       <EmptyState
         title="请先选择项目"
-        description="在右上角选择或创建一个项目，以查看对应的 Requirement 列表。"
+        description="在右上角选择或创建一个项目，以查看产品需求。"
       />
     );
   }
@@ -134,24 +135,20 @@ export default function RequirementsListPage() {
   return (
     <div className="page page-requirements-list">
       <header className="page-header">
-        <span className="eyebrow">Requirements · B2</span>
+        <span className="eyebrow">需求管理</span>
         <h1 className="page-title">需求列表</h1>
-        <p className="page-subtitle">
-          来自后端的真实 RequirementRead 数据（项目
-          <code className="mono"> {activeProjectId.slice(0, 8)}…</code>
-          ），状态在 PATCH 时变更；前端不会重算 AI snapshot。
-        </p>
+
       </header>
 
       <section className="section" data-od-id="requirements-list">
         {loading && data ? <LoadingState /> : null}
         {empty ? (
           <EmptyState
-            title="该项目下尚无 Requirement"
-            description="请在 Insight 详情页完成 PM Decision 后，由 Create Requirement 创建。"
+            title="还没有产品需求"
+            description="在洞察中采纳或调整优先级后，即可创建需求。"
             action={
               <Link href="/insights" className="btn btn-secondary btn-sm">
-                前往 Insight 列表
+                前往洞察列表
               </Link>
             }
           />
@@ -166,18 +163,14 @@ export default function RequirementsListPage() {
                       className="requirement-row-title"
                       data-testid="requirement-link"
                     >
-                      {req.name || `Requirement ${req.id.slice(0, 8)}`}
+                      {req.name || '未命名需求'}
                     </Link>
                     <span className={`badge ${STATUS_BADGE[req.status as RequirementStatus] ?? 'badge-outline'}`}>
-                      {STATUS_LABEL[req.status as RequirementStatus] ?? req.status}
+                      {STATUS_LABEL[req.status as RequirementStatus] ?? displayLabel(req.status)}
                     </span>
                     <span className="badge badge-accent">{req.pm_priority}</span>
                   </div>
-                  <p className="requirement-row-meta">
-                    来源 Insight <code className="mono">{req.insight_id.slice(0, 8)}</code> ·
-                    {' '}Decision <code className="mono">{req.decision_id.slice(0, 8)}</code> ·
-                    {' '}更新 <b className="mono">{formatRelative(req.updated_at ?? null)}</b>
-                  </p>
+                  <p className="requirement-row-meta">更新于 {formatRelative(req.updated_at ?? null)}</p>
                   <p className="requirement-row-snippet">
                     {req.problem || req.user_story || '（无问题摘要）'}
                   </p>
@@ -190,7 +183,7 @@ export default function RequirementsListPage() {
         {items.length > 0 && total > page.limit ? (
           <footer className="pagination">
             <span className="pagination-meta">
-              共 {total} 条 Requirement · 第 {currentPage} / {pageCount} 页
+              共 {total} 条需求 · 第 {currentPage} / {pageCount} 页
             </span>
             <div className="pagination-controls">
               <button

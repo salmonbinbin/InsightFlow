@@ -1,0 +1,327 @@
+Upload and download photos on iCloud.com - Apple Support
+Apple
+Store
+Mac
+iPad
+iPhone
+Watch
+Vision
+AirPods
+Home
+Entertainment
+Accessories
+Support
+0+
+iCloud User Guide
+Search this guide
+Clear Search
+Table of Contents
+iCloud User Guide
+Welcome
+iCloud basics
+Introduction to iCloud
+Overview of apps and features that use iCloud
+Overview of iCloud.com for web-only accounts
+About iCloud storage
+How iCloud keeps information up to date
+Share and collaborate with iCloud
+What’s included in iCloud+
+iCloud+ overview
+iCloud Private Relay
+What you can do with iCloud+ and iCloud Private Relay
+Set up iCloud Private Relay
+Hide My Email
+What you can do with iCloud+ and Hide My Email
+Set up Hide My Email
+HomeKit Secure Video
+What you can do with iCloud+ and HomeKit Secure Video
+Set up HomeKit Secure Video
+Custom Email Domain
+What you can do with iCloud+ and Custom Email Domain
+Set up a custom email domain
+Manage your account and settings
+Apple Account and iCloud
+Set up iCloud on your devices
+Manage access to iCloud.com
+Buy more iCloud storage with iCloud+
+Check your iCloud storage on any device
+Use iCloud+ with your family
+Learn about iCloud features
+Books
+What you can do with iCloud and Books
+Set up Books
+Calendar
+What you can do with iCloud and Calendar
+Set up Calendar
+Send and receive invitations for iCloud Calendar
+Contacts
+What you can do with iCloud and Contacts
+Set up Contacts
+Find My
+Intro to Find My
+Set up Find My
+Remove devices and items from Find My
+Use Find My on each device
+Freeform
+What you can do with iCloud and Freeform
+Set up Freeform
+Home
+What you can do with iCloud and Home
+Set up Home
+iCloud Backup
+What is iCloud Backup?
+Back up your iPhone or iPad
+View and manage backups
+iCloud Drive
+What you can do with iCloud Drive
+Set up iCloud Drive
+iCloud Mail
+What you can do with iCloud Mail
+Create a primary @icloud.com email address
+Set up iCloud Mail
+Keynote
+What you can do with iCloud and Keynote
+Set up Keynote
+Messages
+What you can do with iCloud and Messages
+Set up Messages
+Notes
+What you can do with iCloud and Notes
+Set up Notes
+Numbers
+What you can do with iCloud and Numbers
+Set up Numbers
+Pages
+What you can do with iCloud and Pages
+Set up Pages
+Passwords and Keychain
+What you can do with iCloud Keychain and iCloud Passwords
+Set up iCloud Keychain and iCloud Passwords
+Phone & FaceTime
+What you can do with iCloud for Phone & FaceTime
+Set up Phone & FaceTime
+Photos
+What you can do with iCloud and Photos
+Set up iCloud Photos
+Set up iCloud Shared Photo Library
+Set up Shared Albums
+Reminders
+What you can do with iCloud and Reminders
+Set up Reminders
+Safari
+What you can do with iCloud and Safari
+Set up Safari
+Siri
+Third-party apps
+What you can do with iCloud and third-party apps
+Set up third-party apps
+Use iCloud on the web
+Sign in and use iCloud.com
+Customize and use the homepage tiles
+iCloud settings
+iCloud Settings on iCloud.com overview
+Customize the appearance
+Change your photo
+Receive notifications for iCloud apps
+Prevent apps from showing your name
+Check your iCloud plan
+Check your iCloud storage online
+Manage iCloud+ features
+Apple Invites
+Calendar
+Use Calendar on iCloud.com
+Create and edit calendars
+Create and edit a calendar
+Choose a default calendar
+Customize the calendar view
+Change the time zone
+Delete a calendar
+Create and edit events
+Create and edit an event
+Invite people to an event
+Receive and reply to invitations
+Delete or hide an event
+Set an alert
+Restore your calendars and events
+Share calendars
+Share a calendar
+Stop sharing a calendar
+Accept a shared calendar invitation
+Receive emails for updates to shared calendars
+Contacts
+Contacts on iCloud.com overview
+View contacts
+Create or edit contacts
+Create and manage lists
+Search contacts
+Delete contacts
+Restore contacts
+Import, export, and print contacts
+If you can’t create, import, edit, or delete contacts
+Custom Email Domain
+Add a domain you own
+Purchase a domain
+Add or remove people
+Transfer custom email domain addresses
+Allow all incoming emails
+Import existing emails
+Create and delete email addresses
+Stop using a domain
+Find Devices
+Find Devices on iCloud.com overview
+Sign in
+Locate a device
+Play a sound on a device
+Use Lost Mode
+Erase a device
+Remove a device
+Hide My Email
+Create and edit addresses
+Stop using or reactivate addresses
+iCloud Drive
+iCloud Drive on iCloud.com overview
+Upload and download files
+View files and folders
+Organize files and folders
+Work with shared files and folders
+Share files and folders
+Manage sharing for files and folders
+Add or remove shared files and folders
+Delete shared files or folders
+Email files
+Delete and recover files
+Delete files
+Recover deleted files
+Permanently remove deleted files
+Keynote
+Mail
+Mail on iCloud.com overview
+Manage email addresses and aliases
+Add and manage email aliases
+Use a custom email domain with Mail
+Choose a default email address
+Use Hide My Email in Mail
+Send email
+Write and send email
+Save and view email drafts
+Reply to or forward an email
+Receive a reminder to reply
+Add an attachment
+Create an email signature
+Save and find email addresses
+Set up an automatic reply
+Receive email
+Read email
+View all email headers
+Download attachments
+Automatically forward email
+Manage junk mail
+Delete email
+Organize and find email
+Use categories
+Automatically clean up iCloud Mail
+Organize email with folders
+Search, filter, and flag email
+Set up filtering rules
+Archive email
+Make a sender a VIP
+Use Mail Privacy Protection
+Print an email
+Keyboard shortcuts
+Notes
+Notes on iCloud.com overview
+Create notes
+Create notes
+Add links to notes
+Add or edit lists
+Add or edit tables
+Organize notes
+Organize notes in folders
+Organize notes with tags
+View notes
+View notes and locked notes
+View or download attachments
+Delete and recover notes
+Search notes
+Work with shared notes and folders
+Share notes
+Edit shared notes
+Delete shared notes
+Share folders
+Make updates to shared folders
+Delete shared folders
+Numbers
+Pages
+Photos
+Photos on iCloud.com overview
+View your photos and videos
+Find your photos or videos
+Hide your photos and videos
+Share photos
+Use iCloud Shared Photo Library
+Create and manage shared albums
+Upload and download photos
+Add star ratings, captions, and keywords
+Organize photos and videos
+Add photos and videos to Favorites
+Play a slideshow of photos
+Delete and recover photos and videos
+Reminders
+Reminders on iCloud.com overview
+Create and delete reminders
+Add and delete reminder lists
+Move a reminder to another list
+Mark a reminder as completed or not completed
+Search for reminders
+Restore your reminders
+Work with shared reminder lists
+Share a reminder list
+Reply to a shared reminder list invitation
+Leave a shared reminder list
+Recover files and information
+Use iCloud on your Windows device
+Get more help with iCloud
+Legal notices and acknowledgements
+Copyright and trademarks
+Upload and download photos on iCloud.com
+Photos you upload from your computer to iCloud.com are added to iCloud Photos and are visible on all of your devices that have iCloud Photos turned on. You can also download photos to keep them on your device.
+Upload photos
+You can upload photos and videos in multiple formats from your computer to your personal library, albums, and shared albums. See the Apple Support article Shared Album limits.
+Go to icloud.com/photos, then sign in to your Apple Account (if necessary).
+Select Library in the sidebar, or select an album, then select the Add Photos to Album button.
+Select the Choose Files button, then do either of the following:
+On a phone or tablet: Choose Photo Library, Take Photo or Video, or Choose Files, then follow the onscreen instructions.
+On a computer: Select the photos or videos you want to add from your computer, then click Upload.
+Tip: On a phone or tablet, after your photos and videos finish uploading, select the More button to add the items to an album, to show them in your library, or to show them in recents.
+Note: If you want to upload photos to your iCloud Shared Photo Library, use the Photos app on a device with iOS 16.1, iPadOS 16, macOS 13, or later.
+Download photos and videos
+Photos and videos are downloaded in the most compatible format for the device you’re currently using.
+Go to icloud.com/photos, then sign in to your Apple Account (if necessary).
+Select the photos or videos you want to download.
+Do one of the following:
+On a phone or tablet: Tap the More button in the bottom-right corner, tap Download, then tap Download again.
+On a computer: Click the Download button.
+Tip: To choose a file format before you download, click the More button, click More Download Options, then click the Download button next to a file format option.
+See alsoUpload and download files from iCloud Drive on iCloud.com
+Previous
+Create and manage shared albums
+Next
+Add star ratings, captions, and keywords
+Helpful?
+Yes
+No
+Character limit:
+250
+Please don’t include any personal information in your comment.
+Maximum character limit is 250.
+Submit
+Thanks for your feedback.
+Apple Footer
+
+Apple
+Support
+iCloud User Guide
+Upload and download photos on iCloud.com
+United States
+Copyright © 2026 Apple Inc. All rights reserved.
+Privacy Policy Terms of Use Sales and Refunds Site Map

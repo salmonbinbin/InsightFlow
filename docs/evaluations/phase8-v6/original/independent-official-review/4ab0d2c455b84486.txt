@@ -1,0 +1,168 @@
+How to use Google Drive - Android phone & tablet - Google Drive Help Skip to main content
+Google Drive Help
+Sign in
+Google Help
+Help Center
+Community
+Google Drive
+Privacy Policy
+Terms of Service
+Submit feedback
+Send feedback on...
+This help content & information
+General Help Center experience
+CloseNext
+Help Center
+Community
+Find, delete, and recover files
+Google Drive
+How to use Google Drive
+Want advanced Google Workspace features for your business?
+Try Google Workspace today!
+Google Drive helps you keep all your files together. You can upload and share your files from any device, create new files, keep them organized, edit easily, and share them with others.
+If you're new to Google Drive, this article will help you get started by covering the most important and useful things you can do, from learning how to use Drive and keeping your files organized to getting tips for using it on your computer, phone, or tablet.
+Use Google Drive on your Android device
+In this section, you'll learn to:
+Use the Drive app on your android device
+Upload, share & organize your files
+Use Split Screen with Google Drive
+Use the Drive app on your device
+On your Android phone or tablet, open the Google Drive app. On the Home page, you can find:
+Home
+In the '”Home” section of Google Drive, you can:
+Find the files and folders you upload or sync, such as:
+Docs
+Sheets
+Slides
+Forms
+Switch between ”Suggested” and ”Activity” tabs.
+To find the files and folders you're most likely to use, you can use the ”Suggested” tab.
+To find the files and folders based on recent changes and actions, you can use the ”Activity” tab.
+Starred
+To quickly find your important files or folders, you can add them to the "Starred" section.
+On your Android phone or tablet, open Google Drive Google Drive icon.
+Next to your file or folder, tap More actions More and then Add to starred .
+Shared
+In the “Shared” section, you can find files and folders others have shared with you and you have shared with others. To share a file or folder:
+On your Android phone or tablet, open Google Drive Google Drive icon.
+Next to your file or folder, tap More actions More and then Share Add approver .
+Files
+In the “Files” section, you can find a list of all your files, regardless of their location. You can switch between ”My Drive” and ”Computer” tabs. To find the files and folders you:
+Stored in Google Drive: You can use the ”My Drive” tab.
+Sync in Drive for desktop: You can use the “Computer” tab. Learn how to use Drive for desktop.
+Sign out of Google Drive
+To sign out of Drive on Android, remove your Google Account from your device. To remove a Google Account:
+On your Android device, open Settings Settings app.
+Tap Users & accounts.
+Select the account you want to remove.
+Tap Remove account and then Remove account.
+To prevent access to your device from others:
+Learn how to set a screen lock
+Learn how to use guest mode
+Upload, share & organize your files
+Upload or create files
+You can upload files from your computer or create files in Google Drive.
+Upload files and folders to Google Drive
+Scan documents with Google Drive
+Work with Office files
+Create, edit, and format Google Docs, Sheets, and Slides
+Share & organize files
+You can share files or folders for others to access, edit, or comment on.
+Share files from Google Drive
+Share folders from Google Drive
+Make someone else the owner of a file
+To find files that others have shared with you, go to Shared with me.
+Use Split Screen with Google Drive
+On an Android device with a large screen, you can open 2 instances of the Drive app side-by-side. For example, you can open a PDF on one side of your screen and scroll through your folders on the other screen.
+To open 2 instances of the Drive app side-by-side:
+If your device is more than 600 dpi and on Android 12 or up:
+On your Android device, open Google Drive Google Drive icon.
+On any Drive item, tap Menu More.
+Select Open in split view.
+If your device is on Android 7 or up:
+On your Android device, open Google Drive Google Drive icon.
+Enter split screen mode with another app.
+On any Drive item, tap Menu More.
+Select Open in other window.
+To open 2 instances of the Drive app with 2 different accounts:
+If your device is more than 600 dpi and on Android 12 or up:
+On your Android device, open Google Drive Google Drive icon.
+Next to a file, tap Menu More.
+Select Open in split view.
+At the top right of the new window, select your profile photo.
+Switch your account.
+If your device is on Android 7 or up:
+On your Android device, open Google Drive Google Drive icon.
+Enter split screen mode with another app.
+On any Drive item, tap Menu More.
+Select Open in other window.
+At the top right of the new window, select your profile photo.
+Switch your account.
+Related resources
+Search and find a file in Google Drive
+Use Google Drive files offline
+Manage your storage in Drive, Gmail, and Photos
+Android phone & tablet ComputeriPhone & iPad
+More
+Need more help?
+Try these next steps:
+Post to the help community Get answers from community members
+Contact us Tell us more and we’ll help you get there
+true
+Help
+1 of 13
+How to use Google Drive
+2 of 13
+Learn about system requirements & browsers
+3 of 13
+Use Google Drive files offline
+4 of 13
+Use your Chromebook offline
+5 of 13
+Buy more Google storage
+6 of 13
+Manage your storage in Drive, Gmail & Photos
+7 of 13
+Recover a deleted file in Google Drive
+8 of 13
+Accessibility
+9 of 13
+Use Dark Mode in Google Drive
+10 of 13
+How your Google storage works
+11 of 13
+Use Google Drive with a screen reader
+12 of 13
+Add Drive widget to an iOS Lock Screen
+13 of 13
+Use buttons in your Drive toolbar
+Watch video tutorials
+Watch video tutorials
+To get the latest tips, tricks, and how-to's, subscribe to our YouTube Channel.
+©2026 Google
+Privacy Policy
+Terms of Service
+Language català‎dansk‎Deutsch‎English (United Kingdom)‎español‎español (Latinoamérica)‎français‎Indonesia‎italiano‎magyar‎Melayu‎Nederlands‎norsk‎polski‎português‎português (Brasil)‎română‎suomi‎svenska‎Tiếng Việt‎Türkçe‎čeština‎Ελληνικά‎русский‎українська‎‏עברית‏العربيةमराठी‎हिन्दी‎தமிழ்‎తెలుగు‎ไทย‎中文（简体）‎中文（繁體）‎日本語‎한국어‎ English‎
+Enable Dark Mode
+Send feedback on...
+This help content & information General Help Center experience
+Search
+Clear search
+Close search
+Google apps
+Main menu
+16708708972837415261
+true
+Search Help Center
+false
+true
+true
+true
+true
+true
+99950
+false
+false
+false
+false
+false

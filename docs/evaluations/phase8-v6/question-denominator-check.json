@@ -1,0 +1,48 @@
+{
+  "original_questions_unchanged": true,
+  "original_count": 10,
+  "extended_count": 8,
+  "reference": "docs/evaluations/phase8-v5/live-evidence.json",
+  "questions": [
+    [
+      "Google Photos",
+      "In the Google Photos Android app, can a user manually select several photos and start backup in one action? Cite only official Google Help; separate manual upload from automatic backup."
+    ],
+    [
+      "Dropbox",
+      "In the Dropbox iPhone app, can a user select and upload multiple photos at once? Cite only official Dropbox Help and state any limits actually documented."
+    ],
+    [
+      "OneDrive",
+      "In the OneDrive iPhone app, can a user manually select multiple photos for one upload? Cite only official Microsoft Support; separate manual upload from camera upload."
+    ],
+    [
+      "iCloud Photos",
+      "On iPhone, distinguish the Photos app iCloud sync, iCloud.com upload, and Shared Photo Library. Which of these supports selecting multiple photos for a manual upload? Cite only official Apple Support."
+    ],
+    [
+      "Google Drive",
+      "In the Google Drive Android app, can a user select multiple device photos and upload them in one action? Cite only official Google Drive Help; if official documentation is absent, mark not verified."
+    ],
+    [
+      "Google Photos",
+      "According to official Google Photos Help, what are the steps to manually back up one photo or video in the Android app? Cite only official Google Help; distinguish automatic backup."
+    ],
+    [
+      "Dropbox",
+      "According to official Dropbox Help, can mobile users manually add photos when camera uploads are disabled? Cite only official Dropbox Help."
+    ],
+    [
+      "OneDrive",
+      "According to official Microsoft Support, how does an iPhone user select existing pictures for a manual upload in OneDrive? Cite only official Microsoft Support."
+    ],
+    [
+      "iCloud Photos",
+      "According to official Apple Support, which upload choices does iCloud.com show on a phone or tablet, and where should users upload to a Shared Photo Library? Cite only official Apple Support."
+    ],
+    [
+      "Google Drive",
+      "According to official Google Drive Help, what are the Android app steps to upload files? Cite only official Google Drive Help."
+    ]
+  ]
+}

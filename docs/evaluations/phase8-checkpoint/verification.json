@@ -1,0 +1,48 @@
+{
+  "date": "2026-10-19",
+  "type": "partial_checkpoint_not_acceptance",
+  "phase_status": "PARTIAL",
+  "research_quality": "FAIL",
+  "formal_user_acceptance": "NOT MEASURED",
+  "real_external_integration": "DEFERRED",
+  "simulation_only": true,
+  "new_runs": {
+    "sqlite": {
+      "passed": 1509,
+      "skipped": 11
+    },
+    "fresh_postgres": {
+      "passed": 1520
+    },
+    "separate_fresh_pg_migration_roundtrip": "PASS",
+    "frontend": {
+      "files": 21,
+      "passed": 193
+    },
+    "lint": "PASS",
+    "build_including_types": "PASS",
+    "ruff": "PASS"
+  },
+  "new_paid_research_runs": 0,
+  "new_browser_checks": 0,
+  "previous_browser_evidence": "../../51-动态数据展示清理与复验.md",
+  "previous_live_research": "../phase8-v7-search/quality-summary.json",
+  "protected_files_checked": 90,
+  "protected_files_changed": 0,
+  "backend_files_matching_last_live_run": 191,
+  "secrets_scan": {
+    "result": "PASS",
+    "history_blobs_checked": 834,
+    "reviewed_test_canary_matches": true,
+    "raw_secrets_not_included": true
+  },
+  "log_sha256": {
+    "sqlite.log": "d3e0564f615440f0ec094701e43c80a9d67969b1ad19e1ab09dfab29b18ac65c",
+    "postgres.log": "6aad9a569144e630fe5cf2b1c0bda040d304537aa29e86eefe739bf912eb9230",
+    "migrations.log": "9dd0716fa26844fbb70882bf7078ceb82f68a699303793ea44b9f842fe772850",
+    "frontend-tests.log": "adb65b301730996f44e439b8930d3084e5995447877a14f0a454bdd831ff2bcb",
+    "frontend-lint.log": "36261c2e45360ac04f0ffa7b65df767f2e23a0119d624dcc7e13332dc742b1b7",
+    "frontend-build.log": "e873132d66110e8f41bb4b977924d01ed8f260391669a22c16a280bc5549b4df",
+    "ruff.log": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18"
+  }
+}

@@ -1,0 +1,1847 @@
+{
+  "reviewed_at": "2026-10-17T13:41:34.487835+00:00",
+  "method": "Independent HTTP fetch and plain HTMLParser, separate from production reader/validator; list prefixes excluded only for audit string comparison; semantic review recorded separately",
+  "pages": [
+    {
+      "url": "https://help.dropbox.com/create-upload/add-files",
+      "final_url": "https://help.dropbox.com/create-upload/add-files",
+      "http_status": 200,
+      "sha256_html": "0a5d30e6d7a07909d3b7ea1f081723387e6dba1327d148e2b1b07e1f293c59a4",
+      "sha256_text": "5a00e3936615f29b72938e7de7ea51d550e7756765132d96210df4c2a3fa3249",
+      "text_file": "5ca577a4e2812113.txt"
+    },
+    {
+      "url": "https://help.dropbox.com/create-upload/camera-uploads-fix",
+      "final_url": "https://help.dropbox.com/create-upload/camera-uploads-fix",
+      "http_status": 200,
+      "sha256_html": "a7d7d69b893b1bba3207c0161d678ce9be6edb5a62068dd3be24780a7b5eb99c",
+      "sha256_text": "a7f3b9f11430bbecda965ac6fd01232fb016b7c26f65073d5f4a7aa2d87f2d87",
+      "text_file": "8814562a7d34f59a.txt"
+    },
+    {
+      "url": "https://help.dropbox.com/create-upload/camera-uploads-overview",
+      "final_url": "https://help.dropbox.com/create-upload/camera-uploads-overview",
+      "http_status": 200,
+      "sha256_html": "a3eb176fb679c6c9a788952b3df4a229989f919e49e17a7738d88959b4646171",
+      "sha256_text": "9cf6fe1c8fbbb20c6a4b79555045e379627393a7adfb0fa76b12a554ba52341e",
+      "text_file": "65a45b67709e9427.txt"
+    },
+    {
+      "url": "https://help.dropbox.com/create-upload/dropbox-docsend-upload-files",
+      "final_url": "https://help.dropbox.com/create-upload/dropbox-docsend-upload-files",
+      "http_status": 200,
+      "sha256_html": "b3c9ca041344737462dda7fb1cc024e5ba288ead250ddcf324ae738d91c6dceb",
+      "sha256_text": "eaeb5d42805f32f91ad7722eed19cc9da6eee4dadcc48dd4c12f5686ed292723",
+      "text_file": "0021f5409b790d73.txt"
+    },
+    {
+      "url": "https://help.dropbox.com/create-upload/upload-mobile",
+      "final_url": "https://help.dropbox.com/create-upload/upload-mobile",
+      "http_status": 200,
+      "sha256_html": "5a89d411955d1bc9746fabfe591440125accafa6b1b3773bc83e87e3e11553c1",
+      "sha256_text": "940072fa48b77f1a3cc95f7a2b1d525561950123cc766e141615071518dd9d8d",
+      "text_file": "56943ff82d626f50.txt"
+    },
+    {
+      "url": "https://help.dropbox.com/create-upload/web-based-files",
+      "final_url": "https://help.dropbox.com/create-upload/web-based-files",
+      "http_status": 200,
+      "sha256_html": "d314ae6d5938b402f17c6c30a752ad20407fd66d17936a6e0ebf291f35e32855",
+      "sha256_text": "1031c468be1bda7261cd60794c52f67de893bf2b0300643cfd9b6035adcde5e7",
+      "text_file": "d86297e9d5d6ecbb.txt"
+    },
+    {
+      "url": "https://help.dropbox.com/share/received-file-request",
+      "final_url": "https://help.dropbox.com/share/received-file-request",
+      "http_status": 200,
+      "sha256_html": "a6a2d1ba99661644bef7cb9821f4bb8cf2b1ba7a49e9a9083356b9de501a8069",
+      "sha256_text": "fce33a1c332821c0451bf8bdb74e084af3d8bfe0122ab0f1c90de6367c2a16ec",
+      "text_file": "803425d3767672c0.txt"
+    },
+    {
+      "url": "https://support.apple.com/guide/icloud/icloud-drive-on-icloudcom-overview-mmd0b4a7f5e8/icloud",
+      "final_url": "https://support.apple.com/guide/icloud/icloud-drive-on-icloudcom-overview-mmd0b4a7f5e8/icloud",
+      "http_status": 200,
+      "sha256_html": "5b808c048eea672d3c3add2739f7cd4cd7fd4eadbc0b9c4bc4394a81d04a6119",
+      "sha256_text": "31ef35b049262fdac802525c7266910ea1444766e27630896e30e027e49e9d0d",
+      "text_file": "dc28e88d9ea7e709.txt"
+    },
+    {
+      "url": "https://support.apple.com/guide/icloud/upload-and-download-photos-mmb5dbaf376f/icloud",
+      "final_url": "https://support.apple.com/guide/icloud/upload-and-download-photos-mmb5dbaf376f/icloud",
+      "http_status": 200,
+      "sha256_html": "b5887c49fb9fbd153e2e3001c6af4269ba765fe59a87bccd5f35114cbda39f27",
+      "sha256_text": "2ff63efe0fb629b81272b874ac66d18c106e1af07e5fd0780084d743925bba7b",
+      "text_file": "89967b50b14a0cc3.txt"
+    },
+    {
+      "url": "https://support.apple.com/guide/icloud/what-you-can-do-with-icloud-and-photos-mm8b32f3ae27/icloud",
+      "final_url": "https://support.apple.com/guide/icloud/what-you-can-do-with-icloud-and-photos-mm8b32f3ae27/icloud",
+      "http_status": 200,
+      "sha256_html": "bd2f32d435b8e5aeaf39a3ee97d9b91880a3bc3938b019635894bcfc3c95e3cd",
+      "sha256_text": "296d3594e532c81c895b83351913d0e03f7fd96156314bc32aab1e9632dd9183",
+      "text_file": "fa6d2e5f38ef3ee2.txt"
+    },
+    {
+      "url": "https://support.apple.com/zh-cn/108782",
+      "final_url": "https://support.apple.com/zh-cn/108782",
+      "http_status": 200,
+      "sha256_html": "b303f100a24638843b261d77340b0fdd144f823295c87c60e36438523af45e27",
+      "sha256_text": "5adf1c0c5e9963340520cb90b145f65bdf4e6acb7382e3a9685c7889d3113edb",
+      "text_file": "1a102f55d03663a0.txt"
+    },
+    {
+      "url": "https://support.apple.com/zh-cn/guide/icloud/mmad632d1df2/icloud",
+      "final_url": "https://support.apple.com/zh-cn/guide/icloud/mmad632d1df2/icloud",
+      "http_status": 200,
+      "sha256_html": "fa5e1667f4c1d9c2f01613a6326f7fd658a578d6b7f946e76ddb6494aa00a5eb",
+      "sha256_text": "d40aa5d4cae6a61a20093492cdad5b8e75ee77c76191ed0e0fce440350bf6ec4",
+      "text_file": "de5457fc708ca16d.txt"
+    },
+    {
+      "url": "https://support.google.com/drive/answer/2424368?hl=en&co=GENIE.Platform%3DAndroid",
+      "final_url": "https://support.google.com/drive/answer/2424368?hl=en&co=GENIE.Platform%3DAndroid",
+      "http_status": 200,
+      "sha256_html": "5a0f64ba7f34ef44731a1d97a99600de516aac6e97e290bf43b0498505f0c5ed",
+      "sha256_text": "411c2b6b7a03b260cd27f757c97cba5c82d19f9cf30ad5d81b2c0b6f1bb4d46b",
+      "text_file": "1e3bd3ce3f39508a.txt"
+    },
+    {
+      "url": "https://support.google.com/drive/answer/2424384?hl=en&co=GENIE.Platform%3DAndroid",
+      "final_url": "https://support.google.com/drive/answer/2424384?hl=en&co=GENIE.Platform%3DAndroid",
+      "http_status": 200,
+      "sha256_html": "82a9bc09c949ad5df16fd75e6d680effe2a068975afdbcc8397689c7831e84fd",
+      "sha256_text": "66d9425517d04ef1480ed53d9676ed34c8a741ea179f2489cd2d6ca08130aced",
+      "text_file": "4ab0d2c455b84486.txt"
+    },
+    {
+      "url": "https://support.google.com/photos/answer/12791741?hl=en",
+      "final_url": "https://support.google.com/photos/answer/12791741?hl=en",
+      "http_status": 200,
+      "sha256_html": "90e76a090244aba65530255b36b1c6b3d72cd388d5f59853ca90be7a04b13e87",
+      "sha256_text": "c35eb7e658c87b4443d2cef779f9ab7c3e60ce8226c68412a90f5a03d6d86dd8",
+      "text_file": "57f6ae981914bf6e.txt"
+    },
+    {
+      "url": "https://support.google.com/photos/answer/14216276",
+      "final_url": "https://support.google.com/photos/answer/14216276",
+      "http_status": 200,
+      "sha256_html": "6709e2ff1334430691cade7039a6144b02fd76831ec938964741316657f6ac16",
+      "sha256_text": "81c46dd4f27c5e7c51ec2b1a0a97d4698cf374c10437a54a570fb5f3a1e3791a",
+      "text_file": "f7c7504ec16ee692.txt"
+    },
+    {
+      "url": "https://support.google.com/photos/answer/14216276?hl=en-GB",
+      "final_url": "https://support.google.com/photos/answer/14216276?hl=en-GB",
+      "http_status": 200,
+      "sha256_html": "ce6dc762cf24c5282e41affbf13b8d17aa6fb01b79cbf4ea9cf50baaa2c92650",
+      "sha256_text": "89c791377da7d2d25131cffe8728d046943a26e81b49b236e9baa369e44db8ad",
+      "text_file": "c1becf1612a199bd.txt"
+    },
+    {
+      "url": "https://support.google.com/photos/answer/15235862?hl=en&co=GENIE.Platform%3DAndroid",
+      "final_url": "https://support.google.com/photos/answer/15235862?hl=en&co=GENIE.Platform%3DAndroid",
+      "http_status": 200,
+      "sha256_html": "60b6568973f26d61c10e0bd08289f07c704d2849436dbe101b0c38ea7f1a5175",
+      "sha256_text": "79beaa8d7b244820f4aecc1c5541cb24b019e5b346c6a13ae5f58cb710f75d28",
+      "text_file": "1bf307ca543ffb57.txt"
+    },
+    {
+      "url": "https://support.google.com/photos/answer/6128862?hl=en&co=GENIE.Platform%3DAndroid",
+      "final_url": "https://support.google.com/photos/answer/6128862?hl=en&co=GENIE.Platform%3DAndroid",
+      "http_status": 200,
+      "sha256_html": "c64f59d0ed5a3e312fb59a6d3c5578717dbd987ec841edd34bd30c2863f3d424",
+      "sha256_text": "f2c45c688bb4a1fbc0a9640c8cc4030d627b7406da7fdd485dacd044311eed7a",
+      "text_file": "5f9ef98088c25cc5.txt"
+    },
+    {
+      "url": "https://support.google.com/photos/answer/6131416?hl=en&co=GENIE.Platform%3DAndroid",
+      "final_url": "https://support.google.com/photos/answer/6131416?hl=en&co=GENIE.Platform%3DAndroid",
+      "http_status": 200,
+      "sha256_html": "67a3d3648ebfa4bca663ceac47e1146ed69723a644c1de4c41dea35a02b7dbd3",
+      "sha256_text": "c756fec85888b003e5dc7ef23ef83f8ff85d71f2d36ec90b227f97a8373b8255",
+      "text_file": "222ffa1212be86d7.txt"
+    },
+    {
+      "url": "https://support.google.com/photos/answer/6174018?hl=en&co=GENIE.Platform%3DAndroid",
+      "final_url": "https://support.google.com/photos/answer/6174018?hl=en&co=GENIE.Platform%3DAndroid",
+      "http_status": 200,
+      "sha256_html": "d8f22b2fbcd0aefb15134353d70487df7c4f3310cf884e303b4c8e56ded7b650",
+      "sha256_text": "51c9e253af008e96b17bd236985d8ef8c385d14e5a797c9982fd4a36bc08bad5",
+      "text_file": "48062c60aaebd4d6.txt"
+    },
+    {
+      "url": "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid",
+      "final_url": "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid",
+      "http_status": 200,
+      "sha256_html": "a08430cd5dcebbaf9dc77763d1a61bd22762f7d3824bc3e54ca6f5ba1d9f4e5b",
+      "sha256_text": "4e0c47210302299e92bf6ab41b6c050f795540d3ecae0e1d6833a6a907780a8a",
+      "text_file": "93af343621c6b0d1.txt"
+    },
+    {
+      "url": "https://support.google.com/photos/answer/6193313?hl=zh-Hans&co=GENIE.Platform%3DAndroid",
+      "final_url": "https://support.google.com/photos/answer/6193313?hl=zh-Hans&co=GENIE.Platform%3DAndroid",
+      "http_status": 200,
+      "sha256_html": "bd29e95b905dd953d99ee61cb762ab525ef0740e2676fcd7fa5ada52d00c4a7b",
+      "sha256_text": "f0a0afce913ccf3ad126549e0f136198cd69a4537c399b206f21b10b56c66208",
+      "text_file": "e6f9695e4f2d11a7.txt"
+    },
+    {
+      "url": "https://support.google.com/photos/answer/6193313?hl=zh-TW_ALL&co=GENIE.Platform%3DAndroid",
+      "final_url": "https://support.google.com/photos/answer/6193313?hl=zh-TW_ALL&co=GENIE.Platform%3DAndroid",
+      "http_status": 200,
+      "sha256_html": "e1d835437b8521411212cbc1d6bd26675206dd53d5355cc061100780eaee7f3f",
+      "sha256_text": "ed41e151f4bb82135db7bb7375ec43d13749bdd43894b421d1d4a81dd06c4802",
+      "text_file": "90cfb2dbfa6e76fe.txt"
+    },
+    {
+      "url": "https://support.microsoft.com/en-us/onedrive/automatically-save-photos-and-videos-with-onedrive-on-ios",
+      "final_url": "https://support.microsoft.com/en-us/onedrive/automatically-save-photos-and-videos-with-onedrive-on-ios",
+      "http_status": 200,
+      "sha256_html": "6c0c5082f99b4f4748830b9423660749f592ea24d3409586fd8c94a2fdb183fc",
+      "sha256_text": "87463d224e6d5bce623c587971cd3c2e33b0386cf0b0327db9adb895e59cdf13",
+      "text_file": "acf36142f5325493.txt"
+    },
+    {
+      "url": "https://support.microsoft.com/en-us/onedrive/manually-upload-files-or-photos-to-onedrive-in-ios",
+      "final_url": "https://support.microsoft.com/en-us/onedrive/manually-upload-files-or-photos-to-onedrive-in-ios",
+      "http_status": 200,
+      "sha256_html": "5d4689c392663f2366af56671596f83ccb2c1bd664cc698415f3acecae220a4d",
+      "sha256_text": "176458952d3a47307e09ffacac2bb23b356a04873f4793410db612e4f3e6c823",
+      "text_file": "ee88d30899a0627a.txt"
+    }
+  ],
+  "samples": [
+    {
+      "sample": 1,
+      "run_id": "697fc7b2-411c-48fb-8cfb-e35bda7a035d",
+      "question": "请仅根据 Google 官方帮助，说明 Google Photos 安卓应用中手动备份一张照片或视频的完整步骤，并区分自动备份。",
+      "program_status": "completed",
+      "confirmed_checks": [
+        {
+          "quote": "1. On your Android device, open the Google Photos app Photos .",
+          "sources": [
+            {
+              "url": "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": false,
+              "independent_page_context": "",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "2. Sign in to your Google Account.",
+          "sources": [
+            {
+              "url": "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": " backup, depending on your internet connection, size of your uploads, and other conditions. On your Android phone or tablet, open the Google Photos app Photos. Sign in to your Google Account. At the top right, tap your Profile picture or Initial. Tap Photos settings Settings and then Backup. Turn Backup on or off. Turn Backup on or off Check if backup is complete On your Android phone or tablet, open the Goo",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "3. Open the photo or video.",
+          "sources": [
+            {
+              "url": "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "the steps to check up backup status Manually back up photos & videos On your Android device, open the Google Photos app Photos. Sign in to your Google Account. Open the photo or video. Tap Back up now. Alternatively, you can tap the Back up button or scroll to the bottom, then tap Back up now. Tips: When you open a single photo and you don't have enough storage: The badge shows \"Not enough storage to ",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "4. Tap Back up now.",
+          "sources": [
+            {
+              "url": "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "kup status Manually back up photos & videos On your Android device, open the Google Photos app Photos. Sign in to your Google Account. Open the photo or video. Tap Back up now. Alternatively, you can tap the Back up button or scroll to the bottom, then tap Back up now. Tips: When you open a single photo and you don't have enough storage: The badge shows \"Not enough storage to back up.\" If you ",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "- Alternatively, you can tap the Back up button or scroll to the bottom, then tap Back up now.",
+          "sources": [
+            {
+              "url": "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "ly back up photos & videos On your Android device, open the Google Photos app Photos. Sign in to your Google Account. Open the photo or video. Tap Back up now. Alternatively, you can tap the Back up button or scroll to the bottom, then tap Back up now. Tips: When you open a single photo and you don't have enough storage: The badge shows \"Not enough storage to back up.\" If you want to back up multiple photos or videos: Touch and hold the photos or videos you want to ba",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "Tips:",
+          "sources": [
+            {
+              "url": "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": " to your Google Account. Open the photo or video. Tap Back up now. Alternatively, you can tap the Back up button or scroll to the bottom, then tap Back up now. Tips: When you open a single photo and you don't have enough storage: The badge shows \"Not enough storage to back up.\" If you want to back up multiple photos or videos: Touch and hold the photos or videos you want to back up,",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "- When you open a single photo and you don't have enough storage: The badge shows \"Not enough storage to back up.\"",
+          "sources": [
+            {
+              "url": "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "ur Google Account. Open the photo or video. Tap Back up now. Alternatively, you can tap the Back up button or scroll to the bottom, then tap Back up now. Tips: When you open a single photo and you don't have enough storage: The badge shows \"Not enough storage to back up.\" If you want to back up multiple photos or videos: Touch and hold the photos or videos you want to back up, and then tap Back up. Check your overall backup status Important: If backup is on and you have enough storage, y",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "- If you want to back up multiple photos or videos: Touch and hold the photos or videos you want to back up, and then tap Back up.",
+          "sources": [
+            {
+              "url": "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "oll to the bottom, then tap Back up now. Tips: When you open a single photo and you don't have enough storage: The badge shows \"Not enough storage to back up.\" If you want to back up multiple photos or videos: Touch and hold the photos or videos you want to back up, and then tap Back up. Check your overall backup status Important: If backup is on and you have enough storage, you can find the backup status at the top of your library. On your Android device, open Google Photos Photos. At the top, check th",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "1. On your Android phone or tablet, open the Google Photos app Photos .",
+          "sources": [
+            {
+              "url": "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": false,
+              "independent_page_context": "",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "2. Sign in to your Google Account.",
+          "sources": [
+            {
+              "url": "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": " backup, depending on your internet connection, size of your uploads, and other conditions. On your Android phone or tablet, open the Google Photos app Photos. Sign in to your Google Account. At the top right, tap your Profile picture or Initial. Tap Photos settings Settings and then Backup. Turn Backup on or off. Turn Backup on or off Check if backup is complete On your Android phone or tablet, open the Goo",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "You can automatically save your photos and videos to your Google Account when you turn on backup.",
+          "sources": [
+            {
+              "url": "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": ".. This help content & information General Help Center experience CloseNext Help Center Community Can't find your photos? Google Photos Back up photos & videos You can automatically save your photos and videos to your Google Account when you turn on backup. You can access your saved photos and videos from any device you’re signed in to. Your backed-up photos and videos are private and viewable only by you on your signed-in devices unless shared. You can back up photos and ",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "Important: When you turn “Backup” on, your chosen device folders are automatically backed up too, not only your camera.",
+          "sources": [
+            {
+              "url": "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "tings and then Backup. Under \"Account & Storage,\" tap your Profile picture or Initial. Select the Google Account you want to back up to. Back up device folders Important: When you turn “Backup” on, your chosen device folders are automatically backed up too, not only your camera. You can choose to automatically backup all folders, or turn “Backup” on or off for individual device folders. On your Android device, open the Google Photos app Photos. Sign in to your Google Account. At the top right, ",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "You can choose to automatically backup all folders, or turn “Backup” on or off for individual device folders.",
+          "sources": [
+            {
+              "url": "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "t to back up to. Back up device folders Important: When you turn “Backup” on, your chosen device folders are automatically backed up too, not only your camera. You can choose to automatically backup all folders, or turn “Backup” on or off for individual device folders. On your Android device, open the Google Photos app Photos. Sign in to your Google Account. At the top right, tap your Profile picture or Initials. Tap Photos settings Settings and then Backup. Under \"Settings,\" tap Back",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "If you’ve backed up your content manually or automatically:",
+          "sources": [
+            {
+              "url": "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "ack up your photos If you have backup turned on: Never lose a memory: Any photos you take from a device with backup turned on are saved to your Google Account. If you’ve backed up your content manually or automatically: Automatic sync: You can access any photos you take and any edits you make to them on any device you sign in to. If you edit and save a photo on your phone, the photo looks the same on Google Photos. Fast and powerful se",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "- Automatic sync: You can access any photos you take and any edits you make to them on any device you sign in to.",
+          "sources": [
+            {
+              "url": "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "a memory: Any photos you take from a device with backup turned on are saved to your Google Account. If you’ve backed up your content manually or automatically: Automatic sync: You can access any photos you take and any edits you make to them on any device you sign in to. If you edit and save a photo on your phone, the photo looks the same on Google Photos. Fast and powerful search: You can search your photos by the people in them when you turn on Face Groups. You can also search by plac",
+              "error_type": null
+            }
+          ]
+        }
+      ],
+      "analyses": []
+    },
+    {
+      "sample": 2,
+      "run_id": "2d8a5b32-bbc8-4428-b927-f7401b030885",
+      "question": "仅引用 Dropbox 官方帮助：关闭相机上传（camera uploads）后，移动端还能手动添加照片吗？请保留完整操作步骤和禁用条件。",
+      "program_status": "partial_failed",
+      "confirmed_checks": [
+        {
+          "quote": "1. Open the Dropbox mobile app.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/camera-uploads-overview",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": " your team. Turn photo and video uploads on or off on the Dropbox mobile app Android iOS To turn photo uploads on or off on the Dropbox mobile app for Android: Open the Dropbox mobile app. Tap Account. Tap Settings. Under Features, tap Camera uploads. Tap Back up my photos. If prompted, tap Allow. To turn photo uploads on or off on the Dropbox mobile app for iOS: Open the Dropbox mobile app. Tap ☑ (accoun",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "2. Tap Account.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/camera-uploads-overview",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "deo uploads on or off on the Dropbox mobile app Android iOS To turn photo uploads on or off on the Dropbox mobile app for Android: Open the Dropbox mobile app. Tap Account. Tap Settings. Under Features, tap Camera uploads. Tap Back up my photos. If prompted, tap Allow. To turn photo uploads on or off on the Dropbox mobile app for iOS: Open the Dropbox mobile app. Tap ☑ (account). Tap Camer",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "3. Tap Settings.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/camera-uploads-overview",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "n or off on the Dropbox mobile app Android iOS To turn photo uploads on or off on the Dropbox mobile app for Android: Open the Dropbox mobile app. Tap Account. Tap Settings. Under Features, tap Camera uploads. Tap Back up my photos. If prompted, tap Allow. To turn photo uploads on or off on the Dropbox mobile app for iOS: Open the Dropbox mobile app. Tap ☑ (account). Tap Camera uploads. Tap",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "4. Under Features, tap Camera uploads.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/camera-uploads-overview",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "e Dropbox mobile app Android iOS To turn photo uploads on or off on the Dropbox mobile app for Android: Open the Dropbox mobile app. Tap Account. Tap Settings. Under Features, tap Camera uploads. Tap Back up my photos. If prompted, tap Allow. To turn photo uploads on or off on the Dropbox mobile app for iOS: Open the Dropbox mobile app. Tap ☑ (account). Tap Camera uploads. Tap Upload from, then Settings to give ",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "5. Tap Back up my photos.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/camera-uploads-overview",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "turn photo uploads on or off on the Dropbox mobile app for Android: Open the Dropbox mobile app. Tap Account. Tap Settings. Under Features, tap Camera uploads. Tap Back up my photos. If prompted, tap Allow. To turn photo uploads on or off on the Dropbox mobile app for iOS: Open the Dropbox mobile app. Tap ☑ (account). Tap Camera uploads. Tap Upload from, then Settings to give Dropbox access to your ",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "6. If prompted, tap Allow.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/camera-uploads-overview",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "r off on the Dropbox mobile app for Android: Open the Dropbox mobile app. Tap Account. Tap Settings. Under Features, tap Camera uploads. Tap Back up my photos. If prompted, tap Allow. To turn photo uploads on or off on the Dropbox mobile app for iOS: Open the Dropbox mobile app. Tap ☑ (account). Tap Camera uploads. Tap Upload from, then Settings to give Dropbox access to your photos and videos. In th",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "1. Open the Dropbox mobile app.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/camera-uploads-overview",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": " your team. Turn photo and video uploads on or off on the Dropbox mobile app Android iOS To turn photo uploads on or off on the Dropbox mobile app for Android: Open the Dropbox mobile app. Tap Account. Tap Settings. Under Features, tap Camera uploads. Tap Back up my photos. If prompted, tap Allow. To turn photo uploads on or off on the Dropbox mobile app for iOS: Open the Dropbox mobile app. Tap ☑ (accoun",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "2. Tap ☑ (account).",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/camera-uploads-overview",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": " Camera uploads. Tap Back up my photos. If prompted, tap Allow. To turn photo uploads on or off on the Dropbox mobile app for iOS: Open the Dropbox mobile app. Tap ☑ (account). Tap Camera uploads. Tap Upload from, then Settings to give Dropbox access to your photos and videos. In the Dropbox app, choose what you’d like to back up and whether you’d like to use cell data. Tap Turn on camera uplo",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "3. Tap Camera uploads.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/camera-uploads-overview",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "Tap Back up my photos. If prompted, tap Allow. To turn photo uploads on or off on the Dropbox mobile app for iOS: Open the Dropbox mobile app. Tap ☑ (account). Tap Camera uploads. Tap Upload from, then Settings to give Dropbox access to your photos and videos. In the Dropbox app, choose what you’d like to back up and whether you’d like to use cell data. Tap Turn on camera uploads. How to upload p",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "4. Tap Upload from, then Settings to give Dropbox access to your photos and videos.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/camera-uploads-overview",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "s. If prompted, tap Allow. To turn photo uploads on or off on the Dropbox mobile app for iOS: Open the Dropbox mobile app. Tap ☑ (account). Tap Camera uploads. Tap Upload from, then Settings to give Dropbox access to your photos and videos. In the Dropbox app, choose what you’d like to back up and whether you’d like to use cell data. Tap Turn on camera uploads. How to upload photos and videos overnight on the Dropbox mobile app Note: This feature is availa",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "5. In the Dropbox app, choose what you’d like to back up and whether you’d like to use cell data.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/camera-uploads-overview",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "app for iOS: Open the Dropbox mobile app. Tap ☑ (account). Tap Camera uploads. Tap Upload from, then Settings to give Dropbox access to your photos and videos. In the Dropbox app, choose what you’d like to back up and whether you’d like to use cell data. Tap Turn on camera uploads. How to upload photos and videos overnight on the Dropbox mobile app Note: This feature is available on iOS devices only. If you have to upload a large amount of photos or videos from your cam",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "6. Tap Turn on camera uploads.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/camera-uploads-overview",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": " then Settings to give Dropbox access to your photos and videos. In the Dropbox app, choose what you’d like to back up and whether you’d like to use cell data. Tap Turn on camera uploads. How to upload photos and videos overnight on the Dropbox mobile app Note: This feature is available on iOS devices only. If you have to upload a large amount of photos or videos from your camera app, you can use the ove",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "1. Open the Dropbox mobile app.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/camera-uploads-overview",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": " your team. Turn photo and video uploads on or off on the Dropbox mobile app Android iOS To turn photo uploads on or off on the Dropbox mobile app for Android: Open the Dropbox mobile app. Tap Account. Tap Settings. Under Features, tap Camera uploads. Tap Back up my photos. If prompted, tap Allow. To turn photo uploads on or off on the Dropbox mobile app for iOS: Open the Dropbox mobile app. Tap ☑ (accoun",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "2. Tap the camera icon in the top-right corner.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/camera-uploads-overview",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": " through the night, keeping the Dropbox mobile app open and dimming your device’s brightness. To turn overnight uploads on or off: Open the Dropbox mobile app. Tap the camera icon in the top-right corner. Tap Start overnight uploads to start uploading content or tap Exit overnight uploads to stop uploading content. The Dropbox app will dim your phone’s screen while your photos are uploading throughout the night. Note: To",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "3. Tap Start overnight uploads to start uploading content or tap Exit overnight uploads to stop uploading content.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/camera-uploads-overview",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "e app open and dimming your device’s brightness. To turn overnight uploads on or off: Open the Dropbox mobile app. Tap the camera icon in the top-right corner. Tap Start overnight uploads to start uploading content or tap Exit overnight uploads to stop uploading content. The Dropbox app will dim your phone’s screen while your photos are uploading throughout the night. Note: To successfully upload your photos and videos overnight, you must: Keep your Dropbox app open. Make sure your phon",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "Note: This feature is available on iOS devices only.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/camera-uploads-overview",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": " you’d like to back up and whether you’d like to use cell data. Tap Turn on camera uploads. How to upload photos and videos overnight on the Dropbox mobile app Note: This feature is available on iOS devices only. If you have to upload a large amount of photos or videos from your camera app, you can use the overnight uploads feature. Overnight uploads allows you to upload your photos and videos continuously through the night, kee",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "If you have to upload a large amount of photos or videos from your camera app, you can use the overnight uploads feature.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/camera-uploads-overview",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "cell data. Tap Turn on camera uploads. How to upload photos and videos overnight on the Dropbox mobile app Note: This feature is available on iOS devices only. If you have to upload a large amount of photos or videos from your camera app, you can use the overnight uploads feature. Overnight uploads allows you to upload your photos and videos continuously through the night, keeping the Dropbox mobile app open and dimming your device’s brightness. To turn overnight uploads on or off: Open the Dropb",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "Note: To successfully upload your photos and videos overnight, you must:",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/camera-uploads-overview",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "ent or tap Exit overnight uploads to stop uploading content. The Dropbox app will dim your phone’s screen while your photos are uploading throughout the night. Note: To successfully upload your photos and videos overnight, you must: Keep your Dropbox app open. Make sure your phone is connected to Wi-Fi. Keep your phone plugged into a charger to prevent your phone from powering off. Turn photo and video uploads on or off in the Dropbox desktop app W",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "1. Keep your Dropbox app open.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/camera-uploads-overview",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "app will dim your phone’s screen while your photos are uploading throughout the night. Note: To successfully upload your photos and videos overnight, you must: Keep your Dropbox app open. Make sure your phone is connected to Wi-Fi. Keep your phone plugged into a charger to prevent your phone from powering off. Turn photo and video uploads on or off in the Dropbox desktop app When you plug a camera or mob",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "2. Make sure your phone is connected to Wi-Fi.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/camera-uploads-overview",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "reen while your photos are uploading throughout the night. Note: To successfully upload your photos and videos overnight, you must: Keep your Dropbox app open. Make sure your phone is connected to Wi-Fi. Keep your phone plugged into a charger to prevent your phone from powering off. Turn photo and video uploads on or off in the Dropbox desktop app When you plug a camera or mobile device into a computer with the Dropbox ",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "3. Keep your phone plugged into a charger to prevent your phone from powering off.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/camera-uploads-overview",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "out the night. Note: To successfully upload your photos and videos overnight, you must: Keep your Dropbox app open. Make sure your phone is connected to Wi-Fi. Keep your phone plugged into a charger to prevent your phone from powering off. Turn photo and video uploads on or off in the Dropbox desktop app When you plug a camera or mobile device into a computer with the Dropbox desktop app installed, you’ll see a prompt asking if you’d like to enable upload",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "If you’re on a Dropbox team and you don’t see a camera uploads option, your admin may have turned the feature off for your team.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/camera-uploads-overview",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": " uploads aren't working? If camera uploads aren't working, follow the steps in our troubleshooting guide. Why don’t I see the option to turn on camera uploads? If you’re on a Dropbox team and you don’t see a camera uploads option, your admin may have turned the feature off for your team. Can I use camera uploads on my personal and work account? If you’ve linked two Dropbox accounts, you can only have camera uploads turned on for one account at a time. Why do I see someone else’s photos in my Camera Uplo",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "If you’ve linked two Dropbox accounts, you can only have camera uploads turned on for one account at a time.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/camera-uploads-overview",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": " and you don’t see a camera uploads option, your admin may have turned the feature off for your team. Can I use camera uploads on my personal and work account? If you’ve linked two Dropbox accounts, you can only have camera uploads turned on for one account at a time. Why do I see someone else’s photos in my Camera Uploads folder? When you plug a camera or mobile device into a computer with the Dropbox desktop app installed, you’ll see a prompt asking if you’d like to enable camera u",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "Note: The option to import from Microsoft OneDrive may only be available on certain individual Dropbox plans.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/add-files",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "le account, select files then click Upload. Import from Microsoft OneDrive: Choose a location, connect your Microsoft account, select files, then click Upload. Note: The option to import from Microsoft OneDrive may only be available on certain individual Dropbox plans. On the Dropbox desktop app Open the Dropbox folder in File Explorer (Windows) or Finder (Mac). Locate the files or folders you’d like to add, then drag and drop, or copy and paste them into the open Dropbox folder. Note",
+              "error_type": null
+            }
+          ]
+        }
+      ],
+      "analyses": []
+    },
+    {
+      "sample": 3,
+      "run_id": "c12e6a8f-7612-4ae8-9b92-3143157b2f28",
+      "question": "仅引用 Apple 官方支持：iCloud.com 在手机或平板上提供哪些上传选项？如果要上传到共享照片图库，应使用哪个入口？请保留版本条件。",
+      "program_status": "partial_failed",
+      "confirmed_checks": [
+        {
+          "quote": "1. Go to icloud.com/photos, then sign in to your Apple Account (if necessary).",
+          "sources": [
+            {
+              "url": "https://support.apple.com/guide/icloud/upload-and-download-photos-mmb5dbaf376f/icloud",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "hotos and videos in multiple formats from your computer to your personal library, albums, and shared albums. See the Apple Support article Shared Album limits. Go to icloud.com/photos, then sign in to your Apple Account (if necessary). Select Library in the sidebar, or select an album, then select the Add Photos to Album button. Select the Choose Files button, then do either of the following: On a phone or tablet: Choose Photo Library, Take Photo or V",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "2. Select Library in the sidebar, or select an album, then select the Add Photos to Album button .",
+          "sources": [
+            {
+              "url": "https://support.apple.com/guide/icloud/upload-and-download-photos-mmb5dbaf376f/icloud",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": false,
+              "independent_page_context": "",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "3. Select the Choose Files button , then do either of the following:",
+          "sources": [
+            {
+              "url": "https://support.apple.com/guide/icloud/upload-and-download-photos-mmb5dbaf376f/icloud",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": false,
+              "independent_page_context": "",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "- On a phone or tablet: Choose Photo Library, Take Photo or Video, or Choose Files, then follow the onscreen instructions.",
+          "sources": [
+            {
+              "url": "https://support.apple.com/guide/icloud/upload-and-download-photos-mmb5dbaf376f/icloud",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "Select Library in the sidebar, or select an album, then select the Add Photos to Album button. Select the Choose Files button, then do either of the following: On a phone or tablet: Choose Photo Library, Take Photo or Video, or Choose Files, then follow the onscreen instructions. On a computer: Select the photos or videos you want to add from your computer, then click Upload. Tip: On a phone or tablet, after your photos and videos finish uploading, select the More button to add the items to an a",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "Note: If you want to upload photos to your iCloud Shared Photo Library, use the Photos app on a device with iOS 16.1, iPadOS 16, macOS 13, or later.",
+          "sources": [
+            {
+              "url": "https://support.apple.com/guide/icloud/upload-and-download-photos-mmb5dbaf376f/icloud",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": ", after your photos and videos finish uploading, select the More button to add the items to an album, to show them in your library, or to show them in recents. Note: If you want to upload photos to your iCloud Shared Photo Library, use the Photos app on a device with iOS 16.1, iPadOS 16, macOS 13, or later. Download photos and videos Photos and videos are downloaded in the most compatible format for the device you’re currently using. Go to icloud.com/photos, then sign in to your Apple Account (if necessary). Select the pho",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "When you use iCloud Photos, you can also create an iCloud Shared Photo Library: a separate iCloud photo library you can share with up to five other people.",
+          "sources": [
+            {
+              "url": "https://support.apple.com/guide/icloud/what-you-can-do-with-icloud-and-photos-mm8b32f3ae27/icloud",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "recovered for 30 days. If you permanently delete a file from the Recently Deleted folder, you can’t recover those photos or videos. iCloud Shared Photo Library When you use iCloud Photos, you can also create an iCloud Shared Photo Library: a separate iCloud photo library you can share with up to five other people. Everyone can add, edit, favorite, caption, and delete photos and videos, and all collaborators see those changes in real time. All photos and videos in the iCloud Shared Photo Library count toward the library organizer’",
+              "error_type": null
+            }
+          ]
+        }
+      ],
+      "analyses": []
+    },
+    {
+      "sample": 4,
+      "run_id": "4025a30f-d4b0-402d-9137-7e2c27ce968e",
+      "question": "Using only official Google Drive Help, explain how an Android user uploads files from the app and locates the uploaded files.",
+      "program_status": "partial_failed",
+      "confirmed_checks": [
+        {
+          "quote": "1. On your Android phone or tablet, open the Google Drive app.",
+          "sources": [
+            {
+              "url": "https://support.google.com/drive/answer/2424368?hl=en&co=GENIE.Platform%3DAndroid",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "ive, it will take up space in your Drive, even if you upload to a folder owned by someone else. Types of files Documents Images Audio Video Upload & find files On your Android phone or tablet, open the Google Drive app. Tap New Add question and then Upload. Find and tap the files you want to upload. Find uploaded files in My Drive until you move them. Convert documents into Google formats If you want to upload files like Microsoft Word",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "2. Tap New Add question and then Upload.",
+          "sources": [
+            {
+              "url": "https://support.google.com/drive/answer/2424368?hl=en&co=GENIE.Platform%3DAndroid",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": " to a folder owned by someone else. Types of files Documents Images Audio Video Upload & find files On your Android phone or tablet, open the Google Drive app. Tap New Add question and then Upload. Find and tap the files you want to upload. Find uploaded files in My Drive until you move them. Convert documents into Google formats If you want to upload files like Microsoft Word documents, you can change a setting t",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "3. Find and tap the files you want to upload.",
+          "sources": [
+            {
+              "url": "https://support.google.com/drive/answer/2424368?hl=en&co=GENIE.Platform%3DAndroid",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "pes of files Documents Images Audio Video Upload & find files On your Android phone or tablet, open the Google Drive app. Tap New Add question and then Upload. Find and tap the files you want to upload. Find uploaded files in My Drive until you move them. Convert documents into Google formats If you want to upload files like Microsoft Word documents, you can change a setting to convert files. Important: You can only ch",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "4. Find uploaded files in My Drive until you move them.",
+          "sources": [
+            {
+              "url": "https://support.google.com/drive/answer/2424368?hl=en&co=GENIE.Platform%3DAndroid",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "pload & find files On your Android phone or tablet, open the Google Drive app. Tap New Add question and then Upload. Find and tap the files you want to upload. Find uploaded files in My Drive until you move them. Convert documents into Google formats If you want to upload files like Microsoft Word documents, you can change a setting to convert files. Important: You can only change Google Drive settings from your computer. Turn m",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "In the “Files” section, you can find a list of all your files, regardless of their location.",
+          "sources": [
+            {
+              "url": "https://support.google.com/drive/answer/2424384?hl=en&co=GENIE.Platform%3DAndroid",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "r: On your Android phone or tablet, open Google Drive Google Drive icon. Next to your file or folder, tap More actions More and then Share Add approver . Files In the “Files” section, you can find a list of all your files, regardless of their location. You can switch between ”My Drive” and ”Computer” tabs. To find the files and folders you: Stored in Google Drive: You can use the ”My Drive” tab. Sync in Drive for desktop: You can use the “Computer” tab. Learn how to u",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "To find the files and folders you:",
+          "sources": [
+            {
+              "url": "https://support.google.com/drive/answer/2424384?hl=en&co=GENIE.Platform%3DAndroid",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "ver . Files In the “Files” section, you can find a list of all your files, regardless of their location. You can switch between ”My Drive” and ”Computer” tabs. To find the files and folders you: Stored in Google Drive: You can use the ”My Drive” tab. Sync in Drive for desktop: You can use the “Computer” tab. Learn how to use Drive for desktop. Sign out of Google Drive To sign out of Drive on Android, remove you",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "- Stored in Google Drive: You can use the ”My Drive” tab.",
+          "sources": [
+            {
+              "url": "https://support.google.com/drive/answer/2424384?hl=en&co=GENIE.Platform%3DAndroid",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": " you can find a list of all your files, regardless of their location. You can switch between ”My Drive” and ”Computer” tabs. To find the files and folders you: Stored in Google Drive: You can use the ”My Drive” tab. Sync in Drive for desktop: You can use the “Computer” tab. Learn how to use Drive for desktop. Sign out of Google Drive To sign out of Drive on Android, remove your Google Account from your device. To remove a Google Ac",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "In the '”Home” section of Google Drive, you can:",
+          "sources": [
+            {
+              "url": "https://support.google.com/drive/answer/2424384?hl=en&co=GENIE.Platform%3DAndroid",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "plit Screen with Google Drive Use the Drive app on your device On your Android phone or tablet, open the Google Drive app. On the Home page, you can find: Home In the '”Home” section of Google Drive, you can: Find the files and folders you upload or sync, such as: Docs Sheets Slides Forms Switch between ”Suggested” and ”Activity” tabs. To find the files and folders you're most likely to use, you can use the ”Suggested” tab. ",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "- Find the files and folders you upload or sync, such as:",
+          "sources": [
+            {
+              "url": "https://support.google.com/drive/answer/2424384?hl=en&co=GENIE.Platform%3DAndroid",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "n your device On your Android phone or tablet, open the Google Drive app. On the Home page, you can find: Home In the '”Home” section of Google Drive, you can: Find the files and folders you upload or sync, such as: Docs Sheets Slides Forms Switch between ”Suggested” and ”Activity” tabs. To find the files and folders you're most likely to use, you can use the ”Suggested” tab. To find the files and folders based on recent changes an",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "- Switch between ”Suggested” and ”Activity” tabs.",
+          "sources": [
+            {
+              "url": "https://support.google.com/drive/answer/2424384?hl=en&co=GENIE.Platform%3DAndroid",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "Home page, you can find: Home In the '”Home” section of Google Drive, you can: Find the files and folders you upload or sync, such as: Docs Sheets Slides Forms Switch between ”Suggested” and ”Activity” tabs. To find the files and folders you're most likely to use, you can use the ”Suggested” tab. To find the files and folders based on recent changes and actions, you can use the ”Activity” tab. Starred To quickly find your i",
+              "error_type": null
+            }
+          ]
+        }
+      ],
+      "analyses": []
+    },
+    {
+      "sample": 5,
+      "run_id": "19cf387c-dba4-479b-9e2d-0cab0807b771",
+      "question": "仅引用 Microsoft 官方支持：iPhone 用户如何在 OneDrive 中选择已有图片并完成手动上传？",
+      "program_status": "completed",
+      "confirmed_checks": [
+        {
+          "quote": "1. In the OneDrive app, tap OneDrive add icon at the top of the screen.",
+          "sources": [
+            {
+              "url": "https://support.microsoft.com/en-us/onedrive/manually-upload-files-or-photos-to-onedrive-in-ios",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "pload to OneDrive automatically, read how to Automatically save photos and videos from OneDrive on iOS. Upload files and folders using the OneDrive for iOS app In the OneDrive app, tap OneDrive add icon at the top of the screen. Then tap to Take a photo, Scan a document, Create a folder or Upload a file or photo. Note OneDrive cannot upload photos optimized for iCloud. To disable optimization, tap Settings > iCloud > Photos and uncheck Optimize",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "2. Then tap to Take a photo, Scan a document, Create a folder or Upload a file or photo.",
+          "sources": [
+            {
+              "url": "https://support.microsoft.com/en-us/onedrive/manually-upload-files-or-photos-to-onedrive-in-ios",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "s and videos from OneDrive on iOS. Upload files and folders using the OneDrive for iOS app In the OneDrive app, tap OneDrive add icon at the top of the screen. Then tap to Take a photo, Scan a document, Create a folder or Upload a file or photo. Note OneDrive cannot upload photos optimized for iCloud. To disable optimization, tap Settings > iCloud > Photos and uncheck Optimize Storage. Learn how to upload HEIF and HEVC photos and videos to OneDrive. If you choo",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "- If you tap Choose Existing, links appear to the Photos app on your device.",
+          "sources": [
+            {
+              "url": "https://support.microsoft.com/en-us/onedrive/manually-upload-files-or-photos-to-onedrive-in-ios",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": " Photo, your device's camera app opens. You might be asked if you want OneDrive to access your camera - tap Yes to allow your pictures to be saved in OneDrive. If you tap Choose Existing, links appear to the Photos app on your device. Browse to the pictures you want to upload, select them, then on the top bar, tap Done. Move files between folders in the OneDrive for iOS app Select the files you want to move. Tap More icon in the OneDrive app for iOS ",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "Browse to the pictures you want to upload, select them, then on the top bar, tap Done.",
+          "sources": [
+            {
+              "url": "https://support.microsoft.com/en-us/onedrive/manually-upload-files-or-photos-to-onedrive-in-ios",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "rive to access your camera - tap Yes to allow your pictures to be saved in OneDrive. If you tap Choose Existing, links appear to the Photos app on your device. Browse to the pictures you want to upload, select them, then on the top bar, tap Done. Move files between folders in the OneDrive for iOS app Select the files you want to move. Tap More icon in the OneDrive app for iOS at the top of the screen, then tap Move. You can move folders into another folder, as w",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "- OneDrive cannot upload photos optimized for iCloud.",
+          "sources": [
+            {
+              "url": "https://support.microsoft.com/en-us/onedrive/manually-upload-files-or-photos-to-onedrive-in-ios",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "In the OneDrive app, tap OneDrive add icon at the top of the screen. Then tap to Take a photo, Scan a document, Create a folder or Upload a file or photo. Note OneDrive cannot upload photos optimized for iCloud. To disable optimization, tap Settings > iCloud > Photos and uncheck Optimize Storage. Learn how to upload HEIF and HEVC photos and videos to OneDrive. If you choose Take a Photo, your device's camera app opens. You migh",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "To disable optimization, tap Settings > iCloud > Photos and uncheck Optimize Storage.",
+          "sources": [
+            {
+              "url": "https://support.microsoft.com/en-us/onedrive/manually-upload-files-or-photos-to-onedrive-in-ios",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "p of the screen. Then tap to Take a photo, Scan a document, Create a folder or Upload a file or photo. Note OneDrive cannot upload photos optimized for iCloud. To disable optimization, tap Settings > iCloud > Photos and uncheck Optimize Storage. Learn how to upload HEIF and HEVC photos and videos to OneDrive. If you choose Take a Photo, your device's camera app opens. You might be asked if you want OneDrive to access your camera - tap Yes to allow your pictures",
+              "error_type": null
+            }
+          ]
+        }
+      ],
+      "analyses": []
+    },
+    {
+      "sample": 6,
+      "run_id": "7cb9a706-5a42-46a4-9449-1cb0f633ee47",
+      "question": "Compare manual photo upload entry points in Google Photos Android and Dropbox mobile using only official help pages. Give sample product patterns, scenario-relative strengths and weaknesses, opportunities and risks. Distinguish facts, inferences and recommendations.",
+      "program_status": "partial_failed",
+      "confirmed_checks": [
+        {
+          "quote": "1. On your Android device, open the Google Photos app Photos .",
+          "sources": [
+            {
+              "url": "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": false,
+              "independent_page_context": "",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "2. Sign in to your Google Account.",
+          "sources": [
+            {
+              "url": "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": " backup, depending on your internet connection, size of your uploads, and other conditions. On your Android phone or tablet, open the Google Photos app Photos. Sign in to your Google Account. At the top right, tap your Profile picture or Initial. Tap Photos settings Settings and then Backup. Turn Backup on or off. Turn Backup on or off Check if backup is complete On your Android phone or tablet, open the Goo",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "3. Open the photo or video.",
+          "sources": [
+            {
+              "url": "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "the steps to check up backup status Manually back up photos & videos On your Android device, open the Google Photos app Photos. Sign in to your Google Account. Open the photo or video. Tap Back up now. Alternatively, you can tap the Back up button or scroll to the bottom, then tap Back up now. Tips: When you open a single photo and you don't have enough storage: The badge shows \"Not enough storage to ",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "4. Tap Back up now.",
+          "sources": [
+            {
+              "url": "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "kup status Manually back up photos & videos On your Android device, open the Google Photos app Photos. Sign in to your Google Account. Open the photo or video. Tap Back up now. Alternatively, you can tap the Back up button or scroll to the bottom, then tap Back up now. Tips: When you open a single photo and you don't have enough storage: The badge shows \"Not enough storage to back up.\" If you ",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "- Alternatively, you can tap the Back up button or scroll to the bottom, then tap Back up now.",
+          "sources": [
+            {
+              "url": "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "ly back up photos & videos On your Android device, open the Google Photos app Photos. Sign in to your Google Account. Open the photo or video. Tap Back up now. Alternatively, you can tap the Back up button or scroll to the bottom, then tap Back up now. Tips: When you open a single photo and you don't have enough storage: The badge shows \"Not enough storage to back up.\" If you want to back up multiple photos or videos: Touch and hold the photos or videos you want to ba",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "Tips:",
+          "sources": [
+            {
+              "url": "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": " to your Google Account. Open the photo or video. Tap Back up now. Alternatively, you can tap the Back up button or scroll to the bottom, then tap Back up now. Tips: When you open a single photo and you don't have enough storage: The badge shows \"Not enough storage to back up.\" If you want to back up multiple photos or videos: Touch and hold the photos or videos you want to back up,",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "- When you open a single photo and you don't have enough storage: The badge shows \"Not enough storage to back up.\"",
+          "sources": [
+            {
+              "url": "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "ur Google Account. Open the photo or video. Tap Back up now. Alternatively, you can tap the Back up button or scroll to the bottom, then tap Back up now. Tips: When you open a single photo and you don't have enough storage: The badge shows \"Not enough storage to back up.\" If you want to back up multiple photos or videos: Touch and hold the photos or videos you want to back up, and then tap Back up. Check your overall backup status Important: If backup is on and you have enough storage, y",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "- If you want to back up multiple photos or videos: Touch and hold the photos or videos you want to back up, and then tap Back up.",
+          "sources": [
+            {
+              "url": "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "oll to the bottom, then tap Back up now. Tips: When you open a single photo and you don't have enough storage: The badge shows \"Not enough storage to back up.\" If you want to back up multiple photos or videos: Touch and hold the photos or videos you want to back up, and then tap Back up. Check your overall backup status Important: If backup is on and you have enough storage, you can find the backup status at the top of your library. On your Android device, open Google Photos Photos. At the top, check th",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "If you try to back up a file type not listed here, it may not work with Google Photos.",
+          "sources": [
+            {
+              "url": "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "acked up: 10-bit HDR videos. Topshot (Pixel only). Slow-mo. Depth videos. Motion photos. Live photos when you use the Google Photos app on your iPhone or iPad. If you try to back up a file type not listed here, it may not work with Google Photos. Types of RAW files you can back up Canon EOS-1D X Mark III, EOS-1D X Mark II, EOS-1D X, EOS-1Ds Mark III, EOS-1Ds Mark II, EOS-1D Mark IV, EOS-1D Mark III, EOS-1D Mark II, EOS-1D C, EOS-1D Mark II N, EOS 5D Mark IV, EOS",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "1. Open the Dropbox mobile app.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/upload-mobile",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "and save your content. How to upload photos and videos If you don't have camera uploads enabled, you can manually add photos to your Dropbox account. To do so: Open the Dropbox mobile app. Open the Dropbox folder where you'd like to store your photos. Tap the \"+\" (plus sign) at the bottom of your screen. Choose Upload Photos. Tap the photos you would like to upload. Tap the folder icon (Android) or Next (",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "2. Open the Dropbox folder where you'd like to store your photos.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/upload-mobile",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": " upload photos and videos If you don't have camera uploads enabled, you can manually add photos to your Dropbox account. To do so: Open the Dropbox mobile app. Open the Dropbox folder where you'd like to store your photos. Tap the \"+\" (plus sign) at the bottom of your screen. Choose Upload Photos. Tap the photos you would like to upload. Tap the folder icon (Android) or Next (iOS), and select where you'd like the files to be added. Tap Se",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "3. Tap the \"+\" (plus sign) at the bottom of your screen.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/upload-mobile",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "led, you can manually add photos to your Dropbox account. To do so: Open the Dropbox mobile app. Open the Dropbox folder where you'd like to store your photos. Tap the \"+\" (plus sign) at the bottom of your screen. Choose Upload Photos. Tap the photos you would like to upload. Tap the folder icon (Android) or Next (iOS), and select where you'd like the files to be added. Tap Set location. Tap Upload. Note: The Dropbox app for Wind",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "4. Choose Upload Photos.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/upload-mobile",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "nt. To do so: Open the Dropbox mobile app. Open the Dropbox folder where you'd like to store your photos. Tap the \"+\" (plus sign) at the bottom of your screen. Choose Upload Photos. Tap the photos you would like to upload. Tap the folder icon (Android) or Next (iOS), and select where you'd like the files to be added. Tap Set location. Tap Upload. Note: The Dropbox app for Windows devices does not c",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "5. Tap the photos you would like to upload.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/upload-mobile",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": " Dropbox mobile app. Open the Dropbox folder where you'd like to store your photos. Tap the \"+\" (plus sign) at the bottom of your screen. Choose Upload Photos. Tap the photos you would like to upload. Tap the folder icon (Android) or Next (iOS), and select where you'd like the files to be added. Tap Set location. Tap Upload. Note: The Dropbox app for Windows devices does not currently support video uploads. This is d",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "6. Tap the folder icon (Android) or Next (iOS), and select where you'd like the files to be added.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/upload-mobile",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "der where you'd like to store your photos. Tap the \"+\" (plus sign) at the bottom of your screen. Choose Upload Photos. Tap the photos you would like to upload. Tap the folder icon (Android) or Next (iOS), and select where you'd like the files to be added. Tap Set location. Tap Upload. Note: The Dropbox app for Windows devices does not currently support video uploads. This is due to operating system limitations. How to upload photos overnight in iOS If you have to upload ",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "7. Tap Set location.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/upload-mobile",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": " Choose Upload Photos. Tap the photos you would like to upload. Tap the folder icon (Android) or Next (iOS), and select where you'd like the files to be added. Tap Set location. Tap Upload. Note: The Dropbox app for Windows devices does not currently support video uploads. This is due to operating system limitations. How to upload photos overnight in iOS If you have to upload a large amount of ",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "8. Tap Upload.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/upload-mobile",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "tos. Tap the photos you would like to upload. Tap the folder icon (Android) or Next (iOS), and select where you'd like the files to be added. Tap Set location. Tap Upload. Note: The Dropbox app for Windows devices does not currently support video uploads. This is due to operating system limitations. How to upload photos overnight in iOS If you have to upload a large amount of photos or vi",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "If you don't have camera uploads enabled, you can manually add photos to your Dropbox account.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/upload-mobile",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "ou must be logged into your Dropbox account on the Dropbox mobile app. Select the Dropbox save location, and save your content. How to upload photos and videos If you don't have camera uploads enabled, you can manually add photos to your Dropbox account. To do so: Open the Dropbox mobile app. Open the Dropbox folder where you'd like to store your photos. Tap the \"+\" (plus sign) at the bottom of your screen. Choose Upload Photos. Tap the photos you would like to upload. ",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "Note: The Dropbox app for Windows devices does not currently support video uploads.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/upload-mobile",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": " photos you would like to upload. Tap the folder icon (Android) or Next (iOS), and select where you'd like the files to be added. Tap Set location. Tap Upload. Note: The Dropbox app for Windows devices does not currently support video uploads. This is due to operating system limitations. How to upload photos overnight in iOS If you have to upload a large amount of photos or videos from your camera app, you can use the overnight uploads feature. Overnight uplo",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "Note: You must be logged into your Dropbox account on the Dropbox mobile app.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/upload-mobile",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": " the content is currently saved. Select what you’d like to upload to your Dropbox account. Click the app’s Share button or icon. Select the Dropbox mobile app. Note: You must be logged into your Dropbox account on the Dropbox mobile app. Select the Dropbox save location, and save your content. How to upload photos and videos If you don't have camera uploads enabled, you can manually add photos to your Dropbox account. To do so: Open the Dropbox mobile a",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "If your device has an SD card, you can upload files to Dropbox from there.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/upload-mobile",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "(iPhone/iPad). You can also choose to create content using Microsoft Office applications. Learn more about creating content with Microsoft Office applications. If your device has an SD card, you can upload files to Dropbox from there. To do so: Open the Dropbox mobile app. Open the Dropbox folder where you'd like to store your photos. Tap the \"+\" (plus sign) at the bottom of your screen. Select Upload files. Navigate to your SD card, and tap the file",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "Note: If you can't view your SD card when browsing for files to upload, verify that Show advanced devices is checked by tapping the menu button at the top of the screen and looking under Settings.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/upload-mobile",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "ign) at the bottom of your screen. Select Upload files. Navigate to your SD card, and tap the files you'd like to upload. Tap Upload (or Open on some devices). Note: If you can't view your SD card when browsing for files to upload, verify that Show advanced devices is checked by tapping the menu button at the top of the screen and looking under Settings. iPhone/iPad users can also upload other types of files using either of the following: The iPhone/iPad Open In menu wherever it appears in other apps App Extensions on iOS 8 and later Was this article helpful? Yes, thank",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "5. Tap Back up my photos.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/camera-uploads-overview",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "turn photo uploads on or off on the Dropbox mobile app for Android: Open the Dropbox mobile app. Tap Account. Tap Settings. Under Features, tap Camera uploads. Tap Back up my photos. If prompted, tap Allow. To turn photo uploads on or off on the Dropbox mobile app for iOS: Open the Dropbox mobile app. Tap ☑ (account). Tap Camera uploads. Tap Upload from, then Settings to give Dropbox access to your ",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "4. Tap Upload from, then Settings to give Dropbox access to your photos and videos.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/camera-uploads-overview",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "s. If prompted, tap Allow. To turn photo uploads on or off on the Dropbox mobile app for iOS: Open the Dropbox mobile app. Tap ☑ (account). Tap Camera uploads. Tap Upload from, then Settings to give Dropbox access to your photos and videos. In the Dropbox app, choose what you’d like to back up and whether you’d like to use cell data. Tap Turn on camera uploads. How to upload photos and videos overnight on the Dropbox mobile app Note: This feature is availa",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "5. In the Dropbox app, choose what you’d like to back up and whether you’d like to use cell data.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/camera-uploads-overview",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "app for iOS: Open the Dropbox mobile app. Tap ☑ (account). Tap Camera uploads. Tap Upload from, then Settings to give Dropbox access to your photos and videos. In the Dropbox app, choose what you’d like to back up and whether you’d like to use cell data. Tap Turn on camera uploads. How to upload photos and videos overnight on the Dropbox mobile app Note: This feature is available on iOS devices only. If you have to upload a large amount of photos or videos from your cam",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "Note: This feature is available on iOS devices only.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/camera-uploads-overview",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": " you’d like to back up and whether you’d like to use cell data. Tap Turn on camera uploads. How to upload photos and videos overnight on the Dropbox mobile app Note: This feature is available on iOS devices only. If you have to upload a large amount of photos or videos from your camera app, you can use the overnight uploads feature. Overnight uploads allows you to upload your photos and videos continuously through the night, kee",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "If you have to upload a large amount of photos or videos from your camera app, you can use the overnight uploads feature.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/camera-uploads-overview",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "cell data. Tap Turn on camera uploads. How to upload photos and videos overnight on the Dropbox mobile app Note: This feature is available on iOS devices only. If you have to upload a large amount of photos or videos from your camera app, you can use the overnight uploads feature. Overnight uploads allows you to upload your photos and videos continuously through the night, keeping the Dropbox mobile app open and dimming your device’s brightness. To turn overnight uploads on or off: Open the Dropb",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "1. Open the Dropbox mobile app.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/camera-uploads-overview",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": " your team. Turn photo and video uploads on or off on the Dropbox mobile app Android iOS To turn photo uploads on or off on the Dropbox mobile app for Android: Open the Dropbox mobile app. Tap Account. Tap Settings. Under Features, tap Camera uploads. Tap Back up my photos. If prompted, tap Allow. To turn photo uploads on or off on the Dropbox mobile app for iOS: Open the Dropbox mobile app. Tap ☑ (accoun",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "2. Tap the camera icon in the top-right corner.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/camera-uploads-overview",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": " through the night, keeping the Dropbox mobile app open and dimming your device’s brightness. To turn overnight uploads on or off: Open the Dropbox mobile app. Tap the camera icon in the top-right corner. Tap Start overnight uploads to start uploading content or tap Exit overnight uploads to stop uploading content. The Dropbox app will dim your phone’s screen while your photos are uploading throughout the night. Note: To",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "3. Tap Start overnight uploads to start uploading content or tap Exit overnight uploads to stop uploading content.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/camera-uploads-overview",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "e app open and dimming your device’s brightness. To turn overnight uploads on or off: Open the Dropbox mobile app. Tap the camera icon in the top-right corner. Tap Start overnight uploads to start uploading content or tap Exit overnight uploads to stop uploading content. The Dropbox app will dim your phone’s screen while your photos are uploading throughout the night. Note: To successfully upload your photos and videos overnight, you must: Keep your Dropbox app open. Make sure your phon",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "Note: To successfully upload your photos and videos overnight, you must:",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/camera-uploads-overview",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "ent or tap Exit overnight uploads to stop uploading content. The Dropbox app will dim your phone’s screen while your photos are uploading throughout the night. Note: To successfully upload your photos and videos overnight, you must: Keep your Dropbox app open. Make sure your phone is connected to Wi-Fi. Keep your phone plugged into a charger to prevent your phone from powering off. Turn photo and video uploads on or off in the Dropbox desktop app W",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "1. Keep your Dropbox app open.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/camera-uploads-overview",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "app will dim your phone’s screen while your photos are uploading throughout the night. Note: To successfully upload your photos and videos overnight, you must: Keep your Dropbox app open. Make sure your phone is connected to Wi-Fi. Keep your phone plugged into a charger to prevent your phone from powering off. Turn photo and video uploads on or off in the Dropbox desktop app When you plug a camera or mob",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "2. Make sure your phone is connected to Wi-Fi.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/camera-uploads-overview",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "reen while your photos are uploading throughout the night. Note: To successfully upload your photos and videos overnight, you must: Keep your Dropbox app open. Make sure your phone is connected to Wi-Fi. Keep your phone plugged into a charger to prevent your phone from powering off. Turn photo and video uploads on or off in the Dropbox desktop app When you plug a camera or mobile device into a computer with the Dropbox ",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "3. Keep your phone plugged into a charger to prevent your phone from powering off.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/camera-uploads-overview",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "out the night. Note: To successfully upload your photos and videos overnight, you must: Keep your Dropbox app open. Make sure your phone is connected to Wi-Fi. Keep your phone plugged into a charger to prevent your phone from powering off. Turn photo and video uploads on or off in the Dropbox desktop app When you plug a camera or mobile device into a computer with the Dropbox desktop app installed, you’ll see a prompt asking if you’d like to enable upload",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "If you’ve linked two Dropbox accounts, you can only have camera uploads turned on for one account at a time.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/camera-uploads-overview",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": " and you don’t see a camera uploads option, your admin may have turned the feature off for your team. Can I use camera uploads on my personal and work account? If you’ve linked two Dropbox accounts, you can only have camera uploads turned on for one account at a time. Why do I see someone else’s photos in my Camera Uploads folder? When you plug a camera or mobile device into a computer with the Dropbox desktop app installed, you’ll see a prompt asking if you’d like to enable camera u",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "If you’re on a Dropbox team and you don’t see a camera uploads option, your admin may have turned the feature off for your team.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/camera-uploads-overview",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": " uploads aren't working? If camera uploads aren't working, follow the steps in our troubleshooting guide. Why don’t I see the option to turn on camera uploads? If you’re on a Dropbox team and you don’t see a camera uploads option, your admin may have turned the feature off for your team. Can I use camera uploads on my personal and work account? If you’ve linked two Dropbox accounts, you can only have camera uploads turned on for one account at a time. Why do I see someone else’s photos in my Camera Uplo",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "If camera uploads aren't working, follow the steps in our troubleshooting guide.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/camera-uploads-overview",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "pload iOS Live photos. Note: Live Photos uploaded to Dropbox from other apps will be saved as normal photos. What should I do if camera uploads aren't working? If camera uploads aren't working, follow the steps in our troubleshooting guide. Why don’t I see the option to turn on camera uploads? If you’re on a Dropbox team and you don’t see a camera uploads option, your admin may have turned the feature off for your team. Can I use camera uploads on my perso",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "Note: Live Photos uploaded to Dropbox from other apps will be saved as normal photos.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/camera-uploads-overview",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "oads. Toggle Use cell data to back up to off. Can I upload iOS Live Photos? You can upload Live Photos on the Dropbox app. Learn how to upload iOS Live photos. Note: Live Photos uploaded to Dropbox from other apps will be saved as normal photos. What should I do if camera uploads aren't working? If camera uploads aren't working, follow the steps in our troubleshooting guide. Why don’t I see the option to turn on camera uploads? If you’re on a Dropbox team and y",
+              "error_type": null
+            }
+          ]
+        }
+      ],
+      "analyses": [
+        {
+          "id": "14d4ad51-821e-4844-b789-ae93e8b97a2a",
+          "run_id": "7cb9a706-5a42-46a4-9449-1cb0f633ee47",
+          "claim_kind": "inference",
+          "supporting_finding_ids": [
+            "9c5dbd1e-366a-45c6-ac4e-2d50cf203f74",
+            "71cadb8e-cc49-4243-9f24-2406e9912e85",
+            "e5e100e4-26ca-463c-a70a-59db6c5bad98",
+            "b0f79cfc-7456-47c1-ab75-82269cd8393a",
+            "60b365a8-df15-46f3-85a8-ee607ca12c8a",
+            "cbb974b3-d06d-4e78-9425-b727c5b70a57",
+            "ddee838e-c8cf-4669-9b16-c331ebdf24e0",
+            "fbece401-c6f0-4e40-af24-4ee61ab98f0d",
+            "a6abcbcc-f1b2-4944-880f-89c74dd2c801",
+            "7d75219c-3e3b-47b3-a3d0-95c0ac8c135b",
+            "d7ab90c2-3359-41c7-b932-30ea5323cf19",
+            "bd325785-ea7d-4d4c-a603-451112f1c25e"
+          ],
+          "evidence_location": null,
+          "category": "competitor",
+          "status": "not_verified",
+          "title": "Entry-point granularity: per-item open vs. bulk folder picker",
+          "description": "In the scenario of single or few-item manual uploads on Android, Google Photos' per-item \"open photo/video then Back up now\" pattern and Dropbox's \"+ → Upload Photos → tap to select → Set location → Upload\" pattern represent two distinct entry-point granularities. Based only on official help text, this comparison is bounded to documented behavior.\n【推断】场景：Mobile manual photo upload: new Android user uploading a small batch from camera roll.",
+          "source_refs": null
+        },
+        {
+          "id": "b41df534-bafb-4d14-9afe-1515863eaca3",
+          "run_id": "7cb9a706-5a42-46a4-9449-1cb0f633ee47",
+          "claim_kind": "inference",
+          "supporting_finding_ids": [
+            "8b712cb5-b6d2-4445-ae6e-487d2a5b4066",
+            "a6abcbcc-f1b2-4944-880f-89c74dd2c801",
+            "d7ab90c2-3359-41c7-b932-30ea5323cf19",
+            "bd325785-ea7d-4d4c-a603-451112f1c25e"
+          ],
+          "evidence_location": null,
+          "category": "market_pattern",
+          "status": "not_verified",
+          "title": "Common pattern: multi-select via long-press/tap-to-pick with explicit final action",
+          "description": "Across both Google Photos and Dropbox mobile, official help describes multi-item selection (Google Photos: touch and hold then tap Back up; Dropbox: tap the photos to upload then tap Set location/Upload). The pattern is \"select items, then confirm an explicit final action,\" which is a shared mobile upload convention observed in two sampled products.\n【推断】场景：Mobile manual photo upload where user wants to back up several items at once.",
+          "source_refs": null
+        },
+        {
+          "id": "e6c03557-62e8-49b7-be3e-3d3262e1d92a",
+          "run_id": "7cb9a706-5a42-46a4-9449-1cb0f633ee47",
+          "claim_kind": "recommendation",
+          "supporting_finding_ids": [
+            "b0f79cfc-7456-47c1-ab75-82269cd8393a",
+            "d7ab90c2-3359-41c7-b932-30ea5323cf19",
+            "bd325785-ea7d-4d4c-a603-451112f1c25e"
+          ],
+          "evidence_location": null,
+          "category": "opportunity",
+          "status": "not_verified",
+          "title": "Consider a confirmation affordance before final upload tap",
+          "description": "Based on the documented Dropbox steps \"tap the photos…Tap Set location…Tap Upload\" and Google Photos \"Tap Back up now,\" a recommendation worth human evaluation is to surface a brief confirmation (e.g., count of selected files or an undo window) at the final action. Recommendation only; no claim of measured effect on mis-tap rates.\n【建议】场景：Mobile manual photo upload entry points where a user may have selected the wrong items.",
+          "source_refs": null
+        }
+      ]
+    },
+    {
+      "sample": 7,
+      "run_id": "d4c46f30-ba32-4088-a838-6acb97e13288",
+      "question": "请只依据 Google Photos 和 Dropbox 的官方帮助，比较移动端手动添加照片的流程。给出仅限本次两款产品样本的模式、相对该场景的优缺点、机会和风险；清楚区分事实、推断与建议。",
+      "program_status": "partial_failed",
+      "confirmed_checks": [
+        {
+          "quote": "If you don't have camera uploads enabled, you can manually add photos to your Dropbox account.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/upload-mobile",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "ou must be logged into your Dropbox account on the Dropbox mobile app. Select the Dropbox save location, and save your content. How to upload photos and videos If you don't have camera uploads enabled, you can manually add photos to your Dropbox account. To do so: Open the Dropbox mobile app. Open the Dropbox folder where you'd like to store your photos. Tap the \"+\" (plus sign) at the bottom of your screen. Choose Upload Photos. Tap the photos you would like to upload. ",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "1. Open the Dropbox mobile app.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/upload-mobile",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "and save your content. How to upload photos and videos If you don't have camera uploads enabled, you can manually add photos to your Dropbox account. To do so: Open the Dropbox mobile app. Open the Dropbox folder where you'd like to store your photos. Tap the \"+\" (plus sign) at the bottom of your screen. Choose Upload Photos. Tap the photos you would like to upload. Tap the folder icon (Android) or Next (",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "2. Open the Dropbox folder where you'd like to store your photos.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/upload-mobile",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": " upload photos and videos If you don't have camera uploads enabled, you can manually add photos to your Dropbox account. To do so: Open the Dropbox mobile app. Open the Dropbox folder where you'd like to store your photos. Tap the \"+\" (plus sign) at the bottom of your screen. Choose Upload Photos. Tap the photos you would like to upload. Tap the folder icon (Android) or Next (iOS), and select where you'd like the files to be added. Tap Se",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "3. Tap the \"+\" (plus sign) at the bottom of your screen.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/upload-mobile",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "led, you can manually add photos to your Dropbox account. To do so: Open the Dropbox mobile app. Open the Dropbox folder where you'd like to store your photos. Tap the \"+\" (plus sign) at the bottom of your screen. Choose Upload Photos. Tap the photos you would like to upload. Tap the folder icon (Android) or Next (iOS), and select where you'd like the files to be added. Tap Set location. Tap Upload. Note: The Dropbox app for Wind",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "4. Choose Upload Photos.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/upload-mobile",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "nt. To do so: Open the Dropbox mobile app. Open the Dropbox folder where you'd like to store your photos. Tap the \"+\" (plus sign) at the bottom of your screen. Choose Upload Photos. Tap the photos you would like to upload. Tap the folder icon (Android) or Next (iOS), and select where you'd like the files to be added. Tap Set location. Tap Upload. Note: The Dropbox app for Windows devices does not c",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "5. Tap the photos you would like to upload.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/upload-mobile",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": " Dropbox mobile app. Open the Dropbox folder where you'd like to store your photos. Tap the \"+\" (plus sign) at the bottom of your screen. Choose Upload Photos. Tap the photos you would like to upload. Tap the folder icon (Android) or Next (iOS), and select where you'd like the files to be added. Tap Set location. Tap Upload. Note: The Dropbox app for Windows devices does not currently support video uploads. This is d",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "6. Tap the folder icon (Android) or Next (iOS), and select where you'd like the files to be added.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/upload-mobile",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "der where you'd like to store your photos. Tap the \"+\" (plus sign) at the bottom of your screen. Choose Upload Photos. Tap the photos you would like to upload. Tap the folder icon (Android) or Next (iOS), and select where you'd like the files to be added. Tap Set location. Tap Upload. Note: The Dropbox app for Windows devices does not currently support video uploads. This is due to operating system limitations. How to upload photos overnight in iOS If you have to upload ",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "7. Tap Set location.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/upload-mobile",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": " Choose Upload Photos. Tap the photos you would like to upload. Tap the folder icon (Android) or Next (iOS), and select where you'd like the files to be added. Tap Set location. Tap Upload. Note: The Dropbox app for Windows devices does not currently support video uploads. This is due to operating system limitations. How to upload photos overnight in iOS If you have to upload a large amount of ",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "8. Tap Upload.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/upload-mobile",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "tos. Tap the photos you would like to upload. Tap the folder icon (Android) or Next (iOS), and select where you'd like the files to be added. Tap Set location. Tap Upload. Note: The Dropbox app for Windows devices does not currently support video uploads. This is due to operating system limitations. How to upload photos overnight in iOS If you have to upload a large amount of photos or vi",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "Note: You must be logged into your Dropbox account on the Dropbox mobile app.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/upload-mobile",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": " the content is currently saved. Select what you’d like to upload to your Dropbox account. Click the app’s Share button or icon. Select the Dropbox mobile app. Note: You must be logged into your Dropbox account on the Dropbox mobile app. Select the Dropbox save location, and save your content. How to upload photos and videos If you don't have camera uploads enabled, you can manually add photos to your Dropbox account. To do so: Open the Dropbox mobile a",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "If you have to upload a large amount of photos or videos from your camera app, you can use the overnight uploads feature.",
+          "sources": [
+            {
+              "url": "https://help.dropbox.com/create-upload/upload-mobile",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "he Dropbox app for Windows devices does not currently support video uploads. This is due to operating system limitations. How to upload photos overnight in iOS If you have to upload a large amount of photos or videos from your camera app, you can use the overnight uploads feature. Overnight uploads allows you to upload your photos and videos continuously through the night, keeping the Dropbox mobile app open and dimming your device’s brightness. Learn more about overnight uploads. How to upload a",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "3. Select the photos you want in your animation.",
+          "sources": [
+            {
+              "url": "https://support.google.com/photos/answer/6128862?hl=en&co=GENIE.Platform%3DAndroid",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "e a slideshow of your selected photos and videos. On your Android device, open the Google Photos app Photos. At the bottom, tap Create Edit and then Animation. Select the photos you want in your animation. At the top, tap Create. Create a cinematic photo You can add a 3D effect to your photos. On your Android device, open the Google Photos app Photos. Tap the photo you want. Swipe up. Tap Create Edit and then Cinematic ph",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "5. Select your photos or videos.",
+          "sources": [
+            {
+              "url": "https://support.google.com/photos/answer/6128862?hl=en&co=GENIE.Platform%3DAndroid",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "tes are pre-packaged videos that already come with music, text, and beat-matching. When you find the template you want to use for your video, tap Use template. Select your photos or videos. Manually select the best photos or videos from your gallery based on the story you want to tell. To use the assisted content selection for template, tap Help me select . It’ll automatically select the content you want t",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "1. On your Android device, open the Google Photos app Photos .",
+          "sources": [
+            {
+              "url": "https://support.google.com/photos/answer/6128862?hl=en&co=GENIE.Platform%3DAndroid",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": false,
+              "independent_page_context": "",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "2. At the bottom, tap Create Edit .",
+          "sources": [
+            {
+              "url": "https://support.google.com/photos/answer/6128862?hl=en&co=GENIE.Platform%3DAndroid",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": false,
+              "independent_page_context": "",
+              "error_type": null
+            }
+          ]
+        }
+      ],
+      "analyses": []
+    },
+    {
+      "sample": 8,
+      "run_id": "c98555f6-9877-42d4-980d-f1e1b5694058",
+      "question": "In Google Photos Android, what are the steps to manually back up one photo while offline? Cite only official Google Help. Keep the offline condition; do not infer unsupported capability.",
+      "program_status": "partial_failed",
+      "confirmed_checks": [
+        {
+          "quote": "1. On your Android device, open the Google Photos app Photos .",
+          "sources": [
+            {
+              "url": "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": false,
+              "independent_page_context": "",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "2. Sign in to your Google Account.",
+          "sources": [
+            {
+              "url": "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": " backup, depending on your internet connection, size of your uploads, and other conditions. On your Android phone or tablet, open the Google Photos app Photos. Sign in to your Google Account. At the top right, tap your Profile picture or Initial. Tap Photos settings Settings and then Backup. Turn Backup on or off. Turn Backup on or off Check if backup is complete On your Android phone or tablet, open the Goo",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "3. Open the photo or video.",
+          "sources": [
+            {
+              "url": "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "the steps to check up backup status Manually back up photos & videos On your Android device, open the Google Photos app Photos. Sign in to your Google Account. Open the photo or video. Tap Back up now. Alternatively, you can tap the Back up button or scroll to the bottom, then tap Back up now. Tips: When you open a single photo and you don't have enough storage: The badge shows \"Not enough storage to ",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "4. Tap Back up now.",
+          "sources": [
+            {
+              "url": "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "kup status Manually back up photos & videos On your Android device, open the Google Photos app Photos. Sign in to your Google Account. Open the photo or video. Tap Back up now. Alternatively, you can tap the Back up button or scroll to the bottom, then tap Back up now. Tips: When you open a single photo and you don't have enough storage: The badge shows \"Not enough storage to back up.\" If you ",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "- Alternatively, you can tap the Back up button or scroll to the bottom, then tap Back up now.",
+          "sources": [
+            {
+              "url": "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "ly back up photos & videos On your Android device, open the Google Photos app Photos. Sign in to your Google Account. Open the photo or video. Tap Back up now. Alternatively, you can tap the Back up button or scroll to the bottom, then tap Back up now. Tips: When you open a single photo and you don't have enough storage: The badge shows \"Not enough storage to back up.\" If you want to back up multiple photos or videos: Touch and hold the photos or videos you want to ba",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "Tips:",
+          "sources": [
+            {
+              "url": "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": " to your Google Account. Open the photo or video. Tap Back up now. Alternatively, you can tap the Back up button or scroll to the bottom, then tap Back up now. Tips: When you open a single photo and you don't have enough storage: The badge shows \"Not enough storage to back up.\" If you want to back up multiple photos or videos: Touch and hold the photos or videos you want to back up,",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "- When you open a single photo and you don't have enough storage: The badge shows \"Not enough storage to back up.\"",
+          "sources": [
+            {
+              "url": "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "ur Google Account. Open the photo or video. Tap Back up now. Alternatively, you can tap the Back up button or scroll to the bottom, then tap Back up now. Tips: When you open a single photo and you don't have enough storage: The badge shows \"Not enough storage to back up.\" If you want to back up multiple photos or videos: Touch and hold the photos or videos you want to back up, and then tap Back up. Check your overall backup status Important: If backup is on and you have enough storage, y",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "- If you want to back up multiple photos or videos: Touch and hold the photos or videos you want to back up, and then tap Back up.",
+          "sources": [
+            {
+              "url": "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "oll to the bottom, then tap Back up now. Tips: When you open a single photo and you don't have enough storage: The badge shows \"Not enough storage to back up.\" If you want to back up multiple photos or videos: Touch and hold the photos or videos you want to back up, and then tap Back up. Check your overall backup status Important: If backup is on and you have enough storage, you can find the backup status at the top of your library. On your Android device, open Google Photos Photos. At the top, check th",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "If you try to back up a file type not listed here, it may not work with Google Photos.",
+          "sources": [
+            {
+              "url": "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "acked up: 10-bit HDR videos. Topshot (Pixel only). Slow-mo. Depth videos. Motion photos. Live photos when you use the Google Photos app on your iPhone or iPad. If you try to back up a file type not listed here, it may not work with Google Photos. Types of RAW files you can back up Canon EOS-1D X Mark III, EOS-1D X Mark II, EOS-1D X, EOS-1Ds Mark III, EOS-1Ds Mark II, EOS-1D Mark IV, EOS-1D Mark III, EOS-1D Mark II, EOS-1D C, EOS-1D Mark II N, EOS 5D Mark IV, EOS",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "If backup is on for at least one of the Google Accounts you’re logged into in Google Photos, you can check a photo’s backup status:",
+          "sources": [
+            {
+              "url": "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "photo or video's backup status from your photos view. How you check an item's backup status depends on whether your backup is turned on or off. If backup is on If backup is on for at least one of the Google Accounts you’re logged into in Google Photos, you can check a photo’s backup status: Empty thumbnail: Item is backed up. Uploading : Item is in the process of being backed up. In Queue or Paused : Item isn’t currently backing up but it will eventually. Cloud slash : Item isn’t backed up, and backup isn’",
+              "error_type": null
+            }
+          ]
+        },
+        {
+          "quote": "If backup is off for all of the Google Accounts you’re logged into in Google Photos, you can check a photo’s backup status:",
+          "sources": [
+            {
+              "url": "https://support.google.com/photos/answer/6193313?hl=en&co=GENIE.Platform%3DAndroid",
+              "http_status": 200,
+              "quote_text_contained_without_list_prefix": true,
+              "independent_page_context": "failed. Tip: Items that were recently backed up only show Cloud check for 3 seconds. After that, the backed up photo shows an empty thumbnail. If backup is off If backup is off for all of the Google Accounts you’re logged into in Google Photos, you can check a photo’s backup status: Empty thumbnail: Item isn’t backed up. Cloud check : Item is backed up. Uploading : Item is in the process of being backed up. In Queue or Paused : Item isn’t currently backing up but it will eventually. Permanent failu",
+              "error_type": null
+            }
+          ]
+        }
+      ],
+      "analyses": []
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 from decimal import Decimal
-from typing import Optional
+from typing import Literal, Optional
 
 from pydantic import Field, model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
@@ -59,6 +59,23 @@ class Settings(BaseSettings):
     requirement_max_retries: int = Field(default=2, ge=0, le=5)
     prd_prompt_version: str = Field(default="prd-generation-v3")
     prd_max_retries: int = Field(default=2, ge=0, le=5)
+
+    # Phase 8 — Research Agent (external market intelligence).
+    # Only the Tavily Provider + the existing Anthropic-compatible LLM
+    # stack are referenced here; the API key is read once at boot and
+    # never echoed in exception chains, log lines or persisted rows.
+    tavily_api_key: Optional[str] = Field(default=None)
+    tavily_base_url: Optional[str] = Field(default="https://api.tavily.com")
+    tavily_timeout_seconds: float = Field(default=30.0, ge=1.0, le=300.0)
+    tavily_max_results: int = Field(default=5, ge=1, le=10)
+    tavily_max_retries: int = Field(default=2, ge=0, le=5)
+    # v7 only. Discovery adapters share one Run budget; legacy v6 stays Tavily.
+    research_search_provider: Literal["tavily", "minimax"] = "tavily"
+    research_search_fallback: Literal["tavily", "minimax"] | None = None
+    minimax_search_api_key: str | None = Field(default=None, repr=False)
+    minimax_search_base_url: str = "https://api.minimaxi.com"
+    research_max_evidence: int = Field(default=5, ge=1, le=20)
+    research_evidence_excerpt_max_chars: int = Field(default=400, ge=64, le=4000)
 
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 

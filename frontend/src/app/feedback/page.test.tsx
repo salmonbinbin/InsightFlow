@@ -51,10 +51,12 @@ describe('Feedback detail AI analysis', () => {
     const client = setup(true);
     const row = await screen.findByRole('button', { name: '打开反馈 F-1 的详情' });
     await act(async () => fireEvent.keyDown(row, { key: 'Enter' }));
-    await waitFor(() => expect(screen.getByText('Batch upload friction')).toBeTruthy());
+    await waitFor(() => expect(screen.getByText('Repeated work')).toBeTruthy());
+    expect(screen.queryByText('Batch upload friction')).toBeNull();
     expect(within(screen.getByRole('dialog', { name: '反馈详情' })).getByText('RAW-PROOF-DO-NOT-REWRITE')).toBeTruthy();
     expect(screen.getByText('Repeated work')).toBeTruthy();
-    expect(screen.getByText('bulk_upload')).toBeTruthy();
+    expect(screen.getByText('待整理')).toBeTruthy();
+    expect(screen.queryByText('bulk_upload')).toBeNull();
     expect(screen.getAllByText('run-a').length).toBeGreaterThan(0);
     expect(client.callLog.some((c) => c.path === '/api/projects/project-a/feedback/feedback-a/analysis')).toBe(true);
     await act(async () => fireEvent.keyDown(window, { key: 'Escape' }));
@@ -65,7 +67,7 @@ describe('Feedback detail AI analysis', () => {
     setup(false);
     const row = await screen.findByRole('button', { name: '打开反馈 F-1 的详情' });
     await act(async () => fireEvent.click(row));
-    await waitFor(() => expect(screen.getByText(/AI 分析 N\/A/)).toBeTruthy());
+    await waitFor(() => expect(screen.getByText(/该反馈尚无分析结果/)).toBeTruthy());
     await act(async () => fireEvent.click(screen.getByText('切换项目')));
     await waitFor(() => expect(screen.getByRole('button', { name: '打开反馈 F-2 的详情' })).toBeTruthy());
     expect(screen.queryByRole('dialog', { name: '反馈详情' })).toBeNull();

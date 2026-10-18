@@ -1,0 +1,6 @@
+### Result
+{"body":"∅\n该洞察不属于当前项目\n该洞察属于项目 71e46ed7-717f-4f50-94f3-c53874429b21，与当前激活项目不符。请在项目切换器中选择对应项目后再查看。","hasExternalResearch":0,"hasSource":false,"hasPreviousRun":false}
+### Ran Playwright code
+```js
+await (async (page) => { await page.getByText("该洞察不属于当前项目",{exact:true}).waitFor({timeout:15000}); const body=await page.locator("main").innerText(); await page.screenshot({path:"browser-final4-project-b.png"}); return {body,hasExternalResearch:await page.getByTestId("external-research").count(),hasSource:body.includes("help.dropbox.com"),hasPreviousRun:body.includes("8c89b069")}; })(page);
+```

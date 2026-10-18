@@ -1,0 +1,6 @@
+### Result
+{"status":200,"body":{"id":"23e9e824-4ac2-4ef6-b4e4-4d8a69ad1756","insight_id":"0f7d38fb-633d-4258-a56b-c0b23ba800a6","project_id":"71e46ed7-717f-4f50-94f3-c53874429b21","current_score_id":"ee4121b7-3398-4b73-8a27-70a9a379decf","business_value":"5.00","ai_priority":"P2","pm_priority":"P2","status":"accepted","override_reason":null,"override_note":null,"version":2,"created_at":"2026-10-17T13:45:58.602211Z","updated_at":"2026-10-17T13:46:23.271877Z"}}
+### Ran Playwright code
+```js
+await (async (page) => { const p=page.waitForResponse(r=>r.url().includes("/decision") && r.request().method()==="PATCH",{timeout:120000}); await page.getByRole("button",{name:"Accept",exact:true}).click(); const r=await p; return {status:r.status(),body:await r.json()}; })(page);
+```

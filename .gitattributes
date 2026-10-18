@@ -1,0 +1,3 @@
+
+# Preserve verbatim test/browser logs, including progress CRs and blank lines.
+docs/evaluations/**/*.log -whitespace

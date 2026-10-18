@@ -1,0 +1,240 @@
+備份相片和影片 - Android 手機和平板電腦 - Google 相簿說明 跳至主內容
+Google 相簿說明
+登入
+Google 說明
+說明中心
+Google 相簿
+隱私權政策
+服務條款
+提供意見
+針對何項內容提供意見：
+這項說明內容和資訊
+一般說明中心體驗
+關閉下一個
+Google 相簿說明論壇 (英文)論壇
+備份相片和影片
+開啟備份功能後，即可將相片和影片自動儲存到 Google 帳戶中。這樣一來，只要登入帳戶，不論使用什麼裝置都能查看先前儲存的相片和影片。備份的相片和影片皆為私人內容，只要沒有分享給他人，便僅有您可以在已登入帳戶的裝置上瀏覽。另外，一次只能將相片和影片備份到一個 Google 帳戶。瞭解如何修正備份相關問題。
+事前準備作業
+備份相片和影片的必備條件
+重要事項：Google 帳戶儲存空間由多項產品共用，例如 Google 相簿、Google 雲端硬碟和 Gmail。如果儲存空間已用盡，您可以購買更多儲存空間或清理儲存空間。
+穩定的網際網路連線。
+可備份的檔案大小：
+相片大小上限為 200 MB 或 2 億像素。
+影片大小上限為 10 GB。
+項目必須大於 256 x 256。
+可備份的檔案類型：
+相片：.jpg、.heic、.png、.webp、.gif、.avif 和大部分的 RAW 檔案。
+影片：.mpg、.mod、.mmv、.tod、.wmv、.asf、.avi、.divx、.mov、.m4v、.3gp、.3g2、.mp4、.m2t、.m2ts、.mts 和 .mkv 檔案。
+可備份的檔案格式：
+10 位元 HDR 影片。
+絕佳鏡頭 (僅限 Pixel)。
+慢動作內容。
+深度影片。
+動態相片。
+原況照片，但您僅可在 iPhone 或 iPad 上透過 Google 相簿應用程式上傳。
+如要備份這裡未列出的檔案類型，可能無法使用 Google 相簿進行備份。
+可備份的 RAW 檔案類型
+Canon
+EOS-1D X Mark III、EOS-1D X Mark II、EOS-1D X、EOS-1Ds Mark III、EOS-1Ds Mark II、EOS-1D Mark IV、EOS-1D Mark III、EOS-1D Mark II、EOS-1D C、EOS-1D Mark II N、EOS 5D Mark IV、EOS 5D Mark III、EOS 5D Mark II、EOS 5D、EOS 5Ds、EOS 5Ds R、EOS R5、EOS 6D Mark II、EOS 6D、EOS R6、EOS R、EOS Ra、EOS RP、EOS 7D Mark II、EOS 7D、EOS 90D、EOS 80D、EOS 70D、EOS 60D、EOS 60Da、EOS 50D、EOS 40D、EOS 30D、EOS 20D、EOS 20Da、EOS 9000D (EOS 77D)、EOS 8000D (EOS REBEL T6S/EOS 760D)、EOS Kiss X10i (EOS REBEL T8i/EOS 850D)、EOS Kiss X9i (EOS REBEL T7i/EOS 800D)、EOS Kiss X8i (EOS REBEL T6i/EOS 750D)、EOS Kiss X7i (EOS REBEL T5i/EOS 700D)、EOS Kiss X6i (EOS REBEL T4i/EOS 650D)、EOS Kiss X10 (EOS REBEL SL3/EOS 250D/EOS 200D II)、EOS Kiss X9 (EOS REBEL SL2/EOS 200D)、EOS Kiss X7 (EOS REBEL SL1/EOS 100D)、EOS Kiss X5 (EOS REBEL T3i/EOS 600D)、EOS Kiss X4 (EOS REBEL T2i/EOS 550D)、EOS Kiss X3 (EOS REBEL T1i/EOS 500D)、EOS Kiss X2 (EOS DIGITAL REBEL XSi/EOS 450D)、EOS Kiss X90 (EOS REBEL T7/EOS 2000D/EOS 1500D)、EOS Kiss X80 (EOS REBEL T6/EOS 1300D)、EOS Kiss X70 (EOS REBEL T5/EOS 1200D)、EOS Kiss X50 (EOS REBEL T3/EOS 1100D)、EOS Kiss F (EOS DIGITAL REBEL XS/EOS 1000D)、EOS Kiss Digital X (EOS DIGITAL REBEL XTi/EOS 400D DIGITAL)、EOS Kiss Digital N (EOS DIGITAL REBEL XT/EOS 350D DIGITAL)、EOS Kiss M (EOS M50)、EOS M6 Mark II、EOS M6、EOS M5、EOS M3、EOS M2、EOS M、EOS M10、EOS M200、EOS M100、PowerShot G9 X Mark II、PowerShot G9 X、PowerShot G7 X Mark III、PowerShot G7 X Mark II、PowerShot G7 X、PowerShot G5 X Mark II、PowerShot G5 X、PowerShot G3 X、PowerShot G1 X Mark III、PowerShot G1 X Mark II、PowerShot G1 X、PowerShot G16、PowerShot G15、PowerShot G12、PowerShot G11、PowerShot G10、PowerShot S120、PowerShot S110、PowerShot S100、PowerShot S95、PowerShot S90、PowerShot SX70 HS、PowerShot SX60 HS、PowerShot SX50 HS、PowerShot SX1 IS
+Fuji
+X100
+Nikon
+1AW1、1J1、1J2、1J3、1J4、1S1、1S2、1V1、1V2、1V3、D3、D3X、D4、D4S、D40、D40X、D50、D60、D70、D70s、D80、D90、D200、D300、D300s、D600、D610、D700、D750、D800、D800E、D810、D3000、D3100、D3200、D3300、D5000、D5100、D5200、D5300、D5500、D7000、D7100、D7200、Df
+Coolpix：A、P7800
+Olympus
+E-M1、E-M5、E-M10、E-P1、E-P2、E-P3、E-P5、E-PL3、E-PL5、E-PL7、OM-D E-M5 Mark II
+Panasonic
+CM1、FZ300、G70、GF1、GF3、GF5、GF7、GH3、GH4、GM1、GM5、GX1、GX8、LX5、LX7、LX100
+Sony
+A7、A7R、A7S、A7 Mark II、A55、A58、A65、A77、A77 Mark II、A99、A700、A3000、A5000、A5100、A6000、QX1、NEX-5、NEX-5N、NEX-5R、NEX-6、NEX-7、NEX-C3、NEX-F3、RX1、RX1R、RX10、RX10 Mark II、RX100、RX100 Mark II、RX100 Mark III、RX100 Mark IV
+DNG 檔案
+大部分 .dng 格式
+開啟或關閉備份功能
+重要事項：備份可能需要一段時間才能完成，速度取決於網際網路連線、上傳內容大小和其他因素。
+在 Android 手機或平板電腦上開啟 Google 相簿應用程式 相簿。
+登入 Google 帳戶。
+輕觸右上方的個人資料相片或姓名縮寫。
+依序輕觸「Google 相簿設定」圖示 設定 接下來「備份」。
+開啟或關閉「備份」功能。
+開啟或關閉備份功能
+確認備份作業是否已完成
+在 Android 手機或平板電腦上開啟 Google 相簿應用程式 相簿。
+登入 Google 帳戶。
+輕觸右上方的個人資料相片或姓名縮寫。
+備份進度是依據還有多少要上傳的項目來衡量。
+項目備份完成後，您的狀態會顯示為「備份完成」。
+如果備份功能未開啟，狀態會顯示為「備份功能已關閉」。
+手動備份相片和影片
+在 Android 裝置上開啟 Google 相簿應用程式 相簿。
+登入 Google 帳戶。
+開啟相片或影片。
+輕觸「立即備份」。
+或者，也可以輕觸「備份」按鈕或捲動至底部，然後輕觸「立即備份」。
+提示：
+開啟單張相片時，如果儲存空間不足，會顯示「儲存空間不足，無法備份」標記。
+如要備份多張相片或多部影片，請按住要備份的相片或影片，然後輕觸「備份」。
+查看整體備份狀態
+重要事項：如果備份功能已開啟，且儲存空間充足，相片庫頂端會顯示備份狀態。
+在 Android 裝置上開啟 Google 相簿 相簿。
+查看畫面頂端的備份狀態。
+Google 相簿 相簿：不會備份。
+即將開始備份：備份作業即將開始。
+正在備份相片：相片備份中。
+備份完成 ：備份作業已完成。
+備份已暫停 ：備份作業目前已暫停。
+輕觸狀態即可瞭解詳情。
+選用：
+開啟行動數據：如果無法連上 Wi-Fi，可以使用行動數據啟動備份作業。
+通知我：啟用通知，接收 Google 相簿的備份和其他功能更新。
+如要開啟通知，請輕觸「備份狀態」下方的「開啟通知」。
+如要離開，請輕觸「關閉」圖示 顯示較少。
+提示：為確保媒體備份成功，請確認是否符合相關需求。
+查看相片或影片的備份狀態
+在 Android 裝置上開啟 Google 相簿應用程式 相簿。
+輕觸相片或影片。
+依序輕觸「更多」圖示 更多接下來「關於」。
+捲動至「詳細資料」。
+如果相片已備份完成，備份狀態和大小就會顯示在「已備份」圖示 雲端設定完成 下方。
+提示：您隨時可以變更備份畫質。瞭解如何選擇相片和影片的備份畫質。
+在相片分頁中查看相片或影片的備份狀態
+相片分頁檢視畫面可以查看相片或影片的備份狀態。項目備份狀態的查看方式，依是否開啟備份功能而定。
+如果備份功能已開啟
+如果在使用 Google 相簿時登入的 Google 帳戶之中，至少有一個開啟了備份功能，以下是可能的相片備份狀態：
+空白縮圖：項目已備份。
+上傳中 ：項目正在備份中。
+在佇列中或已暫停 ：項目目前未備份，但之後就會備份。
+雲端斜線 ：項目未備份，而且沒有待處理的備份作業。
+永久失敗 ：項目永久失敗。
+提示：如果是最近備份的項目，雲端勾號圖示 只會顯示 3 秒。之後，備份的相片會顯示空白縮圖。
+如果備份功能已關閉
+如果使用 Google 相簿時登入的所有 Google 帳戶都已關閉備份功能，以下是可能的相片備份狀態：
+空白縮圖：項目未備份。
+雲端勾號 ：項目已備份。
+上傳中 ：項目正在備份中。
+在佇列中或已暫停 ：項目目前未備份，但之後就會備份。
+永久失敗 ：項目永久失敗。
+變更備份設定
+備份到其他帳戶
+在 Android 手機或平板電腦上開啟 Google 相簿應用程式 相簿。
+登入 Google 帳戶。
+輕觸右上方的個人資料相片或姓名縮寫。
+依序輕觸「Google 相簿設定」圖示 設定 接下來「備份」。
+輕觸「帳戶和儲存空間」下方的個人資料相片或姓名縮寫。
+選取要將項目備份到哪個 Google 帳戶。
+備份裝置資料夾
+重要事項：開啟「備份」功能後，除了相機拍攝的相片和影片外，所選裝置資料夾也會一併自動備份。您可以選擇自動備份所有資料夾，或為個別裝置資料夾開啟或關閉「備份」功能。
+在 Android 裝置上開啟 Google 相簿應用程式 相簿。
+登入 Google 帳戶。
+輕觸右上方的個人資料相片或姓名縮寫。
+依序輕觸「Google 相簿設定」圖示 設定 接下來「備份」。
+輕觸「設定」下方的「備份裝置資料夾」。
+輕觸要備份的資料夾。
+在不打算備份的資料夾旁邊關閉設定。
+在要備份的資料夾旁邊開啟設定。
+選用：開啟或關閉「備份所有裝置資料夾」。
+如果已開啟「備份所有裝置資料夾」，新裝置資料夾內的相片都會自動備份。
+提示：如果不想讓裝置資料夾內容出現在相片分頁中，可以直接隱藏。瞭解如何在相片分頁中隱藏內容。
+設定每日備份限制
+在 Android 手機或平板電腦上開啟 Google 相簿應用程式 相簿。
+輕觸右上方的帳戶個人資料相片或姓名縮寫。
+依序選取「Google 相簿設定」圖示 設定 接下來「備份」接下來「行動數據用量」。
+您可以執行下列操作：
+選擇 Google 相簿自動備份相片和影片的每日行動數據用量限制。
+關閉「透過數據連線備份影片」。
+關閉「在漫遊時進行備份」。
+在漫遊時進行備份
+在 Android 手機或平板電腦上開啟 Google 相簿應用程式 相簿。
+登入 Google 帳戶。
+輕觸右上方的個人資料相片或姓名縮寫。
+依序輕觸「Google 相簿設定」圖示 設定 接下來「備份」接下來「行動數據用量」。
+開啟「在漫遊時進行備份」。
+透過吃到飽行動數據方案進行備份
+部分行動電信業者提供「吃到飽行動數據方案」，這類方案的使用者行動數據用量不會計入配額，亦無用量上限。目前只有特定電信業者為使用者提供這類方案，例如美國的 Verizon 和 AT&T。如果您使用的是這些電信業者提供的服務，系統可能會顯示相關選項，讓您可透過「Wi-Fi 和吃到飽行動數據方案」選項進行備份。
+重要事項：吃到飽行動數據方案可能僅適用於 5G 網路。
+在 Android 手機或平板電腦上開啟 Google 相簿應用程式 相簿。
+依序輕觸右上方的個人資料相片或姓名縮寫 接下來「Google 相簿設定」圖示 設定。
+依序輕觸「備份」接下來「行動數據用量」接下來「沒有 Wi-Fi 時」。
+輕觸「僅使用吃到飽行動數據方案 (數據用量不會計入方案配額)」。
+排解備份問題
+重要事項：如果您已開啟 Google 相簿應用程式的電池效能最佳化功能，備份功能可能無法正常運作。如果出現這個問題，您可以關閉電池效能最佳化功能。
+如要關閉某些 Android 裝置的電池效能最佳化功能，請按照下列步驟進行：
+開啟裝置上的「設定」應用程式。
+輕觸頂端的「搜尋」圖示 。
+搜尋「電池效能最佳化」、「電池用量」或「最佳化電池用量」。
+輕觸 [電池效能最佳化]。
+依序輕觸「所有應用程式」下一步「相簿」下一步「不要最佳化」下一步「完成」。
+關閉其他 Android 裝置的電池效能最佳化功能
+在主畫面中按住 Google 相簿應用程式 相簿。
+輕觸「資訊」圖示 資訊。
+在「管理電池用量」下方，選取「無限制」。
+取消裝置備份
+您可以從 Google 相簿移除所有目前在裝置上找到的相片和影片，但不刪除裝置上的副本。瞭解如何取消裝置備份。
+瞭解備份相片後會如何
+如果已啟用備份功能：
+保留所有回憶：在裝置上開啟備份功能之後，拍攝的所有相片都會儲存到 Google 帳戶。
+如果已手動或自動備份內容：
+自動同步：您可以在已登入帳戶的裝置上，查看自己拍攝的相片以及對相片所做的編輯。在手機中編輯並儲存相片之後，所做變更也會套用至 Google 相簿的相片。
+迅速強大的搜尋功能：啟用臉部分組之後，即可按照相片中的人物搜尋相片。您也可以按照相片中的地點和事物搜尋相片，不必事先加上標記。
+自動創作：系統會自動製作精選影片、美術拼貼、動畫和全景影像，生動呈現相片。
+從 Google 相簿移除已備份的相片和影片
+在 Android 裝置的 Google 相簿應用程式中關閉備份功能。
+在想要保留相片或影片的裝置上，關閉備份功能。
+在電腦或行動瀏覽器上前往 photos.google.com/login。
+刪除所選的已備份相片和影片。
+稍候幾分鐘，確認 Android 裝置已連上 Wi-Fi。
+關閉 Google 相簿應用程式，然後再重新開啟。
+如有保留本機副本，在刪除相片後，相片仍可能會顯示在相片檢視畫面中。
+如要查看相片的備份狀態，請依序輕觸所需相片 下一步「更多」圖示 更多，然後捲動至「詳細資料」。
+如要確保相片或影片不會再次備份到 Google 相簿，且本機副本不會遭到刪除，請關閉備份功能。
+瞭解刪除相片和影片會有什麼影響。
+相關資源
+Google 儲存空間的使用方式
+選擇相片和影片的備份畫質
+刪除相片和影片
+這個頁面可能含有使用 AI 技術翻譯的內容，也許會有錯誤。
+這對您有幫助嗎？
+我們應如何改進呢？
+是否
+提交
+Android 手機和平板電腦 電腦iPhone 和 iPad
+更多選項
+還有其他問題嗎？
+嘗試以下步驟：
+到產品討論社群發問 向社群成員尋求答案
+true
+說明
+第 1 項，共 4 項
+備份相片和影片
+第 2 項，共 4 項
+選擇相片和影片的備份畫質
+第 3 項，共 4 項
+管理儲存空間
+第 4 項，共 4 項
+關於 Google 相簿活動和儲存空間
+©2026 Google
+隱私權政策
+服務條款
+語言 català‎dansk‎Deutsch‎eesti‎English‎English (United Kingdom)‎español‎español (Latinoamérica)‎Filipino‎français‎hrvatski‎Indonesia‎italiano‎latviešu‎lietuvių‎magyar‎Melayu‎Nederlands‎norsk‎polski‎português‎português (Brasil)‎română‎slovenčina‎slovenščina‎suomi‎svenska‎Tiếng Việt‎Türkçe‎íslenska‎čeština‎Ελληνικά‎български‎русский‎српски‎українська‎‏עברית‏العربية‏فارسیमराठी‎हिन्दी‎తెలుగు‎ไทย‎中文（简体）‎日本語‎한국어‎ 中文（繁體）‎
+啟用深色模式
+針對何項內容提供意見：
+這項說明內容和資訊 一般說明中心體驗
+搜尋
+清除搜尋內容
+關閉搜尋
+Google 應用程式
+主選單
+9355629869410441166
+true
+搜尋說明中心
+false
+true
+true
+true
+true
+true
+105394
+false
+false
+false
+false
+false

@@ -1,0 +1,212 @@
+{
+  "quantity_applied_to_every_quote": [
+    {
+      "question": "In the OneDrive iPhone app, can a user manually select multiple photos for one upload? Cite only official Microsoft Support; separate manual upload from camera upload.",
+      "same_snapshot": true,
+      "key_steps": [
+        {
+          "text": "1. In the OneDrive app, tap OneDrive add icon at the top of the screen.",
+          "status": "not_verified",
+          "guard": "multi_select_quantifier_missing"
+        },
+        {
+          "text": "- If you tap Choose Existing, links appear to the Photos app on your device.",
+          "status": "not_verified",
+          "guard": "multi_select_quantifier_missing"
+        },
+        {
+          "text": "Browse to the pictures you want to upload, select them, then on the top bar, tap Done.",
+          "status": "not_verified",
+          "guard": "multi_select_quantifier_missing"
+        }
+      ]
+    },
+    {
+      "question": "According to official Microsoft Support, how does an iPhone user select existing pictures for a manual upload in OneDrive? Cite only official Microsoft Support.",
+      "same_snapshot": true,
+      "key_steps": [
+        {
+          "text": "1. In the OneDrive app, tap OneDrive add icon at the top of the screen.",
+          "status": "confirmed",
+          "guard": null
+        },
+        {
+          "text": "- If you tap Choose Existing, links appear to the Photos app on your device.",
+          "status": "confirmed",
+          "guard": null
+        },
+        {
+          "text": "Browse to the pictures you want to upload, select them, then on the top bar, tap Done.",
+          "status": "confirmed",
+          "guard": null
+        }
+      ]
+    }
+  ],
+  "windows_mobile_scope": {
+    "quote": "Note: The Dropbox app for Windows devices does not currently support video uploads.",
+    "question": "Compare manual photo upload entry points in Google Photos Android and Dropbox mobile using only official help pages. Give sample product patterns, scenario-relative strengths and weaknesses, opportunities and risks. Distinguish facts, inferences and recommendations.",
+    "recognized_quote_platforms": [
+      "app"
+    ],
+    "status": "confirmed"
+  },
+  "schema_runtime_mismatch": {
+    "field": "analyses[].scenario",
+    "wire_max": 500,
+    "runtime_300_chars": "scenario_too_long"
+  },
+  "lexical_subject_control": {
+    "question": "According to official Microsoft Support, how does an iPhone user upload photos? Cite only official Microsoft Support.",
+    "subject_candidate": "iOS",
+    "error": "task_subject_not_in_question"
+  },
+  "original_9_stage_localization": {
+    "run_id": "9d68d675-4dcc-4719-ad15-d835a84b6ab3",
+    "reconstructed_catalog_units": 193,
+    "offered": 100,
+    "target_units": [
+      {
+        "evidence_id": "d1348e-00@693+122",
+        "quote": "- On a phone or tablet: Choose Photo Library, Take Photo or Video, or Choose Files, then follow the onscreen instructions.",
+        "catalog_present": true,
+        "offered": true,
+        "selected_in_any_recorded_valid_stage": true,
+        "url": "https://support.apple.com/guide/icloud/upload-and-download-photos-mmb5dbaf376f/icloud"
+      },
+      {
+        "evidence_id": "d1348e-00@1100+148",
+        "quote": "Note: If you want to upload photos to your iCloud Shared Photo Library, use the Photos app on a device with iOS 16.1, iPadOS 16, macOS 13, or later.",
+        "catalog_present": true,
+        "offered": true,
+        "selected_in_any_recorded_valid_stage": true,
+        "url": "https://support.apple.com/guide/icloud/upload-and-download-photos-mmb5dbaf376f/icloud"
+      },
+      {
+        "evidence_id": "c33428-01@666+151",
+        "quote": "- On a phone or tablet: Select either Photo Library or Choose Files, then select the files and photos you want to upload or select Take Photo or Video.",
+        "catalog_present": true,
+        "offered": true,
+        "selected_in_any_recorded_valid_stage": true,
+        "url": "https://support.apple.com/guide/icloud/upload-and-download-files-mmad632d1df2/icloud"
+      }
+    ]
+  },
+  "original_9_best_candidate_regression": {
+    "run_id": "9d68d675-4dcc-4719-ad15-d835a84b6ab3",
+    "rounds": [
+      {
+        "attempt": 2,
+        "selection_score": [
+          false,
+          0,
+          7,
+          0
+        ],
+        "contains_phone_options": false,
+        "contains_shared_destination": false
+      },
+      {
+        "attempt": 3,
+        "selection_score": [
+          false,
+          0,
+          6,
+          0
+        ],
+        "contains_phone_options": true,
+        "contains_shared_destination": true
+      }
+    ],
+    "selected_attempt_by_current_score": 2,
+    "conclusion": "第三轮已选中关键手机/Shared Library答案，但两轮任务均失败后按confirmed数量7>6选回第二轮，最终丢失目标答案。"
+  },
+  "citation_policy_becomes_business_condition": {
+    "question": "Using only official Google Drive Help, explain how an Android user uploads files from the app and locates the uploaded files.",
+    "unresolved_clauses": [
+      "only official Google Drive Help, explain how an Android user uploads files from the app and locates the uploaded files"
+    ]
+  },
+  "chinese_query_term_loss": {
+    "question": "请只依据 Google Photos 和 Dropbox 的官方帮助，比较移动端手动添加照片的流程。给出仅限本次两款产品样本的模式、相对该场景的优缺点、机会和风险；清楚区分事实、推断与建议。",
+    "scanner_platforms_and_actions": [
+      [],
+      [
+        "photos"
+      ]
+    ],
+    "actual_queries": [
+      "请只依据 Google Photos 和 Dropbox 的官方帮助，比较移动端手动添加照片的流程。给出仅限本次两款产品样本的模式、相对该场景的优缺点、机会和风险；清楚区分事实、推断与建议。 Mobile photo upload; prefer official product support pages",
+      "google photos photos site:support.google.com",
+      "请只依据 Google Photos 和 Dropbox 的官方帮助，比较移动端手动添加照片的流程。给出仅限本次两款产品样本的模式、相对该场景的优缺点、机会和风险；清楚区分事实、推断与建议。"
+    ]
+  },
+  "version_constraint_unconditional_block": {
+    "question": "Where should users upload photos on iOS 16.1?",
+    "matching_fact": "Note: If you want to upload photos to your iCloud Shared Photo Library, use the Photos app on a device with iOS 16.1, iPadOS 16, macOS 13, or later.",
+    "report": {
+      "task_question": "Where should users upload photos on iOS 16.1?",
+      "parse_status": "parsed",
+      "items": [
+        {
+          "requirement_id": "versioned-destination",
+          "role": "core",
+          "kind": "destination",
+          "status": "partial",
+          "evidence_ids": [
+            "61b480-01@1100+148"
+          ],
+          "evidence_source_ids": [
+            "61b480-01"
+          ],
+          "gap": "版本条件须有逐项原文证明，当前仍需复核"
+        }
+      ],
+      "procedure_status": "insufficient",
+      "overall_completable": false,
+      "failure_reasons": [
+        "版本条件须有逐项原文证明，当前仍需复核"
+      ],
+      "semantic_review": "NOT_MEASURED"
+    }
+  },
+  "generic_comparison_specialized_to_backup_mode": {
+    "source_function": "research_coverage._comparison",
+    "predicate": "manual context + numbered step AND automatic upload/backup/save sentence",
+    "consequence": "Two-product differences unrelated to automatic backup have no general comparison predicate."
+  },
+  "downstream_known_risk_id_only": {
+    "requirement_id": "0357e0b7-6163-4278-8d2a-c4050d62050e",
+    "known_risks": [
+      {
+        "category": "known",
+        "description": "当前\"每次只能选择一张\"可能是产品策略（例如上传大小、网络、鉴黄/审核或后端处理约束）刻意设置，而非单纯的交互限制。Insight 的 recommendation 已建议先确认这一点。",
+        "evidence_ids": [
+          "F001",
+          "F003"
+        ],
+        "mitigation": "在进入实现前先与相关模块负责人确认是否为产品策略限制；若存在后端/审核/带宽限制，需要评估多选对单请求体积和成功率的影响。"
+      }
+    ],
+    "requirement_parser_accepted": true,
+    "requirement_warnings": [
+      {
+        "code": "speculative_risk",
+        "section": "risks[1]",
+        "message": "risk marked as speculative — PM must review before approval",
+        "evidence_id": null
+      }
+    ],
+    "prd_parser_accepted": true,
+    "prd_warnings": [
+      {
+        "code": "speculative_risk",
+        "section": "risks[1]",
+        "message": "risk marked as speculative — PM must review before approval",
+        "evidence_id": null
+      }
+    ],
+    "raw_text_context": "F001/F003只证明一次只能选一张/上传速度尚可，没有证明审核或后端策略原因。"
+  }
+}
+READ_ONLY_OFFLINE_CONTROLS_PASSED

@@ -1,0 +1,343 @@
+### Open tabs
+- 0: (current) [InsightFlow — 反馈到产品的中转站](http://127.0.0.1:13080/prds/1c4d4848-3b14-4dc7-a460-7766743778e7)
+- 1: [InsightFlow — 反馈到产品的中转站](http://127.0.0.1:13080/insights/0f737652-21fd-45eb-82d5-a5af4e05669e)
+### Page
+- Page URL: http://127.0.0.1:13080/prds/1c4d4848-3b14-4dc7-a460-7766743778e7
+- Page Title: InsightFlow — 反馈到产品的中转站
+- Console: 1 errors, 0 warnings
+### Snapshot
+```yaml
+- generic [active] [ref=f4e1]:
+  - generic [ref=f4e2]:
+    - complementary "主导航" [ref=f4e3]:
+      - generic [ref=f4e4]:
+        - generic [aria-hidden] [ref=f4e5]: ◆
+        - generic [ref=f4e6]: InsightFlow
+      - navigation [ref=f4e7]:
+        - generic [ref=f4e8]: MVP
+        - list [ref=f4e9]:
+          - listitem [ref=f4e10]:
+            - link "概览" [ref=f4e11] [cursor=pointer]:
+              - /url: /
+          - listitem [ref=f4e12]:
+            - link "反馈列表" [ref=f4e13] [cursor=pointer]:
+              - /url: /feedback
+          - listitem [ref=f4e14]:
+            - link "分析" [ref=f4e15] [cursor=pointer]:
+              - /url: /analysis
+          - listitem [ref=f4e16]:
+            - link "上传 CSV" [ref=f4e17] [cursor=pointer]:
+              - /url: /upload
+          - listitem [ref=f4e18]:
+            - link "洞察 / 机会评分" [ref=f4e19] [cursor=pointer]:
+              - /url: /insights
+          - listitem [ref=f4e20]:
+            - link "需求" [ref=f4e21] [cursor=pointer]:
+              - /url: /requirements
+          - listitem [ref=f4e22]:
+            - link "PRD" [ref=f4e23] [cursor=pointer]:
+              - /url: /prds
+          - listitem [ref=f4e24]:
+            - link "评测" [ref=f4e25] [cursor=pointer]:
+              - /url: /evaluation
+      - generic [ref=f4e26]: Phase 7 — 前端 MVP
+    - generic [ref=f4e28]:
+      - banner [ref=f4e29]:
+        - button "当前项目 Phase8 completion 隔离验收 A AI photo workspace" [ref=f4e45] [cursor=pointer]:
+          - generic [ref=f4e32]: 当前项目
+          - generic [ref=f4e33]: Phase8 completion 隔离验收 A
+          - generic [ref=f4e34]: AI photo workspace
+          - generic [aria-hidden] [ref=f4e35]: ▾
+        - generic [ref=f4e36]: Phase 7 · MVP
+      - main [ref=f4e38]:
+        - generic [ref=f4e238]:
+          - generic [ref=f4e239]:
+            - generic [ref=f4e240]: PRD · C2
+            - heading "PRD v1" [level=1] [ref=f4e241]
+            - paragraph [ref=f4e242]:
+              - text: 来自 Requirement
+              - link "caef3eff" [ref=f4e243] [cursor=pointer]:
+                - /url: /requirements/caef3eff-48db-4560-adf1-0f09a97d4ec6
+              - text: · 来源 Insight
+              - code [ref=f4e244]: 0f737652
+              - text: · 更新 刚刚
+          - generic [ref=f4e246]:
+            - generic [ref=f4e247]:
+              - generic [ref=f4e248]: 版本
+              - generic [ref=f4e249]: v1
+            - generic [ref=f4e250]:
+              - generic [ref=f4e251]: 状态
+              - generic [ref=f4e252]: 草稿
+            - generic [ref=f4e254]:
+              - generic [ref=f4e255]: AI Generated Draft
+              - generic [ref=f4e256]: 是
+            - generic [ref=f4e257]:
+              - generic [ref=f4e258]: 模型
+              - generic [ref=f4e259]: MiniMax-M3
+            - generic [ref=f4e260]:
+              - generic [ref=f4e261]: Prompt 版本
+              - generic [ref=f4e262]: prd-generation-v3
+            - generic [ref=f4e263]:
+              - generic [ref=f4e264]: 接受时间
+              - generic [ref=f4e265]: —
+          - generic [ref=f4e266]:
+            - heading "Grounding Warnings · 2" [level=3] [ref=f4e267]
+            - list [ref=f4e268]:
+              - listitem [ref=f4e269]:
+                - code [ref=f4e270]: speculative_risk
+                - generic [ref=f4e271]:
+                  - text: "· section:"
+                  - code [ref=f4e272]: risks[2]
+                - generic [ref=f4e273]: risk marked as speculative — PM must review before approval
+              - listitem [ref=f4e274]:
+                - code [ref=f4e275]: speculative_risk
+                - generic [ref=f4e276]:
+                  - text: "· section:"
+                  - code [ref=f4e277]: risks[3]
+                - generic [ref=f4e278]: risk marked as speculative — PM must review before approval
+          - generic [ref=f4e279]:
+            - article [ref=f4e280]:
+              - heading "背景 (Background)" [level=4] [ref=f4e281]
+              - paragraph [ref=f4e282]: 当前图片上传入口在每次选择操作中仅允许选中一张图片（来源：Insight《图片上传仅支持单张选择，复发性操作负担突出》）。在多图上传场景下，用户需要重复执行「选择—确认—上传」循环。已有三条同模块反馈均集中在「每次只能选一张」这一现象上：F001「为什么每次只能上传一张图片？」、F002「我传旅游照片要选几十次，能不能支持多选？」、F003「上传图片其实挺快的，就是每次只能选一张」。其中 F002 中用户在一次上传任务中需重复选择数十次，说明现有选择限制在多图场景下带来了明显的复发性操作负担。Phase 4 决策（decision_id 3d734f52-96e9-4dcf-bf80-7c2372392255）将本需求标记为 accepted，PM Final Priority 为 P2，作为本 PRD 草稿的优先级输入。本 PRD 仅基于上述 Insight 与 Evidence 进行草拟，不引入额外事实或量化承诺。
+              - generic [ref=f4e283]:
+                - code [ref=f4e284]: F001
+                - code [ref=f4e285]: F002
+                - code [ref=f4e286]: F003
+            - article [ref=f4e287]:
+              - heading "问题 (Problem)" [level=4] [ref=f4e288]
+              - paragraph [ref=f4e289]: 用户在图片上传入口每次只能选择一张图片，需要重复执行多次「选择—确认—上传」才能完成一组图片的提交。F002 中用户上传旅游照片需重复选择数十次，整体流程被拖慢；F001 与 F003 也从不同表述角度描述了同一限制。这意味着用户在一次意图明确的「传一组图」任务中，被迫拆分成数十次独立操作，单次任务的步骤数与主观负担均被显著放大。F003 同时表明用户对上传链路本身的速度并不满意度低，问题集中在「选择环节」而非「上传环节」，因此问题定义应聚焦于选择环节的多图限制，而非上传性能。
+              - generic [ref=f4e290]:
+                - code [ref=f4e291]: F001
+                - code [ref=f4e292]: F002
+                - code [ref=f4e293]: F003
+            - article [ref=f4e294]:
+              - heading "目标用户 (Target User)" [level=4] [ref=f4e295]
+              - paragraph [ref=f4e296]: 目标用户为：在产品中存在向同一上传入口一次性提交多张图片需求的用户。该需求在现有反馈中以「旅游照片一次性上传」（F002）为典型场景体现，F001、F003 也表达了「一次想传多张」的同类意图。 现有证据未给出该群体的用户规模、付费特征、地域分布、设备分布等画像维度，因此本 PRD 不在此处给出用户规模或付费相关推断，也不进行画像扩展。所有特征仅基于 F001 / F002 / F003 中明确描述的需求与场景。
+              - generic [ref=f4e297]:
+                - code [ref=f4e298]: F001
+                - code [ref=f4e299]: F002
+                - code [ref=f4e300]: F003
+            - article [ref=f4e301]:
+              - heading "用户故事 (User Story)" [level=4] [ref=f4e302]
+              - paragraph [ref=f4e303]: As a 需要一次性上传多张图片的用户 I want to 在上传入口一次性多选并提交多张图片 So that 我不必反复执行单张选择操作，能以更少的步骤完成整组图片的上传。 As a 在上传旅游/活动等多图场景下的用户 I want to 一次性选中并上传一组图片 So that 可以减少「选一张—确认—再选」的循环次数，整体操作更顺畅。
+              - generic [ref=f4e304]:
+                - code [ref=f4e305]: F001
+                - code [ref=f4e306]: F002
+                - code [ref=f4e307]: F003
+            - article [ref=f4e308]:
+              - heading "产品目标 (Product Goal)" [level=4] [ref=f4e309]
+              - paragraph [ref=f4e310]: 本需求的产品目标是：在图片上传入口的「选择」环节，允许用户一次选中并提交多张图片，从而减少多图上传场景下的复发性操作次数，使用户不必为「传一组图」反复执行单张选择循环。 本目标不附带任何定量承诺（如操作步数下降幅度、效率提升比例等），定量描述由后续可用性验证与 success_metrics 中的基线观察提供。
+              - generic [ref=f4e311]:
+                - code [ref=f4e312]: F001
+                - code [ref=f4e313]: F002
+                - code [ref=f4e314]: F003
+            - article [ref=f4e315]:
+              - heading "建议方案 (Proposed Solution) 提议" [level=4] [ref=f4e316]:
+                - text: 建议方案 (Proposed Solution)
+                - generic [ref=f4e317]: 提议
+              - paragraph [ref=f4e318]: 【Proposed Solution——本节为提案，最终方案以 PM 决议为准】 方案要点：在图片上传入口的「选择」环节，将原有的「单次最多选 1 张」限制调整为「允许一次选中并提交多张图片」。具体包含： 1. 选择组件支持多选：用户在选择图片时可一次勾选多张，统一提交。 2. 保留单张上传入口：原有「一次选一张」入口保留，以兼容 F003 中表达「上传本身挺快」的用户习惯，避免改动上传链路。 3. 范围限定在选择环节：尽量避免改动上传与处理链路本身，以呼应 F003「上传本身挺快，只是每次只能选一张」的反馈。 4. 设计灰度与验证：在落地前先以小流量验证多选行为是否真正缓解复发性操作负担，并配合埋点观察。 本方案为假设，需通过可用性验证确认是否能缓解复发性操作负担，而非引入新的复杂度。
+              - generic [ref=f4e319]:
+                - code [ref=f4e320]: F001
+                - code [ref=f4e321]: F002
+                - code [ref=f4e322]: F003
+            - article [ref=f4e323]:
+              - heading "功能需求 (Functional Requirements) · 5" [level=4] [ref=f4e324]:
+                - text: 功能需求 (Functional Requirements) ·
+                - generic [ref=f4e325]: "5"
+              - list [ref=f4e326]:
+                - listitem [ref=f4e327]:
+                  - generic [ref=f4e328]: 图片上传入口的「选择」组件允许用户一次选中多张图片并统一提交，替代原有「单次最多选 1 张」的限制。
+                  - generic [ref=f4e329]:
+                    - code [ref=f4e330]: F001
+                    - code [ref=f4e331]: F002
+                    - code [ref=f4e332]: F003
+                - listitem [ref=f4e333]:
+                  - generic [ref=f4e334]: 保留原有的「一次选一张」入口作为可选路径，兼容 F003 中表达「上传本身挺快」的用户习惯。
+                  - code [ref=f4e336]: F003
+                - listitem [ref=f4e337]:
+                  - generic [ref=f4e338]: 多选行为仅改动「选择」环节，不改变上传与处理链路，以呼应 F003「上传本身挺快，只是每次只能选一张」的反馈。
+                  - code [ref=f4e340]: F003
+                - listitem [ref=f4e341]:
+                  - generic [ref=f4e342]: 提供选中图片的进度反馈（如已选数量、当前上传状态），帮助用户在多图场景下掌握整体进度。
+                  - code [ref=f4e344]: F002
+                - listitem [ref=f4e345]:
+                  - generic [ref=f4e346]: 提供失败重试入口：当一次多选中的部分图片上传失败时，允许用户对失败项进行重试。
+                  - text: 无证据引用
+            - article [ref=f4e347]:
+              - heading "用户流程 (User Flow)" [level=4] [ref=f4e348]
+              - paragraph [ref=f4e349]: 关键路径（多图场景）： 1. 用户进入图片上传入口。 2. 在选择组件中一次勾选需要上传的多张图片（替代逐张选择）。 3. 系统展示已选数量与上传进度。 4. 用户统一提交所选图片。 5. 系统按顺序/并发上传，展示整体进度。 6. 若部分图片失败，提示失败项并提供「重试失败项」入口。 7. 上传完成，提示成功数量与失败数量。 旁路路径：若用户偏好原有单张上传入口，可继续使用「一次选一张」流程，行为与现状一致。
+              - generic [ref=f4e350]:
+                - code [ref=f4e351]: F001
+                - code [ref=f4e352]: F002
+                - code [ref=f4e353]: F003
+            - article [ref=f4e354]:
+              - heading "边界情况 (Edge Cases) · 6" [level=4] [ref=f4e355]:
+                - text: 边界情况 (Edge Cases) ·
+                - generic [ref=f4e356]: "6"
+              - list [ref=f4e357]:
+                - listitem [ref=f4e358]:
+                  - generic [ref=f4e359]: 空状态
+                  - generic [ref=f4e360]: 用户在多选入口未选中任何图片时点击「上传」：入口需禁用「上传」按钮或提示「请先选择图片」，避免空提交。
+                  - generic [ref=f4e361]: 无证据引用
+                - listitem [ref=f4e362]:
+                  - generic [ref=f4e363]: 部分成功
+                  - generic [ref=f4e364]: 一次多选中部分图片上传成功、部分失败：需明确区分成功项与失败项，提供失败项的重试入口，不影响已成功项。
+                  - generic [ref=f4e365]: 无证据引用
+                - listitem [ref=f4e366]:
+                  - generic [ref=f4e367]: 失败
+                  - generic [ref=f4e368]: 整批多选图片整体上传失败：需给出明确的失败原因与重试入口，允许用户重新触发上传流程。
+                  - generic [ref=f4e369]: 无证据引用
+                - listitem [ref=f4e370]:
+                  - generic [ref=f4e371]: 重试
+                  - generic [ref=f4e372]: 用户在上传进行中点击「取消」后再次发起上传：需保证取消行为可幂等，再次上传不会产生重复或脏数据。
+                  - generic [ref=f4e373]: 无证据引用
+                - listitem [ref=f4e374]:
+                  - generic [ref=f4e375]: 超出限制
+                  - generic [ref=f4e376]: 用户单次多选超过预设上限的图片数量：需提示上限并引导用户分批，避免一次性提交过多导致失败率上升。
+                  - generic [ref=f4e377]: 无证据引用
+                - listitem [ref=f4e378]:
+                  - generic [ref=f4e379]: 非法输入
+                  - generic [ref=f4e380]: 用户选择的图片中存在不支持的格式或超过大小限制的文件：需在选择环节给出明确提示并跳过/拒绝不支持的文件，不静默失败。
+                  - generic [ref=f4e381]: 无证据引用
+            - article [ref=f4e382]:
+              - heading "验收标准 (Acceptance Criteria) · 7" [level=4] [ref=f4e383]:
+                - text: 验收标准 (Acceptance Criteria) ·
+                - generic [ref=f4e384]: "7"
+              - list [ref=f4e385]:
+                - listitem [ref=f4e386]:
+                  - generic [ref=f4e387]: 可验证
+                  - generic [ref=f4e388]: 在图片上传入口的「选择」组件中，用户可一次勾选多张图片并通过单一提交动作完成上传。
+                  - generic [ref=f4e389]: 人工验证：在上传入口同时勾选 ≥ 2 张图片并提交，确认可一次性上传。
+                  - generic [ref=f4e390]:
+                    - code [ref=f4e391]: F001
+                    - code [ref=f4e392]: F002
+                    - code [ref=f4e393]: F003
+                - listitem [ref=f4e394]:
+                  - generic [ref=f4e395]: 可验证
+                  - generic [ref=f4e396]: 原有的「一次选一张」入口仍可正常使用，行为与现状一致。
+                  - generic [ref=f4e397]: 人工验证：使用单张入口上传一张图片，确认行为不变。
+                  - code [ref=f4e399]: F003
+                - listitem [ref=f4e400]:
+                  - generic [ref=f4e401]: 可验证
+                  - generic [ref=f4e402]: 在多选提交过程中，用户可看到已选图片数量与上传进度。
+                  - generic [ref=f4e403]: 人工验证：提交多张图片时界面显示数量与进度。
+                  - code [ref=f4e405]: F002
+                - listitem [ref=f4e406]:
+                  - generic [ref=f4e407]: 可验证
+                  - generic [ref=f4e408]: 当一次多选中部分图片上传失败时，界面明确区分成功项与失败项，并提供针对失败项的重试入口。
+                  - generic [ref=f4e409]: 人工验证：构造部分失败场景，确认可对失败项单独重试。
+                  - generic [ref=f4e410]: 无证据引用
+                - listitem [ref=f4e411]:
+                  - generic [ref=f4e412]: 可验证
+                  - generic [ref=f4e413]: 当用户未选中任何图片时点击「上传」，入口需禁用按钮或给出明确提示。
+                  - generic [ref=f4e414]: 人工验证：空选点击上传，确认被阻止或提示。
+                  - generic [ref=f4e415]: 无证据引用
+                - listitem [ref=f4e416]:
+                  - generic [ref=f4e417]: 可验证
+                  - generic [ref=f4e418]: 当用户单次多选超过预设上限时，入口给出上限提示并引导用户分批。
+                  - generic [ref=f4e419]: 人工验证：超过上限的多选被拒绝或提示分批。
+                  - generic [ref=f4e420]: 无证据引用
+                - listitem [ref=f4e421]:
+                  - generic [ref=f4e422]: 可验证
+                  - generic [ref=f4e423]: 当用户选择包含不支持格式或超大文件时，选择环节给出明确提示并跳过/拒绝不支持的文件。
+                  - generic [ref=f4e424]: 人工验证：混入不支持的文件，确认提示与跳过行为。
+                  - generic [ref=f4e425]: 无证据引用
+            - article [ref=f4e426]:
+              - heading "成功指标 (Success Metrics) · 2" [level=4] [ref=f4e427]:
+                - text: 成功指标 (Success Metrics) ·
+                - generic [ref=f4e428]: "2"
+              - list [ref=f4e429]:
+                - listitem [ref=f4e430]:
+                  - generic [ref=f4e431]: 建立「每次上传任务的图片选择次数」基线
+                  - generic [ref=f4e432]: 仅基线
+                  - generic [ref=f4e433]: 基于 F001/F002/F003 建立基线：现状为单次最多选 1 张；F002 中用户描述了一次上传任务中重复选择「几十次」的现象。本需求不预设定量提升目标，后续在该基线上观察行为变化。
+                  - generic [ref=f4e434]: 来源：F001, F002, F003
+                - listitem [ref=f4e435]:
+                  - generic [ref=f4e436]: 建立「图片上传模块复发性操作抱怨」反馈基线
+                  - generic [ref=f4e437]: 仅基线
+                  - generic [ref=f4e438]: 当前已有 3 条围绕「每次只能选一张」的 feature_request 类型反馈（F001/F002/F003），sentiment 为 negative/mixed，severity 2–3，作为后续观察反馈量与情绪变化的基线。
+                  - generic [ref=f4e439]: 来源：F001, F002, F003
+            - article [ref=f4e440]:
+              - heading "风险 (Risks) · 4" [level=4] [ref=f4e441]:
+                - text: 风险 (Risks) ·
+                - generic [ref=f4e442]: "4"
+              - list [ref=f4e443]:
+                - listitem [ref=f4e444]:
+                  - generic [ref=f4e445]: 已知风险
+                  - generic [ref=f4e446]: 用户已经对「每次只能选一张」形成了明确认知（F001/F002/F003），若仅做最小改动（例如仍限制单次但优化确认步骤），可能无法缓解其复发性操作痛点，导致反馈持续。
+                  - generic [ref=f4e447]: 缓解：在方案上线前通过可用性测试验证多选行为是否真正覆盖用户的「一次性传一组」场景；保留原有单张上传入口以兼容其他使用习惯。
+                  - generic [ref=f4e448]:
+                    - code [ref=f4e449]: F001
+                    - code [ref=f4e450]: F002
+                    - code [ref=f4e451]: F003
+                - listitem [ref=f4e452]:
+                  - generic [ref=f4e453]: 已知风险
+                  - generic [ref=f4e454]: F003 中用户明确表示「上传本身挺快的，只是每次只能选一张」，说明现有上传链路在单图条件下体验尚可；新方案若改变上传流程或重排序交互，可能影响现有对速度满意的用户。
+                  - generic [ref=f4e455]: 缓解：将改动范围限定在「选择环节允许多选」，尽量避免改动上传与处理链路；上线后关注该模块的整体耗时与失败率变化。
+                  - code [ref=f4e457]: F003
+                - listitem [ref=f4e458]:
+                  - generic [ref=f4e459]: 推测风险
+                  - generic [ref=f4e460]: 多图批量选择可能带来新的问题，例如：单次选择过多图片导致失败率上升、大文件并发上传受限于网络或服务端容量、UI 视觉密度增加造成选择困难等。
+                  - generic [ref=f4e461]: 缓解：在验证阶段设置分批上限与单批大小限制；提供进度反馈与失败重试入口；通过小流量灰度观察失败率与用户主观反馈。
+                  - generic [ref=f4e462]: 无证据引用
+                - listitem [ref=f4e463]:
+                  - generic [ref=f4e464]: 推测风险
+                  - generic [ref=f4e465]: 现有证据集中在多图场景，「每次只能选一张」是否为所有用户群体的共性需求仍需验证；若实际多图需求仅占少数用户行为，可能存在过度设计风险。
+                  - generic [ref=f4e466]: 缓解：在落地前对上传入口的实际使用模式（单图 vs 多图占比）进行埋点分析，作为决策是否扩展到全量的依据。
+                  - generic [ref=f4e467]: 无证据引用
+            - article [ref=f4e468]:
+              - heading "MVP 范围 (MVP Scope)" [level=4] [ref=f4e469]
+              - generic [ref=f4e470]:
+                - generic [ref=f4e471]:
+                  - generic [ref=f4e472]: 包含 (In Scope)
+                  - paragraph [ref=f4e473]: 1. 图片上传入口的「选择」组件支持一次勾选并提交多张图片。 2. 保留原有的「一次选一张」入口，行为不变。 3. 上传链路与处理链路尽量保持现状，仅在选择环节增加多选能力。 4. 多选提交时的进度展示与失败重试入口。 5. 小流量灰度与可用性验证所需的埋点。
+                - generic [ref=f4e474]:
+                  - generic [ref=f4e475]: 排除 (Out of Scope)
+                  - paragraph [ref=f4e476]: 1. 上传链路与处理链路的重构（待 PM 决议）。 2. 图片编辑、裁剪、排序等附加能力（本范围不涉及量化收益评估）。 3. 跨入口/跨模块的统一图片选择中心化方案（待 PM 决议）。 4. 离线缓存、断点续传等网络层增强（暂不评估）。 5. 任何定量收益承诺与商业化指标挂钩（待 PM 决议）。
+            - article [ref=f4e477]:
+              - heading "证据 (Evidence)" [level=4] [ref=f4e478]
+              - generic [ref=f4e479]:
+                - generic [ref=f4e480]:
+                  - generic [ref=f4e481]: 来源 (Sources)
+                  - list [ref=f4e482]:
+                    - listitem [ref=f4e483]:
+                      - code [ref=f4e484]: F001：用户反馈「为什么每次只能上传一张图片？」，用于 problem / user_story / solution_hypothesis / success_metrics / risks。
+                    - listitem [ref=f4e485]:
+                      - code [ref=f4e486]: F002：用户反馈「我传旅游照片要选几十次，能不能支持多选？」，用于 problem / target_user / success_metrics / risks。
+                    - listitem [ref=f4e487]:
+                      - code [ref=f4e488]: F003：用户反馈「上传图片其实挺快的，就是每次只能选一张。」，用于 problem / risks 中「改动上传链路可能影响现有满意体验」。
+                    - listitem [ref=f4e489]:
+                      - code [ref=f4e490]: Insight《图片上传仅支持单张选择，复发性操作负担突出》：用于 background / problem 的整体定性。
+                    - listitem [ref=f4e491]:
+                      - code [ref=f4e492]: Phase 4 decision（3d734f52-96e9-4dcf-bf80-7c2372392255, accepted, P2）：用于 background 的优先级与状态输入。
+                - generic [ref=f4e493]:
+                  - generic [ref=f4e494]: 证据 ID (Evidence IDs)
+                  - generic [ref=f4e495]:
+                    - code [ref=f4e496]: F001
+                    - code [ref=f4e497]: F002
+                    - code [ref=f4e498]: F003
+          - generic [ref=f4e499]:
+            - heading "操作" [level=3] [ref=f4e500]
+            - generic [ref=f4e501]:
+              - button "编辑" [ref=f4e502] [cursor=pointer]
+              - button "再生成新版本" [ref=f4e503] [cursor=pointer]
+              - button "接受本版本" [ref=f4e504] [cursor=pointer]
+              - link "返回列表" [ref=f4e505] [cursor=pointer]:
+                - /url: /prds
+          - generic [ref=f4e506]:
+            - heading "版本历史 · 1" [level=3] [ref=f4e507]
+            - paragraph [ref=f4e508]:
+              - text: 按
+              - code [ref=f4e509]: version DESC, id DESC
+              - text: 稳定排序；每行可以打开查看具体版本。
+            - list [ref=f4e510]:
+              - listitem [ref=f4e511]:
+                - generic [ref=f4e512]: v1
+                - generic [ref=f4e513]: 草稿
+                - generic [ref=f4e514]: 当前
+                - generic [ref=f4e515]: Backend Active
+                - link "打开" [ref=f4e516] [cursor=pointer]:
+                  - /url: /prds/1c4d4848-3b14-4dc7-a460-7766743778e7
+                - generic [ref=f4e517]: 更新 刚刚
+  - alert [ref=f4e44]
+```

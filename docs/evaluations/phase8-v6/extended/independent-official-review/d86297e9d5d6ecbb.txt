@@ -1,0 +1,186 @@
+Why is Dropbox unable to upload my files? - Dropbox Help
+Dropbox
+Main navigation
+Help center
+Community
+Dropbox learn
+Contact support
+Help center
+Community
+Dropbox learn
+Contact support
+Open/close search
+Help center
+Account
+Account access
+Billing
+Account settings
+Plans
+Storage space
+Security
+Using Dropbox
+Sync
+Delete and restore
+Share
+View and edit
+Installs
+Create and upload
+Organize
+Integrations
+AI integrations
+Products
+Dropbox Dash
+Dropbox Protect
+Dropbox Sign
+Dropbox DocSend
+Dropbox Backup
+Dropbox Replay
+Dropbox Transfer
+Get started
+Dropbox Help Center - How to use Dropbox
+Create and upload
+Unable to upload files
+Why is Dropbox unable to upload my files?
+Updated Jan 24, 2025
+In this article
+The information in this article applies to all Dropbox users.
+You can store web-based files in Dropbox, but you can’t add or move them to your Dropbox account from somewhere else. Web-based files include:
+Google Docs (.gdoc)
+Google Sheets (.gsheet)
+Google Slides (.gslides)
+To move web-based files to your Dropbox account, you have 2 options:
+1. You can download (or export) a copy of your file as a file type that can be added to Dropbox (like .docx), and then upload it to Dropbox (but it won’t be a web-based file anymore).
+Learn how to download a copy of your Google Docs, Sheets, or Slides file.
+2. You can create a new web-based file in Dropbox, and then copy and paste the contents over to it from the web-based version of the file.
+Learn how to create Google Docs, Sheets, and Slides in Dropbox.
+Was this article helpful?
+Yes, thanks!
+Not really
+Let us know how why it didn't help:
+Thanks for letting us know!
+The article didn't answer my question
+The steps in the article didn't work for me
+I found this article confusing and difficult to read
+Other
+Please enter feedback before submitting.
+Submit feedback
+Thanks for your feedback!
+Related Articles
+Copy or duplicate Dropbox files
+How to use Dropbox Paper templates
+Add files and folders to your Dropbox account
+Create a Dropbox Paper doc
+Community answers
+I have free quota on my Dropbox account but I'm unable to upload files, why?
+Posted by: paulflute
+861 days ago
+9653
+14
+Why does Dropbox keep renaming my Camera Uploads files?
+Posted by: usrx
+987 days ago
+16508
+21
+Unable to upload files from Procreate to my Dropbox account on iPad
+Posted by: MacAnja
+1328 days ago
+1905
+7
+Why is Dropbox uploading my RAW files as JPG files?
+Posted by: M&T B.
+3212 days ago
+10217
+10
+Why are there changes to my video bitrate and file size after uploading to the Dropbox iOS app?
+Posted by: altenae
+3297 days ago
+6065
+15
+Other ways to get help
+Icon depicting a speech bubble
+Contact support
+Icon depicting two people
+Community
+Twitter Icon
+Social media support
+Footer-Help
+Dropbox
+Desktop app
+Mobile app
+Integrations
+Features
+Solutions
+Security
+Early access
+Templates
+Free tools
+Products
+Plus
+Professional
+Business
+Enterprise
+Dash
+DocSend
+Dropbox Sign
+Reclaim.ai
+Plans
+Product updates
+Features
+Send large files
+Send long videos
+Cloud photo storage
+Secure file transfer
+Cloud backup
+Edit PDFs
+Electronic signatures
+Convert to PDF
+Support
+Help center
+Contact us
+Privacy & terms
+Cookie policy
+Cookies & CCPA preferences
+AI principles
+Sitemap
+Learning resources
+Resources
+Blog
+Events
+Customer stories
+Resources library
+Developers
+Community forums
+Referrals
+Reseller partners
+Integration partners
+Find a partner
+Company
+About us
+Jobs
+Investor relations
+Corporate responsibility
+Choose a language
+Bahasa Indonesia
+Bahasa Malaysia
+Dansk
+Deutsch
+English (Australia)
+English (United Kingdom)
+English (United States)
+Español (España)
+Español (Latinoamérica)
+Français (France)
+Italiano
+Nederlands
+Norsk (bokmål)
+Polski
+Português (Brasil)
+Pусский
+Svenska
+Українська
+ไทย
+中文（简体）
+中文（繁體）
+日本語
+한국어
+English (United States)

@@ -1,0 +1,262 @@
+How to upload files to Dropbox DocSend - Dropbox Help
+Dropbox
+Main navigation
+Help center
+Community
+Dropbox learn
+Contact support
+Help center
+Community
+Dropbox learn
+Contact support
+Open/close search
+Help center
+Account
+Account access
+Billing
+Account settings
+Plans
+Storage space
+Security
+Using Dropbox
+Sync
+Delete and restore
+Share
+View and edit
+Installs
+Create and upload
+Organize
+Integrations
+AI integrations
+Products
+Dropbox Dash
+Dropbox Protect
+Dropbox Sign
+Dropbox DocSend
+Dropbox Backup
+Dropbox Replay
+Dropbox Transfer
+Get started
+Dropbox Help Center - How to use Dropbox
+Create and upload
+How to upload files to Dropbox DocSend
+How to upload files to Dropbox DocSend
+Updated Jun 05, 2026
+In this article
+This article applies to all Dropbox DocSend customers.
+You can upload files, images, and, videos to Dropbox DocSend from the Content library tab.
+What file types are supported?
+DocSend accepts the following file types and extensions:
+File types
+Extensions
+PDF
+.pdf
+Microsoft PowerPoint
+.pptx and .ppt
+Microsoft Word
+.docx and .doc
+Keynote
+.key
+Audio
+.aif, .aiff, .flac, .m4a, .mp3, .oga, .ogg, .wav, and .wma
+Images
+.3fr, .ai, .arw, .bmp, .cr2, .crw, .dcr, .dcs, .dng, .dwg, .erf, .gif, .heic, .jpeg, .jpg, .kdc, .mef, .mos, .mrw, .nef, .nrw, .orf, .pef, .png, .ppm, .psd, .r3d, .raf, .rw2, .rwl, .sr2, .svg, .svgz, .tiff, .wbmp, .webp, and .x3f
+Videos
+.3gp, .3gpp, .3gpp2, .asf, .avi, .dv, .m2t, .m4v, .mkv, .mov, .mp4, .mpeg, .mpg, .mts, .ogv, .rm, .ts, .vob, .webm, and .wmv
+Spreadsheets
+.csv, .gsheet, .ods, .xls, .xlsx, and .xlsm
+Depending on your plan, you may also be able to upload additional download-only file types. Learn more about download-only files.
+How to upload a file or folder to DocSend
+To upload a new file or folder:
+Log in to docsend.com.
+Click Content library in the left sidebar.
+Find the folder you’d like to upload files or folders to, then open it.
+Click Add content.
+Choose Files or Folder from the dropdown menu.
+Find the file or folder you want to upload on your desktop or external folder, then choose one of the following options:
+Click Open to upload a file or Upload to upload a folder.
+Drag and drop the file or folder from your computer.
+A window in the lower right will show the progress of your upload.
+What upload providers are supported?
+You can upload documents into DocSend directly from any of these external accounts:
+Dropbox
+Google Drive
+Box
+OneDrive/OneDrive for Business
+SharePoint Online
+Egnyte
+Learn more about cloud upload providers.
+How to do multi-file uploads
+With multi-asset uploading, you can queue multiple assets to be uploaded from your device or any of the cloud-based services listed above. To upload multiple assets:
+File or folder uploads
+Log in to docsend.com.
+Click Content library in the left sidebar.
+Find the folder you’d like to upload files or folders to, then open it.
+Click Add content.
+Choose Files or Folder from the dropdown menu.
+Find the file or folder you want to upload on your desktop or external folder.
+Press and hold control (Windows) or command (macOS).
+Select the files or folders you want to upload.
+Click Open to upload a file or Upload to upload a folder.
+Cloud uploads
+Log in to docsend.com.
+Click Content library in the left sidebar.
+Find the folder you’d like to upload files or folders to, then open it.
+Click Add content.
+Click Cloud storage from the dropdown menu.
+Choose the desired cloud provider from the dropdown menu.
+While holding control (Windows) or command (macOS), click the assets you want to upload.
+To select a range of assets, hold Shift and click the first and last asset in the range.
+Click Upload.
+As each asset is uploaded, a window in the lower right corner will show the progress of the upload of all your files.
+What are the image upload limits?
+DocSend supports the following file types up to specified size limits:
+File typeSize limit.3fr200 MB.ai200 MB.arw200 MB.bmp200 MB.cr2200 MB.crw200 MB.dcr200 MB.dcs200 MB.dng200 MB.dwg100 MB.erf100 MB.gif100 MB.heic100 MB.jpeg100 MB.jpg100 MB.kdc200 MB.mef200 MB.mos200 MB.mrw200 MB.nef200 MB.nrw200 MB.orf200 MB.pef200 MB.png100 MB.ppm100 MB.psd1,024 MB.r3d200 MB.raf200 MB.rw2200 MB.rwl200 MB.sr2200 MB.svg48 MB.svgz48 MB.tiff200 MB.wbmp100 MB.webp100 MB.x3f200 MB
+Notes:
+Images need to be less than 50 megapixels.
+Audio files are only supported up to 1 GB.
+Watermarking isn't currently supported for video, audio, image, and spreadsheet uploads.
+GIFs will be uploaded as GIFs.
+Animated file types like .webp will be displayed as .jpeg files but will download as their original file type.
+FAQs
+Can I drop and drag a folder into DocSend?
+Users can upload multiple assets within a folder by dragging and dropping them onto the uploader, but not the folder itself.
+How do I upload multiple files into a Space?
+Users can upload multiple files into a Space by using the Add content button when accessing a Space. Learn more about managing files in Spaces.
+Is the filename visible when I share a link to a file?
+Visitors may see the filename if you create a link that allows the shared file to be downloaded. In that case, the filename shown on DocSend will be used as the name of the downloaded file.
+Note: You can change this name at any time by clicking on the file name from the file details page.
+Can I see visit and performance analytics on audio files?
+Audio files include visit level and performance analytics like the advanced analytics included with DocSend’s video player. Learn more about DocSend video and audio player.
+Read more
+Was this article helpful?
+Yes, thanks!
+Not really
+Let us know how why it didn't help:
+Thanks for letting us know!
+The article didn't answer my question
+The steps in the article didn't work for me
+I found this article confusing and difficult to read
+Other
+Please enter feedback before submitting.
+Submit feedback
+Thanks for your feedback!
+Related Articles
+Connect cloud storage providers in Dropbox DocSend
+Does Dropbox DocSend support documents marked as final?
+File upload limitations in Dropbox DocSend
+How to fix custom font issues in Dropbox DocSend
+Community answers
+What’s New This Month - October 2026
+Posted by: Theresa
+12 days ago
+410
+0
+I've exceeded the quota on my Dropbox account. How can I download the files I tried to upload?
+Posted by: aihand
+1211 days ago
+6373
+11
+How to undo uploading files to Dropbox without deleting them from my computer?
+Posted by: hedda739
+2260 days ago
+3270
+3
+How to upload file to DropBox folder that is accessible to others
+Posted by: RyanDev
+2475 days ago
+2517
+2
+How To Get Upload Progress Of A Uploading File With Dropbox Core API?
+Posted by: Mehul M.
+4260 days ago
+2703
+1
+Other ways to get help
+Icon depicting a speech bubble
+Contact support
+Icon depicting two people
+Community
+Twitter Icon
+Social media support
+Footer-Help
+Dropbox
+Desktop app
+Mobile app
+Integrations
+Features
+Solutions
+Security
+Early access
+Templates
+Free tools
+Products
+Plus
+Professional
+Business
+Enterprise
+Dash
+DocSend
+Dropbox Sign
+Reclaim.ai
+Plans
+Product updates
+Features
+Send large files
+Send long videos
+Cloud photo storage
+Secure file transfer
+Cloud backup
+Edit PDFs
+Electronic signatures
+Convert to PDF
+Support
+Help center
+Contact us
+Privacy & terms
+Cookie policy
+Cookies & CCPA preferences
+AI principles
+Sitemap
+Learning resources
+Resources
+Blog
+Events
+Customer stories
+Resources library
+Developers
+Community forums
+Referrals
+Reseller partners
+Integration partners
+Find a partner
+Company
+About us
+Jobs
+Investor relations
+Corporate responsibility
+Choose a language
+Bahasa Indonesia
+Bahasa Malaysia
+Dansk
+Deutsch
+English (Australia)
+English (United Kingdom)
+English (United States)
+Español (España)
+Español (Latinoamérica)
+Français (France)
+Italiano
+Nederlands
+Norsk (bokmål)
+Polski
+Português (Brasil)
+Pусский
+Svenska
+Українська
+ไทย
+中文（简体）
+中文（繁體）
+日本語
+한국어
+English (United States)

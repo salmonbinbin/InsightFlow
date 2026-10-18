@@ -1,0 +1,38 @@
+{
+  "original": {
+    "method": "Codex按实际确认事实、完整子问题、条件、数量及官方原文人工判读；独立HTTP字面比对辅助，不能代替语义判断。局部不代表整题通过。",
+    "program_counts": {
+      "partial_failed": 6,
+      "completed": 4
+    },
+    "independent_counts": {
+      "partial": 3,
+      "not_verified": 3,
+      "complete": 4
+    },
+    "confirmed_count": 44,
+    "factual_false_positives": 0,
+    "relevance_false_positive_count": 3,
+    "completeness_false_positive_count": 0,
+    "literal_audit_representation_mismatches": 2,
+    "representation_note": "差异均为HTML图片alt与标点之间空格；人工检查文字与按钮一致，未修改生产严格引文规则。"
+  },
+  "extended": {
+    "method": "Codex按实际确认事实、完整子问题、条件、数量及官方原文人工判读；独立HTTP字面比对辅助，不能代替语义判断。局部不代表整题通过。",
+    "program_counts": {
+      "completed": 2,
+      "partial_failed": 6
+    },
+    "independent_counts": {
+      "complete": 4,
+      "partial": 3,
+      "not_verified": 1
+    },
+    "confirmed_count": 125,
+    "factual_false_positives": 0,
+    "relevance_false_positive_count": 23,
+    "completeness_false_positive_count": 0,
+    "literal_audit_representation_mismatches": 8,
+    "representation_note": "差异均为HTML图片alt与标点之间空格；人工检查文字与按钮一致，未修改生产严格引文规则。"
+  }
+}

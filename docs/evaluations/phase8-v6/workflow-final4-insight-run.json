@@ -1,0 +1,66 @@
+{
+  "id": "849d369c-30e1-4c45-af68-a4c8a6ea2982",
+  "project_id": "71e46ed7-717f-4f50-94f3-c53874429b21",
+  "clustering_run_id": "56772384-6164-43fd-a52d-34437cca39ab",
+  "classification_run_id": "d8444f00-e710-41a7-85b4-28e49107541e",
+  "status": "completed",
+  "model": "MiniMax-M3",
+  "prompt_version": "insight-generation-v2",
+  "input_count": 9,
+  "processed_count": 9,
+  "success_count": 1,
+  "needs_validation_count": 8,
+  "failed_count": 0,
+  "input_tokens": 14451,
+  "output_tokens": 2288,
+  "unknown_token_calls": 0,
+  "retry_count": 0,
+  "latency_ms": 26698,
+  "attempt_count": 9,
+  "started_at": "2026-10-17T13:43:54.967528Z",
+  "completed_at": "2026-10-17T13:44:21.885041Z",
+  "created_at": "2026-10-17T13:43:54.968642Z",
+  "error_message": null,
+  "input_cluster_external_ids": [
+    "32a636b5-6357-480b-a915-f859b8a4a3f0",
+    "d7af55d7-bb1b-411b-91fa-cbdc6939f5ed",
+    "db670832-be2f-4705-9332-d4921d44faa8",
+    "dde80c25-e003-4a93-a6f7-2ec0368a373a",
+    "47b5b4b0-8fbe-4465-ac61-b32ed05a09a8",
+    "e1dbfa4f-6965-41c8-9417-3b2feb4b1670",
+    "095f15eb-4275-49f8-a925-eb90438258fa",
+    "fe96ea54-a21e-479d-a505-2993422f9af6",
+    "ba46e70d-c21f-4f40-a92f-d8c59349ae45"
+  ],
+  "input_member_external_ids": {
+    "32a636b5-6357-480b-a915-f859b8a4a3f0": [
+      "F002",
+      "F001",
+      "F003"
+    ],
+    "d7af55d7-bb1b-411b-91fa-cbdc6939f5ed": [
+      "F004"
+    ],
+    "db670832-be2f-4705-9332-d4921d44faa8": [
+      "F005"
+    ],
+    "dde80c25-e003-4a93-a6f7-2ec0368a373a": [
+      "F006"
+    ],
+    "47b5b4b0-8fbe-4465-ac61-b32ed05a09a8": [
+      "F007"
+    ],
+    "e1dbfa4f-6965-41c8-9417-3b2feb4b1670": [
+      "F008"
+    ],
+    "095f15eb-4275-49f8-a925-eb90438258fa": [
+      "F009"
+    ],
+    "fe96ea54-a21e-479d-a505-2993422f9af6": [
+      "F010"
+    ],
+    "ba46e70d-c21f-4f40-a92f-d8c59349ae45": [
+      "F011"
+    ]
+  }
+}

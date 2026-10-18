@@ -102,7 +102,7 @@ describe('RequirementsListPage — Phase 7 B2', () => {
   it('shows an empty state when the project has no requirements', async () => {
     renderList({ missing: true });
     await waitFor(() => {
-      expect(screen.getByText(/该项目下尚无 Requirement/)).toBeTruthy();
+      expect(screen.getByText(/还没有产品需求/)).toBeTruthy();
     });
     expect(screen.queryByTestId('requirement-list')).toBeNull();
   });

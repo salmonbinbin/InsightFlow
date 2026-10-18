@@ -1,0 +1,120 @@
+Choose the backup quality of your photos and videos - Android phone and tablet - Google Photos Help Skip to main content
+Google Photos Help
+Sign in
+Google Help
+Help Center
+Community
+Google Photos
+Privacy Policy
+Terms of Service
+Submit feedback
+Send feedback on…
+This help content & information
+General Help Centre experience
+CloseNext
+Help Center
+Community
+Can't find your photos?
+Google Photos
+Choose the backup quality of your photos and videos
+You can automatically save your photos and videos to your Google Account when you turn on backup. Learn how to back up your photos and videos.
+Each Google Account comes with up to 15 GB of storage and you can always buy more storage or clean up your storage space.
+You can also change the backup quality to fit your preferences or save storage space.
+Important: If you're inactive in Google Photos for two years or more, your content may be deleted. Learn about the Google Photos inactivity policy.
+Learn about your backup options
+Original quality
+Photos and videos are stored in the same resolution that you took them in with no change to their quality.
+Photos and videos backed up in original quality count towards your Google Account storage.
+Recommended for photos that have more than 16 MP and videos with more than 1080p.
+Recommended for printing large banners.
+Storage saver
+Important: Any photos or videos that you backed up in high quality, now called Storage saver, before 1 June 2021 don't count towards your Google Account storage. Learn how to check a photo's backup quality.
+Photos and videos are stored at a slightly reduced quality.
+Photos and videos backed up in Storage saver count towards your Google Account storage.
+Photos are compressed to save space. If a photo is larger than 16 MP, it'll be resized to 16 MP.
+You can print good quality 16 MP photos in sizes up to 60 centimetres x 40 centimetres.
+Photos that you upload in Storage saver may be compressed into a different image format, like a .jpg.
+Videos higher than 1080p will be resized to high-definition 1080p. A video with 1080p or less will look close to the original. Some information, such as closed captions, might be lost.
+In some circumstances, certain photos and videos may not be compressed and will be stored at their original file size. Some multi-picture format (mpf) .jpgs can't be compressed; for example, portraits that you take on an Android device.
+Express
+Important: Any photos or videos that you've backed up in express quality before 1 June 2021 don't count towards your Google Account storage.
+If you can't find this option in your backup settings, it isn't available in your country or region.
+Photos and videos backed up in express quality count towards your Google Account storage.
+Photos may be compressed to use less mobile data. If a photo is larger than 3 MP, it'll be resized to 3 MP.
+You can print good quality 3 MP photos in sizes up to 15 centimetres x 20 centimetres.
+Videos higher than 480p will be resized to standard definition 480p. A video with 480p or less will look close to the original. Some information, such as closed captions, might be lost.
+In some circumstances, certain photos and videos may not be compressed and will be stored at their original file size. Some multi-picture format (mpf) .jpgs can't be compressed; for example, portraits that you take on an Android device.
+Change your backup quality
+Important: If you're out of storage, you can't change your backup quality.
+On your Android device, open the Google Photos app Photos.
+Sign in to your Google Account.
+At the top, tap your Profile picture or Initial.
+Select Google Photos settings Settings and then Backup and then Photos and videos quality.
+Select a backup quality.
+Tip: To check backup quality and size, go to a photo or video and swipe up. You can find backup details under 'Details'.
+If a photo or video can't be compressed, under 'Details', you'll find 'Not eligible for Storage saver'. This will only appear if you've tried to back up the item in Storage saver quality.
+Learn about changes to backup quality
+If you're signed in to your Google Account and use Google Photos on multiple devices, and you change your backup quality for one device, it won't affect the backup settings on any other device.
+If you change your backup quality from Express to either Storage saver or original quality, Google Photos will re-upload any existing photos or videos on your device.
+You may find an option to limit backup data usage.
+Learn about Google Photos backup on your Pixel
+If you turn on backup on your Pixel phone, photos and videos that you take on your Pixel are automatically backed up from your phone to Google Photos. Learn more about Google Photos backup.
+Pixel 3a-5
+You can choose to back up your photos and videos either in Storage saver, previously named high quality, or in original quality. Photos and videos backed up in Storage saver from the Pixel 3a-5 are unlimited and at no charge. Photos and videos backed up in original quality count towards your Google Account storage. Learn how to change your backup quality and learn more about storage plans.
+Pixel 3
+Photos and videos backed up in original quality on or before 31 January 2022 will remain in original quality at no charge. Photos and videos backed up after 31 January 2022 are saved in Storage saver at no charge. Photos and videos backed up in original quality count towards your Google Account storage.
+Pixel 2
+Photos and videos backed up in original quality on or before 16 January 2021 will remain in original quality at no charge. Photos and videos backed up after 16 January 2021 are saved in Storage saver at no charge. Photos and videos backed up in original quality count towards your Google Account storage.
+Pixel (1st generation)
+You get unlimited storage in original quality at no charge. You won't be able to back up in Storage saver.
+Related resources
+Back up photos and videos
+Delete photos and videos
+Was this helpful?
+How can we improve it?
+YesNo
+Submit
+Android phone and tablet ComputeriPhone and iPad
+More
+Need more help?
+Try these next steps:
+Post to the Help Community Get answers from community members
+true
+Help
+1 of 4
+Back up photos and videos
+2 of 4
+Choose the backup quality of your photos and videos
+3 of 4
+Manage your storage
+4 of 4
+About your Google Photos activity and storage
+Get more storage.
+More storage across Google Drive, Gmail and Google Photos for you and your family. Access to Google experts. Family sharing option. Expanded storage.
+©2026 Google
+Privacy Policy
+Terms of Service
+Language català‎dansk‎Deutsch‎eesti‎English‎español‎español (Latinoamérica)‎Filipino‎français‎hrvatski‎Indonesia‎italiano‎latviešu‎lietuvių‎magyar‎Melayu‎Nederlands‎norsk‎polski‎português‎português (Brasil)‎română‎slovenčina‎slovenščina‎suomi‎svenska‎Tiếng Việt‎Türkçe‎íslenska‎čeština‎Ελληνικά‎български‎русский‎српски‎українська‎‏עברית‏العربية‏فارسیमराठी‎हिन्दी‎తెలుగు‎ไทย‎中文（简体）‎中文（繁體）‎日本語‎한국어‎ English (United Kingdom)‎
+Enable Dark Mode
+Send feedback on…
+This help content & information General Help Centre experience
+Search
+Clear search
+Close search
+Google apps
+Main menu
+13509554937461934849
+true
+Search Help Centre
+false
+true
+true
+true
+true
+true
+105394
+false
+false
+false
+false
+false
