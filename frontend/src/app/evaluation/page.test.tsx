@@ -1,4 +1,4 @@
-import { afterEach, describe, expect, it } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { ProjectContextProvider } from '../../contexts/ProjectContext';
 import { MockInsightFlowClient } from '../../lib/api/mock';
@@ -105,4 +105,18 @@ describe('Evaluation dashboard', () => {
     expect((await screen.findByTestId('eval-case-row')).textContent).toContain('F102');
     expect(client.callLog.filter((c) => c.path === '/api/evaluations/run-a/cases').length).toBeGreaterThanOrEqual(5);
   });
+});
+
+it('launches a custom-project check and opens its saved report', async () => {
+  const client = setup();
+  client.analysisRuns = [{ id: 'source-a', project_id: 'proj-a', run_type: 'classification', status: 'completed', prompt_version: 'test', input_count: 36, processed_count: 36, success_count: 36, failed_count: 0 }];
+  const create = vi.fn(async () => ({ data: { id: RUN.id, project_id: RUN.project_id }, error: null, requestId: 'test' }));
+  Object.assign(client, { createEvaluation: create });
+  expect(await screen.findByRole('heading', { name: '发起评测' })).toBeTruthy();
+  const select = await screen.findByLabelText('选择分析记录');
+  await waitFor(() => expect(select.querySelectorAll('option')).toHaveLength(2));
+  fireEvent.change(select, { target: { value: 'source-a' } });
+  fireEvent.click(screen.getByRole('button', { name: '生成检查报告' }));
+  await waitFor(() => expect(create).toHaveBeenCalledWith({ project_id: 'proj-a', source_run_id: 'source-a', evaluation_type: 'classification_metrics' }, 'run-check', expect.any(AbortSignal)));
+  expect(await screen.findByTestId('eval-detail-title')).toBeTruthy();
 });

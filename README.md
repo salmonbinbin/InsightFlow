@@ -205,3 +205,15 @@ uv run --with pgserver==0.1.4 python scripts/verify_phase2_migration.py
 新增0008迁移与7个洞察端点。启动依然使用原有后端命令，先安全配置LLM_API_KEY/LLM_BASE_URL/LLM_MODEL；旧库前向升级前自行备份。显式选择本项目completed聚类run后，POST `/projects/{project_id}/insights/generate`，body含`clustering_run_id`；用`GET /insight-runs/{run_id}`查状态、`GET /projects/{project_id}/insights?run_id=...`查结果，`GET /insights/{insight_id}/evidence`查原文。同步200。失败用POST `/insight-runs/{run_id}/retry`，成功及needs_validation结果不重处理。
 
 独立隔离复验：在backend执行`uv run --with pgserver==0.1.4 python scripts/verify_phase3_supervisor.py`只验证带数据迁移；加`--real`验证真实TCP+真实Phase3模型（会消耗模型额度，上游仍为合成夹具）。详见docs/19与docs/20；所有结果需要人工审阅。
+
+---
+
+## 人工参考评测与数据准备（2026-10-28 新增入口，非历史快照）
+
+评测页新增「人工参考答案评测」：选择当前项目的一条**已结束**分类/聚类运行 → 下载空白CSV模板 → 人工填 `review_status=reviewed`、审核人、分类类型与严重度（分类）或 `cluster_label`（聚类）→ 上传后生成报告与逐条标签对照。可只上传复核过的行（子样本），报告会同时显示「本次复核条数 / 原运行输入条数」。不调用模型、不复制原始反馈，标签状态为「用户声明已复核」，不代表正式项目验收。
+
+- API：`GET /evaluations/reference-template`、`POST /evaluations/reference-review`、`GET /evaluations/{id}/reference-review`。
+- 数据：`data/synthetic-review-v1/` 含300条合成输入与100条待审核材料；离线待审核CSV没有项目/Run绑定，不能直接上传，须用页面下载的模板。
+- 限制：真实Embedding仍未配置（当前为`local-hash-v1`），本批标签是测试夹具不是正式人工标签；意图自由文本仍未测量；新增接口与页面需重启本地项目后加载。
+
+详见[55号交付记录](docs/55-人工参考评测与数据准备交付.md)。

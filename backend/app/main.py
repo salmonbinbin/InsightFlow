@@ -11,6 +11,7 @@ from app.api import (
     insights,
     opportunities,
     projects,
+    reference_review,
     requirement_prd,
     research,
     tools,
@@ -29,6 +30,7 @@ app.include_router(clusters.router)
 app.include_router(insights.router)
 app.include_router(opportunities.router)
 app.include_router(requirement_prd.router)
+app.include_router(reference_review.router)
 app.include_router(evaluations.router)
 app.include_router(research.router)
 app.include_router(tools.router)

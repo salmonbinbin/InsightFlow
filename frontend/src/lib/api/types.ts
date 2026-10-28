@@ -1991,3 +1991,10 @@ export interface Pagination {
   limit: number;
   offset: number;
 }
+
+/** Source IDs are validated against the project and stage by the backend. */
+export interface EvaluationCreateRequest {
+  project_id: string;
+  source_run_id: string;
+  evaluation_type: 'classification_metrics' | 'cluster_metrics';
+}

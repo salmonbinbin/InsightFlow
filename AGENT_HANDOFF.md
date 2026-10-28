@@ -1,3 +1,7 @@
+> **2026-10-28人工参考评测与数据准备入口：[55号交付记录](docs/55-人工参考评测与数据准备交付.md)。** 评测页新增人工参考答案模式：下载已结束分类/聚类Run的空白CSV模板，人工填标签与审核人后上传，按子样本计算确定性指标并生成可回看报告（聚类语义指标只算含已复核成员的簇，过合并率分母不再是全量簇数）。新增300条合成输入与100条待审核材料（`data/synthetic-review-v1/`）。最终后端1543通过/11跳过、全新临时PG1554通过及迁移往返、前端205项(23文件)与lint/tsc通过、隔离生产构建通过；真实浏览器经页面各上传100条生成2份报告，Raw 300行未变、跨项目读404、无模型调用。**这批标签是测试夹具不是正式人工标签，真实Embedding仍未配置（local-hash-v1），正式用户验收NOT MEASURED；Phase8 PARTIAL / Research FAIL保持，不进入Phase9。** 新API与页面需重启本地项目后才会加载，本轮未重启用户日常服务。未暂存/提交/推送。下方为历史阶段记录。
+
+> **2026-10-23需求审计与后续推进入口：** [54号需求完成度审计与后续推进交接](docs/54-需求完成度审计与后续推进交接.md)对照原PRD、长期总纲及当前源码，区分已实现待验收、未完成和延期项，并给出分批路线。10月22日已补分类衔接及评测发起，但自定义运行检查不等于语义质量评测。Phase8 PARTIAL / Research FAIL / 正式用户验收NOT MEASURED保持；本次仅文档，无产品修改、提交或推送，不进入Phase9。下方为历史阶段记录。
+
 > **2026-10-19公开归档已推送：** [GitHub仓库](https://github.com/salmonbinbin/InsightFlow)，默认分支`codex/phase8-checkpoint`，代码检查点`2c31032f8c1cb21df9808c10a92c90d8b3691c3d`已由GitHub API核对一致。当前入口为[52号归档/缺口/后续方案](docs/52-Phase8阶段归档与后续修复计划.md)，工程新检查见[evaluations/phase8-checkpoint](docs/evaluations/phase8-checkpoint/verification.json)。回执文档随后的提交同步同分支；Phase8 PARTIAL/Research FAIL/正式验收NOT MEASURED不变。原分支保留，未启动Phase9。
 
 > **2026-10-19阶段8检查点归档授权：[52号](docs/52-Phase8阶段归档与后续修复计划.md)。** 三文鱼明确要求提交并推送第8阶段，授权新建公开仓库；允许按PARTIAL归档，覆盖此前本轮“禁止提交/push”的操作限制，但不改变Research质量FAIL和正式用户验收NOT MEASURED，不启动Phase9。代码、已知失败、文献与后续修复方案均有记录；新回归SQLite1509/11skip、新PG1520及迁移往返、前端193/lint/build、Ruff通过。远端实际状态以Git和后续操作回执为准，不将本地提交当作推送成功。下方旧禁止推送记录保留历史语境。

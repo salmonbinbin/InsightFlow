@@ -1,3 +1,4 @@
+import type { ReferenceTemplate, ReferenceReviewPage } from './reference-types';
 /**
  * InsightFlow — typed API client
  *
@@ -29,6 +30,7 @@ import type {
   DecisionHistoryPage,
   DecisionPatchRequest,
   EvaluationCasePage,
+  EvaluationCreateRequest,
   EvaluationMetricPage,
   EvaluationRunQuery,
   EvaluationRunRead,
@@ -748,12 +750,7 @@ export class InsightFlowClient {
 
   /* ---------- Evaluation (Phase 6) ----------
    *
-   * Phase 7 D2a — typed read accessors for the evaluation surface.
-   * The frontend never POSTs an evaluation from this layer (the
-   * runner is invoked from a Phase 1 / 2 detail page that owns the
-   * upstream linkage); adding ``createEvaluation`` here would
-   * orphan the body schema and tempt future pages to bypass the
-   * source-run validation that lives in the runner.
+   * Create requests use explicit project/source linkage and server-side validation.
    *
    * Cross-project isolation: every per-run endpoint accepts an
    * OPTIONAL ``project_id`` query parameter. When present, the
@@ -767,6 +764,26 @@ export class InsightFlowClient {
    * is the Phase 7 D1 project index and does NOT accept
    * ``project_id`` (the route already encodes it).
    */
+
+  getReferenceTemplate(body: EvaluationCreateRequest, signal?: AbortSignal): Promise<ApiResult<ReferenceTemplate>> {
+    return this.request('GET', '/api/evaluations/reference-template', { query: { ...body }, signal });
+  }
+
+  createReferenceReview(body: EvaluationCreateRequest & { csv_text: string }, signal?: AbortSignal): Promise<ApiResult<EvaluationRunRead>> {
+    return this.request('POST', '/api/evaluations/reference-review', { body, signal });
+  }
+
+  getReferenceReview(runId: string, projectId: string, offset = 0, signal?: AbortSignal): Promise<ApiResult<ReferenceReviewPage>> {
+    return this.request('GET', `/api/evaluations/${runId}/reference-review`, { query: { project_id: projectId, limit: 25, offset }, signal });
+  }
+
+  createEvaluation(
+    body: EvaluationCreateRequest,
+    mode: 'run-check' | 'reference',
+    signal?: AbortSignal,
+  ): Promise<ApiResult<Pick<EvaluationRunRead, 'id' | 'project_id'>>> {
+    return this.request('POST', mode === 'run-check' ? '/api/evaluations/run-check' : '/api/evaluations', { body, signal });
+  }
 
   // GET /api/projects/{project_id}/evaluations?limit=&offset=
   // — Phase 7 D1 project-scoped EvaluationRun index.

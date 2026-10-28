@@ -172,6 +172,16 @@ export default function AnalysisPage() {
   const [analysisInput, setAnalysisInput] = useState('');
   const [clusteringAnalysisRunId, setClusteringAnalysisRunId] = useState('');
 
+  // Use the actual selected run, not its placeholder text, as the next stage's input.
+  // Scalar dependencies also cover a retry that completes the same run.
+  useEffect(() => {
+    setClusteringAnalysisRunId(
+      analysis.data?.project_id === activeProjectId && analysis.data?.status === 'completed'
+        ? analysis.data.id
+        : '',
+    );
+  }, [activeProjectId, analysis.data?.id, analysis.data?.project_id, analysis.data?.status]);
+
   /* Cross-project defense: module-level ``guardProject`` is the
    * single source of truth. It is intentionally not declared
    * inside the component (see the function above) so the nine
@@ -787,6 +797,11 @@ export default function AnalysisPage() {
             onRetry={() => setCluster((s) => ({ ...s, error: null }))}
           />
         ) : null}
+        <p className="run-launch-hint" role="status">
+          {clusteringAnalysisRunId.trim()
+            ? `当前使用分类记录：${clusteringAnalysisRunId.trim()}`
+            : '请先完成反馈分类，或点击上方分类历史中的已完成记录；完成后会自动关联到这里。'}
+        </p>
         <details className="technical-details">
         <summary>选择其他分类记录</summary>
         <label className="form-field">

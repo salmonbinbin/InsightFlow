@@ -1,0 +1,20 @@
+{
+  "version": "synthetic-review-v1",
+  "provenance": "synthetic",
+  "label_status": "unreviewed",
+  "feedback_count": 300,
+  "review_candidate_count": 100,
+  "design_group_count": 20,
+  "split_counts": {
+    "train": 180,
+    "validation": 60,
+    "test": 60
+  },
+  "split_policy": "whole design groups; no same group crosses splits",
+  "limitation": "templated synthetic workload; design groups are not human ground truth; not semantic acceptance",
+  "files": {
+    "feedback.csv": "a860ae2bd7d65be3b90e85470a3b466f032b8b5e89855ccfb55896c7c45e8e08",
+    "groups.csv": "a5d55212f5e93a41b2729ae76a5260a8318b7bcd6db5fd40f43e9811926b278e",
+    "review-100.csv": "737cb6b60bc34defb42305181af5467c65991db17b0e50a26c44c95271c0ea27"
+  }
+}

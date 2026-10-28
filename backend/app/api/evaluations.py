@@ -286,6 +286,24 @@ def _stable_order_case_rows(rows: Iterable[EvaluationCase]) -> list[EvaluationCa
 # ---- Endpoints --------------------------------------------------------------
 
 
+@router.post("/evaluations/run-check", response_model=EvaluationRunRead)
+def create_run_check(body: EvaluationCreateRequest, db: Session = Depends(get_db)):
+    """Check custom-project saved outputs without reference-label claims."""
+    from app.evals.run_check import evaluate_run_check
+
+    _require_project(db, body.project_id)
+    try:
+        run = evaluate_run_check(
+            db,
+            project_id=body.project_id,
+            source_run_id=body.source_run_id,
+            evaluation_type=body.evaluation_type,
+        )
+    except EvaluationRunnerValidationError as exc:
+        raise HTTPException(409, _safe_error_message(str(exc))) from exc
+    return _run_to_read(run)
+
+
 @router.post(
     "/evaluations",
     response_model=EvaluationRunCreateRead,
@@ -447,12 +465,7 @@ def list_project_evaluations(
     """
     _require_project(db, project_id)
     where_clauses = [EvaluationRun.project_id == project_id]
-    total = (
-        db.scalar(
-            select(func.count()).select_from(EvaluationRun).where(*where_clauses)
-        )
-        or 0
-    )
+    total = db.scalar(select(func.count()).select_from(EvaluationRun).where(*where_clauses)) or 0
     rows = db.scalars(
         select(EvaluationRun)
         .where(*where_clauses)

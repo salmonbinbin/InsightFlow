@@ -85,6 +85,8 @@
  */
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { ReferenceReviewLauncher, ReferenceReviewDetails } from '../../components/ReferenceReview';
+import { EvaluationLauncher } from '../../components/EvaluationLauncher';
 import { TechnicalDetails } from '../../components/TechnicalDetails';
 import { displayLabel, metricLabel } from '../../lib/presentation';
 import { useProjectContext } from '../../contexts/ProjectContext';
@@ -552,6 +554,18 @@ export default function EvaluationPage() {
         <p className="page-subtitle">查看分析质量、参考目标与失败案例。</p>
       </header>
 
+      <EvaluationLauncher key={activeProjectId} projectId={activeProjectId} onCreated={id => {
+        selectRun(id);
+        if (page.offset === 0) void fetchList();
+        else setPage({ ...page, offset: 0 });
+      }} />
+
+      <ReferenceReviewLauncher key={`reference-${activeProjectId}`} projectId={activeProjectId} onCreated={id => {
+        selectRun(id);
+        if (page.offset === 0) void fetchList();
+        else setPage({ ...page, offset: 0 });
+      }} />
+
       {/* ---- Runs list ---- */}
       <section className="section" data-testid="evaluation-list-section">
         <h2 className="section-title">运行历史</h2>
@@ -667,9 +681,14 @@ export default function EvaluationPage() {
               <h3 className="section-title" data-testid="eval-detail-title">
                 {displayLabel(run.stage, "评测结果")}
               </h3>
+              {run.dataset_label_status === 'user_reviewed_reference_not_formal_acceptance' && <ReferenceReviewDetails key={`${activeProjectId}-${run.id}`} projectId={activeProjectId} runId={run.id} />}
+              {run.dataset_label_status === 'no_reference_labels' && <p role="note">
+                本报告仅检查运行和结果关联完整性；“完成”或“通过”不代表语义正确。没有人工参考答案，内容质量指标未测量。
+                {run.model === 'local-hash-v1' && ' 当前使用测试嵌入，不能据此判断真实语义聚类效果。'}
+              </p>}
               <dl className="meta-grid">
                 <dt>评测数据</dt>
-                <dd data-testid="eval-dataset-name">{run.dataset_name}</dd>
+                <dd data-testid="eval-dataset-name">{run.dataset_name === 'project_run_snapshot' ? '所选运行的反馈快照' : run.dataset_name}</dd>
                 <dt>版本</dt>
                 <dd data-testid="eval-dataset-version">{run.dataset_version}</dd>
                 <dt>样本分组</dt>

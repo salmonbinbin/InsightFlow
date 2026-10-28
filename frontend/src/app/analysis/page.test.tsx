@@ -1,4 +1,4 @@
-import { afterEach, describe, expect, it } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 import { act, fireEvent, render, screen, waitFor } from '@testing-library/react';
 import { ProjectContextProvider, useProjectContext } from '../../contexts/ProjectContext';
 import { MockInsightFlowClient } from '../../lib/api/mock';
@@ -66,4 +66,49 @@ describe('Analysis persisted history and project isolation', () => {
     await waitFor(() => expect(screen.getByTestId('analysis-history-row').getAttribute('data-run-id')).toBe('b-class'));
     expect(screen.queryByText('a-class')).toBeNull();
   });
+});
+
+describe('Classification to clustering handoff', () => {
+  it('automatically uses a newly completed classification for clustering', async () => {
+    const client = setup();
+    const createCluster = vi.spyOn(client, 'createClustering');
+    await act(async () => fireEvent.click(screen.getByRole('button', { name: '开始分类' })));
+    const source = screen.getByLabelText('分类记录编号') as HTMLInputElement;
+    expect(source.value).not.toBe('');
+    expect((screen.getByRole('button', { name: '整理反馈主题' }) as HTMLButtonElement).disabled).toBe(false);
+    await act(async () => fireEvent.click(screen.getByRole('button', { name: '整理反馈主题' })));
+    expect(createCluster).toHaveBeenCalledWith('project-a', source.value, expect.any(AbortSignal));
+  });
+
+  it('uses a selected historical classification and clears it on project switch', async () => {
+    setup();
+    await waitFor(() => screen.getByTestId('analysis-history-row'));
+    await act(async () => fireEvent.click(screen.getByTestId('analysis-history-row').querySelector('button')!));
+    expect((screen.getByLabelText('分类记录编号') as HTMLInputElement).value).toBe('a-class');
+    expect(screen.getByText(/当前使用分类记录：a-class/)).toBeTruthy();
+    await act(async () => fireEvent.click(screen.getByText('切换项目')));
+    expect((screen.getByLabelText('分类记录编号') as HTMLInputElement).value).toBe('');
+    expect((screen.getByRole('button', { name: '整理反馈主题' }) as HTMLButtonElement).disabled).toBe(true);
+  });
+
+  it('does not automatically select an incomplete classification', async () => {
+    const client = setup();
+    client.analysisRuns[0]!.status = 'partial_failed';
+    await waitFor(() => screen.getByTestId('analysis-history-row'));
+    await act(async () => fireEvent.click(screen.getByTestId('analysis-history-row').querySelector('button')!));
+    expect((screen.getByLabelText('分类记录编号') as HTMLInputElement).value).toBe('');
+    expect((screen.getByRole('button', { name: '整理反馈主题' }) as HTMLButtonElement).disabled).toBe(true);
+  });
+});
+
+it('associates the same classification after a successful retry', async () => {
+  const client = setup();
+  client.analysisRuns[0]!.status = 'partial_failed';
+  await waitFor(() => screen.getByTestId('analysis-history-row'));
+  await act(async () => fireEvent.click(screen.getByTestId('analysis-history-row').querySelector('button')!));
+  expect((screen.getByLabelText('分类记录编号') as HTMLInputElement).value).toBe('');
+  await act(async () => fireEvent.click(screen.getByRole('button', { name: '重试' })));
+  expect((screen.getByLabelText('分类记录编号') as HTMLInputElement).value).toBe('a-class');
+  fireEvent.change(screen.getByLabelText('分类记录编号'), { target: { value: 'manual-run' } });
+  expect(screen.getByText('当前使用分类记录：manual-run')).toBeTruthy();
 });

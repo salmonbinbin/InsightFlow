@@ -1,5 +1,7 @@
 /** User-facing labels only; API values and stored content remain unchanged. */
 const LABELS: Record<string, string> = {
+  user_reviewed_reference_not_formal_acceptance: '用户提供的人工参考标签（非正式验收）',
+  no_reference_labels: '未提供人工参考答案', pipeline_health: '运行完整性检查',
   draft: '草稿', needs_validation: '待核实', pending_review: '待复核',
   reviewing: '复核中', approved: '已批准', archived: '已归档',
   accepted: '已采纳', overridden: '已调整', rejected: '已驳回', deferred: '已延后',
@@ -82,6 +84,7 @@ export function sourceLabel(value: string): string {
 }
 
 const METRICS: Record<string, string> = {
+  result_coverage_rate: '结果关联完整率（含离群项）',
   feedback_type_accuracy: '反馈类型准确率', feedback_type_macro_f1: '反馈分类综合得分',
   severity_exact_match: '严重度匹配率', cluster_count: '聚类数量',
   cluster_purity_micro: '整体聚类纯度', cluster_purity_macro: '平均聚类纯度',
